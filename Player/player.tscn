@@ -1,0 +1,201 @@
+[gd_scene load_steps=20 format=3 uid="uid://m6pypgl566n1"]
+
+[ext_resource type="Script" path="res://player/player.gd" id="1_ref5g"]
+[ext_resource type="Script" path="res://player/smooth_camera.gd" id="2_cywkd"]
+[ext_resource type="Script" path="res://scripts/state_machine/state_machine.gd" id="2_g0cef"]
+[ext_resource type="Script" path="res://scripts/state_machine/states/idle.gd" id="3_4b8lt"]
+[ext_resource type="Script" path="res://player/crosshair.gd" id="3_282xj"]
+[ext_resource type="Script" path="res://scripts/state_machine/states/walk.gd" id="4_gw7tn"]
+[ext_resource type="Script" path="res://player/ammo_handler.gd" id="4_k877d"]
+[ext_resource type="Script" path="res://scripts/state_machine/states/jump.gd" id="5_1y6qq"]
+[ext_resource type="PackedScene" uid="uid://b3tg1w6co05r2" path="res://player/weapon_handler.tscn" id="5_abscn"]
+[ext_resource type="PackedScene" uid="uid://w0ax75odo1ha" path="res://components/health.tscn" id="5_acel2"]
+[ext_resource type="Texture2D" uid="uid://di7tj31llxo0i" path="res://player/damage.png" id="6_km1pl"]
+[ext_resource type="PackedScene" uid="uid://bjq2dkpgpnav7" path="res://player/game_over_menu.tscn" id="7_keanm"]
+[ext_resource type="FontFile" uid="uid://yqk87iw0ykxp" path="res://assets/fonts/Roboto-Regular.ttf" id="8_dofuu"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_fyred"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_6wihg"]
+
+[sub_resource type="Animation" id="Animation_yibg3"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_2b66e"]
+resource_name = "TakeDamage"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(-2, -2),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.5, 1.5)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(-2, -2),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_xp5da"]
+_data = {
+"RESET": SubResource("Animation_yibg3"),
+"TakeDamage": SubResource("Animation_2b66e")
+}
+
+[sub_resource type="LabelSettings" id="LabelSettings_cswfq"]
+font = ExtResource("8_dofuu")
+font_size = 64
+
+[node name="Player" type="CharacterBody3D" groups=["player"]]
+script = ExtResource("1_ref5g")
+
+[node name="StateMachine" type="Node" parent="."]
+script = ExtResource("2_g0cef")
+initial_state = NodePath("Idle")
+
+[node name="Idle" type="Node" parent="StateMachine"]
+script = ExtResource("3_4b8lt")
+
+[node name="Walk" type="Node" parent="StateMachine"]
+script = ExtResource("4_gw7tn")
+
+[node name="Jump" type="Node" parent="StateMachine"]
+script = ExtResource("5_1y6qq")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("CapsuleMesh_fyred")
+
+[node name="Components" type="Node" parent="."]
+
+[node name="Health" parent="Components" instance=ExtResource("5_acel2")]
+max_health = 50
+
+[node name="AmmoHandler" type="Node" parent="Components" node_paths=PackedStringArray("ammo_label")]
+script = ExtResource("4_k877d")
+ammo_label = NodePath("../../MarginContainer/AmmoLabel")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_6wihg")
+
+[node name="CameraPivot" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.3, 0)
+
+[node name="WorldCamera" type="Camera3D" parent="CameraPivot"]
+top_level = true
+cull_mask = 1048573
+script = ExtResource("2_cywkd")
+speed = 20.0
+
+[node name="RemoteTransform3D" type="RemoteTransform3D" parent="CameraPivot/WorldCamera"]
+remote_path = NodePath("../../../SubViewportContainer/SubViewport/WeaponCamera")
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+stretch = true
+
+[node name="SubViewport" type="SubViewport" parent="SubViewportContainer"]
+transparent_bg = true
+handle_input_locally = false
+size = Vector2i(1152, 648)
+render_target_update_mode = 4
+
+[node name="WeaponCamera" type="Camera3D" parent="SubViewportContainer/SubViewport"]
+cull_mask = 2
+fov = 44.0
+
+[node name="WeaponHandler" parent="SubViewportContainer/SubViewport/WeaponCamera" node_paths=PackedStringArray("ammo_handler") instance=ExtResource("5_abscn")]
+ammo_handler = NodePath("../../../../Components/AmmoHandler")
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Control" type="Control" parent="CenterContainer"]
+layout_mode = 2
+script = ExtResource("3_282xj")
+
+[node name="DamageTexture" type="TextureRect" parent="."]
+modulate = Color(1, 1, 1, 0)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(576, 324)
+mouse_filter = 2
+texture = ExtResource("6_km1pl")
+
+[node name="DamageAnimationPlayer" type="AnimationPlayer" parent="DamageTexture"]
+libraries = {
+"": SubResource("AnimationLibrary_xp5da")
+}
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="AmmoLabel" type="Label" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+text = "999"
+label_settings = SubResource("LabelSettings_cswfq")
+
+[node name="GameOverMenu" parent="." instance=ExtResource("7_keanm")]
+visible = false
+
+[connection signal="health_minimun_reached" from="Components/Health" to="." method="_on_health_health_minimun_reached"]
+[connection signal="taken_damage" from="Components/Health" to="." method="_on_health_taken_damage"]
