@@ -24,8 +24,6 @@ func _physics_process(delta):
 	if direction:
 		player.velocity.x = direction.x * player.speed 
 		player.velocity.z = direction.z * player.speed
-		if Input.is_action_pressed("aim"):
-			player.velocity.x *= player.aim_multiplier
-			player.velocity.z *= player.aim_multiplier
+
 	
 	player.move_and_slide()

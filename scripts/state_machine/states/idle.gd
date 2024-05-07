@@ -1,6 +1,5 @@
 extends PlayerState
-
-class_name PlayerIdle
+class_name PlayerAiming
 
 
 func enter(_msg : ={}) -> void:
@@ -14,7 +13,8 @@ func update(delta):
 #	var objCam = player.originCamPos + Vector3.UP * sin(cam_bob) * .05
 #
 #	player.camera_3d.position = player.camera_3d.position.lerp(objCam, delta)
-	pass
+	if Input.is_action_pressed("aim"):
+		state_machine.transition_to("Aim", {})
 
 
 func physics_update(delta: float) -> void:

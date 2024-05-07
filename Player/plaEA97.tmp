@@ -104,7 +104,6 @@ script = ExtResource("5_1y6qq")
 script = ExtResource("6_rtwvu")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-layers = 0
 mesh = SubResource("CapsuleMesh_fyred")
 
 [node name="Components" type="Node" parent="."]
@@ -207,4 +206,3 @@ visible = false
 
 [connection signal="health_minimun_reached" from="Components/Health" to="." method="_on_health_health_minimun_reached"]
 [connection signal="taken_damage" from="Components/Health" to="." method="_on_health_taken_damage"]
-[connection signal="timeout" from="CameraPivot/WorldCamera/AimShakeTimer" to="CameraPivot/WorldCamera" method="_on_aim_shake_timer_timeout"]

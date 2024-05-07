@@ -1,6 +1,10 @@
 extends PlayerState
 class_name Walk
 
+#Private variables
+var mouse_motion := Vector2.ZERO
+
+
 func enter(_msg : ={}) -> void:
 	pass
 
@@ -22,13 +26,30 @@ func update(delta):
 
 
 func physics_update(delta: float) -> void:
+	handle_camera_rotation(delta)
 	var direction = player.direction(delta)
 	print(direction)
 	if direction:
 		player.velocity.x = direction.x * player.speed
 		player.velocity.z = direction.z * player.speed
-		if Input.is_action_pressed("aim"):
-			player.velocity.x *= player.aim_multiplier
-			player.velocity.z *= player.aim_multiplier
+	
+	if Input.is_action_pressed("aim"):
+		player.velocity.x *= player.aim_multiplier
+		player.velocity.z *= player.aim_multiplier
 	
 	player.move_and_slide()
+
+
+func _input(event):
+	if event is InputEventMouseMotion:
+		mouse_motion = -event.relative * 0.001
+		if Input.is_action_pressed("aim"):
+			state_machine.transition_to("Aim", {})
+
+
+func handle_camera_rotation(_delta:float) -> void:
+	player.rotate_y(mouse_motion.x * player.camera_sensibility)
+	player.camera_pivot.rotate_x(mouse_motion.y * player.camera_sensibility)
+	player.camera_pivot.rotation_degrees.x = clampf(
+		player.camera_pivot.rotation_degrees.x, -90.0, 90)
+	mouse_motion = Vector2.ZERO

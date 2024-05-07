@@ -1,9 +1,8 @@
-[gd_scene load_steps=14 format=3 uid="uid://b62fd7a6q7pm"]
+[gd_scene load_steps=13 format=3 uid="uid://b62fd7a6q7pm"]
 
 [ext_resource type="PackedScene" uid="uid://m6pypgl566n1" path="res://player/player.tscn" id="1_4278g"]
-[ext_resource type="Material" uid="uid://dacid3ccax2pq" path="res://levels/materials/orange.tres" id="2_logh3"]
-[ext_resource type="Material" uid="uid://ciyx0k2mf8b5f" path="res://levels/materials/grey.tres" id="3_m4mti"]
-[ext_resource type="PackedScene" uid="uid://omjxjkehmmbw" path="res://enemy/enemy.tscn" id="4_slxw7"]
+[ext_resource type="Material" uid="uid://dacid3ccax2pq" path="res://Levels/materials/orange.tres" id="2_logh3"]
+[ext_resource type="Material" uid="uid://ciyx0k2mf8b5f" path="res://Levels/materials/grey.tres" id="3_m4mti"]
 [ext_resource type="PackedScene" uid="uid://vigb1nxfkdg1" path="res://pickups/bullet_pickup.tscn" id="6_2yj28"]
 [ext_resource type="PackedScene" uid="uid://dki0ax8a71d2j" path="res://pickups/small_bullet_pickup.tscn" id="6_nqnqc"]
 [ext_resource type="PackedScene" uid="uid://cgqjy8smfow5g" path="res://hazards/lava.tscn" id="7_iqopt"]
@@ -235,10 +234,6 @@ shadow_enabled = true
 [node name="Player" parent="." instance=ExtResource("1_4278g")]
 transform = Transform3D(-0.78977, 0, -0.613403, 0, 1, 0, 0.613403, 0, -0.78977, 10.0121, 5.94762, 8.94047)
 camera_sensibility = 1.5
-
-[node name="Enemy" parent="." instance=ExtResource("4_slxw7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.63029, 1.49356, -24.6607)
-speed = 6.0
 
 [node name="Pickups" type="Node3D" parent="."]
 

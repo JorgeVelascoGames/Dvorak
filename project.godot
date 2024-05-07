@@ -10,7 +10,7 @@ config_version=5
 
 [application]
 
-config/name="FPS template"
+config/name="Dvorak"
 run/main_scene="res://levels/Sandbox.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
 config/icon="res://icon.svg"
