@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=3 uid="uid://cuejgrtlvpjys"]
+
+[ext_resource type="Script" path="res://scripts/pahtfinding_manager/pathfinding_manager.gd" id="1_mrheo"]
+
+[node name="PathfindingManager" type="Node"]
+process_thread_group = 2
+process_thread_group_order = 0
+process_thread_messages = 0
+script = ExtResource("1_mrheo")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.3
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

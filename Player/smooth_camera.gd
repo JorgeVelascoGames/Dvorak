@@ -24,8 +24,8 @@ func _ready():
 
 
 func _process(delta):
-	if Input.is_action_just_pressed("test"):
-		weapon_recoil()
+	#if Input.is_action_just_pressed("test"):
+		#weapon_recoil()
 	
 	if shaking:
 		_shaking_camera(delta)
