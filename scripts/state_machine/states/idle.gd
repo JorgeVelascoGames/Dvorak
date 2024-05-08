@@ -5,7 +5,7 @@ var mouse_motion := Vector2.ZERO
 
 
 func enter(_msg : ={}) -> void:
-	player.velocity = Vector3.ZERO
+	pass
 
 
 func update(delta):
@@ -21,6 +21,7 @@ func update(delta):
 
 func physics_update(delta: float) -> void:
 	handle_camera_rotation(delta)
+
 	if player.direction(delta) != Vector3.ZERO:
 		state_machine.transition_to("Walk", {})
 		return

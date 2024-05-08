@@ -5,6 +5,7 @@ class_name PlayerAim
 @onready var sensibility_timer = $SensibilityTimer
 
 @export var aim_multiplier: float = 0.3
+@export var aim_speed: float = 0.5
 var jitter_strength: float = 0.005
 
 #Private variables
@@ -26,8 +27,11 @@ func physics_update(delta: float) -> void:
 	handle_camera_rotation(delta)
 	var direction = player.direction(delta)
 	if direction:
-		player.velocity.x *= aim_multiplier
-		player.velocity.z *= aim_multiplier
+		player.velocity.x = direction.x * aim_speed
+		player.velocity.z = direction.z * aim_speed
+	else:
+		player.velocity.x = move_toward(player.velocity.x, 0, player.speed)
+		player.velocity.z = move_toward(player.velocity.z, 0, player.speed)
 	player.move_and_slide()
 
 
