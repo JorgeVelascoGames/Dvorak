@@ -1,13 +1,16 @@
 extends PlayerState
-class_name PlayerIdle
+class_name PlayerAim
 
 @onready var world_camera = $"../../CameraPivot/WorldCamera"
+@onready var sensibility_timer = $SensibilityTimer
 
 @export var aim_multiplier: float = 0.3
+var jitter_strength: float = 0.005
 
 #Private variables
 var mouse_motion := Vector2.ZERO
-
+var rng = RandomNumberGenerator.new()
+var randomized_sensibility: float = 1.0
 
 func enter(_msg : ={}) -> void:
 	player.velocity = Vector3.ZERO
@@ -25,20 +28,23 @@ func physics_update(delta: float) -> void:
 	if direction:
 		player.velocity.x *= aim_multiplier
 		player.velocity.z *= aim_multiplier
-	
 	player.move_and_slide()
 
 
 func _input(event):
 	if event is InputEventMouseMotion:
+		var random_jitter = Vector2(
+		rng.randf_range(-jitter_strength, jitter_strength), 
+		rng.randf_range(-jitter_strength, jitter_strength)
+		)
 		mouse_motion = -event.relative * 0.001
-		if Input.is_action_pressed("aim"):
-			mouse_motion *= aim_multiplier / 2
+		mouse_motion *= aim_multiplier / 2
+		mouse_motion += random_jitter
 
 
 func handle_camera_rotation(_delta:float) -> void:
-	player.rotate_y(mouse_motion.x * player.camera_sensibility)
-	player.camera_pivot.rotate_x(mouse_motion.y * player.camera_sensibility)
+	player.rotate_y(mouse_motion.x * randomized_sensibility)
+	player.camera_pivot.rotate_x(mouse_motion.y * randomized_sensibility)
 	player.camera_pivot.rotation_degrees.x = clampf(
 		player.camera_pivot.rotation_degrees.x, -90.0, 90)
 	mouse_motion = Vector2.ZERO
@@ -46,3 +52,7 @@ func handle_camera_rotation(_delta:float) -> void:
 
 func exit() -> void:
 	world_camera.shaking = false
+
+
+func _on_sensibility_timer_timeout():
+	randomized_sensibility = player.camera_sensibility * rng.randf_range(0.1, 3.0)

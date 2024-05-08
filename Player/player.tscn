@@ -103,6 +103,10 @@ script = ExtResource("5_1y6qq")
 [node name="Aim" type="Node" parent="StateMachine"]
 script = ExtResource("6_rtwvu")
 
+[node name="SensibilityTimer" type="Timer" parent="StateMachine/Aim"]
+wait_time = 0.5
+autostart = true
+
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 layers = 0
 mesh = SubResource("CapsuleMesh_fyred")
@@ -125,6 +129,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.3, 0)
 [node name="WorldCamera" type="Camera3D" parent="CameraPivot"]
 top_level = true
 cull_mask = 1048573
+fov = 33.0
 script = ExtResource("2_cywkd")
 speed = 20.0
 
@@ -132,6 +137,11 @@ speed = 20.0
 remote_path = NodePath("../../../SubViewportContainer/SubViewport/WeaponCamera")
 
 [node name="AimShakeTimer" type="Timer" parent="CameraPivot/WorldCamera"]
+wait_time = 2.164
+autostart = true
+
+[node name="OffsetCalculationTimer" type="Timer" parent="CameraPivot/WorldCamera"]
+wait_time = 1.56
 autostart = true
 
 [node name="SubViewportContainer" type="SubViewportContainer" parent="."]
@@ -150,7 +160,7 @@ render_target_update_mode = 4
 
 [node name="WeaponCamera" type="Camera3D" parent="SubViewportContainer/SubViewport"]
 cull_mask = 2
-fov = 44.0
+fov = 33.0
 
 [node name="WeaponHandler" parent="SubViewportContainer/SubViewport/WeaponCamera" node_paths=PackedStringArray("ammo_handler") instance=ExtResource("5_abscn")]
 ammo_handler = NodePath("../../../../Components/AmmoHandler")
@@ -205,6 +215,8 @@ label_settings = SubResource("LabelSettings_cswfq")
 [node name="GameOverMenu" parent="." instance=ExtResource("7_keanm")]
 visible = false
 
+[connection signal="timeout" from="StateMachine/Aim/SensibilityTimer" to="StateMachine/Aim" method="_on_sensibility_timer_timeout"]
 [connection signal="health_minimun_reached" from="Components/Health" to="." method="_on_health_health_minimun_reached"]
 [connection signal="taken_damage" from="Components/Health" to="." method="_on_health_taken_damage"]
 [connection signal="timeout" from="CameraPivot/WorldCamera/AimShakeTimer" to="CameraPivot/WorldCamera" method="_on_aim_shake_timer_timeout"]
+[connection signal="timeout" from="CameraPivot/WorldCamera/OffsetCalculationTimer" to="CameraPivot/WorldCamera" method="_on_offset_calculation_timer_timeout"]

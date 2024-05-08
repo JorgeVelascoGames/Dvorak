@@ -4,9 +4,13 @@ class_name Walk
 #Private variables
 var mouse_motion := Vector2.ZERO
 
+@onready var world_camera = $"../../CameraPivot/WorldCamera"
+
+@export var aim_multiplier: float = 0.3
+
 
 func enter(_msg : ={}) -> void:
-	pass
+	world_camera.shaking = true
 
 
 func update(delta):
@@ -28,14 +32,14 @@ func update(delta):
 func physics_update(delta: float) -> void:
 	handle_camera_rotation(delta)
 	var direction = player.direction(delta)
-	print(direction)
 	if direction:
 		player.velocity.x = direction.x * player.speed
 		player.velocity.z = direction.z * player.speed
+	else:
+		state_machine.transition_to("Idle", {})
 	
 	if Input.is_action_pressed("aim"):
-		player.velocity.x *= player.aim_multiplier
-		player.velocity.z *= player.aim_multiplier
+		state_machine.transition_to("Aim", {})
 	
 	player.move_and_slide()
 
@@ -53,3 +57,7 @@ func handle_camera_rotation(_delta:float) -> void:
 	player.camera_pivot.rotation_degrees.x = clampf(
 		player.camera_pivot.rotation_degrees.x, -90.0, 90)
 	mouse_motion = Vector2.ZERO
+
+
+func exit() -> void:
+	world_camera.shaking = false

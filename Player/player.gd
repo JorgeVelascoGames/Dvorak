@@ -1,7 +1,6 @@
 extends CharacterBody3D
 class_name Player
 
-
 @export var speed = 3.0
 @export var fall_multiplier: float = 2.5
 @export var camera_sensibility: float = 1.2
