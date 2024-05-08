@@ -6,15 +6,16 @@ class_name WorldCamera
 @export var pivot :Node3D
 
 @onready var aim_shake_timer = $AimShakeTimer
-@onready var offset_calculation_timer = $OffsetCalculationTimer
+@onready var camera_pivot = $".."
+@onready var player = $"../.."
 
 var random_offset: Vector3
 var shake_strenght: float = 0.0
 var rng = RandomNumberGenerator.new()
 var shaking: bool = false
-const random_strenght: = 0.3
-const shake_fade : = 0.5
-const shake_frecuency := 0.3
+const random_strenght: = 0.1
+const shake_fade : = 0.3
+const shake_frecuency := 0.7
 
 
 func _ready():
@@ -24,7 +25,7 @@ func _ready():
 
 func _process(delta):
 	if Input.is_action_just_pressed("test"):
-		shake_camera()
+		weapon_recoil()
 	
 	if shaking:
 		_shaking_camera(delta)
@@ -45,19 +46,13 @@ func _smooth_camera(delta) -> void:
 	global_position = get_parent().global_position
 
 
-func shake_camera() -> void:
-	shake_strenght = random_strenght * 1.4
-	_calculate_random_offset()
-	#tween
-	h_offset = random_offset.x
-	v_offset = random_offset.y
-
-
 func _shaking_camera(delta: float) -> void:
 	shake_strenght = random_strenght
-
-	h_offset = lerpf(h_offset, random_offset.x, shake_fade * delta)
-	v_offset = lerpf(v_offset, random_offset.y, shake_fade * delta)
+	
+	h_offset = move_toward(h_offset, random_offset.x, shake_fade * delta)
+	v_offset = move_toward(v_offset, random_offset.y, shake_fade * delta)
+	if is_equal_approx(h_offset, random_offset.x) and is_equal_approx(v_offset, random_offset.y):
+		_calculate_random_offset()
 
 
 func _calculate_random_offset() -> void:
@@ -69,8 +64,49 @@ func _calculate_random_offset() -> void:
 
 
 func reset_offset(delta) -> void:
-	h_offset = lerpf(h_offset, 0, shake_fade * delta)
-	v_offset = lerpf(v_offset, 0, shake_fade * delta)
+	h_offset = move_toward(h_offset, 0, shake_fade * delta)
+	v_offset = move_toward(v_offset, 0, shake_fade * delta)
+
+
+func random_shake():
+	# Define la intensidad del jitter para cada eje
+	var jitter_strength = 7  # Radianes	
+	
+	var random_rotation = get_random_rotation(jitter_strength)
+	
+	var new_body_rotation = player.rotation_degrees + random_rotation
+	new_body_rotation.x = 0
+	new_body_rotation.z = 0
+	var new_pivot_rotation = camera_pivot.rotation_degrees + random_rotation
+	new_pivot_rotation.y = 0
+	new_pivot_rotation.z = 0
+	var tween := create_tween()
+	tween.set_parallel(true)
+	tween.tween_property(
+		camera_pivot, 
+		"rotation_degrees",
+		new_pivot_rotation,
+		0.006).set_ease(Tween.EASE_IN_OUT)
+	tween.tween_property(
+		player, 
+		"rotation_degrees",
+		new_body_rotation,
+		0.006).set_ease(Tween.EASE_IN_OUT)
+
+
+func weapon_recoil() -> void:
+	var jitter_strength = 0.44  # Radianes
+	camera_pivot.rotate_x(jitter_strength)
+
+
+func get_random_rotation(jitter_strength: float) -> Vector3:
+	# Genera valores aleatorios de rotación dentro del rango [-jitter_strength, jitter_strength]
+	var random_rotation = Vector3(
+		rng.randf_range(-jitter_strength, jitter_strength),  # Rotación alrededor del eje X
+		rng.randf_range(-jitter_strength, jitter_strength),  # Rotación alrededor del eje Y
+		rng.randf_range(-jitter_strength, jitter_strength)   # Rotación alrededor del eje Z
+	)
+	return random_rotation
 
 
 func _on_aim_shake_timer_timeout():
@@ -78,10 +114,4 @@ func _on_aim_shake_timer_timeout():
 		return
 	
 	aim_shake_timer.wait_time = rng.randf_range(5.0, 8.0)
-	shake_camera()
-
-
-func _on_offset_calculation_timer_timeout():
-	var diff_float : float = randf_range(0.8, 1.5)
-	shake_strenght = random_strenght * diff_float
-	_calculate_random_offset()
+	random_shake()
