@@ -70,7 +70,7 @@ func reset_offset(delta) -> void:
 
 func random_shake():
 	# Define la intensidad del jitter para cada eje
-	var jitter_strength = 7  # Radianes	
+	var jitter_strength = 9  # Radianes	
 	
 	var random_rotation = get_random_rotation(jitter_strength)
 	
@@ -95,7 +95,7 @@ func random_shake():
 
 
 func weapon_recoil() -> void:
-	var jitter_strength = 0.44  # Radianes
+	var jitter_strength = 0.33  # Radianes
 	camera_pivot.rotate_x(jitter_strength)
 
 
