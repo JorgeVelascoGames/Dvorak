@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://m6pypgl566n1"]
+[gd_scene load_steps=21 format=3 uid="uid://m6pypgl566n1"]
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_ref5g"]
 [ext_resource type="Script" path="res://player/smooth_camera.gd" id="2_cywkd"]
@@ -9,6 +9,7 @@
 [ext_resource type="Script" path="res://player/ammo_handler.gd" id="4_k877d"]
 [ext_resource type="PackedScene" uid="uid://b3tg1w6co05r2" path="res://player/weapon_handler.tscn" id="5_abscn"]
 [ext_resource type="PackedScene" uid="uid://w0ax75odo1ha" path="res://components/health.tscn" id="5_acel2"]
+[ext_resource type="Script" path="res://scripts/state_machine/states/walker.gd" id="5_h6v2u"]
 [ext_resource type="Texture2D" uid="uid://di7tj31llxo0i" path="res://player/damage.png" id="6_km1pl"]
 [ext_resource type="Script" path="res://scripts/state_machine/states/aim.gd" id="6_rtwvu"]
 [ext_resource type="PackedScene" uid="uid://bjq2dkpgpnav7" path="res://player/game_over_menu.tscn" id="7_keanm"]
@@ -88,13 +89,16 @@ script = ExtResource("1_ref5g")
 
 [node name="StateMachine" type="Node" parent="."]
 script = ExtResource("2_g0cef")
-initial_state = NodePath("Idle")
+initial_state = NodePath("Walker")
 
 [node name="Idle" type="Node" parent="StateMachine"]
 script = ExtResource("3_4b8lt")
 
 [node name="Walk" type="Node" parent="StateMachine"]
 script = ExtResource("4_gw7tn")
+
+[node name="Walker" type="Node" parent="StateMachine"]
+script = ExtResource("5_h6v2u")
 
 [node name="Aim" type="Node" parent="StateMachine"]
 script = ExtResource("6_rtwvu")
