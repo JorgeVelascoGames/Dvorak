@@ -56,6 +56,7 @@ func handle_camera_rotation(_delta:float) -> void:
 
 func exit() -> void:
 	world_camera.shaking = false
+	player.camera_pivot.rotation.z = 0
 
 
 func _on_sensibility_timer_timeout():

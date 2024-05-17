@@ -6,6 +6,10 @@ class_name Player
 @export var camera_sensibility: float = 1.2
 @export var can_jump: bool = true
 
+@export_group("Miscelanea")
+@export var camBobSpeed := 4
+@export var camBobUpDown := 0.1
+
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
@@ -20,7 +24,9 @@ var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 @onready var weapon_camera: Camera3D = $SubViewportContainer/SubViewport/WeaponCamera
 @onready var original_weapon_camera_fov = weapon_camera.fov
 @onready var state_machine = $StateMachine
+@onready var originCamPos : Vector3 = camera_pivot.position
 
+var _delta := 0.0
 
 func _ready():
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
@@ -28,13 +34,15 @@ func _ready():
 
 
 func _process(delta: float) -> void:
-	print(PathfindingManager.player_position)
-	pass
+	_delta += delta
+	if _delta > 10:
+		delta = 0
 
 
 func _physics_process(delta):
 	# Add the gravity.
 	process_gravity(delta)
+	move_and_slide()
 
 
 func direction(delta) -> Vector3:
