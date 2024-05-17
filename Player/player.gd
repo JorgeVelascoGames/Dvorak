@@ -28,6 +28,7 @@ var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
 var _delta := 0.0
 
+
 func _ready():
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	PathfindingManager.set_up_player(self)

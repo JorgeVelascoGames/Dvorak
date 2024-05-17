@@ -18,7 +18,7 @@ var rotation_acelerator := 0.0
 
 func enter(_msg : ={}) -> void:
 	player_collision_shape.shape = PLAYER_WALKER_COLLISION_SHAPE
-	camera_pivot.rotation_degrees = Vector3.ZERO
+	camera_pivot.rotation = Vector3.ZERO
 	player.velocity = Vector3.ZERO
 	walker.grab_walker()
 
@@ -76,6 +76,6 @@ func rotate_with_mouse(delta, object):
 
 
 func exit() -> void:
-	camera_pivot.rotation.z = 0
+	camera_pivot.rotation = Vector3.ZERO
 	player_collision_shape.shape = PLAYER_NORMAL_COLLISION_SHAPE
 	walker.free_walker()
