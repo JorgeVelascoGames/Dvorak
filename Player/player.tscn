@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://m6pypgl566n1"]
+[gd_scene load_steps=24 format=3 uid="uid://m6pypgl566n1"]
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_ref5g"]
 [ext_resource type="Script" path="res://player/smooth_camera.gd" id="2_cywkd"]
@@ -15,6 +15,7 @@
 [ext_resource type="FontFile" uid="uid://yqk87iw0ykxp" path="res://assets/fonts/Roboto-Regular.ttf" id="8_dofuu"]
 [ext_resource type="Shape3D" uid="uid://dwk5imwjcfs06" path="res://player/player_walker_collision_shape.tres" id="9_2r1e7"]
 [ext_resource type="Script" path="res://player/walker.gd" id="15_hi5sq"]
+[ext_resource type="Script" path="res://components/interactable.gd" id="16_wvci1"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_fyred"]
 
@@ -154,6 +155,11 @@ remote_path = NodePath("../../../SubViewportContainer/SubViewport/WeaponCamera")
 wait_time = 0.297
 autostart = true
 
+[node name="InteractableRay" type="RayCast3D" parent="CameraPivot/WorldCamera"]
+target_position = Vector3(0, 0, -2)
+collision_mask = 15
+debug_shape_custom_color = Color(0.756863, 0.00392157, 0.941176, 1)
+
 [node name="SubViewportContainer" type="SubViewportContainer" parent="."]
 anchors_preset = 15
 anchor_right = 1.0
@@ -244,7 +250,11 @@ constant_linear_velocity = Vector3(0, -9, 0)
 [node name="CollisionShape3D" type="CollisionShape3D" parent="WalkerFixedPoint/Walker/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_qnmhc")
 
+[node name="Interactable" type="Node" parent="WalkerFixedPoint/Walker/StaticBody3D"]
+script = ExtResource("16_wvci1")
+
 [connection signal="timeout" from="StateMachine/Aim/SensibilityTimer" to="StateMachine/Aim" method="_on_sensibility_timer_timeout"]
 [connection signal="health_minimun_reached" from="Components/Health" to="." method="_on_health_health_minimun_reached"]
 [connection signal="taken_damage" from="Components/Health" to="." method="_on_health_taken_damage"]
 [connection signal="timeout" from="CameraPivot/WorldCamera/AimShakeTimer" to="CameraPivot/WorldCamera" method="_on_aim_shake_timer_timeout"]
+[connection signal="on_interact" from="WalkerFixedPoint/Walker/StaticBody3D/Interactable" to="." method="_on_interactable_on_interact"]
