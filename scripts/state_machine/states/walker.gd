@@ -53,9 +53,11 @@ func physics_update(delta: float) -> void:
 	player.move_and_slide()
 
 
-func _input(event):
+func input(event):
 	if event is InputEventMouseMotion:
 		mouse_motion = -event.relative * 0.001
+	if event.is_action_pressed("drop_walker"):
+		state_machine.transition_to("Walk", {})
 
 
 func handle_camera_rotation(_delta:float) -> void:

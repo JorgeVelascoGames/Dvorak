@@ -25,17 +25,10 @@ func update(delta):
 
 func physics_update(delta: float) -> void:
 	handle_camera_rotation(delta)
-	var direction = player.direction(delta)
-	if direction:
-		player.velocity.x = direction.x * aim_speed
-		player.velocity.z = direction.z * aim_speed
-	else:
-		player.velocity.x = move_toward(player.velocity.x, 0, player.speed)
-		player.velocity.z = move_toward(player.velocity.z, 0, player.speed)
 	player.move_and_slide()
 
 
-func _input(event):
+func input(event):
 	if event is InputEventMouseMotion:
 		var random_jitter = Vector2(
 		rng.randf_range(-jitter_strength, jitter_strength), 
