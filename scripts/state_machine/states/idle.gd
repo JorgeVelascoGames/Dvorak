@@ -16,7 +16,7 @@ func update(delta):
 #
 #	player.camera_3d.position = player.camera_3d.position.lerp(objCam, delta)
 	if Input.is_action_pressed("aim"):
-		state_machine.transition_to("Aim", {})
+		state_machine.transition_to("PrepareGun", {})
 
 
 func physics_update(delta: float) -> void:
@@ -34,8 +34,6 @@ func physics_update(delta: float) -> void:
 func input(event):
 	if event is InputEventMouseMotion:
 		mouse_motion = -event.relative * 0.001
-		if Input.is_action_pressed("aim"):
-			state_machine.transition_to("Aim", {})
 
 
 func handle_camera_rotation(_delta:float) -> void:

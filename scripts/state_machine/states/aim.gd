@@ -3,6 +3,7 @@ class_name PlayerAim
 
 @onready var world_camera = $"../../CameraPivot/WorldCamera"
 @onready var sensibility_timer = $SensibilityTimer
+@onready var aiming_gun: MeshInstance3D = $"../../SubViewportContainer/SubViewport/WeaponCamera/AimingGun"
 
 @export var aim_multiplier: float = 0.3
 @export var aim_speed: float = 0.5
@@ -13,9 +14,11 @@ var mouse_motion := Vector2.ZERO
 var rng = RandomNumberGenerator.new()
 var randomized_sensibility: float = 1.0
 
+
 func enter(_msg : ={}) -> void:
 	player.velocity = Vector3.ZERO
 	world_camera.shaking = true
+	aiming_gun.visible = true
 
 
 func update(delta):
@@ -50,6 +53,7 @@ func handle_camera_rotation(_delta:float) -> void:
 func exit() -> void:
 	world_camera.shaking = false
 	player.camera_pivot.rotation.z = 0
+	aiming_gun.visible = false
 
 
 func _on_sensibility_timer_timeout():

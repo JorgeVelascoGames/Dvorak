@@ -39,7 +39,7 @@ func physics_update(delta: float) -> void:
 	else:
 		state_machine.transition_to("Idle", {})
 	if Input.is_action_pressed("aim"):
-		state_machine.transition_to("Aim", {})
+		state_machine.transition_to("PrepareGun", {})
 	
 	player.move_and_slide()
 
@@ -47,8 +47,6 @@ func physics_update(delta: float) -> void:
 func input(event):
 	if event is InputEventMouseMotion:
 		mouse_motion = -event.relative * 0.001
-		if Input.is_action_pressed("aim"):
-			state_machine.transition_to("Aim", {})
 
 
 func handle_camera_rotation(_delta:float) -> void:
