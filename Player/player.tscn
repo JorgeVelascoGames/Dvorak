@@ -263,6 +263,7 @@ ammo_label = NodePath("../../MarginContainer/AmmoLabel")
 [node name="Balance" parent="Components" instance=ExtResource("10_m7euy")]
 preparing_gun_cost = 230
 shooting_cost = 200
+getting_hit_cost = 500
 balance_recovery = 45
 bonus_balance_recovery = 75
 

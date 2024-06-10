@@ -65,6 +65,11 @@ func add_balance(amount : int) -> void:
 	update_ui()
 
 
+func reset_balance() -> void:
+	current_balance = 0
+	update_ui()
+
+
 func update_ui() -> void:
 	balance_bar.value = current_balance
 
