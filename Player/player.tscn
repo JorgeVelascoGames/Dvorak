@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://m6pypgl566n1"]
+[gd_scene load_steps=32 format=3 uid="uid://m6pypgl566n1"]
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_ref5g"]
 [ext_resource type="Script" path="res://player/smooth_camera.gd" id="2_cywkd"]
@@ -15,16 +15,17 @@
 [ext_resource type="PackedScene" uid="uid://bjq2dkpgpnav7" path="res://player/game_over_menu.tscn" id="7_keanm"]
 [ext_resource type="FontFile" uid="uid://yqk87iw0ykxp" path="res://assets/fonts/Roboto-Regular.ttf" id="8_dofuu"]
 [ext_resource type="Shape3D" uid="uid://dwk5imwjcfs06" path="res://player/player_walker_collision_shape.tres" id="9_2r1e7"]
-[ext_resource type="PackedScene" uid="uid://cdlefkst24dm8" path="res://player/player_ui.tscn" id="15_5wh24"]
+[ext_resource type="PackedScene" uid="uid://shutxn8dpbys" path="res://player/balance.tscn" id="10_m7euy"]
+[ext_resource type="PackedScene" path="res://player/player_ui.tscn" id="15_5wh24"]
 [ext_resource type="Script" path="res://player/walker.gd" id="15_hi5sq"]
 [ext_resource type="Script" path="res://components/interactable.gd" id="16_wvci1"]
-
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_fyred"]
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_qj4cq"]
 top_radius = 0.02
 bottom_radius = 0.02
 height = 0.2
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_fyred"]
 
 [sub_resource type="Animation" id="Animation_yibg3"]
 length = 0.001
@@ -196,6 +197,31 @@ axis_lock_angular_z = true
 script = ExtResource("1_ref5g")
 speed = 0.3
 
+[node name="SubViewportContainer" type="SubViewportContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+stretch = true
+
+[node name="SubViewport" type="SubViewport" parent="SubViewportContainer"]
+transparent_bg = true
+handle_input_locally = false
+size = Vector2i(1152, 648)
+render_target_update_mode = 4
+
+[node name="WeaponCamera" type="Camera3D" parent="SubViewportContainer/SubViewport"]
+cull_mask = 2
+fov = 33.0
+
+[node name="AimingGun" type="MeshInstance3D" parent="SubViewportContainer/SubViewport/WeaponCamera"]
+transform = Transform3D(1, 0, 0, 0, 0.231748, 0.972776, 0, -0.972776, 0.231748, 0, -0.055, -0.338)
+visible = false
+layers = 2
+mesh = SubResource("CylinderMesh_qj4cq")
+skeleton = NodePath("../../../../AnimatedObjects")
+
 [node name="StateMachine" type="Node" parent="."]
 script = ExtResource("2_g0cef")
 initial_state = NodePath("Walker")
@@ -234,6 +260,12 @@ max_health = 50
 script = ExtResource("4_k877d")
 ammo_label = NodePath("../../MarginContainer/AmmoLabel")
 
+[node name="Balance" parent="Components" instance=ExtResource("10_m7euy")]
+preparing_gun_cost = 230
+shooting_cost = 200
+balance_recovery = 45
+bonus_balance_recovery = 75
+
 [node name="PlayerCollisionShape" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.355084)
 shape = ExtResource("9_2r1e7")
@@ -259,31 +291,6 @@ autostart = true
 target_position = Vector3(0, 0, -2)
 collision_mask = 15
 debug_shape_custom_color = Color(0.756863, 0.00392157, 0.941176, 1)
-
-[node name="SubViewportContainer" type="SubViewportContainer" parent="."]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-stretch = true
-
-[node name="SubViewport" type="SubViewport" parent="SubViewportContainer"]
-transparent_bg = true
-handle_input_locally = false
-size = Vector2i(1152, 648)
-render_target_update_mode = 4
-
-[node name="WeaponCamera" type="Camera3D" parent="SubViewportContainer/SubViewport"]
-cull_mask = 2
-fov = 33.0
-
-[node name="AimingGun" type="MeshInstance3D" parent="SubViewportContainer/SubViewport/WeaponCamera"]
-transform = Transform3D(1, 0, 0, 0, 0.231748, 0.972776, 0, -0.972776, 0.231748, 0, -0.055, -0.338)
-visible = false
-layers = 2
-mesh = SubResource("CylinderMesh_qj4cq")
-skeleton = NodePath("../../../../AnimatedObjects")
 
 [node name="CenterContainer" type="CenterContainer" parent="."]
 anchors_preset = 15
@@ -348,22 +355,6 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
 
-[node name="BalanceBar" type="ProgressBar" parent="PlayerUI"]
-layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -118.0
-offset_top = -62.0
-offset_right = 119.0
-offset_bottom = -35.0
-grow_horizontal = 2
-grow_vertical = 0
-value = 47.04
-show_percentage = false
-
 [node name="GameOverMenu" parent="." instance=ExtResource("7_keanm")]
 visible = false
 
@@ -400,6 +391,7 @@ layers = 2
 mesh = SubResource("CylinderMesh_pr3u4")
 skeleton = NodePath("../../SubViewportContainer/SubViewport/WeaponCamera")
 
+[connection signal="transitioned" from="StateMachine" to="Components/Balance" method="_on_state_machine_transitioned"]
 [connection signal="timeout" from="StateMachine/Aim/SensibilityTimer" to="StateMachine/Aim" method="_on_sensibility_timer_timeout"]
 [connection signal="health_minimun_reached" from="Components/Health" to="." method="_on_health_health_minimun_reached"]
 [connection signal="taken_damage" from="Components/Health" to="." method="_on_health_taken_damage"]

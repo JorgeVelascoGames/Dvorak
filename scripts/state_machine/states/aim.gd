@@ -4,6 +4,7 @@ class_name PlayerAim
 @onready var world_camera = $"../../CameraPivot/WorldCamera"
 @onready var sensibility_timer = $SensibilityTimer
 @onready var aiming_gun: MeshInstance3D = $"../../SubViewportContainer/SubViewport/WeaponCamera/AimingGun"
+@onready var balance = $"../../Components/Balance"
 
 @export var aim_multiplier: float = 0.3
 @export var aim_speed: float = 0.5
@@ -32,6 +33,10 @@ func physics_update(delta: float) -> void:
 
 
 func input(event):
+	if event.is_action_pressed("fire"):
+		world_camera.weapon_recoil()
+		balance.add_balance(balance.shooting_cost)
+	
 	if event is InputEventMouseMotion:
 		var random_jitter = Vector2(
 		rng.randf_range(-jitter_strength, jitter_strength), 
