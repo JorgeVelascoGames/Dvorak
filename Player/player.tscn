@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://m6pypgl566n1"]
+[gd_scene load_steps=33 format=3 uid="uid://m6pypgl566n1"]
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_ref5g"]
 [ext_resource type="Script" path="res://player/smooth_camera.gd" id="2_cywkd"]
@@ -13,10 +13,11 @@
 [ext_resource type="Script" path="res://scripts/state_machine/states/aim.gd" id="6_rtwvu"]
 [ext_resource type="Script" path="res://scripts/state_machine/states/prepare_gun.gd" id="7_hfrgh"]
 [ext_resource type="PackedScene" uid="uid://bjq2dkpgpnav7" path="res://player/game_over_menu.tscn" id="7_keanm"]
+[ext_resource type="Script" path="res://scripts/state_machine/states/Unbalanced.gd" id="8_7b01x"]
 [ext_resource type="FontFile" uid="uid://yqk87iw0ykxp" path="res://assets/fonts/Roboto-Regular.ttf" id="8_dofuu"]
 [ext_resource type="Shape3D" uid="uid://dwk5imwjcfs06" path="res://player/player_walker_collision_shape.tres" id="9_2r1e7"]
 [ext_resource type="PackedScene" uid="uid://shutxn8dpbys" path="res://player/balance.tscn" id="10_m7euy"]
-[ext_resource type="PackedScene" path="res://player/player_ui.tscn" id="15_5wh24"]
+[ext_resource type="PackedScene" uid="uid://cdlefkst24dm8" path="res://player/player_ui.tscn" id="15_5wh24"]
 [ext_resource type="Script" path="res://player/walker.gd" id="15_hi5sq"]
 [ext_resource type="Script" path="res://components/interactable.gd" id="16_wvci1"]
 
@@ -246,6 +247,9 @@ autostart = true
 
 [node name="PrepareGun" type="Node" parent="StateMachine"]
 script = ExtResource("7_hfrgh")
+
+[node name="Unbalanced" type="Node" parent="StateMachine"]
+script = ExtResource("8_7b01x")
 
 [node name="PlayerCapsule" type="MeshInstance3D" parent="."]
 visible = false
