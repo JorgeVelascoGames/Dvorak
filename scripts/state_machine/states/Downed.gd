@@ -1,5 +1,5 @@
 extends PlayerState
-class_name Unbalanced
+class_name Downed
 
 @export var time_to_keep_balance : int
 @export var necessary_keys_to_press : int 
@@ -8,21 +8,19 @@ var left_key_selection : String
 var right_key_selection : String
 enum KeyboardSide {left, right}
 var current_side : KeyboardSide = KeyboardSide.right
-var left_side_keys = ["left_key_0", "left_key_9", "left_key_p", "left_key_o", "left_key_i", "left_key_l", "left_key_k", "left_key_m"]#left and right were confused due to severe lack of sleep
-var right_side_keys = ["right_key_1", "right_key_2", "right_key_q", "right_key_e", "right_key_z", "right_key_x", "right_key_c", "right_key_3"]
+var top_side_keys = ["top_key_4", "top_key_5", "top_key_6", "top_key_7", "top_key_t", "top_key_","top_key_y",]
+var bot_side_keys = ["bot_key_v", "bot_key_b", "bot_key_f", "bot_key_g",  "bot_key_h"]
 var correct_key_pressed : int = 0
 
-@onready var timer = $Timer
 @onready var placeholder_l_able = $BalancedUI/PlaceholderLAble
 
 
 func enter(_msg : ={}) -> void:
 	player.velocity = Vector3.ZERO
-	left_key_selection = left_side_keys.pick_random()
-	right_key_selection = right_side_keys.pick_random()
+	left_key_selection = top_side_keys.pick_random()
+	right_key_selection = bot_side_keys.pick_random()
 	placeholder_l_able.show()
 	placeholder_l_able.text = left_key_selection + " + " + right_key_selection
-	timer.start(time_to_keep_balance)
 
 
 func update(_delta):
@@ -54,7 +52,3 @@ func _correct_key() -> void:
 func exit() -> void:
 	correct_key_pressed = 0
 	placeholder_l_able.hide()
-
-
-func _on_timer_timeout():
-	state_machine.transition_to("Downed", {})

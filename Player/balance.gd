@@ -13,7 +13,7 @@ class_name Balance
 @export var backward_movement_cost : int
 @export var side_movement_cost : int
 @export var rotation_cost_divident : int = 15
-@export var preparing_gun_cost : int
+#@export var preparing_gun_cost : int
 @export var shooting_cost : int
 @export var getting_hit_cost : int
 @export var balance_recovery : int
@@ -96,5 +96,5 @@ func _on_state_machine_transitioned(state_name):
 		balance_active = true
 		update_ui()
 	
-	if state_name == "PrepareGun":
-		add_balance(preparing_gun_cost)
+	#if state_name == "PrepareGun":
+		#add_balance(preparing_gun_cost)

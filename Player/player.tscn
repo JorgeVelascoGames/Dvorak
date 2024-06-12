@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://m6pypgl566n1"]
+[gd_scene load_steps=32 format=3 uid="uid://m6pypgl566n1"]
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_ref5g"]
 [ext_resource type="Script" path="res://player/smooth_camera.gd" id="2_cywkd"]
@@ -15,6 +15,7 @@
 [ext_resource type="Script" path="res://scripts/state_machine/states/Unbalanced.gd" id="8_7b01x"]
 [ext_resource type="FontFile" uid="uid://yqk87iw0ykxp" path="res://assets/fonts/Roboto-Regular.ttf" id="8_dofuu"]
 [ext_resource type="Shape3D" uid="uid://dwk5imwjcfs06" path="res://player/player_walker_collision_shape.tres" id="9_2r1e7"]
+[ext_resource type="Script" path="res://scripts/state_machine/states/Downed.gd" id="9_q33c7"]
 [ext_resource type="PackedScene" uid="uid://shutxn8dpbys" path="res://player/balance.tscn" id="10_m7euy"]
 [ext_resource type="Script" path="res://player/walker.gd" id="15_hi5sq"]
 [ext_resource type="Script" path="res://components/interactable.gd" id="16_wvci1"]
@@ -276,6 +277,32 @@ offset_bottom = -32.49
 grow_horizontal = 2
 grow_vertical = 0
 
+[node name="Downed" type="Node" parent="StateMachine"]
+script = ExtResource("9_q33c7")
+
+[node name="BalancedUI" type="Control" parent="StateMachine/Downed"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PlaceholderLAble" type="Label" parent="StateMachine/Downed/BalancedUI"]
+visible = false
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -225.0
+offset_top = -76.49
+offset_right = 226.0
+offset_bottom = -32.49
+grow_horizontal = 2
+grow_vertical = 0
+
 [node name="PlayerCapsule" type="MeshInstance3D" parent="."]
 visible = false
 mesh = SubResource("CapsuleMesh_fyred")
@@ -286,7 +313,6 @@ mesh = SubResource("CapsuleMesh_fyred")
 max_health = 50
 
 [node name="Balance" parent="Components" instance=ExtResource("10_m7euy")]
-preparing_gun_cost = 230
 shooting_cost = 200
 getting_hit_cost = 500
 balance_recovery = 45
