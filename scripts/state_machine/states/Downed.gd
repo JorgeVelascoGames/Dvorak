@@ -43,7 +43,6 @@ func input(event):
 
 
 func _correct_key() -> void:
-	print("correct key landed")
 	correct_key_pressed += 1
 	if correct_key_pressed >= necessary_keys_to_press:
 		state_machine.transition_to("Idle", {})
