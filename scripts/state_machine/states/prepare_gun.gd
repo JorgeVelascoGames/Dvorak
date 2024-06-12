@@ -14,7 +14,7 @@ func enter(_msg : ={}) -> void:
 	finish_prepare_gun()
 
 
-func update(delta) -> void:
+func update(_delta) -> void:
 	if Input.is_action_just_released("aim"):
 		state_machine.transition_to("Idle", {})
 

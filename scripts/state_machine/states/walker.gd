@@ -73,7 +73,7 @@ func handle_camera_rotation(_delta:float) -> void:
 	mouse_motion = Vector2.ZERO
 
 
-func rotate_with_mouse(delta, object):
+func rotate_with_mouse(_delta, _object):
 	pass
 
 

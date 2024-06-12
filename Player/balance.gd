@@ -20,6 +20,7 @@ class_name Balance
 @export var bonus_balance_recovery : int
 
 var direction : Vector3
+var balance_active: bool = true
 
 
 func _ready():
@@ -42,6 +43,9 @@ func _process(delta):
 
 
 func _input(event):
+	if not balance_active:
+		return
+	
 	if event is InputEventMouseMotion:
 		current_balance += event.relative.length() / rotation_cost_divident
 	
@@ -57,10 +61,9 @@ func _input(event):
 func add_balance(amount : int) -> void:
 	current_balance += amount
 	
-	if current_balance > max_balance:
-		current_balance = max_balance
-		#try keep balance...
-		#TODO
+	if current_balance >= max_balance:
+		reset_balance()
+		player.state_machine.transition_to("Unbalanced", {})
 	
 	update_ui()
 
@@ -85,10 +88,12 @@ func _on_balance_recovery_timer_timeout():
 
 
 func _on_state_machine_transitioned(state_name):
-	if state_name == "Walker":
+	if state_name == "Walker" or state_name == "Unbalanced":
 		balance_bar.hide()
+		balance_active = false
 	else:
 		balance_bar.show()
+		balance_active = true
 		update_ui()
 	
 	if state_name == "PrepareGun":

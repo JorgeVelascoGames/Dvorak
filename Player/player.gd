@@ -18,7 +18,6 @@ var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 @onready var health: Health = $Components/Health
 @onready var damage_animation_player: AnimationPlayer = $DamageTexture/DamageAnimationPlayer
 @onready var game_over_menu: Control = $GameOverMenu
-@onready var ammo_handler: AmmoHandler = $Components/AmmoHandler
 @onready var world_camera: Camera3D = $CameraPivot/WorldCamera
 @onready var original_world_camera_fov = world_camera.fov
 @onready var weapon_camera: Camera3D = $SubViewportContainer/SubViewport/WeaponCamera
@@ -52,7 +51,7 @@ func _input(event):
 		interact()
 
 
-func direction(delta) -> Vector3:
+func direction(_delta) -> Vector3:
 	var input_dir = Input.get_vector("move_left", "move_right", "move_forward", "move_back")
 	var direction = (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 	return direction

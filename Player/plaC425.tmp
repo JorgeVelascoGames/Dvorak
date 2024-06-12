@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://m6pypgl566n1"]
+[gd_scene load_steps=32 format=3 uid="uid://m6pypgl566n1"]
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_ref5g"]
 [ext_resource type="Script" path="res://player/smooth_camera.gd" id="2_cywkd"]
@@ -16,6 +16,7 @@
 [ext_resource type="FontFile" uid="uid://yqk87iw0ykxp" path="res://assets/fonts/Roboto-Regular.ttf" id="8_dofuu"]
 [ext_resource type="Shape3D" uid="uid://dwk5imwjcfs06" path="res://player/player_walker_collision_shape.tres" id="9_2r1e7"]
 [ext_resource type="PackedScene" uid="uid://shutxn8dpbys" path="res://player/balance.tscn" id="10_m7euy"]
+[ext_resource type="PackedScene" uid="uid://cdlefkst24dm8" path="res://player/player_ui.tscn" id="15_5wh24"]
 [ext_resource type="Script" path="res://player/walker.gd" id="15_hi5sq"]
 [ext_resource type="Script" path="res://components/interactable.gd" id="16_wvci1"]
 
@@ -223,7 +224,7 @@ skeleton = NodePath("../../../../AnimatedObjects")
 
 [node name="StateMachine" type="Node" parent="."]
 script = ExtResource("2_g0cef")
-initial_state = NodePath("Walker")
+initial_state = NodePath("Unbalanced")
 
 [node name="Idle" type="Node" parent="StateMachine"]
 script = ExtResource("3_4b8lt")
@@ -248,33 +249,6 @@ script = ExtResource("7_hfrgh")
 
 [node name="Unbalanced" type="Node" parent="StateMachine"]
 script = ExtResource("8_7b01x")
-necessary_keys_to_press = 12
-
-[node name="Timer" type="Timer" parent="StateMachine/Unbalanced"]
-one_shot = true
-
-[node name="BalancedUI" type="Control" parent="StateMachine/Unbalanced"]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="PlaceholderLAble" type="Label" parent="StateMachine/Unbalanced/BalancedUI"]
-visible = false
-layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -225.0
-offset_top = -76.49
-offset_right = 226.0
-offset_bottom = -32.49
-grow_horizontal = 2
-grow_vertical = 0
 
 [node name="PlayerCapsule" type="MeshInstance3D" parent="."]
 visible = false
@@ -358,11 +332,28 @@ theme_override_constants/margin_top = 8
 theme_override_constants/margin_right = 8
 theme_override_constants/margin_bottom = 8
 
+[node name="AmmoLabel" type="Label" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+text = "999"
+label_settings = SubResource("LabelSettings_cswfq")
+
 [node name="StateLabel" type="Label" parent="MarginContainer"]
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 0
 label_settings = SubResource("LabelSettings_cswfq")
+
+[node name="PlayerUI" parent="." instance=ExtResource("15_5wh24")]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 0.0
+offset_bottom = 0.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
 
 [node name="GameOverMenu" parent="." instance=ExtResource("7_keanm")]
 visible = false
@@ -402,7 +393,6 @@ skeleton = NodePath("../../SubViewportContainer/SubViewport/WeaponCamera")
 
 [connection signal="transitioned" from="StateMachine" to="Components/Balance" method="_on_state_machine_transitioned"]
 [connection signal="timeout" from="StateMachine/Aim/SensibilityTimer" to="StateMachine/Aim" method="_on_sensibility_timer_timeout"]
-[connection signal="timeout" from="StateMachine/Unbalanced/Timer" to="StateMachine/Unbalanced" method="_on_timer_timeout"]
 [connection signal="health_minimun_reached" from="Components/Health" to="." method="_on_health_health_minimun_reached"]
 [connection signal="taken_damage" from="Components/Health" to="." method="_on_health_taken_damage"]
 [connection signal="timeout" from="CameraPivot/WorldCamera/AimShakeTimer" to="CameraPivot/WorldCamera" method="_on_aim_shake_timer_timeout"]

@@ -22,7 +22,7 @@ func enter(_msg : ={}) -> void:
 	aiming_gun.visible = true
 
 
-func update(delta):
+func update(_delta):
 	if Input.is_action_just_released("aim"):
 		state_machine.transition_to("Idle", {})
 
