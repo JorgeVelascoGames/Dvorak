@@ -411,6 +411,7 @@ skeleton = NodePath("../..")
 script = ExtResource("15_hi5sq")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="WalkerFixedPoint/Walker"]
+collision_layer = 2
 constant_linear_velocity = Vector3(0, -9, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="WalkerFixedPoint/Walker/StaticBody3D"]

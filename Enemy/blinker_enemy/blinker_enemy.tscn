@@ -24,6 +24,8 @@ script = ExtResource("2_qbodg")
 mesh = SubResource("CapsuleMesh_ii0a4")
 
 [node name="Area3D" type="Area3D" parent="BlinkerBody" index="1"]
+collision_layer = 0
+collision_mask = 4
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="BlinkerBody/Area3D" index="0"]
 shape = SubResource("CapsuleShape3D_rmsr7")

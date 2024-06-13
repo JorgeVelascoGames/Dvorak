@@ -8,6 +8,7 @@
 
 [node name="Enemy" type="CharacterBody3D"]
 collision_layer = 16
+collision_mask = 5
 script = ExtResource("1_kexvc")
 speed = 3.0
 
