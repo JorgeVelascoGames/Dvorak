@@ -17,6 +17,7 @@ var mouse_motion := Vector2.ZERO
 var rotation_acelerator := 0.0
 var default_floor_max_angle : float
 
+
 func enter(_msg : ={}) -> void:
 	ammo_handler.reload()
 	default_floor_max_angle = player.floor_max_angle
@@ -58,6 +59,8 @@ func physics_update(delta: float) -> void:
 
 
 func input(event):
+	if event.is_action_pressed("interact"):
+		player.interact()
 	if event is InputEventMouseMotion:
 		mouse_motion = -event.relative * 0.001
 	if event.is_action_pressed("drop_walker"):

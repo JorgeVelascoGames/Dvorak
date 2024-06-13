@@ -46,11 +46,6 @@ func _physics_process(delta):
 	move_and_slide()
 
 
-func _input(event):
-	if event.is_action_pressed("interact"):
-		interact()
-
-
 func direction(_delta) -> Vector3:
 	var input_dir = Input.get_vector("move_left", "move_right", "move_forward", "move_back")
 	var direction = (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
