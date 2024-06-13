@@ -24,6 +24,7 @@ var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 @onready var state_machine = $StateMachine
 @onready var originCamPos : Vector3 = camera_pivot.position
 @onready var interactable_ray = $CameraPivot/WorldCamera/InteractableRay
+@onready var ammo_handler = $StateMachine/Aim/AmmoHandler
 
 var _delta := 0.0
 

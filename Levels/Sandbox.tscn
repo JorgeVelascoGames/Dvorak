@@ -1,10 +1,9 @@
-[gd_scene load_steps=15 format=3 uid="uid://b62fd7a6q7pm"]
+[gd_scene load_steps=14 format=3 uid="uid://b62fd7a6q7pm"]
 
 [ext_resource type="PackedScene" uid="uid://m6pypgl566n1" path="res://player/player.tscn" id="1_4278g"]
 [ext_resource type="Material" uid="uid://dacid3ccax2pq" path="res://Levels/materials/orange.tres" id="2_logh3"]
 [ext_resource type="Material" uid="uid://ciyx0k2mf8b5f" path="res://Levels/materials/grey.tres" id="3_m4mti"]
-[ext_resource type="PackedScene" uid="uid://vigb1nxfkdg1" path="res://pickups/bullet_pickup.tscn" id="6_2yj28"]
-[ext_resource type="PackedScene" uid="uid://dki0ax8a71d2j" path="res://pickups/small_bullet_pickup.tscn" id="6_nqnqc"]
+[ext_resource type="PackedScene" uid="uid://reulknu1tsan" path="res://pickups/pickup.tscn" id="6_nqnqc"]
 [ext_resource type="PackedScene" uid="uid://b55w2u16vbfnb" path="res://enemy/blinker_enemy/blinker_enemy.tscn" id="7_7hlbe"]
 [ext_resource type="PackedScene" uid="uid://cgqjy8smfow5g" path="res://hazards/lava.tscn" id="7_iqopt"]
 [ext_resource type="PackedScene" uid="uid://bw84bnd7oxh7s" path="res://enemy/enemy_shy/enemy_shy.tscn" id="7_uooky"]
@@ -257,11 +256,11 @@ camera_sensibility = 1.5
 
 [node name="Pickups" type="Node3D" parent="."]
 
-[node name="BulletPickup" parent="Pickups" instance=ExtResource("6_2yj28")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 6)
+[node name="BulletPickup" parent="Pickups" instance=ExtResource("6_nqnqc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.52995e-06, 6)
 
 [node name="SmallBulletPickup" parent="Pickups" instance=ExtResource("6_nqnqc")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11, 1, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11, 4.97699e-06, 0)
 
 [node name="Lava" parent="." instance=ExtResource("7_iqopt")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.8966, -0.546772, 11.4705)
@@ -273,9 +272,9 @@ mesh = SubResource("PlaneMesh_fjdhl")
 shape = SubResource("ConvexPolygonShape3D_kpk42")
 
 [node name="BlinkerEnemy" parent="." instance=ExtResource("7_7hlbe")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.7795, 2.53031, -23.3695)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.4125, 2.53031, -18.6576)
 
 [node name="EnemyShy" parent="." instance=ExtResource("7_uooky")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.08152, 2.53031, -23.3695)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.08152, 1.00001, -23.3695)
 
 [editable path="Lava"]

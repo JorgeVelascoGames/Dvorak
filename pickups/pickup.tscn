@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3 uid="uid://reulknu1tsan"]
+
+[ext_resource type="Script" path="res://pickups/pickup.gd" id="1_aihhf"]
+[ext_resource type="Script" path="res://components/interactable.gd" id="2_wi1ek"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_w6ihh"]
+size = Vector3(0.4, 0.2, 0.4)
+
+[sub_resource type="BoxMesh" id="BoxMesh_0ge55"]
+size = Vector3(0.4, 0.2, 0.4)
+
+[node name="Pickup" type="StaticBody3D"]
+collision_layer = 32
+collision_mask = 0
+script = ExtResource("1_aihhf")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 0)
+shape = SubResource("BoxShape3D_w6ihh")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 0)
+mesh = SubResource("BoxMesh_0ge55")
+
+[node name="Interactable" type="Node" parent="."]
+script = ExtResource("2_wi1ek")
+
+[connection signal="on_interact" from="Interactable" to="." method="_on_interactable_on_interact"]
