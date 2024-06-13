@@ -1,38 +1,37 @@
 extends Node
 class_name AmmoHandler
 
-@export var ammo_label: Label
-@onready var weapon_handler: Node3D = $"../../SubViewportContainer/SubViewport/WeaponCamera/WeaponHandler"
+@export var max_carried_ammo := 5
+@export var initial_ammo_storage := 12
 
-enum ammo_type{
-	BULLET,
-	SMALL_BULLET
-}
-
-var ammo_storage := {
-	ammo_type.BULLET: 10,
-	ammo_type.SMALL_BULLET: 60
-}
+@onready var ammo_storage := initial_ammo_storage
+@onready var current_carried_ammo = max_carried_ammo
 
 
-func use_ammo(type: ammo_type) -> bool:
-	if not has_ammo(type):
-		return false
-	ammo_storage[type] -= 1
-	update_ammo_label()
-	return true
-
-
-func has_ammo(type: ammo_type) -> bool:
-	if ammo_storage[type] > 0:
+func try_use_ammo() -> bool:
+	if current_carried_ammo > 0:
+		use_ammo()
 		return true
 	return false
 
 
-func add_ammo(type: ammo_type, ammount: int) -> void:
-	ammo_storage[type] += ammount
-	update_ammo_label()
+func use_ammo() -> void:
+	current_carried_ammo -= 1
 
 
-func update_ammo_label() -> void:
-	ammo_label.text = str(ammo_storage[weapon_handler.current_active_weapon.ammo_type]) 
+func reload() -> void:
+	var necessary_bullets = max_carried_ammo - current_carried_ammo
+	if ammo_storage >= necessary_bullets:
+		ammo_storage -= necessary_bullets
+		current_carried_ammo = max_carried_ammo
+	else:
+		current_carried_ammo += ammo_storage
+		ammo_storage = 0
+
+
+func pick_up_ammo(ammount: int) -> void:
+	ammo_storage += ammount
+
+
+#func update_ammo_label() -> void:
+	#ammo_label.text = str(ammo_storage[weapon_handler.current_active_weapon.ammo_type]) 

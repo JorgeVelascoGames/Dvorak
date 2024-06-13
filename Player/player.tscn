@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://m6pypgl566n1"]
+[gd_scene load_steps=32 format=3 uid="uid://m6pypgl566n1"]
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_ref5g"]
 [ext_resource type="Script" path="res://player/smooth_camera.gd" id="2_cywkd"]
@@ -9,6 +9,7 @@
 [ext_resource type="Script" path="res://scripts/state_machine/states/walker.gd" id="5_h6v2u"]
 [ext_resource type="Texture2D" uid="uid://di7tj31llxo0i" path="res://player/damage.png" id="6_km1pl"]
 [ext_resource type="Script" path="res://scripts/state_machine/states/aim.gd" id="6_rtwvu"]
+[ext_resource type="Script" path="res://player/ammo_handler.gd" id="7_eej2v"]
 [ext_resource type="Script" path="res://scripts/state_machine/states/prepare_gun.gd" id="7_hfrgh"]
 [ext_resource type="PackedScene" uid="uid://bjq2dkpgpnav7" path="res://player/game_over_menu.tscn" id="7_keanm"]
 [ext_resource type="Script" path="res://scripts/state_machine/states/Unbalanced.gd" id="8_7b01x"]
@@ -242,6 +243,11 @@ aim_multiplier = 0.1
 [node name="SensibilityTimer" type="Timer" parent="StateMachine/Aim"]
 wait_time = 0.5
 autostart = true
+
+[node name="ShootCooldown" type="Timer" parent="StateMachine/Aim"]
+
+[node name="AmmoHandler" type="Node" parent="StateMachine/Aim"]
+script = ExtResource("7_eej2v")
 
 [node name="PrepareGun" type="Node" parent="StateMachine"]
 script = ExtResource("7_hfrgh")

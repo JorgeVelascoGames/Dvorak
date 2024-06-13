@@ -8,6 +8,7 @@ class_name Walker
 @onready var camera_pivot = $"../../CameraPivot"
 @onready var walker: MeshInstance3D = $"../../WalkerFixedPoint/Walker"
 @onready var player_collision_shape: CollisionShape3D = $"../../PlayerCollisionShape"
+@onready var ammo_handler = $"../Aim/AmmoHandler"
 
 const PLAYER_NORMAL_COLLISION_SHAPE = preload("res://player/player_normal_collision_shape.tres")
 const PLAYER_WALKER_COLLISION_SHAPE = preload("res://player/player_walker_collision_shape.tres")
@@ -17,6 +18,7 @@ var rotation_acelerator := 0.0
 var default_floor_max_angle : float
 
 func enter(_msg : ={}) -> void:
+	ammo_handler.reload()
 	default_floor_max_angle = player.floor_max_angle
 	player.floor_max_angle = 0
 	player_collision_shape.shape = PLAYER_WALKER_COLLISION_SHAPE
