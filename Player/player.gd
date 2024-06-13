@@ -76,10 +76,6 @@ func interact() -> void:
 
 
 func player_hit() -> void:
-	pass
-
-
-func player_die() -> void:
 	game_over_menu.game_over()
 
 

@@ -90,6 +90,7 @@ func _on_health_taken_damage(_dmg: int) -> void:
 func _on_collision_detection_body_entered(body):
 	if body is Player:
 		can_move = false
+		body.player_hit()
 
 
 func _on_collision_detection_body_exited(body):

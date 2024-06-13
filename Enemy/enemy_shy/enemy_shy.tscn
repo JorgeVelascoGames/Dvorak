@@ -20,6 +20,9 @@ collision_layer = 8
 speed = 2.0
 aggro_range = 24.0
 
+[node name="CollisionDetection" parent="." index="5"]
+collision_layer = 0
+
 [node name="CollisionShape3D" parent="CollisionDetection" index="0"]
 shape = SubResource("CapsuleShape3D_rmsr7")
 
@@ -28,10 +31,10 @@ shape = SubResource("CapsuleShape3D_8ep8e")
 
 [node name="VisibleOnScreenNotifier3D" type="VisibleOnScreenNotifier3D" parent="." index="7"]
 layers = 7
+aabb = AABB(-1, -1, -0.531341, 2, 2, 1.06268)
 script = ExtResource("2_xqr5d")
 
 [node name="MeshPlaceholder" type="MeshInstance3D" parent="." index="8"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 mesh = SubResource("CapsuleMesh_qcyl6")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="MeshPlaceholder" index="0"]
