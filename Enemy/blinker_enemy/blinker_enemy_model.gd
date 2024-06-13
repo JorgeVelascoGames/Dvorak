@@ -1,4 +1,5 @@
 extends Node3D
+class_name BlinkerBody
 
 @export var max_blink_timer := 6.0 
 @export var min_blink_timer := 3.7
@@ -18,6 +19,10 @@ func blink() -> void:
 func next_blink_timer() -> float:
 	var blink_time := randf_range(min_blink_timer, max_blink_timer)
 	return blink_time
+
+
+func enemy_die() -> void:
+	blinker_enemy.enemy_die()
 
 
 func _on_blink_timer_timeout():

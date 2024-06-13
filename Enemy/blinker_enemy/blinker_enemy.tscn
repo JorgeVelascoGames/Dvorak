@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://b55w2u16vbfnb"]
+[gd_scene load_steps=9 format=3 uid="uid://b55w2u16vbfnb"]
 
 [ext_resource type="PackedScene" uid="uid://omjxjkehmmbw" path="res://enemy/enemy.tscn" id="1_0gbns"]
 [ext_resource type="Script" path="res://enemy/blinker_enemy/blinker_enemy_model.gd" id="2_qbodg"]
@@ -13,6 +13,8 @@ albedo_color = Color(1, 0.439216, 0.337255, 1)
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_rmsr7"]
 radius = 0.656008
 
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_5tlpf"]
+
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_kjni4"]
 
 [node name="BlinkerEnemy" instance=ExtResource("1_0gbns")]
@@ -22,7 +24,7 @@ aggro_range = 29.0
 [node name="NavigationAgent3D" parent="." index="0"]
 path_postprocessing = 1
 
-[node name="BlinkerBody" type="Node3D" parent="." index="5"]
+[node name="BlinkerBody" type="StaticBody3D" parent="." index="5"]
 top_level = true
 script = ExtResource("2_qbodg")
 max_blink_timer = 7.0
@@ -47,6 +49,9 @@ shape = SubResource("CapsuleShape3D_rmsr7")
 wait_time = 1.4
 one_shot = true
 autostart = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="BlinkerBody" index="3"]
+shape = SubResource("CapsuleShape3D_5tlpf")
 
 [node name="CollisionShape3D" parent="CollisionDetection" index="0"]
 shape = SubResource("CapsuleShape3D_rmsr7")

@@ -16,6 +16,7 @@ radius = 0.656008
 albedo_color = Color(1, 0.439216, 0.337255, 1)
 
 [node name="EnemyShy" instance=ExtResource("1_vccwb")]
+collision_layer = 8
 speed = 2.0
 aggro_range = 24.0
 
