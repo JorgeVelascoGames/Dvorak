@@ -33,6 +33,9 @@ func _process(delta):
 	if not direction:
 		return
 	
+	if not balance_active:
+		return
+	
 	if Input.is_action_pressed("move_forward"):
 		add_balance(forward_movement_cost * delta)
 	elif Input.is_action_pressed("move_back"):
