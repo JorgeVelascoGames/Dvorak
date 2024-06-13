@@ -1,8 +1,9 @@
 extends PlayerState
 class_name Unbalanced
 
-@export var time_to_keep_balance : int
+@export var time_to_keep_balance : float
 @export var necessary_keys_to_press : int 
+@export var margin_of_error : float
 
 var left_key_selection : String
 var right_key_selection : String
@@ -14,6 +15,7 @@ var correct_key_pressed : int = 0
 
 @onready var timer = $Timer
 @onready var placeholder_l_able = $BalancedUI/PlaceholderLAble
+@onready var error_timer = $ErrorTimer
 
 
 func enter(_msg : ={}) -> void:
@@ -23,6 +25,7 @@ func enter(_msg : ={}) -> void:
 	placeholder_l_able.show()
 	placeholder_l_able.text = left_key_selection + " + " + right_key_selection
 	timer.start(time_to_keep_balance)
+	error_timer.start(margin_of_error)
 
 
 func update(_delta):
@@ -46,6 +49,7 @@ func input(event):
 
 func _correct_key() -> void:
 	print("correct key landed")
+	error_timer.start(margin_of_error)
 	correct_key_pressed += 1
 	if correct_key_pressed >= necessary_keys_to_press:
 		state_machine.transition_to("Idle", {})
@@ -54,7 +58,13 @@ func _correct_key() -> void:
 func exit() -> void:
 	correct_key_pressed = 0
 	placeholder_l_able.hide()
+	timer.stop()
+	error_timer.stop()
 
 
 func _on_timer_timeout():
+	state_machine.transition_to("Downed", {})
+
+
+func _on_error_timer_timeout():
 	state_machine.transition_to("Downed", {})

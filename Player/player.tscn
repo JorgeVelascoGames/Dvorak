@@ -249,7 +249,9 @@ script = ExtResource("7_hfrgh")
 
 [node name="Unbalanced" type="Node" parent="StateMachine"]
 script = ExtResource("8_7b01x")
+time_to_keep_balance = 7.0
 necessary_keys_to_press = 12
+margin_of_error = 3.0
 
 [node name="Timer" type="Timer" parent="StateMachine/Unbalanced"]
 one_shot = true
@@ -277,8 +279,12 @@ offset_bottom = -32.49
 grow_horizontal = 2
 grow_vertical = 0
 
+[node name="ErrorTimer" type="Timer" parent="StateMachine/Unbalanced"]
+one_shot = true
+
 [node name="Downed" type="Node" parent="StateMachine"]
 script = ExtResource("9_q33c7")
+necessary_keys_to_press = 20
 
 [node name="BalancedUI" type="Control" parent="StateMachine/Downed"]
 layout_mode = 3
@@ -429,6 +435,7 @@ skeleton = NodePath("../../SubViewportContainer/SubViewport/WeaponCamera")
 [connection signal="transitioned" from="StateMachine" to="Components/Balance" method="_on_state_machine_transitioned"]
 [connection signal="timeout" from="StateMachine/Aim/SensibilityTimer" to="StateMachine/Aim" method="_on_sensibility_timer_timeout"]
 [connection signal="timeout" from="StateMachine/Unbalanced/Timer" to="StateMachine/Unbalanced" method="_on_timer_timeout"]
+[connection signal="timeout" from="StateMachine/Unbalanced/ErrorTimer" to="StateMachine/Unbalanced" method="_on_error_timer_timeout"]
 [connection signal="health_minimun_reached" from="Components/Health" to="." method="_on_health_health_minimun_reached"]
 [connection signal="taken_damage" from="Components/Health" to="." method="_on_health_taken_damage"]
 [connection signal="timeout" from="CameraPivot/WorldCamera/AimShakeTimer" to="CameraPivot/WorldCamera" method="_on_aim_shake_timer_timeout"]

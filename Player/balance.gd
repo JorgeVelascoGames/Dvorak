@@ -88,7 +88,7 @@ func _on_balance_recovery_timer_timeout():
 
 
 func _on_state_machine_transitioned(state_name):
-	if state_name == "Walker" or state_name == "Unbalanced":
+	if state_name == "Walker" or state_name == "Unbalanced" or state_name == "Downed":
 		balance_bar.hide()
 		balance_active = false
 	else:

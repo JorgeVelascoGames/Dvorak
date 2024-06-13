@@ -1,14 +1,13 @@
 extends PlayerState
 class_name Downed
 
-@export var time_to_keep_balance : int
 @export var necessary_keys_to_press : int 
 
 var left_key_selection : String
 var right_key_selection : String
 enum KeyboardSide {left, right}
 var current_side : KeyboardSide = KeyboardSide.right
-var top_side_keys = ["top_key_4", "top_key_5", "top_key_6", "top_key_7", "top_key_t", "top_key_","top_key_y",]
+var top_side_keys = ["top_key_4", "top_key_5", "top_key_6", "top_key_7", "top_key_t","top_key_y"]
 var bot_side_keys = ["bot_key_v", "bot_key_b", "bot_key_f", "bot_key_g",  "bot_key_h"]
 var correct_key_pressed : int = 0
 
