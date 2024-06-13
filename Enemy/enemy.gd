@@ -10,7 +10,7 @@ extends CharacterBody3D
 @export var attack_range: float = 1.5
 @export var is_active: bool = true
 
-var player
+var player : Player
 var provoke := false
 var can_move := true
 @export var aggro_range := 12.0
@@ -42,6 +42,7 @@ func _physics_process(_delta: float) -> void:
 
 
 func movement_process(_delta: float) -> void:
+	look_at(player.global_position)
 	var distance = global_position.distance_to(player.global_position)
 	if distance < aggro_range:
 		provoke = true
@@ -50,11 +51,10 @@ func movement_process(_delta: float) -> void:
 	var direction = global_position.direction_to(next_position)
 	
 	# Add the gravity.
-	if not is_on_floor():
+	if not is_on_floor(): 
 		velocity.y -= gravity * _delta
 	
 	if direction:
-		look_at_target(player.global_position)
 		velocity.x = direction.x * speed
 		velocity.z = direction.z * speed
 	else:
@@ -62,13 +62,6 @@ func movement_process(_delta: float) -> void:
 		velocity.z = move_toward(velocity.z, 0, speed)
 	
 	move_and_slide()
-
-
-func look_at_target(direction: Vector3) -> void:
-	var adjusted_direction = direction
-	adjusted_direction.y = 0
-	
-	look_at(global_position + adjusted_direction, Vector3.UP, true)
 
 
 func attack() -> void:

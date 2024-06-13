@@ -9,6 +9,8 @@ extends Node3D
 
 func blink() -> void:
 	global_position = blinker_enemy.position
+	global_position.x += randf_range(-1.5, 1.5)
+	look_at(blinker_enemy.player.global_position)
 	var new_blink_timer : float = next_blink_timer()
 	blink_timer.start(new_blink_timer)
 
