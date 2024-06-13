@@ -25,4 +25,4 @@ func _on_blink_timer_timeout():
 func _on_area_3d_body_entered(body):
 	if body is Player:
 		blinker_enemy.enemy_die()
-		pass #hit the player
+		body.player_hit()

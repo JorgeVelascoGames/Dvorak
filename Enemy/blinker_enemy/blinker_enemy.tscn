@@ -8,10 +8,13 @@
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_ii0a4"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_rmsr7"]
-radius = 0.615052
+radius = 0.656008
 
 [node name="BlinkerEnemy" instance=ExtResource("1_0gbns")]
-speed = 0.8
+speed = 1.2
+
+[node name="NavigationAgent3D" parent="." index="0"]
+path_postprocessing = 1
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." index="5"]
 shape = SubResource("CapsuleShape3D_k0u8l")
@@ -19,6 +22,8 @@ shape = SubResource("CapsuleShape3D_k0u8l")
 [node name="BlinkerBody" type="Node3D" parent="." index="6"]
 top_level = true
 script = ExtResource("2_qbodg")
+max_blink_timer = 7.0
+min_blink_timer = 4.4
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="BlinkerBody" index="0"]
 mesh = SubResource("CapsuleMesh_ii0a4")
@@ -34,6 +39,9 @@ shape = SubResource("CapsuleShape3D_rmsr7")
 wait_time = 1.4
 one_shot = true
 autostart = true
+
+[node name="CollisionShape3D" parent="CollisionDetection" index="0"]
+shape = SubResource("CapsuleShape3D_rmsr7")
 
 [connection signal="body_entered" from="BlinkerBody/Area3D" to="BlinkerBody" method="_on_area_3d_body_entered"]
 [connection signal="timeout" from="BlinkerBody/BlinkTimer" to="BlinkerBody" method="_on_blink_timer_timeout"]

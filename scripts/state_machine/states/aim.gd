@@ -36,6 +36,8 @@ func input(event):
 	if event.is_action_pressed("fire"):
 		world_camera.weapon_recoil()
 		balance.add_balance(balance.shooting_cost)
+		#TODO
+		#SHOOT
 	
 	if event is InputEventMouseMotion:
 		var random_jitter = Vector2(

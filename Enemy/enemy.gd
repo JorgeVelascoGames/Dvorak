@@ -20,6 +20,7 @@ var gravity: float = ProjectSettings.get_setting("physics/3d/default_gravity")
 
 
 func _ready() -> void:
+	apply_floor_snap()
 	player = get_tree().get_first_node_in_group("player")
 
 
@@ -90,6 +91,14 @@ func _on_health_health_minimun_reached() -> void:
 
 
 func _on_health_taken_damage(_dmg: int) -> void:
-	enemy_damage_audio.pitch_scale = randf_range(1.1, 1.4)
-	enemy_damage_audio.play()
-	provoke = true
+	enemy_die()
+
+
+func _on_collision_detection_body_entered(body):
+	if body is Player:
+		can_move = false
+
+
+func _on_collision_detection_body_exited(body):
+	if body is Player:
+		can_move = true

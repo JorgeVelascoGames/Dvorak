@@ -15,7 +15,6 @@ var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
 #Components
 @onready var camera_pivot = $CameraPivot
-@onready var health: Health = $Components/Health
 @onready var damage_animation_player: AnimationPlayer = $DamageTexture/DamageAnimationPlayer
 @onready var game_over_menu: Control = $GameOverMenu
 @onready var world_camera: Camera3D = $CameraPivot/WorldCamera
@@ -30,6 +29,7 @@ var _delta := 0.0
 
 
 func _ready():
+	apply_floor_snap()
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	PathfindingManager.set_up_player(self)
 
@@ -75,12 +75,11 @@ func interact() -> void:
 			child.interact()
 
 
-func _on_health_taken_damage(_dmg: int) -> void:
-	damage_animation_player.stop(false)
-	damage_animation_player.play("TakeDamage")
+func player_hit() -> void:
+	pass
 
 
-func _on_health_health_minimun_reached() -> void:
+func player_die() -> void:
 	game_over_menu.game_over()
 
 

@@ -14,9 +14,11 @@ const PLAYER_WALKER_COLLISION_SHAPE = preload("res://player/player_walker_collis
 #Private variables
 var mouse_motion := Vector2.ZERO
 var rotation_acelerator := 0.0
-
+var default_floor_max_angle : float
 
 func enter(_msg : ={}) -> void:
+	default_floor_max_angle = player.floor_max_angle
+	player.floor_max_angle = 0
 	player_collision_shape.shape = PLAYER_WALKER_COLLISION_SHAPE
 	camera_pivot.rotation = Vector3.ZERO
 	player.velocity = Vector3.ZERO
@@ -78,6 +80,7 @@ func rotate_with_mouse(_delta, _object):
 
 
 func exit() -> void:
+	player.floor_max_angle = default_floor_max_angle
 	camera_pivot.rotation = Vector3.ZERO
 	player_collision_shape.shape = PLAYER_NORMAL_COLLISION_SHAPE
 	walker.free_walker()

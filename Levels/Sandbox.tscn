@@ -251,7 +251,7 @@ transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75
 shadow_enabled = true
 
 [node name="Player" parent="." instance=ExtResource("1_4278g")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -11.1526, 5.94762, 7.04874)
+transform = Transform3D(0.0469495, 0, -0.998897, 0, 1, 0, 0.998897, 0, 0.0469495, -11.1526, 4.28604, -1.67766)
 camera_sensibility = 1.5
 
 [node name="Pickups" type="Node3D" parent="."]
@@ -274,7 +274,6 @@ shape = SubResource("ConvexPolygonShape3D_kpk42")
 [node name="BlinkerEnemy" parent="." instance=ExtResource("7_7hlbe")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 2, -15.1689)
 collision_layer = 1
-collision_mask = 1
 speed = 0.7
 aggro_range = 123.0
 
