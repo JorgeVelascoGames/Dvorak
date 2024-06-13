@@ -1,10 +1,11 @@
-[gd_scene load_steps=13 format=3 uid="uid://b62fd7a6q7pm"]
+[gd_scene load_steps=14 format=3 uid="uid://b62fd7a6q7pm"]
 
 [ext_resource type="PackedScene" uid="uid://m6pypgl566n1" path="res://player/player.tscn" id="1_4278g"]
 [ext_resource type="Material" uid="uid://dacid3ccax2pq" path="res://Levels/materials/orange.tres" id="2_logh3"]
 [ext_resource type="Material" uid="uid://ciyx0k2mf8b5f" path="res://Levels/materials/grey.tres" id="3_m4mti"]
 [ext_resource type="PackedScene" uid="uid://vigb1nxfkdg1" path="res://pickups/bullet_pickup.tscn" id="6_2yj28"]
 [ext_resource type="PackedScene" uid="uid://dki0ax8a71d2j" path="res://pickups/small_bullet_pickup.tscn" id="6_nqnqc"]
+[ext_resource type="PackedScene" uid="uid://b55w2u16vbfnb" path="res://enemy/blinker_enemy/blinker_enemy.tscn" id="7_7hlbe"]
 [ext_resource type="PackedScene" uid="uid://cgqjy8smfow5g" path="res://hazards/lava.tscn" id="7_iqopt"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_rx6y0"]
@@ -269,5 +270,11 @@ mesh = SubResource("PlaneMesh_fjdhl")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Lava"]
 shape = SubResource("ConvexPolygonShape3D_kpk42")
+
+[node name="BlinkerEnemy" parent="." instance=ExtResource("7_7hlbe")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 2, -15.1689)
+collision_layer = 1
+speed = 0.7
+aggro_range = 123.0
 
 [editable path="Lava"]

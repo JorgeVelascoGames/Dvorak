@@ -2,8 +2,6 @@ class_name Enemy
 extends CharacterBody3D
 
 @onready var navigation_agent_3d: NavigationAgent3D = $NavigationAgent3D
-@onready var animation_tree: AnimationTree = $AnimationTree
-@onready var playback: AnimationNodeStateMachinePlayback = animation_tree["parameters/playback"]
 @onready var enemy_damage_audio = $EnemyDamageAudio
 @onready var enemy_dead_audio = $EnemyDeadAudio
 @onready var enemy_audio = $EnemyAudio
@@ -14,6 +12,7 @@ extends CharacterBody3D
 
 var player
 var provoke := false
+var can_move := true
 @export var aggro_range := 12.0
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
@@ -27,12 +26,16 @@ func _ready() -> void:
 func _process(_delta: float) -> void:
 	if not is_active:
 		return
+	if not can_move:
+		return
 	if provoke:
 		navigation_agent_3d.target_position = PathfindingManager.player_position
 
 
 func _physics_process(_delta: float) -> void:
 	if not is_active:
+		return
+	if not can_move:
 		return
 	movement_process(_delta);
 
@@ -42,9 +45,6 @@ func movement_process(_delta: float) -> void:
 	if distance < aggro_range:
 		provoke = true
 	
-	if provoke and distance < attack_range:
-		playback.travel("Attack")
-	
 	var next_position = navigation_agent_3d.get_next_path_position()
 	var direction = global_position.direction_to(next_position)
 	
@@ -53,7 +53,7 @@ func movement_process(_delta: float) -> void:
 		velocity.y -= gravity * _delta
 	
 	if direction:
-		look_at_target(direction)
+		look_at_target(player.global_position)
 		velocity.x = direction.x * speed
 		velocity.z = direction.z * speed
 	else:
@@ -75,7 +75,7 @@ func attack() -> void:
 	print("Enemy Attack!");
 
 
-func _on_health_health_minimun_reached() -> void:
+func enemy_die() -> void:
 	enemy_damage_audio.process_mode = Node.PROCESS_MODE_DISABLED
 	enemy_audio.process_mode = Node.PROCESS_MODE_DISABLED
 	is_active = false
@@ -83,6 +83,10 @@ func _on_health_health_minimun_reached() -> void:
 	const DEAD_DELAY := 1.4
 	await get_tree().create_timer(DEAD_DELAY).timeout
 	queue_free()
+
+
+func _on_health_health_minimun_reached() -> void:
+	enemy_die()
 
 
 func _on_health_taken_damage(_dmg: int) -> void:

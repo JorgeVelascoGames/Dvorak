@@ -233,6 +233,7 @@ bot_key_h={
 3d_physics/layer_2="WorldItems"
 3d_physics/layer_3="Player"
 3d_physics/layer_4="Enemies"
+3d_physics/layer_5="fake_enemy"
 
 [rendering]
 
