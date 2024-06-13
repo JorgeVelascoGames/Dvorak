@@ -252,6 +252,7 @@ script = ExtResource("8_7b01x")
 time_to_keep_balance = 7.0
 necessary_keys_to_press = 12
 margin_of_error = 3.0
+difficulty_increase = 0.6
 
 [node name="Timer" type="Timer" parent="StateMachine/Unbalanced"]
 one_shot = true

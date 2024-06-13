@@ -4,6 +4,7 @@ class_name Unbalanced
 @export var time_to_keep_balance : float
 @export var necessary_keys_to_press : int 
 @export var margin_of_error : float
+@export var difficulty_increase : float
 
 var left_key_selection : String
 var right_key_selection : String
@@ -13,6 +14,7 @@ var left_side_keys = ["left_key_0", "left_key_9", "left_key_p", "left_key_o", "l
 var right_side_keys = ["right_key_1", "right_key_2", "right_key_q", "right_key_e", "right_key_z", "right_key_x", "right_key_c", "right_key_3"]
 var correct_key_pressed : int = 0
 
+@onready var original_margin_of_error : float = margin_of_error
 @onready var timer = $Timer
 @onready var placeholder_l_able = $BalancedUI/PlaceholderLAble
 @onready var error_timer = $ErrorTimer
@@ -52,6 +54,7 @@ func _correct_key() -> void:
 	error_timer.start(margin_of_error)
 	correct_key_pressed += 1
 	if correct_key_pressed >= necessary_keys_to_press:
+		margin_of_error -= difficulty_increase
 		state_machine.transition_to("Idle", {})
 
 
@@ -63,8 +66,10 @@ func exit() -> void:
 
 
 func _on_timer_timeout():
+	margin_of_error = original_margin_of_error
 	state_machine.transition_to("Downed", {})
 
 
 func _on_error_timer_timeout():
+	margin_of_error = original_margin_of_error
 	state_machine.transition_to("Downed", {})
