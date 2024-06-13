@@ -50,11 +50,13 @@ func input(event):
 
 
 func _correct_key() -> void:
-	print("correct key landed")
+	#print("correct key landed")
 	error_timer.start(margin_of_error)
 	correct_key_pressed += 1
 	if correct_key_pressed >= necessary_keys_to_press:
 		margin_of_error -= difficulty_increase
+		if margin_of_error < 0:
+			margin_of_error = 0.2
 		state_machine.transition_to("Idle", {})
 
 
