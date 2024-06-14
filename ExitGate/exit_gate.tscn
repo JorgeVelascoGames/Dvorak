@@ -5,7 +5,7 @@
 [ext_resource type="Script" path="res://ExitGate/pass_switch.gd" id="2_ppx13"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_t08g3"]
-size = Vector3(0.525, 1, 0.06)
+size = Vector3(1, 2, 0.06)
 
 [sub_resource type="BoxMesh" id="BoxMesh_rk4un"]
 size = Vector3(0.525, 1, 0.06)
@@ -32,6 +32,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 script = ExtResource("1_s1pqe")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Gate"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 shape = SubResource("BoxShape3D_t08g3")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Gate"]
@@ -65,9 +66,41 @@ shape = SubResource("BoxShape3D_87h8t")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="PassSwitch"]
 mesh = SubResource("BoxMesh_rur6g")
 
+[node name="PassSwitch2" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0.521547, 0.0328306)
+collision_layer = 2
+collision_mask = 0
+script = ExtResource("2_ppx13")
+
+[node name="Interactable" type="Node" parent="PassSwitch2"]
+script = ExtResource("1_s1pqe")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PassSwitch2"]
+shape = SubResource("BoxShape3D_87h8t")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="PassSwitch2"]
+mesh = SubResource("BoxMesh_rur6g")
+
+[node name="PassSwitch3" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.26426, 0.521547, 0.0328306)
+collision_layer = 2
+collision_mask = 0
+script = ExtResource("2_ppx13")
+
+[node name="Interactable" type="Node" parent="PassSwitch3"]
+script = ExtResource("1_s1pqe")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PassSwitch3"]
+shape = SubResource("BoxShape3D_87h8t")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="PassSwitch3"]
+mesh = SubResource("BoxMesh_rur6g")
+
 [node name="MainSwitchCdTimer" type="Timer" parent="."]
 one_shot = true
 
 [connection signal="on_interact" from="Gate/GateInteractable" to="." method="_on_gate_interactable_on_interact"]
 [connection signal="on_interact" from="MainSwitch/Interactable" to="." method="_on_interactable_on_interact"]
 [connection signal="on_interact" from="PassSwitch/Interactable" to="PassSwitch" method="_on_interactable_on_interact"]
+[connection signal="on_interact" from="PassSwitch2/Interactable" to="PassSwitch2" method="_on_interactable_on_interact"]
+[connection signal="on_interact" from="PassSwitch3/Interactable" to="PassSwitch3" method="_on_interactable_on_interact"]

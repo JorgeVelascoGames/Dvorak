@@ -19,9 +19,6 @@ class_name Player
 #Variables
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 var _delta := 0.0
-@onready var originCamPos : Vector3 = camera_pivot.position
-@onready var original_world_camera_fov = world_camera.fov
-@onready var original_weapon_camera_fov = weapon_camera.fov
 
 #Components
 @onready var camera_pivot = $CameraPivot
@@ -33,6 +30,11 @@ var _delta := 0.0
 @onready var interactable_ray = $CameraPivot/WorldCamera/InteractableRay
 @onready var ammo_handler = $StateMachine/Aim/AmmoHandler
 @onready var damaged_heal_timer = $Timers/DamagedHeal
+
+#onready variables
+@onready var originCamPos : Vector3 = camera_pivot.position
+@onready var original_world_camera_fov = world_camera.fov
+@onready var original_weapon_camera_fov = weapon_camera.fov
 
 
 func _ready():

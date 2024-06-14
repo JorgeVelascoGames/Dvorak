@@ -1,4 +1,4 @@
-extends MeshInstance3D
+extends StaticBody3D
 class_name PassSwitch
 
 #Exported variables
@@ -10,3 +10,4 @@ var switch_active := false
 
 func _on_interactable_on_interact():
 	switch_active = !switch_active
+	print(switch_active)
