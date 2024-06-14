@@ -1,32 +1,38 @@
 extends CharacterBody3D
 class_name Player
 
+#Exported variables
+@export_category("Movement")
 @export var speed = 3.0
 @export var fall_multiplier: float = 2.5
 @export var camera_sensibility: float = 1.2
 @export var can_jump: bool = true
 
+@export_category("Health")
+@export var damaged := false
+@export var time_to_heal_up := 30.0
+
 @export_group("Miscelanea")
 @export var camBobSpeed := 4
 @export var camBobUpDown := 0.1
 
-# Get the gravity from the project settings to be synced with RigidBody nodes.
+#Variables
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
+var _delta := 0.0
+@onready var originCamPos : Vector3 = camera_pivot.position
+@onready var original_world_camera_fov = world_camera.fov
+@onready var original_weapon_camera_fov = weapon_camera.fov
 
 #Components
 @onready var camera_pivot = $CameraPivot
 @onready var damage_animation_player: AnimationPlayer = $DamageTexture/DamageAnimationPlayer
 @onready var game_over_menu: Control = $GameOverMenu
 @onready var world_camera: Camera3D = $CameraPivot/WorldCamera
-@onready var original_world_camera_fov = world_camera.fov
 @onready var weapon_camera: Camera3D = $SubViewportContainer/SubViewport/WeaponCamera
-@onready var original_weapon_camera_fov = weapon_camera.fov
 @onready var state_machine = $StateMachine
-@onready var originCamPos : Vector3 = camera_pivot.position
 @onready var interactable_ray = $CameraPivot/WorldCamera/InteractableRay
 @onready var ammo_handler = $StateMachine/Aim/AmmoHandler
-
-var _delta := 0.0
+@onready var damaged_heal_timer = $Timers/DamagedHeal
 
 
 func _ready():
@@ -47,10 +53,10 @@ func _physics_process(delta):
 	move_and_slide()
 
 
-func direction(_delta) -> Vector3:
+func direction(delta) -> Vector3:
 	var input_dir = Input.get_vector("move_left", "move_right", "move_forward", "move_back")
-	var direction = (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
-	return direction
+	var new_direction = (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
+	return new_direction
 
 
 func process_gravity(delta):
@@ -72,8 +78,21 @@ func interact() -> void:
 
 
 func player_hit() -> void:
-	game_over_menu.game_over()
+	if damaged:
+		game_over_menu.game_over()
+	else:
+		damaged = true
+		damaged_heal_timer.start(time_to_heal_up)
+
+
+func heal_up() -> void:
+	damaged = false
+	damaged_heal_timer.stop()
 
 
 func _on_interactable_on_interact():
 	state_machine.transition_to("Walker", {})
+
+
+func _on_damaged_heal_timer_timeout():
+	heal_up()

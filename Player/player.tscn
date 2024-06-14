@@ -440,9 +440,14 @@ layers = 2
 mesh = SubResource("CylinderMesh_pr3u4")
 skeleton = NodePath("../../SubViewportContainer/SubViewport/WeaponCamera")
 
+[node name="Timers" type="Node" parent="."]
+
+[node name="DamagedHealTimer" type="Timer" parent="Timers"]
+
 [connection signal="transitioned" from="StateMachine" to="Components/Balance" method="_on_state_machine_transitioned"]
 [connection signal="timeout" from="StateMachine/Aim/SensibilityTimer" to="StateMachine/Aim" method="_on_sensibility_timer_timeout"]
 [connection signal="timeout" from="StateMachine/Unbalanced/Timer" to="StateMachine/Unbalanced" method="_on_timer_timeout"]
 [connection signal="timeout" from="StateMachine/Unbalanced/ErrorTimer" to="StateMachine/Unbalanced" method="_on_error_timer_timeout"]
 [connection signal="timeout" from="CameraPivot/WorldCamera/AimShakeTimer" to="CameraPivot/WorldCamera" method="_on_aim_shake_timer_timeout"]
 [connection signal="on_interact" from="WalkerFixedPoint/Walker/StaticBody3D/Interactable" to="." method="_on_interactable_on_interact"]
+[connection signal="timeout" from="Timers/DamagedHealTimer" to="." method="_on_damaged_heal_timer_timeout"]

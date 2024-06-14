@@ -1,10 +1,7 @@
 extends Node
 class_name Balance
 
-@onready var balance_recovery_timer = $BalanceRecoveryTimer
-@onready var balance_bar = $UI/BalanceBar
-@onready var player = $"../.."
-
+#Exported variables
 @export_category("Balance value parameters")
 @export var max_balance:= 1500
 @export var current_balance := 0
@@ -18,9 +15,16 @@ class_name Balance
 @export var getting_hit_cost : int
 @export var balance_recovery : int
 @export var bonus_balance_recovery : int
+@export var damaged_balance_penalty := 15
 
+#Variables
 var direction : Vector3
 var balance_active: bool = true
+
+#Components
+@onready var balance_recovery_timer = $BalanceRecoveryTimer
+@onready var balance_bar = $UI/BalanceBar
+@onready var player = $"../.."
 
 
 func _ready():
@@ -63,6 +67,8 @@ func _input(event):
 
 func add_balance(amount : int) -> void:
 	current_balance += amount
+	if player.damaged:
+		current_balance += amount * (damaged_balance_penalty / 100)
 	
 	if current_balance >= max_balance:
 		reset_balance()
