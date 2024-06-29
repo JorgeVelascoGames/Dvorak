@@ -16,6 +16,10 @@ var door_is_open := false
 
 
 func _ready():
+	set_random_pass()
+
+
+func set_random_pass() -> void:
 	for child in get_children():
 		if child is PassSwitch:
 			pass_switches.append(child)
@@ -25,32 +29,37 @@ func _ready():
 		if rnd > 0.5:
 			temp = false
 		pass_code.append(temp)
+	
 
 
 func check_solution() -> bool:
 	var index := 0
 	for code in pass_code:
 		if code != pass_switches[index].switch_active:
+			print("SOLUTION IS INCORRECT")
 			return false
 		index +=1
 	
 	index = 0
+	print("SOLUTION IS CORRECT")
 	return true
 
 
 #Check if the code is correct
 func _on_interactable_on_interact():
+	print("press main switch...")
 	if main_switch_cd_timer.time_left > 0:
 		#SOUND
 		return
 	main_switch_cd_timer.start(main_switch_cd)
 	print(check_solution())
 	if check_solution():
-		pass #OPEN DOOR
+		door_is_open = true #OPEN DOOR
 	else:
 		on_calamity.emit()
 
 
 func _on_gate_interactable_on_interact():
 	if door_is_open:
+		print("LEVEL FINISHED")
 		pass #NEXT LEVEL
