@@ -29,7 +29,7 @@ func set_random_pass() -> void:
 		if rnd > 0.5:
 			temp = false
 		pass_code.append(temp)
-	
+
 
 
 func check_solution() -> bool:
