@@ -5,8 +5,8 @@ var switch_number : int
 var switch_correct_state : bool
 
 #Components
-@onready var text = $Control/CenterContainer/Text
-@onready var canvas_modulate = $Control/CanvasModulate
+@onready var text = $CanvasLayer/Control/CenterContainer/Text as Label
+@onready var canvas_modulate = $CanvasLayer/Control/CanvasModulate as CanvasModulate
 @onready var show_text_timer = $Timers/ShowTextTimer
 @onready var fade_out_text_timer = $Timers/FadeOutTextTimer
 @onready var cool_down = $Timers/CoolDown #How much time needs the book to be interactable again after the text has fade out
@@ -51,6 +51,7 @@ func set_up_book(state: bool, number : int) -> void:
 		_:
 			switch_order = str(number)
 	text.text = final_text.format([switch_order, switch_state])
+
 
 func _on_interactable_on_interact():
 	if cool_down.time_left > 0:

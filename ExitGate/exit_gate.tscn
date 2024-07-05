@@ -1,9 +1,8 @@
-[gd_scene load_steps=11 format=3 uid="uid://c5vmfb6wrd0un"]
+[gd_scene load_steps=8 format=3 uid="uid://c5vmfb6wrd0un"]
 
 [ext_resource type="Script" path="res://ExitGate/exit_gate.gd" id="1_71loh"]
 [ext_resource type="Script" path="res://components/interactable.gd" id="1_s1pqe"]
-[ext_resource type="Script" path="res://ExitGate/pass_switch.gd" id="2_ppx13"]
-[ext_resource type="PackedScene" uid="uid://cp3wrdmgpagpg" path="res://components/interactable.tscn" id="4_7a0fi"]
+[ext_resource type="PackedScene" uid="uid://cfpfgy53aqnh2" path="res://ExitGate/pass_switch.tscn" id="3_t31dc"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_t08g3"]
 size = Vector3(1, 2, 0.06)
@@ -16,12 +15,6 @@ size = Vector3(0.1, 0.15, 0.1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_hcygg"]
 size = Vector3(0.1, 0.15, 0.1)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_87h8t"]
-size = Vector3(0.1, 0.18, 0.1)
-
-[sub_resource type="BoxMesh" id="BoxMesh_rur6g"]
-size = Vector3(0.1, 0.18, 0.1)
 
 [node name="ExitGate" type="Node3D"]
 script = ExtResource("1_71loh")
@@ -52,57 +45,19 @@ shape = SubResource("BoxShape3D_gt4jj")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="MainSwitch"]
 mesh = SubResource("BoxMesh_hcygg")
 
-[node name="PassSwitch" type="StaticBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.7, 0.521547, 0.0328306)
-collision_layer = 2
-collision_mask = 0
-script = ExtResource("2_ppx13")
-switch_index = 1
+[node name="PassSwitch" parent="." instance=ExtResource("3_t31dc")]
 
-[node name="Interactable" parent="PassSwitch" instance=ExtResource("4_7a0fi")]
+[node name="PassSwitch2" parent="." instance=ExtResource("3_t31dc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.123, 0.521547, 0.0328306)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="PassSwitch"]
-shape = SubResource("BoxShape3D_87h8t")
+[node name="PassSwitch3" parent="." instance=ExtResource("3_t31dc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.4813, 0.521547, 0.0328306)
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="PassSwitch"]
-mesh = SubResource("BoxMesh_rur6g")
-
-[node name="PassSwitch2" type="StaticBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0.521547, 0.0328306)
-collision_layer = 2
-collision_mask = 0
-script = ExtResource("2_ppx13")
-switch_index = 2
-
-[node name="Interactable" type="Node" parent="PassSwitch2"]
-script = ExtResource("1_s1pqe")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="PassSwitch2"]
-shape = SubResource("BoxShape3D_87h8t")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="PassSwitch2"]
-mesh = SubResource("BoxMesh_rur6g")
-
-[node name="PassSwitch3" type="StaticBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.26426, 0.521547, 0.0328306)
-collision_layer = 2
-collision_mask = 0
-script = ExtResource("2_ppx13")
-switch_index = 3
-
-[node name="Interactable" type="Node" parent="PassSwitch3"]
-script = ExtResource("1_s1pqe")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="PassSwitch3"]
-shape = SubResource("BoxShape3D_87h8t")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="PassSwitch3"]
-mesh = SubResource("BoxMesh_rur6g")
+[node name="PassSwitch4" parent="." instance=ExtResource("3_t31dc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.84645, 0.521547, 0.0328306)
 
 [node name="MainSwitchCdTimer" type="Timer" parent="."]
 one_shot = true
 
 [connection signal="on_interact" from="Gate/GateInteractable" to="." method="_on_gate_interactable_on_interact"]
 [connection signal="on_interact" from="MainSwitch/Interactable" to="." method="_on_interactable_on_interact"]
-[connection signal="on_interact" from="PassSwitch2/Interactable" to="PassSwitch2" method="_on_interactable_on_interact"]
-[connection signal="on_interact" from="PassSwitch3/Interactable" to="PassSwitch3" method="_on_interactable_on_interact"]

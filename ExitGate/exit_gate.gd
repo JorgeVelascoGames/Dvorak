@@ -35,6 +35,7 @@ func set_random_pass() -> void:
 		pass_code.append(temp)
 		#Generate de books
 		var book :PassBook = PASS_BOOK.instantiate() as PassBook
+		add_child(book)
 		book.set_up_book(temp, member.switch_index)
 		pass_books.append(book)
 
@@ -51,6 +52,14 @@ func check_solution() -> bool:
 	index = 0
 	print("SOLUTION IS CORRECT")
 	return true
+
+
+func distribute_books(spawn_points : Array[Marker3D]) -> void:
+	var i := 0
+	spawn_points.shuffle()
+	for book in pass_books:
+		book.global_position = spawn_points[i].global_position
+		i += 1
 
 
 #Check if the code is correct

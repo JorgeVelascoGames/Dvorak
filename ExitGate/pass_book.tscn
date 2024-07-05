@@ -35,7 +35,9 @@ shape = SubResource("ConcavePolygonShape3D_shn7x")
 [node name="Interactable" type="Node" parent="MeshInstance3D/StaticBody3D"]
 script = ExtResource("2_38db5")
 
-[node name="Control" type="Control" parent="."]
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Control" type="Control" parent="CanvasLayer"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -43,7 +45,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="CenterContainer" type="CenterContainer" parent="Control"]
+[node name="CenterContainer" type="CenterContainer" parent="CanvasLayer/Control"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -52,12 +54,12 @@ grow_horizontal = 2
 grow_vertical = 2
 metadata/_edit_use_anchors_ = true
 
-[node name="Text" type="Label" parent="Control/CenterContainer"]
+[node name="Text" type="Label" parent="CanvasLayer/Control/CenterContainer"]
 layout_mode = 2
 text = "Test"
 label_settings = SubResource("LabelSettings_0sn8r")
 
-[node name="CanvasModulate" type="CanvasModulate" parent="Control"]
+[node name="CanvasModulate" type="CanvasModulate" parent="CanvasLayer/Control"]
 color = Color(0.615686, 0.615686, 0.615686, 0)
 
 [node name="Timers" type="Node" parent="."]

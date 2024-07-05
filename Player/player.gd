@@ -29,7 +29,7 @@ var _delta := 0.0
 @onready var state_machine = $StateMachine
 @onready var interactable_ray = $CameraPivot/WorldCamera/InteractableRay
 @onready var ammo_handler = $StateMachine/Aim/AmmoHandler
-@onready var damaged_heal_timer = $Timers/DamagedHeal
+@onready var damaged_heal_timer = $Timers/DamagedHealTimer
 
 #onready variables
 @onready var originCamPos : Vector3 = camera_pivot.position
