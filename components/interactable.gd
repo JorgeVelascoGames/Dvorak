@@ -4,5 +4,5 @@ class_name Interactable
 signal on_interact
 
 
-func interact() -> void:	
+func interact() -> void:
 	on_interact.emit()

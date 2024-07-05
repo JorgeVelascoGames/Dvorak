@@ -7,9 +7,13 @@ signal on_calamity
 @export var main_switch_cd := 30.0
 
 #Variables
-var pass_switches := []
-var pass_code := []
+var pass_switches :Array[PassSwitch]= []
+var pass_code :Array[bool]= []
+var pass_books :Array[PassBook]= []
 var door_is_open := false
+
+#Constants
+const PASS_BOOK : PackedScene = preload("res://ExitGate/pass_book.tscn") as PackedScene
 
 #Components
 @onready var main_switch_cd_timer = $MainSwitchCdTimer
@@ -29,6 +33,10 @@ func set_random_pass() -> void:
 		if rnd > 0.5:
 			temp = false
 		pass_code.append(temp)
+		#Generate de books
+		var book :PassBook = PASS_BOOK.instantiate() as PassBook
+		book.set_up_book(temp, member.switch_index)
+		pass_books.append(book)
 
 
 
