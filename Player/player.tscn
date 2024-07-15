@@ -331,6 +331,10 @@ bonus_balance_recovery = 80
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.355084)
 shape = ExtResource("9_2r1e7")
 
+[node name="PlayerCollisionShape2" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.355084)
+shape = ExtResource("9_2r1e7")
+
 [node name="CameraPivot" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.499998, 0.866027, 0, -0.866027, 0.499998, 0, 0.3, 0)
 
