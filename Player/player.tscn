@@ -1,10 +1,9 @@
-[gd_scene load_steps=32 format=3 uid="uid://m6pypgl566n1"]
+[gd_scene load_steps=31 format=3 uid="uid://m6pypgl566n1"]
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_ref5g"]
 [ext_resource type="Script" path="res://player/smooth_camera.gd" id="2_cywkd"]
 [ext_resource type="Script" path="res://scripts/state_machine/state_machine.gd" id="2_g0cef"]
 [ext_resource type="Script" path="res://scripts/state_machine/states/idle.gd" id="3_4b8lt"]
-[ext_resource type="Script" path="res://player/crosshair.gd" id="3_282xj"]
 [ext_resource type="Script" path="res://scripts/state_machine/states/walk.gd" id="4_gw7tn"]
 [ext_resource type="Script" path="res://scripts/state_machine/states/walker.gd" id="5_h6v2u"]
 [ext_resource type="Texture2D" uid="uid://di7tj31llxo0i" path="res://player/damage.png" id="6_km1pl"]
@@ -208,7 +207,7 @@ stretch = true
 [node name="SubViewport" type="SubViewport" parent="SubViewportContainer"]
 transparent_bg = true
 handle_input_locally = false
-size = Vector2i(1152, 648)
+size = Vector2i(320, 240)
 render_target_update_mode = 4
 
 [node name="WeaponCamera" type="Camera3D" parent="SubViewportContainer/SubViewport"]
@@ -278,12 +277,14 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -225.0
-offset_top = -76.49
-offset_right = 226.0
-offset_bottom = -32.49
+offset_left = -119.0
+offset_top = -57.0
+offset_right = 118.0
+offset_bottom = -32.0
 grow_horizontal = 2
 grow_vertical = 0
+text = "test
+"
 
 [node name="ErrorTimer" type="Timer" parent="StateMachine/Unbalanced"]
 one_shot = true
@@ -301,17 +302,16 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="PlaceholderLAble" type="Label" parent="StateMachine/Downed/BalancedUI"]
-visible = false
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -225.0
-offset_top = -76.49
-offset_right = 226.0
-offset_bottom = -32.49
+offset_left = -120.0
+offset_top = -62.0
+offset_right = 121.0
+offset_bottom = -32.0
 grow_horizontal = 2
 grow_vertical = 0
 
@@ -358,18 +358,6 @@ target_position = Vector3(0, 0, -12)
 collision_mask = 9
 debug_shape_custom_color = Color(0.756863, 0.00392157, 0.941176, 1)
 
-[node name="CenterContainer" type="CenterContainer" parent="."]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-
-[node name="Control" type="Control" parent="CenterContainer"]
-layout_mode = 2
-script = ExtResource("3_282xj")
-
 [node name="DamageTexture" type="TextureRect" parent="."]
 modulate = Color(1, 1, 1, 0)
 anchors_preset = 15
@@ -399,6 +387,7 @@ theme_override_constants/margin_right = 8
 theme_override_constants/margin_bottom = 8
 
 [node name="StateLabel" type="Label" parent="MarginContainer"]
+visible = false
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 0

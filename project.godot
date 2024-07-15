@@ -19,6 +19,15 @@ config/icon="res://icon.svg"
 
 PathfindingManager="*res://scripts/pahtfinding_manager/pathfinding_manager.tscn"
 
+[display]
+
+window/size/viewport_width=320
+window/size/viewport_height=240
+window/size/mode=3
+window/size/window_width_override=1280
+window/size/window_height_override=960
+window/stretch/mode="viewport"
+
 [input]
 
 move_forward={

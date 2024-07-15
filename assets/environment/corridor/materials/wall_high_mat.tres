@@ -1,0 +1,12 @@
+[gd_resource type="StandardMaterial3D" load_steps=3 format=3 uid="uid://bs5uijiffl10r"]
+
+[ext_resource type="Texture2D" uid="uid://bn6fyq046ufbe" path="res://assets/environment/corridor/cealing_lowres_256x256.png" id="1_14fc4"]
+[ext_resource type="Texture2D" uid="uid://cre2vs2c062gx" path="res://assets/environment/corridor/wall_2_lowres_256x256_n.png" id="2_3we7c"]
+
+[resource]
+albedo_texture = ExtResource("1_14fc4")
+emission_enabled = true
+emission_energy_multiplier = 0.0
+emission_texture = ExtResource("1_14fc4")
+normal_enabled = true
+normal_texture = ExtResource("2_3we7c")

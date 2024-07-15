@@ -1,0 +1,38 @@
+[remap]
+
+importer="texture"
+type="CompressedTexture2D"
+uid="uid://cw4ix8oitnofy"
+path.s3tc="res://.godot/imported/corridor_tileset_cealing_lowres_256x256.png-5eb075ef1faaff7c76ec0fe7ca50a36b.s3tc.ctex"
+metadata={
+"imported_formats": ["s3tc_bptc"],
+"vram_texture": true
+}
+generator_parameters={
+"md5": "c07b68f46342a0380fcce1e107184cb3"
+}
+
+[deps]
+
+source_file="res://assets/environment/corridor/corridor_tileset_cealing_lowres_256x256.png"
+dest_files=["res://.godot/imported/corridor_tileset_cealing_lowres_256x256.png-5eb075ef1faaff7c76ec0fe7ca50a36b.s3tc.ctex"]
+
+[params]
+
+compress/mode=2
+compress/high_quality=false
+compress/lossy_quality=0.7
+compress/hdr_compression=1
+compress/normal_map=1
+compress/channel_pack=0
+mipmaps/generate=true
+mipmaps/limit=-1
+roughness/mode=1
+roughness/src_normal="res://assets/environment/corridor/corridor_tileset_cealing_lowres_256x256.png"
+process/fix_alpha_border=true
+process/premult_alpha=false
+process/normal_map_invert_y=false
+process/hdr_as_srgb=false
+process/hdr_clamp_exposure=false
+process/size_limit=0
+detect_3d/compress_to=0

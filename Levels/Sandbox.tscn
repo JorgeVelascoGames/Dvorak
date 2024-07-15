@@ -1,10 +1,9 @@
-[gd_scene load_steps=13 format=3 uid="uid://b62fd7a6q7pm"]
+[gd_scene load_steps=14 format=3 uid="uid://b62fd7a6q7pm"]
 
 [ext_resource type="PackedScene" uid="uid://m6pypgl566n1" path="res://player/player.tscn" id="1_4278g"]
 [ext_resource type="Material" uid="uid://dacid3ccax2pq" path="res://Levels/materials/orange.tres" id="2_logh3"]
 [ext_resource type="Material" uid="uid://ciyx0k2mf8b5f" path="res://Levels/materials/grey.tres" id="3_m4mti"]
 [ext_resource type="PackedScene" uid="uid://c5vmfb6wrd0un" path="res://ExitGate/exit_gate.tscn" id="6_1cmix"]
-[ext_resource type="PackedScene" uid="uid://reulknu1tsan" path="res://pickups/pickup.tscn" id="6_nqnqc"]
 [ext_resource type="PackedScene" uid="uid://cgqjy8smfow5g" path="res://hazards/lava.tscn" id="7_iqopt"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_rx6y0"]
@@ -32,6 +31,11 @@ size = Vector2(10, 10)
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_kpk42"]
 points = PackedVector3Array(-5, 0, -5, -5, 0, 5, 5, 0, -5, 5, 0, 5)
+
+[sub_resource type="BoxMesh" id="BoxMesh_jc1i3"]
+size = Vector3(1, 2.5, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_u5a6r"]
 
 [node name="Sandbox" type="Node3D"]
 
@@ -253,14 +257,6 @@ shadow_enabled = true
 transform = Transform3D(0.0469495, 0, -0.998897, 0, 1, 0, 0.998897, 0, 0.0469495, -11.1526, 4.28604, -1.67766)
 camera_sensibility = 1.5
 
-[node name="Pickups" type="Node3D" parent="."]
-
-[node name="BulletPickup" parent="Pickups" instance=ExtResource("6_nqnqc")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.52995e-06, 6)
-
-[node name="SmallBulletPickup" parent="Pickups" instance=ExtResource("6_nqnqc")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11, 4.97699e-06, 0)
-
 [node name="Lava" parent="." instance=ExtResource("7_iqopt")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.8966, -0.546772, 11.4705)
 
@@ -272,5 +268,17 @@ shape = SubResource("ConvexPolygonShape3D_kpk42")
 
 [node name="ExitGate" parent="." instance=ExtResource("6_1cmix")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.79757, 3.57628e-06, -4.61249)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.71936, 1.24998, 0)
+mesh = SubResource("BoxMesh_jc1i3")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.7194, 1.24998, 0)
+mesh = SubResource("BoxMesh_jc1i3")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.81972, 0.500005, 0)
+mesh = SubResource("BoxMesh_u5a6r")
 
 [editable path="Lava"]

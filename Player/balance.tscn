@@ -9,10 +9,9 @@ leaving_walker_cost = 100
 forward_movement_cost = 120
 backward_movement_cost = 200
 side_movement_cost = 180
-preparing_gun_cost = 130
 shooting_cost = 150
-balance_recovery = 35
-bonus_balance_recovery = 65
+balance_recovery = 50
+bonus_balance_recovery = 75
 
 [node name="BalanceRecoveryTimer" type="Timer" parent="."]
 wait_time = 0.5
@@ -36,10 +35,10 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -118.0
-offset_top = -62.0
-offset_right = 119.0
-offset_bottom = -35.0
+offset_left = -57.5
+offset_top = -35.665
+offset_right = 57.5
+offset_bottom = -21.665
 grow_horizontal = 2
 grow_vertical = 0
 show_percentage = false
