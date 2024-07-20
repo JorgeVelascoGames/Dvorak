@@ -1,6 +1,7 @@
 extends Node3D
 class_name ExitGate
 
+signal pass_and_books_ready
 signal on_calamity
 
 #Export variables
@@ -38,7 +39,8 @@ func set_random_pass() -> void:
 		add_child(book)
 		book.set_up_book(temp, member.switch_index)
 		pass_books.append(book)
-
+	
+	pass_and_books_ready.emit()
 
 
 func check_solution() -> bool:
