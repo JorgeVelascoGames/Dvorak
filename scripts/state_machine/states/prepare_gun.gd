@@ -24,6 +24,6 @@ func finish_prepare_gun() -> void:
 
 
 func exit() -> void:
-	animated_gun.visible = false
 	animation_player.stop()
+	animated_gun.visible = false
 	player.interactable_ray.process_mode = Node.PROCESS_MODE_INHERIT

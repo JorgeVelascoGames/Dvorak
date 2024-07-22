@@ -10,7 +10,7 @@ class_name Balance
 @export var backward_movement_cost : int
 @export var side_movement_cost : int
 @export var rotation_cost_divident : int = 15
-#@export var preparing_gun_cost : int
+@export var preparing_gun_cost : int
 @export var shooting_cost : int
 @export var getting_hit_cost : int
 @export var balance_recovery : int
@@ -63,6 +63,9 @@ func _input(event):
 	
 	if event.is_action_pressed("move_right") or event.is_action_pressed("move_left"):
 		add_balance(side_movement_cost)
+	
+	if event.is_action_pressed("fire"):
+		add_balance(shooting_cost)
 
 
 func add_balance(amount : int) -> void:
@@ -103,7 +106,8 @@ func _on_state_machine_transitioned(state_name):
 	else:
 		balance_bar.show()
 		balance_active = true
-		update_ui()
 	
-	#if state_name == "PrepareGun":
-		#add_balance(preparing_gun_cost)
+	if state_name == "PrepareGun":
+		add_balance(preparing_gun_cost)
+	
+	update_ui()
