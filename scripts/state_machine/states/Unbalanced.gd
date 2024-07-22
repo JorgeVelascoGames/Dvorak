@@ -18,6 +18,7 @@ var correct_key_pressed : int = 0
 @onready var timer = $Timer
 @onready var placeholder_l_able = $BalancedUI/PlaceholderLAble
 @onready var error_timer = $ErrorTimer
+@onready var animation_player = $"../../AnimationPlayer"
 
 
 func enter(_msg : ={}) -> void:
@@ -28,6 +29,7 @@ func enter(_msg : ={}) -> void:
 	placeholder_l_able.text = left_key_selection + " + " + right_key_selection
 	timer.start(time_to_keep_balance)
 	error_timer.start(margin_of_error)
+	animation_player.play("unbalanced")
 
 
 func update(_delta):
@@ -61,6 +63,7 @@ func _correct_key() -> void:
 
 
 func exit() -> void:
+	animation_player.stop()
 	correct_key_pressed = 0
 	placeholder_l_able.hide()
 	timer.stop()

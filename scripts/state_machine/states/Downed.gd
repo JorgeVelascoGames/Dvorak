@@ -12,6 +12,7 @@ var bot_side_keys = ["bot_key_v", "bot_key_b", "bot_key_f", "bot_key_g",  "bot_k
 var correct_key_pressed : int = 0
 
 @onready var placeholder_l_able = $BalancedUI/PlaceholderLAble
+@onready var animation_player = $"../../AnimationPlayer"
 
 
 func enter(_msg : ={}) -> void:
@@ -20,6 +21,7 @@ func enter(_msg : ={}) -> void:
 	right_key_selection = bot_side_keys.pick_random()
 	placeholder_l_able.show()
 	placeholder_l_able.text = left_key_selection + " + " + right_key_selection
+	animation_player.play("floor")
 
 
 func update(_delta):
@@ -50,3 +52,4 @@ func _correct_key() -> void:
 func exit() -> void:
 	correct_key_pressed = 0
 	placeholder_l_able.hide()
+	animation_player.stop()

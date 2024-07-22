@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://m6pypgl566n1"]
+[gd_scene load_steps=33 format=3 uid="uid://m6pypgl566n1"]
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_ref5g"]
 [ext_resource type="Script" path="res://player/smooth_camera.gd" id="2_cywkd"]
@@ -135,6 +135,18 @@ tracks/2/keys = {
 "update": 0,
 "values": [Vector3(0, -2.34067e-07, 1.65806)]
 }
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("CameraPivot:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.1),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0.3, 0)]
+}
 
 [sub_resource type="Animation" id="Animation_dutym"]
 resource_name = "prepare_gun"
@@ -176,10 +188,70 @@ tracks/2/keys = {
 "values": [Vector3(0, -2.34067e-07, 1.65806), Vector3(3.14159, 0, 1.65806), Vector3(3.14159, 0, 1.65806), Vector3(0, 0, 1.16866)]
 }
 
+[sub_resource type="Animation" id="Animation_hbgry"]
+resource_name = "unbalanced"
+length = 5.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CameraPivot:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1.4, 1.9, 3, 3.7, 5),
+"transitions": PackedFloat32Array(2, 2, 2, 2, 2, 2, 2),
+"update": 0,
+"values": [Vector3(-1.309, 0, 0), Vector3(-1.48353, 0, 0), Vector3(-1.44862, 0.463385, 0), Vector3(-0.977384, 0.20944, -0.806342), Vector3(-1.309, 0, 0.261799), Vector3(-0.959931, 0, 0), Vector3(-1.309, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CameraPivot:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1, 1.7, 2.7, 4, 5),
+"transitions": PackedFloat32Array(2, 2, 2, 2, 2, 2),
+"update": 0,
+"values": [Vector3(0, -0.135978, 0), Vector3(0, -0.0746599, 0), Vector3(0, -0.0853905, 0), Vector3(0, -0.10072, 0), Vector3(0, -0.407561, 0), Vector3(0, -0.135978, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_f0x85"]
+resource_name = "floor"
+length = 7.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CameraPivot:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.2, 2.1, 3.5, 4.3, 5, 5.5, 6.1, 7),
+"transitions": PackedFloat32Array(0.5, 2, 2, 0.5, 3.4822, 3.03143, 3.03143, 3.03143, 0.5),
+"update": 0,
+"values": [Vector3(0, -0.836486, 0), Vector3(0, -0.8, 0), Vector3(0, -0.836486, 0), Vector3(0, -0.81, 0), Vector3(0, -0.836486, 0), Vector3(0, -0.78, 0), Vector3(0, -0.78, 0), Vector3(0, -0.76, 0), Vector3(0, -0.836486, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CameraPivot:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1.2, 2.1, 4.3, 5, 5.5, 6.1, 7),
+"transitions": PackedFloat32Array(0.5, 2, 2, 3.4822, 3.03143, 3.03143, 3.03143, 0.5),
+"update": 0,
+"values": [Vector3(-0.610865, 0, -1.51844), Vector3(-0.610865, 0, -1.39626), Vector3(-0.610865, 0, -1.51844), Vector3(-0.610865, 0, -1.51844), Vector3(-1.5708, 0, 0), Vector3(-1.5708, 0, 0), Vector3(-1.5708, 0, 0), Vector3(-0.610865, 0, -1.51844)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_1d5hg"]
 _data = {
 "RESET": SubResource("Animation_1ivek"),
-"prepare_gun": SubResource("Animation_dutym")
+"floor": SubResource("Animation_f0x85"),
+"prepare_gun": SubResource("Animation_dutym"),
+"unbalanced": SubResource("Animation_hbgry")
 }
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_pr3u4"]
@@ -332,7 +404,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.355084)
 shape = ExtResource("9_2r1e7")
 
 [node name="CameraPivot" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.499998, 0.866027, 0, -0.866027, 0.499998, 0, 0.3, 0)
+transform = Transform3D(1, 0, 0, 0, 0.558251, 0.829672, 0, -0.829672, 0.558251, 0, 0.3, 0)
 
 [node name="WorldCamera" type="Camera3D" parent="CameraPivot"]
 top_level = true

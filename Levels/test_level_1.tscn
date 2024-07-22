@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://dduf8klu25tm"]
+[gd_scene load_steps=5 format=3 uid="uid://dduf8klu25tm"]
 
 [ext_resource type="MeshLibrary" uid="uid://c7rjhd6rdt57c" path="res://assets/environment/corridor/corridor_library.tres" id="1_4ysbr"]
 [ext_resource type="PackedScene" uid="uid://m6pypgl566n1" path="res://player/player.tscn" id="2_w48xj"]
 [ext_resource type="PackedScene" uid="uid://bv1dve5jsynt" path="res://Levels/game_environment.tscn" id="3_wt7hs"]
+[ext_resource type="PackedScene" uid="uid://b43pa45wrpxak" path="res://assets/enemies/test_enemy.glb" id="4_4jdir"]
 
 [node name="TestLevel1" type="Node3D"]
 
@@ -28,3 +29,6 @@ shadow_enabled = true
 omni_range = 3.631
 
 [node name="GameEnvironment" parent="." instance=ExtResource("3_wt7hs")]
+
+[node name="test_enemy" parent="." instance=ExtResource("4_4jdir")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.42196, -1.19209e-07, -0.585919)
