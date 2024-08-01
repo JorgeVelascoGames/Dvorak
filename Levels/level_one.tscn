@@ -1,15 +1,30 @@
-[gd_scene load_steps=4 format=3 uid="uid://rdqp4c411yrq"]
+[gd_scene load_steps=7 format=3 uid="uid://rdqp4c411yrq"]
 
 [ext_resource type="Script" path="res://Levels/level_manager.gd" id="1_bg8ba"]
 [ext_resource type="PackedScene" uid="uid://bv1dve5jsynt" path="res://Levels/game_environment.tscn" id="2_forkb"]
 [ext_resource type="MeshLibrary" uid="uid://c7rjhd6rdt57c" path="res://assets/environment/corridor/corridor_library.tres" id="3_exo53"]
+[ext_resource type="PackedScene" uid="uid://c5vmfb6wrd0un" path="res://ExitGate/exit_gate.tscn" id="4_sjj7j"]
+[ext_resource type="Script" path="res://Levels/room_randomizer.gd" id="5_m30ff"]
+
+[sub_resource type="NavigationMesh" id="NavigationMesh_4os1j"]
 
 [node name="LevelOne" type="Node3D"]
 script = ExtResource("1_bg8ba")
 
 [node name="GameEnvironment" parent="." instance=ExtResource("2_forkb")]
 
-[node name="GridMap" type="GridMap" parent="."]
+[node name="ExitGate" parent="." instance=ExtResource("4_sjj7j")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0381629, 0, 0)
+
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
+navigation_mesh = SubResource("NavigationMesh_4os1j")
+
+[node name="GridMap" type="GridMap" parent="NavigationRegion3D"]
 mesh_library = ExtResource("3_exo53")
+
+[node name="Rooms" type="Node3D" parent="NavigationRegion3D"]
+
+[node name="RoomRandomizer" type="Node3D" parent="NavigationRegion3D/Rooms"]
+script = ExtResource("5_m30ff")
 
 [editable path="GameEnvironment"]
