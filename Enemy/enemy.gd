@@ -91,6 +91,7 @@ func _on_collision_detection_body_entered(body):
 	if body is Player:
 		can_move = false
 		body.player_hit()
+		enemy_die()
 
 
 func _on_collision_detection_body_exited(body):
