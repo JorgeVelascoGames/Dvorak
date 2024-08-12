@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://bw84bnd7oxh7s"]
 
-[ext_resource type="PackedScene" uid="uid://omjxjkehmmbw" path="res://Enemy/enemy.tscn" id="1_vccwb"]
+[ext_resource type="PackedScene" uid="uid://omjxjkehmmbw" path="res://enemy/enemy.tscn" id="1_vccwb"]
 [ext_resource type="Script" path="res://enemy/enemy_shy/visible_on_screen.gd" id="2_xqr5d"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_rmsr7"]
@@ -17,24 +17,27 @@ albedo_color = Color(1, 0.439216, 0.337255, 1)
 
 [node name="EnemyShy" instance=ExtResource("1_vccwb")]
 collision_layer = 8
-speed = 2.0
-aggro_range = 24.0
+speed = 7.0
 
 [node name="CollisionDetection" parent="." index="5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 collision_layer = 0
 
 [node name="CollisionShape3D" parent="CollisionDetection" index="0"]
 shape = SubResource("CapsuleShape3D_rmsr7")
 
 [node name="CollisionShape3D" parent="." index="6"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("CapsuleShape3D_8ep8e")
 
 [node name="VisibleOnScreenNotifier3D" type="VisibleOnScreenNotifier3D" parent="." index="7"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 layers = 7
 aabb = AABB(-1, -1, -0.531341, 2, 2, 1.06268)
 script = ExtResource("2_xqr5d")
 
 [node name="MeshPlaceholder" type="MeshInstance3D" parent="." index="8"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 mesh = SubResource("CapsuleMesh_qcyl6")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="MeshPlaceholder" index="0"]

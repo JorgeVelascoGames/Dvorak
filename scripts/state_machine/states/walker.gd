@@ -22,7 +22,7 @@ func enter(_msg : ={}) -> void:
 	ammo_handler.reload()
 	default_floor_max_angle = player.floor_max_angle
 	player.floor_max_angle = 0
-	player_collision_shape.shape = PLAYER_WALKER_COLLISION_SHAPE
+	#player_collision_shape.shape = PLAYER_WALKER_COLLISION_SHAPE
 	camera_pivot.rotation = Vector3.ZERO
 	player.velocity = Vector3.ZERO
 	walker.grab_walker()

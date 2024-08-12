@@ -13,9 +13,9 @@
 [ext_resource type="PackedScene" uid="uid://bjq2dkpgpnav7" path="res://player/game_over_menu.tscn" id="7_keanm"]
 [ext_resource type="Script" path="res://scripts/state_machine/states/Unbalanced.gd" id="8_7b01x"]
 [ext_resource type="FontFile" uid="uid://yqk87iw0ykxp" path="res://assets/fonts/Roboto-Regular.ttf" id="8_dofuu"]
-[ext_resource type="Shape3D" uid="uid://dwk5imwjcfs06" path="res://player/player_walker_collision_shape.tres" id="9_2r1e7"]
 [ext_resource type="Script" path="res://scripts/state_machine/states/Downed.gd" id="9_q33c7"]
 [ext_resource type="PackedScene" uid="uid://shutxn8dpbys" path="res://player/balance.tscn" id="10_m7euy"]
+[ext_resource type="Shape3D" uid="uid://df6y055xrghl7" path="res://player/player_normal_collision_shape.tres" id="12_6t6rn"]
 [ext_resource type="Script" path="res://player/walker.gd" id="15_hi5sq"]
 [ext_resource type="Script" path="res://components/interactable.gd" id="16_wvci1"]
 
@@ -94,8 +94,8 @@ font_size = 64
 [sub_resource type="BoxMesh" id="BoxMesh_2ns6k"]
 size = Vector3(0.6, 0.6, 0.6)
 
-[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_qnmhc"]
-data = PackedVector3Array(-0.3, 0.3, 0.3, 0.3, 0.3, 0.3, -0.3, -0.3, 0.3, 0.3, 0.3, 0.3, 0.3, -0.3, 0.3, -0.3, -0.3, 0.3, 0.3, 0.3, -0.3, -0.3, 0.3, -0.3, 0.3, -0.3, -0.3, -0.3, 0.3, -0.3, -0.3, -0.3, -0.3, 0.3, -0.3, -0.3, 0.3, 0.3, 0.3, 0.3, 0.3, -0.3, 0.3, -0.3, 0.3, 0.3, 0.3, -0.3, 0.3, -0.3, -0.3, 0.3, -0.3, 0.3, -0.3, 0.3, -0.3, -0.3, 0.3, 0.3, -0.3, -0.3, -0.3, -0.3, 0.3, 0.3, -0.3, -0.3, 0.3, -0.3, -0.3, -0.3, 0.3, 0.3, 0.3, -0.3, 0.3, 0.3, 0.3, 0.3, -0.3, -0.3, 0.3, 0.3, -0.3, 0.3, -0.3, 0.3, 0.3, -0.3, -0.3, -0.3, 0.3, 0.3, -0.3, 0.3, -0.3, -0.3, -0.3, 0.3, -0.3, 0.3, 0.3, -0.3, -0.3, -0.3, -0.3, -0.3)
+[sub_resource type="BoxShape3D" id="BoxShape3D_2f4qr"]
+size = Vector3(0.605, 0.62085, 0.288818)
 
 [sub_resource type="Animation" id="Animation_1ivek"]
 length = 0.001
@@ -290,6 +290,7 @@ nodes/unbalanced_blend/position = Vector2(640, 0)
 node_connections = [&"floor_blend", 0, &"Animation 4", &"floor_blend", 1, &"Animation 3", &"output", 0, &"prepare_gun_trigger", &"prepare_gun_trigger", 0, &"unbalanced_blend", &"prepare_gun_trigger", 1, &"Animation 2", &"unbalanced_blend", 0, &"floor_blend", &"unbalanced_blend", 1, &"Animation"]
 
 [node name="Player" type="CharacterBody3D" groups=["player"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 collision_layer = 4
 collision_mask = 3
 axis_lock_angular_x = true
@@ -434,7 +435,7 @@ bonus_balance_recovery = 80
 
 [node name="PlayerCollisionShape" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.355084)
-shape = ExtResource("9_2r1e7")
+shape = ExtResource("12_6t6rn")
 
 [node name="CameraPivot" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.3, 0)
@@ -516,10 +517,14 @@ collision_layer = 2
 constant_linear_velocity = Vector3(0, -9, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="WalkerFixedPoint/Walker/StaticBody3D"]
-shape = SubResource("ConcavePolygonShape3D_qnmhc")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.026001, -0.191772)
+shape = SubResource("BoxShape3D_2f4qr")
 
 [node name="Interactable" type="Node" parent="WalkerFixedPoint/Walker/StaticBody3D"]
 script = ExtResource("16_wvci1")
+
+[node name="FreeWalkerPosition" type="Marker3D" parent="WalkerFixedPoint/Walker"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.530615)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

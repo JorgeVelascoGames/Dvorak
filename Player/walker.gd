@@ -1,12 +1,14 @@
 extends MeshInstance3D
 
 @onready var static_body_3d: StaticBody3D = $StaticBody3D
+@onready var free_walker_position = $FreeWalkerPosition
 
 
 func free_walker() -> void:
 	layers = 1
 	static_body_3d.process_mode = Node.PROCESS_MODE_INHERIT
 	top_level = true
+	global_position = free_walker_position.global_position
 
 
 func grab_walker() -> void:

@@ -93,7 +93,8 @@ func heal_up() -> void:
 
 
 func _on_interactable_on_interact():
-	state_machine.transition_to("Walker", {})
+	if get_floor_normal() == Vector3.UP:
+		state_machine.transition_to("Walker", {})
 
 
 func _on_damaged_heal_timer_timeout():

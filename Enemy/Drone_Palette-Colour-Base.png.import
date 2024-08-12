@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dp2sdbl3cbcxb"
-path.s3tc="res://.godot/imported/Drone_Palette-Colour-Base.png-8b0c51d5c737d43e2c0b42751f8664a1.s3tc.ctex"
+path.s3tc="res://.godot/imported/Drone_Palette-Colour-Base.png-bfb077378d234e88ae0872a03f488f1f.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -12,8 +12,8 @@ generator_parameters={}
 
 [deps]
 
-source_file="res://Enemy/Drone_Palette-Colour-Base.png"
-dest_files=["res://.godot/imported/Drone_Palette-Colour-Base.png-8b0c51d5c737d43e2c0b42751f8664a1.s3tc.ctex"]
+source_file="res://enemy/Drone_Palette-Colour-Base.png"
+dest_files=["res://.godot/imported/Drone_Palette-Colour-Base.png-bfb077378d234e88ae0872a03f488f1f.s3tc.ctex"]
 
 [params]
 
