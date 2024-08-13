@@ -39,5 +39,12 @@ script = ExtResource("5_m30ff")
 
 [node name="Player" parent="." instance=ExtResource("6_68trg")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -5.74133, 1.14643, 0.786215)
+fall_multiplier = null
+camera_sensibility = null
+can_jump = null
+damaged = null
+time_to_heal_up = null
+camBobSpeed = null
+camBobUpDown = null
 
 [editable path="GameEnvironment"]

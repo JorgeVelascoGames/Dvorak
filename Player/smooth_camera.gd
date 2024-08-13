@@ -97,6 +97,8 @@ func random_shake():
 func weapon_recoil() -> void:
 	var jitter_strength = 0.33  # Radianes
 	camera_pivot.rotate_x(jitter_strength)
+	camera_pivot.rotation_degrees.x = clampf(
+		player.camera_pivot.rotation_degrees.x, -90.0, 70.0)
 
 
 func get_random_rotation(jitter_strength: float) -> Vector3:

@@ -93,7 +93,7 @@ func heal_up() -> void:
 
 
 func _on_interactable_on_interact():
-	if get_floor_normal() == Vector3.UP:
+	if get_floor_normal().abs().is_equal_approx(Vector3.UP):
 		state_machine.transition_to("Walker", {})
 
 

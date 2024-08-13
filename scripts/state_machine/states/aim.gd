@@ -37,9 +37,8 @@ func input(event):
 	if event.is_action_pressed("fire"):
 		world_camera.weapon_recoil()
 		balance.add_balance(balance.shooting_cost)
-		print(gun_ray.get_collider())
-		if gun_ray.get_collider() is Enemy or gun_ray.get_collider() is BlinkerBody:
-			gun_ray.get_collider().enemy_die()
+		if gun_ray.is_colliding() and gun_ray.get_collider().owner is Enemy:
+			gun_ray.get_collider().owner.enemy_die()
 	
 	if event is InputEventMouseMotion:
 		var random_jitter = Vector2(
@@ -55,7 +54,7 @@ func handle_camera_rotation(_delta:float) -> void:
 	player.rotate_y(mouse_motion.x * randomized_sensibility)
 	player.camera_pivot.rotate_x(mouse_motion.y * randomized_sensibility)
 	player.camera_pivot.rotation_degrees.x = clampf(
-		player.camera_pivot.rotation_degrees.x, -90.0, 90)
+		player.camera_pivot.rotation_degrees.x, -90.0, 60)
 	mouse_motion = Vector2.ZERO
 
 
