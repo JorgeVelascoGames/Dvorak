@@ -13,6 +13,7 @@ extends CharacterBody3D
 var player : Player
 var provoke := false
 var can_move := true
+var current_waypoint : Marker3D
 @export var aggro_range := 12.0
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
@@ -22,6 +23,9 @@ var gravity: float = ProjectSettings.get_setting("physics/3d/default_gravity")
 func _ready() -> void:
 	apply_floor_snap()
 	player = get_tree().get_first_node_in_group("player")
+	
+	await get_tree().process_frame
+	current_waypoint = PathfindingManager.get_random_waypoint()
 
 
 func _process(_delta: float) -> void:
@@ -31,6 +35,8 @@ func _process(_delta: float) -> void:
 		return
 	if provoke:
 		navigation_agent_3d.target_position = PathfindingManager.player_position
+	else:
+		roam()
 
 
 func _physics_process(_delta: float) -> void:
@@ -42,13 +48,19 @@ func _physics_process(_delta: float) -> void:
 
 
 func movement_process(_delta: float) -> void:
-	look_at(player.global_position)
-	var distance = global_position.distance_to(player.global_position)
+	var current_target
+	if provoke:
+		current_target = player
+	else:
+		current_target = current_waypoint
+	
+	var distance = global_position.distance_to(current_target.global_position)
+	var next_position = navigation_agent_3d.get_next_path_position()
+	look_at(next_position)
+	var direction = global_position.direction_to(next_position)
+	
 	if distance < aggro_range:
 		provoke = true
-	
-	var next_position = navigation_agent_3d.get_next_path_position()
-	var direction = global_position.direction_to(next_position)
 	
 	# Add the gravity.
 	if not is_on_floor(): 
@@ -85,6 +97,11 @@ func _on_health_health_minimun_reached() -> void:
 
 func _on_health_taken_damage(_dmg: int) -> void:
 	enemy_die()
+
+
+func roam():
+	if current_waypoint == null or global_position.distance_to(current_waypoint.global_position) < 0.5:
+		current_waypoint = PathfindingManager.get_random_waypoint(current_waypoint)
 
 
 func _on_collision_detection_body_entered(body):

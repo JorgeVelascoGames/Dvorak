@@ -1,0 +1,51 @@
+[gd_scene load_steps=7 format=3 uid="uid://0okvdhm4fa7k"]
+
+[ext_resource type="Material" uid="uid://ciyx0k2mf8b5f" path="res://Levels/materials/grey.tres" id="1_ims4r"]
+[ext_resource type="PackedScene" uid="uid://0wduiiq6476g" path="res://enemy/braid/braid.tscn" id="2_5r3b1"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_avluy"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_g53la"]
+sky_material = SubResource("ProceduralSkyMaterial_avluy")
+
+[sub_resource type="Environment" id="Environment_ssdpw"]
+background_mode = 2
+sky = SubResource("Sky_g53la")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="BoxMesh" id="BoxMesh_t346q"]
+size = Vector3(30, 1, 30)
+
+[node name="Empty test room" type="Node3D"]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_ssdpw")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_t346q")
+surface_material_override/0 = ExtResource("1_ims4r")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.70404, 0.710161, 0, -0.710161, 0.70404, 0, 2.36467, 0.549055)
+fov = 97.3005
+
+[node name="Waypoints" type="Node3D" parent="."]
+
+[node name="Marker3D" type="Marker3D" parent="Waypoints" groups=["Waypoints"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -5.2112)
+
+[node name="Marker3D2" type="Marker3D" parent="Waypoints" groups=["Waypoints"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.996479)
+
+[node name="Marker3D3" type="Marker3D" parent="Waypoints" groups=["Waypoints"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.30222, 0, -2.69314)
+
+[node name="Braid" parent="." instance=ExtResource("2_5r3b1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.524586, -1.86475)

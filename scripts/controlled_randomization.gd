@@ -1,6 +1,8 @@
 extends Node
 class_name ControlledRandomization
 
+signal RandomizationCompleted
+
 @export var items_to_save : int
 @export var items : Array[Node] = []
 @export var randomize_on_ready : bool = false
@@ -14,6 +16,7 @@ func _ready():
 func randomize_list(_items_to_save : int = items_to_save):
 	if _items_to_save >= items.size():
 		print_debug("Items to save is equal or superior to the items in the list")
+		RandomizationCompleted.emit()
 		return
 	
 	var delete_item
@@ -21,3 +24,4 @@ func randomize_list(_items_to_save : int = items_to_save):
 	for i in _items_to_save:
 		delete_item = items.pop_back() as Node
 		delete_item.queue_free()
+	RandomizationCompleted.emit()

@@ -1,0 +1,16 @@
+[gd_scene load_steps=5 format=3 uid="uid://0wduiiq6476g"]
+
+[ext_resource type="PackedScene" uid="uid://omjxjkehmmbw" path="res://enemy/enemy.tscn" id="1_c35q5"]
+[ext_resource type="PackedScene" uid="uid://u0i0m1o3gr4h" path="res://components/decal_spawner.tscn" id="2_q06nb"]
+[ext_resource type="PackedScene" uid="uid://dntxkqhhia68" path="res://vfx/blood_decal/blood_decal_big.tscn" id="3_l75al"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_7u4hw"]
+
+[node name="Braid" instance=ExtResource("1_c35q5")]
+
+[node name="DecalSpawner" parent="." index="7" instance=ExtResource("2_q06nb")]
+decal = ExtResource("3_l75al")
+spawn_decal_on_timer = 2.0
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." index="8"]
+mesh = SubResource("SphereMesh_7u4hw")

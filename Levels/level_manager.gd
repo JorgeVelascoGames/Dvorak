@@ -1,6 +1,7 @@
 extends Node3D
 
 var book_spawn_points :Array[Marker3D] = []
+@export var controlled_randomizations :Array[ControlledRandomization] = []
 @onready var exit_gate = $ExitGate
 @onready var navigation_region_3d = $NavigationRegion3D
 @onready var room_randomizer = $NavigationRegion3D/Rooms/RoomRandomizer
@@ -15,6 +16,9 @@ func generate_rooms() -> void:
 	#Generate de rooms
 	room_randomizer.randomize_rooms()
 	await room_randomizer.RoomsRandomized
+	for randomization in controlled_randomizations:
+		randomization.randomize_list()
+		await  randomization.RandomizationCompleted
 	#bake the navmesh
 	navigation_region_3d.bake_navigation_mesh()
 	await navigation_region_3d.bake_finished

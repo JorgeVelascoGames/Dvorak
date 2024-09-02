@@ -1,10 +1,9 @@
-[gd_scene load_steps=15 format=3 uid="uid://b62fd7a6q7pm"]
+[gd_scene load_steps=14 format=3 uid="uid://b62fd7a6q7pm"]
 
 [ext_resource type="PackedScene" uid="uid://m6pypgl566n1" path="res://player/player.tscn" id="1_4278g"]
 [ext_resource type="Material" uid="uid://dacid3ccax2pq" path="res://Levels/materials/orange.tres" id="2_logh3"]
 [ext_resource type="Material" uid="uid://ciyx0k2mf8b5f" path="res://Levels/materials/grey.tres" id="3_m4mti"]
 [ext_resource type="PackedScene" uid="uid://c5vmfb6wrd0un" path="res://ExitGate/exit_gate.tscn" id="6_1cmix"]
-[ext_resource type="PackedScene" uid="uid://b43pa45wrpxak" path="res://assets/enemies/test_enemy.glb" id="6_bjsdx"]
 [ext_resource type="PackedScene" uid="uid://cgqjy8smfow5g" path="res://hazards/lava.tscn" id="7_iqopt"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_rx6y0"]
@@ -281,8 +280,5 @@ mesh = SubResource("BoxMesh_jc1i3")
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.81972, 0.500005, 0)
 mesh = SubResource("BoxMesh_u5a6r")
-
-[node name="test_enemy" parent="." instance=ExtResource("6_bjsdx")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.9072, 4.76837e-06, -2.40723)
 
 [editable path="Lava"]
