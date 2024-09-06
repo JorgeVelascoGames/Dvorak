@@ -3,6 +3,7 @@ class_name BlinkerBody
 
 @onready var visible_on_screen_notifier_3d: VisibleOnScreenNotifier3D = $VisibleOnScreenNotifier3D
 @onready var blinker_enemy: Enemy = $".."
+@onready var hurt_box: Area3D = $"../HurtBox"
 
 
 func _ready() -> void:
@@ -26,11 +27,13 @@ func _on_hurt_box_body_entered(body: Node3D) -> void:
 
 
 func _on_visible_on_screen_notifier_3d_screen_entered() -> void:
-	blink()
 	blinker_enemy.can_move = true
 	blinker_enemy.provoke = true
+	hurt_box.monitoring = true
 	#start sound
 
 
 func _on_visible_on_screen_notifier_3d_screen_exited() -> void:
 	blinker_enemy.can_move = false
+	hurt_box.monitoring = false
+	blink()
