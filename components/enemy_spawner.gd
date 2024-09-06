@@ -1,10 +1,13 @@
 extends Marker3D
 class_name EnemySpawner
 
-@export var start_spawn_on_ready := false ##If true, the spawner starts working on _ready
-@export var spawn_countdown := 0.0 ##If the timer is over 0, it will spawn on loop
+##If true, the spawner starts working on _ready
+@export var start_spawn_on_ready := false 
+##If the timer is over 0, it will spawn on loop
+@export var spawn_countdown := 0.0 
 @export var scene_to_spawn : PackedScene
-@export var node_to_parent : Node ##The node in which the spawned node will be nested. If empty, its nested on the root
+##The node in which the spawned node will be nested. If empty, its nested on the root
+@export var node_to_parent : Node 
 
 @onready var spawn_timer: Timer = $SpawnTimer
 @onready var visible_on_screen_notifier_3d: VisibleOnScreenNotifier3D = $VisibleOnScreenNotifier3D
@@ -26,6 +29,7 @@ func spawn() -> void:
 		node_to_parent = get_tree().root
 	
 	node_to_parent.add_child(new_instance)
+	new_instance.global_position = global_position
 	
 	if spawn_countdown > 0.0:
 		spawn_timer.start(spawn_countdown)

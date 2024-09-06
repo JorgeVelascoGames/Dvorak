@@ -1,7 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://b55w2u16vbfnb"]
+[gd_scene load_steps=8 format=3 uid="uid://b55w2u16vbfnb"]
 
 [ext_resource type="PackedScene" uid="uid://omjxjkehmmbw" path="res://enemy/enemy.tscn" id="1_0gbns"]
 [ext_resource type="Script" path="res://enemy/blinker_enemy/blinker_enemy_model.gd" id="2_qbodg"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_kjni4"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_ii0a4"]
 
@@ -10,12 +12,7 @@
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2eiqd"]
 albedo_color = Color(1, 0.439216, 0.337255, 1)
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_rmsr7"]
-radius = 0.656008
-
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_5tlpf"]
-
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_kjni4"]
 
 [node name="BlinkerEnemy" instance=ExtResource("1_0gbns")]
 speed = 0.8
@@ -24,11 +21,14 @@ aggro_range = 29.0
 [node name="NavigationAgent3D" parent="." index="0"]
 path_postprocessing = 1
 
+[node name="CollisionShape3D" parent="." index="3"]
+shape = SubResource("CapsuleShape3D_kjni4")
+
 [node name="BlinkerBody" type="StaticBody3D" parent="." index="5"]
 top_level = true
+collision_layer = 0
+collision_mask = 8
 script = ExtResource("2_qbodg")
-max_blink_timer = 7.0
-min_blink_timer = 4.4
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="BlinkerBody" index="0"]
 mesh = SubResource("CapsuleMesh_ii0a4")
@@ -38,26 +38,11 @@ transform = Transform3D(0.562132, 0, 0, 0, 0.173281, 0, 0, 0, 1, 0, 0.626528, -0
 mesh = SubResource("BoxMesh_8l5re")
 surface_material_override/0 = SubResource("StandardMaterial3D_2eiqd")
 
-[node name="Area3D" type="Area3D" parent="BlinkerBody" index="1"]
-collision_layer = 0
-collision_mask = 4
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="BlinkerBody/Area3D" index="0"]
-shape = SubResource("CapsuleShape3D_rmsr7")
-
-[node name="BlinkTimer" type="Timer" parent="BlinkerBody" index="2"]
-wait_time = 1.4
-one_shot = true
-autostart = true
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="BlinkerBody" index="3"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="BlinkerBody" index="1"]
 shape = SubResource("CapsuleShape3D_5tlpf")
 
-[node name="CollisionShape3D" parent="CollisionDetection" index="0"]
-shape = SubResource("CapsuleShape3D_rmsr7")
+[node name="VisibleOnScreenNotifier3D" type="VisibleOnScreenNotifier3D" parent="BlinkerBody" index="2"]
 
-[node name="CollisionShape3D" parent="." index="7"]
-shape = SubResource("CapsuleShape3D_kjni4")
-
-[connection signal="body_entered" from="BlinkerBody/Area3D" to="BlinkerBody" method="_on_area_3d_body_entered"]
-[connection signal="timeout" from="BlinkerBody/BlinkTimer" to="BlinkerBody" method="_on_blink_timer_timeout"]
+[connection signal="body_entered" from="HurtBox" to="BlinkerBody" method="_on_hurt_box_body_entered"]
+[connection signal="screen_entered" from="BlinkerBody/VisibleOnScreenNotifier3D" to="BlinkerBody" method="_on_visible_on_screen_notifier_3d_screen_entered"]
+[connection signal="screen_exited" from="BlinkerBody/VisibleOnScreenNotifier3D" to="BlinkerBody" method="_on_visible_on_screen_notifier_3d_screen_exited"]

@@ -3,6 +3,7 @@ class_name Walker
 
 @export var speed := 0.3
 @export var rotation_speed := 0.2
+@export var aceleration_value := 40.0 ##The bigger the value, the longer the steps
 
 @onready var world_camera = $"../../CameraPivot/WorldCamera"
 @onready var camera_pivot = $"../../CameraPivot"
@@ -37,8 +38,8 @@ func physics_update(delta: float) -> void:
 	if Input.is_action_pressed("move_forward"):
 		#player.velocity.z = direction.z * speed
 		#player.velocity.x = direction.x * speed
-		player.velocity.z = move_toward(player.velocity.z, direction.z * speed, speed / 80)
-		player.velocity.x = move_toward(player.velocity.x, direction.x * speed, speed / 80)
+		player.velocity.z = move_toward(player.velocity.z, direction.z * speed, speed / aceleration_value)
+		player.velocity.x = move_toward(player.velocity.x, direction.x * speed, speed / aceleration_value)
 		if is_equal_approx(player.velocity.z, direction.z * speed) and is_equal_approx(player.velocity.x, direction.x * speed):
 			player.velocity.z = 0
 			player.velocity.x = 0

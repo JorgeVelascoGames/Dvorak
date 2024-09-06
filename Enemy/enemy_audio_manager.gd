@@ -7,24 +7,25 @@ class_name EnemyAudioManager
 @onready var spawn_sound: AudioStreamPlayer3D = $AudioStreamPlayer3D
 @onready var steps_sound: AudioStreamPlayer3D = $EnemyStepsSound
 @onready var vfx: AudioStreamPlayer3D = $EnemyVFX
-
+#TODO
 
 func _ready() -> void:
 	constant_audio.play()
-	spawn_sound.play()
+	#spawn_sound.play()
 
 
 func play_dead_audio(stop_constant_sound : bool = true) -> Signal:
 	if stop_constant_sound:
 		constant_audio.stop()
-	dead_audio.play()
+	#dead_audio.play()
 	return dead_audio.finished
 
 
 func play_random_step_sound() -> void:
-	steps_sound.play()
+	pass
+	#steps_sound.play()
 
 
 func play_sfx() -> Signal:
-	vfx.play()
+	#vfx.play()
 	return vfx.finished

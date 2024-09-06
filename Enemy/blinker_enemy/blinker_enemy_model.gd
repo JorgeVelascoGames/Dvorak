@@ -1,35 +1,36 @@
 extends Node3D
 class_name BlinkerBody
 
-@export var max_blink_timer := 6.0 
-@export var min_blink_timer := 3.7
+@onready var visible_on_screen_notifier_3d: VisibleOnScreenNotifier3D = $VisibleOnScreenNotifier3D
+@onready var blinker_enemy: Enemy = $".."
 
-@onready var blinker_enemy = $".."
-@onready var blink_timer = $BlinkTimer
+
+func _ready() -> void:
+	pass
 
 
 func blink() -> void:
-	global_position = blinker_enemy.position
-	global_position.x += randf_range(-1.5, 1.5)
-	look_at(blinker_enemy.player.global_position)
-	var new_blink_timer : float = next_blink_timer()
-	blink_timer.start(new_blink_timer)
-
-
-func next_blink_timer() -> float:
-	var blink_time := randf_range(min_blink_timer, max_blink_timer)
-	return blink_time
+	self.global_position = blinker_enemy.global_position
+	self.rotation = blinker_enemy.rotation
+	#Play animation maybe
 
 
 func enemy_die() -> void:
 	blinker_enemy.enemy_die()
 
 
-func _on_blink_timer_timeout():
-	blink()
-
-
-func _on_area_3d_body_entered(body):
+func _on_hurt_box_body_entered(body: Node3D) -> void:
 	if body is Player:
-		blinker_enemy.enemy_die()
+		blink()
 		body.player_hit()
+
+
+func _on_visible_on_screen_notifier_3d_screen_entered() -> void:
+	blink()
+	blinker_enemy.can_move = true
+	blinker_enemy.provoke = true
+	#start sound
+
+
+func _on_visible_on_screen_notifier_3d_screen_exited() -> void:
+	blinker_enemy.can_move = false
