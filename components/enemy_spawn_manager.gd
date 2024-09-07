@@ -18,7 +18,8 @@ class_name EnemySpawnManager
 
 func _ready() -> void:
 	for item in get_children():
-		enemy_spawn_list.append(item)
+		if item is Marker3D:
+			enemy_spawn_list.append(item)
 	
 	var initial_spawn_delay := initial_spawn_time_min
 	

@@ -5,7 +5,7 @@ class_name PlayerAim
 @onready var sensibility_timer = $SensibilityTimer
 @onready var aiming_gun: MeshInstance3D = $"../../SubViewportContainer/SubViewport/WeaponCamera/AimingGun"
 @onready var balance = $"../../Components/Balance"
-@onready var gun_ray = $"../../CameraPivot/WorldCamera/GunRay"
+@onready var gun_ray : RayCast3D = $"../../CameraPivot/WorldCamera/GunRay"
 
 @export var aim_multiplier: float = 0.3
 @export var aim_speed: float = 0.5
@@ -37,6 +37,7 @@ func input(event):
 	if event.is_action_pressed("fire"):
 		world_camera.weapon_recoil()
 		balance.add_balance(balance.shooting_cost)
+		print(gun_ray.get_collider())
 		if gun_ray.is_colliding() and gun_ray.get_collider().owner is Enemy:
 			gun_ray.get_collider().owner.enemy_die()
 	

@@ -3,12 +3,11 @@ class_name RoomRandomizer
 
 signal RoomsRandomized
 
-@export var room_configurations : Array[RoomConfigurations] = []
+@onready var room_configurations := get_children()
 
 
 func randomize_rooms() -> void:
 	for configuration in room_configurations:
 		configuration.randomize_configuration()
-		await configuration.ConfigurationRandomized
 	
 	RoomsRandomized.emit()

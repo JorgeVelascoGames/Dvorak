@@ -351,7 +351,7 @@ script = ExtResource("5_h6v2u")
 speed = 0.6
 rotation_speed = 0.4
 
-[node name="Aim" type="Node" parent="StateMachine"]
+[node name="Aim" type="Node" parent="StateMachine" groups=["player"]]
 script = ExtResource("6_rtwvu")
 aim_multiplier = 0.1
 
@@ -472,7 +472,9 @@ debug_shape_custom_color = Color(0.756863, 0.00392157, 0.941176, 1)
 
 [node name="GunRay" type="RayCast3D" parent="CameraPivot/WorldCamera"]
 target_position = Vector3(0, 0, -12)
-collision_mask = 131
+collision_mask = 129
+hit_from_inside = true
+collide_with_areas = true
 debug_shape_custom_color = Color(0.756863, 0.00392157, 0.941176, 1)
 
 [node name="DamageTexture" type="TextureRect" parent="."]

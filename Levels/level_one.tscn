@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://bv1dve5jsynt" path="res://Levels/game_environment.tscn" id="2_forkb"]
 [ext_resource type="MeshLibrary" uid="uid://c7rjhd6rdt57c" path="res://assets/environment/corridor/corridor_library.tres" id="3_exo53"]
 [ext_resource type="PackedScene" uid="uid://c5vmfb6wrd0un" path="res://ExitGate/exit_gate.tscn" id="4_sjj7j"]
-[ext_resource type="Script" path="res://Levels/room_randomizer.gd" id="5_m30ff"]
+[ext_resource type="Script" path="res://randomization/room_randomizer.gd" id="5_m30ff"]
 [ext_resource type="PackedScene" uid="uid://m6pypgl566n1" path="res://player/player.tscn" id="6_68trg"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_4os1j"]

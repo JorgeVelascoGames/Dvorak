@@ -1,9 +1,9 @@
-extends Node
+extends Node3D
 class_name RoomConfigurations
 
 signal ConfigurationRandomized
 
-@export var configurations : Array[Node3D] = []
+@onready var configurations := get_children()
 var selected_configuration : Node3D
 
 
