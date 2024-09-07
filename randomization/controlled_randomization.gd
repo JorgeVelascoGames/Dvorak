@@ -4,8 +4,9 @@ class_name ControlledRandomization
 signal RandomizationCompleted
 
 @export var items_to_save : int
-@export var items : Array[Node] = []
-@export var randomize_on_ready : bool = false
+@export var randomize_on_ready := false
+
+@onready var items := get_children()
 
 
 func _ready():

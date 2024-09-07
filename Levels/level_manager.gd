@@ -1,4 +1,5 @@
 extends Node3D
+class_name LevelManager
 
 var book_spawn_points :Array[Marker3D] = []
 @onready var controlled_randomizations := get_tree().get_nodes_in_group("controlled_randomization")
@@ -9,6 +10,7 @@ var book_spawn_points :Array[Marker3D] = []
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	await get_tree().process_frame
 	generate_rooms()
 
 
@@ -18,6 +20,7 @@ func generate_rooms() -> void:
 	for randomization in controlled_randomizations:
 		randomization.randomize_list()
 	#bake the navmesh
+	await get_tree().process_frame
 	navigation_region_3d.bake_navigation_mesh()
 	await navigation_region_3d.bake_finished
 	#Distribute books

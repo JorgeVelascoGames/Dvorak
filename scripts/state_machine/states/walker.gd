@@ -60,6 +60,8 @@ func physics_update(delta: float) -> void:
 
 
 func input(event):
+	if event.is_action_pressed("flashlight"):
+		walker.flashlight_togle()
 	if event.is_action_pressed("interact"):
 		player.interact()
 	if event is InputEventMouseMotion:

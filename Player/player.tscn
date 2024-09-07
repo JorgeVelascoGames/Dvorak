@@ -546,6 +546,15 @@ shape = SubResource("BoxShape3D_ggt7r")
 [node name="Interactable" type="Node" parent="WalkerFixedPoint/Walker/InteractableRB"]
 script = ExtResource("16_wvci1")
 
+[node name="Flashlight" type="SpotLight3D" parent="WalkerFixedPoint/Walker"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.432871, 0)
+light_color = Color(0.620101, 0.577479, 0.426758, 1)
+light_energy = 2.0
+light_indirect_energy = 2.0
+spot_range = 4.60655
+spot_attenuation = 2.0
+spot_angle = 35.1192
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_1d5hg")
