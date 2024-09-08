@@ -6,6 +6,7 @@ class_name PlayerAim
 @onready var aiming_gun: MeshInstance3D = $"../../SubViewportContainer/SubViewport/WeaponCamera/AimingGun"
 @onready var balance = $"../../Components/Balance"
 @onready var gun_ray : RayCast3D = $"../../CameraPivot/WorldCamera/GunRay"
+@onready var ammo_counter: AmmoCounter = $"../../Components/AmmoCounter"
 
 @export var aim_multiplier: float = 0.3
 @export var aim_speed: float = 0.5
@@ -35,11 +36,7 @@ func physics_update(delta: float) -> void:
 
 func input(event):
 	if event.is_action_pressed("fire"):
-		world_camera.weapon_recoil()
-		balance.add_balance(balance.shooting_cost)
-		print(gun_ray.get_collider())
-		if gun_ray.is_colliding() and gun_ray.get_collider().owner is Enemy:
-			gun_ray.get_collider().owner.enemy_die()
+		fire()
 	
 	if event is InputEventMouseMotion:
 		var random_jitter = Vector2(
@@ -63,6 +60,19 @@ func exit() -> void:
 	world_camera.shaking = false
 	player.camera_pivot.rotation.z = 0
 	aiming_gun.visible = false
+
+
+func fire() -> void:
+	if ammo_counter.try_fire_shot() == false:
+		state_machine.transition_to("Idle", {})
+		#Sound
+		return
+	
+	world_camera.weapon_recoil()
+	balance.add_balance(balance.shooting_cost)
+	print(gun_ray.get_collider())
+	if gun_ray.is_colliding() and gun_ray.get_collider().owner is Enemy:
+		gun_ray.get_collider().owner.enemy_die()
 
 
 func _on_sensibility_timer_timeout():

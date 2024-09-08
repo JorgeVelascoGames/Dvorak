@@ -6,7 +6,7 @@ extends MeshInstance3D
 
 
 func flashlight_togle() -> void:
-	flashlight.visible = !flashlight.visible
+	flashlight.toggle_flashlight()
 
 
 func free_walker() -> void:

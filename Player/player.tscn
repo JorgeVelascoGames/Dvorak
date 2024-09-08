@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=3 uid="uid://m6pypgl566n1"]
+[gd_scene load_steps=47 format=3 uid="uid://m6pypgl566n1"]
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_ref5g"]
 [ext_resource type="Script" path="res://player/smooth_camera.gd" id="2_cywkd"]
@@ -8,21 +8,63 @@
 [ext_resource type="Script" path="res://scripts/state_machine/states/walker.gd" id="5_h6v2u"]
 [ext_resource type="Texture2D" uid="uid://di7tj31llxo0i" path="res://player/damage.png" id="6_km1pl"]
 [ext_resource type="Script" path="res://scripts/state_machine/states/aim.gd" id="6_rtwvu"]
-[ext_resource type="Script" path="res://player/ammo_handler.gd" id="7_eej2v"]
 [ext_resource type="Script" path="res://scripts/state_machine/states/prepare_gun.gd" id="7_hfrgh"]
 [ext_resource type="PackedScene" uid="uid://bjq2dkpgpnav7" path="res://player/game_over_menu.tscn" id="7_keanm"]
 [ext_resource type="Script" path="res://scripts/state_machine/states/Unbalanced.gd" id="8_7b01x"]
 [ext_resource type="FontFile" uid="uid://yqk87iw0ykxp" path="res://assets/fonts/Roboto-Regular.ttf" id="8_dofuu"]
 [ext_resource type="Script" path="res://scripts/state_machine/states/Downed.gd" id="9_q33c7"]
 [ext_resource type="PackedScene" uid="uid://shutxn8dpbys" path="res://player/balance.tscn" id="10_m7euy"]
+[ext_resource type="Script" path="res://player/ammo_counter.gd" id="11_xb6v7"]
 [ext_resource type="Shape3D" uid="uid://df6y055xrghl7" path="res://player/player_normal_collision_shape.tres" id="12_6t6rn"]
+[ext_resource type="Script" path="res://player/player_ui.gd" id="14_0ypvp"]
 [ext_resource type="Script" path="res://player/walker.gd" id="15_hi5sq"]
 [ext_resource type="Script" path="res://components/interactable.gd" id="16_wvci1"]
+[ext_resource type="Script" path="res://player/flashlight.gd" id="18_mibl1"]
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_qj4cq"]
 top_radius = 0.02
 bottom_radius = 0.02
 height = 0.2
+
+[sub_resource type="GDScript" id="GDScript_7r1t3"]
+script/source = "extends Node
+class_name AmmoHandler
+
+@export var max_carried_ammo := 5
+@export var initial_ammo_storage := 12
+
+@onready var ammo_storage := initial_ammo_storage
+@onready var current_carried_ammo = max_carried_ammo
+
+
+func try_use_ammo() -> bool:
+	if current_carried_ammo > 0:
+		use_ammo()
+		return true
+	return false
+
+
+func use_ammo() -> void:
+	current_carried_ammo -= 1
+
+
+func reload() -> void:
+	var necessary_bullets = max_carried_ammo - current_carried_ammo
+	if ammo_storage >= necessary_bullets:
+		ammo_storage -= necessary_bullets
+		current_carried_ammo = max_carried_ammo
+	else:
+		current_carried_ammo += ammo_storage
+		ammo_storage = 0
+
+
+func pick_up_ammo(ammount: int) -> void:
+	ammo_storage += ammount
+
+
+#func update_ammo_label() -> void:
+	#ammo_label.text = str(ammo_storage[weapon_handler.current_active_weapon.ammo_type]) 
+"
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_fyred"]
 
@@ -90,6 +132,9 @@ _data = {
 [sub_resource type="LabelSettings" id="LabelSettings_cswfq"]
 font = ExtResource("8_dofuu")
 font_size = 64
+
+[sub_resource type="LabelSettings" id="LabelSettings_3m322"]
+font_size = 20
 
 [sub_resource type="BoxMesh" id="BoxMesh_2ns6k"]
 size = Vector3(0.6, 0.6, 0.6)
@@ -302,13 +347,6 @@ axis_lock_angular_z = true
 floor_max_angle = 0.959931
 script = ExtResource("1_ref5g")
 speed = 0.2
-fall_multiplier = null
-camera_sensibility = null
-can_jump = null
-damaged = null
-time_to_heal_up = null
-camBobSpeed = null
-camBobUpDown = null
 
 [node name="SubViewportContainer" type="SubViewportContainer" parent="."]
 anchors_preset = 15
@@ -351,7 +389,7 @@ script = ExtResource("5_h6v2u")
 speed = 0.6
 rotation_speed = 0.4
 
-[node name="Aim" type="Node" parent="StateMachine" groups=["player"]]
+[node name="Aim" type="Node" parent="StateMachine"]
 script = ExtResource("6_rtwvu")
 aim_multiplier = 0.1
 
@@ -362,7 +400,7 @@ autostart = true
 [node name="ShootCooldown" type="Timer" parent="StateMachine/Aim"]
 
 [node name="AmmoHandler" type="Node" parent="StateMachine/Aim"]
-script = ExtResource("7_eej2v")
+script = SubResource("GDScript_7r1t3")
 
 [node name="PrepareGun" type="Node" parent="StateMachine"]
 script = ExtResource("7_hfrgh")
@@ -444,6 +482,9 @@ getting_hit_cost = 500
 balance_recovery = 15
 bonus_balance_recovery = 80
 
+[node name="AmmoCounter" type="Node" parent="Components"]
+script = ExtResource("11_xb6v7")
+
 [node name="PlayerCollisionShape" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.355084)
 shape = ExtResource("12_6t6rn")
@@ -477,23 +518,40 @@ hit_from_inside = true
 collide_with_areas = true
 debug_shape_custom_color = Color(0.756863, 0.00392157, 0.941176, 1)
 
-[node name="DamageTexture" type="TextureRect" parent="."]
-modulate = Color(1, 1, 1, 0)
+[node name="PlayerUI" type="Control" parent="." groups=["player_ui"]]
+layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("14_0ypvp")
+
+[node name="DamageTexture" type="TextureRect" parent="PlayerUI"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -416.0
+offset_top = -204.0
+offset_right = 696.0
+offset_bottom = 404.0
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(576, 324)
 mouse_filter = 2
 texture = ExtResource("6_km1pl")
 
-[node name="DamageAnimationPlayer" type="AnimationPlayer" parent="DamageTexture"]
+[node name="DamageAnimationPlayer" type="AnimationPlayer" parent="PlayerUI/DamageTexture"]
 libraries = {
 "": SubResource("AnimationLibrary_xp5da")
 }
 
-[node name="MarginContainer" type="MarginContainer" parent="."]
+[node name="MarginContainer" type="MarginContainer" parent="PlayerUI"]
+layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -505,15 +563,41 @@ theme_override_constants/margin_top = 8
 theme_override_constants/margin_right = 8
 theme_override_constants/margin_bottom = 8
 
-[node name="StateLabel" type="Label" parent="MarginContainer"]
+[node name="StateLabel" type="Label" parent="PlayerUI/MarginContainer"]
 visible = false
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 0
 label_settings = SubResource("LabelSettings_cswfq")
 
-[node name="GameOverMenu" parent="." instance=ExtResource("7_keanm")]
+[node name="GameOverMenu" parent="PlayerUI" instance=ExtResource("7_keanm")]
 visible = false
+layout_mode = 1
+
+[node name="PlayerGameplayInfo" type="Label" parent="PlayerUI"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -14.0
+offset_bottom = 14.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "dfasdfa"
+label_settings = SubResource("LabelSettings_3m322")
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="CenterContainer" type="CenterContainer" parent="PlayerUI"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Timer" type="Timer" parent="PlayerUI"]
 
 [node name="WalkerFixedPoint" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.706177, -0.981278)
@@ -551,9 +635,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.432871, 0)
 light_color = Color(0.620101, 0.577479, 0.426758, 1)
 light_energy = 2.0
 light_indirect_energy = 2.0
-spot_range = 4.60655
-spot_attenuation = 2.0
-spot_angle = 35.1192
+spot_range = 8.0
+spot_attenuation = 0.0
+spot_angle = 26.8075
+script = ExtResource("18_mibl1")
+
+[node name="FlashlightBattery" type="Timer" parent="WalkerFixedPoint/Walker/Flashlight"]
+wait_time = 5.0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -590,4 +678,5 @@ parameters/unbalanced_blend/blend_amount = 0
 [connection signal="timeout" from="StateMachine/Unbalanced/ErrorTimer" to="StateMachine/Unbalanced" method="_on_error_timer_timeout"]
 [connection signal="timeout" from="CameraPivot/WorldCamera/AimShakeTimer" to="CameraPivot/WorldCamera" method="_on_aim_shake_timer_timeout"]
 [connection signal="on_interact" from="WalkerFixedPoint/Walker/InteractableRB/Interactable" to="." method="_on_interactable_on_interact"]
+[connection signal="timeout" from="WalkerFixedPoint/Walker/Flashlight/FlashlightBattery" to="WalkerFixedPoint/Walker/Flashlight" method="_on_flashlight_battery_timeout"]
 [connection signal="timeout" from="Timers/DamagedHealTimer" to="." method="_on_damaged_heal_timer_timeout"]

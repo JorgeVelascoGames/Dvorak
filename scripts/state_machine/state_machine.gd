@@ -7,7 +7,7 @@ signal  transitioned(state_name)
 
 var state : State
 
-@onready var state_label = $"../MarginContainer/StateLabel"
+@onready var state_label = $"../PlayerUI/MarginContainer/StateLabel"
 
 
 func _ready():

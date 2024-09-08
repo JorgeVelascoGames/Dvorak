@@ -3,9 +3,11 @@ class_name PrepareGun
 
 @onready var animation_player: AnimationPlayer = $"../../AnimationPlayer"
 @onready var animated_gun: MeshInstance3D = $"../../AnimatedObjects/AnimatedGun"
+@onready var ammo_counter: AmmoCounter = $"../../Components/AmmoCounter"
 
 
 func enter(_msg : ={}) -> void:
+	ammo_counter.reload()
 	animated_gun.visible = true
 	player.interactable_ray.process_mode = Node.PROCESS_MODE_DISABLED
 	animation_player.play("prepare_gun")

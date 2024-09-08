@@ -1,20 +1,14 @@
 extends Node3D
 class_name PassBook
 
-var switch_number : int
-var switch_correct_state : bool
+@export var time_to_show_text := 3.0
 
 #Components
-@onready var text = $CanvasLayer/Control/CenterContainer/Text as Label
-@onready var canvas_modulate = $CanvasLayer/Control/CanvasModulate as CanvasModulate
-@onready var show_text_timer = $Timers/ShowTextTimer
-@onready var fade_out_text_timer = $Timers/FadeOutTextTimer
 @onready var cool_down = $Timers/CoolDown #How much time needs the book to be interactable again after the text has fade out
 
-
-func _process(_delta):
-	if fade_out_text_timer.time_left > 0:
-		canvas_modulate.color.a = fade_out_text_timer.time_left / fade_out_text_timer.wait_time
+var switch_number : int
+var switch_correct_state : bool
+var text : String
 
 
 func set_up_book(state: bool, number : int) -> void:
@@ -50,17 +44,14 @@ func set_up_book(state: bool, number : int) -> void:
 			switch_order = "tenth"
 		_:
 			switch_order = str(number)
-	text.text = final_text.format([switch_order, switch_state])
+	
+	text = final_text.format([switch_order, switch_state])
 
 
 func _on_interactable_on_interact():
 	if cool_down.time_left > 0:
 		return
 	
-	cool_down.start(cool_down.wait_time + show_text_timer.wait_time + fade_out_text_timer.wait_time)
-	show_text_timer.start()
-	canvas_modulate.color.a = 1
+	var player_ui = get_tree().get_first_node_in_group("player_ui") as PlayerUI
 	
-	await  show_text_timer.timeout
-	
-	fade_out_text_timer.start()
+	player_ui.display_gameplay_text(text, time_to_show_text)

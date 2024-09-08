@@ -20,6 +20,7 @@ outline_color = Color(0.408329, 0.408329, 0.408329, 1)
 
 [node name="PassBook" type="Node3D"]
 script = ExtResource("1_vqmkl")
+time_to_show_text = null
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("BoxMesh_25mgc")
@@ -63,14 +64,6 @@ label_settings = SubResource("LabelSettings_0sn8r")
 color = Color(0.615686, 0.615686, 0.615686, 0)
 
 [node name="Timers" type="Node" parent="."]
-
-[node name="ShowTextTimer" type="Timer" parent="Timers"]
-wait_time = 3.0
-one_shot = true
-
-[node name="FadeOutTextTimer" type="Timer" parent="Timers"]
-wait_time = 1.5
-one_shot = true
 
 [node name="CoolDown" type="Timer" parent="Timers"]
 wait_time = 2.0

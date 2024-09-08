@@ -19,6 +19,13 @@ metadata/_editor_floor_ = Vector3(0, 0, 0)
 
 [node name="Player" parent="." instance=ExtResource("2_w48xj")]
 transform = Transform3D(-0.0190229, 0, -0.999819, 0, 1, 0, 0.999819, 0, -0.0190229, 9.79662, 1.27336, -0.435266)
+fall_multiplier = 2.5
+camera_sensibility = 1.2
+can_jump = true
+damaged = false
+time_to_heal_up = 30.0
+camBobSpeed = 4
+camBobUpDown = 0.1
 
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.3541, 2.1974, -1.37203)
