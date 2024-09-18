@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://b62fd7a6q7pm"]
+[gd_scene load_steps=25 format=3 uid="uid://b62fd7a6q7pm"]
 
 [ext_resource type="Script" path="res://Levels/level_manager.gd" id="1_1c0bo"]
 [ext_resource type="PackedScene" uid="uid://m6pypgl566n1" path="res://player/player.tscn" id="1_4278g"]
@@ -6,6 +6,7 @@
 [ext_resource type="Material" uid="uid://ciyx0k2mf8b5f" path="res://Levels/materials/grey.tres" id="3_m4mti"]
 [ext_resource type="Script" path="res://randomization/room_randomizer.gd" id="4_eyypd"]
 [ext_resource type="PackedScene" uid="uid://4upnysgx32r2" path="res://components/enemy_spawn_manager.tscn" id="4_gwayn"]
+[ext_resource type="Material" uid="uid://bs5uijiffl10r" path="res://assets/environment/corridor/materials/wall_high_mat.tres" id="4_lnrbb"]
 [ext_resource type="Script" path="res://randomization/room_configurations.gd" id="5_1f1fm"]
 [ext_resource type="PackedScene" uid="uid://qyjmhcrcrko3" path="res://components/enemy_spawner.tscn" id="5_j0fdo"]
 [ext_resource type="PackedScene" uid="uid://0wduiiq6476g" path="res://enemy/braid/braid.tscn" id="6_sdagq"]
@@ -15,6 +16,9 @@ vertices = PackedVector3Array(-34.0756, 10.082, -32.2996, -31.3256, 10.082, -30.
 polygons = [PackedInt32Array(1, 0, 2), PackedInt32Array(5, 4, 3), PackedInt32Array(0, 6, 2), PackedInt32Array(2, 6, 3), PackedInt32Array(3, 6, 5), PackedInt32Array(5, 6, 7), PackedInt32Array(11, 10, 8), PackedInt32Array(8, 10, 9), PackedInt32Array(11, 12, 10), PackedInt32Array(10, 12, 1), PackedInt32Array(1, 12, 13), PackedInt32Array(13, 12, 14), PackedInt32Array(13, 0, 1), PackedInt32Array(18, 17, 15), PackedInt32Array(15, 17, 16), PackedInt32Array(18, 15, 19), PackedInt32Array(19, 15, 4), PackedInt32Array(19, 4, 21), PackedInt32Array(19, 21, 20), PackedInt32Array(21, 4, 5), PackedInt32Array(23, 22, 24), PackedInt32Array(24, 22, 25), PackedInt32Array(25, 22, 26), PackedInt32Array(22, 27, 26), PackedInt32Array(28, 23, 24), PackedInt32Array(31, 30, 29), PackedInt32Array(28, 24, 32), PackedInt32Array(32, 24, 33), PackedInt32Array(33, 24, 29), PackedInt32Array(29, 24, 31), PackedInt32Array(30, 31, 34), PackedInt32Array(34, 31, 36), PackedInt32Array(34, 36, 35), PackedInt32Array(35, 37, 34), PackedInt32Array(40, 39, 38), PackedInt32Array(43, 42, 41), PackedInt32Array(38, 43, 41), PackedInt32Array(38, 41, 40), PackedInt32Array(40, 41, 27), PackedInt32Array(27, 41, 26), PackedInt32Array(46, 45, 44), PackedInt32Array(37, 35, 47), PackedInt32Array(47, 35, 48), PackedInt32Array(50, 49, 51), PackedInt32Array(51, 49, 52), PackedInt32Array(54, 53, 55), PackedInt32Array(55, 53, 51), PackedInt32Array(55, 51, 52), PackedInt32Array(59, 58, 56), PackedInt32Array(56, 58, 57), PackedInt32Array(56, 62, 59), PackedInt32Array(59, 62, 60), PackedInt32Array(60, 62, 54), PackedInt32Array(60, 54, 61), PackedInt32Array(62, 53, 54), PackedInt32Array(61, 63, 60), PackedInt32Array(65, 64, 66), PackedInt32Array(66, 64, 67), PackedInt32Array(69, 68, 70), PackedInt32Array(70, 68, 49), PackedInt32Array(70, 49, 72), PackedInt32Array(70, 72, 71), PackedInt32Array(39, 40, 73), PackedInt32Array(73, 40, 74), PackedInt32Array(71, 75, 70), PackedInt32Array(64, 73, 67), PackedInt32Array(67, 73, 74), PackedInt32Array(67, 74, 68), PackedInt32Array(67, 68, 69), PackedInt32Array(79, 78, 76), PackedInt32Array(76, 78, 77), PackedInt32Array(76, 72, 79), PackedInt32Array(79, 72, 50), PackedInt32Array(50, 72, 49), PackedInt32Array(83, 82, 80), PackedInt32Array(80, 82, 81), PackedInt32Array(86, 85, 84), PackedInt32Array(84, 87, 86), PackedInt32Array(86, 87, 66), PackedInt32Array(65, 66, 88), PackedInt32Array(88, 66, 87), PackedInt32Array(88, 87, 89), PackedInt32Array(89, 90, 88), PackedInt32Array(88, 90, 91), PackedInt32Array(91, 90, 92), PackedInt32Array(91, 92, 41), PackedInt32Array(41, 42, 91), PackedInt32Array(90, 93, 92), PackedInt32Array(70, 75, 94), PackedInt32Array(94, 75, 63), PackedInt32Array(94, 63, 61), PackedInt32Array(94, 61, 95), PackedInt32Array(96, 85, 86), PackedInt32Array(96, 86, 97), PackedInt32Array(97, 86, 98), PackedInt32Array(92, 93, 99), PackedInt32Array(100, 97, 98), PackedInt32Array(100, 98, 99), PackedInt32Array(99, 98, 92), PackedInt32Array(92, 98, 101), PackedInt32Array(104, 103, 102), PackedInt32Array(104, 102, 105), PackedInt32Array(105, 102, 106), PackedInt32Array(105, 106, 101), PackedInt32Array(98, 105, 101), PackedInt32Array(108, 107, 109), PackedInt32Array(109, 107, 110), PackedInt32Array(110, 107, 48), PackedInt32Array(107, 47, 48), PackedInt32Array(111, 108, 109), PackedInt32Array(112, 111, 109), PackedInt32Array(112, 109, 113), PackedInt32Array(113, 109, 103), PackedInt32Array(103, 109, 102), PackedInt32Array(114, 16, 17), PackedInt32Array(8, 9, 115), PackedInt32Array(115, 9, 16), PackedInt32Array(115, 16, 114), PackedInt32Array(115, 114, 116)]
 agent_radius = 1.0
 filter_ledge_spans = true
+
+[sub_resource type="BoxMesh" id="BoxMesh_5irnd"]
+size = Vector3(8, 8, 1)
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_xkx53"]
 
@@ -124,6 +128,11 @@ polygon = PackedVector2Array(-10.195, 0, -2.6933, 2.70114, 2.51, 0)
 depth = 2.99
 material = ExtResource("2_logh3")
 
+[node name="MeshInstance3D" type="MeshInstance3D" parent="NavigationRegion3D/LevelObjects"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.15339, 0.519646, 2.67003)
+mesh = SubResource("BoxMesh_5irnd")
+surface_material_override/0 = ExtResource("4_lnrbb")
+
 [node name="Rooms" type="Node3D" parent="NavigationRegion3D"]
 
 [node name="RoomRandomizer" type="Node3D" parent="NavigationRegion3D/Rooms"]
@@ -209,13 +218,7 @@ shadow_enabled = true
 
 [node name="Player" parent="." instance=ExtResource("1_4278g")]
 transform = Transform3D(0.0469495, 0, -0.998897, 0, 1, 0, 0.998897, 0, 0.0469495, -11.1526, 4.28604, -1.67766)
-fall_multiplier = 2.5
 camera_sensibility = 1.5
-can_jump = true
-damaged = false
-time_to_heal_up = 30.0
-camBobSpeed = 4
-camBobUpDown = 0.1
 
 [node name="EnemySpawnManager" parent="." instance=ExtResource("4_gwayn")]
 initial_spawn_time_min = 2.0

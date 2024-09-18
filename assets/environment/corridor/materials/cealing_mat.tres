@@ -6,10 +6,8 @@
 
 [resource]
 albedo_texture = ExtResource("1_xyupk")
-emission_enabled = true
 emission_energy_multiplier = 0.0
 emission_texture = ExtResource("2_63omo")
-normal_enabled = true
 normal_texture = ExtResource("3_dyaq6")
 uv1_scale = Vector3(0.82, 0.82, 0.82)
 uv1_triplanar = true
