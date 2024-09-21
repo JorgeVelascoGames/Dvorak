@@ -14,7 +14,7 @@ extends CharacterBody3D
 @onready var enemy_audio_manager: EnemyAudioManager = $EnemyAudioManager
 @onready var enemy_animation: EnemyAnimator = $EnemyAnimation
 @onready var player : Player = get_tree().get_first_node_in_group("player")
-@onready var model: Node3D = $model
+@onready var model: Node3D = $Model
 
 var provoke := false
 var can_move := true
