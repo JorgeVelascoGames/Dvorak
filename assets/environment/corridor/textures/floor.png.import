@@ -2,20 +2,17 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bjon85qxkv8rn"
-path.s3tc="res://.godot/imported/corridor_tileset_floor_lowres_256x256.png-9f308ae0ec9d1d5ecf3b32a10608d040.s3tc.ctex"
+uid="uid://c0r5fvteg32bp"
+path.s3tc="res://.godot/imported/floor.png-87a44d0d7ffa5d52e495e2b906f7b995.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
-generator_parameters={
-"md5": "eb8d063d778749fb187f3ed992d2496d"
-}
 
 [deps]
 
-source_file="res://assets/environment/corridor/corridor_tileset_floor_lowres_256x256.png"
-dest_files=["res://.godot/imported/corridor_tileset_floor_lowres_256x256.png-9f308ae0ec9d1d5ecf3b32a10608d040.s3tc.ctex"]
+source_file="res://assets/environment/corridor/textures/floor.png"
+dest_files=["res://.godot/imported/floor.png-87a44d0d7ffa5d52e495e2b906f7b995.s3tc.ctex"]
 
 [params]
 

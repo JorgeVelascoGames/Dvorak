@@ -14,6 +14,7 @@ extends CharacterBody3D
 @onready var enemy_audio_manager: EnemyAudioManager = $EnemyAudioManager
 @onready var enemy_animation: EnemyAnimator = $EnemyAnimation
 @onready var player : Player = get_tree().get_first_node_in_group("player")
+@onready var model: Node3D = $model
 
 var provoke := false
 var can_move := true
@@ -22,6 +23,7 @@ var gravity: float = ProjectSettings.get_setting("physics/3d/default_gravity")
 
 
 func _ready() -> void:
+	model.top_level = true
 	if provoke_on_ready:
 		provoke = true
 	
@@ -35,6 +37,9 @@ func _ready() -> void:
 
 
 func _process(_delta: float) -> void:
+	model.global_position = global_position
+	model.rotation.y = rotation.y
+	
 	if not is_active:
 		return
 	if not can_move:

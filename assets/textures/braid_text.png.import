@@ -2,20 +2,17 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://q0q0digi1bp1"
-path.s3tc="res://.godot/imported/corridor_tileset_wall_1_lowres_256x256.png-892298a0fc12b5950b8414507e6d6c7e.s3tc.ctex"
+uid="uid://7abpetbrhmpo"
+path.s3tc="res://.godot/imported/braid_text.png-7606a2b8b86bde57b4e23dcbedc32e37.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
-generator_parameters={
-"md5": "adb7325ceabf96c74904aca7b5c1eaf3"
-}
 
 [deps]
 
-source_file="res://assets/environment/corridor/corridor_tileset_wall_1_lowres_256x256.png"
-dest_files=["res://.godot/imported/corridor_tileset_wall_1_lowres_256x256.png-892298a0fc12b5950b8414507e6d6c7e.s3tc.ctex"]
+source_file="res://assets/textures/braid_text.png"
+dest_files=["res://.godot/imported/braid_text.png-7606a2b8b86bde57b4e23dcbedc32e37.s3tc.ctex"]
 
 [params]
 

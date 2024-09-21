@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://dcjd753qd40eg"
-path="res://.godot/imported/corridor_tileset.glb-94d9336e9eddfb20da94325958b382c8.scn"
+uid="uid://c0a4nsmx13e72"
+path="res://.godot/imported/corridor.glb-fd837f89f6d363841695d3e5e5631e25.scn"
 
 [deps]
 
-source_file="res://assets/environment/corridor/corridor_tileset.glb"
-dest_files=["res://.godot/imported/corridor_tileset.glb-94d9336e9eddfb20da94325958b382c8.scn"]
+source_file="res://assets/environment/corridor/corridor.glb"
+dest_files=["res://.godot/imported/corridor.glb-fd837f89f6d363841695d3e5e5631e25.scn"]
 
 [params]
 
@@ -17,6 +17,7 @@ nodes/root_type=""
 nodes/root_name=""
 nodes/apply_root_scale=true
 nodes/root_scale=1.0
+nodes/import_as_skeleton_bones=false
 meshes/ensure_tangents=true
 meshes/generate_lods=true
 meshes/create_shadow_meshes=true
@@ -28,6 +29,7 @@ animation/import=true
 animation/fps=30
 animation/trimming=false
 animation/remove_immutable_tracks=true
+animation/import_rest_as_RESET=false
 import_script/path=""
 _subresources={}
 gltf/naming_version=1

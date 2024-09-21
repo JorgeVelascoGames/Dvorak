@@ -1,47 +1,51 @@
-[gd_scene load_steps=9 format=3 uid="uid://0wduiiq6476g"]
+[gd_scene load_steps=8 format=3 uid="uid://0wduiiq6476g"]
 
 [ext_resource type="PackedScene" uid="uid://omjxjkehmmbw" path="res://enemy/enemy.tscn" id="1_c35q5"]
 [ext_resource type="PackedScene" uid="uid://u0i0m1o3gr4h" path="res://components/decal_spawner.tscn" id="2_q06nb"]
 [ext_resource type="PackedScene" uid="uid://dntxkqhhia68" path="res://vfx/blood_decal/blood_decal_big.tscn" id="3_l75al"]
+[ext_resource type="PackedScene" uid="uid://c40uj5j8ryqeq" path="res://enemy/braid/braid_model.tscn" id="4_edfg4"]
 
-[sub_resource type="SphereShape3D" id="SphereShape3D_xsxcg"]
+[sub_resource type="SphereShape3D" id="SphereShape3D_gp66m"]
 
-[sub_resource type="SphereMesh" id="SphereMesh_7u4hw"]
-
-[sub_resource type="PlaneMesh" id="PlaneMesh_88sxb"]
-size = Vector2(0.6, 0.6)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ivaq2"]
-albedo_color = Color(1, 0.293057, 0.161943, 1)
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_2r4em"]
+radius = 0.260946
+height = 1.08099
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_31vxc"]
 radius = 0.598886
 
 [node name="Braid" instance=ExtResource("1_c35q5")]
 collision_layer = 8
+axis_lock_angular_x = false
+axis_lock_angular_z = false
 always_face_player = false
 
+[node name="HurtBox" parent="." index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.545987, 0)
+
+[node name="CollisionShape3D" parent="HurtBox" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.215935)
+shape = SubResource("SphereShape3D_gp66m")
+
 [node name="CollisionShape3D" parent="." index="3"]
-shape = SubResource("SphereShape3D_xsxcg")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.545987, 0)
+shape = SubResource("CapsuleShape3D_2r4em")
 
 [node name="DecalSpawner" parent="." index="6" instance=ExtResource("2_q06nb")]
 decal = ExtResource("3_l75al")
 spawn_decal_on_timer = 2.0
 start_spawn_on_ready = true
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="." index="7"]
-layers = 32
-mesh = SubResource("SphereMesh_7u4hw")
+[node name="HitboxBoneTransform" parent="." index="7"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.645121, 0)
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="MeshInstance3D" index="0"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, -0.487473)
-mesh = SubResource("PlaneMesh_88sxb")
-surface_material_override/0 = SubResource("StandardMaterial3D_ivaq2")
-
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="MeshInstance3D" index="1"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, -0.463222)
-mesh = SubResource("PlaneMesh_88sxb")
-surface_material_override/0 = SubResource("StandardMaterial3D_ivaq2")
+[node name="Hitbox" parent="." index="8"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.645121, 0)
 
 [node name="CollisionShape3D" parent="Hitbox" index="0"]
 shape = SubResource("SphereShape3D_31vxc")
+
+[node name="model" type="Node3D" parent="." index="9"]
+
+[node name="BraidModel" parent="model" index="0" instance=ExtResource("4_edfg4")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)

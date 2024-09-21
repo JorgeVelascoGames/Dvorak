@@ -1,0 +1,10 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://b3n1r4nx36rvm"]
+
+[ext_resource type="Texture2D" uid="uid://ebed71hioh23" path="res://assets/environment/corridor/textures/environment_texture_map.png" id="1_m8bc0"]
+
+[resource]
+albedo_texture = ExtResource("1_m8bc0")
+emission_energy_multiplier = 8.48
+rim = 0.45
+clearcoat = 0.85
+grow_amount = -0.045

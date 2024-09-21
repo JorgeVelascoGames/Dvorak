@@ -1,0 +1,45 @@
+[gd_scene load_steps=7 format=3 uid="uid://cjdiiwvjri1oq"]
+
+[ext_resource type="PackedScene" uid="uid://c0a4nsmx13e72" path="res://assets/environment/corridor/corridor.glb" id="1_54yvl"]
+[ext_resource type="Material" uid="uid://b3n1r4nx36rvm" path="res://assets/environment/corridor/materials/environment_mat.tres" id="2_mwihw"]
+[ext_resource type="Material" uid="uid://hwbkliclynpj" path="res://assets/environment/corridor/materials/stair_steps_mat.tres" id="3_o8s38"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_6ylvu"]
+points = PackedVector3Array(-0.5, -0.5, 0, -0.5, 2.5, 0, -0.5, 2.5, 5, -0.5, -0.5, 5)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_m3ywk"]
+points = PackedVector3Array(0.5, -0.5, 0, 0.5, 2.5, 0, 0.5, 2.5, 5, 0.5, -0.5, 5)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_v1twa"]
+points = PackedVector3Array(0.5, -0.5, 0, -0.5, -0.5, 0, 0.5, 2.5, 3, -0.5, 2.5, 3)
+
+[node name="corridor" instance=ExtResource("1_54yvl")]
+
+[node name="floor_and_cealing" parent="." index="0"]
+layers = 65
+surface_material_override/0 = ExtResource("2_mwihw")
+
+[node name="wall" parent="." index="1"]
+layers = 65
+surface_material_override/0 = ExtResource("2_mwihw")
+
+[node name="corner" parent="." index="2"]
+layers = 65
+surface_material_override/0 = ExtResource("2_mwihw")
+
+[node name="staircase" parent="." index="3"]
+layers = 65
+surface_material_override/0 = ExtResource("2_mwihw")
+surface_material_override/1 = ExtResource("3_o8s38")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="staircase" index="0"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="staircase/StaticBody3D" index="0"]
+shape = SubResource("ConvexPolygonShape3D_6ylvu")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="staircase/StaticBody3D" index="1"]
+shape = SubResource("ConvexPolygonShape3D_m3ywk")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="staircase/StaticBody3D" index="2"]
+shape = SubResource("ConvexPolygonShape3D_v1twa")

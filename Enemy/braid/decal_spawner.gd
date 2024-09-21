@@ -19,7 +19,6 @@ func spawn_decal(position : Vector3 = self.global_position):
 	var new_decal : Decal = decal.instantiate() as Decal
 	new_decal.top_level = true
 	add_child(new_decal)
-	new_decal.rotate_y(randf() * 50.0)
 	new_decal.global_position = position
 	if spawn_decal_on_timer > 0:
 		timer.start(spawn_decal_on_timer)

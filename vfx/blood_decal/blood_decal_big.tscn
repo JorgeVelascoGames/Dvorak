@@ -1,6 +1,13 @@
-[gd_scene load_steps=5 format=3 uid="uid://dntxkqhhia68"]
+[gd_scene load_steps=12 format=3 uid="uid://dntxkqhhia68"]
 
-[ext_resource type="Texture2D" uid="uid://b1rh8w7wc51yp" path="res://icon.svg" id="1_abasw"]
+[ext_resource type="Texture2D" uid="uid://cvxmhctqpe1qa" path="res://assets/blood_textures/blood_splatters_1.png" id="1_bfcgi"]
+[ext_resource type="Script" path="res://vfx/blood_decal/blood_decal.gd" id="2_ks6t4"]
+[ext_resource type="Texture2D" uid="uid://boyslwhppr603" path="res://assets/blood_textures/blood_splatters_2.png" id="3_f5rle"]
+[ext_resource type="Texture2D" uid="uid://dejipry58ns06" path="res://assets/blood_textures/blood_splatters_3.png" id="4_khcaw"]
+[ext_resource type="Texture2D" uid="uid://dnltqxcmqamy0" path="res://assets/blood_textures/blood_splatters_4.png" id="5_gq3xk"]
+[ext_resource type="Texture2D" uid="uid://bhjjc403o5cl" path="res://assets/blood_textures/blood_splatters_5.png" id="6_mpdyh"]
+[ext_resource type="Texture2D" uid="uid://boeo54kwr2wri" path="res://assets/blood_textures/blood_splatters_6.png" id="7_tha6l"]
+[ext_resource type="Texture2D" uid="uid://bijpedlrvek0l" path="res://assets/blood_textures/blood_splatters_7.png" id="8_m823a"]
 
 [sub_resource type="Animation" id="Animation_pbp6m"]
 length = 0.001
@@ -78,12 +85,16 @@ _data = {
 }
 
 [node name="Decal" type="Decal"]
-texture_emission = ExtResource("1_abasw")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0400727, 0)
+size = Vector3(1, 1, 1)
+texture_albedo = ExtResource("1_bfcgi")
+modulate = Color(0.733333, 0, 0.0235294, 1)
 normal_fade = 0.085
 cull_mask = 64
+script = ExtResource("2_ks6t4")
+textures = Array[Texture2D]([ExtResource("1_bfcgi"), ExtResource("3_f5rle"), ExtResource("4_khcaw"), ExtResource("5_gq3xk"), ExtResource("6_mpdyh"), ExtResource("7_tha6l"), ExtResource("8_m823a")])
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_tilyb")
 }
-autoplay = "fade_out"

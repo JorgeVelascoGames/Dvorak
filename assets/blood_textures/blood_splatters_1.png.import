@@ -2,20 +2,17 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://brlklt83vd7cf"
-path.s3tc="res://.godot/imported/corridor_tileset_metal_lowres_256x256.png-96cbc811b07d1177f04482c48818b6f9.s3tc.ctex"
+uid="uid://cvxmhctqpe1qa"
+path.s3tc="res://.godot/imported/blood_splatters_1.png-076de2ffbe98a1261f5f51d1d94a0732.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
-generator_parameters={
-"md5": "50f497472bbb3023dbc9cb18a3778334"
-}
 
 [deps]
 
-source_file="res://assets/environment/corridor/corridor_tileset_metal_lowres_256x256.png"
-dest_files=["res://.godot/imported/corridor_tileset_metal_lowres_256x256.png-96cbc811b07d1177f04482c48818b6f9.s3tc.ctex"]
+source_file="res://assets/blood_textures/blood_splatters_1.png"
+dest_files=["res://.godot/imported/blood_splatters_1.png-076de2ffbe98a1261f5f51d1d94a0732.s3tc.ctex"]
 
 [params]
 

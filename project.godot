@@ -24,8 +24,6 @@ PathfindingManager="*res://scripts/pahtfinding_manager/pathfinding_manager.tscn"
 window/size/viewport_width=320
 window/size/viewport_height=240
 window/size/mode=3
-window/size/window_width_override=1280
-window/size/window_height_override=960
 window/stretch/mode="viewport"
 
 [input]
@@ -243,4 +241,5 @@ bot_key_h={
 
 textures/canvas_textures/default_texture_filter=0
 textures/default_filters/use_nearest_mipmap_filter=true
+scaling_3d/mode=1
 anti_aliasing/quality/msaa_3d=2
