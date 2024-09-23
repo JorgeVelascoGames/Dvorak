@@ -1,8 +1,10 @@
 extends PlayerState
 class_name Downed
 
-@export var necessary_keys_to_press : int 
+@export var necessary_keys_to_press_min := 15
+@export var necessary_keys_to_press_max := 25
 
+var necessary_keys_to_press : int 
 var left_key_selection : String
 var right_key_selection : String
 enum KeyboardSide {left, right}
@@ -11,7 +13,7 @@ var top_side_keys = ["top_key_4", "top_key_5", "top_key_6", "top_key_7", "top_ke
 var bot_side_keys = ["bot_key_v", "bot_key_b", "bot_key_f", "bot_key_g",  "bot_key_h"]
 var correct_key_pressed : int = 0
 
-@onready var placeholder_l_able = $BalancedUI/PlaceholderLAble
+@onready var placeholder_l_able = $"../../PlayerUI/BalancedUI/PlaceholderLAble"
 @onready var animation_player = $"../../AnimationPlayer"
 @onready var camera_pivot = $"../../CameraPivot"
 @onready var camera_pivot_pos_y : float = camera_pivot.position.y
@@ -19,6 +21,7 @@ var correct_key_pressed : int = 0
 
 
 func enter(_msg : ={}) -> void:
+	necessary_keys_to_press = randi_range(necessary_keys_to_press_min, necessary_keys_to_press_max)
 	player.velocity = Vector3.ZERO
 	left_key_selection = top_side_keys.pick_random()
 	right_key_selection = bot_side_keys.pick_random()

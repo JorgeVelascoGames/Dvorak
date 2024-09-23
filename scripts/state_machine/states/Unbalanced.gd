@@ -17,7 +17,7 @@ var finished_state := false
 
 @onready var original_margin_of_error : float = margin_of_error
 @onready var timer = $Timer
-@onready var placeholder_l_able = $BalancedUI/PlaceholderLAble
+@onready var placeholder_l_able = $"../../PlayerUI/BalancedUI/PlaceholderLAble"
 @onready var error_timer = $ErrorTimer
 @onready var animation_player = $"../../AnimationPlayer"
 @onready var camera_pivot = $"../../CameraPivot"

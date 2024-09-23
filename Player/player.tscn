@@ -1,4 +1,4 @@
-[gd_scene load_steps=47 format=3 uid="uid://m6pypgl566n1"]
+[gd_scene load_steps=48 format=3 uid="uid://m6pypgl566n1"]
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_ref5g"]
 [ext_resource type="Script" path="res://player/smooth_camera.gd" id="2_cywkd"]
@@ -13,6 +13,7 @@
 [ext_resource type="Script" path="res://scripts/state_machine/states/Unbalanced.gd" id="8_7b01x"]
 [ext_resource type="FontFile" uid="uid://yqk87iw0ykxp" path="res://assets/fonts/Roboto-Regular.ttf" id="8_dofuu"]
 [ext_resource type="Script" path="res://scripts/state_machine/states/Downed.gd" id="9_q33c7"]
+[ext_resource type="Script" path="res://scripts/state_machine/states/long_interaction.gd" id="10_b71wi"]
 [ext_resource type="PackedScene" uid="uid://shutxn8dpbys" path="res://player/balance.tscn" id="10_m7euy"]
 [ext_resource type="Script" path="res://player/ammo_counter.gd" id="11_xb6v7"]
 [ext_resource type="Shape3D" uid="uid://df6y055xrghl7" path="res://player/player_normal_collision_shape.tres" id="12_6t6rn"]
@@ -415,59 +416,14 @@ difficulty_increase = 0.6
 [node name="Timer" type="Timer" parent="StateMachine/Unbalanced"]
 one_shot = true
 
-[node name="BalancedUI" type="Control" parent="StateMachine/Unbalanced"]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="PlaceholderLAble" type="Label" parent="StateMachine/Unbalanced/BalancedUI"]
-visible = false
-layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -119.0
-offset_top = -57.0
-offset_right = 118.0
-offset_bottom = -32.0
-grow_horizontal = 2
-grow_vertical = 0
-text = "test
-"
-
 [node name="ErrorTimer" type="Timer" parent="StateMachine/Unbalanced"]
 one_shot = true
 
 [node name="Downed" type="Node" parent="StateMachine"]
 script = ExtResource("9_q33c7")
-necessary_keys_to_press = 20
 
-[node name="BalancedUI" type="Control" parent="StateMachine/Downed"]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="PlaceholderLAble" type="Label" parent="StateMachine/Downed/BalancedUI"]
-layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -120.0
-offset_top = -62.0
-offset_right = 121.0
-offset_bottom = -32.0
-grow_horizontal = 2
-grow_vertical = 0
+[node name="PlayerLongInteraction" type="Node" parent="StateMachine"]
+script = ExtResource("10_b71wi")
 
 [node name="PlayerCapsule" type="MeshInstance3D" parent="."]
 visible = false
@@ -598,6 +554,31 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Timer" type="Timer" parent="PlayerUI"]
+
+[node name="BalancedUI" type="Control" parent="PlayerUI"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PlaceholderLAble" type="Label" parent="PlayerUI/BalancedUI"]
+visible = false
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -119.0
+offset_top = -57.0
+offset_right = 118.0
+offset_bottom = -32.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "test
+"
 
 [node name="WalkerFixedPoint" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.706177, -0.981278)

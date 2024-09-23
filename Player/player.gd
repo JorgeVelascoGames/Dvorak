@@ -77,6 +77,8 @@ func interact() -> void:
 	#print(interactable_ray.get_collider())
 	for child in interactable_ray.get_collider().get_children():
 		if child is Interactable:
+			if child.long_interaction:
+				state_machine.transition_to("PlayerLongInteraction", {"object" : child})
 			child.interact()
 
 
