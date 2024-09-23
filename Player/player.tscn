@@ -320,7 +320,7 @@ animation = &"unbalanced"
 [sub_resource type="AnimationNodeBlend2" id="AnimationNodeBlend2_qem71"]
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_x2kci"]
-graph_offset = Vector2(16, -246)
+graph_offset = Vector2(691.324, -164.165)
 nodes/Animation/node = SubResource("AnimationNodeAnimation_3dwcv")
 nodes/Animation/position = Vector2(420, 260)
 "nodes/Animation 2/node" = SubResource("AnimationNodeAnimation_5bcms")

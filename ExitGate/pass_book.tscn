@@ -20,7 +20,6 @@ outline_color = Color(0.408329, 0.408329, 0.408329, 1)
 
 [node name="PassBook" type="Node3D"]
 script = ExtResource("1_vqmkl")
-time_to_show_text = null
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("BoxMesh_25mgc")
@@ -70,3 +69,4 @@ wait_time = 2.0
 one_shot = true
 
 [connection signal="on_interact" from="MeshInstance3D/StaticBody3D/Interactable" to="." method="_on_interactable_on_interact"]
+[connection signal="on_long_interact" from="MeshInstance3D/StaticBody3D/Interactable" to="." method="_on_interactable_on_long_interact"]

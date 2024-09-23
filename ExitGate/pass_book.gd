@@ -54,4 +54,13 @@ func _on_interactable_on_interact():
 	
 	var player_ui = get_tree().get_first_node_in_group("player_ui") as PlayerUI
 	
+	player_ui.display_gameplay_text("You are serching the book...", time_to_show_text)
+
+
+func _on_interactable_on_long_interact() -> void:
+	if cool_down.time_left > 0:
+		return
+	
+	var player_ui = get_tree().get_first_node_in_group("player_ui") as PlayerUI
+	
 	player_ui.display_gameplay_text(text, time_to_show_text)
