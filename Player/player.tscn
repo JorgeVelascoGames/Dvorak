@@ -1,4 +1,4 @@
-[gd_scene load_steps=48 format=3 uid="uid://m6pypgl566n1"]
+[gd_scene load_steps=52 format=3 uid="uid://m6pypgl566n1"]
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_ref5g"]
 [ext_resource type="Script" path="res://player/smooth_camera.gd" id="2_cywkd"]
@@ -184,6 +184,18 @@ tracks/2/keys = {
 "update": 0,
 "values": [Vector3(0, 0.3, 0)]
 }
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("CameraPivot:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-1.309, 0, 0)]
+}
 
 [sub_resource type="Animation" id="Animation_f0x85"]
 resource_name = "floor"
@@ -281,16 +293,34 @@ tracks/1/path = NodePath("CameraPivot:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 1, 2.4, 3.4, 4.7, 6),
+"times": PackedFloat32Array(0, 1.03333, 2.4, 3.4, 4.7, 6),
 "transitions": PackedFloat32Array(2, 2, 2, 2, 2, 2),
 "update": 0,
 "values": [Vector3(0, -0.135978, 0), Vector3(0, -0.0746599, 0), Vector3(0, -0.0853905, 0), Vector3(0, -0.10072, 0), Vector3(0, -0.407561, 0), Vector3(0, -0.135978, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_hxgs6"]
+resource_name = "losing_balance"
+length = 7.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CameraPivot:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.9, 2.06667, 3.4, 4.76667, 5.86667, 6.1, 7),
+"transitions": PackedFloat32Array(1, 1, 1, 1.7411, 0.574349, 1.56917, 0.615572, 1.93187),
+"update": 0,
+"values": [Vector3(0, -0.135978, 0), Vector3(0.09, 0.07, 0), Vector3(-0.1, -0.07, 0), Vector3(0.1, -0.11, -0.02), Vector3(-0.01, 0.088, 0.016), Vector3(0.06, -0.1, -0.05), Vector3(-0.1, -0.131, -0.031), Vector3(0, -0.135978, 0)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_1d5hg"]
 _data = {
 "RESET": SubResource("Animation_1ivek"),
 "floor": SubResource("Animation_f0x85"),
+"losing_balance": SubResource("Animation_hxgs6"),
 "no_animation": SubResource("Animation_yw3n8"),
 "prepare_gun": SubResource("Animation_dutym"),
 "unbalanced": SubResource("Animation_hbgry")
@@ -313,14 +343,21 @@ animation = &"no_animation"
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_3dwcv"]
 animation = &"unbalanced"
 
+[sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_fwq1o"]
+
 [sub_resource type="AnimationNodeBlend2" id="AnimationNodeBlend2_kecm2"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_5xjhm"]
+animation = &"losing_balance"
+
+[sub_resource type="AnimationNodeBlend2" id="AnimationNodeBlend2_rl3gr"]
 
 [sub_resource type="AnimationNodeOneShot" id="AnimationNodeOneShot_otsha"]
 
 [sub_resource type="AnimationNodeBlend2" id="AnimationNodeBlend2_qem71"]
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_x2kci"]
-graph_offset = Vector2(691.324, -164.165)
+graph_offset = Vector2(921.482, 329.955)
 nodes/Animation/node = SubResource("AnimationNodeAnimation_3dwcv")
 nodes/Animation/position = Vector2(420, 260)
 "nodes/Animation 2/node" = SubResource("AnimationNodeAnimation_5bcms")
@@ -329,14 +366,20 @@ nodes/Animation/position = Vector2(420, 260)
 "nodes/Animation 3/position" = Vector2(140, 260)
 "nodes/Animation 4/node" = SubResource("AnimationNodeAnimation_10ho8")
 "nodes/Animation 4/position" = Vector2(60, 0)
+nodes/TimeScale/node = SubResource("AnimationNodeTimeScale_fwq1o")
+nodes/TimeScale/position = Vector2(1200, 300)
 nodes/floor_blend/node = SubResource("AnimationNodeBlend2_kecm2")
 nodes/floor_blend/position = Vector2(360, 0)
-nodes/output/position = Vector2(1260, 100)
+"nodes/losing balance_anim/node" = SubResource("AnimationNodeAnimation_5xjhm")
+"nodes/losing balance_anim/position" = Vector2(1000, 500)
+nodes/losing_balance/node = SubResource("AnimationNodeBlend2_rl3gr")
+nodes/losing_balance/position = Vector2(1340, 40)
+nodes/output/position = Vector2(1600, 80)
 nodes/prepare_gun_trigger/node = SubResource("AnimationNodeOneShot_otsha")
 nodes/prepare_gun_trigger/position = Vector2(1040, 20)
 nodes/unbalanced_blend/node = SubResource("AnimationNodeBlend2_qem71")
 nodes/unbalanced_blend/position = Vector2(640, 0)
-node_connections = [&"floor_blend", 0, &"Animation 4", &"floor_blend", 1, &"Animation 3", &"output", 0, &"prepare_gun_trigger", &"prepare_gun_trigger", 0, &"unbalanced_blend", &"prepare_gun_trigger", 1, &"Animation 2", &"unbalanced_blend", 0, &"floor_blend", &"unbalanced_blend", 1, &"Animation"]
+node_connections = [&"TimeScale", 0, &"losing balance_anim", &"floor_blend", 0, &"Animation 4", &"floor_blend", 1, &"Animation 3", &"losing_balance", 0, &"prepare_gun_trigger", &"losing_balance", 1, &"TimeScale", &"output", 0, &"losing_balance", &"prepare_gun_trigger", 0, &"unbalanced_blend", &"prepare_gun_trigger", 1, &"Animation 2", &"unbalanced_blend", 0, &"floor_blend", &"unbalanced_blend", 1, &"Animation"]
 
 [node name="Player" type="CharacterBody3D" groups=["player"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
@@ -446,7 +489,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.270905, -0.355084)
 shape = ExtResource("12_6t6rn")
 
 [node name="CameraPivot" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.3, 0)
+transform = Transform3D(1, 0, 0, 0, 0.258816, 0.965927, 0, -0.965927, 0.258816, 0, 0.3, 0)
 
 [node name="WorldCamera" type="Camera3D" parent="CameraPivot"]
 top_level = true
@@ -648,7 +691,9 @@ skeleton = NodePath("../../SubViewportContainer/SubViewport/WeaponCamera")
 deterministic = false
 tree_root = SubResource("AnimationNodeBlendTree_x2kci")
 anim_player = NodePath("../AnimationPlayer")
+parameters/TimeScale/scale = 2.0
 parameters/floor_blend/blend_amount = 0.0
+parameters/losing_balance/blend_amount = 1.0
 parameters/prepare_gun_trigger/active = false
 parameters/prepare_gun_trigger/internal_active = false
 parameters/prepare_gun_trigger/request = 0
