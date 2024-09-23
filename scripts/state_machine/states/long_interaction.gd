@@ -58,7 +58,7 @@ func _correct_key() -> void:
 
 
 func finish_state() -> void:
-	interactable
+	interactable.long_interact()
 	correct_key_pressed = 0
 	placeholder_l_able.hide()
 	
