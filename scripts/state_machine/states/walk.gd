@@ -7,10 +7,12 @@ var mouse_motion := Vector2.ZERO
 @onready var world_camera = $"../../CameraPivot/WorldCamera"
 
 @export var aim_multiplier: float = 0.3
+@export var sprint_multiplier := 1.5
+var sprinting := false
 
 
 func enter(_msg : ={}) -> void:
-	pass
+	sprinting = false
 
 
 func update(delta):
@@ -31,11 +33,20 @@ func update(delta):
 
 
 func physics_update(delta: float) -> void:
+	if Input.is_action_pressed("sprint"):
+		sprinting = true
+	else:
+		sprinting = false
+	
 	handle_camera_rotation(delta)
 	var direction = player.direction(delta)
+	var speed = player.speed
+	if sprinting:
+		speed *= sprint_multiplier
+	
 	if direction:
-		player.velocity.x = direction.x * player.speed
-		player.velocity.z = direction.z * player.speed
+		player.velocity.x = direction.x * speed
+		player.velocity.z = direction.z * speed
 	else:
 		state_machine.transition_to("Idle", {})
 	if Input.is_action_pressed("aim"):
@@ -60,4 +71,4 @@ func handle_camera_rotation(_delta:float) -> void:
 
 
 func exit() -> void:
-	pass
+	sprinting = false

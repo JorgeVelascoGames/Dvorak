@@ -74,7 +74,7 @@ func interact() -> void:
 	if not interactable_ray.is_colliding():
 		return
 	
-	#print(interactable_ray.get_collider())
+	print(interactable_ray.get_collider())
 	for child in interactable_ray.get_collider().get_children():
 		if child is Interactable:
 			if child.long_interaction:

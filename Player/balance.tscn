@@ -5,13 +5,6 @@
 
 [node name="Balance" type="Node"]
 script = ExtResource("1_rwhb4")
-leaving_walker_cost = 100
-forward_movement_cost = 120
-backward_movement_cost = 200
-side_movement_cost = 180
-shooting_cost = 150
-balance_recovery = 50
-bonus_balance_recovery = 75
 
 [node name="BalanceRecoveryTimer" type="Timer" parent="."]
 wait_time = 0.5
