@@ -2,8 +2,8 @@ extends AnimationTree
 class_name PlayerAnimationController
 
 @export_range(0.0, 1.0) var low_threshold := 0.4
-@export_range(0.0, 1.0) var mid_threshold := 0.7
-@export_range(0.0, 1.0) var high_threshold := 1.0
+@export_range(0.0, 1.0) var mid_threshold := 0.6
+@export_range(0.0, 1.0) var high_threshold := 0.85
 @export_range(0.0, 1.0) var low_easing_ratio := 0.3
 @export_range(0.0, 1.0) var mid_easing_ratio := 0.2
 @export_range(0.0, 1.0) var high_easing_ratio := 0.1
@@ -13,11 +13,16 @@ class_name PlayerAnimationController
 var ratio := 0.4
 var anim_value : float
 
+
 func _process(delta: float) -> void:
 	losing_balance(delta)
 
 
 func losing_balance(delta : float) -> void:
+	if owner.state_machine.state is PrepareGun:
+		self["parameters/losing_balance/blend_amount"] = 0.0
+		return
+	
 	var value := 0.0
 	if owner.state_machine.state is Walk or owner.state_machine.state is PlayerIdle:
 		value = (balance.get_percentage() / 100)
@@ -28,9 +33,18 @@ func losing_balance(delta : float) -> void:
 		ratio = mid_easing_ratio
 	elif value < high_threshold:
 		ratio = high_easing_ratio
+	else:
+		ratio = 0.0
 	
 	value -= ratio
 	value = clampf(value, 0, 1)
 	anim_value = lerpf(anim_value, value, delta)
 	
 	self["parameters/losing_balance/blend_amount"] = anim_value
+
+
+func _on_state_machine_transitioned(state_name: Variant) -> void:
+	if state_name == "Walk" or state_name == "Idle" or state_name == "PrepareGun" or state_name == "Walker":
+		self["parameters/fix_pivot_movement/blend_amount"] = 1.0
+	else:
+		self["parameters/fix_pivot_movement/blend_amount"] = 0.0

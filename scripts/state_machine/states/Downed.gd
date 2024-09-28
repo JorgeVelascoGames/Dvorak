@@ -69,11 +69,9 @@ func finish_state() -> void:
 	correct_key_pressed = 0
 	placeholder_l_able.hide()
 	#animation_player.stop()
-	
 	var tween = create_tween()
 	tween.tween_method(blend_floor, 1.0, 0.0, 0.4)
 	await tween.finished
-	
 	tween = create_tween().set_parallel(true)
 	tween.tween_property(camera_pivot, "position", Vector3(0, camera_pivot_pos_y, 0), 3.0).set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_BACK)
 	tween.tween_property(camera_pivot, "rotation", Vector3(0, 0, 0), 0.8)

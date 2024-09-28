@@ -1,13 +1,15 @@
 extends Node
 class_name Balance
 
+@export var show_ui := false
+
 #Exported variables
 @export_category("Balance value parameters")
 @export var max_balance:= 2000.00
 @export var current_balance := 1.00
 @export var leaving_walker_cost : float
 @export var forward_movement_cost : float
-@export var sprint_penalty := 120.00
+@export var sprint_penalty := 130.00
 @export var backward_movement_cost : float
 @export var side_movement_cost : float
 @export var rotation_cost_divident := 15.00
@@ -124,7 +126,8 @@ func _on_state_machine_transitioned(state_name):
 		balance_bar.hide()
 		balance_active = false
 	else:
-		balance_bar.show()
+		if show_ui:
+			balance_bar.show()
 		balance_active = true
 	
 	if state_name == "PrepareGun":

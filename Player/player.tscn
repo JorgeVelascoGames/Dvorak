@@ -1,4 +1,4 @@
-[gd_scene load_steps=53 format=3 uid="uid://m6pypgl566n1"]
+[gd_scene load_steps=56 format=3 uid="uid://m6pypgl566n1"]
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_ref5g"]
 [ext_resource type="Script" path="res://player/smooth_camera.gd" id="2_cywkd"]
@@ -175,12 +175,12 @@ tracks/1/keys = {
 }
 tracks/2/type = "value"
 tracks/2/imported = false
-tracks/2/enabled = true
+tracks/2/enabled = false
 tracks/2/path = NodePath("CameraPivot:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0.1),
+"times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector3(0, 0.3, 0)]
@@ -247,6 +247,46 @@ tracks/0/keys = {
 [sub_resource type="Animation" id="Animation_yw3n8"]
 resource_name = "no_animation"
 loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = false
+tracks/0/path = NodePath("CameraPivot:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"update": 0,
+"values": []
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = false
+tracks/1/path = NodePath("CameraPivot:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"update": 0,
+"values": []
+}
+
+[sub_resource type="Animation" id="Animation_jsxkr"]
+resource_name = "no_movement_pivot"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CameraPivot:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0.3, 0)]
+}
 
 [sub_resource type="Animation" id="Animation_dutym"]
 resource_name = "prepare_gun"
@@ -323,6 +363,7 @@ _data = {
 "floor": SubResource("Animation_f0x85"),
 "losing_balance": SubResource("Animation_hxgs6"),
 "no_animation": SubResource("Animation_yw3n8"),
+"no_movement_pivot": SubResource("Animation_jsxkr"),
 "prepare_gun": SubResource("Animation_dutym"),
 "unbalanced": SubResource("Animation_hbgry")
 }
@@ -339,12 +380,17 @@ animation = &"prepare_gun"
 animation = &"floor"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_10ho8"]
-animation = &"RESET"
+animation = &"no_animation"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_7deig"]
+animation = &"no_movement_pivot"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_3dwcv"]
 animation = &"unbalanced"
 
 [sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_fwq1o"]
+
+[sub_resource type="AnimationNodeBlend2" id="AnimationNodeBlend2_i8rto"]
 
 [sub_resource type="AnimationNodeBlend2" id="AnimationNodeBlend2_kecm2"]
 
@@ -358,7 +404,7 @@ animation = &"losing_balance"
 [sub_resource type="AnimationNodeBlend2" id="AnimationNodeBlend2_qem71"]
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_x2kci"]
-graph_offset = Vector2(116.337, -47.0622)
+graph_offset = Vector2(-172.529, -75.1331)
 nodes/Animation/node = SubResource("AnimationNodeAnimation_3dwcv")
 nodes/Animation/position = Vector2(420, 260)
 "nodes/Animation 2/node" = SubResource("AnimationNodeAnimation_5bcms")
@@ -366,9 +412,13 @@ nodes/Animation/position = Vector2(420, 260)
 "nodes/Animation 3/node" = SubResource("AnimationNodeAnimation_ivxe4")
 "nodes/Animation 3/position" = Vector2(140, 260)
 "nodes/Animation 4/node" = SubResource("AnimationNodeAnimation_10ho8")
-"nodes/Animation 4/position" = Vector2(60, 0)
+"nodes/Animation 4/position" = Vector2(-320, 0)
+"nodes/Animation 5/node" = SubResource("AnimationNodeAnimation_7deig")
+"nodes/Animation 5/position" = Vector2(-360, 300)
 nodes/TimeScale/node = SubResource("AnimationNodeTimeScale_fwq1o")
 nodes/TimeScale/position = Vector2(1200, 300)
+nodes/fix_pivot_movement/node = SubResource("AnimationNodeBlend2_i8rto")
+nodes/fix_pivot_movement/position = Vector2(-40, 0)
 nodes/floor_blend/node = SubResource("AnimationNodeBlend2_kecm2")
 nodes/floor_blend/position = Vector2(360, 0)
 "nodes/losing balance_anim/node" = SubResource("AnimationNodeAnimation_5xjhm")
@@ -379,8 +429,8 @@ nodes/output/position = Vector2(1600, 80)
 nodes/prepare_gun_trigger/node = SubResource("AnimationNodeOneShot_otsha")
 nodes/prepare_gun_trigger/position = Vector2(1040, 20)
 nodes/unbalanced_blend/node = SubResource("AnimationNodeBlend2_qem71")
-nodes/unbalanced_blend/position = Vector2(640, 0)
-node_connections = [&"TimeScale", 0, &"losing balance_anim", &"floor_blend", 0, &"Animation 4", &"floor_blend", 1, &"Animation 3", &"losing_balance", 0, &"prepare_gun_trigger", &"losing_balance", 1, &"TimeScale", &"output", 0, &"losing_balance", &"prepare_gun_trigger", 0, &"unbalanced_blend", &"prepare_gun_trigger", 1, &"Animation 2", &"unbalanced_blend", 0, &"floor_blend", &"unbalanced_blend", 1, &"Animation"]
+nodes/unbalanced_blend/position = Vector2(700, 0)
+node_connections = [&"TimeScale", 0, &"losing balance_anim", &"fix_pivot_movement", 0, &"Animation 4", &"fix_pivot_movement", 1, &"Animation 5", &"floor_blend", 0, &"fix_pivot_movement", &"floor_blend", 1, &"Animation 3", &"losing_balance", 0, &"prepare_gun_trigger", &"losing_balance", 1, &"TimeScale", &"output", 0, &"losing_balance", &"prepare_gun_trigger", 0, &"unbalanced_blend", &"prepare_gun_trigger", 1, &"Animation 2", &"unbalanced_blend", 0, &"floor_blend", &"unbalanced_blend", 1, &"Animation"]
 
 [node name="Player" type="CharacterBody3D" groups=["player"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
@@ -477,6 +527,7 @@ mesh = SubResource("CapsuleMesh_fyred")
 [node name="Components" type="Node" parent="."]
 
 [node name="Balance" parent="Components" instance=ExtResource("10_m7euy")]
+show_ui = true
 leaving_walker_cost = 20.0
 forward_movement_cost = 100.0
 backward_movement_cost = 170.0
@@ -684,7 +735,8 @@ autoplay = "RESET"
 [node name="AnimatedObjects" type="Node3D" parent="."]
 
 [node name="AnimatedGun" type="MeshInstance3D" parent="AnimatedObjects"]
-transform = Transform3D(-0.0871529, -0.996195, -2.34067e-07, 0.996195, -0.0871529, 0, -2.03996e-08, -2.33176e-07, 1, 0, -0.160696, -0.166331)
+transform = Transform3D(-0.0871529, -0.996195, -2.34067e-07, 0.996195, -0.0871529, 1.53792e-14, -2.03996e-08, -2.33176e-07, 1, 0, -0.160696, -0.166331)
+visible = false
 layers = 2
 mesh = SubResource("CylinderMesh_pr3u4")
 skeleton = NodePath("../../SubViewportContainer/SubViewport/WeaponCamera")
@@ -701,6 +753,7 @@ deterministic = false
 tree_root = SubResource("AnimationNodeBlendTree_x2kci")
 anim_player = NodePath("../AnimationPlayer")
 parameters/TimeScale/scale = 2.0
+parameters/fix_pivot_movement/blend_amount = 0.0
 parameters/floor_blend/blend_amount = 0.0
 parameters/losing_balance/blend_amount = 0.0
 parameters/prepare_gun_trigger/active = false
@@ -710,6 +763,7 @@ parameters/unbalanced_blend/blend_amount = 0
 script = ExtResource("22_j0g4a")
 
 [connection signal="transitioned" from="StateMachine" to="Components/Balance" method="_on_state_machine_transitioned"]
+[connection signal="transitioned" from="StateMachine" to="AnimationTree" method="_on_state_machine_transitioned"]
 [connection signal="timeout" from="StateMachine/Aim/SensibilityTimer" to="StateMachine/Aim" method="_on_sensibility_timer_timeout"]
 [connection signal="timeout" from="StateMachine/Unbalanced/Timer" to="StateMachine/Unbalanced" method="_on_timer_timeout"]
 [connection signal="timeout" from="StateMachine/Unbalanced/ErrorTimer" to="StateMachine/Unbalanced" method="_on_error_timer_timeout"]
