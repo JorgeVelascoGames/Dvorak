@@ -1,6 +1,8 @@
 extends Node
 class_name Balance
 
+signal balance_added(amount : int)
+
 @export var show_ui := false
 
 #Exported variables
@@ -85,6 +87,7 @@ func add_balance(amount : int) -> void:
 		reset_balance()
 		player.state_machine.transition_to("Unbalanced", {})
 	
+	balance_added.emit(amount)
 	update_ui()
 
 

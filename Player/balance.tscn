@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://shutxn8dpbys"]
+[gd_scene load_steps=4 format=3 uid="uid://shutxn8dpbys"]
 
 [ext_resource type="Script" path="res://player/balance.gd" id="1_rwhb4"]
 [ext_resource type="PackedScene" uid="uid://cdlefkst24dm8" path="res://player/player_ui.tscn" id="2_twrhs"]
+[ext_resource type="Script" path="res://player/balance_feedback.gd" id="3_x43wn"]
 
 [node name="Balance" type="Node"]
 script = ExtResource("1_rwhb4")
@@ -36,4 +37,16 @@ grow_horizontal = 2
 grow_vertical = 0
 show_percentage = false
 
+[node name="BalanceFeedback" type="Node" parent="."]
+script = ExtResource("3_x43wn")
+
+[node name="FirstWarningTimer" type="Timer" parent="BalanceFeedback"]
+
+[node name="SecondWarningTimer" type="Timer" parent="BalanceFeedback"]
+
+[node name="ThirdWarningTimer" type="Timer" parent="BalanceFeedback"]
+
+[node name="RecoveringBalanceTimer" type="Timer" parent="BalanceFeedback"]
+
+[connection signal="balance_added" from="." to="BalanceFeedback" method="_on_balance_balance_added"]
 [connection signal="timeout" from="BalanceRecoveryTimer" to="." method="_on_balance_recovery_timer_timeout"]
