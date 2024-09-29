@@ -41,12 +41,16 @@ show_percentage = false
 script = ExtResource("3_x43wn")
 
 [node name="FirstWarningTimer" type="Timer" parent="BalanceFeedback"]
+one_shot = true
 
 [node name="SecondWarningTimer" type="Timer" parent="BalanceFeedback"]
+one_shot = true
 
 [node name="ThirdWarningTimer" type="Timer" parent="BalanceFeedback"]
+one_shot = true
 
 [node name="RecoveringBalanceTimer" type="Timer" parent="BalanceFeedback"]
+one_shot = true
 
 [connection signal="balance_added" from="." to="BalanceFeedback" method="_on_balance_balance_added"]
 [connection signal="timeout" from="BalanceRecoveryTimer" to="." method="_on_balance_recovery_timer_timeout"]
