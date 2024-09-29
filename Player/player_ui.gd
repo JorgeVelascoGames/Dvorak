@@ -20,3 +20,5 @@ func display_gameplay_text(text : String, time : float) -> void:
 	await timer.timeout
 	tween = get_tree().create_tween()
 	tween.tween_property(player_gameplay_info, "modulate:a", 0.0, 2.0)
+	await tween.finished
+	player_gameplay_info.text = ""
