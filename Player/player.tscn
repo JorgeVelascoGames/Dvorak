@@ -734,7 +734,7 @@ autoplay = "RESET"
 [node name="AnimatedObjects" type="Node3D" parent="."]
 
 [node name="AnimatedGun" type="MeshInstance3D" parent="AnimatedObjects"]
-transform = Transform3D(-0.0871529, -0.996195, -2.34067e-07, 0.996195, -0.0871529, 1.50144e-14, -2.03996e-08, -2.33176e-07, 1, 0, -0.160696, -0.166331)
+transform = Transform3D(-0.0871529, -0.996195, -2.34067e-07, 0.996195, -0.0871529, 1.66016e-14, -2.03996e-08, -2.33176e-07, 1, 0, -0.160696, -0.166331)
 visible = false
 layers = 2
 mesh = SubResource("CylinderMesh_pr3u4")
