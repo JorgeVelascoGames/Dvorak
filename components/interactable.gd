@@ -4,7 +4,8 @@ class_name Interactable
 signal on_interact
 signal on_long_interact
 
-var long_interaction := false
+@export var long_interaction := false
+
 
 func interact() -> void:
 	on_interact.emit()

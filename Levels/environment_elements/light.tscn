@@ -1,0 +1,36 @@
+[gd_scene load_steps=6 format=3 uid="uid://72kpfpnalr3a"]
+
+[ext_resource type="Script" path="res://Levels/environment_elements/light.gd" id="1_27npf"]
+[ext_resource type="PackedScene" uid="uid://6k55dxf30mud" path="res://Levels/environment_elements/light_bubble_sound.tscn" id="2_mkj6l"]
+[ext_resource type="Script" path="res://components/interactable.gd" id="2_vk1i6"]
+
+[sub_resource type="AudioStreamWAV" id="AudioStreamWAV_n6i7m"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_rj3cs"]
+
+[node name="Light" type="Node3D"]
+script = ExtResource("1_27npf")
+
+[node name="SpotLight3D" type="SpotLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 2.39065, 0)
+spot_angle = 15.7331
+
+[node name="LightBubbleSound" parent="SpotLight3D" instance=ExtResource("2_mkj6l")]
+stream = SubResource("AudioStreamWAV_n6i7m")
+
+[node name="LightTimer" type="Timer" parent="."]
+
+[node name="TweakTimer" type="Timer" parent="."]
+
+[node name="Switch" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Switch"]
+shape = SubResource("BoxShape3D_rj3cs")
+
+[node name="Interactable" type="Node" parent="Switch"]
+script = ExtResource("2_vk1i6")
+
+[node name="SwitchSound" type="AudioStreamPlayer3D" parent="Switch"]
+
+[connection signal="on_interact" from="Switch/Interactable" to="." method="_on_interactable_on_interact"]
+[connection signal="on_long_interact" from="Switch/Interactable" to="." method="_on_interactable_on_long_interact"]

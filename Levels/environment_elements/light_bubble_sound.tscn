@@ -1,0 +1,3 @@
+[gd_scene format=3 uid="uid://6k55dxf30mud"]
+
+[node name="LightBubbleSound" type="AudioStreamPlayer3D"]
