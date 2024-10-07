@@ -1,12 +1,8 @@
 extends PlayerState
 class_name PlayerLongInteraction
 
-@export var necessary_keys_to_press_min := 15
-@export var necessary_keys_to_press_max := 25
-
 @onready var balance = $"../../Components/Balance"
 @onready var placeholder_l_able: Label = $PlayerUI/BalancedUI/PlaceholderLAble
-
 
 #Private variables
 var interactable : Interactable
@@ -22,8 +18,8 @@ var correct_key_pressed : int = 0
 
 
 func enter(_msg : ={}) -> void:
-	interactable = _msg["object"]
-	necessary_keys_to_press = randi_range(necessary_keys_to_press_min, necessary_keys_to_press_max)
+	interactable = _msg["object"] as Interactable
+	necessary_keys_to_press = randi_range(interactable.necessary_keys_to_press_min, interactable.necessary_keys_to_press_max)
 	player.velocity = Vector3.ZERO
 	top_key_selection = top_side_keys.pick_random()
 	right_key_selection = right_side_keys.pick_random()

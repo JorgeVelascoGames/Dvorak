@@ -39,6 +39,19 @@ func input(event):
 		mouse_motion = -event.relative * 0.001
 
 
+func interact() -> void:
+	if not player.interactable_ray.is_colliding():
+		return
+	
+	print(player.interactable_ray.get_collider())
+	for child in player.interactable_ray.get_collider().get_children():
+		if child is Interactable:
+			if child.long_interaction:
+				state_machine.transition_to("PlayerLongInteraction", {"object" : child})
+			else:
+				child.interact()
+
+
 func handle_camera_rotation(_delta:float) -> void:
 	player.rotate_y(mouse_motion.x * player.camera_sensibility)
 	player.camera_pivot.rotate_x(mouse_motion.y * player.camera_sensibility)

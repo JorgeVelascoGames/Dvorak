@@ -11,3 +11,7 @@ func _ready():
 	player = owner as Player
 	
 	assert(player != null, "Invalid state node")
+
+
+func interact() -> void:
+	pass

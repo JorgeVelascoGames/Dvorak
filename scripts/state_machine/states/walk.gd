@@ -70,5 +70,18 @@ func handle_camera_rotation(_delta:float) -> void:
 	mouse_motion = Vector2.ZERO
 
 
+func interact() -> void:
+	if not player.interactable_ray.is_colliding():
+		return
+	
+	print(player.interactable_ray.get_collider())
+	for child in player.interactable_ray.get_collider().get_children():
+		if child is Interactable:
+			if child.long_interaction:
+				state_machine.transition_to("PlayerLongInteraction", {"object" : child})
+			else:
+				child.interact()
+
+
 func exit() -> void:
 	sprinting = false

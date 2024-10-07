@@ -1,4 +1,4 @@
-[gd_scene load_steps=56 format=3 uid="uid://m6pypgl566n1"]
+[gd_scene load_steps=57 format=3 uid="uid://m6pypgl566n1"]
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_ref5g"]
 [ext_resource type="Script" path="res://player/smooth_camera.gd" id="2_cywkd"]
@@ -11,7 +11,7 @@
 [ext_resource type="Script" path="res://scripts/state_machine/states/prepare_gun.gd" id="7_hfrgh"]
 [ext_resource type="PackedScene" uid="uid://bjq2dkpgpnav7" path="res://player/game_over_menu.tscn" id="7_keanm"]
 [ext_resource type="Script" path="res://scripts/state_machine/states/Unbalanced.gd" id="8_7b01x"]
-[ext_resource type="FontFile" uid="uid://yqk87iw0ykxp" path="res://assets/fonts/Roboto-Regular.ttf" id="8_dofuu"]
+[ext_resource type="FontFile" uid="uid://dc0vrsfwu33ll" path="res://assets/fonts/Roboto-Regular.ttf" id="8_dofuu"]
 [ext_resource type="Script" path="res://scripts/state_machine/states/Downed.gd" id="9_q33c7"]
 [ext_resource type="Script" path="res://scripts/state_machine/states/long_interaction.gd" id="10_b71wi"]
 [ext_resource type="PackedScene" uid="uid://shutxn8dpbys" path="res://player/balance.tscn" id="10_m7euy"]
@@ -21,6 +21,7 @@
 [ext_resource type="Script" path="res://player/walker.gd" id="15_hi5sq"]
 [ext_resource type="Script" path="res://components/interactable.gd" id="16_wvci1"]
 [ext_resource type="Script" path="res://player/flashlight.gd" id="18_mibl1"]
+[ext_resource type="FontFile" uid="uid://capvrpuujdf4q" path="res://assets/fonts/Roboto-Light.ttf" id="19_lypxt"]
 [ext_resource type="Script" path="res://player/player_animation_controller.gd" id="22_j0g4a"]
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_qj4cq"]
@@ -136,7 +137,11 @@ font = ExtResource("8_dofuu")
 font_size = 64
 
 [sub_resource type="LabelSettings" id="LabelSettings_3m322"]
+font = ExtResource("19_lypxt")
 font_size = 20
+outline_size = 2
+outline_color = Color(0.165656, 0.165657, 0.165656, 1)
+shadow_size = 4
 
 [sub_resource type="BoxMesh" id="BoxMesh_2ns6k"]
 size = Vector3(0.6, 0.6, 0.6)
@@ -478,7 +483,7 @@ script = ExtResource("3_4b8lt")
 
 [node name="Walk" type="Node" parent="StateMachine"]
 script = ExtResource("4_gw7tn")
-sprint_multiplier = 2.5
+sprint_multiplier = 3.5
 
 [node name="Walker" type="Node" parent="StateMachine"]
 script = ExtResource("5_h6v2u")
@@ -637,7 +642,7 @@ anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
 offset_top = -14.0
-offset_bottom = 14.0
+offset_bottom = 12.0
 grow_horizontal = 2
 grow_vertical = 2
 text = "dfasdfa"
@@ -734,7 +739,7 @@ autoplay = "RESET"
 [node name="AnimatedObjects" type="Node3D" parent="."]
 
 [node name="AnimatedGun" type="MeshInstance3D" parent="AnimatedObjects"]
-transform = Transform3D(-0.0871529, -0.996195, -2.34067e-07, 0.996195, -0.0871529, 1.64192e-14, -2.03996e-08, -2.33176e-07, 1, 0, -0.160696, -0.166331)
+transform = Transform3D(-0.0871529, -0.996195, -2.34067e-07, 0.996195, -0.0871529, 1.53248e-14, -2.03996e-08, -2.33176e-07, 1, 0, -0.160696, -0.166331)
 visible = false
 layers = 2
 mesh = SubResource("CylinderMesh_pr3u4")

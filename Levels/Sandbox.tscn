@@ -3,7 +3,6 @@
 [ext_resource type="Script" path="res://Levels/level_manager.gd" id="1_1c0bo"]
 [ext_resource type="PackedScene" uid="uid://m6pypgl566n1" path="res://player/player.tscn" id="1_4278g"]
 [ext_resource type="Material" uid="uid://dacid3ccax2pq" path="res://Levels/materials/orange.tres" id="2_logh3"]
-[ext_resource type="NavigationMesh" uid="uid://c63lgdg06alye" path="res://Levels/navmesh.tres" id="2_tm5tm"]
 [ext_resource type="Material" uid="uid://ciyx0k2mf8b5f" path="res://Levels/materials/grey.tres" id="3_m4mti"]
 [ext_resource type="Texture2D" uid="uid://cfe7wybvony37" path="res://assets/textures/grey_wall.png" id="4_3a20u"]
 [ext_resource type="Script" path="res://randomization/room_randomizer.gd" id="4_eyypd"]
@@ -12,6 +11,8 @@
 [ext_resource type="PackedScene" uid="uid://qyjmhcrcrko3" path="res://components/enemy_spawner.tscn" id="5_j0fdo"]
 [ext_resource type="PackedScene" uid="uid://0wduiiq6476g" path="res://enemy/braid/braid.tscn" id="6_sdagq"]
 [ext_resource type="PackedScene" uid="uid://dntxkqhhia68" path="res://vfx/blood_decal/blood_decal_big.tscn" id="11_g760f"]
+
+[sub_resource type="NavigationMesh" id="NavigationMesh_cmsli"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_5irnd"]
 size = Vector3(8, 8, 1)
@@ -67,7 +68,7 @@ glow_enabled = true
 script = ExtResource("1_1c0bo")
 
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
-navigation_mesh = ExtResource("2_tm5tm")
+navigation_mesh = SubResource("NavigationMesh_cmsli")
 
 [node name="LevelObjects" type="Node3D" parent="NavigationRegion3D"]
 
