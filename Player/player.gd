@@ -20,6 +20,8 @@ class_name Player
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 var _delta := 0.0
 
+enum WEAPON {none, gun, crowbar}
+
 #Components
 @onready var camera_pivot = $CameraPivot
 @onready var damage_animation_player: AnimationPlayer = $DamageTexture/DamageAnimationPlayer
