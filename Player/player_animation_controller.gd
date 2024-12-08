@@ -45,6 +45,11 @@ func losing_balance(delta : float) -> void:
 
 func _on_state_machine_transitioned(state_name: Variant) -> void:
 	if state_name == "Walk" or state_name == "Idle" or state_name == "PrepareGun" or state_name == "Walker":
-		self["parameters/fix_pivot_movement/blend_amount"] = 1.0
+		var tween = create_tween()
+		tween.tween_method(blend_to_fix_pivot, 0.0, 1.0, 0.3)
 	else:
 		self["parameters/fix_pivot_movement/blend_amount"] = 0.0
+
+
+func blend_to_fix_pivot(amount : float) -> void:
+		self["parameters/fix_pivot_movement/blend_amount"] = amount

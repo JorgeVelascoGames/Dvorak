@@ -165,7 +165,7 @@ tracks/1/keys = {
 }
 tracks/2/type = "value"
 tracks/2/imported = false
-tracks/2/enabled = true
+tracks/2/enabled = false
 tracks/2/path = NodePath("AnimatedObjects/GunModel:visible")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
@@ -389,7 +389,7 @@ animation = &"losing_balance"
 [sub_resource type="AnimationNodeBlend2" id="AnimationNodeBlend2_qem71"]
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_x2kci"]
-graph_offset = Vector2(-550.527, -29.5891)
+graph_offset = Vector2(-487.365, -246)
 nodes/Animation/node = SubResource("AnimationNodeAnimation_3dwcv")
 nodes/Animation/position = Vector2(420, 260)
 "nodes/Animation 2/node" = SubResource("AnimationNodeAnimation_5bcms")
@@ -536,7 +536,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.270905, -0.355084)
 shape = ExtResource("12_6t6rn")
 
 [node name="CameraPivot" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.264, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.54, 0)
 
 [node name="WorldCamera" type="Camera3D" parent="CameraPivot"]
 top_level = true
@@ -558,7 +558,7 @@ collision_mask = 65
 debug_shape_custom_color = Color(0.756863, 0.00392157, 0.941176, 1)
 
 [node name="GunRay" type="RayCast3D" parent="CameraPivot/WorldCamera"]
-transform = Transform3D(1.22062e-09, 2, -8.54072e-12, -1.99981, 1.22062e-09, 0.0279245, 0.0279244, -8.48388e-12, 1.99981, -1.47062e-09, -0.0504154, -0.282236)
+transform = Transform3D(1.22062e-09, 2, -8.49809e-12, -1.99981, 1.22062e-09, 0.0279245, 0.0279244, -8.30624e-12, 1.99981, -1.47062e-09, -0.0504155, -0.282236)
 target_position = Vector3(0, 0, -12)
 collision_mask = 129
 hit_from_inside = true
@@ -686,6 +686,7 @@ autoplay = "RESET"
 
 [node name="GunModel" parent="AnimatedObjects" instance=ExtResource("21_lgr1q")]
 transform = Transform3D(-5.79198e-06, 1.6, 0, -1.6, -5.79198e-06, 0, 0, 0, 1.6, -0.00478901, 0.250339, -0.151233)
+visible = false
 
 [node name="Timers" type="Node" parent="."]
 
