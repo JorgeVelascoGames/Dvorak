@@ -1,0 +1,13 @@
+[gd_scene load_steps=4 format=3 uid="uid://ctrkoynx6fbcj"]
+
+[ext_resource type="PackedScene" uid="uid://bxwemxptaidkr" path="res://assets/props/crowbar/props.fbx" id="1_nor31"]
+[ext_resource type="Texture2D" uid="uid://n6dy1i4qp6xr" path="res://assets/props/crowbar/props_bar_BaseColor.1001.png" id="2_w8y1o"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_20ekm"]
+albedo_texture = ExtResource("2_w8y1o")
+
+[node name="Crowbar" instance=ExtResource("1_nor31")]
+
+[node name="crowbar" parent="." index="0"]
+transform = Transform3D(100, 0, 0, 0, -1.19209e-05, 100, 0, -100, -1.19209e-05, 0, 0, 0)
+surface_material_override/0 = SubResource("StandardMaterial3D_20ekm")
