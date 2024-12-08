@@ -22,7 +22,10 @@ func enter(_msg : ={}) -> void:
 	player.velocity = Vector3.ZERO
 	world_camera.shaking = true
 	aiming_gun.visible = true
-
+	var initial_gun_pos := aiming_gun.position
+	aiming_gun.global_position.y -= .4
+	var tween = create_tween()
+	tween.tween_property(aiming_gun, "position", initial_gun_pos, 0.3)
 
 func update(_delta):
 	if Input.is_action_just_released("aim"):
