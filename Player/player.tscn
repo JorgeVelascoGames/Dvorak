@@ -231,7 +231,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.9, 2.06667, 3.4, 4.76667, 5.86667, 6.1, 7),
 "transitions": PackedFloat32Array(1, 1, 1, 1.7411, 0.574349, 1.56917, 0.615572, 1.93187),
 "update": 0,
-"values": [Vector3(0, -0.135978, 0), Vector3(0.09, 0.07, 0), Vector3(-0.1, -0.07, 0), Vector3(0.1, -0.11, -0.02), Vector3(-0.01, 0.088, 0.016), Vector3(0.06, -0.1, -0.05), Vector3(-0.1, -0.131, -0.031), Vector3(0, -0.135978, 0)]
+"values": [Vector3(0, 0.264, 0), Vector3(0.09, 0.47, 0), Vector3(-0.1, 0.33, 0), Vector3(0.1, 0.29, -0.02), Vector3(-0.01, 0.488, 0.016), Vector3(0.06, 0.3, -0.05), Vector3(-0.1, 0.269, -0.031), Vector3(0, 0.264, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_yw3n8"]
@@ -275,7 +275,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector3(0, 0.6, 0)]
+"values": [Vector3(0, 0.54, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_dutym"]
@@ -389,6 +389,7 @@ animation = &"losing_balance"
 [sub_resource type="AnimationNodeBlend2" id="AnimationNodeBlend2_qem71"]
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_x2kci"]
+graph_offset = Vector2(-550.527, -29.5891)
 nodes/Animation/node = SubResource("AnimationNodeAnimation_3dwcv")
 nodes/Animation/position = Vector2(420, 260)
 "nodes/Animation 2/node" = SubResource("AnimationNodeAnimation_5bcms")
@@ -535,7 +536,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.270905, -0.355084)
 shape = ExtResource("12_6t6rn")
 
 [node name="CameraPivot" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.499998, 0.866027, 0, -0.866027, 0.499998, 0, 0.3, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.264, 0)
 
 [node name="WorldCamera" type="Camera3D" parent="CameraPivot"]
 top_level = true
@@ -671,7 +672,7 @@ text = "test
 "
 
 [node name="WalkerFixedPoint" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.706177, -0.981278)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.706177, -1.19755)
 
 [node name="Walker" parent="WalkerFixedPoint" instance=ExtResource("20_qts6k")]
 
@@ -704,7 +705,7 @@ parameters/losing_balance/blend_amount = 0.0
 parameters/prepare_gun_trigger/active = false
 parameters/prepare_gun_trigger/internal_active = false
 parameters/prepare_gun_trigger/request = 0
-parameters/unbalanced_blend/blend_amount = 0
+parameters/unbalanced_blend/blend_amount = 0.0
 script = ExtResource("22_j0g4a")
 
 [connection signal="transitioned" from="StateMachine" to="Components/Balance" method="_on_state_machine_transitioned"]
