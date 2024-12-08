@@ -28,6 +28,7 @@ func enter(_msg : ={}) -> void:
 	var tween = create_tween()
 	tween.tween_property(aiming_gun, "position", initial_gun_pos, 0.3)
 
+
 func update(_delta):
 	if Input.is_action_just_released("aim"):
 		state_machine.transition_to("Idle", {})
