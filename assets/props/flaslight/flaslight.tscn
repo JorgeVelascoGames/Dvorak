@@ -1,0 +1,13 @@
+[gd_scene load_steps=4 format=3 uid="uid://cv00qs5ggy5x"]
+
+[ext_resource type="PackedScene" uid="uid://by5pp12gw0gav" path="res://assets/props/flaslight/flaslight.fbx" id="1_axjvj"]
+[ext_resource type="Texture2D" uid="uid://cj7mwvge053mc" path="res://assets/props/flaslight/flaslight_flashlight_BaseColor.png" id="2_jn5tr"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5k4o7"]
+albedo_texture = ExtResource("2_jn5tr")
+
+[node name="Flaslight" instance=ExtResource("1_axjvj")]
+
+[node name="Flashlight" parent="." index="0"]
+transform = Transform3D(0, -2.55245e-05, 362.204, -856.46, 0, -1.07945e-05, 2.55245e-05, -856.46, 0, 0, 0, 0)
+surface_material_override/0 = SubResource("StandardMaterial3D_5k4o7")

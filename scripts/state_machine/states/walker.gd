@@ -7,7 +7,7 @@ class_name Walker
 
 @onready var world_camera = $"../../CameraPivot/WorldCamera"
 @onready var camera_pivot = $"../../CameraPivot"
-@onready var walker: MeshInstance3D = $"../../WalkerFixedPoint/Walker"
+@onready var walker: WalkerModel = $"../../WalkerFixedPoint/Walker"
 @onready var player_collision_shape: CollisionShape3D = $"../../PlayerCollisionShape"
 @onready var ammo_handler = $"../Aim/AmmoHandler"
 

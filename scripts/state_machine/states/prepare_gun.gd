@@ -2,8 +2,8 @@ extends PlayerState
 class_name PrepareGun
 
 @onready var animation_player: AnimationPlayer = $"../../AnimationPlayer"
-@onready var animated_gun: MeshInstance3D = $"../../AnimatedObjects/AnimatedGun"
 @onready var ammo_counter: AmmoCounter = $"../../Components/AmmoCounter"
+@onready var animated_gun: Node3D = $"../../AnimatedObjects/GunModel"
 
 
 func enter(_msg : ={}) -> void:

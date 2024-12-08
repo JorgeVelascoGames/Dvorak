@@ -3,10 +3,10 @@ class_name PlayerAim
 
 @onready var world_camera = $"../../CameraPivot/WorldCamera"
 @onready var sensibility_timer = $SensibilityTimer
-@onready var aiming_gun: MeshInstance3D = $"../../SubViewportContainer/SubViewport/WeaponCamera/AimingGun"
 @onready var balance = $"../../Components/Balance"
 @onready var gun_ray : RayCast3D = $"../../CameraPivot/WorldCamera/GunRay"
 @onready var ammo_counter: AmmoCounter = $"../../Components/AmmoCounter"
+@onready var aiming_gun: Node3D = $"../../SubViewportContainer/SubViewport/WeaponCamera/GunModel"
 
 @export var aim_multiplier: float = 0.3
 @export var aim_speed: float = 0.5

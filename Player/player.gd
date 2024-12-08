@@ -87,10 +87,10 @@ func heal_up() -> void:
 	damaged_heal_timer.stop()
 
 
-func _on_interactable_on_interact():
-	if get_floor_normal().abs().is_equal_approx(Vector3.UP):
-		state_machine.transition_to("Walker", {})
-
-
 func _on_damaged_heal_timer_timeout():
 	heal_up()
+
+
+func _on_walker_walker_interacted() -> void:
+	if get_floor_normal().abs().is_equal_approx(Vector3.UP):
+		state_machine.transition_to("Walker", {})

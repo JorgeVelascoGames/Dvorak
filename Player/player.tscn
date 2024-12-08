@@ -1,4 +1,4 @@
-[gd_scene load_steps=57 format=3 uid="uid://m6pypgl566n1"]
+[gd_scene load_steps=51 format=3 uid="uid://m6pypgl566n1"]
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_ref5g"]
 [ext_resource type="Script" path="res://player/smooth_camera.gd" id="2_cywkd"]
@@ -18,16 +18,10 @@
 [ext_resource type="Script" path="res://player/ammo_counter.gd" id="11_xb6v7"]
 [ext_resource type="Shape3D" uid="uid://df6y055xrghl7" path="res://player/player_normal_collision_shape.tres" id="12_6t6rn"]
 [ext_resource type="Script" path="res://player/player_ui.gd" id="14_0ypvp"]
-[ext_resource type="Script" path="res://player/walker.gd" id="15_hi5sq"]
-[ext_resource type="Script" path="res://components/interactable.gd" id="16_wvci1"]
-[ext_resource type="Script" path="res://player/flashlight.gd" id="18_mibl1"]
 [ext_resource type="FontFile" uid="uid://capvrpuujdf4q" path="res://assets/fonts/Roboto-Light.ttf" id="19_lypxt"]
+[ext_resource type="PackedScene" uid="uid://4j0uw0ki1luc" path="res://player/walker.tscn" id="20_qts6k"]
+[ext_resource type="PackedScene" uid="uid://cpyss678yatou" path="res://assets/props/gun/gun_model.tscn" id="21_lgr1q"]
 [ext_resource type="Script" path="res://player/player_animation_controller.gd" id="22_j0g4a"]
-
-[sub_resource type="CylinderMesh" id="CylinderMesh_qj4cq"]
-top_radius = 0.02
-bottom_radius = 0.02
-height = 0.2
 
 [sub_resource type="GDScript" id="GDScript_7r1t3"]
 script/source = "extends Node
@@ -143,64 +137,55 @@ outline_size = 2
 outline_color = Color(0.165656, 0.165657, 0.165656, 1)
 shadow_size = 4
 
-[sub_resource type="BoxMesh" id="BoxMesh_2ns6k"]
-size = Vector3(0.6, 0.6, 0.6)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_2f4qr"]
-size = Vector3(0.605, 0.62085, 0.288818)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_ggt7r"]
-size = Vector3(0.6, 0.6, 0.6)
-
 [sub_resource type="Animation" id="Animation_1ivek"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = false
-tracks/0/path = NodePath("AnimatedObjects/AnimatedGun:visible")
+tracks/0/path = NodePath("CameraPivot:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
+"update": 0,
+"values": [Vector3(0, 0.3, 0)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = false
-tracks/1/path = NodePath("AnimatedObjects/AnimatedGun:rotation")
+tracks/1/path = NodePath("CameraPivot:rotation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector3(0, -2.34067e-07, 1.65806)]
+"values": [Vector3(-1.309, 0, 0)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
-tracks/2/enabled = false
-tracks/2/path = NodePath("CameraPivot:position")
+tracks/2/enabled = true
+tracks/2/path = NodePath("AnimatedObjects/GunModel:visible")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0, 0.3, 0)]
+"update": 1,
+"values": [true]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
-tracks/3/enabled = false
-tracks/3/path = NodePath("CameraPivot:rotation")
+tracks/3/enabled = true
+tracks/3/path = NodePath("AnimatedObjects/GunModel:rotation")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector3(-1.309, 0, 0)]
+"values": [Vector3(0, 0, -1.5708)]
 }
 
 [sub_resource type="Animation" id="Animation_f0x85"]
@@ -290,7 +275,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector3(0, 0.3, 0)]
+"values": [Vector3(0, 0.6, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_dutym"]
@@ -310,12 +295,12 @@ tracks/0/keys = {
 }
 tracks/1/type = "value"
 tracks/1/imported = false
-tracks/1/enabled = false
-tracks/1/path = NodePath("AnimatedObjects/AnimatedGun:visible")
-tracks/1/interp = 2
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedObjects/GunModel:visible")
+tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 2.3),
+"times": PackedFloat32Array(0.0666667, 2.3),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [true, false]
@@ -323,11 +308,11 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("AnimatedObjects/AnimatedGun:rotation")
-tracks/2/interp = 2
+tracks/2/path = NodePath("AnimatedObjects/GunModel:rotation")
+tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0.6, 1.5, 1.7, 2.4),
+"times": PackedFloat32Array(0.566667, 1.46667, 1.66667, 2.36667),
 "transitions": PackedFloat32Array(0.5, 0.5, 2, 2),
 "update": 0,
 "values": [Vector3(0, -2.34067e-07, 1.65806), Vector3(3.14159, 0, 1.65806), Vector3(3.14159, 0, 1.65806), Vector3(0, 0, 1.16866)]
@@ -373,11 +358,6 @@ _data = {
 "unbalanced": SubResource("Animation_hbgry")
 }
 
-[sub_resource type="CylinderMesh" id="CylinderMesh_pr3u4"]
-top_radius = 0.02
-bottom_radius = 0.02
-height = 0.2
-
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_5bcms"]
 animation = &"prepare_gun"
 
@@ -409,7 +389,7 @@ animation = &"losing_balance"
 [sub_resource type="AnimationNodeBlend2" id="AnimationNodeBlend2_qem71"]
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_x2kci"]
-graph_offset = Vector2(-172.529, -75.1331)
+graph_offset = Vector2(-580.022, -376.402)
 nodes/Animation/node = SubResource("AnimationNodeAnimation_3dwcv")
 nodes/Animation/position = Vector2(420, 260)
 "nodes/Animation 2/node" = SubResource("AnimationNodeAnimation_5bcms")
@@ -467,12 +447,13 @@ render_target_update_mode = 4
 cull_mask = 2
 fov = 33.0
 
-[node name="AimingGun" type="MeshInstance3D" parent="SubViewportContainer/SubViewport/WeaponCamera"]
-transform = Transform3D(1, 0, 0, 0, 0.231748, 0.972776, 0, -0.972776, 0.231748, 0, -0.055, -0.338)
+[node name="GunModel" parent="SubViewportContainer/SubViewport/WeaponCamera" instance=ExtResource("21_lgr1q")]
+transform = Transform3D(-5.38739e-08, -4.255e-08, 1, -0.999764, 0.0217451, -5.29359e-08, -0.0217451, -0.999764, -4.37114e-08, -0.00132158, -0.071539, -0.334914)
 visible = false
-layers = 2
-mesh = SubResource("CylinderMesh_qj4cq")
-skeleton = NodePath("../../../../AnimatedObjects")
+
+[node name="RemoteTransform3D" type="RemoteTransform3D" parent="SubViewportContainer/SubViewport/WeaponCamera/GunModel"]
+transform = Transform3D(1, -3.08087e-15, -2.98023e-08, 0, -4.37114e-08, -1, 2.66454e-15, 1, -4.37114e-08, -0.160663, 0.737348, 0.0103942)
+remote_path = NodePath("../../../../../CameraPivot/WorldCamera/GunRay")
 
 [node name="StateMachine" type="Node" parent="."]
 script = ExtResource("2_g0cef")
@@ -551,7 +532,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.270905, -0.355084)
 shape = ExtResource("12_6t6rn")
 
 [node name="CameraPivot" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.258816, 0.965927, 0, -0.965927, 0.258816, 0, 0.3, 0)
+transform = Transform3D(1, 0, 0, 0, 0.499998, 0.866027, 0, -0.866027, 0.499998, 0, 0.3, 0)
 
 [node name="WorldCamera" type="Camera3D" parent="CameraPivot"]
 top_level = true
@@ -573,6 +554,7 @@ collision_mask = 65
 debug_shape_custom_color = Color(0.756863, 0.00392157, 0.941176, 1)
 
 [node name="GunRay" type="RayCast3D" parent="CameraPivot/WorldCamera"]
+transform = Transform3D(-5.38739e-08, 1, -1.16143e-09, -0.999763, -5.38864e-08, -0.0217451, -0.0217451, -1.03348e-11, 0.999763, 0.00907257, 0.105119, -1.06859)
 target_position = Vector3(0, 0, -12)
 collision_mask = 129
 hit_from_inside = true
@@ -688,49 +670,7 @@ text = "test
 [node name="WalkerFixedPoint" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.706177, -0.981278)
 
-[node name="Walker" type="MeshInstance3D" parent="WalkerFixedPoint"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0294226, -0.0214159)
-layers = 2
-mesh = SubResource("BoxMesh_2ns6k")
-skeleton = NodePath("../..")
-script = ExtResource("15_hi5sq")
-
-[node name="StaticBody3D" type="StaticBody3D" parent="WalkerFixedPoint/Walker"]
-collision_layer = 3
-constant_linear_velocity = Vector3(0, -9, 0)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="WalkerFixedPoint/Walker/StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.026001, -0.191772)
-shape = SubResource("BoxShape3D_2f4qr")
-
-[node name="FreeWalkerPosition" type="Marker3D" parent="WalkerFixedPoint/Walker"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.530615)
-
-[node name="InteractableRB" type="StaticBody3D" parent="WalkerFixedPoint/Walker"]
-collision_layer = 64
-collision_mask = 0
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="WalkerFixedPoint/Walker/InteractableRB"]
-shape = SubResource("BoxShape3D_ggt7r")
-
-[node name="Interactable" type="Node" parent="WalkerFixedPoint/Walker/InteractableRB"]
-script = ExtResource("16_wvci1")
-
-[node name="Flashlight" type="SpotLight3D" parent="WalkerFixedPoint/Walker"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.432871, 0)
-light_color = Color(0.620101, 0.577479, 0.426758, 1)
-light_energy = 2.0
-light_indirect_energy = 2.0
-light_bake_mode = 1
-spot_range = 8.0
-spot_attenuation = 0.0
-spot_angle = 26.8075
-script = ExtResource("18_mibl1")
-
-[node name="FlashlightBattery" type="Timer" parent="WalkerFixedPoint/Walker/Flashlight"]
-wait_time = 500.0
-
-[node name="TweaklingTimer" type="Timer" parent="WalkerFixedPoint/Walker/Flashlight"]
+[node name="Walker" parent="WalkerFixedPoint" instance=ExtResource("20_qts6k")]
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -740,12 +680,8 @@ autoplay = "RESET"
 
 [node name="AnimatedObjects" type="Node3D" parent="."]
 
-[node name="AnimatedGun" type="MeshInstance3D" parent="AnimatedObjects"]
-transform = Transform3D(-0.0871529, -0.996195, -2.34067e-07, 0.996195, -0.0871529, 1.51424e-14, -2.03996e-08, -2.33176e-07, 1, 0, -0.160696, -0.166331)
-visible = false
-layers = 2
-mesh = SubResource("CylinderMesh_pr3u4")
-skeleton = NodePath("../../SubViewportContainer/SubViewport/WeaponCamera")
+[node name="GunModel" parent="AnimatedObjects" instance=ExtResource("21_lgr1q")]
+transform = Transform3D(-5.68248e-09, 0.13, 0, -0.13, -5.68248e-09, 0, 0, 0, 0.13, -0.00478901, -0.110569, -0.145958)
 
 [node name="Timers" type="Node" parent="."]
 
@@ -774,6 +710,5 @@ script = ExtResource("22_j0g4a")
 [connection signal="timeout" from="StateMachine/Unbalanced/Timer" to="StateMachine/Unbalanced" method="_on_timer_timeout"]
 [connection signal="timeout" from="StateMachine/Unbalanced/ErrorTimer" to="StateMachine/Unbalanced" method="_on_error_timer_timeout"]
 [connection signal="timeout" from="CameraPivot/WorldCamera/AimShakeTimer" to="CameraPivot/WorldCamera" method="_on_aim_shake_timer_timeout"]
-[connection signal="on_interact" from="WalkerFixedPoint/Walker/InteractableRB/Interactable" to="." method="_on_interactable_on_interact"]
-[connection signal="timeout" from="WalkerFixedPoint/Walker/Flashlight/FlashlightBattery" to="WalkerFixedPoint/Walker/Flashlight" method="_on_flashlight_battery_timeout"]
+[connection signal="WalkerInteracted" from="WalkerFixedPoint/Walker" to="." method="_on_walker_walker_interacted"]
 [connection signal="timeout" from="Timers/DamagedHealTimer" to="." method="_on_damaged_heal_timer_timeout"]
