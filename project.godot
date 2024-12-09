@@ -231,6 +231,7 @@ sprint={
 3d_physics/layer_6="pickups"
 3d_physics/layer_7="interactable"
 3d_physics/layer_8="enemy_hitbox"
+3d_physics/layer_9="walker_interactable"
 
 [rendering]
 

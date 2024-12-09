@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=4 uid="uid://4j0uw0ki1luc"]
+[gd_scene load_steps=17 format=4 uid="uid://4j0uw0ki1luc"]
 
 [ext_resource type="Script" path="res://player/walker.gd" id="1_qi8h2"]
 [ext_resource type="Script" path="res://components/interactable.gd" id="2_j43j1"]
@@ -61,9 +61,11 @@ albedo_texture = ExtResource("4_bl81j")
 [sub_resource type="BoxShape3D" id="BoxShape3D_tkfnx"]
 size = Vector3(0.1823, 0.0754639, 0.3)
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_xvx5l"]
-radius = 0.0440758
-height = 0.702525
+[sub_resource type="BoxShape3D" id="BoxShape3D_6yy4d"]
+size = Vector3(0.199463, 0.117126, 0.735291)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_y4t8g"]
+size = Vector3(0.154358, 0.237122, 0.321838)
 
 [node name="Walker" type="Node3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0294226, -0.0214159)
@@ -81,7 +83,7 @@ shape = SubResource("BoxShape3D_2f4qr")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.530615)
 
 [node name="InteractableRB" type="StaticBody3D" parent="."]
-collision_layer = 64
+collision_layer = 256
 collision_mask = 0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="InteractableRB"]
@@ -127,17 +129,35 @@ shape = SubResource("BoxShape3D_tkfnx")
 [node name="GunModel" parent="GunSelectorHitbox" instance=ExtResource("6_wgb0m")]
 transform = Transform3D(2.18855, 0.670652, 3.8613e-08, -3.1427e-15, -1.00055e-07, 3.015, 0.670652, -2.18855, -1.26006e-07, 0, 0, 0)
 
-[node name="CrowbardSelectorHitbox" type="StaticBody3D" parent="."]
+[node name="GunInteract" type="Node" parent="GunSelectorHitbox"]
+script = ExtResource("2_j43j1")
+
+[node name="CrowbarSelectorHitbox" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.168601, 0.347891, 0.0314156)
 collision_layer = 64
 collision_mask = 0
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="CrowbardSelectorHitbox"]
-transform = Transform3D(0.991637, 0.129055, 0, 5.64118e-09, -4.33458e-08, -1, -0.129055, 0.991637, -4.37114e-08, -0.00353789, -3.0712e-11, 0.000702608)
-shape = SubResource("CapsuleShape3D_xvx5l")
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CrowbarSelectorHitbox"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.04199, 0.00765991, 0.00500558)
+shape = SubResource("BoxShape3D_6yy4d")
 
-[node name="Crowbar" parent="CrowbardSelectorHitbox" instance=ExtResource("7_4ysws")]
+[node name="Crowbar" parent="CrowbarSelectorHitbox" instance=ExtResource("7_4ysws")]
 transform = Transform3D(-0.318204, 0.0661168, 2.89006e-09, 0, -1.42062e-08, 0.325, 0.0661169, 0.318204, 1.39091e-08, -0.0667337, 0, -0.344582)
+
+[node name="CrowbarInteract" type="Node" parent="CrowbarSelectorHitbox"]
+script = ExtResource("2_j43j1")
+
+[node name="FlashlightInteract" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="FlashlightInteract"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00100708, 0.436249, 0.0169373)
+shape = SubResource("BoxShape3D_y4t8g")
+
+[node name="FlashlightInteract" type="Node" parent="FlashlightInteract"]
+script = ExtResource("2_j43j1")
 
 [connection signal="on_interact" from="InteractableRB/Interactable" to="." method="_on_interactable_on_interact"]
 [connection signal="timeout" from="Flashlight/FlashlightBattery" to="Flashlight" method="_on_flashlight_battery_timeout"]
+[connection signal="on_interact" from="GunSelectorHitbox/GunInteract" to="." method="_on_gun_interact_on_interact"]
+[connection signal="on_interact" from="CrowbarSelectorHitbox/CrowbarInteract" to="." method="_on_crowbar_interact_on_interact"]
+[connection signal="on_interact" from="FlashlightInteract/FlashlightInteract" to="." method="_on_flashlight_interact_on_interact"]

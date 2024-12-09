@@ -21,6 +21,7 @@ var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 var _delta := 0.0
 
 enum WEAPON {none, gun, crowbar}
+var current_weapon : WEAPON = WEAPON.none
 
 #Components
 @onready var camera_pivot = $CameraPivot
@@ -30,6 +31,7 @@ enum WEAPON {none, gun, crowbar}
 @onready var weapon_camera: Camera3D = $SubViewportContainer/SubViewport/WeaponCamera
 @onready var state_machine = $StateMachine
 @onready var interactable_ray = $CameraPivot/WorldCamera/InteractableRay
+@onready var walker_interactable_ray: RayCast3D = $CameraPivot/WorldCamera/WalkerInteractableRay
 @onready var ammo_handler = $StateMachine/Aim/AmmoHandler
 @onready var damaged_heal_timer = $Timers/DamagedHealTimer
 @onready var player_ui: PlayerUI = $PlayerUI
@@ -75,6 +77,12 @@ func process_gravity(delta):
 func interact() -> void:
 	state_machine.state.interact()
 
+
+func try_grab_walker():
+	if not walker_interactable_ray.is_colliding():
+		return
+	
+	_on_walker_walker_interacted()
 
 func player_hit() -> void:
 	if damaged:

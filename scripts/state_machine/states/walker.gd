@@ -1,7 +1,7 @@
 extends PlayerState
 class_name Walker
 
-@export var speed := 0.3
+@export var speed := 0.1
 @export var rotation_speed := 0.2
 @export var aceleration_value := 40.0 ##The bigger the value, the longer the steps
 
@@ -40,9 +40,9 @@ func physics_update(delta: float) -> void:
 		#player.velocity.x = direction.x * speed
 		player.velocity.z = move_toward(player.velocity.z, direction.z * speed, speed / aceleration_value)
 		player.velocity.x = move_toward(player.velocity.x, direction.x * speed, speed / aceleration_value)
-		if is_equal_approx(player.velocity.z, direction.z * speed) and is_equal_approx(player.velocity.x, direction.x * speed):
-			player.velocity.z = 0
-			player.velocity.x = 0
+		#if is_equal_approx(player.velocity.z, direction.z * speed) and is_equal_approx(player.velocity.x, direction.x * speed):
+			#player.velocity.z = 0
+			#player.velocity.x = 0
 	elif Input.is_action_pressed("move_left") or Input.is_action_pressed("move_right"):
 		rotation_acelerator += delta
 		print(rotation_acelerator)
@@ -62,8 +62,8 @@ func physics_update(delta: float) -> void:
 func input(event):
 	if event.is_action_pressed("flashlight"):
 		walker.flashlight_togle()
-	if event.is_action_pressed("interact"):
-		player.interact()
+	#if event.is_action_pressed("interact"):
+		#player.interact()
 	if event is InputEventMouseMotion:
 		mouse_motion = -event.relative * 0.001
 	if event.is_action_pressed("drop_walker"):

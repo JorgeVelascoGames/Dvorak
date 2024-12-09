@@ -35,6 +35,9 @@ func input(event):
 	if event.is_action_pressed("interact"):
 		player.interact()
 	
+	if event.is_action_pressed("drop_walker"):
+		player.try_grab_walker()
+	
 	if event is InputEventMouseMotion:
 		mouse_motion = -event.relative * 0.001
 

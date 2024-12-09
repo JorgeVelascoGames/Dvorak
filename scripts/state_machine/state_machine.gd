@@ -8,6 +8,7 @@ signal  transitioned(state_name)
 var state : State
 
 @onready var state_label = $"../PlayerUI/MarginContainer/StateLabel"
+@onready var walker: WalkerModel = $"../WalkerFixedPoint/Walker"
 
 
 func _ready():

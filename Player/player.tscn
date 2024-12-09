@@ -473,8 +473,9 @@ sprint_multiplier = 3.5
 
 [node name="Walker" type="Node" parent="StateMachine"]
 script = ExtResource("5_h6v2u")
-speed = 0.6
+speed = 0.3
 rotation_speed = 0.4
+aceleration_value = 200.0
 
 [node name="Aim" type="Node" parent="StateMachine"]
 script = ExtResource("6_rtwvu")
@@ -556,6 +557,11 @@ autostart = true
 [node name="InteractableRay" type="RayCast3D" parent="CameraPivot/WorldCamera"]
 target_position = Vector3(0, 0, -2)
 collision_mask = 65
+debug_shape_custom_color = Color(0.756863, 0.00392157, 0.941176, 1)
+
+[node name="WalkerInteractableRay" type="RayCast3D" parent="CameraPivot/WorldCamera"]
+target_position = Vector3(0, 0, -2)
+collision_mask = 257
 debug_shape_custom_color = Color(0.756863, 0.00392157, 0.941176, 1)
 
 [node name="GunRay" type="RayCast3D" parent="CameraPivot/WorldCamera"]
@@ -691,6 +697,7 @@ visible = false
 
 [node name="Crowbar" parent="AnimatedObjects" instance=ExtResource("22_r00kl")]
 transform = Transform3D(-1.79217e-08, 0, 0.41, 0, 0.41, 0, -0.41, 0, -1.79217e-08, 0, -0.454114, -0.816677)
+visible = false
 
 [node name="Timers" type="Node" parent="."]
 
