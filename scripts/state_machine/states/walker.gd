@@ -19,6 +19,9 @@ var mouse_motion := Vector2.ZERO
 var rotation_acelerator := 0.0
 var default_floor_max_angle : float
 
+enum MOVEMENT_TYPE {forward, rotation, idle}
+var movement : MOVEMENT_TYPE
+
 
 func enter(_msg : ={}) -> void:
 	ammo_handler.reload()
@@ -36,7 +39,8 @@ func update(delta):
 
 func physics_update(delta: float) -> void:	
 	var direction := (player.transform.basis * Vector3.FORWARD).normalized()
-	if Input.is_action_pressed("move_forward"):
+	if Input.is_action_pressed("move_forward") and movement != MOVEMENT_TYPE.rotation:
+		movement = MOVEMENT_TYPE.forward
 		#player.velocity.z = direction.z * speed
 		#player.velocity.x = direction.x * speed
 		player.velocity.z = move_toward(player.velocity.z, direction.z * speed, speed / aceleration_value)
@@ -44,16 +48,20 @@ func physics_update(delta: float) -> void:
 		#if is_equal_approx(player.velocity.z, direction.z * speed) and is_equal_approx(player.velocity.x, direction.x * speed):
 			#player.velocity.z = 0
 			#player.velocity.x = 0
-	elif Input.is_action_pressed("move_left") or Input.is_action_pressed("move_right"):
+	elif Input.is_action_pressed("move_left") or Input.is_action_pressed("move_right") and  movement != MOVEMENT_TYPE.forward:
+		movement = MOVEMENT_TYPE.rotation
+		player.velocity = Vector3.ZERO
 		rotation_acelerator += delta
 		player.rotate_y(rotation_speed * rotation_acelerator * 
 		-Input.get_vector("move_left", "move_right", "move_forward", "move_back").x  * delta)
 		if rotation_acelerator >= max_rotation_acceleration:
 			rotation_acelerator = 0.0
+			#TODO sonido de dejar el andador
 	else:
 		player.velocity.z = move_toward(player.velocity.z, 0, speed)
 		player.velocity.x = move_toward(player.velocity.x, 0, speed)
 		rotation_acelerator = 0.0
+		movement = MOVEMENT_TYPE.idle
 	
 	handle_camera_rotation(delta)
 	player.move_and_slide()

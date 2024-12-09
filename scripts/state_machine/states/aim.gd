@@ -8,6 +8,7 @@ class_name PlayerAim
 @onready var ammo_counter: AmmoCounter = $"../../Components/AmmoCounter"
 @onready var aiming_gun: Node3D = $"../../SubViewportContainer/SubViewport/WeaponCamera/GunModel"
 @onready var initial_gun_pos := aiming_gun.position
+@onready var prepare_gun: PrepareGun = $"../PrepareGun"
 
 @export var aim_multiplier: float = 0.3
 @export var aim_speed: float = 0.5

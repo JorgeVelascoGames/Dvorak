@@ -40,8 +40,15 @@ func transition_to(target_state_name : String, msg : Dictionary):
 	if not has_node(target_state_name):
 		return
 	
+	if get_node(target_state_name).cooldown_timer != null and get_node(target_state_name).cooldown_timer.time_left > 0:
+		#TODO cd sound
+		return
+	
 	if state != null:
 		state.exit()
+		if state.cooldown_timer:
+			state.cooldown_timer.start()
+			
 	
 	state = get_node(target_state_name)
 	state.enter(msg)

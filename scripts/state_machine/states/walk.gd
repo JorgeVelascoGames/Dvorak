@@ -49,7 +49,7 @@ func physics_update(delta: float) -> void:
 		player.velocity.z = direction.z * speed
 	else:
 		state_machine.transition_to("Idle", {})
-	if Input.is_action_pressed("aim"):
+	if Input.is_action_just_pressed("aim") and player.current_weapon != player.WEAPON.none:
 		state_machine.transition_to("PrepareGun", {})
 	
 	player.move_and_slide()

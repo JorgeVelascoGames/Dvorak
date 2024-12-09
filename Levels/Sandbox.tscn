@@ -4,9 +4,9 @@
 [ext_resource type="PackedScene" uid="uid://m6pypgl566n1" path="res://player/player.tscn" id="1_4278g"]
 [ext_resource type="Material" uid="uid://dacid3ccax2pq" path="res://Levels/materials/orange.tres" id="2_logh3"]
 [ext_resource type="Material" uid="uid://ciyx0k2mf8b5f" path="res://Levels/materials/grey.tres" id="3_m4mti"]
-[ext_resource type="Texture2D" uid="uid://cfe7wybvony37" path="res://assets/textures/grey_wall.png" id="4_3a20u"]
 [ext_resource type="Script" path="res://randomization/room_randomizer.gd" id="4_eyypd"]
 [ext_resource type="PackedScene" uid="uid://4upnysgx32r2" path="res://components/enemy_spawn_manager.tscn" id="4_gwayn"]
+[ext_resource type="Texture2D" uid="uid://by4jbjsne1tjb" path="res://assets/textures/wall_substance.png" id="4_lrjaa"]
 [ext_resource type="Script" path="res://randomization/room_configurations.gd" id="5_1f1fm"]
 [ext_resource type="PackedScene" uid="uid://qyjmhcrcrko3" path="res://components/enemy_spawner.tscn" id="5_j0fdo"]
 [ext_resource type="PackedScene" uid="uid://0wduiiq6476g" path="res://enemy/braid/braid.tscn" id="6_sdagq"]
@@ -22,11 +22,12 @@ size = Vector3(8, 8, 1)
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_ql70l"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_li3jx"]
-albedo_texture = ExtResource("4_3a20u")
+albedo_texture = ExtResource("4_lrjaa")
 emission_energy_multiplier = 0.0
 emission_texture = SubResource("CompressedTexture2D_yg50n")
 normal_texture = SubResource("CompressedTexture2D_ql70l")
 uv1_triplanar = true
+uv1_world_triplanar = true
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_xkx53"]
 

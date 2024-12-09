@@ -10,7 +10,7 @@ class_name PrepareGun
 @onready var gun_initial_position := animated_gun.position
 
 var tween : Tween
-
+var crowbar_prepare := false
 
 func enter(_msg : ={}) -> void:
 	player.interactable_ray.process_mode = Node.PROCESS_MODE_DISABLED
@@ -33,6 +33,12 @@ func enter(_msg : ={}) -> void:
 	
 	if player.current_weapon == player.WEAPON.crowbar:
 		animated_crowbar.show()
+		tween = create_tween()
+		tween.tween_property(camera_pivot, "rotation", Vector3.ZERO, 0.6).set_ease(Tween.EASE_OUT)
+		animated_crowbar.show()
+		animation_tree["parameters/crowbar_prepare/request"] = AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE
+		await animation_tree.animation_finished
+		crowbar_prepare = true
 	
 	if player.current_weapon == player.WEAPON.none:
 		state_machine.transition_to("Idle", {})
@@ -40,18 +46,24 @@ func enter(_msg : ={}) -> void:
 
 func update(_delta) -> void:
 	if Input.is_action_just_released("aim"):
-		state_machine.transition_to("Idle", {})
-		animation_tree["parameters/prepare_gun_trigger/request"] = AnimationNodeOneShot.ONE_SHOT_REQUEST_ABORT
+		if player.current_weapon == player.WEAPON.crowbar and crowbar_prepare:
+			state_machine.transition_to("CrowbarSwing", {})
+		else:
+			state_machine.transition_to("Idle", {})
+			animated_crowbar.hide()
 
 
 func finish_prepare_gun() -> void:
-	state_machine.transition_to("Aim", {})
+	if player.current_weapon == player.WEAPON.gun:
+		state_machine.transition_to("Aim", {})
 
 
 func exit() -> void:
 	if tween:
 		tween.kill()
-	animation_player.stop()
+	animation_tree["parameters/prepare_gun_trigger/request"] = AnimationNodeOneShot.ONE_SHOT_REQUEST_ABORT
+	animation_tree["parameters/crowbar_prepare/request"] = AnimationNodeOneShot.ONE_SHOT_REQUEST_ABORT
+	#animation_player.stop()
 	animated_gun.hide()
-	animated_crowbar.hide()
 	player.interactable_ray.process_mode = Node.PROCESS_MODE_INHERIT
+	crowbar_prepare = false

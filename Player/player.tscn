@@ -1,4 +1,4 @@
-[gd_scene load_steps=57 format=3 uid="uid://m6pypgl566n1"]
+[gd_scene load_steps=63 format=3 uid="uid://m6pypgl566n1"]
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_ref5g"]
 [ext_resource type="Script" path="res://player/smooth_camera.gd" id="2_cywkd"]
@@ -305,6 +305,34 @@ tracks/0/keys = {
 "values": [Vector3(0, 0.54, 0)]
 }
 
+[sub_resource type="Animation" id="Animation_838k8"]
+resource_name = "prepare_crowbar"
+length = 2.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedObjects/Crowbar:rotation")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.666667, 1.33333, 1.5, 2.3),
+"transitions": PackedFloat32Array(0.732043, 1.27456, 1.8025, 1.41421, 1.51572),
+"update": 0,
+"values": [Vector3(-0.750492, 2.67035, 0), Vector3(-0.15708, 2.67035, 0), Vector3(0.00872665, 0.907571, 0), Vector3(0.00872665, 0.907571, 0), Vector3(0.00872665, 1.94604, 0.0349066)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedObjects/Crowbar:position")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.666667, 1.33333, 1.5, 2.3),
+"transitions": PackedFloat32Array(0.732043, 1.1487, 1.68179, 1.41421, 1.51572),
+"update": 0,
+"values": [Vector3(-0.085, -0.244, -0.957), Vector3(-0.085, -0.244, -0.957), Vector3(-0.055, -0.244, -0.957), Vector3(-0.055, -0.244, -0.957), Vector3(0.33, -0.099, -0.957)]
+}
+
 [sub_resource type="Animation" id="Animation_dutym"]
 resource_name = "prepare_gun"
 length = 1.8
@@ -345,6 +373,34 @@ tracks/2/keys = {
 "values": [Vector3(1.51435, 2.0736, -2.57015), Vector3(1.51435, 1.9245, -2.57015), Vector3(0.214752, 1.5908, -2.91907), Vector3(0.201802, 1.6474, -2.64696), Vector3(0.215464, 1.58023, -2.96859)]
 }
 
+[sub_resource type="Animation" id="Animation_2vcw6"]
+resource_name = "swing_crowbar"
+length = 0.46
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedObjects/Crowbar:rotation")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.0666667, 0.166667, 0.266667, 0.366667, 0.46, 0.466667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0.00872665, 1.94604, 0.0349066), Vector3(0.00872665, 1.94604, 0.287979), Vector3(0.602139, 2.22529, -0.158825), Vector3(0.30107, 1.66537, -0.966857), Vector3(0.30107, 1.66537, -0.966857), Vector3(0.301942, 1.9443, -0.966912)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedObjects/Crowbar:position")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.0666667, 0.166667, 0.266667, 0.366667, 0.46, 0.466667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0.33, -0.099, -0.957), Vector3(0.23, 0.031, -0.957), Vector3(-0.176, -0.032, -0.957), Vector3(-0.176, -0.127, -0.687), Vector3(-0.141, -0.362, -0.687), Vector3(-0.446, -0.362, -0.687)]
+}
+
 [sub_resource type="Animation" id="Animation_hbgry"]
 resource_name = "unbalanced"
 length = 6.0
@@ -374,62 +430,6 @@ tracks/1/keys = {
 "values": [Vector3(0, -0.135978, 0), Vector3(0, -0.0746599, 0), Vector3(0, -0.0853905, 0), Vector3(0, -0.10072, 0), Vector3(0, -0.407561, 0), Vector3(0, -0.135978, 0)]
 }
 
-[sub_resource type="Animation" id="Animation_838k8"]
-resource_name = "prepare_crowbar"
-length = 2.3
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("AnimatedObjects/Crowbar:rotation")
-tracks/0/interp = 2
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.666667, 1.33333, 1.5, 2.3),
-"transitions": PackedFloat32Array(0.732043, 1.27456, 1.8025, 1.41421, 1.51572),
-"update": 0,
-"values": [Vector3(-0.750492, 2.67035, 0), Vector3(-0.15708, 2.67035, 0), Vector3(0.00872665, 0.907571, 0), Vector3(0.00872665, 0.907571, 0), Vector3(0.00872665, 1.94604, 0.0349066)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("AnimatedObjects/Crowbar:position")
-tracks/1/interp = 2
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.666667, 1.33333, 1.5, 2.3),
-"transitions": PackedFloat32Array(0.732043, 1.1487, 1.68179, 1.41421, 1.51572),
-"update": 0,
-"values": [Vector3(-0.085, -0.244, -0.957), Vector3(-0.085, -0.244, -0.957), Vector3(-0.055, -0.244, -0.957), Vector3(-0.055, -0.244, -0.957), Vector3(0.33, -0.099, -0.957)]
-}
-
-[sub_resource type="Animation" id="Animation_2vcw6"]
-resource_name = "swing_crowbar"
-length = 0.46
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("AnimatedObjects/Crowbar:rotation")
-tracks/0/interp = 2
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0.0666667, 0.166667, 0.266667, 0.366667, 0.46, 0.466667),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
-"update": 0,
-"values": [Vector3(0.00872665, 1.94604, 0.0349066), Vector3(0.00872665, 1.94604, 0.287979), Vector3(0.602139, 2.22529, -0.158825), Vector3(0.30107, 1.66537, -0.966857), Vector3(0.30107, 1.66537, -0.966857), Vector3(0.301942, 1.9443, -0.966912)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("AnimatedObjects/Crowbar:position")
-tracks/1/interp = 2
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0.0666667, 0.166667, 0.266667, 0.366667, 0.46, 0.466667),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
-"update": 0,
-"values": [Vector3(0.33, -0.099, -0.957), Vector3(0.23, 0.031, -0.957), Vector3(-0.176, -0.032, -0.957), Vector3(-0.176, -0.127, -0.687), Vector3(-0.141, -0.362, -0.687), Vector3(-0.446, -0.362, -0.687)]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_1d5hg"]
 _data = {
 "RESET": SubResource("Animation_1ivek"),
@@ -455,10 +455,24 @@ animation = &"no_animation"
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_7deig"]
 animation = &"no_movement_pivot"
 
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_a4g0y"]
+animation = &"swing_crowbar"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_cwxrh"]
+animation = &"prepare_crowbar"
+
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_3dwcv"]
 animation = &"unbalanced"
 
 [sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_fwq1o"]
+
+[sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_6uxev"]
+
+[sub_resource type="AnimationNodeOneShot" id="AnimationNodeOneShot_yf1bc"]
+
+[sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_7ay31"]
+
+[sub_resource type="AnimationNodeOneShot" id="AnimationNodeOneShot_x81h2"]
 
 [sub_resource type="AnimationNodeBlend2" id="AnimationNodeBlend2_i8rto"]
 
@@ -475,7 +489,7 @@ fadein_time = 2.0
 [sub_resource type="AnimationNodeBlend2" id="AnimationNodeBlend2_qem71"]
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_x2kci"]
-graph_offset = Vector2(337.456, -71.811)
+graph_offset = Vector2(1469.43, -9.04141)
 nodes/Animation/node = SubResource("AnimationNodeAnimation_3dwcv")
 nodes/Animation/position = Vector2(420, 260)
 "nodes/Animation 2/node" = SubResource("AnimationNodeAnimation_5bcms")
@@ -486,8 +500,20 @@ nodes/Animation/position = Vector2(420, 260)
 "nodes/Animation 4/position" = Vector2(-320, 0)
 "nodes/Animation 5/node" = SubResource("AnimationNodeAnimation_7deig")
 "nodes/Animation 5/position" = Vector2(-360, 300)
+"nodes/Animation 6/node" = SubResource("AnimationNodeAnimation_a4g0y")
+"nodes/Animation 6/position" = Vector2(1780, 540)
+"nodes/Animation 7/node" = SubResource("AnimationNodeAnimation_cwxrh")
+"nodes/Animation 7/position" = Vector2(1280, 540)
 nodes/TimeScale/node = SubResource("AnimationNodeTimeScale_fwq1o")
 nodes/TimeScale/position = Vector2(1200, 300)
+nodes/crowbar_Swing_timescale/node = SubResource("AnimationNodeTimeScale_6uxev")
+nodes/crowbar_Swing_timescale/position = Vector2(2020, 400)
+nodes/crowbar_prepare/node = SubResource("AnimationNodeOneShot_yf1bc")
+nodes/crowbar_prepare/position = Vector2(1880, 20)
+nodes/crowbar_prepare_timescale/node = SubResource("AnimationNodeTimeScale_7ay31")
+nodes/crowbar_prepare_timescale/position = Vector2(1560, 320)
+nodes/crowbar_swing/node = SubResource("AnimationNodeOneShot_x81h2")
+nodes/crowbar_swing/position = Vector2(2300, 40)
 nodes/fix_pivot_movement/node = SubResource("AnimationNodeBlend2_i8rto")
 nodes/fix_pivot_movement/position = Vector2(-40, 0)
 nodes/floor_blend/node = SubResource("AnimationNodeBlend2_kecm2")
@@ -496,12 +522,12 @@ nodes/floor_blend/position = Vector2(360, 0)
 "nodes/losing balance_anim/position" = Vector2(1000, 500)
 nodes/losing_balance/node = SubResource("AnimationNodeBlend2_rl3gr")
 nodes/losing_balance/position = Vector2(1340, 40)
-nodes/output/position = Vector2(1600, 80)
+nodes/output/position = Vector2(2560, 60)
 nodes/prepare_gun_trigger/node = SubResource("AnimationNodeOneShot_otsha")
 nodes/prepare_gun_trigger/position = Vector2(1040, 20)
 nodes/unbalanced_blend/node = SubResource("AnimationNodeBlend2_qem71")
 nodes/unbalanced_blend/position = Vector2(700, 0)
-node_connections = [&"TimeScale", 0, &"losing balance_anim", &"fix_pivot_movement", 0, &"Animation 4", &"fix_pivot_movement", 1, &"Animation 5", &"floor_blend", 0, &"fix_pivot_movement", &"floor_blend", 1, &"Animation 3", &"losing_balance", 0, &"prepare_gun_trigger", &"losing_balance", 1, &"TimeScale", &"output", 0, &"losing_balance", &"prepare_gun_trigger", 0, &"unbalanced_blend", &"prepare_gun_trigger", 1, &"Animation 2", &"unbalanced_blend", 0, &"floor_blend", &"unbalanced_blend", 1, &"Animation"]
+node_connections = [&"TimeScale", 0, &"losing balance_anim", &"crowbar_Swing_timescale", 0, &"Animation 6", &"crowbar_prepare", 0, &"losing_balance", &"crowbar_prepare", 1, &"crowbar_prepare_timescale", &"crowbar_prepare_timescale", 0, &"Animation 7", &"crowbar_swing", 0, &"crowbar_prepare", &"crowbar_swing", 1, &"crowbar_Swing_timescale", &"fix_pivot_movement", 0, &"Animation 4", &"fix_pivot_movement", 1, &"Animation 5", &"floor_blend", 0, &"fix_pivot_movement", &"floor_blend", 1, &"Animation 3", &"losing_balance", 0, &"prepare_gun_trigger", &"losing_balance", 1, &"TimeScale", &"output", 0, &"crowbar_swing", &"prepare_gun_trigger", 0, &"unbalanced_blend", &"prepare_gun_trigger", 1, &"Animation 2", &"unbalanced_blend", 0, &"floor_blend", &"unbalanced_blend", 1, &"Animation"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_e43ec"]
 size = Vector3(0.615, 1, 1)
@@ -566,6 +592,7 @@ speed = 0.3
 rotation_speed = 0.14
 aceleration_value = 200.0
 max_rotation_acceleration = 1.5
+cooldown = 1.5
 
 [node name="Aim" type="Node" parent="StateMachine"]
 script = ExtResource("6_rtwvu")
@@ -582,6 +609,11 @@ script = SubResource("GDScript_7r1t3")
 
 [node name="PrepareGun" type="Node" parent="StateMachine"]
 script = ExtResource("7_hfrgh")
+cooldown = 1.5
+
+[node name="Cooldown" type="Timer" parent="StateMachine/PrepareGun"]
+wait_time = 1.5
+one_shot = true
 
 [node name="Unbalanced" type="Node" parent="StateMachine"]
 script = ExtResource("8_7b01x")
@@ -601,6 +633,7 @@ script = ExtResource("9_q33c7")
 
 [node name="PlayerLongInteraction" type="Node" parent="StateMachine"]
 script = ExtResource("10_b71wi")
+cooldown = 2.0
 
 [node name="CrowbarSwing" type="Node" parent="StateMachine"]
 script = ExtResource("12_6so70")
@@ -716,7 +749,6 @@ theme_override_constants/margin_right = 8
 theme_override_constants/margin_bottom = 8
 
 [node name="StateLabel" type="Label" parent="PlayerUI/MarginContainer"]
-visible = false
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 0
@@ -794,7 +826,8 @@ transform = Transform3D(-5.79198e-06, 1.6, 0, -1.6, -5.79198e-06, 0, 0, 0, 1.6, 
 visible = false
 
 [node name="Crowbar" parent="AnimatedObjects" instance=ExtResource("22_r00kl")]
-transform = Transform3D(-0.365313, -0.126945, 0.136131, 0, 0.299855, 0.279619, -0.186136, 0.249143, -0.267173, -0.085, -0.244, -0.957)
+transform = Transform3D(-0.365312, -0.126946, 0.136132, 0, 0.299855, 0.279619, -0.186138, 0.249142, -0.267172, -0.085, -0.244, -0.957)
+visible = false
 
 [node name="Timers" type="Node" parent="."]
 
@@ -808,6 +841,14 @@ deterministic = false
 tree_root = SubResource("AnimationNodeBlendTree_x2kci")
 anim_player = NodePath("../AnimationPlayer")
 parameters/TimeScale/scale = 2.0
+parameters/crowbar_Swing_timescale/scale = 1.0
+parameters/crowbar_prepare/active = false
+parameters/crowbar_prepare/internal_active = false
+parameters/crowbar_prepare/request = 0
+parameters/crowbar_prepare_timescale/scale = 1.0
+parameters/crowbar_swing/active = false
+parameters/crowbar_swing/internal_active = false
+parameters/crowbar_swing/request = 0
 parameters/fix_pivot_movement/blend_amount = 0.0
 parameters/floor_blend/blend_amount = 0.0
 parameters/losing_balance/blend_amount = 0.0
