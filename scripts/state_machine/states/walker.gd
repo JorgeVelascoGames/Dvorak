@@ -3,7 +3,8 @@ class_name Walker
 
 @export var speed := 0.1
 @export var rotation_speed := 0.2
-@export var aceleration_value := 40.0 ##The bigger the value, the longer the steps
+@export var aceleration_value := 40.0 ##The bigger the value, the longer it takes to accelerate
+@export var max_rotation_acceleration := 1.0 ##The longer the value, the longer the steps when rotating
 
 @onready var world_camera = $"../../CameraPivot/WorldCamera"
 @onready var camera_pivot = $"../../CameraPivot"
@@ -45,15 +46,14 @@ func physics_update(delta: float) -> void:
 			#player.velocity.x = 0
 	elif Input.is_action_pressed("move_left") or Input.is_action_pressed("move_right"):
 		rotation_acelerator += delta
-		print(rotation_acelerator)
 		player.rotate_y(rotation_speed * rotation_acelerator * 
 		-Input.get_vector("move_left", "move_right", "move_forward", "move_back").x  * delta)
-		if rotation_acelerator >= 1.0:
+		if rotation_acelerator >= max_rotation_acceleration:
 			rotation_acelerator = 0.0
-	
-	if Input.is_action_just_released("move_forward"):
+	else:
 		player.velocity.z = move_toward(player.velocity.z, 0, speed)
 		player.velocity.x = move_toward(player.velocity.x, 0, speed)
+		rotation_acelerator = 0.0
 	
 	handle_camera_rotation(delta)
 	player.move_and_slide()
