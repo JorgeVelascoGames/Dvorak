@@ -1,4 +1,4 @@
-[gd_scene load_steps=52 format=3 uid="uid://m6pypgl566n1"]
+[gd_scene load_steps=57 format=3 uid="uid://m6pypgl566n1"]
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_ref5g"]
 [ext_resource type="Script" path="res://player/smooth_camera.gd" id="2_cywkd"]
@@ -16,6 +16,7 @@
 [ext_resource type="Script" path="res://scripts/state_machine/states/long_interaction.gd" id="10_b71wi"]
 [ext_resource type="PackedScene" uid="uid://shutxn8dpbys" path="res://player/balance.tscn" id="10_m7euy"]
 [ext_resource type="Script" path="res://player/ammo_counter.gd" id="11_xb6v7"]
+[ext_resource type="Script" path="res://scripts/state_machine/states/crowbar_swing.gd" id="12_6so70"]
 [ext_resource type="Shape3D" uid="uid://df6y055xrghl7" path="res://player/player_normal_collision_shape.tres" id="12_6t6rn"]
 [ext_resource type="Script" path="res://player/player_ui.gd" id="14_0ypvp"]
 [ext_resource type="FontFile" uid="uid://capvrpuujdf4q" path="res://assets/fonts/Roboto-Light.ttf" id="19_lypxt"]
@@ -23,6 +24,7 @@
 [ext_resource type="PackedScene" uid="uid://cpyss678yatou" path="res://assets/props/gun/gun_model.tscn" id="21_lgr1q"]
 [ext_resource type="Script" path="res://player/player_animation_controller.gd" id="22_j0g4a"]
 [ext_resource type="PackedScene" uid="uid://ctrkoynx6fbcj" path="res://assets/props/crowbar/crowbar.tscn" id="22_r00kl"]
+[ext_resource type="Script" path="res://player/crowbar_attack_hitbox.gd" id="24_nhdqm"]
 
 [sub_resource type="GDScript" id="GDScript_7r1t3"]
 script/source = "extends Node
@@ -188,6 +190,30 @@ tracks/3/keys = {
 "update": 0,
 "values": [Vector3(0, 0, -1.5708)]
 }
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("AnimatedObjects/Crowbar:rotation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.750492, 2.67035, 0)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("AnimatedObjects/Crowbar:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.085, -0.244, -0.957)]
+}
 
 [sub_resource type="Animation" id="Animation_f0x85"]
 resource_name = "floor"
@@ -284,7 +310,7 @@ resource_name = "prepare_gun"
 length = 1.8
 tracks/0/type = "value"
 tracks/0/imported = false
-tracks/0/enabled = true
+tracks/0/enabled = false
 tracks/0/path = NodePath("CameraPivot:rotation")
 tracks/0/interp = 2
 tracks/0/loop_wrap = true
@@ -348,6 +374,62 @@ tracks/1/keys = {
 "values": [Vector3(0, -0.135978, 0), Vector3(0, -0.0746599, 0), Vector3(0, -0.0853905, 0), Vector3(0, -0.10072, 0), Vector3(0, -0.407561, 0), Vector3(0, -0.135978, 0)]
 }
 
+[sub_resource type="Animation" id="Animation_838k8"]
+resource_name = "prepare_crowbar"
+length = 2.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedObjects/Crowbar:rotation")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.666667, 1.33333, 1.5, 2.3),
+"transitions": PackedFloat32Array(0.732043, 1.27456, 1.8025, 1.41421, 1.51572),
+"update": 0,
+"values": [Vector3(-0.750492, 2.67035, 0), Vector3(-0.15708, 2.67035, 0), Vector3(0.00872665, 0.907571, 0), Vector3(0.00872665, 0.907571, 0), Vector3(0.00872665, 1.94604, 0.0349066)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedObjects/Crowbar:position")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.666667, 1.33333, 1.5, 2.3),
+"transitions": PackedFloat32Array(0.732043, 1.1487, 1.68179, 1.41421, 1.51572),
+"update": 0,
+"values": [Vector3(-0.085, -0.244, -0.957), Vector3(-0.085, -0.244, -0.957), Vector3(-0.055, -0.244, -0.957), Vector3(-0.055, -0.244, -0.957), Vector3(0.33, -0.099, -0.957)]
+}
+
+[sub_resource type="Animation" id="Animation_2vcw6"]
+resource_name = "swing_crowbar"
+length = 0.46
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedObjects/Crowbar:rotation")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.0666667, 0.166667, 0.266667, 0.366667, 0.46, 0.466667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0.00872665, 1.94604, 0.0349066), Vector3(0.00872665, 1.94604, 0.287979), Vector3(0.602139, 2.22529, -0.158825), Vector3(0.30107, 1.66537, -0.966857), Vector3(0.30107, 1.66537, -0.966857), Vector3(0.301942, 1.9443, -0.966912)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedObjects/Crowbar:position")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.0666667, 0.166667, 0.266667, 0.366667, 0.46, 0.466667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0.33, -0.099, -0.957), Vector3(0.23, 0.031, -0.957), Vector3(-0.176, -0.032, -0.957), Vector3(-0.176, -0.127, -0.687), Vector3(-0.141, -0.362, -0.687), Vector3(-0.446, -0.362, -0.687)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_1d5hg"]
 _data = {
 "RESET": SubResource("Animation_1ivek"),
@@ -355,7 +437,9 @@ _data = {
 "losing_balance": SubResource("Animation_hxgs6"),
 "no_animation": SubResource("Animation_yw3n8"),
 "no_movement_pivot": SubResource("Animation_jsxkr"),
+"prepare_crowbar": SubResource("Animation_838k8"),
 "prepare_gun": SubResource("Animation_dutym"),
+"swing_crowbar": SubResource("Animation_2vcw6"),
 "unbalanced": SubResource("Animation_hbgry")
 }
 
@@ -386,11 +470,12 @@ animation = &"losing_balance"
 [sub_resource type="AnimationNodeBlend2" id="AnimationNodeBlend2_rl3gr"]
 
 [sub_resource type="AnimationNodeOneShot" id="AnimationNodeOneShot_otsha"]
+fadein_time = 2.0
 
 [sub_resource type="AnimationNodeBlend2" id="AnimationNodeBlend2_qem71"]
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_x2kci"]
-graph_offset = Vector2(-487.365, -246)
+graph_offset = Vector2(337.456, -71.811)
 nodes/Animation/node = SubResource("AnimationNodeAnimation_3dwcv")
 nodes/Animation/position = Vector2(420, 260)
 "nodes/Animation 2/node" = SubResource("AnimationNodeAnimation_5bcms")
@@ -417,6 +502,9 @@ nodes/prepare_gun_trigger/position = Vector2(1040, 20)
 nodes/unbalanced_blend/node = SubResource("AnimationNodeBlend2_qem71")
 nodes/unbalanced_blend/position = Vector2(700, 0)
 node_connections = [&"TimeScale", 0, &"losing balance_anim", &"fix_pivot_movement", 0, &"Animation 4", &"fix_pivot_movement", 1, &"Animation 5", &"floor_blend", 0, &"fix_pivot_movement", &"floor_blend", 1, &"Animation 3", &"losing_balance", 0, &"prepare_gun_trigger", &"losing_balance", 1, &"TimeScale", &"output", 0, &"losing_balance", &"prepare_gun_trigger", 0, &"unbalanced_blend", &"prepare_gun_trigger", 1, &"Animation 2", &"unbalanced_blend", 0, &"floor_blend", &"unbalanced_blend", 1, &"Animation"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_e43ec"]
+size = Vector3(0.615, 1, 1)
 
 [node name="Player" type="CharacterBody3D" groups=["player"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
@@ -445,6 +533,7 @@ size = Vector2i(320, 240)
 render_target_update_mode = 4
 
 [node name="WeaponCamera" type="Camera3D" parent="SubViewportContainer/SubViewport"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.54, 0)
 cull_mask = 2
 fov = 33.0
 
@@ -513,6 +602,13 @@ script = ExtResource("9_q33c7")
 [node name="PlayerLongInteraction" type="Node" parent="StateMachine"]
 script = ExtResource("10_b71wi")
 
+[node name="CrowbarSwing" type="Node" parent="StateMachine"]
+script = ExtResource("12_6so70")
+
+[node name="Timer" type="Timer" parent="StateMachine/CrowbarSwing"]
+wait_time = 0.3
+one_shot = true
+
 [node name="PlayerCapsule" type="MeshInstance3D" parent="."]
 visible = false
 mesh = SubResource("CapsuleMesh_fyred")
@@ -542,6 +638,7 @@ shape = ExtResource("12_6t6rn")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.54, 0)
 
 [node name="WorldCamera" type="Camera3D" parent="CameraPivot"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.54, 0)
 top_level = true
 cull_mask = 1048573
 fov = 33.0
@@ -693,12 +790,11 @@ autoplay = "RESET"
 [node name="AnimatedObjects" type="Node3D" parent="."]
 
 [node name="GunModel" parent="AnimatedObjects" instance=ExtResource("21_lgr1q")]
-transform = Transform3D(-5.79198e-06, 1.6, 0, -1.6, -5.79198e-06, 0, 0, 0, 1.6, -0.00478901, 0.250339, -0.151233)
+transform = Transform3D(-5.79198e-06, 1.6, 0, -1.6, -5.79198e-06, 0, 0, 0, 1.6, 0, 0.25, -0.116873)
 visible = false
 
 [node name="Crowbar" parent="AnimatedObjects" instance=ExtResource("22_r00kl")]
-transform = Transform3D(-1.79217e-08, 0, 0.41, 0, 0.41, 0, -0.41, 0, -1.79217e-08, 0, -0.454114, -0.816677)
-visible = false
+transform = Transform3D(-0.365313, -0.126945, 0.136131, 0, 0.299855, 0.279619, -0.186136, 0.249143, -0.267173, -0.085, -0.244, -0.957)
 
 [node name="Timers" type="Node" parent="."]
 
@@ -721,6 +817,16 @@ parameters/prepare_gun_trigger/request = 0
 parameters/unbalanced_blend/blend_amount = 0.0
 script = ExtResource("22_j0g4a")
 
+[node name="CrowbarAttackHitbox" type="Area3D" parent="."]
+collision_layer = 0
+collision_mask = 128
+monitoring = false
+script = ExtResource("24_nhdqm")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CrowbarAttackHitbox"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.214622, -0.680155)
+shape = SubResource("BoxShape3D_e43ec")
+
 [connection signal="transitioned" from="StateMachine" to="Components/Balance" method="_on_state_machine_transitioned"]
 [connection signal="transitioned" from="StateMachine" to="AnimationTree" method="_on_state_machine_transitioned"]
 [connection signal="timeout" from="StateMachine/Aim/SensibilityTimer" to="StateMachine/Aim" method="_on_sensibility_timer_timeout"]
@@ -729,5 +835,6 @@ script = ExtResource("22_j0g4a")
 [connection signal="timeout" from="CameraPivot/WorldCamera/AimShakeTimer" to="CameraPivot/WorldCamera" method="_on_aim_shake_timer_timeout"]
 [connection signal="WalkerInteracted" from="WalkerFixedPoint/Walker" to="." method="_on_walker_walker_interacted"]
 [connection signal="timeout" from="Timers/DamagedHealTimer" to="." method="_on_damaged_heal_timer_timeout"]
+[connection signal="body_entered" from="CrowbarAttackHitbox" to="CrowbarAttackHitbox" method="_on_body_entered"]
 
 [editable path="SubViewportContainer/SubViewport/WeaponCamera/GunModel"]
