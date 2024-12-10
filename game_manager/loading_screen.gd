@@ -22,7 +22,7 @@ func _process(delta: float) -> void:
 	
 	if ResourceLoader.THREAD_LOAD_LOADED:
 		is_loading = false
-		var new_scene = ResourceLoader.load_threaded_get(scene_loading)
-		owner.add_child(new_scene)
+		var new_scene = ResourceLoader.load_threaded_get(scene_loading).instantiate()
+		owner.add_new_scene(new_scene)
 		hide()
 		NewSceneLoaded.emit()

@@ -11,14 +11,13 @@ config_version=5
 [application]
 
 config/name="Dvorak"
-run/main_scene="res://levels/Sandbox.tscn"
+run/main_scene="res://game_manager/game.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 config/icon="res://icon.svg"
 
 [autoload]
 
 PathfindingManager="*res://scripts/pahtfinding_manager/pathfinding_manager.tscn"
-Game="*res://game_manager/game.tscn"
 
 [display]
 

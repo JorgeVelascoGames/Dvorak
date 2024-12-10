@@ -30,7 +30,6 @@ func load_new_screen(screen : APP_STATE) -> void:
 		current_screen.queue_free()
 	if screen == APP_STATE.lenguage:
 		loading_screen.load_scene(lenguage_selecton_menu)
-		current_screen = await loading_screen.NewSceneLoaded
 	if screen == APP_STATE.advert:
 		var new_screen = advert_scree.instantiate()
 		add_child(new_screen)
@@ -43,3 +42,8 @@ func load_new_screen(screen : APP_STATE) -> void:
 		var new_screen = lenguage_selecton_menu.instantiate()
 		add_child(new_screen)
 		current_screen = new_screen
+
+
+func add_new_scene(scene):
+	add_child(scene)
+	current_screen = scene
