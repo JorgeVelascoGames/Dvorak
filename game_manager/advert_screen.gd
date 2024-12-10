@@ -6,6 +6,7 @@ var ready_to_continue := false
 
 
 func _ready() -> void:
+	label.hide()
 	timer.start(1.2)
 	await timer.timeout
 	ready_to_continue = true
