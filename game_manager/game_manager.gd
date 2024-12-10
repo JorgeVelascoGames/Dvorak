@@ -3,9 +3,10 @@ class_name GameManager
 
 enum APP_STATE {lenguage, advert, menu, game}
 
-@export var advert_scree: PackedScene
 @export var lenguage_selecton_menu : PackedScene
+@export var advert_scree: PackedScene
 @export var main_menu : PackedScene
+@export var game : PackedScene
 @export var first_scene := APP_STATE.lenguage
 
 @onready var loading_screen: LoadingScreen = $LoadingScreen
@@ -37,7 +38,7 @@ func load_new_screen(screen : APP_STATE) -> void:
 	if screen == APP_STATE.menu:
 		loading_screen.load_scene(main_menu)
 	if screen == APP_STATE.game:
-		pass
+		loading_screen.load_scene(game)
 
 
 func add_new_scene(scene):

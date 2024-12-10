@@ -1,6 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://dh6gl16kfd242"]
+[gd_scene load_steps=12 format=3 uid="uid://dh6gl16kfd242"]
 
 [ext_resource type="Texture2D" uid="uid://b6aldyvxu0m2g" path="res://assets/textures/floor_substance.png" id="1_4rx0d"]
+[ext_resource type="Script" path="res://game_ui/main_menu/main_menu.gd" id="1_q1wtx"]
+[ext_resource type="Texture2D" uid="uid://cdd5wkg8cf17e" path="res://assets/textures/cealing.png" id="2_borow"]
 [ext_resource type="Texture2D" uid="uid://by4jbjsne1tjb" path="res://assets/textures/wall_substance.png" id="2_r5j4k"]
 
 [sub_resource type="Environment" id="Environment_lkb82"]
@@ -13,15 +15,22 @@ albedo_texture = ExtResource("1_4rx0d")
 uv1_triplanar = true
 uv1_world_triplanar = true
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_a04co"]
+albedo_texture = ExtResource("2_borow")
+
 [sub_resource type="BoxMesh" id="BoxMesh_t734x"]
-size = Vector3(0.11, 1.6, 2.68)
+size = Vector3(0.11, 1.6, 3.71)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kvhrd"]
 albedo_texture = ExtResource("2_r5j4k")
 uv1_triplanar = true
 uv1_world_triplanar = true
 
+[sub_resource type="BoxMesh" id="BoxMesh_qwkg8"]
+size = Vector3(0.11, 1.6, 2.68)
+
 [node name="MainMenu" type="Node3D"]
+script = ExtResource("1_q1wtx")
 
 [node name="MainMenuUI" type="Control" parent="."]
 layout_mode = 3
@@ -32,12 +41,22 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="MarginContainer" type="MarginContainer" parent="MainMenuUI"]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MainMenuUI/MarginContainer"]
+custom_minimum_size = Vector2(50, 0)
 layout_mode = 2
+size_flags_horizontal = 4
+alignment = 1
+
+[node name="PlayButton" type="Button" parent="MainMenuUI/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Play"
 
 [node name="MainMenuScenario" type="Node3D" parent="."]
 
@@ -58,22 +77,44 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0584756, 0, -1.32132)
 mesh = SubResource("PlaneMesh_ho0yf")
 surface_material_override/0 = SubResource("StandardMaterial3D_i6hu4")
 
+[node name="Floor2" type="MeshInstance3D" parent="MainMenuScenario"]
+transform = Transform3D(-1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 0, 0, 1, 0.0584756, 0.637432, -1.32132)
+mesh = SubResource("PlaneMesh_ho0yf")
+surface_material_override/0 = SubResource("StandardMaterial3D_a04co")
+
 [node name="Walls" type="Node3D" parent="MainMenuScenario"]
 
 [node name="Wall" type="MeshInstance3D" parent="MainMenuScenario/Walls"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.338583, 0.0801147, -0.12448)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.338583, 0.0801147, 0.20964)
+mesh = SubResource("BoxMesh_t734x")
+skeleton = NodePath("../../Floor")
+surface_material_override/0 = SubResource("StandardMaterial3D_kvhrd")
+
+[node name="Wall5" type="MeshInstance3D" parent="MainMenuScenario/Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.56549, 0.0801147, -1.92711)
 mesh = SubResource("BoxMesh_t734x")
 skeleton = NodePath("../../Floor")
 surface_material_override/0 = SubResource("StandardMaterial3D_kvhrd")
 
 [node name="Wall2" type="MeshInstance3D" parent="MainMenuScenario/Walls"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.02324, 0.0801147, -0.319858)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.09892, 0.0801147, -0.69269)
 mesh = SubResource("BoxMesh_t734x")
 skeleton = NodePath("../../Floor")
 surface_material_override/0 = SubResource("StandardMaterial3D_kvhrd")
 
 [node name="Wall3" type="MeshInstance3D" parent="MainMenuScenario/Walls"]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 1.02324, 0.0801147, -2.13094)
-mesh = SubResource("BoxMesh_t734x")
+mesh = SubResource("BoxMesh_qwkg8")
 skeleton = NodePath("../../Floor")
 surface_material_override/0 = SubResource("StandardMaterial3D_kvhrd")
+
+[node name="Wall4" type="MeshInstance3D" parent="MainMenuScenario/Walls"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.596439, 0.0801147, -3.26837)
+mesh = SubResource("BoxMesh_qwkg8")
+skeleton = NodePath("../../Floor")
+surface_material_override/0 = SubResource("StandardMaterial3D_kvhrd")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(0.981627, 0, 0.190809, 0, 1, 0, -0.190809, 0, 0.981627, 0.505, 0.385, 0.024)
+
+[connection signal="pressed" from="MainMenuUI/MarginContainer/VBoxContainer/PlayButton" to="." method="_on_play_button_pressed"]
