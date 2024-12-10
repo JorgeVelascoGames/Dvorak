@@ -1,6 +1,17 @@
-[gd_scene load_steps=2 format=3 uid="uid://8snq2dhojamu"]
+[gd_scene load_steps=6 format=3 uid="uid://8snq2dhojamu"]
 
 [ext_resource type="Script" path="res://game_manager/game_manager.gd" id="1_d4jsh"]
+[ext_resource type="PackedScene" uid="uid://shutxn8dpbys" path="res://player/balance.tscn" id="2_1fwca"]
+[ext_resource type="PackedScene" uid="uid://dh6gl16kfd242" path="res://game_ui/main_menu/main_menu.tscn" id="2_qnsev"]
+[ext_resource type="Script" path="res://game_manager/game_level_manager.gd" id="3_4u54w"]
+[ext_resource type="PackedScene" uid="uid://ben6fpbmg6r7h" path="res://game_manager/loading_screen.tscn" id="4_v3kow"]
 
 [node name="Game" type="Node"]
 script = ExtResource("1_d4jsh")
+lenguage_selecton_menu = ExtResource("2_1fwca")
+main_menu = ExtResource("2_qnsev")
+
+[node name="GameLevelManager" type="Node" parent="."]
+script = ExtResource("3_4u54w")
+
+[node name="LoadingScreen" parent="." instance=ExtResource("4_v3kow")]

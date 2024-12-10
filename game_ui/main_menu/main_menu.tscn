@@ -1,0 +1,79 @@
+[gd_scene load_steps=8 format=3 uid="uid://dh6gl16kfd242"]
+
+[ext_resource type="Texture2D" uid="uid://b6aldyvxu0m2g" path="res://assets/textures/floor_substance.png" id="1_4rx0d"]
+[ext_resource type="Texture2D" uid="uid://by4jbjsne1tjb" path="res://assets/textures/wall_substance.png" id="2_r5j4k"]
+
+[sub_resource type="Environment" id="Environment_lkb82"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_ho0yf"]
+size = Vector2(11.31, 10.945)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_i6hu4"]
+albedo_texture = ExtResource("1_4rx0d")
+uv1_triplanar = true
+uv1_world_triplanar = true
+
+[sub_resource type="BoxMesh" id="BoxMesh_t734x"]
+size = Vector3(0.11, 1.6, 2.68)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kvhrd"]
+albedo_texture = ExtResource("2_r5j4k")
+uv1_triplanar = true
+uv1_world_triplanar = true
+
+[node name="MainMenu" type="Node3D"]
+
+[node name="MainMenuUI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="MainMenuUI"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MainMenuUI/MarginContainer"]
+layout_mode = 2
+
+[node name="MainMenuScenario" type="Node3D" parent="."]
+
+[node name="GameEnvironment" type="Node3D" parent="MainMenuScenario"]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="MainMenuScenario/GameEnvironment"]
+transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
+light_color = Color(0.314316, 0.314316, 0.314316, 1)
+light_energy = 0.1
+light_bake_mode = 0
+sky_mode = 1
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="MainMenuScenario/GameEnvironment"]
+environment = SubResource("Environment_lkb82")
+
+[node name="Floor" type="MeshInstance3D" parent="MainMenuScenario"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0584756, 0, -1.32132)
+mesh = SubResource("PlaneMesh_ho0yf")
+surface_material_override/0 = SubResource("StandardMaterial3D_i6hu4")
+
+[node name="Walls" type="Node3D" parent="MainMenuScenario"]
+
+[node name="Wall" type="MeshInstance3D" parent="MainMenuScenario/Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.338583, 0.0801147, -0.12448)
+mesh = SubResource("BoxMesh_t734x")
+skeleton = NodePath("../../Floor")
+surface_material_override/0 = SubResource("StandardMaterial3D_kvhrd")
+
+[node name="Wall2" type="MeshInstance3D" parent="MainMenuScenario/Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.02324, 0.0801147, -0.319858)
+mesh = SubResource("BoxMesh_t734x")
+skeleton = NodePath("../../Floor")
+surface_material_override/0 = SubResource("StandardMaterial3D_kvhrd")
+
+[node name="Wall3" type="MeshInstance3D" parent="MainMenuScenario/Walls"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 1.02324, 0.0801147, -2.13094)
+mesh = SubResource("BoxMesh_t734x")
+skeleton = NodePath("../../Floor")
+surface_material_override/0 = SubResource("StandardMaterial3D_kvhrd")
