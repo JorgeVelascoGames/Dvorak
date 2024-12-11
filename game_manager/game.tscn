@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://8snq2dhojamu"]
+[gd_scene load_steps=9 format=3 uid="uid://8snq2dhojamu"]
 
 [ext_resource type="Script" path="res://game_manager/game_manager.gd" id="1_d4jsh"]
 [ext_resource type="PackedScene" uid="uid://dh6gl16kfd242" path="res://game_ui/main_menu/main_menu.tscn" id="2_qnsev"]
@@ -6,6 +6,15 @@
 [ext_resource type="PackedScene" uid="uid://6xaa4aqthxji" path="res://game_manager/lenguage_selection.tscn" id="3_gm0jn"]
 [ext_resource type="PackedScene" uid="uid://ben6fpbmg6r7h" path="res://game_manager/loading_screen.tscn" id="4_v3kow"]
 [ext_resource type="PackedScene" uid="uid://bgouurh1fbjwr" path="res://game_manager/game_level_manager.tscn" id="6_7vbrb"]
+[ext_resource type="Shader" path="res://shaders/vhs.gdshader" id="7_dlfm1"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_u0avb"]
+shader = ExtResource("7_dlfm1")
+shader_parameter/shake = 0.015
+shader_parameter/noiseQuality = 250.0
+shader_parameter/noiseIntensity = 0.001
+shader_parameter/offsetIntensity = 0.0036
+shader_parameter/colorOffsetIntensity = 0.5
 
 [node name="Game" type="Node"]
 script = ExtResource("1_d4jsh")
@@ -17,5 +26,13 @@ main_menu = ExtResource("2_qnsev")
 
 [node name="LoadingScreen" parent="." instance=ExtResource("4_v3kow")]
 visible = false
+
+[node name="ColorRect" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_u0avb")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [connection signal="NewSceneLoaded" from="LoadingScreen" to="." method="_on_loading_screen_new_scene_loaded"]
