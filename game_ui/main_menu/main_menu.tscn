@@ -66,7 +66,7 @@ text = "Quit"
 layout_mode = 2
 size_flags_vertical = 8
 
-[node name="Button" type="Button" parent="MainMenuUI/MarginContainer/HBoxContainer"]
+[node name="SteamButton" type="Button" parent="MainMenuUI/MarginContainer/HBoxContainer"]
 layout_mode = 2
 text = "Whislist on steam"
 
@@ -131,3 +131,4 @@ transform = Transform3D(0.981627, 0, 0.190809, 0, 1, 0, -0.190809, 0, 0.981627, 
 
 [connection signal="pressed" from="MainMenuUI/MarginContainer/VBoxContainer/PlayButton" to="." method="_on_play_button_pressed"]
 [connection signal="pressed" from="MainMenuUI/MarginContainer/VBoxContainer/ExitButton" to="." method="_on_exit_button_pressed"]
+[connection signal="pressed" from="MainMenuUI/MarginContainer/HBoxContainer/SteamButton" to="." method="_on_steam_button_pressed"]

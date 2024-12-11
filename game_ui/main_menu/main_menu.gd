@@ -19,3 +19,8 @@ func _on_play_button_pressed() -> void:
 
 func _on_exit_button_pressed() -> void:
 	get_tree().quit()
+
+
+func _on_steam_button_pressed() -> void:
+	if steam_url != "":
+		OS.shell_open(steam_url)
