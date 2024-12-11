@@ -1,0 +1,13 @@
+[gd_scene load_steps=4 format=3 uid="uid://rd6woanfk4nl"]
+
+[ext_resource type="PackedScene" uid="uid://coamipagth0kl" path="res://assets/props/emergency_light/emergency_light.fbx" id="1_40h6i"]
+[ext_resource type="Texture2D" uid="uid://bqnp0gdx66iry" path="res://assets/props/emergency_light/props_emergency_light_BaseColor.png" id="2_4nnmt"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_w4ppm"]
+albedo_texture = ExtResource("2_4nnmt")
+
+[node name="emergency_light" instance=ExtResource("1_40h6i")]
+
+[node name="emergency_light" parent="." index="0"]
+transform = Transform3D(0, -9.28918, -2.76839e-07, -2.76839e-07, 0, 9.28918, -9.28918, 2.76839e-07, 0, -7.22296e-09, 0.242362, 0)
+surface_material_override/0 = SubResource("StandardMaterial3D_w4ppm")

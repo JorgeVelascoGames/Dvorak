@@ -1,11 +1,24 @@
-[gd_scene load_steps=12 format=3 uid="uid://dh6gl16kfd242"]
+[gd_scene load_steps=16 format=3 uid="uid://dh6gl16kfd242"]
 
 [ext_resource type="Texture2D" uid="uid://b6aldyvxu0m2g" path="res://assets/textures/floor_substance.png" id="1_4rx0d"]
 [ext_resource type="Script" path="res://game_ui/main_menu/main_menu.gd" id="1_q1wtx"]
-[ext_resource type="Texture2D" uid="uid://cdd5wkg8cf17e" path="res://assets/textures/cealing.png" id="2_borow"]
 [ext_resource type="Texture2D" uid="uid://by4jbjsne1tjb" path="res://assets/textures/wall_substance.png" id="2_r5j4k"]
+[ext_resource type="Texture2D" uid="uid://cge4rsyd8mmkt" path="res://assets/textures/cealing_substance.png" id="3_uae56"]
+[ext_resource type="PackedScene" uid="uid://b14r0ayr0hufl" path="res://Levels/environment_elements/emergency_light.tscn" id="5_8pwq3"]
+[ext_resource type="PackedScene" uid="uid://be07igll7nwoj" path="res://assets/props/walker/walker_model.tscn" id="6_ulmgs"]
 
-[sub_resource type="Environment" id="Environment_lkb82"]
+[sub_resource type="Environment" id="Environment_katgv"]
+background_mode = 1
+ambient_light_source = 1
+tonemap_white = 6.09
+volumetric_fog_enabled = true
+volumetric_fog_density = 0.2156
+volumetric_fog_albedo = Color(0.581033, 0.581033, 0.581033, 1)
+volumetric_fog_emission_energy = 0.3
+volumetric_fog_anisotropy = -0.08
+
+[sub_resource type="Compositor" id="Compositor_bjl2r"]
+compositor_effects = Array[CompositorEffect]([null])
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_ho0yf"]
 size = Vector2(11.31, 10.945)
@@ -16,18 +29,23 @@ uv1_triplanar = true
 uv1_world_triplanar = true
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_a04co"]
-albedo_texture = ExtResource("2_borow")
+albedo_texture = ExtResource("3_uae56")
+uv1_triplanar = true
+uv1_world_triplanar = true
 
 [sub_resource type="BoxMesh" id="BoxMesh_t734x"]
-size = Vector3(0.11, 1.6, 3.71)
+size = Vector3(0.11, 3.275, 5.055)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kvhrd"]
 albedo_texture = ExtResource("2_r5j4k")
 uv1_triplanar = true
 uv1_world_triplanar = true
 
+[sub_resource type="BoxMesh" id="BoxMesh_nfk4f"]
+size = Vector3(0.11, 3.275, 13.68)
+
 [sub_resource type="BoxMesh" id="BoxMesh_qwkg8"]
-size = Vector3(0.11, 1.6, 2.68)
+size = Vector3(0.11, 3.34, 2.68)
 
 [node name="MainMenu" type="Node3D"]
 script = ExtResource("1_q1wtx")
@@ -74,15 +92,9 @@ text = "Whislist on steam"
 
 [node name="GameEnvironment" type="Node3D" parent="MainMenuScenario"]
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="MainMenuScenario/GameEnvironment"]
-transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
-light_color = Color(0.314316, 0.314316, 0.314316, 1)
-light_energy = 0.1
-light_bake_mode = 0
-sky_mode = 1
-
 [node name="WorldEnvironment" type="WorldEnvironment" parent="MainMenuScenario/GameEnvironment"]
-environment = SubResource("Environment_lkb82")
+environment = SubResource("Environment_katgv")
+compositor = SubResource("Compositor_bjl2r")
 
 [node name="Floor" type="MeshInstance3D" parent="MainMenuScenario"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0584756, 0, -1.32132)
@@ -90,27 +102,28 @@ mesh = SubResource("PlaneMesh_ho0yf")
 surface_material_override/0 = SubResource("StandardMaterial3D_i6hu4")
 
 [node name="Floor2" type="MeshInstance3D" parent="MainMenuScenario"]
-transform = Transform3D(-1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 0, 0, 1, 0.0584756, 0.637432, -1.32132)
+transform = Transform3D(-1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 0, 0, 1, 0.058, 2, -1.321)
 mesh = SubResource("PlaneMesh_ho0yf")
 surface_material_override/0 = SubResource("StandardMaterial3D_a04co")
 
 [node name="Walls" type="Node3D" parent="MainMenuScenario"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.731701, 0)
 
 [node name="Wall" type="MeshInstance3D" parent="MainMenuScenario/Walls"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.338583, 0.0801147, 0.20964)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.737501, 0.0801147, 0.20964)
 mesh = SubResource("BoxMesh_t734x")
 skeleton = NodePath("../../Floor")
 surface_material_override/0 = SubResource("StandardMaterial3D_kvhrd")
 
 [node name="Wall5" type="MeshInstance3D" parent="MainMenuScenario/Walls"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.56549, 0.0801147, -1.92711)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.50697, 0.0801147, -1.92711)
 mesh = SubResource("BoxMesh_t734x")
 skeleton = NodePath("../../Floor")
 surface_material_override/0 = SubResource("StandardMaterial3D_kvhrd")
 
 [node name="Wall2" type="MeshInstance3D" parent="MainMenuScenario/Walls"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.09892, 0.0801147, -0.69269)
-mesh = SubResource("BoxMesh_t734x")
+mesh = SubResource("BoxMesh_nfk4f")
 skeleton = NodePath("../../Floor")
 surface_material_override/0 = SubResource("StandardMaterial3D_kvhrd")
 
@@ -126,8 +139,13 @@ mesh = SubResource("BoxMesh_qwkg8")
 skeleton = NodePath("../../Floor")
 surface_material_override/0 = SubResource("StandardMaterial3D_kvhrd")
 
+[node name="emergency_light" parent="MainMenuScenario" instance=ExtResource("5_8pwq3")]
+
+[node name="walker" parent="MainMenuScenario" instance=ExtResource("6_ulmgs")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.278602, 0, -1.54273)
+
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(0.981627, 0, 0.190809, 0, 1, 0, -0.190809, 0, 0.981627, 0.505, 0.385, 0.024)
+transform = Transform3D(0.981627, -0.0636934, 0.179864, 0, 0.942641, 0.333807, -0.190809, -0.327674, 0.925323, 0.642, 1.25, 1.57429)
 
 [connection signal="pressed" from="MainMenuUI/MarginContainer/VBoxContainer/PlayButton" to="." method="_on_play_button_pressed"]
 [connection signal="pressed" from="MainMenuUI/MarginContainer/VBoxContainer/ExitButton" to="." method="_on_exit_button_pressed"]
