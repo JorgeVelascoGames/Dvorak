@@ -6,10 +6,11 @@ enum APP_STATE {lenguage, advert, menu, game}
 @export var lenguage_selecton_menu : PackedScene
 @export var advert_scree: PackedScene
 @export var main_menu : PackedScene
-@export var game : PackedScene
 @export var first_scene := APP_STATE.lenguage
 
 @onready var loading_screen: LoadingScreen = $LoadingScreen
+@onready var game_level_manager: GameLevelManager = $GameLevelManager
+
 
 var current_app_state := APP_STATE.lenguage
 var current_screen : Node
@@ -38,9 +39,10 @@ func load_new_screen(screen : APP_STATE) -> void:
 	if screen == APP_STATE.menu:
 		loading_screen.load_scene(main_menu)
 	if screen == APP_STATE.game:
-		loading_screen.load_scene(game)
+		current_screen.queue_free()
+		game_level_manager.enter_game_level()
 
 
-func add_new_scene(scene):
+func _on_loading_screen_new_scene_loaded(scene: Node) -> void:
 	add_child(scene)
 	current_screen = scene

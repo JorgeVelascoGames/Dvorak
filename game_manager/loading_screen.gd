@@ -1,10 +1,15 @@
 extends Control
 class_name LoadingScreen
 
-signal NewSceneLoaded
+signal NewSceneLoaded(scene : Node)
 
 var is_loading := false
 var scene_loading
+
+
+func _ready() -> void:
+	hide()
+
 
 func load_scene(scene : PackedScene):
 	if is_loading:
@@ -23,6 +28,5 @@ func _process(delta: float) -> void:
 	if ResourceLoader.THREAD_LOAD_LOADED:
 		is_loading = false
 		var new_scene = ResourceLoader.load_threaded_get(scene_loading).instantiate()
-		owner.add_new_scene(new_scene)
+		NewSceneLoaded.emit(new_scene)
 		hide()
-		NewSceneLoaded.emit()

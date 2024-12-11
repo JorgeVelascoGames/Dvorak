@@ -58,6 +58,18 @@ alignment = 1
 layout_mode = 2
 text = "Play"
 
+[node name="ExitButton" type="Button" parent="MainMenuUI/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Quit"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MainMenuUI/MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 8
+
+[node name="Button" type="Button" parent="MainMenuUI/MarginContainer/HBoxContainer"]
+layout_mode = 2
+text = "Whislist on steam"
+
 [node name="MainMenuScenario" type="Node3D" parent="."]
 
 [node name="GameEnvironment" type="Node3D" parent="MainMenuScenario"]
@@ -118,3 +130,4 @@ surface_material_override/0 = SubResource("StandardMaterial3D_kvhrd")
 transform = Transform3D(0.981627, 0, 0.190809, 0, 1, 0, -0.190809, 0, 0.981627, 0.505, 0.385, 0.024)
 
 [connection signal="pressed" from="MainMenuUI/MarginContainer/VBoxContainer/PlayButton" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="MainMenuUI/MarginContainer/VBoxContainer/ExitButton" to="." method="_on_exit_button_pressed"]
