@@ -1,0 +1,16 @@
+
+-Termina la partida
+-Termina la partida sin fallar ni una bala
+-Termina la partida sin recibir daño
+-Termina la partida sin usar mejoras
+-Encuentra la cruz en todos los niveles
+-Encuentra todas las [[mejoras]]
+-Termina la partida abriendo cada libro tan solo una vez
+-Termina la partida sin gastar las pilas de la linterna
+-Termina la partida sin encender ningún interruptor de luz
+-Termina la partida sin abrir ningún cajón
+-Termina la partida sin disparar
+-Termina la partida sin caer
+-Termina la partida sin perder el equilibrio
+-Interactúa con la cruz justo cuando vas a ser atrapado por algún enemigo
+-Termina la partida sin dar un solo paso con el andador

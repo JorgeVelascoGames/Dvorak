@@ -12,6 +12,7 @@ var pass_switches :Array[PassSwitch]= []
 var pass_code :Array[bool]= []
 var pass_books :Array[PassBook]= []
 var door_is_open := false
+var are_books_ready := false
 
 #Constants
 const PASS_BOOK : PackedScene = preload("res://ExitGate/pass_book.tscn") as PackedScene
@@ -40,6 +41,7 @@ func set_random_pass() -> void:
 		book.set_up_book(temp, member.switch_index)
 		pass_books.append(book)
 	
+	are_books_ready = true
 	pass_and_books_ready.emit()
 
 
