@@ -1,0 +1,34 @@
+[gd_scene load_steps=6 format=3 uid="uid://dnlj0cpdwjsyl"]
+
+[ext_resource type="Script" path="res://randomization/room.gd" id="1_fe218"]
+[ext_resource type="PackedScene" uid="uid://b8gbxyaua8ftu" path="res://assets/props/bed/bed.tscn" id="2_jf46d"]
+[ext_resource type="PackedScene" uid="uid://bkegegkvaxugb" path="res://assets/props/cage/cage.tscn" id="3_t4wng"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_kk2a0"]
+size = Vector2(9, 9)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_k70g2"]
+albedo_color = Color(0.568627, 0.666667, 0.603922, 0.321569)
+proximity_fade_enabled = true
+proximity_fade_distance = 0.1
+
+[node name="Room1" type="Node3D"]
+script = ExtResource("1_fe218")
+
+[node name="Bed" parent="." instance=ExtResource("2_jf46d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.20524, -9.53674e-07, -1.48234)
+
+[node name="RoomSize" type="MeshInstance3D" parent="."]
+mesh = SubResource("PlaneMesh_kk2a0")
+surface_material_override/0 = SubResource("StandardMaterial3D_k70g2")
+
+[node name="cage" parent="." instance=ExtResource("3_t4wng")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.40948, 0, -3.47234)
+
+[node name="cell" parent="cage" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0409002, -4.76837e-07, 0.0166092)
+
+[node name="chain" parent="cage" index="1"]
+visible = false
+
+[editable path="cage"]

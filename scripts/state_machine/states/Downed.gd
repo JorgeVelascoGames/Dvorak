@@ -17,7 +17,7 @@ var correct_key_pressed : int = 0
 @onready var animation_player = $"../../AnimationPlayer"
 @onready var camera_pivot = $"../../CameraPivot"
 @onready var camera_pivot_pos_y : float = camera_pivot.position.y
-@onready var animation_tree = $"../../AnimationTree"
+@onready var animation_tree: PlayerAnimationController = $"../../AnimationTree"
 
 
 func enter(_msg : ={}) -> void:
@@ -68,17 +68,21 @@ func _correct_key() -> void:
 func finish_state() -> void:
 	correct_key_pressed = 0
 	placeholder_l_able.hide()
+	await get_tree().create_timer(0.4).timeout
 	#animation_player.stop()
-	var tween = create_tween()
-	tween.tween_method(blend_floor, 1.0, 0.0, 0.4)
-	await tween.finished
-	tween = create_tween().set_parallel(true)
-	tween.tween_property(camera_pivot, "position", Vector3(0, player.originCamPos.y, 0), 3.0).set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_BACK)
-	tween.tween_property(camera_pivot, "rotation", Vector3(0, 0, 0), 0.8)
+	var tween = create_tween().set_parallel(true)
+	tween.tween_method(blend_floor, 1.0, 0.0, 2.8)
+	tween.tween_method(blend_to_fix_pivot, 0.0, 1.0, 2.9).set_ease(Tween.EASE_IN_OUT)
+	#tween.tween_property(camera_pivot, "position", Vector3(0, player.originCamPos.y, 0), 3.0).set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_BACK)
+	tween.tween_property(camera_pivot, "rotation", Vector3(0, 0, 0), 3.0).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_BOUNCE)
 	
 	await tween.finished
 	
 	state_machine.transition_to("Idle", {})
+
+
+func blend_to_fix_pivot(amount : float) -> void:
+		animation_tree["parameters/fix_pivot_movement/blend_amount"] = amount
 
 
 func exit() -> void:

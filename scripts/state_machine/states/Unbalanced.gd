@@ -70,6 +70,10 @@ func blend_unbalanced(amount : float) -> void:
 	animation_tree["parameters/unbalanced_blend/blend_amount"] = amount
 
 
+func blend_to_fix_pivot(amount : float) -> void:
+		animation_tree["parameters/fix_pivot_movement/blend_amount"] = amount
+
+
 func _correct_key() -> void:
 	#print("correct key landed")
 	error_timer.start(margin_of_error)
@@ -91,12 +95,11 @@ func finish_state(state : String) -> void:
 	var tween
 	
 	if state == "Idle":
-		tween = create_tween()
-		tween.tween_method(blend_unbalanced, animation_tree["parameters/unbalanced_blend/blend_amount"], 0.0, 0.3)
-		await tween.finished
 		tween = create_tween().set_parallel(true)
-		tween.tween_property(camera_pivot, "position", Vector3(0, camera_pivot_pos_y, 0), 1.0).set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_IN_OUT)
-		tween.tween_property(camera_pivot, "rotation", Vector3(camera_pivot.rotation.x, 0, 0), 0.5).set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_IN_OUT)
+		tween.tween_method(blend_unbalanced, animation_tree["parameters/unbalanced_blend/blend_amount"], 0.0, 0.6)
+		#tween.tween_property(camera_pivot, "position", Vector3(0, camera_pivot_pos_y, 0), 1.0).set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_IN_OUT)
+		tween.tween_method(blend_to_fix_pivot, 0.0, 1.0, 1.3)
+		tween.tween_property(camera_pivot, "rotation", Vector3(camera_pivot.rotation.x, 0, 0), 1.2).set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_IN_OUT)
 		await tween.finished
 	else:
 		tween = create_tween()

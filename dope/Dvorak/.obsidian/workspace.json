@@ -33,12 +33,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Doing.md",
+                "file": "Todo/Detalles de pulido.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Doing"
+              "title": "Detalles de pulido"
             }
           }
         ]
@@ -182,9 +182,10 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "0959a059666481dc",
+  "active": "cef1813cea61e526",
   "lastOpenFiles": [
     "Doing.md",
+    "Todo/Detalles de pulido.md",
     "Software/Randomización.md",
     "Todo/Desarrollo.md",
     "Todo/Arte.md",

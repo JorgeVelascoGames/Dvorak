@@ -9,11 +9,12 @@ class_name LevelManager
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	generate_rooms()
+	pass
+	#generate_rooms()
 
 
 func generate_rooms() -> void:
-	pass
+	return
 	#Generate de rooms
 	map_randomizer.randomize_map(exit_gate)
 	await map_randomizer.finish_randomization

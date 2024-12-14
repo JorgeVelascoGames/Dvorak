@@ -85,7 +85,7 @@ func handle_camera_rotation(_delta:float) -> void:
 	#camera_pivot.rotate_object_local(Vector3.UP, mouse_motion.x * player.camera_sensibility)
 	#camera_pivot.rotate_object_local(Vector3.RIGHT, mouse_motion.y * player.camera_sensibility)
 	camera_pivot.rotation_degrees.x = clampf(
-		camera_pivot.rotation_degrees.x, -15.0, 15)
+		camera_pivot.rotation_degrees.x, -45.0, 35)
 	camera_pivot.rotation_degrees.y = clampf(
 		camera_pivot.rotation_degrees.y, -25.0, 25)
 	mouse_motion = Vector2.ZERO

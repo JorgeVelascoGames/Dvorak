@@ -71,11 +71,10 @@ size = Vector3(0.154358, 0.237122, 0.321838)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0294226, -0.0214159)
 script = ExtResource("1_qi8h2")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="."]
-collision_layer = 3
+[node name="WalkerRigidBody" type="StaticBody3D" parent="."]
 constant_linear_velocity = Vector3(0, -9, 0)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="WalkerRigidBody"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.026001, -0.191772)
 shape = SubResource("BoxShape3D_2f4qr")
 
@@ -148,6 +147,8 @@ transform = Transform3D(-0.318204, 0.0661168, 2.89006e-09, 0, -1.42062e-08, 0.32
 script = ExtResource("2_j43j1")
 
 [node name="FlashlightInteract" type="StaticBody3D" parent="."]
+collision_layer = 64
+collision_mask = 0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="FlashlightInteract"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00100708, 0.436249, 0.0169373)
@@ -161,3 +162,7 @@ script = ExtResource("2_j43j1")
 [connection signal="on_interact" from="GunSelectorHitbox/GunInteract" to="." method="_on_gun_interact_on_interact"]
 [connection signal="on_interact" from="CrowbarSelectorHitbox/CrowbarInteract" to="." method="_on_crowbar_interact_on_interact"]
 [connection signal="on_interact" from="FlashlightInteract/FlashlightInteract" to="." method="_on_flashlight_interact_on_interact"]
+
+[editable path="FlaslightModel"]
+[editable path="GunSelectorHitbox/GunModel"]
+[editable path="CrowbarSelectorHitbox/Crowbar"]

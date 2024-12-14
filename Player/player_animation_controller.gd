@@ -9,10 +9,10 @@ class_name PlayerAnimationController
 @export_range(0.0, 1.0) var high_easing_ratio := 0.1
 
 @onready var balance: Balance = $"../Components/Balance"
+@onready var state_machine: StateMachine = $"../StateMachine"
 
 var ratio := 0.4
 var anim_value : float
-
 
 func _process(delta: float) -> void:
 	losing_balance(delta)
@@ -44,11 +44,19 @@ func losing_balance(delta : float) -> void:
 
 
 func _on_state_machine_transitioned(state_name: Variant) -> void:
-	var tween = create_tween()
-	if state_name == "Walk" or state_name == "Idle" or state_name == "PrepareGun" or state_name == "Walker":
-		tween.tween_method(blend_to_fix_pivot, 0.0, 1.0, 0.3)
+	var tween : Tween
+	var state_names : String = "WalkIdlePrepareGunWalker" as String #The states in which the animation needs no movement
+	if state_names.contains(state_name):
+		if not state_names.contains(state_machine.last_state):
+			if tween:
+				tween.kill()
+			tween = create_tween()
+			tween.tween_method(blend_to_fix_pivot, 0.0, 1.0, 1.7)
 	else:
-		tween.tween_method(blend_to_fix_pivot, 1.0, 0.0, 0.3)
+		if tween:
+			tween.kill()
+		tween = create_tween()
+		tween.tween_method(blend_to_fix_pivot, 1.0, 0.0, 1.7)
 
 
 func blend_to_fix_pivot(amount : float) -> void:

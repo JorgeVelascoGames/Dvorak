@@ -4,8 +4,9 @@ class_name StateMachine
 signal  transitioned(state_name)
 
 @export var initial_state := NodePath()
-
+@export var debug_state_name := false
 var state : State
+var last_state : String
 
 @onready var state_label = $"../PlayerUI/MarginContainer/StateLabel"
 @onready var walker: WalkerModel = $"../WalkerFixedPoint/Walker"
@@ -13,6 +14,9 @@ var state : State
 
 func _ready():
 	await owner.ready
+	
+	if not debug_state_name:
+		state_label.hide()
 	
 	for child in get_children():
 		child.state_machine = self
@@ -45,6 +49,7 @@ func transition_to(target_state_name : String, msg : Dictionary):
 		return
 	
 	if state != null:
+		last_state = state.name
 		state.exit()
 		if state.cooldown_timer:
 			state.cooldown_timer.start()
@@ -53,7 +58,9 @@ func transition_to(target_state_name : String, msg : Dictionary):
 	state = get_node(target_state_name)
 	state.enter(msg)
 	emit_signal("transitioned", state.name)
-	state_label.text = target_state_name
+	if debug_state_name:
+		state_label.show()
+		state_label.text = target_state_name
 
 
 func get_state():

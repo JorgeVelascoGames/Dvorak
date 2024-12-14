@@ -37,15 +37,18 @@ var current_weapon : WEAPON = WEAPON.none
 @onready var player_ui: PlayerUI = $PlayerUI
 
 #onready variables
-@onready var originCamPos : Vector3 = camera_pivot.position
 @onready var original_world_camera_fov = world_camera.fov
 @onready var original_weapon_camera_fov = weapon_camera.fov
+
+var originCamPos : Vector3
 
 
 func _ready():
 	apply_floor_snap()
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	PathfindingManager.set_up_player(self)
+	await get_tree().physics_frame
+	originCamPos = camera_pivot.position #Esta posición la marca la animación "no movement pivot"
 
 
 func _process(delta: float) -> void:
