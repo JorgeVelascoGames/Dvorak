@@ -66,7 +66,7 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -3.050
 [node name="MapRandomizer" type="Node3D" parent="." node_paths=PackedStringArray("rooms_father")]
 script = ExtResource("4_01glb")
 closed_rooms = 1
-rooms_father = NodePath("../NavigationRegion3D")
+rooms_father = NodePath("../NavigationRegion3D/Rooms")
 min_items_to_spawn = 2
 max_items_to_spawn = 5
 
@@ -99,7 +99,7 @@ surface_material_override/0 = SubResource("StandardMaterial3D_bwu8i")
 shape = SubResource("ConcavePolygonShape3D_i4qml")
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="NavigationRegion3D/Scenario"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.53514, 0.9581, -4.01406)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.535, 0.958, -3.5)
 mesh = SubResource("BoxMesh_i1hcg")
 skeleton = NodePath("../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_htjt4")

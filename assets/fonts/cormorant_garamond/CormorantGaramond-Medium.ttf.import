@@ -2,19 +2,19 @@
 
 importer="font_data_dynamic"
 type="FontFile"
-uid="uid://cgwc677rdigdy"
-path="res://.godot/imported/Roboto-ThinItalic.ttf-2b14477007ac467bec622b95156869f6.fontdata"
+uid="uid://cyra5iibaa3jn"
+path="res://.godot/imported/CormorantGaramond-Medium.ttf-ef8751b26b602859d88f4f607fcf4b44.fontdata"
 
 [deps]
 
-source_file="res://assets/fonts/Roboto-ThinItalic.ttf"
-dest_files=["res://.godot/imported/Roboto-ThinItalic.ttf-2b14477007ac467bec622b95156869f6.fontdata"]
+source_file="res://assets/fonts/cormorant_garamond/CormorantGaramond-Medium.ttf"
+dest_files=["res://.godot/imported/CormorantGaramond-Medium.ttf-ef8751b26b602859d88f4f607fcf4b44.fontdata"]
 
 [params]
 
 Rendering=null
 antialiasing=1
-generate_mipmaps=true
+generate_mipmaps=false
 disable_embedded_bitmaps=true
 multichannel_signed_distance_field=false
 msdf_pixel_range=8

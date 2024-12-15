@@ -2,19 +2,19 @@
 
 importer="font_data_dynamic"
 type="FontFile"
-uid="uid://c5nnskwq500oe"
-path="res://.godot/imported/Roboto-BlackItalic.ttf-5aac13f410c4321790ceef317fe89efa.fontdata"
+uid="uid://dw7w6hhksh2r0"
+path="res://.godot/imported/CormorantGaramond-SemiBoldItalic.ttf-f1528467960ab54609f3f8850dc79659.fontdata"
 
 [deps]
 
-source_file="res://assets/fonts/Roboto-BlackItalic.ttf"
-dest_files=["res://.godot/imported/Roboto-BlackItalic.ttf-5aac13f410c4321790ceef317fe89efa.fontdata"]
+source_file="res://assets/fonts/cormorant_garamond/CormorantGaramond-SemiBoldItalic.ttf"
+dest_files=["res://.godot/imported/CormorantGaramond-SemiBoldItalic.ttf-f1528467960ab54609f3f8850dc79659.fontdata"]
 
 [params]
 
 Rendering=null
 antialiasing=1
-generate_mipmaps=true
+generate_mipmaps=false
 disable_embedded_bitmaps=true
 multichannel_signed_distance_field=false
 msdf_pixel_range=8

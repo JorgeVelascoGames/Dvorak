@@ -26,7 +26,7 @@ var current_weapon : WEAPON = WEAPON.none
 #Components
 @onready var camera_pivot = $CameraPivot
 @onready var damage_animation_player: AnimationPlayer = $DamageTexture/DamageAnimationPlayer
-@onready var game_over_menu: Control = $GameOverMenu
+@onready var game_over_menu: Control = $PlayerUI/GameOverMenu
 @onready var world_camera: Camera3D = $CameraPivot/WorldCamera
 @onready var weapon_camera: Camera3D = $SubViewportContainer/SubViewport/WeaponCamera
 @onready var state_machine = $StateMachine

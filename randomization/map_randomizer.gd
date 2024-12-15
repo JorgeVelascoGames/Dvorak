@@ -4,6 +4,7 @@ class_name MapRandomizer
 signal finish_randomization
 
 @export var rooms_array : Array[Marker3D]
+@export var closed_room_door : PackedScene
 @export var closed_rooms : int = 0
 @export var rooms_father : Node3D
 @export var min_items_to_spawn : int
@@ -11,7 +12,6 @@ signal finish_randomization
 @export var items_father : Node3D
 
 var rooms : Array[PackedScene] #TODO
-var closed_room_door : PackedScene #TODO
 var items : Array[PackedScene]
 var instantiated_rooms : Array[Room]
 
@@ -42,14 +42,18 @@ func spawn_rooms() -> void:
 		for i in closed_rooms:
 			var new_door : Node3D = closed_room_door.instantiate()
 			rooms_father.add_child(new_door)
-			new_door.position = rooms_array.pop_back().position #We let unused rooms closed
+			var position := rooms_array.pop_back() as Node3D
+			new_door.position = position.position #We let unused rooms closed
+			new_door.rotation = position.rotation
 	
 	rooms.shuffle()
 	
 	for room_position in rooms_array:
 		var new_room = rooms.pop_back().instantiate() as Room
 		rooms_father.add_child(new_room)
-		new_room.position = room_position.position
+		var position := rooms_array.pop_back() as Node3D
+		new_room.position = position.position
+		new_room.rotation = position.rotation
 		instantiated_rooms.append(new_room)
 
 

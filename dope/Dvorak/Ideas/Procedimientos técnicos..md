@@ -1,0 +1,2 @@
+
+Para hacer el mapa, creo que vamos a optar por realizarlo en blender. Esto nos dará un gran control sobre las medidas, además de permitirnos añadir detalles al escenario como grietas, muescas, irregularidades, o escaleras

@@ -5,7 +5,7 @@
 - Herido
 - Mareo
 - Caída
-- Sonidos monstruos (ver [[Arte]])
+- Sonidos monstruos (ver [[Todo/Arte]])
 - Disparo
 - Golpeo con palanca
 - Daño a enemigo

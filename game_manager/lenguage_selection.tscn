@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://6xaa4aqthxji"]
+[gd_scene load_steps=4 format=3 uid="uid://6xaa4aqthxji"]
 
 [ext_resource type="Script" path="res://game_manager/lenguage_selection.gd" id="1_lf62g"]
+[ext_resource type="FontFile" uid="uid://bgtgndy54b1ev" path="res://assets/fonts/roboto/Roboto-Medium.ttf" id="2_mqk3s"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_6gqwb"]
 
@@ -33,6 +34,7 @@ grow_vertical = 2
 
 [node name="Button" type="Button" parent="CenterContainer"]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("2_mqk3s")
 text = "Español"
 
 [connection signal="pressed" from="CenterContainer/Button" to="." method="_on_button_pressed"]

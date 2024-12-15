@@ -9,7 +9,7 @@ func game_over() -> void:
 
 func _on_restart_button_pressed() -> void:
 	get_tree().paused = false
-	get_tree().reload_current_scene()
+	AppManager.game_manager.load_new_screen(GameManager.APP_STATE.menu)
 
 
 func _on_quit_button_pressed() -> void:

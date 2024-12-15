@@ -11,7 +11,7 @@
 [ext_resource type="Script" path="res://scripts/state_machine/states/prepare_gun.gd" id="7_hfrgh"]
 [ext_resource type="PackedScene" uid="uid://bjq2dkpgpnav7" path="res://player/game_over_menu.tscn" id="7_keanm"]
 [ext_resource type="Script" path="res://scripts/state_machine/states/Unbalanced.gd" id="8_7b01x"]
-[ext_resource type="FontFile" uid="uid://dc0vrsfwu33ll" path="res://assets/fonts/Roboto-Regular.ttf" id="8_dofuu"]
+[ext_resource type="FontFile" uid="uid://dc0vrsfwu33ll" path="res://assets/fonts/roboto/Roboto-Regular.ttf" id="8_dofuu"]
 [ext_resource type="Script" path="res://scripts/state_machine/states/Downed.gd" id="9_q33c7"]
 [ext_resource type="Script" path="res://scripts/state_machine/states/long_interaction.gd" id="10_b71wi"]
 [ext_resource type="PackedScene" uid="uid://shutxn8dpbys" path="res://player/balance.tscn" id="10_m7euy"]
@@ -19,8 +19,8 @@
 [ext_resource type="Script" path="res://scripts/state_machine/states/crowbar_swing.gd" id="12_6so70"]
 [ext_resource type="Shape3D" uid="uid://df6y055xrghl7" path="res://player/player_normal_collision_shape.tres" id="12_6t6rn"]
 [ext_resource type="Script" path="res://player/player_ui.gd" id="14_0ypvp"]
-[ext_resource type="FontFile" uid="uid://capvrpuujdf4q" path="res://assets/fonts/Roboto-Light.ttf" id="19_lypxt"]
 [ext_resource type="PackedScene" uid="uid://4j0uw0ki1luc" path="res://player/walker.tscn" id="20_qts6k"]
+[ext_resource type="FontFile" uid="uid://cxbeti4rmsnty" path="res://assets/fonts/cormorant_garamond/CormorantGaramond-Regular.ttf" id="21_23yvg"]
 [ext_resource type="PackedScene" uid="uid://cpyss678yatou" path="res://assets/props/gun/gun_model.tscn" id="21_lgr1q"]
 [ext_resource type="Script" path="res://player/player_animation_controller.gd" id="22_j0g4a"]
 [ext_resource type="PackedScene" uid="uid://ctrkoynx6fbcj" path="res://assets/props/crowbar/crowbar.tscn" id="22_r00kl"]
@@ -134,7 +134,7 @@ font = ExtResource("8_dofuu")
 font_size = 64
 
 [sub_resource type="LabelSettings" id="LabelSettings_3m322"]
-font = ExtResource("19_lypxt")
+font = ExtResource("21_23yvg")
 font_size = 20
 outline_size = 2
 outline_color = Color(0.165656, 0.165657, 0.165656, 1)
