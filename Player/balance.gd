@@ -16,15 +16,18 @@ signal balance_added(amount : int)
 @export var side_movement_cost : float
 @export var rotation_cost_divident := 15.00
 @export var preparing_gun_cost : float
+@export var swing_cost := 200.0
 @export var shooting_cost : float
 @export var getting_hit_cost : float
 @export var balance_recovery : float
 @export var bonus_balance_recovery : float
 @export var damaged_balance_penalty := 15.00
+@export var weapon_balance_penalty := 25.00
 
 #Variables
 var direction : Vector3
 var balance_active: bool = true
+var carry_weapon := false
 
 #Components
 @onready var balance_recovery_timer = $BalanceRecoveryTimer
@@ -78,10 +81,17 @@ func _input(event):
 		add_balance(shooting_cost)
 
 
+func swing() -> void:
+	add_balance(swing_cost)
+
+
 func add_balance(amount : int) -> void:
 	current_balance += amount
 	if player.damaged:
 		current_balance += amount * (damaged_balance_penalty / 100)
+	
+	if carry_weapon:
+		current_balance += amount * (weapon_balance_penalty / 100) 
 	
 	if current_balance >= max_balance:
 		reset_balance()

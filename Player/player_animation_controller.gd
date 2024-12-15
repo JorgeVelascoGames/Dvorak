@@ -1,8 +1,8 @@
 extends AnimationTree
 class_name PlayerAnimationController
 
-@export_range(0.0, 1.0) var low_threshold := 0.4
-@export_range(0.0, 1.0) var mid_threshold := 0.6
+@export_range(0.0, 1.0) var low_threshold := 0.35
+@export_range(0.0, 1.0) var mid_threshold := 0.55
 @export_range(0.0, 1.0) var high_threshold := 0.85
 @export_range(0.0, 1.0) var low_easing_ratio := 0.3
 @export_range(0.0, 1.0) var mid_easing_ratio := 0.2

@@ -491,7 +491,6 @@ fadein_time = 2.0
 [sub_resource type="AnimationNodeBlend2" id="AnimationNodeBlend2_qem71"]
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_x2kci"]
-graph_offset = Vector2(-344.91, -64.2164)
 nodes/Animation/node = SubResource("AnimationNodeAnimation_3dwcv")
 nodes/Animation/position = Vector2(300, 380)
 "nodes/Animation 2/node" = SubResource("AnimationNodeAnimation_5bcms")
@@ -653,11 +652,12 @@ mesh = SubResource("CapsuleMesh_fyred")
 [node name="Components" type="Node" parent="."]
 
 [node name="Balance" parent="Components" instance=ExtResource("10_m7euy")]
+max_balance = 6000.0
 leaving_walker_cost = 20.0
 forward_movement_cost = 100.0
 backward_movement_cost = 170.0
 side_movement_cost = 130.0
-rotation_cost_divident = 20.0
+rotation_cost_divident = 30.0
 preparing_gun_cost = 30.0
 shooting_cost = 50.0
 getting_hit_cost = 500.0
