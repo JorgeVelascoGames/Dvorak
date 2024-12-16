@@ -2,7 +2,7 @@
 -~~Terminar [[Randomización]]~~
 ~~-Mecánica de herido~~
 ~~-Coste extra de equilibrio si herido~~
--Mejora de movimiento sin arma
+~~-Mejora de movimiento sin arma~~
 -Terminar main menu
 -Terminar primer nivel
 -Hacer tutorial

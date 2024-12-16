@@ -61,12 +61,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Todo/Desarrollo.md",
+                "file": "Arte/Estandarización.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Desarrollo"
+              "title": "Estandarización"
             }
           }
         ],
@@ -213,6 +213,7 @@
   },
   "active": "0421412c0becc9c3",
   "lastOpenFiles": [
+    "Todo/Desarrollo.md",
     "Doing.md",
     "Arte/Estandarización.md",
     "Arte.md",
@@ -221,7 +222,6 @@
     "Ideas/Procedimientos técnicos..md",
     "Todo/Detalles de pulido.md",
     "Software/Randomización.md",
-    "Todo/Desarrollo.md",
     "Todo/Demo.md",
     "Ideas/Logros.md",
     "Ideas/Ambiente.md",

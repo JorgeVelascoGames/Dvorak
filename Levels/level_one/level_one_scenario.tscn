@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://dqk45r48r427t"]
+
+[ext_resource type="PackedScene" uid="uid://d11friq1q7r58" path="res://assets/environment/level_one.blend" id="1_ldfa7"]
+
+[node name="LevelOneScenario" instance=ExtResource("1_ldfa7")]
+
+[node name="StaticBody3D" parent="floor" index="0"]
+collision_mask = 0
