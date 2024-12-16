@@ -24,6 +24,7 @@ func _ready() -> void:
 
 func next_app_state() -> void:
 	if current_app_state != APP_STATE.game:
+		@warning_ignore("int_as_enum_without_cast")
 		current_app_state += 1
 		load_new_screen(current_app_state)
 

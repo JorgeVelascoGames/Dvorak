@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://bfqpamqydtspv" path="res://game_manager/advert_screen.tscn" id="2_wrocf"]
 [ext_resource type="PackedScene" uid="uid://6xaa4aqthxji" path="res://game_manager/lenguage_selection.tscn" id="3_gm0jn"]
 [ext_resource type="PackedScene" uid="uid://ben6fpbmg6r7h" path="res://game_manager/loading_screen.tscn" id="4_v3kow"]
-[ext_resource type="PackedScene" uid="uid://dic8kqxqe5edk" path="res://Levels/level_one.tscn" id="6_4me3d"]
+[ext_resource type="PackedScene" uid="uid://b37la44wjrp4u" path="res://Levels/level_one/level_one.tscn" id="6_4me3d"]
 [ext_resource type="PackedScene" uid="uid://bgouurh1fbjwr" path="res://game_manager/game_level_manager.tscn" id="6_7vbrb"]
 [ext_resource type="Shader" path="res://shaders/vhs.gdshader" id="7_dlfm1"]
 
