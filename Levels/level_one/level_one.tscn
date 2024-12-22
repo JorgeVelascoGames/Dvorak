@@ -1,30 +1,24 @@
-[gd_scene load_steps=6 format=3 uid="uid://b37la44wjrp4u"]
+[gd_scene load_steps=5 format=3 uid="uid://b37la44wjrp4u"]
 
 [ext_resource type="PackedScene" uid="uid://dqk45r48r427t" path="res://Levels/level_one/level_one_scenario.tscn" id="1_jujem"]
+[ext_resource type="Environment" uid="uid://c42wra3u6yo6u" path="res://Levels/world_environment.tres" id="1_rc4ww"]
 [ext_resource type="PackedScene" uid="uid://m6pypgl566n1" path="res://player/player.tscn" id="2_2aoio"]
-
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_j16kb"]
-sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
-ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
-
-[sub_resource type="Sky" id="Sky_074ek"]
-sky_material = SubResource("ProceduralSkyMaterial_j16kb")
-
-[sub_resource type="Environment" id="Environment_i686f"]
-background_mode = 2
-sky = SubResource("Sky_074ek")
-tonemap_mode = 2
-glow_enabled = true
+[ext_resource type="PackedScene" uid="uid://bii28bvpdhx41" path="res://assets/enemies/infanticide.tscn" id="4_yfr5u"]
 
 [node name="LevelOne" type="Node3D"]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_i686f")
+environment = ExtResource("1_rc4ww")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
+visible = false
 shadow_enabled = true
 
 [node name="LevelOneScenario" parent="." instance=ExtResource("1_jujem")]
 
 [node name="Player" parent="." instance=ExtResource("2_2aoio")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.6241, 1, -2.04191)
+
+[node name="infanticide" parent="." instance=ExtResource("4_yfr5u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3.78263)

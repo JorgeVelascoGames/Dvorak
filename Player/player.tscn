@@ -873,6 +873,12 @@ script = ExtResource("24_nhdqm")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.214622, -0.680155)
 shape = SubResource("BoxShape3D_e43ec")
 
+[node name="PlayerBaseLight" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0608332, -0.0201864)
+layers = 3
+light_color = Color(0.49204, 0.468341, 0.41696, 1)
+omni_range = 1.19761
+
 [connection signal="transitioned" from="StateMachine" to="Components/Balance" method="_on_state_machine_transitioned"]
 [connection signal="transitioned" from="StateMachine" to="AnimationTree" method="_on_state_machine_transitioned"]
 [connection signal="timeout" from="StateMachine/Aim/SensibilityTimer" to="StateMachine/Aim" method="_on_sensibility_timer_timeout"]
