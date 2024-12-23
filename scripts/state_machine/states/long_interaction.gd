@@ -2,7 +2,7 @@ extends PlayerState
 class_name PlayerLongInteraction
 
 @onready var balance = $"../../Components/Balance"
-@onready var placeholder_l_able: Label = $PlayerUI/BalancedUI/PlaceholderLAble
+@onready var placeholder_l_able = $"../../PlayerUI/BalancedUI/PlaceholderLAble"
 
 #Private variables
 var interactable : Interactable

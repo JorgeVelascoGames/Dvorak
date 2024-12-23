@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://b37la44wjrp4u"]
+[gd_scene load_steps=6 format=3 uid="uid://b37la44wjrp4u"]
 
 [ext_resource type="PackedScene" uid="uid://dqk45r48r427t" path="res://Levels/level_one/level_one_scenario.tscn" id="1_jujem"]
 [ext_resource type="Environment" uid="uid://c42wra3u6yo6u" path="res://Levels/world_environment.tres" id="1_rc4ww"]
 [ext_resource type="PackedScene" uid="uid://m6pypgl566n1" path="res://player/player.tscn" id="2_2aoio"]
 [ext_resource type="PackedScene" uid="uid://bii28bvpdhx41" path="res://assets/enemies/infanticide.tscn" id="4_yfr5u"]
+[ext_resource type="PackedScene" uid="uid://72kpfpnalr3a" path="res://Levels/environment_elements/light.tscn" id="5_fux4b"]
 
 [node name="LevelOne" type="Node3D"]
 
@@ -18,7 +19,22 @@ shadow_enabled = true
 [node name="LevelOneScenario" parent="." instance=ExtResource("1_jujem")]
 
 [node name="Player" parent="." instance=ExtResource("2_2aoio")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.6241, 1, -2.04191)
+transform = Transform3D(-0.988892, 0, -0.148638, 0, 1, 0, 0.148638, 0, -0.988892, -0.512381, 1, -2.36649)
 
 [node name="infanticide" parent="." instance=ExtResource("4_yfr5u")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3.78263)
+
+[node name="Lights" type="Node3D" parent="."]
+
+[node name="Light" parent="Lights" instance=ExtResource("5_fux4b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.43762, 0)
+light_on = true
+is_tweaking_light = true
+
+[node name="Switch" parent="Lights/Light" index="2"]
+transform = Transform3D(0.625, 0, 0, 0, 0.625, 0, 0, 0, 0.625, 0.81888, -1.01306, 0)
+
+[node name="swich" parent="Lights/Light/Switch" index="3"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.169676, -0.481138, 0)
+
+[editable path="Lights/Light"]

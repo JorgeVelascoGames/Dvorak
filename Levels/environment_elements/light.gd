@@ -9,13 +9,13 @@ extends Node3D
 
 const LIGHT_BUBBLE_SOUND = preload("res://Levels/environment_elements/light_bubble_sound.tscn")
 
-var lights_array : Array[SpotLight3D] = []
+var lights_array : Array[Light3D] = []
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	for child in get_children(true):
-		if child is SpotLight3D:
+		if child is Light3D:
 			lights_array.append(child)
 			var sound = LIGHT_BUBBLE_SOUND.instantiate() as AudioStreamPlayer3D
 			child.add_child(sound)
