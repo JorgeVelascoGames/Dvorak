@@ -93,13 +93,7 @@ func enemy_die() -> void:
 	is_active = false
 	enemy_audio_manager.play_dead_audio()
 	await enemy_animation.play_dead_animation()
-	queue_free()
-
-
-func enemy_banish() -> void:
-	is_active = false
-	enemy_audio_manager.play_sfx()
-	await enemy_animation.play_banish_animation()
+	$Model.hide()
 	queue_free()
 
 
@@ -112,4 +106,4 @@ func _on_collision_detection_body_entered(body):
 	if body is Player:
 		can_move = false
 		body.player_hit()
-		enemy_banish()
+		enemy_die()

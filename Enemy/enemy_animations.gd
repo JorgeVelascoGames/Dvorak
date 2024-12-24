@@ -1,12 +1,9 @@
-extends AnimationPlayer
+extends AnimationTree
 class_name EnemyAnimator
 
-
-func play_banish_animation() -> Signal:
-	#TODO
-	return animation_finished
+@onready var animations = self["parameters/playback"]
 
 
 func play_dead_animation() -> Signal:
-	#TODO
+	animations.travel("rig|Die")
 	return animation_finished

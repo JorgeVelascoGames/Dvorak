@@ -574,9 +574,9 @@ visible = false
 transform = Transform3D(0.99863, 0.052336, 0, -0.052336, 0.99863, 0, 0, 0, 1, -0.01, 0, 0)
 layers = 2
 
-[node name="RemoteTransform3D" type="RemoteTransform3D" parent="SubViewportContainer/SubViewport/WeaponCamera/GunModel"]
-transform = Transform3D(1, -2.95032e-15, -2.98023e-08, 0, -4.37114e-08, -1, 1.9984e-15, 1, -4.37114e-08, -0.0114351, 0.0459628, 1.28057e-09)
-remote_path = NodePath("../../../../../CameraPivot/WorldCamera/GunRay")
+[node name="RemoteTransform3D" type="RemoteTransform3D" parent="SubViewportContainer/SubViewport/WeaponCamera/GunModel/Gun" index="0"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -0.0115109, 0.0476981, 2.11636e-16)
+remote_path = NodePath("../../../../../../CameraPivot/WorldCamera/GunRay")
 
 [node name="StateMachine" type="Node" parent="."]
 script = ExtResource("2_g0cef")
@@ -692,20 +692,22 @@ autostart = true
 [node name="InteractableRay" type="RayCast3D" parent="CameraPivot/WorldCamera"]
 target_position = Vector3(0, 0, -2)
 collision_mask = 65
-debug_shape_custom_color = Color(0.756863, 0.00392157, 0.941176, 1)
+debug_shape_thickness = 1
 
 [node name="WalkerInteractableRay" type="RayCast3D" parent="CameraPivot/WorldCamera"]
 target_position = Vector3(0, 0, -2)
 collision_mask = 257
 debug_shape_custom_color = Color(0.756863, 0.00392157, 0.941176, 1)
+debug_shape_thickness = 1
 
 [node name="GunRay" type="RayCast3D" parent="CameraPivot/WorldCamera"]
-transform = Transform3D(1.22062e-09, 2, -8.49809e-12, -1.99981, 1.22062e-09, 0.0279245, 0.0279244, -8.30624e-12, 1.99981, -1.47062e-09, -0.0504155, -0.282236)
+transform = Transform3D(5.79386e-09, 2, -1.92124e-10, -1.99561, 5.79387e-09, 0.132548, 0.132548, -1.91974e-10, 1.99561, -4.23963e-09, -0.0353529, -0.286992)
 target_position = Vector3(0, 0, -12)
 collision_mask = 129
 hit_from_inside = true
 collide_with_areas = true
 debug_shape_custom_color = Color(0.756863, 0.00392157, 0.941176, 1)
+debug_shape_thickness = 1
 
 [node name="PlayerUI" type="Control" parent="." groups=["player_ui"]]
 layout_mode = 3

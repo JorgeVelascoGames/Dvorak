@@ -1,9 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://0wduiiq6476g"]
+[gd_scene load_steps=7 format=3 uid="uid://0wduiiq6476g"]
 
 [ext_resource type="PackedScene" uid="uid://omjxjkehmmbw" path="res://enemy/enemy.tscn" id="1_c35q5"]
 [ext_resource type="PackedScene" uid="uid://u0i0m1o3gr4h" path="res://components/decal_spawner.tscn" id="2_q06nb"]
 [ext_resource type="PackedScene" uid="uid://dntxkqhhia68" path="res://vfx/blood_decal/blood_decal_big.tscn" id="3_l75al"]
-[ext_resource type="PackedScene" uid="uid://c40uj5j8ryqeq" path="res://enemy/braid/braid_model.tscn" id="4_edfg4"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_gp66m"]
 
@@ -14,7 +13,7 @@ height = 1.08099
 [sub_resource type="SphereShape3D" id="SphereShape3D_31vxc"]
 radius = 0.598886
 
-[node name="Braid" instance=ExtResource("1_c35q5")]
+[node name="braid(DEPRECATED)" instance=ExtResource("1_c35q5")]
 collision_layer = 8
 axis_lock_angular_x = false
 axis_lock_angular_z = false
@@ -44,6 +43,3 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.645121, 0)
 
 [node name="CollisionShape3D" parent="Hitbox" index="0"]
 shape = SubResource("SphereShape3D_31vxc")
-
-[node name="BraidModel" parent="Model" index="0" instance=ExtResource("4_edfg4")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)

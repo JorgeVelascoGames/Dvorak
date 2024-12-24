@@ -13,7 +13,7 @@ var random_offset: Vector3
 var shake_strenght: float = 0.0
 var rng = RandomNumberGenerator.new()
 var shaking: bool = false
-const random_strenght: = 0.1
+const random_strenght: = 0.3
 const shake_fade : = 0.3
 const shake_frecuency := 0.7
 
@@ -38,6 +38,9 @@ func _physics_process(delta):
 
 
 func _smooth_camera(delta) -> void:
+	if shaking:
+		await get_tree().create_timer(randf_range(0.1,0.5))
+	
 	var weight :float = clamp(delta * speed, 0.0, 0.5) 
 	
 	global_transform = global_transform.interpolate_with(
@@ -49,9 +52,9 @@ func _smooth_camera(delta) -> void:
 func _shaking_camera(delta: float) -> void:
 	shake_strenght = random_strenght
 	
-	h_offset = move_toward(h_offset, random_offset.x, shake_fade * delta)
-	v_offset = move_toward(v_offset, random_offset.y, shake_fade * delta)
-	if is_equal_approx(h_offset, random_offset.x) and is_equal_approx(v_offset, random_offset.y):
+	position.x = move_toward(position.x, random_offset.x, shake_fade * delta)
+	position.y = move_toward(position.y, random_offset.y, shake_fade * delta)
+	if is_equal_approx(position.x, random_offset.x) and is_equal_approx(position.y, random_offset.y):
 		_calculate_random_offset()
 
 
@@ -64,8 +67,8 @@ func _calculate_random_offset() -> void:
 
 
 func reset_offset(delta) -> void:
-	h_offset = move_toward(h_offset, 0, shake_fade * delta)
-	v_offset = move_toward(v_offset, 0, shake_fade * delta)
+	position.x = move_toward(position.x, 0, shake_fade * delta)
+	position.y = move_toward(position.y, 0, shake_fade * delta)
 
 
 func random_shake():
@@ -115,5 +118,5 @@ func _on_aim_shake_timer_timeout():
 	if not shaking:
 		return
 	
-	aim_shake_timer.wait_time = rng.randf_range(5.0, 8.0)
+	aim_shake_timer.wait_time = rng.randf_range(2.0, 0.6)
 	random_shake()

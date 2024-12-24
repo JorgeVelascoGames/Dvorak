@@ -83,11 +83,12 @@ func fire() -> void:
 		#Sound
 		return
 	
-	world_camera.weapon_recoil()
-	balance.add_balance(balance.shooting_cost)
 	print(gun_ray.get_collider())
 	if gun_ray.is_colliding() and gun_ray.get_collider().owner is Enemy:
 		gun_ray.get_collider().owner.enemy_die()
+	
+	world_camera.weapon_recoil()
+	balance.add_balance(balance.shooting_cost)
 
 
 func _on_sensibility_timer_timeout():
