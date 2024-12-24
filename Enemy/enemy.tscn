@@ -1,7 +1,6 @@
-[gd_scene load_steps=12 format=4 uid="uid://omjxjkehmmbw"]
+[gd_scene load_steps=11 format=4 uid="uid://omjxjkehmmbw"]
 
 [ext_resource type="Script" path="res://enemy/enemy.gd" id="1_kexvc"]
-[ext_resource type="PackedScene" uid="uid://w0ax75odo1ha" path="res://components/health.tscn" id="2_6a5fl"]
 [ext_resource type="Script" path="res://enemy/enemy_audio_manager.gd" id="3_hbalh"]
 [ext_resource type="AudioStream" uid="uid://dnd4d41uj4b8w" path="res://audio/drone_hit_sound.wav" id="5_rr246"]
 [ext_resource type="AudioStream" uid="uid://88pdpejlqxpf" path="res://audio/drone_dead_sound.wav" id="6_0k5ef"]
@@ -33,9 +32,6 @@ script = ExtResource("1_kexvc")
 speed = 3.0
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
-
-[node name="Health" parent="." instance=ExtResource("2_6a5fl")]
-max_health = 200
 
 [node name="HurtBox" type="Area3D" parent="."]
 collision_layer = 0
@@ -90,8 +86,6 @@ collision_mask = 0
 [node name="EnemyAnimation" type="AnimationTree" parent="."]
 script = ExtResource("6_5mhlw")
 
-[connection signal="health_minimun_reached" from="Health" to="." method="_on_health_health_minimun_reached"]
-[connection signal="taken_damage" from="Health" to="." method="_on_health_taken_damage"]
 [connection signal="body_entered" from="HurtBox" to="." method="_on_collision_detection_body_entered"]
 [connection signal="body_exited" from="HurtBox" to="." method="_on_collision_detection_body_exited"]
 [connection signal="timeout" from="EnemyAudioManager/StepsTimer" to="EnemyAudioManager" method="_on_steps_timer_timeout"]

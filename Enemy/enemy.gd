@@ -95,15 +95,3 @@ func enemy_die() -> void:
 	await enemy_animation.play_dead_animation()
 	$Model.hide()
 	queue_free()
-
-
-func _on_health_taken_damage(_dmg: int) -> void:
-	if is_active:
-		enemy_die()
-
-
-func _on_collision_detection_body_entered(body):
-	if body is Player:
-		can_move = false
-		body.player_hit()
-		enemy_die()

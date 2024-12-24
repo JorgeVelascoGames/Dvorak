@@ -1,7 +1,7 @@
 
 Modelos de enemigos:
 - Abortado
-- Madre
+- ~~Madre~~
 - Trepatechos
 - Doctor
 
@@ -15,8 +15,8 @@ Modelos props:
 - Animar cajonera para que se abra
 
 Texturas:
-- Escenario ladrillo
+- ~~Escenario ladrillo~~
 - Escenario metal y roca
 
 Modelar escenario
-- Tuberías
+- Tuberías (?)

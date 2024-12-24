@@ -11,6 +11,13 @@ signal WalkerInteracted
 @onready var gun_model: MeshInstance3D = $GunSelectorHitbox/GunModel/Gun
 @onready var crowbar_model: MeshInstance3D = $CrowbarSelectorHitbox/Crowbar/crowbar
 @onready var walker_rigid_body: StaticBody3D = $WalkerRigidBody
+@onready var top_text: MarginContainer = $TopText
+
+
+func _process(delta: float) -> void:
+	for body in $WalkerGrabArea.get_overlapping_bodies():
+		if body is Player:
+			top_text.show()
 
 
 func flashlight_togle() -> void:
@@ -58,8 +65,10 @@ func drop_weapons():
 	player.current_weapon = player.WEAPON.none
 
 
-func _on_interactable_on_interact() -> void:
-	WalkerInteracted.emit()
+func try_pick_walker() -> void:
+	for body in $WalkerGrabArea.get_overlapping_bodies():
+		if body is Player:
+			WalkerInteracted.emit()
 
 
 func _on_gun_interact_on_interact() -> void:

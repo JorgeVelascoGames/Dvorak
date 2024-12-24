@@ -9,7 +9,7 @@
 -Implementar [[Sonido]]
 -Implementar [[Todo/Arte]] de modelos de enemigos
 -Implementar iconos y logos
--Refinar enemigos
+~~-Refinar enemigos~~
 -Implementar sistemas de guardado
 -Implementar [[Mejoras]]
 -Implementar la cruz

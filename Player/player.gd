@@ -31,10 +31,10 @@ var current_weapon : WEAPON = WEAPON.none
 @onready var weapon_camera: Camera3D = $SubViewportContainer/SubViewport/WeaponCamera
 @onready var state_machine = $StateMachine
 @onready var interactable_ray = $CameraPivot/FollowPivot/WorldCamera/InteractableRay
-@onready var walker_interactable_ray: RayCast3D = $CameraPivot/FollowPivot/WorldCamera/WalkerInteractableRay
 @onready var ammo_handler = $StateMachine/Aim/AmmoHandler
 @onready var damaged_heal_timer = $Timers/DamagedHealTimer
 @onready var player_ui: PlayerUI = $PlayerUI
+@onready var walker: WalkerModel = $WalkerFixedPoint/Walker
 
 #onready variables
 @onready var original_world_camera_fov = world_camera.fov
@@ -82,10 +82,7 @@ func interact() -> void:
 
 
 func try_grab_walker():
-	if not walker_interactable_ray.is_colliding():
-		return
-	
-	_on_walker_walker_interacted()
+	walker.try_pick_walker()
 
 func player_hit() -> void:
 	if damaged:
