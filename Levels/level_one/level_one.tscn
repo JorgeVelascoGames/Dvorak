@@ -28,7 +28,6 @@ transform = Transform3D(-0.988892, 0, -0.148638, 0, 1, 0, 0.148638, 0, -0.988892
 [node name="Light" parent="Lights" instance=ExtResource("5_fux4b")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.43762, 0)
 light_on = true
-is_tweaking_light = true
 
 [node name="Switch" parent="Lights/Light" index="2"]
 transform = Transform3D(0.625, 0, 0, 0, 0.625, 0, 0, 0, 0.625, 0.81888, -1.01306, 0)

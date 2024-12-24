@@ -6,14 +6,15 @@ class_name WorldCamera
 @export var pivot :Node3D
 
 @onready var aim_shake_timer = $AimShakeTimer
-@onready var camera_pivot = $".."
-@onready var player = $"../.."
+@onready var camera_pivot = $"../.."
+@onready var player = $"../../.."
+@onready var follow_pivot: Node3D = $".."
 
 var random_offset: Vector3
 var shake_strenght: float = 0.0
 var rng = RandomNumberGenerator.new()
 var shaking: bool = false
-const random_strenght: = 0.3
+const random_strenght: = 0.1
 const shake_fade : = 0.3
 const shake_frecuency := 0.7
 
@@ -37,16 +38,13 @@ func _physics_process(delta):
 	_smooth_camera(delta)
 
 
-func _smooth_camera(delta) -> void:
-	if shaking:
-		await get_tree().create_timer(randf_range(0.1,0.5))
-	
+func _smooth_camera(delta) -> void:	
 	var weight :float = clamp(delta * speed, 0.0, 0.5) 
 	
-	global_transform = global_transform.interpolate_with(
-		get_parent().global_transform, weight
+	follow_pivot.global_transform = follow_pivot.global_transform.interpolate_with(
+		follow_pivot.get_parent().global_transform, weight
 	)
-	global_position = get_parent().global_position
+	follow_pivot.global_position = follow_pivot.get_parent().global_position
 
 
 func _shaking_camera(delta: float) -> void:
@@ -118,5 +116,5 @@ func _on_aim_shake_timer_timeout():
 	if not shaking:
 		return
 	
-	aim_shake_timer.wait_time = rng.randf_range(2.0, 0.6)
+	aim_shake_timer.wait_time = rng.randf_range(5.0, 8.0)
 	random_shake()

@@ -1,10 +1,10 @@
 extends PlayerState
 class_name PlayerAim
 
-@onready var world_camera = $"../../CameraPivot/WorldCamera"
+@onready var world_camera = $"../../CameraPivot/FollowPivot/WorldCamera"
 @onready var sensibility_timer = $SensibilityTimer
 @onready var balance = $"../../Components/Balance"
-@onready var gun_ray : RayCast3D = $"../../CameraPivot/WorldCamera/GunRay"
+@onready var gun_ray : RayCast3D = $"../../CameraPivot/FollowPivot/WorldCamera/GunRay"
 @onready var ammo_counter: AmmoCounter = $"../../Components/AmmoCounter"
 @onready var aiming_gun: Node3D = $"../../SubViewportContainer/SubViewport/WeaponCamera/GunModel"
 @onready var initial_gun_pos := aiming_gun.position

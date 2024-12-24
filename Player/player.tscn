@@ -562,7 +562,6 @@ size = Vector2i(320, 240)
 render_target_update_mode = 4
 
 [node name="WeaponCamera" type="Camera3D" parent="SubViewportContainer/SubViewport"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.54, 0)
 cull_mask = 2
 fov = 33.0
 
@@ -576,7 +575,7 @@ layers = 2
 
 [node name="RemoteTransform3D" type="RemoteTransform3D" parent="SubViewportContainer/SubViewport/WeaponCamera/GunModel/Gun" index="0"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -0.0115109, 0.0476981, 2.11636e-16)
-remote_path = NodePath("../../../../../../CameraPivot/WorldCamera/GunRay")
+remote_path = NodePath("../../../../../../CameraPivot/FollowPivot/WorldCamera/GunRay")
 
 [node name="StateMachine" type="Node" parent="."]
 script = ExtResource("2_g0cef")
@@ -674,34 +673,37 @@ shape = ExtResource("12_6t6rn")
 [node name="CameraPivot" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.258816, 0.965927, 0, -0.965927, 0.258816, 0, 0.54, 0)
 
-[node name="WorldCamera" type="Camera3D" parent="CameraPivot"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.54, 0)
+[node name="FollowPivot" type="Node3D" parent="CameraPivot"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 top_level = true
+
+[node name="WorldCamera" type="Camera3D" parent="CameraPivot/FollowPivot"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 cull_mask = 1048573
 fov = 33.0
 script = ExtResource("2_cywkd")
 speed = 20.0
 
-[node name="RemoteTransform3D" type="RemoteTransform3D" parent="CameraPivot/WorldCamera"]
-remote_path = NodePath("../../../SubViewportContainer/SubViewport/WeaponCamera")
+[node name="RemoteTransform3D" type="RemoteTransform3D" parent="CameraPivot/FollowPivot/WorldCamera"]
+remote_path = NodePath("../../../../SubViewportContainer/SubViewport/WeaponCamera")
 
-[node name="AimShakeTimer" type="Timer" parent="CameraPivot/WorldCamera"]
+[node name="AimShakeTimer" type="Timer" parent="CameraPivot/FollowPivot/WorldCamera"]
 wait_time = 0.297
 autostart = true
 
-[node name="InteractableRay" type="RayCast3D" parent="CameraPivot/WorldCamera"]
+[node name="InteractableRay" type="RayCast3D" parent="CameraPivot/FollowPivot/WorldCamera"]
 target_position = Vector3(0, 0, -2)
 collision_mask = 65
 debug_shape_thickness = 1
 
-[node name="WalkerInteractableRay" type="RayCast3D" parent="CameraPivot/WorldCamera"]
+[node name="WalkerInteractableRay" type="RayCast3D" parent="CameraPivot/FollowPivot/WorldCamera"]
 target_position = Vector3(0, 0, -2)
 collision_mask = 257
 debug_shape_custom_color = Color(0.756863, 0.00392157, 0.941176, 1)
 debug_shape_thickness = 1
 
-[node name="GunRay" type="RayCast3D" parent="CameraPivot/WorldCamera"]
-transform = Transform3D(5.79386e-09, 2, -1.92124e-10, -1.99561, 5.79387e-09, 0.132548, 0.132548, -1.91974e-10, 1.99561, -4.23963e-09, -0.0353529, -0.286992)
+[node name="GunRay" type="RayCast3D" parent="CameraPivot/FollowPivot/WorldCamera"]
+transform = Transform3D(5.79386e-09, 2, -1.92145e-10, -1.99561, 5.79387e-09, 0.132548, 0.132548, -1.91953e-10, 1.99561, -4.23963e-09, -0.0353529, -0.286992)
 target_position = Vector3(0, 0, -12)
 collision_mask = 129
 hit_from_inside = true
@@ -886,7 +888,7 @@ omni_range = 1.19761
 [connection signal="timeout" from="StateMachine/Aim/SensibilityTimer" to="StateMachine/Aim" method="_on_sensibility_timer_timeout"]
 [connection signal="timeout" from="StateMachine/Unbalanced/Timer" to="StateMachine/Unbalanced" method="_on_timer_timeout"]
 [connection signal="timeout" from="StateMachine/Unbalanced/ErrorTimer" to="StateMachine/Unbalanced" method="_on_error_timer_timeout"]
-[connection signal="timeout" from="CameraPivot/WorldCamera/AimShakeTimer" to="CameraPivot/WorldCamera" method="_on_aim_shake_timer_timeout"]
+[connection signal="timeout" from="CameraPivot/FollowPivot/WorldCamera/AimShakeTimer" to="CameraPivot/FollowPivot/WorldCamera" method="_on_aim_shake_timer_timeout"]
 [connection signal="WalkerInteracted" from="WalkerFixedPoint/Walker" to="." method="_on_walker_walker_interacted"]
 [connection signal="timeout" from="Timers/DamagedHealTimer" to="." method="_on_damaged_heal_timer_timeout"]
 [connection signal="body_entered" from="CrowbarAttackHitbox" to="CrowbarAttackHitbox" method="_on_body_entered"]
