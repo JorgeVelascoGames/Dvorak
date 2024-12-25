@@ -12,12 +12,7 @@ signal WalkerInteracted
 @onready var crowbar_model: MeshInstance3D = $CrowbarSelectorHitbox/Crowbar/crowbar
 @onready var walker_rigid_body: StaticBody3D = $WalkerRigidBody
 @onready var top_text: MarginContainer = $TopText
-
-
-func _process(delta: float) -> void:
-	for body in $WalkerGrabArea.get_overlapping_bodies():
-		if body is Player:
-			top_text.show()
+@onready var walker_grab_area: Area3D = $WalkerGrabArea
 
 
 func flashlight_togle() -> void:

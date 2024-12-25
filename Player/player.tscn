@@ -1,4 +1,4 @@
-[gd_scene load_steps=64 format=3 uid="uid://m6pypgl566n1"]
+[gd_scene load_steps=65 format=3 uid="uid://m6pypgl566n1"]
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_ref5g"]
 [ext_resource type="Script" path="res://player/smooth_camera.gd" id="2_cywkd"]
@@ -136,6 +136,13 @@ font_size = 64
 [sub_resource type="LabelSettings" id="LabelSettings_3m322"]
 font = ExtResource("21_23yvg")
 font_size = 20
+outline_size = 2
+outline_color = Color(0.165656, 0.165657, 0.165656, 1)
+shadow_size = 4
+
+[sub_resource type="LabelSettings" id="LabelSettings_eftwr"]
+font = ExtResource("21_23yvg")
+font_size = 15
 outline_size = 2
 outline_color = Color(0.165656, 0.165657, 0.165656, 1)
 shadow_size = 4
@@ -674,11 +681,9 @@ shape = ExtResource("12_6t6rn")
 transform = Transform3D(1, 0, 0, 0, 0.258816, 0.965927, 0, -0.965927, 0.258816, 0, 0.54, 0)
 
 [node name="FollowPivot" type="Node3D" parent="CameraPivot"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 top_level = true
 
 [node name="WorldCamera" type="Camera3D" parent="CameraPivot/FollowPivot"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 cull_mask = 1048573
 fov = 33.0
 script = ExtResource("2_cywkd")
@@ -815,6 +820,32 @@ grow_horizontal = 2
 grow_vertical = 0
 text = "test
 "
+
+[node name="TopText" type="MarginContainer" parent="PlayerUI"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 12.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="GrabWalkerUI" type="HBoxContainer" parent="PlayerUI/TopText"]
+layout_mode = 2
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="PlayerUI/TopText/GrabWalkerUI"]
+visible = false
+layout_mode = 2
+
+[node name="TopLable" type="Label" parent="PlayerUI/TopText/GrabWalkerUI"]
+layout_mode = 2
+size_flags_vertical = 0
+text = "R- Grab walker"
+label_settings = SubResource("LabelSettings_eftwr")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="WalkerFixedPoint" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.756069, -0.712773)
