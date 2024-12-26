@@ -7,7 +7,7 @@
 -Terminar primer nivel
 -Hacer tutorial
 -Implementar [[Sonido]]
--Implementar [[Todo/Arte]] de modelos de enemigos
+-~~Implementar [[Todo/Arte]] de modelos de enemigos~~
 -Implementar iconos y logos
 ~~-Refinar enemigos~~
 -Implementar sistemas de guardado
