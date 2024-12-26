@@ -20,6 +20,7 @@ func _ready() -> void:
 			var sound = LIGHT_BUBBLE_SOUND.instantiate() as AudioStreamPlayer3D
 			child.add_child(sound)
 	switch_light(light_on)
+	tweak_light()
 
 
 func on_switch_press() -> void:
@@ -43,9 +44,9 @@ func tweak_light() -> void:
 		var light = lights_array.pick_random()
 		
 		for i in number_of_tweaks:
-			light.visible = !light.visible
-			if light.visible: #TODO
-				light.get_child()
+			light.visible = !light.visible #En lugar de eso, vamos a hacer con un tween que haga fade out
+			#if light.visible: #TODO
+				#light.get_child()
 			var tweak_time := randf_range(0.3, 1.6)
 			tweak_timer.start(tweak_time)
 			await  tweak_timer.timeout
