@@ -16,11 +16,11 @@ func _process(delta: float) -> void:
 
 func _on_interactable_on_interact() -> void:
 	directional_light_3d.show()
-	AppManager.game_manager.enemy_manager.can_spawn = false
+	AppManager.game_manager.enemy_manager.spawn_blockers.append(self)
 	var tween := get_tree().create_tween()
 	tween.tween_property(directional_light_3d, "light_energy", 1.2, 0.4)
 	await  tween.finished
 	AppManager.game_manager.enemy_manager.kill_all_enemies()
 	await get_tree().create_timer(20).timeout
 	tween.tween_property(directional_light_3d, "light_energy", 1.2, 5.5)
-	AppManager.game_manager.enemy_manager.can_spawn = true
+	AppManager.game_manager.enemy_manager.spawn_blockers.erase(self)

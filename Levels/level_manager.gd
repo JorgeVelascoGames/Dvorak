@@ -1,6 +1,6 @@
 extends Node3D
+##This class goes on the root node of a level
 class_name LevelManager
-
 
 @onready var exit_gate : ExitGate = $ExitGate
 @onready var navigation_region_3d : NavigationRegion3D= $NavigationRegion3D
