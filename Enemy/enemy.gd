@@ -23,6 +23,7 @@ var gravity: float = ProjectSettings.get_setting("physics/3d/default_gravity")
 
 
 func _ready() -> void:
+	AppManager.game_manager.enemy_manager.enemy_list.append(self)
 	model.top_level = true
 	if provoke_on_ready:
 		provoke = true
@@ -94,4 +95,5 @@ func enemy_die() -> void:
 	enemy_audio_manager.play_dead_audio()
 	await enemy_animation.play_dead_animation()
 	$Model.hide()
+	AppManager.game_manager.enemy_manager.enemy_list.erase(self)
 	queue_free()

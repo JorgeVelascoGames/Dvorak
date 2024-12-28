@@ -1,16 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://dj1xeiiysi3o5"]
+[gd_scene load_steps=8 format=3 uid="uid://dj1xeiiysi3o5"]
 
 [ext_resource type="Script" path="res://ExitGate/pass_book.gd" id="1_vqmkl"]
 [ext_resource type="Script" path="res://components/interactable.gd" id="2_38db5"]
-
-[sub_resource type="BoxMesh" id="BoxMesh_25mgc"]
-size = Vector3(0.2, 0.05, 0.35)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wvelq"]
-albedo_color = Color(0.78029, 0.13879, 0, 1)
-
-[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_shn7x"]
-data = PackedVector3Array(-0.1, 0.025, 0.175, 0.1, 0.025, 0.175, -0.1, -0.025, 0.175, 0.1, 0.025, 0.175, 0.1, -0.025, 0.175, -0.1, -0.025, 0.175, 0.1, 0.025, -0.175, -0.1, 0.025, -0.175, 0.1, -0.025, -0.175, -0.1, 0.025, -0.175, -0.1, -0.025, -0.175, 0.1, -0.025, -0.175, 0.1, 0.025, 0.175, 0.1, 0.025, -0.175, 0.1, -0.025, 0.175, 0.1, 0.025, -0.175, 0.1, -0.025, -0.175, 0.1, -0.025, 0.175, -0.1, 0.025, -0.175, -0.1, 0.025, 0.175, -0.1, -0.025, -0.175, -0.1, 0.025, 0.175, -0.1, -0.025, 0.175, -0.1, -0.025, -0.175, 0.1, 0.025, 0.175, -0.1, 0.025, 0.175, 0.1, 0.025, -0.175, -0.1, 0.025, 0.175, -0.1, 0.025, -0.175, 0.1, 0.025, -0.175, -0.1, -0.025, 0.175, 0.1, -0.025, 0.175, -0.1, -0.025, -0.175, 0.1, -0.025, 0.175, 0.1, -0.025, -0.175, -0.1, -0.025, -0.175)
+[ext_resource type="PackedScene" uid="uid://bsid5sgbt2jlj" path="res://assets/props/atril/atril.tscn" id="2_ahbig"]
+[ext_resource type="PackedScene" uid="uid://cwexc7x6763dc" path="res://assets/props/book/book.tscn" id="3_cgwqo"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_0sn8r"]
 font_size = 45
@@ -18,24 +11,17 @@ font_color = Color(0, 0, 0, 1)
 outline_size = 24
 outline_color = Color(0.408329, 0.408329, 0.408329, 1)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_ec1a2"]
+size = Vector3(0.375, 1, 0.28)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_6cw2q"]
+size = Vector3(0.31, 0.245, 0.33)
+
 [node name="PassBook" type="Node3D"]
 script = ExtResource("1_vqmkl")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-mesh = SubResource("BoxMesh_25mgc")
-surface_material_override/0 = SubResource("StandardMaterial3D_wvelq")
-
-[node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D"]
-collision_layer = 2
-collision_mask = 5
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/StaticBody3D"]
-shape = SubResource("ConcavePolygonShape3D_shn7x")
-
-[node name="Interactable" type="Node" parent="MeshInstance3D/StaticBody3D"]
-script = ExtResource("2_38db5")
-
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+visible = false
 
 [node name="Control" type="Control" parent="CanvasLayer"]
 layout_mode = 3
@@ -68,5 +54,26 @@ color = Color(0.615686, 0.615686, 0.615686, 0)
 wait_time = 2.0
 one_shot = true
 
-[connection signal="on_interact" from="MeshInstance3D/StaticBody3D/Interactable" to="." method="_on_interactable_on_interact"]
-[connection signal="on_long_interact" from="MeshInstance3D/StaticBody3D/Interactable" to="." method="_on_interactable_on_long_interact"]
+[node name="atril" parent="." instance=ExtResource("2_ahbig")]
+
+[node name="book" parent="." instance=ExtResource("3_cgwqo")]
+transform = Transform3D(0.21, 0, 0, 0, 0.194345, -0.0795603, 0, 0.0795603, 0.194345, 0, 1.158, 0.006)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.509979, 0)
+shape = SubResource("BoxShape3D_ec1a2")
+
+[node name="StaticBody3D2" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.148, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D2"]
+transform = Transform3D(1, 0, 0, 0, 0.86544, -0.501012, 0, 0.501012, 0.86544, 0, 0, 0)
+shape = SubResource("BoxShape3D_6cw2q")
+
+[node name="Interactable" type="Node" parent="StaticBody3D2/CollisionShape3D"]
+script = ExtResource("2_38db5")
+long_interaction = true
+
+[connection signal="on_long_interact" from="StaticBody3D2/CollisionShape3D/Interactable" to="." method="_on_interactable_on_long_interact"]

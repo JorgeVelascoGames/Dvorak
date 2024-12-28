@@ -13,4 +13,5 @@ func interact() -> void:
 
 
 func long_interact() -> void:
+	on_interact.emit()
 	on_long_interact.emit()

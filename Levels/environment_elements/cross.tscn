@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=3 uid="uid://dycdd0wd0kswp"]
+
+[ext_resource type="Script" path="res://Levels/environment_elements/cross.gd" id="1_u1ftr"]
+[ext_resource type="Script" path="res://components/interactable.gd" id="2_1dwm3"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_fhkk4"]
+size = Vector3(1, 2.14, 0.35)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_2sy5j"]
+size = Vector3(1, 2.295, 0.505)
+
+[node name="Cross" type="Node3D"]
+script = ExtResource("1_u1ftr")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_fhkk4")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+shape = SubResource("BoxShape3D_2sy5j")
+
+[node name="Interactable" type="Node" parent="StaticBody3D/CollisionShape3D"]
+script = ExtResource("2_1dwm3")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+visible = false
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+
+[connection signal="on_interact" from="StaticBody3D/CollisionShape3D/Interactable" to="." method="_on_interactable_on_interact"]

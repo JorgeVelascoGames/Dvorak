@@ -46,6 +46,7 @@ shape = SubResource("BoxShape3D_gt4jj")
 mesh = SubResource("BoxMesh_hcygg")
 
 [node name="PassSwitch" parent="." instance=ExtResource("3_t31dc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.745724, 0.505819, 0)
 
 [node name="PassSwitch2" parent="." instance=ExtResource("3_t31dc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.123, 0.521547, 0.0328306)

@@ -1,0 +1,13 @@
+[gd_scene load_steps=4 format=3 uid="uid://bsid5sgbt2jlj"]
+
+[ext_resource type="PackedScene" uid="uid://sktp1f7lb3pa" path="res://assets/props/atril/atril.fbx" id="1_x5b2p"]
+[ext_resource type="Texture2D" uid="uid://0udibplrsxpa" path="res://assets/props/atril/atril_atril_BaseColor.png" id="2_ttq56"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vf0rx"]
+albedo_texture = ExtResource("2_ttq56")
+
+[node name="atril" instance=ExtResource("1_x5b2p")]
+
+[node name="atril" parent="." index="0"]
+transform = Transform3D(100, 0, 0, 0, -1.19209e-05, 100, 0, -100, -1.19209e-05, 0, 0, 0)
+surface_material_override/0 = SubResource("StandardMaterial3D_vf0rx")

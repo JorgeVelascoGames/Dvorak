@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://8snq2dhojamu"]
+[gd_scene load_steps=11 format=3 uid="uid://8snq2dhojamu"]
 
 [ext_resource type="Script" path="res://game_manager/game_manager.gd" id="1_d4jsh"]
 [ext_resource type="PackedScene" uid="uid://dh6gl16kfd242" path="res://game_ui/main_menu/main_menu.tscn" id="2_qnsev"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://b37la44wjrp4u" path="res://Levels/level_one/level_one.tscn" id="6_4me3d"]
 [ext_resource type="PackedScene" uid="uid://bgouurh1fbjwr" path="res://game_manager/game_level_manager.tscn" id="6_7vbrb"]
 [ext_resource type="Shader" path="res://shaders/vhs.gdshader" id="7_dlfm1"]
+[ext_resource type="Script" path="res://game_manager/enemy_manager.gd" id="9_whl67"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_u0avb"]
 shader = ExtResource("7_dlfm1")
@@ -38,5 +39,8 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
+
+[node name="EnemyManager" type="Node" parent="."]
+script = ExtResource("9_whl67")
 
 [connection signal="NewSceneLoaded" from="LoadingScreen" to="." method="_on_loading_screen_new_scene_loaded"]

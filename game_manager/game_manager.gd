@@ -10,7 +10,7 @@ enum APP_STATE {lenguage, advert, menu, game}
 
 @onready var loading_screen: LoadingScreen = $LoadingScreen
 @onready var game_level_manager: GameLevelManager = $GameLevelManager
-
+@onready var enemy_manager: EnemyManager = $EnemyManager
 
 var current_app_state := APP_STATE.lenguage
 var current_screen : Node

@@ -11,13 +11,14 @@ class_name EnemySpawner
 
 @onready var spawn_timer: Timer = $SpawnTimer
 @onready var visible_on_screen_notifier_3d: VisibleOnScreenNotifier3D = $VisibleOnScreenNotifier3D
-
+@onready var enemy_manager : EnemyManager = AppManager.game_manager.enemy_manager
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	if start_spawn_on_ready:
 		spawn()
-
+	if not node_to_parent:
+		node_to_parent = self
 
 func spawn() -> void:
 	if visible_on_screen_notifier_3d.is_on_screen():
@@ -36,4 +37,5 @@ func spawn() -> void:
 
 
 func _on_spawn_timer_timeout() -> void:
-	spawn()
+	if enemy_manager._can_spawn_enemy():
+		spawn()

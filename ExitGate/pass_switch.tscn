@@ -1,7 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://cfpfgy53aqnh2"]
+[gd_scene load_steps=7 format=3 uid="uid://cfpfgy53aqnh2"]
 
 [ext_resource type="Script" path="res://ExitGate/pass_switch.gd" id="1_8yxc6"]
 [ext_resource type="PackedScene" uid="uid://cp3wrdmgpagpg" path="res://components/interactable.tscn" id="2_u06qw"]
+[ext_resource type="PackedScene" uid="uid://bepj5mbs82d3y" path="res://assets/props/swich/swich.tscn" id="3_74aft"]
+[ext_resource type="PackedScene" uid="uid://rd6woanfk4nl" path="res://assets/props/emergency_light/emergency_light.tscn" id="4_d31c3"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_87h8t"]
 size = Vector3(0.1, 0.18, 0.1)
@@ -10,16 +12,36 @@ size = Vector3(0.1, 0.18, 0.1)
 size = Vector3(0.1, 0.18, 0.1)
 
 [node name="PassSwitch" type="StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.7, 0.521547, 0.0328306)
 collision_layer = 2
 collision_mask = 0
 script = ExtResource("1_8yxc6")
 switch_index = 1
 
 [node name="Interactable" parent="." instance=ExtResource("2_u06qw")]
+long_interaction = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("BoxShape3D_87h8t")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+visible = false
 mesh = SubResource("BoxMesh_rur6g")
+
+[node name="swich" parent="." instance=ExtResource("3_74aft")]
+transform = Transform3D(0.245, 0, 0, 0, 0.245, 0, 0, 0, 0.245, 0, 0, 0.0247662)
+
+[node name="ActivatedLight" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.023, 0.191, 0.0333131)
+light_color = Color(0.857705, 0.350812, 0.202718, 1)
+omni_range = 0.046
+
+[node name="DeactivateLight" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.022797, 0.191429, 0.0333131)
+light_color = Color(0.444646, 0.710469, 0.258693, 1)
+omni_range = 0.046
+
+[node name="emergency_light" parent="." instance=ExtResource("4_d31c3")]
+transform = Transform3D(0.115, 0, 0, 0, -5.02681e-09, -0.115, 0, 0.115, -5.02681e-09, 0.023, 0.189, 0)
+
+[node name="emergency_light2" parent="." instance=ExtResource("4_d31c3")]
+transform = Transform3D(0.115, 0, 0, 0, -5.02681e-09, -0.115, 0, 0.115, -5.02681e-09, -0.023, 0.189, 0)
