@@ -19,6 +19,7 @@ var correct_key_pressed : int = 0
 
 func enter(_msg : ={}) -> void:
 	interactable = _msg["object"] as Interactable
+	interactable.on_stop_long_interaction.connect(finish_state)
 	necessary_keys_to_press = randi_range(interactable.necessary_keys_to_press_min, interactable.necessary_keys_to_press_max)
 	player.velocity = Vector3.ZERO
 	top_key_selection = top_side_keys.pick_random()
@@ -29,6 +30,7 @@ func enter(_msg : ={}) -> void:
 
 func update(_delta):
 	if Input.is_action_just_released("interact"):
+		finish_state()
 		state_machine.transition_to("Idle", {})
 
 

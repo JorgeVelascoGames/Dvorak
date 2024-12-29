@@ -3,6 +3,7 @@ class_name Interactable
 
 signal on_interact
 signal on_long_interact
+signal on_stop_long_interaction
 
 @export var long_interaction := false
 @export var necessary_keys_to_press_min := 15

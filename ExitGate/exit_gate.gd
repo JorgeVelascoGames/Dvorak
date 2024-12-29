@@ -62,8 +62,8 @@ func distribute_books(spawn_points : Array[Marker3D]) -> void:
 	var i := 0
 	spawn_points.shuffle()
 	for book in pass_books:
-		book.global_position = spawn_points[i].global_position
-		book.rotation = spawn_points[i].rotation
+		book.global_transform = spawn_points[i].global_transform
+		#book.rotation = spawn_points[i].rotation
 		i += 1
 
 
