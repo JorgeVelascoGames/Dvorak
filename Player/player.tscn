@@ -699,12 +699,7 @@ autostart = true
 [node name="InteractableRay" type="RayCast3D" parent="CameraPivot/FollowPivot/WorldCamera"]
 target_position = Vector3(0, 0, -2)
 collision_mask = 65
-debug_shape_thickness = 1
-
-[node name="WalkerInteractableRay" type="RayCast3D" parent="CameraPivot/FollowPivot/WorldCamera"]
-target_position = Vector3(0, 0, -2)
-collision_mask = 257
-debug_shape_custom_color = Color(0.756863, 0.00392157, 0.941176, 1)
+hit_from_inside = true
 debug_shape_thickness = 1
 
 [node name="GunRay" type="RayCast3D" parent="CameraPivot/FollowPivot/WorldCamera"]
