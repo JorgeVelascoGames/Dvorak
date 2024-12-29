@@ -1,7 +1,6 @@
 extends PlayerState
 class_name PlayerLongInteraction
 
-@onready var balance = $"../../Components/Balance"
 @onready var placeholder_l_able = $"../../PlayerUI/BalancedUI/PlaceholderLAble"
 
 #Private variables
@@ -19,7 +18,7 @@ var correct_key_pressed : int = 0
 
 func enter(_msg : ={}) -> void:
 	interactable = _msg["object"] as Interactable
-	interactable.on_stop_long_interaction.connect(finish_state)
+	interactable.on_stop_long_interaction.connect(cancel_and_finish)
 	necessary_keys_to_press = randi_range(interactable.necessary_keys_to_press_min, interactable.necessary_keys_to_press_max)
 	player.velocity = Vector3.ZERO
 	top_key_selection = top_side_keys.pick_random()
@@ -63,5 +62,12 @@ func finish_state() -> void:
 	state_machine.transition_to("Idle", {})
 
 
+func cancel_and_finish() -> void:
+	correct_key_pressed = 0
+	placeholder_l_able.hide()
+	
+	state_machine.transition_to("Idle", {})
+
+
 func exit() -> void:
-	pass
+	interactable.on_stop_long_interaction.disconnect(cancel_and_finish)
