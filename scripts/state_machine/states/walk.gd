@@ -4,7 +4,7 @@ class_name Walk
 #Private variables
 var mouse_motion := Vector2.ZERO
 
-@onready var world_camera = $"../../CameraPivot/WorldCamera"
+#@onready var world_camera = $"../../CameraPivot/WorldCamera"
 
 @export var aim_multiplier: float = 0.3
 @export var sprint_multiplier := 1.5

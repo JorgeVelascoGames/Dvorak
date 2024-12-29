@@ -23,6 +23,7 @@ var gravity: float = ProjectSettings.get_setting("physics/3d/default_gravity")
 
 
 func _ready() -> void:
+	await get_tree().process_frame
 	AppManager.game_manager.enemy_manager.enemy_list.append(self)
 	model.top_level = true
 	if provoke_on_ready:
@@ -62,6 +63,9 @@ func movement_process(_delta: float) -> void:
 	
 	if provoke:
 		current_target = player
+	
+	if current_target == null:
+		return
 	
 	var distance = global_position.distance_to(current_target.global_position)
 	var next_position = navigation_agent_3d.get_next_path_position()

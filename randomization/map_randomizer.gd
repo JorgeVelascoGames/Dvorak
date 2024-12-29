@@ -10,8 +10,8 @@ signal finish_randomization
 @export var min_items_to_spawn : int
 @export var max_items_to_spawn : int
 @export var items_father : Node3D
+@export var rooms : Array[PackedScene]
 
-var rooms : Array[PackedScene] #TODO
 var items : Array[PackedScene]
 var instantiated_rooms : Array[Room]
 
@@ -51,9 +51,8 @@ func spawn_rooms() -> void:
 	for room_position in rooms_array:
 		var new_room = rooms.pop_back().instantiate() as Room
 		rooms_father.add_child(new_room)
-		var position := rooms_array.pop_back() as Node3D
-		new_room.position = position.position
-		new_room.rotation = position.rotation
+		new_room.position = room_position.position
+		new_room.rotation = room_position.rotation
 		instantiated_rooms.append(new_room)
 
 

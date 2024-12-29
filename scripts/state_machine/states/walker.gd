@@ -6,7 +6,6 @@ class_name Walker
 @export var aceleration_value := 40.0 ##The bigger the value, the longer it takes to accelerate
 @export var max_rotation_acceleration := 1.0 ##The longer the value, the longer the steps when rotating
 
-@onready var world_camera = $"../../CameraPivot/WorldCamera"
 @onready var camera_pivot = $"../../CameraPivot"
 @onready var walker: WalkerModel = $"../../WalkerFixedPoint/Walker"
 @onready var player_collision_shape: CollisionShape3D = $"../../PlayerCollisionShape"

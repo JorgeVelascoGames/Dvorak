@@ -86,3 +86,27 @@ shape = SubResource("BoxShape3D_tapqn")
 
 [node name="cealing_top" parent="." index="8"]
 surface_material_override/0 = ExtResource("4_6iimo")
+
+[node name="Sphere" parent="." index="9"]
+visible = false
+
+[node name="Sphere_001" parent="." index="10"]
+visible = false
+
+[node name="Sphere_002" parent="." index="11"]
+visible = false
+
+[node name="Sphere_003" parent="." index="12"]
+visible = false
+
+[node name="Sphere_004" parent="." index="13"]
+visible = false
+
+[node name="Sphere_005" parent="." index="14"]
+visible = false
+
+[node name="Sphere_006" parent="." index="15"]
+visible = false
+
+[node name="Sphere_007" parent="." index="16"]
+visible = false

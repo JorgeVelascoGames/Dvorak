@@ -11,7 +11,6 @@ signal WalkerInteracted
 @onready var gun_model: MeshInstance3D = $GunSelectorHitbox/GunModel/Gun
 @onready var crowbar_model: MeshInstance3D = $CrowbarSelectorHitbox/Crowbar/crowbar
 @onready var walker_rigid_body: StaticBody3D = $WalkerRigidBody
-@onready var top_text: MarginContainer = $TopText
 @onready var walker_grab_area: Area3D = $WalkerGrabArea
 
 

@@ -67,7 +67,7 @@ func distribute_books(spawn_points : Array[Marker3D]) -> void:
 		i += 1
 
 
-#Check if the code is correct
+##Check if the code is correct
 func _on_interactable_on_interact():
 	print("press main switch...")
 	if main_switch_cd_timer.time_left > 0:

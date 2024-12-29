@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://dnlj0cpdwjsyl"]
+[gd_scene load_steps=8 format=3 uid="uid://dnlj0cpdwjsyl"]
 
 [ext_resource type="Script" path="res://randomization/room.gd" id="1_fe218"]
 [ext_resource type="PackedScene" uid="uid://b8gbxyaua8ftu" path="res://assets/props/bed/bed.tscn" id="2_jf46d"]
 [ext_resource type="PackedScene" uid="uid://bkegegkvaxugb" path="res://assets/props/cage/cage.tscn" id="3_t4wng"]
 [ext_resource type="PackedScene" uid="uid://d0dkjcykl2xdc" path="res://assets/props/filing_cabinet/filing_cabinet.tscn" id="4_8ktsw"]
+[ext_resource type="PackedScene" uid="uid://dycdd0wd0kswp" path="res://Levels/environment_elements/cross.tscn" id="5_8qvxo"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_kk2a0"]
 size = Vector2(9, 9)
@@ -13,10 +14,11 @@ albedo_color = Color(0.568627, 0.666667, 0.603922, 0.321569)
 proximity_fade_enabled = true
 proximity_fade_distance = 0.1
 
-[node name="Room1" type="Node3D" node_paths=PackedStringArray("atril_spawn_point", "item_spawning_points")]
+[node name="Room1" type="Node3D" node_paths=PackedStringArray("atril_spawn_point", "item_spawning_points", "cross")]
 script = ExtResource("1_fe218")
 atril_spawn_point = NodePath("AtrilSpawner")
-item_spawning_points = [NodePath("AtrilSpawner"), NodePath("ItemSpawn")]
+item_spawning_points = [NodePath("ItemSpawn"), NodePath("ItemSpawn2")]
+cross = NodePath("Cross")
 
 [node name="Bed" parent="." instance=ExtResource("2_jf46d")]
 transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, -1.39528, -9.53674e-07, -1.2923)
@@ -31,6 +33,7 @@ transform = Transform3D(-0.976537, 0, 0.215349, 0, 1, 0, -0.215349, 0, -0.976537
 transform = Transform3D(-0.69699, 0, -0.717081, 0, 1, 0, 0.717081, 0, -0.69699, -2.83227, -9.53674e-07, 1.97681)
 
 [node name="RoomSize" type="MeshInstance3D" parent="."]
+visible = false
 mesh = SubResource("PlaneMesh_kk2a0")
 surface_material_override/0 = SubResource("StandardMaterial3D_k70g2")
 
@@ -54,5 +57,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.81961, 0, -2.09859)
 
 [node name="ItemSpawn2" type="Marker3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.8227, 0, 1.13363)
+
+[node name="Cross" parent="." instance=ExtResource("5_8qvxo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.48936, 0.982012, 4.13679)
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.3984, 0)
 
 [editable path="cage"]
