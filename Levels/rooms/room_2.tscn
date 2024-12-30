@@ -1,10 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://dnlj0cpdwjsyl"]
+[gd_scene load_steps=8 format=3 uid="uid://bj1jq0pdwxof7"]
 
-[ext_resource type="Script" path="res://randomization/room.gd" id="1_fe218"]
-[ext_resource type="PackedScene" uid="uid://b8gbxyaua8ftu" path="res://assets/props/bed/bed.tscn" id="2_jf46d"]
-[ext_resource type="PackedScene" uid="uid://bkegegkvaxugb" path="res://assets/props/cage/cage.tscn" id="3_t4wng"]
-[ext_resource type="PackedScene" uid="uid://d0dkjcykl2xdc" path="res://assets/props/filing_cabinet/filing_cabinet.tscn" id="4_8ktsw"]
-[ext_resource type="PackedScene" uid="uid://dycdd0wd0kswp" path="res://Levels/environment_elements/cross.tscn" id="5_8qvxo"]
+[ext_resource type="Script" path="res://randomization/room.gd" id="1_0fqrf"]
+[ext_resource type="PackedScene" uid="uid://b8gbxyaua8ftu" path="res://assets/props/bed/bed.tscn" id="2_ja7ay"]
+[ext_resource type="PackedScene" uid="uid://bkegegkvaxugb" path="res://assets/props/cage/cage.tscn" id="3_vewxn"]
+[ext_resource type="PackedScene" uid="uid://d0dkjcykl2xdc" path="res://assets/props/filing_cabinet/filing_cabinet.tscn" id="4_6vk1o"]
+[ext_resource type="PackedScene" uid="uid://dycdd0wd0kswp" path="res://Levels/environment_elements/cross.tscn" id="5_olr7g"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_kk2a0"]
 size = Vector2(9, 9)
@@ -15,31 +15,31 @@ proximity_fade_enabled = true
 proximity_fade_distance = 0.1
 
 [node name="Room1" type="Node3D" node_paths=PackedStringArray("atril_spawn_point", "item_spawning_points", "cross")]
-script = ExtResource("1_fe218")
+script = ExtResource("1_0fqrf")
 atril_spawn_point = NodePath("AtrilSpawner")
 item_spawning_points = [NodePath("ItemSpawn"), NodePath("ItemSpawn2")]
 cross = NodePath("Cross")
 
-[node name="Bed" parent="." instance=ExtResource("2_jf46d")]
+[node name="Bed" parent="." instance=ExtResource("2_ja7ay")]
 transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, -1.39528, -9.53674e-07, -1.2923)
 
-[node name="Bed2" parent="." instance=ExtResource("2_jf46d")]
+[node name="Bed2" parent="." instance=ExtResource("2_ja7ay")]
 transform = Transform3D(-0.755613, 0, 0.655018, 0, 1, 0, -0.655018, 0, -0.755613, -0.47044, -9.53674e-07, -2.16344)
 
-[node name="Bed3" parent="." instance=ExtResource("2_jf46d")]
+[node name="Bed3" parent="." instance=ExtResource("2_ja7ay")]
 transform = Transform3D(-0.976537, 0, 0.215349, 0, 1, 0, -0.215349, 0, -0.976537, -2.39831, -9.53674e-07, 0.00892592)
 
-[node name="Bed4" parent="." instance=ExtResource("2_jf46d")]
+[node name="Bed4" parent="." instance=ExtResource("2_ja7ay")]
 transform = Transform3D(-0.69699, 0, -0.717081, 0, 1, 0, 0.717081, 0, -0.69699, -2.83227, -9.53674e-07, 1.97681)
 
-[node name="Bed5" parent="." instance=ExtResource("2_jf46d")]
+[node name="Bed5" parent="." instance=ExtResource("2_ja7ay")]
 transform = Transform3D(0.997298, 0, 0.0734643, 0, 1, 0, -0.0734643, 0, 0.997298, 1.5443, -9.53674e-07, 1.0528)
 
 [node name="RoomSize" type="MeshInstance3D" parent="."]
 mesh = SubResource("PlaneMesh_kk2a0")
 surface_material_override/0 = SubResource("StandardMaterial3D_k70g2")
 
-[node name="cage" parent="." instance=ExtResource("3_t4wng")]
+[node name="cage" parent="." instance=ExtResource("3_vewxn")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.40948, 0, -3.47234)
 
 [node name="cell" parent="cage" index="0"]
@@ -48,7 +48,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.0409, -4.76837e-07, 0.01660
 [node name="chain" parent="cage" index="1"]
 visible = false
 
-[node name="filing_cabinet" parent="." instance=ExtResource("4_8ktsw")]
+[node name="filing_cabinet" parent="." instance=ExtResource("4_6vk1o")]
 transform = Transform3D(-0.995985, 0, 0.0895201, 0, 1, 0, -0.0895201, 0, -0.995985, -3.99443, 0, -0.0222352)
 
 [node name="AtrilSpawner" type="Marker3D" parent="."]
@@ -60,7 +60,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.81961, 0, -2.09859)
 [node name="ItemSpawn2" type="Marker3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.8227, 0, 1.13363)
 
-[node name="Cross" parent="." instance=ExtResource("5_8qvxo")]
+[node name="Cross" parent="." instance=ExtResource("5_olr7g")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.48936, 0.982012, 4.13679)
 
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
