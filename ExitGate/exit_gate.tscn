@@ -50,12 +50,15 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.745724, 0.505819, 0)
 
 [node name="PassSwitch2" parent="." instance=ExtResource("3_t31dc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.123, 0.521547, 0.0328306)
+switch_index = 2
 
 [node name="PassSwitch3" parent="." instance=ExtResource("3_t31dc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.4813, 0.521547, 0.0328306)
+switch_index = 3
 
 [node name="PassSwitch4" parent="." instance=ExtResource("3_t31dc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.84645, 0.521547, 0.0328306)
+switch_index = 4
 
 [node name="MainSwitchCdTimer" type="Timer" parent="."]
 one_shot = true

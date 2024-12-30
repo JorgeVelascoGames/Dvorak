@@ -47,9 +47,9 @@ navigation_mesh = SubResource("NavigationMesh_hkrcb")
 
 [node name="LevelOneScenario" parent="NavigationRegion3D" instance=ExtResource("1_jujem")]
 
-[node name="MapRandomizer" type="Node3D" parent="." node_paths=PackedStringArray("rooms_array")]
+[node name="MapRandomizer" type="Node3D" parent="NavigationRegion3D" node_paths=PackedStringArray("rooms_array")]
 script = ExtResource("6_hflwe")
-rooms_array = [NodePath("../RoomsSpawnPosition/Marker3D"), NodePath("../RoomsSpawnPosition/Marker3D2"), NodePath("../RoomsSpawnPosition/Marker3D3"), NodePath("../RoomsSpawnPosition/Marker3D4"), NodePath("../RoomsSpawnPosition/Marker3D5"), NodePath("../RoomsSpawnPosition/Marker3D6"), NodePath("../RoomsSpawnPosition/Marker3D7"), NodePath("../RoomsSpawnPosition/Marker3D8")]
+rooms_array = [NodePath("../../RoomsSpawnPosition/Marker3D"), NodePath("../../RoomsSpawnPosition/Marker3D2"), NodePath("../../RoomsSpawnPosition/Marker3D3"), NodePath("../../RoomsSpawnPosition/Marker3D4"), NodePath("../../RoomsSpawnPosition/Marker3D5"), NodePath("../../RoomsSpawnPosition/Marker3D6"), NodePath("../../RoomsSpawnPosition/Marker3D7"), NodePath("../../RoomsSpawnPosition/Marker3D8")]
 rooms = Array[PackedScene]([ExtResource("8_kvrpp"), ExtResource("8_kvrpp"), ExtResource("8_kvrpp"), ExtResource("8_kvrpp"), ExtResource("8_kvrpp"), ExtResource("8_kvrpp"), ExtResource("8_kvrpp"), ExtResource("8_kvrpp"), ExtResource("8_kvrpp"), ExtResource("8_kvrpp"), ExtResource("8_kvrpp")])
 
 [node name="LevelUI" type="Control" parent="."]
