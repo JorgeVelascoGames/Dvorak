@@ -12,7 +12,7 @@ func _ready() -> void:
 
 func spawn():
 	# Verificar si se debe spawnear algo o no
-	if randf() < chance_to_spawn_nothing:
+	if randf() > chance_to_spawn_nothing:
 		print("No se spawneó nada.")
 		return
 	

@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://dnlj0cpdwjsyl"]
+[gd_scene load_steps=9 format=3 uid="uid://dnlj0cpdwjsyl"]
 
 [ext_resource type="Script" path="res://randomization/room.gd" id="1_fe218"]
 [ext_resource type="PackedScene" uid="uid://b8gbxyaua8ftu" path="res://assets/props/bed/bed.tscn" id="2_jf46d"]
 [ext_resource type="PackedScene" uid="uid://bkegegkvaxugb" path="res://assets/props/cage/cage.tscn" id="3_t4wng"]
 [ext_resource type="PackedScene" uid="uid://d0dkjcykl2xdc" path="res://assets/props/filing_cabinet/filing_cabinet.tscn" id="4_8ktsw"]
 [ext_resource type="PackedScene" uid="uid://dycdd0wd0kswp" path="res://Levels/environment_elements/cross.tscn" id="5_8qvxo"]
+[ext_resource type="PackedScene" uid="uid://bqgujieo32yk3" path="res://Levels/environment_elements/lamp_light.tscn" id="6_6sxvr"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_kk2a0"]
 size = Vector2(9, 9)
@@ -66,5 +67,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.48936, 0.982012, 4.13679)
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.3984, 0)
 visible = false
+
+[node name="LampLight" parent="." instance=ExtResource("6_6sxvr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.281, 0)
 
 [editable path="cage"]

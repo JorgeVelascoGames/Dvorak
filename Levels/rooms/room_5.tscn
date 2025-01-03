@@ -1,0 +1,90 @@
+[gd_scene load_steps=10 format=3 uid="uid://cvp2itootohxc"]
+
+[ext_resource type="Script" path="res://randomization/room.gd" id="1_o16a3"]
+[ext_resource type="PackedScene" uid="uid://d0dkjcykl2xdc" path="res://assets/props/filing_cabinet/filing_cabinet.tscn" id="2_uhhw8"]
+[ext_resource type="PackedScene" uid="uid://dycdd0wd0kswp" path="res://Levels/environment_elements/cross.tscn" id="4_66wn2"]
+[ext_resource type="Material" uid="uid://dst813utgj4hq" path="res://materials/walls_mat.tres" id="5_w47r0"]
+[ext_resource type="PackedScene" uid="uid://bqgujieo32yk3" path="res://Levels/environment_elements/lamp_light.tscn" id="6_rjm2j"]
+[ext_resource type="PackedScene" uid="uid://b8gbxyaua8ftu" path="res://assets/props/bed/bed.tscn" id="7_o6kag"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_kk2a0"]
+size = Vector2(9, 9)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_k70g2"]
+albedo_color = Color(0.568627, 0.666667, 0.603922, 0.321569)
+proximity_fade_enabled = true
+proximity_fade_distance = 0.1
+
+[sub_resource type="BoxMesh" id="BoxMesh_ac2jc"]
+size = Vector3(1, 2.4, 1)
+
+[node name="Room2" type="Node3D" node_paths=PackedStringArray("atril_spawn_point", "item_spawning_points", "cross")]
+script = ExtResource("1_o16a3")
+atril_spawn_point = NodePath("AtrilSpawner")
+item_spawning_points = [NodePath("ItemSpawn"), NodePath("ItemSpawn2")]
+cross = NodePath("Cross")
+
+[node name="RoomSize" type="MeshInstance3D" parent="."]
+mesh = SubResource("PlaneMesh_kk2a0")
+surface_material_override/0 = SubResource("StandardMaterial3D_k70g2")
+
+[node name="filing_cabinet4" parent="." instance=ExtResource("2_uhhw8")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0.967696, 0, -0.138972)
+
+[node name="AtrilSpawner" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, -1.06581e-14, 0, 1, 0, 1.06581e-14, 0, 1, -0.909327, 0, 0.210565)
+
+[node name="ItemSpawn" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.81961, 0.681351, -2.09859)
+
+[node name="ItemSpawn2" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.5298, 1.35109, -0.707705)
+
+[node name="Cross" parent="." instance=ExtResource("4_66wn2")]
+transform = Transform3D(1, 0, -1.06581e-14, 0, 1, 0, 1.06581e-14, 0, 1, 1.93523, 0.982012, 0.736007)
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.3984, 0)
+visible = false
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 1.059, 0)
+mesh = SubResource("BoxMesh_ac2jc")
+surface_material_override/0 = ExtResource("5_w47r0")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.059, 0)
+mesh = SubResource("BoxMesh_ac2jc")
+surface_material_override/0 = ExtResource("5_w47r0")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 1.059, 0)
+mesh = SubResource("BoxMesh_ac2jc")
+surface_material_override/0 = ExtResource("5_w47r0")
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 1.059, -2)
+mesh = SubResource("BoxMesh_ac2jc")
+surface_material_override/0 = ExtResource("5_w47r0")
+
+[node name="MeshInstance3D6" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.059, -2)
+mesh = SubResource("BoxMesh_ac2jc")
+surface_material_override/0 = ExtResource("5_w47r0")
+
+[node name="MeshInstance3D7" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 1.059, -2)
+mesh = SubResource("BoxMesh_ac2jc")
+surface_material_override/0 = ExtResource("5_w47r0")
+
+[node name="Bed" parent="." instance=ExtResource("7_o6kag")]
+transform = Transform3D(0.999999, 0, 0, 0, 1, 0, 0, 0, 0.999999, -1.14117, 0, -3.12213)
+
+[node name="Bed3" parent="." instance=ExtResource("7_o6kag")]
+transform = Transform3D(0.999807, 0, 0.019651, 0, 1, 0, -0.019651, 0, 0.999807, -1.17638, 0, 2.43107)
+
+[node name="Bed4" parent="." instance=ExtResource("7_o6kag")]
+transform = Transform3D(0.175727, 0, -0.984439, 0, 1, 0, 0.984439, 0, 0.175727, -3.3876, 0, -0.875795)
+
+[node name="LampLight" parent="." instance=ExtResource("6_rjm2j")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.00344, 2.281, -0.960496)

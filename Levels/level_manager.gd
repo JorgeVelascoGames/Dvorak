@@ -4,13 +4,12 @@ class_name LevelManager
 
 @onready var exit_gate : ExitGate = $ExitGate
 @onready var navigation_region_3d : NavigationRegion3D= $NavigationRegion3D
-@onready var map_randomizer: MapRandomizer = $NavigationRegion3D/MapRandomizer
+@onready var map_randomizer: MapRandomizer = %MapRandomizer
 @onready var black_screen: ColorRect = $LevelUI/BlackScreen
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	#pass
 	generate_rooms()
 
 

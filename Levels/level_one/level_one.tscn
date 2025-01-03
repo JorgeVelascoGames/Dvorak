@@ -1,14 +1,18 @@
-[gd_scene load_steps=11 format=3 uid="uid://b37la44wjrp4u"]
+[gd_scene load_steps=15 format=3 uid="uid://b37la44wjrp4u"]
 
 [ext_resource type="PackedScene" uid="uid://dqk45r48r427t" path="res://Levels/level_one/level_one_scenario.tscn" id="1_jujem"]
 [ext_resource type="Environment" uid="uid://c42wra3u6yo6u" path="res://Levels/world_environment.tres" id="1_rc4ww"]
 [ext_resource type="Script" path="res://Levels/level_manager.gd" id="1_scdlh"]
 [ext_resource type="PackedScene" uid="uid://m6pypgl566n1" path="res://player/player.tscn" id="2_2aoio"]
 [ext_resource type="PackedScene" uid="uid://72kpfpnalr3a" path="res://Levels/environment_elements/light.tscn" id="5_fux4b"]
-[ext_resource type="PackedScene" uid="uid://dalflm7oaesga" path="res://enemy/infanticide/infanticide.tscn" id="5_p88jq"]
 [ext_resource type="Script" path="res://randomization/map_randomizer.gd" id="6_hflwe"]
+[ext_resource type="PackedScene" uid="uid://bj1jq0pdwxof7" path="res://Levels/rooms/room_2.tscn" id="8_e3r7r"]
 [ext_resource type="PackedScene" uid="uid://dnlj0cpdwjsyl" path="res://Levels/rooms/room_1.tscn" id="8_kvrpp"]
 [ext_resource type="PackedScene" uid="uid://c5vmfb6wrd0un" path="res://ExitGate/exit_gate.tscn" id="8_xg4ny"]
+[ext_resource type="PackedScene" uid="uid://b7cb30x5rpa17" path="res://Levels/rooms/room_3.tscn" id="9_07q1x"]
+[ext_resource type="PackedScene" uid="uid://ca11q5l28hjt8" path="res://Levels/rooms/room_4.tscn" id="10_jl4wr"]
+[ext_resource type="PackedScene" uid="uid://cvp2itootohxc" path="res://Levels/rooms/room_5.tscn" id="11_47c1n"]
+[ext_resource type="PackedScene" uid="uid://bqgujieo32yk3" path="res://Levels/environment_elements/lamp_light.tscn" id="13_jxmsh"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_hkrcb"]
 
@@ -23,34 +27,19 @@ transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -
 visible = false
 shadow_enabled = true
 
-[node name="Player" parent="." instance=ExtResource("2_2aoio")]
-transform = Transform3D(-0.988892, 0, -0.148638, 0, 1, 0, 0.148638, 0, -0.988892, -0.512381, 1, -2.36649)
-
-[node name="Lights" type="Node3D" parent="."]
-
-[node name="Light" parent="Lights" instance=ExtResource("5_fux4b")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.43762, 0)
-light_on = true
-is_tweaking_light = true
-
-[node name="Switch" parent="Lights/Light" index="2"]
-transform = Transform3D(0.625, 0, 0, 0, 0.625, 0, 0, 0, 0.625, 0.81888, -1.01306, 0)
-
-[node name="swich" parent="Lights/Light/Switch" index="3"]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.169676, -0.481138, 0)
-
-[node name="Infanticide" parent="." instance=ExtResource("5_p88jq")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.51934, 1.14476)
+[node name="MapRandomizer" type="Node3D" parent="." node_paths=PackedStringArray("rooms_array", "rooms_father")]
+unique_name_in_owner = true
+script = ExtResource("6_hflwe")
+rooms_array = [NodePath("../RoomsSpawnPosition/Marker3D"), NodePath("../RoomsSpawnPosition/Marker3D2"), NodePath("../RoomsSpawnPosition/Marker3D3"), NodePath("../RoomsSpawnPosition/Marker3D4"), NodePath("../RoomsSpawnPosition/Marker3D5"), NodePath("../RoomsSpawnPosition/Marker3D6"), NodePath("../RoomsSpawnPosition/Marker3D7"), NodePath("../RoomsSpawnPosition/Marker3D8")]
+rooms_father = NodePath("../NavigationRegion3D/ScenarioSpawnerParent")
+rooms = Array[PackedScene]([ExtResource("8_kvrpp"), ExtResource("8_e3r7r"), ExtResource("9_07q1x"), ExtResource("10_jl4wr"), ExtResource("11_47c1n"), ExtResource("11_47c1n"), ExtResource("11_47c1n"), ExtResource("11_47c1n")])
 
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
 navigation_mesh = SubResource("NavigationMesh_hkrcb")
 
 [node name="LevelOneScenario" parent="NavigationRegion3D" instance=ExtResource("1_jujem")]
 
-[node name="MapRandomizer" type="Node3D" parent="NavigationRegion3D" node_paths=PackedStringArray("rooms_array")]
-script = ExtResource("6_hflwe")
-rooms_array = [NodePath("../../RoomsSpawnPosition/Marker3D"), NodePath("../../RoomsSpawnPosition/Marker3D2"), NodePath("../../RoomsSpawnPosition/Marker3D3"), NodePath("../../RoomsSpawnPosition/Marker3D4"), NodePath("../../RoomsSpawnPosition/Marker3D5"), NodePath("../../RoomsSpawnPosition/Marker3D6"), NodePath("../../RoomsSpawnPosition/Marker3D7"), NodePath("../../RoomsSpawnPosition/Marker3D8")]
-rooms = Array[PackedScene]([ExtResource("8_kvrpp"), ExtResource("8_kvrpp"), ExtResource("8_kvrpp"), ExtResource("8_kvrpp"), ExtResource("8_kvrpp"), ExtResource("8_kvrpp"), ExtResource("8_kvrpp"), ExtResource("8_kvrpp"), ExtResource("8_kvrpp"), ExtResource("8_kvrpp"), ExtResource("8_kvrpp")])
+[node name="ScenarioSpawnerParent" type="Node3D" parent="NavigationRegion3D"]
 
 [node name="LevelUI" type="Control" parent="."]
 layout_mode = 3
@@ -70,6 +59,7 @@ grow_vertical = 2
 color = Color(0, 0, 0, 1)
 
 [node name="ExitGate" parent="." instance=ExtResource("8_xg4ny")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 33.7559, 0, -16.3926)
 
 [node name="RoomsSpawnPosition" type="Node3D" parent="."]
 
@@ -97,8 +87,29 @@ transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 17.5, 
 [node name="Marker3D8" type="Marker3D" parent="RoomsSpawnPosition"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18, 5, -5)
 
-[node name="DirectionalLight3D2" type="DirectionalLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.501752, 0.865011, 0, -0.865011, 0.501752, 0, 0, 0)
-light_color = Color(1, 0.843137, 0.647059, 1)
+[node name="Lamps" type="Node3D" parent="."]
 
+[node name="LampLight" parent="Lamps" instance=ExtResource("13_jxmsh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 35.0636, 2.28097, -11.8971)
+
+[node name="Lights" type="Node3D" parent="."]
+
+[node name="Light" parent="Lights" instance=ExtResource("5_fux4b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 33.5486, 2.43762, -13.4123)
+light_on = true
+is_tweaking_light = true
+
+[node name="Switch" parent="Lights/Light" index="2"]
+transform = Transform3D(0.625, 0, 0, 0, 0.625, 0, 0, 0, 0.625, 0.81888, -1.01306, 0)
+
+[node name="swich" parent="Lights/Light/Switch" index="3"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.169676, -0.481138, 0)
+
+[node name="Entities" type="Node3D" parent="."]
+
+[node name="Player" parent="Entities" instance=ExtResource("2_2aoio")]
+transform = Transform3D(-0.988892, 0, -0.148638, 0, 1, 0, 0.148638, 0, -0.988892, -0.512381, 1, -2.36649)
+
+[editable path="Lamps/LampLight"]
+[editable path="Lamps/LampLight/LampModel"]
 [editable path="Lights/Light"]
