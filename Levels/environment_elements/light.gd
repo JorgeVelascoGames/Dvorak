@@ -1,6 +1,7 @@
 extends Node3D
 
 @export var is_tweaking_light := false
+@export var light_original_intensity := 1.0 ##The light energy of every single light on this switch
 
 @onready var light_timer: Timer = $LightTimer
 @onready var switch_sound: AudioStreamPlayer3D = $Switch/SwitchSound
@@ -8,14 +9,12 @@ extends Node3D
 
 const LIGHT_BUBBLE_SOUND = preload("res://Levels/environment_elements/light_bubble_sound.tscn")
 
-var light_original_intensity : float
 var light_on := false
 var lights_array : Array[Light3D] = []
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	light_original_intensity = lights_array[0].light_energy
 	for child in get_children(true):
 		if child is Light3D:
 			child.light_energy = light_original_intensity
