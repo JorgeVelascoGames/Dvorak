@@ -12,7 +12,9 @@ Modelos props:
 - Puerta
 - Cruz
 - Bandeja de utensilios
-- Animar cajonera para que se abra
+- Mini bombilla para interruptores
+- Escritorio
+- Silla de ruedas
 
 Texturas:
 - ~~Escenario ladrillo~~

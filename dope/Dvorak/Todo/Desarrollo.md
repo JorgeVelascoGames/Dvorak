@@ -12,5 +12,5 @@
 ~~-Refinar enemigos~~
 -Implementar sistemas de guardado
 -Implementar [[Mejoras]]
--Implementar la cruz
+~~-Implementar la cruz~~
 -Marketing

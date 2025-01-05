@@ -96,10 +96,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 35.0636, 2.28097, -11.8971)
 
 [node name="Light" parent="Lights" instance=ExtResource("5_fux4b")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 33.5486, 2.43762, -13.4123)
-light_on = true
 is_tweaking_light = true
 
-[node name="Switch" parent="Lights/Light" index="2"]
+[node name="Switch" parent="Lights/Light" index="1"]
 transform = Transform3D(0.625, 0, 0, 0, 0.625, 0, 0, 0, 0.625, 0.81888, -1.01306, 0)
 
 [node name="swich" parent="Lights/Light/Switch" index="3"]
@@ -108,7 +107,7 @@ transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.1696
 [node name="Entities" type="Node3D" parent="."]
 
 [node name="Player" parent="Entities" instance=ExtResource("2_2aoio")]
-transform = Transform3D(-0.988892, 0, -0.148638, 0, 1, 0, 0.148638, 0, -0.988892, -0.512381, 1, -2.36649)
+transform = Transform3D(-0.988892, 0, -0.148638, 0, 1, 0, 0.148638, 0, -0.988892, 18.9066, 9.99283, -22.015)
 
 [editable path="Lamps/LampLight"]
 [editable path="Lamps/LampLight/LampModel"]
