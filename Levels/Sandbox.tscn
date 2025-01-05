@@ -1,9 +1,10 @@
-[gd_scene load_steps=25 format=3 uid="uid://b62fd7a6q7pm"]
+[gd_scene load_steps=26 format=3 uid="uid://b62fd7a6q7pm"]
 
 [ext_resource type="PackedScene" uid="uid://m6pypgl566n1" path="res://player/player.tscn" id="1_4278g"]
 [ext_resource type="Material" uid="uid://dacid3ccax2pq" path="res://Levels/materials/orange.tres" id="2_logh3"]
 [ext_resource type="Material" uid="uid://ciyx0k2mf8b5f" path="res://Levels/materials/grey.tres" id="3_m4mti"]
 [ext_resource type="Texture2D" uid="uid://by4jbjsne1tjb" path="res://assets/textures/wall_substance.png" id="4_lrjaa"]
+[ext_resource type="PackedScene" uid="uid://78mr2us2ett5" path="res://assets/environment/elements/door_closed.tscn" id="6_n3bub"]
 [ext_resource type="PackedScene" uid="uid://dntxkqhhia68" path="res://vfx/blood_decal/blood_decal_big.tscn" id="11_g760f"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_cmsli"]
@@ -264,3 +265,6 @@ camera_sensibility = 1.5
 [node name="Decal" parent="." instance=ExtResource("11_g760f")]
 transform = Transform3D(0.612052, 0, -0.790818, 0, 1, 0, 0.790818, 0, 0.612052, -3.52293, 0, -6.24686)
 play_face_out_anim = false
+
+[node name="door_closed" parent="." instance=ExtResource("6_n3bub")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.4176, 0, -5.6712)
