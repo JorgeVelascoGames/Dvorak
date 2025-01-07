@@ -1,0 +1,71 @@
+[gd_scene load_steps=13 format=3 uid="uid://brysxkhoj2p7v"]
+
+[ext_resource type="PackedScene" uid="uid://d0dkjcykl2xdc" path="res://assets/props/filing_cabinet/filing_cabinet.tscn" id="1_q6gxq"]
+[ext_resource type="Script" path="res://Levels/environment_elements/filling_cabinet_obstacle.gd" id="1_xf6dv"]
+[ext_resource type="Script" path="res://components/interactable.gd" id="2_2c21f"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_u7n5k"]
+size = Vector3(0.535, 0.871, 0.555)
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_wqu7j"]
+animation = &"closed"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_5msb4"]
+animation = &"forcing"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_gfq5m"]
+animation = &"open"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_0py71"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_77tgi"]
+xfade_time = 0.1
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_j5xs7"]
+xfade_time = 0.1
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_kyshy"]
+xfade_time = 0.1
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_3kdou"]
+states/closed/node = SubResource("AnimationNodeAnimation_wqu7j")
+states/closed/position = Vector2(377, 44)
+states/forcing/node = SubResource("AnimationNodeAnimation_5msb4")
+states/forcing/position = Vector2(513, 162)
+states/open/node = SubResource("AnimationNodeAnimation_gfq5m")
+states/open/position = Vector2(655, 180)
+transitions = ["Start", "closed", SubResource("AnimationNodeStateMachineTransition_0py71"), "closed", "forcing", SubResource("AnimationNodeStateMachineTransition_77tgi"), "forcing", "open", SubResource("AnimationNodeStateMachineTransition_j5xs7"), "forcing", "closed", SubResource("AnimationNodeStateMachineTransition_kyshy")]
+graph_offset = Vector2(56, -69)
+
+[node name="FillingCabinetObstacle" type="Node3D"]
+script = ExtResource("1_xf6dv")
+
+[node name="FilingCabinetAnimated" parent="." instance=ExtResource("1_q6gxq")]
+
+[node name="Skeleton3D" parent="FilingCabinetAnimated/filing_cabinet" index="0"]
+bones/0/position = Vector3(2.18125e-18, 1.16204e-10, -0.00215907)
+bones/0/rotation = Quaternion(0.707107, 5.33851e-08, 5.33851e-08, 0.707107)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.433531, 0)
+shape = SubResource("BoxShape3D_u7n5k")
+
+[node name="Interactable" type="Node" parent="StaticBody3D"]
+script = ExtResource("2_2c21f")
+long_interaction = true
+necessary_keys_to_press_min = 30
+necessary_keys_to_press_max = 45
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+root_node = NodePath("../FilingCabinetAnimated")
+tree_root = SubResource("AnimationNodeStateMachine_3kdou")
+anim_player = NodePath("../FilingCabinetAnimated/AnimationPlayer")
+
+[connection signal="on_long_interact" from="StaticBody3D/Interactable" to="." method="_on_interactable_on_long_interact"]
+[connection signal="on_start_long_interaction" from="StaticBody3D/Interactable" to="." method="_on_interactable_on_start_long_interaction"]
+[connection signal="on_stop_long_interaction" from="StaticBody3D/Interactable" to="." method="_on_interactable_on_stop_long_interaction"]
+
+[editable path="FilingCabinetAnimated"]

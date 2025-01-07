@@ -89,12 +89,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Arte/Estandarización.md",
+                "file": "Atributions.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Estandarización"
+              "title": "Atributions"
             }
           }
         ],
@@ -241,8 +241,9 @@
   },
   "active": "21792eba2b36c648",
   "lastOpenFiles": [
-    "Atributions.md",
+    "Bug y arreglos.md",
     "Arte/Estandarización.md",
+    "Atributions.md",
     "Doing.md",
     "Todo/Arte.md",
     "Todo/Desarrollo.md",
@@ -255,7 +256,6 @@
     "Ideas/Mejoras.md",
     "Ideas/Ambiente.md",
     "Software/Randomización.md",
-    "Bug y arreglos.md",
     "Arte.md",
     "Arte",
     "Todo/Localización.md",
