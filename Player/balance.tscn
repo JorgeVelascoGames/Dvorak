@@ -12,6 +12,10 @@ max_balance = 5500.0
 wait_time = 0.5
 autostart = true
 
+[node name="PillBonusTimer" type="Timer" parent="."]
+wait_time = 12.0
+one_shot = true
+
 [node name="UI" parent="." instance=ExtResource("2_twrhs")]
 anchors_preset = 15
 anchor_right = 1.0

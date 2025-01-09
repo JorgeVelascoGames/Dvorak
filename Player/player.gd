@@ -29,10 +29,11 @@ var current_weapon : WEAPON = WEAPON.none
 @onready var weapon_camera: Camera3D = $SubViewportContainer/SubViewport/WeaponCamera
 @onready var state_machine = $StateMachine
 @onready var interactable_ray = $CameraPivot/FollowPivot/WorldCamera/InteractableRay
-@onready var ammo_handler = $StateMachine/Aim/AmmoHandler
 @onready var damaged_heal_timer = $Timers/DamagedHealTimer
 @onready var player_ui: PlayerUI = $PlayerUI
 @onready var walker: WalkerModel = $WalkerFixedPoint/Walker
+@onready var ammo_counter: AmmoCounter = $Components/AmmoCounter
+@onready var inventory: Inventory = $Components/Inventory
 
 #onready variables
 @onready var original_world_camera_fov = world_camera.fov

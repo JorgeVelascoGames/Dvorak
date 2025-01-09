@@ -21,6 +21,7 @@ signal balance_added(amount : int)
 @export var getting_hit_cost : float
 @export var balance_recovery : float
 @export var bonus_balance_recovery : float
+@export var pills_balance_recovery := 120.00
 @export var damaged_balance_penalty := 15.00
 @export var weapon_balance_penalty := 25.00
 
@@ -119,6 +120,10 @@ func get_percentage() -> float:
 	return percentage
 
 
+func take_pill() -> void:
+	$PillBonusTimer.start()
+
+
 func _on_balance_recovery_timer_timeout():
 	var objective_balance := current_balance
 	
@@ -126,6 +131,8 @@ func _on_balance_recovery_timer_timeout():
 		objective_balance -= balance_recovery / 2 #We divide by 2 because the timer goes every 0.5 secs
 	else:
 		objective_balance -= bonus_balance_recovery / 2
+	if not $PillBonusTimer.is_stopped():
+		objective_balance -= pills_balance_recovery / 2
 	if objective_balance < 1:
 		objective_balance = 1
 	

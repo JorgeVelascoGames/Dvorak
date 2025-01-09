@@ -1,4 +1,4 @@
-[gd_scene load_steps=65 format=3 uid="uid://m6pypgl566n1"]
+[gd_scene load_steps=66 format=3 uid="uid://m6pypgl566n1"]
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_ref5g"]
 [ext_resource type="Script" path="res://player/smooth_camera.gd" id="2_cywkd"]
@@ -18,53 +18,15 @@
 [ext_resource type="Script" path="res://player/ammo_counter.gd" id="11_xb6v7"]
 [ext_resource type="Script" path="res://scripts/state_machine/states/crowbar_swing.gd" id="12_6so70"]
 [ext_resource type="Shape3D" uid="uid://df6y055xrghl7" path="res://player/player_normal_collision_shape.tres" id="12_6t6rn"]
+[ext_resource type="Script" path="res://scripts/state_machine/states/take_pill.gd" id="13_dsee1"]
 [ext_resource type="Script" path="res://player/player_ui.gd" id="14_0ypvp"]
+[ext_resource type="Script" path="res://player/inventory.gd" id="15_8pfmq"]
 [ext_resource type="PackedScene" uid="uid://4j0uw0ki1luc" path="res://player/walker.tscn" id="20_qts6k"]
 [ext_resource type="FontFile" uid="uid://cxbeti4rmsnty" path="res://assets/fonts/cormorant_garamond/CormorantGaramond-Regular.ttf" id="21_23yvg"]
 [ext_resource type="PackedScene" uid="uid://cpyss678yatou" path="res://assets/props/gun/gun_model.tscn" id="21_lgr1q"]
 [ext_resource type="Script" path="res://player/player_animation_controller.gd" id="22_j0g4a"]
 [ext_resource type="PackedScene" uid="uid://ctrkoynx6fbcj" path="res://assets/props/crowbar/crowbar.tscn" id="22_r00kl"]
 [ext_resource type="Script" path="res://player/crowbar_attack_hitbox.gd" id="24_nhdqm"]
-
-[sub_resource type="GDScript" id="GDScript_7r1t3"]
-script/source = "extends Node
-class_name AmmoHandler
-
-@export var max_carried_ammo := 5
-@export var initial_ammo_storage := 12
-
-@onready var ammo_storage := initial_ammo_storage
-@onready var current_carried_ammo = max_carried_ammo
-
-
-func try_use_ammo() -> bool:
-	if current_carried_ammo > 0:
-		use_ammo()
-		return true
-	return false
-
-
-func use_ammo() -> void:
-	current_carried_ammo -= 1
-
-
-func reload() -> void:
-	var necessary_bullets = max_carried_ammo - current_carried_ammo
-	if ammo_storage >= necessary_bullets:
-		ammo_storage -= necessary_bullets
-		current_carried_ammo = max_carried_ammo
-	else:
-		current_carried_ammo += ammo_storage
-		ammo_storage = 0
-
-
-func pick_up_ammo(ammount: int) -> void:
-	ammo_storage += ammount
-
-
-#func update_ammo_label() -> void:
-	#ammo_label.text = str(ammo_storage[weapon_handler.current_active_weapon.ammo_type]) 
-"
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_fyred"]
 
@@ -613,9 +575,6 @@ autostart = true
 
 [node name="ShootCooldown" type="Timer" parent="StateMachine/Aim"]
 
-[node name="AmmoHandler" type="Node" parent="StateMachine/Aim"]
-script = SubResource("GDScript_7r1t3")
-
 [node name="PrepareGun" type="Node" parent="StateMachine"]
 script = ExtResource("7_hfrgh")
 cooldown = 1.5
@@ -651,6 +610,9 @@ script = ExtResource("12_6so70")
 wait_time = 0.3
 one_shot = true
 
+[node name="TakePill" type="Node" parent="StateMachine"]
+script = ExtResource("13_dsee1")
+
 [node name="PlayerCapsule" type="MeshInstance3D" parent="."]
 visible = false
 mesh = SubResource("CapsuleMesh_fyred")
@@ -672,6 +634,9 @@ bonus_balance_recovery = 60.0
 
 [node name="AmmoCounter" type="Node" parent="Components"]
 script = ExtResource("11_xb6v7")
+
+[node name="Inventory" type="Node" parent="Components"]
+script = ExtResource("15_8pfmq")
 
 [node name="PlayerCollisionShape" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.270905, -0.355084)

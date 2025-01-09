@@ -9,6 +9,7 @@ class_name AmmoCounter
 
 func pick_up_ammo(amount : int) -> void:
 	ammo_stored += amount
+	player_ui.display_gameplay_text("You found %d bullets" %amount, 2)
 
 
 func reload() -> void:
