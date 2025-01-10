@@ -45,7 +45,6 @@ script = ExtResource("1_xf6dv")
 
 [node name="Skeleton3D" parent="FilingCabinetAnimated/filing_cabinet" index="0"]
 bones/0/position = Vector3(0, 0, 0)
-bones/0/rotation = Quaternion(0.707107, 5.33851e-08, 5.33851e-08, 0.707107)
 
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
 

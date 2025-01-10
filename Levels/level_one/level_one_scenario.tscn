@@ -1,9 +1,21 @@
-[gd_scene load_steps=10 format=3 uid="uid://dqk45r48r427t"]
+[gd_scene load_steps=14 format=3 uid="uid://dqk45r48r427t"]
 
 [ext_resource type="PackedScene" uid="uid://d11friq1q7r58" path="res://assets/environment/level_one.blend" id="1_ldfa7"]
 [ext_resource type="Material" uid="uid://dst813utgj4hq" path="res://materials/walls_mat.tres" id="2_acyha"]
 [ext_resource type="Material" uid="uid://crg8cijrbcnfr" path="res://materials/floor_mat.tres" id="3_f0p8v"]
 [ext_resource type="Material" uid="uid://cehysutb1sgal" path="res://materials/cealing_mat.tres" id="4_6iimo"]
+[ext_resource type="Texture2D" uid="uid://cdd5wkg8cf17e" path="res://assets/textures/cealing.png" id="4_mqs1j"]
+[ext_resource type="Texture2D" uid="uid://35ej51myrd1r" path="res://assets/textures/DefaultMaterial_Base_color.png" id="5_16038"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_e2w2f"]
+albedo_texture = ExtResource("4_mqs1j")
+uv1_triplanar = true
+uv1_world_triplanar = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4vcnk"]
+albedo_texture = ExtResource("5_16038")
+uv1_triplanar = true
+uv1_world_triplanar = true
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_qy5gs"]
 size = Vector3(2.09412, 1, 1)
@@ -25,6 +37,8 @@ size = Vector3(1.85211, 1, 7.61841)
 [node name="floor" parent="." index="0"]
 surface_material_override/0 = ExtResource("2_acyha")
 surface_material_override/1 = ExtResource("3_f0p8v")
+surface_material_override/2 = SubResource("StandardMaterial3D_e2w2f")
+surface_material_override/3 = SubResource("StandardMaterial3D_4vcnk")
 
 [node name="StaticBody3D" parent="floor" index="0"]
 collision_mask = 0

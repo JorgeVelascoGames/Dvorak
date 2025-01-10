@@ -11,6 +11,7 @@ const LIGHT_BUBBLE_SOUND = preload("res://Levels/environment_elements/light_bubb
 
 var light_on := false
 var lights_array : Array[Light3D] = []
+var twinkling_ligt_tween : Tween
 
 
 # Called when the node enters the scene tree for the first time.
@@ -22,7 +23,8 @@ func _ready() -> void:
 			var sound = LIGHT_BUBBLE_SOUND.instantiate() as AudioStreamPlayer3D
 			child.add_child(sound)
 	switch_light()
-	tweak_light()
+	if is_tweaking_light:
+		twink_light()
 
 
 func on_switch_press() -> void:
@@ -32,18 +34,48 @@ func on_switch_press() -> void:
 	
 	if light_on:
 		pass #play sound
+	else:
+		if twinkling_ligt_tween:
+			twinkling_ligt_tween.kill()
 	if light_on and is_tweaking_light:
-		tweak_light()
+		twink_light()
 
 
-func tweak_light() -> void:
-	pass
+func twink_light() -> void:
+	# Inicializamos la semilla de aleatoriedad
+	randomize()
+	while light_on:
+		var light : Light3D = lights_array.pick_random()
+		# Elegimos intervalos aleatorios para el 'apagado' y el 'encendido'
+		var off_duration = randf_range(0.05, 0.2)
+		var on_duration = randf_range(0.05, 0.3)
+		
+		# Creamos un Tween para "apagar" la luz gradualmente
+		var twinkling_ligt_tween = create_tween()
+		twinkling_ligt_tween.tween_property(light, "light_energy", 0.0, off_duration)
+		# Esperamos a que termine esta animación
+		await twinkling_ligt_tween.finished
+		#Con esto hacemos que pueda quedarse todo a oscuras un momento
+		if randf() > 0.9:
+			await get_tree().create_timer(randf_range(4.0, 6.0)).timeout
+		
+		# Si la luz se apaga durante el Tween, salimos del bucle
+		if not light_on:
+			break
+		# Creamos otro Tween para "encender" la luz gradualmente
+		twinkling_ligt_tween = create_tween()
+		twinkling_ligt_tween.tween_property(light, "light_energy", light_original_intensity, on_duration)
+		# Esperamos a que termine esta animación
+		await twinkling_ligt_tween.finished
+		if randf() > 0.6:
+			await get_tree().create_timer(randf_range(0.5, 6.0)).timeout
 
 
 func switch_light() -> void:
 	light_on = !light_on
 	for light in lights_array:
 		light.visible = light_on
+		light.light_energy = light_original_intensity
 	position_lights.visible = !light_on
 
 

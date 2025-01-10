@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://72kpfpnalr3a"]
+[gd_scene load_steps=6 format=3 uid="uid://72kpfpnalr3a"]
 
 [ext_resource type="Script" path="res://Levels/environment_elements/light.gd" id="1_27npf"]
 [ext_resource type="Script" path="res://components/interactable.gd" id="2_vk1i6"]
@@ -7,44 +7,6 @@
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_rj3cs"]
 size = Vector3(1, 1, 0.298828)
-
-[sub_resource type="Animation" id="Animation_rrm2t"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:visible")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-
-[sub_resource type="Animation" id="Animation_4nh3w"]
-resource_name = "tweaking"
-length = 2.0
-loop_mode = 2
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:visible")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5, 1, 1.5, 2),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
-"update": 1,
-"values": [true, false, true, false, true]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_fr53o"]
-_data = {
-"RESET": SubResource("Animation_rrm2t"),
-"tweaking": SubResource("Animation_4nh3w")
-}
 
 [node name="Light" type="Node3D"]
 script = ExtResource("1_27npf")
@@ -76,12 +38,6 @@ shadow_enabled = true
 omni_range = 0.1
 omni_attenuation = 3.0
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Switch/PositionLights"]
-libraries = {
-"": SubResource("AnimationLibrary_fr53o")
-}
-autoplay = "tweaking"
-
 [node name="lights" parent="." instance=ExtResource("5_etyl4")]
 
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
@@ -91,6 +47,54 @@ shadow_enabled = true
 omni_range = 5.82458
 omni_attenuation = 1.745
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+[node name="lights2" parent="." instance=ExtResource("5_etyl4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.55094, 0, 0)
+
+[node name="OmniLight3D2" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.55094, -0.43799, 0)
+light_energy = 1.2
+shadow_enabled = true
+omni_range = 5.82458
+omni_attenuation = 1.745
+
+[node name="lights3" parent="." instance=ExtResource("5_etyl4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.55094, 0, 1.5785)
+
+[node name="OmniLight3D3" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.55094, -0.43799, 1.5785)
+light_energy = 1.2
+shadow_enabled = true
+omni_range = 5.82458
+omni_attenuation = 1.745
+
+[node name="lights4" parent="." instance=ExtResource("5_etyl4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.98579, 0, 1.5785)
+
+[node name="OmniLight3D4" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.98579, -0.43799, 1.5785)
+light_energy = 1.2
+shadow_enabled = true
+omni_range = 5.82458
+omni_attenuation = 1.745
+
+[node name="lights5" parent="." instance=ExtResource("5_etyl4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.43044, 0, 1.5785)
+
+[node name="OmniLight3D5" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.43044, -0.43799, 1.5785)
+light_energy = 1.2
+shadow_enabled = true
+omni_range = 5.82458
+omni_attenuation = 1.745
+
+[node name="lights6" parent="." instance=ExtResource("5_etyl4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.8192, 0, 1.5785)
+
+[node name="OmniLight3D6" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.8192, -0.43799, 1.5785)
+light_energy = 1.2
+shadow_enabled = true
+omni_range = 5.82458
+omni_attenuation = 1.745
 
 [connection signal="on_long_interact" from="Switch/Interactable" to="." method="_on_interactable_on_long_interact"]

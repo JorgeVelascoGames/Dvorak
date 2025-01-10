@@ -24,8 +24,9 @@ script = ExtResource("1_scdlh")
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = ExtResource("1_rc4ww")
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(-0.664034, -0.652985, -0.364239, -0.555927, 0.105413, 0.82452, -0.500003, 0.749999, -0.43301, 0, 0, 0)
+[node name="TestingLight" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.24902, 0.711044, 0.657576, -0.807305, -0.222681, 0.546509, 0.535022, -0.666956, 0.518577, 1.00229, 0, -0.340843)
+visible = false
 
 [node name="MapRandomizer" type="Node3D" parent="." node_paths=PackedStringArray("rooms_array", "rooms_father")]
 unique_name_in_owner = true
@@ -95,19 +96,43 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 35.0636, 2.28097, -11.8971)
 [node name="Lights" type="Node3D" parent="."]
 
 [node name="Light" parent="Lights" instance=ExtResource("5_fux4b")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 33.5486, 2.43762, -13.4123)
+transform = Transform3D(0.0357542, 0, 0.999361, 0, 1, 0, -0.999361, 0, 0.0357542, -0.0619244, 2.4605, -6.29686)
 is_tweaking_light = true
 
 [node name="Switch" parent="Lights/Light" index="1"]
-transform = Transform3D(0.625, 0, 0, 0, 0.625, 0, 0, 0, 0.625, 0.81888, -1.01306, 0)
+transform = Transform3D(-2.23517e-08, 0, -0.625, 0, 0.625, 0, 0.625, 0, -2.23517e-08, -2.53525, -1.01306, 0.959599)
 
 [node name="swich" parent="Lights/Light/Switch" index="3"]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.169676, -0.481138, 0)
 
+[node name="lights3" parent="Lights/Light" index="6"]
+visible = false
+
+[node name="OmniLight3D3" parent="Lights/Light" index="7"]
+visible = false
+
+[node name="lights4" parent="Lights/Light" index="8"]
+visible = false
+
+[node name="OmniLight3D4" parent="Lights/Light" index="9"]
+visible = false
+
+[node name="lights5" parent="Lights/Light" index="10"]
+visible = false
+
+[node name="OmniLight3D5" parent="Lights/Light" index="11"]
+visible = false
+
+[node name="lights6" parent="Lights/Light" index="12"]
+visible = false
+
+[node name="OmniLight3D6" parent="Lights/Light" index="13"]
+visible = false
+
 [node name="Entities" type="Node3D" parent="."]
 
 [node name="Player" parent="Entities" instance=ExtResource("2_2aoio")]
-transform = Transform3D(-0.999976, 0, 0.00705105, 0, 1, 0, -0.00705105, 0, -0.999976, 13.9832, 1.61237, -21.275)
+transform = Transform3D(-0.999976, 0, 0.00705105, 0, 1, 0, -0.00705105, 0, -0.999976, 0.0235337, 1.61237, -1.39094)
 
 [node name="Decoration" type="Node3D" parent="."]
 
