@@ -100,11 +100,7 @@ func hide_cross() -> void:
 
 
 func activate_randomizers() -> void:
-	if not randomizer_container:
-		return
-	
 	for randomizer in randomizer_container.get_children():
 		if randomizer is Randomizer:
 			randomizer.start_randomization()
-			await randomizer.finish_randomization
 			await get_tree().process_frame

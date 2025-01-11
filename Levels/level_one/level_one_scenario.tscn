@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://dqk45r48r427t"]
+[gd_scene load_steps=10 format=3 uid="uid://dqk45r48r427t"]
 
 [ext_resource type="PackedScene" uid="uid://d11friq1q7r58" path="res://assets/environment/level_one.blend" id="1_ldfa7"]
 [ext_resource type="Material" uid="uid://dst813utgj4hq" path="res://materials/walls_mat.tres" id="2_acyha"]
@@ -17,20 +17,9 @@ albedo_texture = ExtResource("5_16038")
 uv1_triplanar = true
 uv1_world_triplanar = true
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_qy5gs"]
-size = Vector3(2.09412, 1, 1)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_is8ko"]
-size = Vector3(2.09412, 1, 1)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_tbqw7"]
-size = Vector3(2.09412, 1, 1)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_dcub1"]
-size = Vector3(1.85211, 1, 7.61841)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_tapqn"]
-size = Vector3(1.85211, 1, 7.61841)
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_86jw6"]
+transparency = 1
+albedo_color = Color(1, 1, 1, 0)
 
 [node name="LevelOneScenario" instance=ExtResource("1_ldfa7")]
 
@@ -39,6 +28,7 @@ surface_material_override/0 = ExtResource("2_acyha")
 surface_material_override/1 = ExtResource("3_f0p8v")
 surface_material_override/2 = SubResource("StandardMaterial3D_e2w2f")
 surface_material_override/3 = SubResource("StandardMaterial3D_4vcnk")
+surface_material_override/4 = SubResource("StandardMaterial3D_86jw6")
 
 [node name="StaticBody3D" parent="floor" index="0"]
 collision_mask = 0
@@ -49,54 +39,17 @@ surface_material_override/0 = ExtResource("4_6iimo")
 [node name="stairs_01" parent="." index="3"]
 surface_material_override/0 = ExtResource("3_f0p8v")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="stairs_01" index="0"]
-collision_mask = 0
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="stairs_01/StaticBody3D" index="0"]
-transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0.00506592, -0.205567, 1.5)
-shape = SubResource("BoxShape3D_qy5gs")
-
 [node name="stairs_03" parent="." index="4"]
 surface_material_override/0 = ExtResource("3_f0p8v")
-
-[node name="StaticBody3D2" type="StaticBody3D" parent="stairs_03" index="0"]
-collision_mask = 0
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="stairs_03/StaticBody3D2" index="0"]
-transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0.00506592, -0.205567, 1.5)
-shape = SubResource("BoxShape3D_is8ko")
 
 [node name="stairs_04" parent="." index="5"]
 surface_material_override/0 = ExtResource("3_f0p8v")
 
-[node name="StaticBody3D3" type="StaticBody3D" parent="stairs_04" index="0"]
-collision_mask = 0
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="stairs_04/StaticBody3D3" index="0"]
-transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0.00506592, -0.205567, 1.5)
-shape = SubResource("BoxShape3D_tbqw7")
-
 [node name="stairs_02" parent="." index="6"]
 surface_material_override/0 = ExtResource("3_f0p8v")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="stairs_02" index="0"]
-transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, -0.716524, 0)
-collision_mask = 0
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="stairs_02/StaticBody3D" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0271912, -1.90735e-06, 0.229615)
-shape = SubResource("BoxShape3D_dcub1")
-
 [node name="stairs_05" parent="." index="7"]
 surface_material_override/0 = ExtResource("3_f0p8v")
-
-[node name="StaticBody3D2" type="StaticBody3D" parent="stairs_05" index="0"]
-transform = Transform3D(-1, -2.56055e-08, -6.18172e-08, -6.18172e-08, 0.707107, 0.707107, -2.56055e-08, -0.707107, 0.707107, 0, -0.717, 0)
-collision_mask = 0
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="stairs_05/StaticBody3D2" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0271912, -1.90735e-06, 0.229615)
-shape = SubResource("BoxShape3D_tapqn")
 
 [node name="cealing_top" parent="." index="8"]
 surface_material_override/0 = ExtResource("4_6iimo")
