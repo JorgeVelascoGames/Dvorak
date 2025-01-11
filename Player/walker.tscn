@@ -84,8 +84,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.530615)
 [node name="FlaslightModel" parent="." instance=ExtResource("4_pmj0g")]
 transform = Transform3D(-1.63918e-08, 0, 0.375, 0, 0.375, 0, -0.375, 0, -1.63918e-08, 0, 0.410056, -0.00671387)
 
-[node name="Flashlight" type="SpotLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.418589, -0.0870513)
+[node name="FlashlightFixPosition" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.418589, -0.111198)
+
+[node name="Flashlight" type="SpotLight3D" parent="FlashlightFixPosition"]
+unique_name_in_owner = true
+top_level = true
 layers = 3
 light_color = Color(0.620101, 0.577479, 0.426758, 1)
 light_energy = 4.0
@@ -95,10 +99,10 @@ spot_attenuation = 2.0
 spot_angle = 64.5795
 script = ExtResource("3_rrijc")
 
-[node name="FlashlightBattery" type="Timer" parent="Flashlight"]
+[node name="FlashlightBattery" type="Timer" parent="FlashlightFixPosition/Flashlight"]
 wait_time = 500.0
 
-[node name="TweaklingTimer" type="Timer" parent="Flashlight"]
+[node name="TweaklingTimer" type="Timer" parent="FlashlightFixPosition/Flashlight"]
 
 [node name="WalkerModel" type="MeshInstance3D" parent="."]
 transform = Transform3D(-1.52745e-07, -3.4944, -5.48652e-07, 0, -4.16565e-07, 4.60243, -3.4944, 1.52745e-07, 2.39823e-14, 0, -0.29, 0.292)
@@ -155,7 +159,7 @@ collision_mask = 4
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.000183105, 0, 0.330566)
 shape = SubResource("BoxShape3D_ix1yc")
 
-[connection signal="timeout" from="Flashlight/FlashlightBattery" to="Flashlight" method="_on_flashlight_battery_timeout"]
+[connection signal="timeout" from="FlashlightFixPosition/Flashlight/FlashlightBattery" to="FlashlightFixPosition/Flashlight" method="_on_flashlight_battery_timeout"]
 [connection signal="on_interact" from="GunSelectorHitbox/GunInteract" to="." method="_on_gun_interact_on_interact"]
 [connection signal="on_interact" from="CrowbarSelectorHitbox/CrowbarInteract" to="." method="_on_crowbar_interact_on_interact"]
 [connection signal="on_interact" from="FlashlightInteract/FlashlightInteract" to="." method="_on_flashlight_interact_on_interact"]

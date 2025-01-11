@@ -20,7 +20,7 @@ class_name Player
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 var _delta := 0.0
 
-enum WEAPON {none, gun, crowbar}
+enum WEAPON {none, gun, crowbar, flashlight}
 var current_weapon : WEAPON = WEAPON.none
 
 #Components
@@ -34,13 +34,14 @@ var current_weapon : WEAPON = WEAPON.none
 @onready var walker: WalkerModel = $WalkerFixedPoint/Walker
 @onready var ammo_counter: AmmoCounter = $Components/AmmoCounter
 @onready var inventory: Inventory = $Components/Inventory
+@onready var flashlight_pivot: Node3D = $FlashlightPivot
+@onready var flashlight : Flashlight = walker.flashlight
 
 #onready variables
 @onready var original_world_camera_fov = world_camera.fov
 @onready var original_weapon_camera_fov = weapon_camera.fov
 
 var originCamPos : Vector3
-
 
 func _ready():
 	apply_floor_snap()
@@ -98,6 +99,15 @@ func heal_up() -> void:
 
 func _on_damaged_heal_timer_timeout():
 	heal_up()
+
+
+func pick_up_flashlight() -> void:
+	flashlight.move_flashlight(flashlight_pivot)
+
+
+func toggle_flashlight() -> void:
+	if current_weapon == WEAPON.flashlight:
+		flashlight.toggle_flashlight()
 
 
 func _on_walker_walker_interacted() -> void:

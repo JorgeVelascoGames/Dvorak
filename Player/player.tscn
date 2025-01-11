@@ -876,6 +876,8 @@ light_energy = 0.2
 omni_range = 1.90496
 omni_attenuation = 0.0
 
+[node name="FlashlightPivot" type="Node3D" parent="."]
+
 [connection signal="transitioned" from="StateMachine" to="Components/Balance" method="_on_state_machine_transitioned"]
 [connection signal="transitioned" from="StateMachine" to="AnimationTree" method="_on_state_machine_transitioned"]
 [connection signal="timeout" from="StateMachine/Aim/SensibilityTimer" to="StateMachine/Aim" method="_on_sensibility_timer_timeout"]

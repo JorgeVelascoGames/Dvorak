@@ -4,7 +4,7 @@ class_name WalkerModel
 signal WalkerInteracted
 
 @onready var free_walker_position = $FreeWalkerPosition
-@onready var flashlight: SpotLight3D = $Flashlight
+@onready var flashlight: SpotLight3D = %Flashlight
 @onready var walker_model: MeshInstance3D = $WalkerModel
 @onready var player : Player = owner
 @onready var flashlight_model: MeshInstance3D = $FlaslightModel/Flashlight
@@ -44,18 +44,31 @@ func grab_walker() -> void:
 func pick_up_gun():
 	crowbar_model.show()
 	gun_model.hide()
+	flashlight_model.show()
+	flashlight.move_flashlight()
 	player.current_weapon = player.WEAPON.gun
 
 
 func pick_up_crowbar():
 	crowbar_model.hide()
 	gun_model.show()
+	flashlight_model.show()
+	flashlight.move_flashlight()
 	player.current_weapon = player.WEAPON.crowbar
+
+
+func pick_up_flashlight() -> void:
+	crowbar_model.show()
+	gun_model.show()
+	flashlight_model.hide()
+	player.current_weapon = player.WEAPON.flashlight
 
 
 func drop_weapons():
 	crowbar_model.show()
 	gun_model.show()
+	flashlight_model.show()
+	flashlight.move_flashlight()
 	player.current_weapon = player.WEAPON.none
 
 
@@ -80,4 +93,8 @@ func _on_crowbar_interact_on_interact() -> void:
 
 
 func _on_flashlight_interact_on_interact() -> void:
-	flashlight_togle()
+	if player.current_weapon != player.WEAPON.flashlight:
+		pick_up_flashlight()
+		player.pick_up_flashlight()
+	else:
+		drop_weapons()
