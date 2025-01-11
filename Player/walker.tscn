@@ -100,7 +100,7 @@ spot_angle = 64.5795
 script = ExtResource("3_rrijc")
 
 [node name="FlashlightBattery" type="Timer" parent="FlashlightFixPosition/Flashlight"]
-wait_time = 500.0
+wait_time = 40.0
 
 [node name="TweaklingTimer" type="Timer" parent="FlashlightFixPosition/Flashlight"]
 
