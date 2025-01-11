@@ -1,10 +1,11 @@
-[gd_scene load_steps=26 format=3 uid="uid://b62fd7a6q7pm"]
+[gd_scene load_steps=27 format=3 uid="uid://b62fd7a6q7pm"]
 
 [ext_resource type="PackedScene" uid="uid://m6pypgl566n1" path="res://player/player.tscn" id="1_4278g"]
 [ext_resource type="Material" uid="uid://dacid3ccax2pq" path="res://Levels/materials/orange.tres" id="2_logh3"]
 [ext_resource type="Material" uid="uid://ciyx0k2mf8b5f" path="res://Levels/materials/grey.tres" id="3_m4mti"]
 [ext_resource type="Texture2D" uid="uid://by4jbjsne1tjb" path="res://assets/textures/wall_substance.png" id="4_lrjaa"]
 [ext_resource type="PackedScene" uid="uid://78mr2us2ett5" path="res://assets/environment/elements/door_closed.tscn" id="6_n3bub"]
+[ext_resource type="Script" path="res://randomization/randomizer_position.gd" id="7_vdr6k"]
 [ext_resource type="PackedScene" uid="uid://dntxkqhhia68" path="res://vfx/blood_decal/blood_decal_big.tscn" id="11_g760f"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_cmsli"]
@@ -268,3 +269,19 @@ play_face_out_anim = false
 
 [node name="door_closed" parent="." instance=ExtResource("6_n3bub")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.4176, 0, -5.6712)
+
+[node name="RandomizerPosition" type="Marker3D" parent="." node_paths=PackedStringArray("item")]
+script = ExtResource("7_vdr6k")
+item = NodePath("../door_closed")
+
+[node name="Marker3D" type="Marker3D" parent="RandomizerPosition"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -10.8017)
+
+[node name="Marker3D2" type="Marker3D" parent="RandomizerPosition"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.05824, 0, -1.77963)
+
+[node name="Marker3D3" type="Marker3D" parent="RandomizerPosition"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.830492)
+
+[node name="Marker3D4" type="Marker3D" parent="RandomizerPosition"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.33311, -1.23058)

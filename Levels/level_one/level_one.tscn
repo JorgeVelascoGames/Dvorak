@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://b37la44wjrp4u"]
+[gd_scene load_steps=23 format=3 uid="uid://b37la44wjrp4u"]
 
 [ext_resource type="PackedScene" uid="uid://dqk45r48r427t" path="res://Levels/level_one/level_one_scenario.tscn" id="1_jujem"]
 [ext_resource type="Environment" uid="uid://c42wra3u6yo6u" path="res://Levels/world_environment.tres" id="1_rc4ww"]
@@ -9,14 +9,22 @@
 [ext_resource type="PackedScene" uid="uid://bj1jq0pdwxof7" path="res://Levels/rooms/room_2.tscn" id="8_e3r7r"]
 [ext_resource type="PackedScene" uid="uid://dnlj0cpdwjsyl" path="res://Levels/rooms/room_1.tscn" id="8_kvrpp"]
 [ext_resource type="PackedScene" uid="uid://c5vmfb6wrd0un" path="res://ExitGate/exit_gate.tscn" id="8_xg4ny"]
+[ext_resource type="Script" path="res://randomization/randomizer_position.gd" id="9_0che1"]
 [ext_resource type="PackedScene" uid="uid://b7cb30x5rpa17" path="res://Levels/rooms/room_3.tscn" id="9_07q1x"]
 [ext_resource type="PackedScene" uid="uid://ca11q5l28hjt8" path="res://Levels/rooms/room_4.tscn" id="10_jl4wr"]
+[ext_resource type="Script" path="res://randomization/randomize_deleter.gd" id="10_wfg25"]
 [ext_resource type="PackedScene" uid="uid://cvp2itootohxc" path="res://Levels/rooms/room_5.tscn" id="11_47c1n"]
+[ext_resource type="PackedScene" uid="uid://b14r0ayr0hufl" path="res://Levels/environment_elements/emergency_light.tscn" id="13_3rriw"]
+[ext_resource type="PackedScene" uid="uid://brysxkhoj2p7v" path="res://Levels/environment_elements/filling_cabinet_obstacle.tscn" id="13_dc2rn"]
 [ext_resource type="PackedScene" uid="uid://bqgujieo32yk3" path="res://Levels/environment_elements/lamp_light.tscn" id="13_jxmsh"]
 [ext_resource type="PackedScene" uid="uid://78mr2us2ett5" path="res://assets/environment/elements/door_closed.tscn" id="14_6smjs"]
-[ext_resource type="PackedScene" uid="uid://brysxkhoj2p7v" path="res://Levels/environment_elements/filling_cabinet_obstacle.tscn" id="15_qhg1t"]
+[ext_resource type="PackedScene" uid="uid://b8gbxyaua8ftu" path="res://assets/props/bed/bed.tscn" id="14_na6ay"]
+[ext_resource type="PackedScene" uid="uid://bvbwpj3cl6pdr" path="res://assets/props/lights/lights.tscn" id="14_xelpn"]
+[ext_resource type="Script" path="res://randomization/randomize_self_destruct.gd" id="15_md1aq"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_hkrcb"]
+cell_size = 0.1
+agent_radius = 0.1
 
 [node name="LevelOne" type="Node3D"]
 script = ExtResource("1_scdlh")
@@ -35,12 +43,121 @@ rooms_array = [NodePath("../RoomsSpawnPosition/Marker3D"), NodePath("../RoomsSpa
 rooms_father = NodePath("../NavigationRegion3D/ScenarioSpawnerParent")
 rooms = Array[PackedScene]([ExtResource("8_kvrpp"), ExtResource("8_e3r7r"), ExtResource("9_07q1x"), ExtResource("10_jl4wr"), ExtResource("11_47c1n"), ExtResource("11_47c1n"), ExtResource("11_47c1n"), ExtResource("11_47c1n")])
 
+[node name="RandomizerPosition" type="Marker3D" parent="MapRandomizer" node_paths=PackedStringArray("item")]
+script = ExtResource("9_0che1")
+item = NodePath("../../Lights/Light2/Switch")
+
+[node name="Marker3D" type="Marker3D" parent="MapRandomizer/RandomizerPosition"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 14.882, 1.083, -20.2255)
+
+[node name="Marker3D2" type="Marker3D" parent="MapRandomizer/RandomizerPosition"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 14.882, 1.083, -6.945)
+
+[node name="Marker3D3" type="Marker3D" parent="MapRandomizer/RandomizerPosition"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 14.882, 1.083, 0.234)
+
+[node name="RandomizerPosition2" type="Marker3D" parent="MapRandomizer" node_paths=PackedStringArray("item")]
+script = ExtResource("9_0che1")
+item = NodePath("../../Lights/Light4/Switch")
+
+[node name="Marker3D" type="Marker3D" parent="MapRandomizer/RandomizerPosition2"]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 20.8992, 1.73504, 3.37383)
+
+[node name="Marker3D2" type="Marker3D" parent="MapRandomizer/RandomizerPosition2"]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 5.78104, 1.73504, 3.37383)
+
+[node name="RandomizeDeleter" type="Marker3D" parent="MapRandomizer" node_paths=PackedStringArray("elements")]
+script = ExtResource("10_wfg25")
+elements = [NodePath("../../NavigationRegion3D/FillingCabinets/Set1"), NodePath("../../NavigationRegion3D/FillingCabinets/Set2")]
+
+[node name="RandomizeDeleter2" type="Marker3D" parent="MapRandomizer" node_paths=PackedStringArray("elements")]
+script = ExtResource("10_wfg25")
+elements = [NodePath("../../NavigationRegion3D/Obstacles/SetToPick1/Bed"), NodePath("../../NavigationRegion3D/Obstacles/SetToPick1/Cabinets"), NodePath("../../NavigationRegion3D/Obstacles/SetToPick1/fill"), NodePath("../../NavigationRegion3D/Obstacles/SetToPick1/fill2")]
+
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
 navigation_mesh = SubResource("NavigationMesh_hkrcb")
 
 [node name="LevelOneScenario" parent="NavigationRegion3D" instance=ExtResource("1_jujem")]
 
 [node name="ScenarioSpawnerParent" type="Node3D" parent="NavigationRegion3D"]
+
+[node name="ExitGate" parent="NavigationRegion3D" instance=ExtResource("8_xg4ny")]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 33.7559, 0, -16.3926)
+
+[node name="FillingCabinets" type="Node3D" parent="NavigationRegion3D"]
+
+[node name="Set1" type="Node3D" parent="NavigationRegion3D/FillingCabinets"]
+
+[node name="FillingCabinetObstacle" parent="NavigationRegion3D/FillingCabinets/Set1" instance=ExtResource("13_dc2rn")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 16.1735, 0.501781, 3.19989)
+
+[node name="FillingCabinetObstacle2" parent="NavigationRegion3D/FillingCabinets/Set1" instance=ExtResource("13_dc2rn")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 19.3876, 0.501781, 3.19989)
+
+[node name="FillingCabinetObstacle3" parent="NavigationRegion3D/FillingCabinets/Set1" instance=ExtResource("13_dc2rn")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 25.3876, 0.501781, 3.19989)
+
+[node name="FillingCabinetObstacle4" parent="NavigationRegion3D/FillingCabinets/Set1" instance=ExtResource("13_dc2rn")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 17.7667, 0.501781, 3.19989)
+
+[node name="FillingCabinetObstacle5" parent="NavigationRegion3D/FillingCabinets/Set1" instance=ExtResource("13_dc2rn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.7317, 0.501781, 1.79447)
+
+[node name="FillingCabinetObstacle6" parent="NavigationRegion3D/FillingCabinets/Set1" instance=ExtResource("13_dc2rn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.8743, 0.501781, 1.79447)
+
+[node name="FillingCabinetObstacle7" parent="NavigationRegion3D/FillingCabinets/Set1" instance=ExtResource("13_dc2rn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.87431, 0.501781, 1.79447)
+
+[node name="FillingCabinetObstacle8" parent="NavigationRegion3D/FillingCabinets/Set1" instance=ExtResource("13_dc2rn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.70378, 0.501781, 1.79447)
+
+[node name="Set2" type="Node3D" parent="NavigationRegion3D/FillingCabinets"]
+
+[node name="FillingCabinetObstacle3" parent="NavigationRegion3D/FillingCabinets/Set2" instance=ExtResource("13_dc2rn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24.4657, 0.501781, 1.78666)
+
+[node name="FillingCabinetObstacle4" parent="NavigationRegion3D/FillingCabinets/Set2" instance=ExtResource("13_dc2rn")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 17.7667, 0.501781, 3.19989)
+
+[node name="FillingCabinetObstacle5" parent="NavigationRegion3D/FillingCabinets/Set2" instance=ExtResource("13_dc2rn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.7826, 0.501781, 1.79447)
+
+[node name="FillingCabinetObstacle6" parent="NavigationRegion3D/FillingCabinets/Set2" instance=ExtResource("13_dc2rn")]
+transform = Transform3D(0.584943, 0, 0.811074, 0, 1, 0, -0.811074, 0, 0.584943, 10.8743, 0.501781, 2.26091)
+
+[node name="FillingCabinetObstacle7" parent="NavigationRegion3D/FillingCabinets/Set2" instance=ExtResource("13_dc2rn")]
+transform = Transform3D(0.717628, 0, 0.696427, 0, 1, 0, -0.696427, 0, 0.717628, 7.87431, 0.501781, 2.0081)
+
+[node name="FillingCabinetObstacle8" parent="NavigationRegion3D/FillingCabinets/Set2" instance=ExtResource("13_dc2rn")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -0.16909, 0.501781, 3.208)
+
+[node name="Obstacles" type="Node3D" parent="NavigationRegion3D"]
+
+[node name="Bed2" parent="NavigationRegion3D/Obstacles" instance=ExtResource("14_na6ay")]
+transform = Transform3D(-0.195317, -0.0608959, 0.978848, -0.264242, 0.964429, 0.00727253, -0.944472, -0.257232, -0.204461, 14.0869, 0.271308, 0.839215)
+
+[node name="RandomizeSelfDestruction" type="Marker3D" parent="NavigationRegion3D/Obstacles/Bed2"]
+script = ExtResource("15_md1aq")
+chance_to_destroy = 0.795
+
+[node name="SetToPick1" type="Node3D" parent="NavigationRegion3D/Obstacles"]
+
+[node name="Bed" parent="NavigationRegion3D/Obstacles/SetToPick1" instance=ExtResource("14_na6ay")]
+transform = Transform3D(0.999178, 0, -0.0405329, 0, 1, 0, 0.0405329, 0, 0.999178, -3.42147, -0.0331804, -8.78204)
+
+[node name="Cabinets" type="Node3D" parent="NavigationRegion3D/Obstacles/SetToPick1"]
+
+[node name="FillingCabinetObstacle" parent="NavigationRegion3D/Obstacles/SetToPick1/Cabinets" instance=ExtResource("13_dc2rn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.4181, -0.013134, -10.741)
+
+[node name="FillingCabinetObstacle2" parent="NavigationRegion3D/Obstacles/SetToPick1/Cabinets" instance=ExtResource("13_dc2rn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.06598, -0.013134, -10.741)
+
+[node name="fill" type="Node3D" parent="NavigationRegion3D/Obstacles/SetToPick1"]
+
+[node name="fill2" type="Node3D" parent="NavigationRegion3D/Obstacles/SetToPick1"]
 
 [node name="LevelUI" type="Control" parent="."]
 layout_mode = 3
@@ -58,9 +175,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
-
-[node name="ExitGate" parent="." instance=ExtResource("8_xg4ny")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 33.7559, 0, -16.3926)
 
 [node name="RoomsSpawnPosition" type="Node3D" parent="."]
 
@@ -100,39 +214,141 @@ transform = Transform3D(0.0357542, 0, 0.999361, 0, 1, 0, -0.999361, 0, 0.0357542
 is_tweaking_light = true
 
 [node name="Switch" parent="Lights/Light" index="1"]
-transform = Transform3D(-2.23517e-08, 0, -0.625, 0, 0.625, 0, 0.625, 0, -2.23517e-08, -2.53525, -1.01306, 0.959599)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.16363, -1.53293, -0.745369)
 
-[node name="swich" parent="Lights/Light/Switch" index="3"]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.169676, -0.481138, 0)
+[node name="lights" parent="Lights/Light" index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.68327, 0, 0.167554)
 
-[node name="lights3" parent="Lights/Light" index="6"]
-visible = false
+[node name="OmniLight3D" parent="Lights/Light" index="3"]
+transform = Transform3D(1, 0, -7.45058e-09, 0, 1, 0, 7.45058e-09, 0, 1, -4.68327, -0.43799, 0.167554)
 
-[node name="OmniLight3D3" parent="Lights/Light" index="7"]
-visible = false
+[node name="lights2" parent="Lights/Light" instance=ExtResource("14_xelpn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.43544, 0, -0.0871329)
 
-[node name="lights4" parent="Lights/Light" index="8"]
-visible = false
+[node name="OmniLight3D2" type="OmniLight3D" parent="Lights/Light"]
+transform = Transform3D(1, 0, -1.11759e-08, 0, 1, 0, 1.11759e-08, 0, 1, 2.43544, -0.43799, -0.0871329)
+light_energy = 1.2
+shadow_enabled = true
+omni_range = 5.82458
+omni_attenuation = 1.745
 
-[node name="OmniLight3D4" parent="Lights/Light" index="9"]
-visible = false
+[node name="lights3" parent="Lights/Light" instance=ExtResource("14_xelpn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.6156, 0, -0.487126)
 
-[node name="lights5" parent="Lights/Light" index="10"]
-visible = false
+[node name="OmniLight3D3" type="OmniLight3D" parent="Lights/Light"]
+transform = Transform3D(1, 0, -1.49012e-08, 0, 1, 0, 1.49012e-08, 0, 1, 13.6156, -0.43799, -0.487126)
+light_energy = 1.2
+shadow_enabled = true
+omni_range = 5.82458
+omni_attenuation = 1.745
 
-[node name="OmniLight3D5" parent="Lights/Light" index="11"]
-visible = false
+[node name="Light2" parent="Lights" instance=ExtResource("5_fux4b")]
 
-[node name="lights6" parent="Lights/Light" index="12"]
-visible = false
+[node name="Switch" parent="Lights/Light2" index="1"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 14.8816, 1.08285, -14.755)
 
-[node name="OmniLight3D6" parent="Lights/Light" index="13"]
-visible = false
+[node name="lights" parent="Lights/Light2" index="2"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 13.9326, 2.47663, -17.6963)
+
+[node name="OmniLight3D" parent="Lights/Light2" index="3"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 13.9326, 2.03864, -17.6963)
+
+[node name="lights2" parent="Lights/Light2" instance=ExtResource("14_xelpn")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 13.9326, 2.47663, -2.23603)
+
+[node name="OmniLight3D2" type="OmniLight3D" parent="Lights/Light2"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 13.9326, 2.03864, -2.23603)
+light_energy = 1.2
+shadow_enabled = true
+omni_range = 5.82458
+omni_attenuation = 1.745
+
+[node name="lights3" parent="Lights/Light2" instance=ExtResource("14_xelpn")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 13.9326, 2.47663, -8.86008)
+
+[node name="OmniLight3D3" type="OmniLight3D" parent="Lights/Light2"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 13.9326, 2.03864, -8.86008)
+light_energy = 1.2
+shadow_enabled = true
+omni_range = 5.82458
+omni_attenuation = 1.745
+
+[node name="lights4" parent="Lights/Light2" instance=ExtResource("14_xelpn")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 20.3688, 2.47663, -12.9692)
+
+[node name="OmniLight3D4" type="OmniLight3D" parent="Lights/Light2"]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 20.3688, 2.03864, -12.9692)
+light_energy = 1.2
+shadow_enabled = true
+omni_range = 5.82458
+omni_attenuation = 1.745
+
+[node name="Light3" parent="Lights" instance=ExtResource("5_fux4b")]
+
+[node name="Switch" parent="Lights/Light3" index="1"]
+transform = Transform3D(1.31134e-07, 0, 1, 0, 1, 0, -1, 0, 1.31134e-07, 0.615346, 5.86701, 0.87231)
+
+[node name="lights" parent="Lights/Light3" index="2"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 1.29079, 7.45414, 0)
+
+[node name="OmniLight3D" parent="Lights/Light3" index="3"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 1.29079, 7.01615, 0)
+
+[node name="lights7" parent="Lights/Light3" instance=ExtResource("14_xelpn")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 1.29079, 7.45414, -6.72159)
+
+[node name="OmniLight3D7" type="OmniLight3D" parent="Lights/Light3"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 1.29079, 7.01615, -6.72159)
+light_energy = 1.2
+shadow_enabled = true
+omni_range = 5.82458
+omni_attenuation = 1.745
+
+[node name="lights8" parent="Lights/Light3" instance=ExtResource("14_xelpn")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 1.90422, 7.45414, -13.2425)
+
+[node name="OmniLight3D8" type="OmniLight3D" parent="Lights/Light3"]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 1.90422, 7.01615, -13.2425)
+light_energy = 1.2
+shadow_enabled = true
+omni_range = 5.82458
+omni_attenuation = 1.745
+
+[node name="Light4" parent="Lights" instance=ExtResource("5_fux4b")]
+
+[node name="Switch" parent="Lights/Light4" index="1"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 20.8992, 1.73504, 3.37383)
+
+[node name="lights" parent="Lights/Light4" index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.88278, 2.98806, 2.41413)
+
+[node name="OmniLight3D" parent="Lights/Light4" index="3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.88278, 2.55007, 2.41413)
+
+[node name="lights2" parent="Lights/Light4" instance=ExtResource("14_xelpn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.7858, 2.98806, 2.41413)
+
+[node name="OmniLight3D2" type="OmniLight3D" parent="Lights/Light4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.7858, 2.55007, 2.41413)
+light_energy = 1.2
+shadow_enabled = true
+omni_range = 5.82458
+omni_attenuation = 1.745
+
+[node name="lights3" parent="Lights/Light4" instance=ExtResource("14_xelpn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.7858, 2.98806, 2.41413)
+
+[node name="OmniLight3D3" type="OmniLight3D" parent="Lights/Light4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.7858, 2.55007, 2.41413)
+light_energy = 1.2
+shadow_enabled = true
+omni_range = 5.82458
+omni_attenuation = 1.745
 
 [node name="Entities" type="Node3D" parent="."]
 
 [node name="Player" parent="Entities" instance=ExtResource("2_2aoio")]
-transform = Transform3D(-0.999976, 0, 0.00705105, 0, 1, 0, -0.00705105, 0, -0.999976, 0.0235337, 1.61237, -1.39094)
+transform = Transform3D(-0.999422, 0, -0.0340275, 0, 1, 0, 0.0340275, 0, -0.999422, 14.6115, 1.61237, -2.28579)
 
 [node name="Decoration" type="Node3D" parent="."]
 
@@ -142,7 +358,7 @@ transform = Transform3D(-0.999976, 0, 0.00705105, 0, 1, 0, -0.00705105, 0, -0.99
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -1.05929, 0, -2.01613)
 
 [node name="door_closed2" parent="Decoration/Doors" instance=ExtResource("14_6smjs")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -1.05929, 0, -7.05897)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -2.99867, 0, -5.08853)
 
 [node name="door_closed4" parent="Decoration/Doors" instance=ExtResource("14_6smjs")]
 transform = Transform3D(1.19249e-08, 0, -1, 0, 1, 0, 1, 0, 1.19249e-08, 1.05683, 0, -11.1827)
@@ -258,9 +474,20 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.3172, 0, -9.55491)
 [node name="door_closed9" parent="Decoration/Doors" instance=ExtResource("14_6smjs")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.19793, 0, -9.55491)
 
-[node name="FillingCabinetObstacle" parent="." instance=ExtResource("15_qhg1t")]
-transform = Transform3D(-0.999981, 0, 0.00612604, 0, 1, 0, -0.00612604, 0, -0.999981, 13.9771, 0, -16.6831)
+[node name="EmergencyLights" type="Node3D" parent="."]
+
+[node name="emergency_light" parent="EmergencyLights" instance=ExtResource("13_3rriw")]
+transform = Transform3D(1.07093e-08, 0.245, -2.14186e-08, 0.245, -1.07093e-08, 0, -9.36237e-16, -2.14186e-08, -0.245, -9.94365, 6.88033, 2.37458)
+
+[node name="emergency_light2" parent="EmergencyLights" instance=ExtResource("13_3rriw")]
+transform = Transform3D(4.68118e-16, 1.07093e-08, 0.245, 0.245, -1.07093e-08, 0, 1.07093e-08, 0.245, -1.07093e-08, -0.524738, 2.33441, -23.9464)
+
+[node name="emergency_light3" parent="EmergencyLights" instance=ExtResource("13_3rriw")]
+transform = Transform3D(-1.07093e-08, -0.245, 0, 0.245, -1.07093e-08, 0, 0, 0, 0.245, 30.9489, 2.54865, 1.2622)
 
 [editable path="Lamps/LampLight"]
 [editable path="Lamps/LampLight/LampModel"]
 [editable path="Lights/Light"]
+[editable path="Lights/Light2"]
+[editable path="Lights/Light3"]
+[editable path="Lights/Light4"]

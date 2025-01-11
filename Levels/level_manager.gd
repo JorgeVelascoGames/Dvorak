@@ -2,7 +2,7 @@ extends Node3D
 ##This class goes on the root node of a level
 class_name LevelManager
 
-@onready var exit_gate : ExitGate = $ExitGate
+@onready var exit_gate : ExitGate = %ExitGate
 @onready var navigation_region_3d : NavigationRegion3D= $NavigationRegion3D
 @onready var map_randomizer: MapRandomizer = %MapRandomizer
 @onready var black_screen: ColorRect = $LevelUI/BlackScreen
@@ -17,6 +17,7 @@ func generate_rooms() -> void:
 	#Generate de rooms
 	map_randomizer.randomize_map(exit_gate)
 	await map_randomizer.finish_randomization
+	await get_tree().create_timer(0.5) #To make sure it wors
 	#bake the navmesh
 	navigation_region_3d.bake_navigation_mesh()
 	await navigation_region_3d.bake_finished

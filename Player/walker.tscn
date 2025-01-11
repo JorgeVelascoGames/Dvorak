@@ -85,14 +85,14 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.530615)
 transform = Transform3D(-1.63918e-08, 0, 0.375, 0, 0.375, 0, -0.375, 0, -1.63918e-08, 0, 0.410056, -0.00671387)
 
 [node name="Flashlight" type="SpotLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.418589, -0.129898)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.418589, -0.0870513)
 layers = 3
 light_color = Color(0.620101, 0.577479, 0.426758, 1)
-light_energy = 2.0
-light_indirect_energy = 2.0
-light_bake_mode = 1
-spot_range = 8.0
-spot_angle = 26.8075
+light_energy = 4.0
+shadow_enabled = true
+spot_range = 16.8082
+spot_attenuation = 2.0
+spot_angle = 64.5795
 script = ExtResource("3_rrijc")
 
 [node name="FlashlightBattery" type="Timer" parent="Flashlight"]

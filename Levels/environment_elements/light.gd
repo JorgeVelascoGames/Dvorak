@@ -9,7 +9,7 @@ extends Node3D
 
 const LIGHT_BUBBLE_SOUND = preload("res://Levels/environment_elements/light_bubble_sound.tscn")
 
-var light_on := false
+var light_on := true
 var lights_array : Array[Light3D] = []
 var twinkling_ligt_tween : Tween
 
@@ -42,10 +42,14 @@ func on_switch_press() -> void:
 
 
 func twink_light() -> void:
+	for light in lights_array:
+		twink_individual_light(light)
+
+
+func twink_individual_light(light : Light3D) -> void:
 	# Inicializamos la semilla de aleatoriedad
 	randomize()
 	while light_on:
-		var light : Light3D = lights_array.pick_random()
 		# Elegimos intervalos aleatorios para el 'apagado' y el 'encendido'
 		var off_duration = randf_range(0.05, 0.2)
 		var on_duration = randf_range(0.05, 0.3)

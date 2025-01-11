@@ -1,4 +1,4 @@
-extends Marker3D
+extends Randomizer
 class_name RandomizerInstance ##This class will chose one single scene from the array and spawn it on its position in the 3D world. 
 
 @export var spawn_items: Array[PackedScene] = [] ## Array de escenas para spawnear
@@ -6,7 +6,7 @@ class_name RandomizerInstance ##This class will chose one single scene from the 
 @export var parent_node: NodePath ## Nodo al que hacer hijo, opcional
 
 
-func _ready() -> void:
+func start_randomization() -> void:
 	spawn()
 
 
@@ -41,3 +41,4 @@ func spawn():
 	if instance is Node3D:
 		instance.position = position
 		instance.rotation = rotation
+	finish_randomization.emit()

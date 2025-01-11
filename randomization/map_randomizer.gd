@@ -11,6 +11,7 @@ signal finish_randomization
 @export var max_items_to_spawn : int
 @export var items_father : Node3D
 @export var rooms : Array[PackedScene]
+@export var randomizer_container : Node3D
 
 var items : Array[PackedScene]
 var instantiated_rooms : Array[Room]
@@ -21,7 +22,8 @@ func _ready() -> void:
 		rooms_father = self
 	if not items_father:
 		items_father = self
-
+	if not randomizer_container:
+		randomizer_container = self
 
 func randomize_map(exit_gate : ExitGate) -> void:
 	spawn_rooms()
@@ -32,6 +34,8 @@ func randomize_map(exit_gate : ExitGate) -> void:
 	await  get_tree().process_frame
 	spawn_books(exit_gate)
 	await  get_tree().process_frame
+	activate_randomizers()
+	await get_tree().process_frame
 	finish_randomization.emit()
 
 
@@ -93,3 +97,14 @@ func hide_cross() -> void:
 	
 	for room in new_rooms_array:
 		room.cross.queue_free()
+
+
+func activate_randomizers() -> void:
+	if not randomizer_container:
+		return
+	
+	for randomizer in randomizer_container.get_children():
+		if randomizer is Randomizer:
+			randomizer.start_randomization()
+			await randomizer.finish_randomization
+			await get_tree().process_frame
