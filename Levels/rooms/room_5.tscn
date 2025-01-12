@@ -1,7 +1,7 @@
 [gd_scene load_steps=10 format=3 uid="uid://cvp2itootohxc"]
 
 [ext_resource type="Script" path="res://randomization/room.gd" id="1_o16a3"]
-[ext_resource type="PackedScene" uid="uid://d0dkjcykl2xdc" path="res://assets/props/filing_cabinet/filing_cabinet.tscn" id="2_uhhw8"]
+[ext_resource type="PackedScene" uid="uid://brysxkhoj2p7v" path="res://Levels/environment_elements/filling_cabinet_obstacle.tscn" id="2_2lfbw"]
 [ext_resource type="PackedScene" uid="uid://dycdd0wd0kswp" path="res://Levels/environment_elements/cross.tscn" id="4_66wn2"]
 [ext_resource type="Material" uid="uid://dst813utgj4hq" path="res://materials/walls_mat.tres" id="5_w47r0"]
 [ext_resource type="PackedScene" uid="uid://bqgujieo32yk3" path="res://Levels/environment_elements/lamp_light.tscn" id="6_rjm2j"]
@@ -24,12 +24,13 @@ atril_spawn_point = NodePath("AtrilSpawner")
 item_spawning_points = [NodePath("ItemSpawn"), NodePath("ItemSpawn2")]
 cross = NodePath("Cross")
 
+[node name="FillingCabinetObstacle" parent="." instance=ExtResource("2_2lfbw")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.850653, -0.0116521, 0.0948776)
+
 [node name="RoomSize" type="MeshInstance3D" parent="."]
+visible = false
 mesh = SubResource("PlaneMesh_kk2a0")
 surface_material_override/0 = SubResource("StandardMaterial3D_k70g2")
-
-[node name="filing_cabinet4" parent="." instance=ExtResource("2_uhhw8")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0.967696, 0, -0.138972)
 
 [node name="AtrilSpawner" type="Marker3D" parent="."]
 transform = Transform3D(1, 0, -1.06581e-14, 0, 1, 0, 1.06581e-14, 0, 1, -0.909327, 0, 0.210565)

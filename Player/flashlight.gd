@@ -45,7 +45,7 @@ func add_battery() -> void:
 	hide()
 	#play sound
 	flashlight_battery.wait_time = extra_time_on_pickup
-	empty_battery = true
+	empty_battery = false
 
 
 func move_flashlight(follow_item : Node3D = get_parent()) -> void:

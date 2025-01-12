@@ -1,11 +1,11 @@
 [gd_scene load_steps=12 format=3 uid="uid://b7cb30x5rpa17"]
 
 [ext_resource type="Script" path="res://randomization/room.gd" id="1_yys0h"]
-[ext_resource type="PackedScene" uid="uid://d0dkjcykl2xdc" path="res://assets/props/filing_cabinet/filing_cabinet.tscn" id="2_77dia"]
 [ext_resource type="PackedScene" uid="uid://dycdd0wd0kswp" path="res://Levels/environment_elements/cross.tscn" id="3_g3pda"]
 [ext_resource type="Material" uid="uid://dst813utgj4hq" path="res://materials/walls_mat.tres" id="4_b1iuo"]
 [ext_resource type="Script" path="res://randomization/randimize_intance.gd" id="5_mefh5"]
 [ext_resource type="PackedScene" uid="uid://b8gbxyaua8ftu" path="res://assets/props/bed/bed.tscn" id="6_0ab60"]
+[ext_resource type="PackedScene" uid="uid://brysxkhoj2p7v" path="res://Levels/environment_elements/filling_cabinet_obstacle.tscn" id="7_sken8"]
 [ext_resource type="PackedScene" uid="uid://b14r0ayr0hufl" path="res://Levels/environment_elements/emergency_light.tscn" id="8_77ot4"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_kk2a0"]
@@ -29,17 +29,9 @@ item_spawning_points = [NodePath("ItemSpawn"), NodePath("ItemSpawn2")]
 cross = NodePath("Cross")
 
 [node name="RoomSize" type="MeshInstance3D" parent="."]
+visible = false
 mesh = SubResource("PlaneMesh_kk2a0")
 surface_material_override/0 = SubResource("StandardMaterial3D_k70g2")
-
-[node name="filing_cabinet2" parent="." instance=ExtResource("2_77dia")]
-transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -1.384, 0, -0.785)
-
-[node name="filing_cabinet3" parent="." instance=ExtResource("2_77dia")]
-transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -1.99841, 0, -0.785065)
-
-[node name="filing_cabinet4" parent="." instance=ExtResource("2_77dia")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.726835, 0, -0.888685)
 
 [node name="AtrilSpawner" type="Marker3D" parent="."]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -1.06173, 0, 1.08932)
@@ -74,8 +66,22 @@ script = ExtResource("5_mefh5")
 [node name="Bed" parent="." instance=ExtResource("6_0ab60")]
 transform = Transform3D(0.666337, 0, -0.74565, 0, 1, 0, 0.74565, 0, 0.666337, 2.51739, 0, -2.5299)
 
+[node name="Bed2" parent="." instance=ExtResource("6_0ab60")]
+transform = Transform3D(0.999917, 0, -0.0128277, 0, 1, 0, 0.0128277, 0, 0.999917, 3.93903, 0, 1.72093)
+
 [node name="Bed3" parent="." instance=ExtResource("6_0ab60")]
 transform = Transform3D(0.686453, 0, -0.727174, 0, 1, 0, 0.727174, 0, 0.686453, -2.07279, 0, 2.84606)
 
 [node name="emergency_light" parent="." instance=ExtResource("8_77ot4")]
 transform = Transform3D(4.68118e-16, 1.07093e-08, -0.245, 0.245, -1.07093e-08, 0, -1.07093e-08, -0.245, -1.07093e-08, 1.21273, 1.69683, -0.522613)
+
+[node name="FillingCabinets" type="Node3D" parent="."]
+
+[node name="FillingCabinetObstacle" parent="FillingCabinets" instance=ExtResource("7_sken8")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -0.859043, 0, -1.01913)
+
+[node name="FillingCabinetObstacle2" parent="FillingCabinets" instance=ExtResource("7_sken8")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0.858661, 0, -0.919273)
+
+[node name="FillingCabinetObstacle3" parent="FillingCabinets" instance=ExtResource("7_sken8")]
+transform = Transform3D(-0.95587, 0, -0.29379, 0, 1, 0, 0.29379, 0, -0.95587, 2.03493, 0, 3.35461)

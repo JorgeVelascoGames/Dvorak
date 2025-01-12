@@ -25,6 +25,7 @@ var tween : Tween
 
 
 func enter(_msg : ={}) -> void:
+	randomize()
 	necessary_keys_to_press = randi_range(min_keys_to_press, max_keys_to_press)
 	player.velocity = Vector3.ZERO
 	left_key_selection = left_side_keys.pick_random()
@@ -67,6 +68,7 @@ func _correct_key() -> void:
 func finish_state() -> void:
 	if inventory.use_pills():
 		$"../../Components/Balance".take_pill()
+		player_ui.display_gameplay_text("You took a pill", 3)
 	state_machine.transition_to("Idle", {})
 
 

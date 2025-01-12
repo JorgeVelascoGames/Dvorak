@@ -212,6 +212,23 @@ tracks/7/keys = {
 "values": [Vector3(-0.670154, 0, 0)]
 }
 
+[sub_resource type="Animation" id="Animation_6pxw8"]
+resource_name = "change_batteries"
+length = 2.7
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedObjects/FlaslightModel:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.433333, 0.6, 0.966667, 1.63333, 1.8, 2.26667, 2.56667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0, 0.170501), Vector3(-0.222309, -0.0389287, 0.111997), Vector3(-0.222309, -0.0389287, 0.111997), Vector3(-0.885113, -0.148591, -7.81696e-05), Vector3(0.21512, -0.141632, 0.272946), Vector3(0.21512, -0.141632, 0.272946), Vector3(-0.470814, -0.340719, 0.299987), Vector3(-0.797462, 0.16322, 0.051087)]
+}
+
 [sub_resource type="Animation" id="Animation_f0x85"]
 resource_name = "floor"
 length = 8.0
@@ -239,6 +256,23 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(0.5, 2, 2, 3.4822, 3.03143, 3.03143, 3.03143, 0.5),
 "update": 0,
 "values": [Vector3(-0.610865, 0, -1.51844), Vector3(-0.610865, 0, -1.39626), Vector3(-0.610865, 0, -1.51844), Vector3(-0.610865, 0, -1.51844), Vector3(-1.5708, 0, 0), Vector3(-1.5708, 0, 0), Vector3(-1.5708, 0, 0), Vector3(-0.610865, 0, -1.51844)]
+}
+
+[sub_resource type="Animation" id="Animation_lwqgl"]
+resource_name = "load_gun"
+length = 1.8
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedObjects/GunModel:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.233333, 0.433333, 0.6, 0.8, 0.933333, 1.06667, 1.3, 1.5, 1.66667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(1.51435, 2.0736, -2.57015), Vector3(1.51435, 2.0736, -2.29685), Vector3(1.25525, 2.68379, -1.69179), Vector3(1.3554, 2.33537, -2.48435), Vector3(1.3554, 2.33537, -2.15274), Vector3(1.3554, 2.33537, -2.15274), Vector3(1.51435, 2.0736, -2.57015), Vector3(1.51435, 2.0736, -2.29685), Vector3(1.25525, 2.68379, -1.69179), Vector3(1.3554, 2.33537, -2.48435)]
 }
 
 [sub_resource type="Animation" id="Animation_hxgs6"]
@@ -300,6 +334,22 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector3(0, 0.54, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_ke5us"]
+resource_name = "pills"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedObjects/PillsModel:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.133333, 0.3, 0.433333, 0.566667, 0.766667, 0.833333, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(-0.670154, 0, 0), Vector3(-0.670154, 5.7897e-08, -0.570426), Vector3(-0.670154, 5.7897e-08, -0.570426), Vector3(-0.670154, 3.18527e-08, 0.642351), Vector3(-0.670154, 3.18527e-08, 0.642351), Vector3(-0.670154, 4.77622e-08, -0.226631), Vector3(-0.670154, 1.11794e-07, 0.362732), Vector3(-0.670154, 1.18645e-07, 0.137881)]
 }
 
 [sub_resource type="Animation" id="Animation_838k8"]
@@ -425,56 +475,6 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(2, 2, 2, 2, 2, 2),
 "update": 0,
 "values": [Vector3(0, -0.135978, 0), Vector3(0, -0.0746599, 0), Vector3(0, -0.0853905, 0), Vector3(0, -0.10072, 0), Vector3(0, -0.407561, 0), Vector3(0, -0.135978, 0)]
-}
-
-[sub_resource type="Animation" id="Animation_lwqgl"]
-resource_name = "load_gun"
-length = 1.8
-loop_mode = 2
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("AnimatedObjects/GunModel:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.233333, 0.433333, 0.6, 0.8, 0.933333, 1.06667, 1.3, 1.5, 1.66667),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
-"update": 0,
-"values": [Vector3(1.51435, 2.0736, -2.57015), Vector3(1.51435, 2.0736, -2.29685), Vector3(1.25525, 2.68379, -1.69179), Vector3(1.3554, 2.33537, -2.48435), Vector3(1.3554, 2.33537, -2.15274), Vector3(1.3554, 2.33537, -2.15274), Vector3(1.51435, 2.0736, -2.57015), Vector3(1.51435, 2.0736, -2.29685), Vector3(1.25525, 2.68379, -1.69179), Vector3(1.3554, 2.33537, -2.48435)]
-}
-
-[sub_resource type="Animation" id="Animation_6pxw8"]
-resource_name = "change_batteries"
-length = 2.7
-loop_mode = 2
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("AnimatedObjects/FlaslightModel:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.433333, 0.6, 0.966667, 1.63333, 1.8, 2.26667, 2.56667),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
-"update": 0,
-"values": [Vector3(0, 0, 0), Vector3(0, 0, 0.170501), Vector3(-0.222309, -0.0389287, 0.111997), Vector3(-0.222309, -0.0389287, 0.111997), Vector3(-0.885113, -0.148591, -7.81696e-05), Vector3(0.21512, -0.141632, 0.272946), Vector3(0.21512, -0.141632, 0.272946), Vector3(-0.470814, -0.340719, 0.299987), Vector3(-0.797462, 0.16322, 0.051087)]
-}
-
-[sub_resource type="Animation" id="Animation_ke5us"]
-resource_name = "pills"
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("AnimatedObjects/PillsModel:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.133333, 0.3, 0.433333, 0.566667, 0.766667, 0.833333, 1),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
-"update": 0,
-"values": [Vector3(-0.670154, 0, 0), Vector3(-0.670154, 5.7897e-08, -0.570426), Vector3(-0.670154, 5.7897e-08, -0.570426), Vector3(-0.670154, 3.18527e-08, 0.642351), Vector3(-0.670154, 3.18527e-08, 0.642351), Vector3(-0.670154, 4.77622e-08, -0.226631), Vector3(-0.670154, 1.11794e-07, 0.362732), Vector3(-0.670154, 1.18645e-07, 0.137881)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_1d5hg"]
@@ -737,7 +737,8 @@ mesh = SubResource("CapsuleMesh_fyred")
 [node name="Balance" parent="Components" instance=ExtResource("10_m7euy")]
 max_balance = 6000.0
 leaving_walker_cost = 20.0
-forward_movement_cost = 100.0
+forward_movement_cost = 75.0
+sprint_penalty = 150.0
 backward_movement_cost = 170.0
 side_movement_cost = 130.0
 rotation_cost_divident = 30.0

@@ -56,6 +56,8 @@ func physics_update(delta: float) -> void:
 
 
 func input(event):
+	if event.is_action_pressed("flashlight"):
+		player.toggle_flashlight()
 	if event.is_action_pressed("interact"):
 		player.interact()
 	if event is InputEventMouseMotion:

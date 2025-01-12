@@ -84,6 +84,7 @@ func interact() -> void:
 func try_grab_walker():
 	walker.try_pick_walker()
 
+
 func player_hit() -> void:
 	if damaged:
 		pass#TODO
