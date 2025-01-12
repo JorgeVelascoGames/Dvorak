@@ -1,5 +1,5 @@
 extends PlayerState
-class_name TakePill
+class_name LoadGun
 
 @export var min_keys_to_press := 12
 @export var max_keys_to_press := 33
@@ -9,17 +9,18 @@ class_name TakePill
 @onready var player_ui: PlayerUI = $"../../PlayerUI"
 @onready var balance: Balance = $"../../Components/Balance"
 @onready var camera_pivot: Node3D = $"../../CameraPivot"
-@onready var animated_gun: Node3D = $"../../AnimatedObjects/PillsModel"
-@onready var animation_tree: PlayerAnimationController = $"../../AnimationTree"
+@onready var ammo_counter: AmmoCounter = $"../../Components/AmmoCounter"
+@onready var animated_gun: Node3D = $"../../AnimatedObjects/GunModel"
 @onready var gun_initial_position := animated_gun.position
+@onready var animation_tree: PlayerAnimationController = $"../../AnimationTree"
 
 var necessary_keys_to_press : int
 var right_key_selection : String
 var left_key_selection : String
-enum KeyboardSide {top, right}
+enum KeyboardSide {left, right}
 var current_side : KeyboardSide = KeyboardSide.right
 var right_side_keys = ["right_key_1", "right_key_2", "right_key_q", "right_key_e", "right_key_z", "right_key_x", "right_key_c", "right_key_3"]
-var left_side_keys = ["left_key_0", "left_key_9", "left_key_o", "left_key_i", "left_key_l", "left_key_k", "left_key_m"]#left and right were confused due to severe lack of sleep
+var left_side_keys = ["left_key_0", "left_key_9", "left_key_p", "left_key_o", "left_key_i", "left_key_k", "left_key_m"]#left and right were confused due to severe lack of sleep
 var correct_key_pressed : int = 0
 var tween : Tween
 
@@ -39,7 +40,7 @@ func enter(_msg : ={}) -> void:
 	var target_rotation = Vector3(-60, 0, 0) * deg_to_rad(1)
 	tween.tween_property(animated_gun, "position", gun_initial_position, 0.6).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_BACK)
 	tween.tween_property(camera_pivot, "rotation", target_rotation, 0.45)
-	animation_tree["parameters/pills_trigger/request"] = AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE
+	animation_tree["parameters/load_gun_trigger/request"] = AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE
 
 
 func update(_delta):
@@ -50,9 +51,9 @@ func update(_delta):
 func input(event):
 	if current_side == KeyboardSide.right:
 		if event.is_action_pressed(right_key_selection):
-			current_side = KeyboardSide.top
+			current_side = KeyboardSide.left
 			_correct_key()
-	if current_side == KeyboardSide.top:
+	if current_side == KeyboardSide.left:
 		if event.is_action_pressed(left_key_selection):
 			current_side = KeyboardSide.right
 			_correct_key()
@@ -65,8 +66,8 @@ func _correct_key() -> void:
 
 
 func finish_state() -> void:
-	if inventory.use_pills():
-		$"../../Components/Balance".take_pill()
+	ammo_counter.reload()
+	#TODO sound
 	state_machine.transition_to("Idle", {})
 
 
@@ -75,7 +76,7 @@ func cancel_and_finish() -> void:
 
 
 func exit() -> void:
-	correct_key_pressed = 0
-	animation_tree["parameters/pills_trigger/request"] = AnimationNodeOneShot.ONE_SHOT_REQUEST_ABORT
-	placeholder_l_able.hide()
+	animation_tree["parameters/load_gun_trigger/request"] = AnimationNodeOneShot.ONE_SHOT_REQUEST_ABORT
 	animated_gun.hide()
+	correct_key_pressed = 0
+	placeholder_l_able.hide()

@@ -13,6 +13,10 @@ func pick_up_ammo(amount : int) -> void:
 
 
 func reload() -> void:
+	if ammo_stored <= 0:
+		player_ui.display_gameplay_text("You don't have any bullet left", 2)
+		return
+	
 	var empty_slots := max_ammo_loaded - ammo_loaded
 	var loaded_bullets : int
 	if empty_slots == 0:

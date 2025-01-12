@@ -2,7 +2,6 @@ extends PlayerState
 class_name PrepareGun
 
 @onready var animation_player: AnimationPlayer = $"../../AnimationPlayer"
-@onready var ammo_counter: AmmoCounter = $"../../Components/AmmoCounter"
 @onready var animated_gun: Node3D = $"../../AnimatedObjects/GunModel"
 @onready var animated_crowbar: Node3D = $"../../AnimatedObjects/Crowbar"
 @onready var animation_tree: PlayerAnimationController = $"../../AnimationTree"
@@ -17,7 +16,6 @@ func enter(_msg : ={}) -> void:
 	player.velocity = Vector3.ZERO
 	
 	if player.current_weapon == player.WEAPON.gun:
-		ammo_counter.reload()
 		animated_gun.show()
 		animated_gun.position = Vector3(.3, 0.0, .2)
 		tween = get_tree().create_tween()

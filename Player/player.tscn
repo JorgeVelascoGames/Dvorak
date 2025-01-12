@@ -1,4 +1,4 @@
-[gd_scene load_steps=66 format=3 uid="uid://m6pypgl566n1"]
+[gd_scene load_steps=79 format=3 uid="uid://m6pypgl566n1"]
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_ref5g"]
 [ext_resource type="Script" path="res://player/smooth_camera.gd" id="2_cywkd"]
@@ -20,6 +20,8 @@
 [ext_resource type="Shape3D" uid="uid://df6y055xrghl7" path="res://player/player_normal_collision_shape.tres" id="12_6t6rn"]
 [ext_resource type="Script" path="res://scripts/state_machine/states/take_pill.gd" id="13_dsee1"]
 [ext_resource type="Script" path="res://player/player_ui.gd" id="14_0ypvp"]
+[ext_resource type="Script" path="res://scripts/state_machine/states/load_gun.gd" id="14_3bkdw"]
+[ext_resource type="Script" path="res://scripts/state_machine/states/change_batteries.gd" id="15_6uppe"]
 [ext_resource type="Script" path="res://player/inventory.gd" id="15_8pfmq"]
 [ext_resource type="PackedScene" uid="uid://4j0uw0ki1luc" path="res://player/walker.tscn" id="20_qts6k"]
 [ext_resource type="FontFile" uid="uid://cxbeti4rmsnty" path="res://assets/fonts/cormorant_garamond/CormorantGaramond-Regular.ttf" id="21_23yvg"]
@@ -27,6 +29,8 @@
 [ext_resource type="Script" path="res://player/player_animation_controller.gd" id="22_j0g4a"]
 [ext_resource type="PackedScene" uid="uid://ctrkoynx6fbcj" path="res://assets/props/crowbar/crowbar.tscn" id="22_r00kl"]
 [ext_resource type="Script" path="res://player/crowbar_attack_hitbox.gd" id="24_nhdqm"]
+[ext_resource type="PackedScene" uid="uid://cv00qs5ggy5x" path="res://assets/props/flaslight/flaslight.tscn" id="28_lrh3t"]
+[ext_resource type="PackedScene" uid="uid://ccacel4hrjcs8" path="res://assets/props/pills/pills.tscn" id="29_vkalu"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_fyred"]
 
@@ -182,6 +186,30 @@ tracks/5/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector3(-0.085, -0.244, -0.957)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("AnimatedObjects/FlaslightModel:rotation")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("AnimatedObjects/PillsModel:rotation")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.670154, 0, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_f0x85"]
@@ -399,18 +427,74 @@ tracks/1/keys = {
 "values": [Vector3(0, -0.135978, 0), Vector3(0, -0.0746599, 0), Vector3(0, -0.0853905, 0), Vector3(0, -0.10072, 0), Vector3(0, -0.407561, 0), Vector3(0, -0.135978, 0)]
 }
 
+[sub_resource type="Animation" id="Animation_lwqgl"]
+resource_name = "load_gun"
+length = 1.8
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedObjects/GunModel:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.233333, 0.433333, 0.6, 0.8, 0.933333, 1.06667, 1.3, 1.5, 1.66667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(1.51435, 2.0736, -2.57015), Vector3(1.51435, 2.0736, -2.29685), Vector3(1.25525, 2.68379, -1.69179), Vector3(1.3554, 2.33537, -2.48435), Vector3(1.3554, 2.33537, -2.15274), Vector3(1.3554, 2.33537, -2.15274), Vector3(1.51435, 2.0736, -2.57015), Vector3(1.51435, 2.0736, -2.29685), Vector3(1.25525, 2.68379, -1.69179), Vector3(1.3554, 2.33537, -2.48435)]
+}
+
+[sub_resource type="Animation" id="Animation_6pxw8"]
+resource_name = "change_batteries"
+length = 2.7
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedObjects/FlaslightModel:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.433333, 0.6, 0.966667, 1.63333, 1.8, 2.26667, 2.56667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0, 0.170501), Vector3(-0.222309, -0.0389287, 0.111997), Vector3(-0.222309, -0.0389287, 0.111997), Vector3(-0.885113, -0.148591, -7.81696e-05), Vector3(0.21512, -0.141632, 0.272946), Vector3(0.21512, -0.141632, 0.272946), Vector3(-0.470814, -0.340719, 0.299987), Vector3(-0.797462, 0.16322, 0.051087)]
+}
+
+[sub_resource type="Animation" id="Animation_ke5us"]
+resource_name = "pills"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedObjects/PillsModel:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.133333, 0.3, 0.433333, 0.566667, 0.766667, 0.833333, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(-0.670154, 0, 0), Vector3(-0.670154, 5.7897e-08, -0.570426), Vector3(-0.670154, 5.7897e-08, -0.570426), Vector3(-0.670154, 3.18527e-08, 0.642351), Vector3(-0.670154, 3.18527e-08, 0.642351), Vector3(-0.670154, 4.77622e-08, -0.226631), Vector3(-0.670154, 1.11794e-07, 0.362732), Vector3(-0.670154, 1.18645e-07, 0.137881)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_1d5hg"]
 _data = {
 "RESET": SubResource("Animation_1ivek"),
+"change_batteries": SubResource("Animation_6pxw8"),
 "floor": SubResource("Animation_f0x85"),
+"load_gun": SubResource("Animation_lwqgl"),
 "losing_balance": SubResource("Animation_hxgs6"),
 "no_animation": SubResource("Animation_yw3n8"),
 "no_movement_pivot": SubResource("Animation_jsxkr"),
+"pills": SubResource("Animation_ke5us"),
 "prepare_crowbar": SubResource("Animation_838k8"),
 "prepare_gun": SubResource("Animation_dutym"),
 "swing_crowbar": SubResource("Animation_2vcw6"),
 "unbalanced": SubResource("Animation_hbgry")
 }
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_rnanc"]
+animation = &"pills"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_5bcms"]
 animation = &"prepare_gun"
@@ -430,12 +514,20 @@ animation = &"swing_crowbar"
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_cwxrh"]
 animation = &"prepare_crowbar"
 
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_p52ax"]
+animation = &"load_gun"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_hx86p"]
+animation = &"change_batteries"
+
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_3dwcv"]
 animation = &"unbalanced"
 
 [sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_h0v5c"]
 
 [sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_fwq1o"]
+
+[sub_resource type="AnimationNodeOneShot" id="AnimationNodeOneShot_gs2nd"]
 
 [sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_6uxev"]
 
@@ -449,10 +541,14 @@ animation = &"unbalanced"
 
 [sub_resource type="AnimationNodeBlend2" id="AnimationNodeBlend2_kecm2"]
 
+[sub_resource type="AnimationNodeOneShot" id="AnimationNodeOneShot_pj02h"]
+
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_5xjhm"]
 animation = &"losing_balance"
 
 [sub_resource type="AnimationNodeBlend2" id="AnimationNodeBlend2_rl3gr"]
+
+[sub_resource type="AnimationNodeOneShot" id="AnimationNodeOneShot_bgwig"]
 
 [sub_resource type="AnimationNodeOneShot" id="AnimationNodeOneShot_otsha"]
 fadein_time = 2.0
@@ -460,10 +556,13 @@ fadein_time = 2.0
 [sub_resource type="AnimationNodeBlend2" id="AnimationNodeBlend2_qem71"]
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_x2kci"]
+graph_offset = Vector2(832.259, -326.718)
 nodes/Animation/node = SubResource("AnimationNodeAnimation_3dwcv")
 nodes/Animation/position = Vector2(300, 380)
+"nodes/Animation 10/node" = SubResource("AnimationNodeAnimation_rnanc")
+"nodes/Animation 10/position" = Vector2(1580, 320)
 "nodes/Animation 2/node" = SubResource("AnimationNodeAnimation_5bcms")
-"nodes/Animation 2/position" = Vector2(840, 320)
+"nodes/Animation 2/position" = Vector2(720, 300)
 "nodes/Animation 3/node" = SubResource("AnimationNodeAnimation_ivxe4")
 "nodes/Animation 3/position" = Vector2(-60, 380)
 "nodes/Animation 4/node" = SubResource("AnimationNodeAnimation_10ho8")
@@ -471,35 +570,45 @@ nodes/Animation/position = Vector2(300, 380)
 "nodes/Animation 5/node" = SubResource("AnimationNodeAnimation_7deig")
 "nodes/Animation 5/position" = Vector2(-360, 300)
 "nodes/Animation 6/node" = SubResource("AnimationNodeAnimation_a4g0y")
-"nodes/Animation 6/position" = Vector2(1780, 540)
+"nodes/Animation 6/position" = Vector2(2260, 520)
 "nodes/Animation 7/node" = SubResource("AnimationNodeAnimation_cwxrh")
-"nodes/Animation 7/position" = Vector2(1280, 540)
+"nodes/Animation 7/position" = Vector2(1820, 560)
+"nodes/Animation 8/node" = SubResource("AnimationNodeAnimation_p52ax")
+"nodes/Animation 8/position" = Vector2(1000, 280)
+"nodes/Animation 9/node" = SubResource("AnimationNodeAnimation_hx86p")
+"nodes/Animation 9/position" = Vector2(1240, 300)
 nodes/TimeScale/node = SubResource("AnimationNodeTimeScale_fwq1o")
-nodes/TimeScale/position = Vector2(1200, 300)
+nodes/TimeScale/position = Vector2(1880, 320)
 "nodes/TimeScale 2/node" = SubResource("AnimationNodeTimeScale_h0v5c")
 "nodes/TimeScale 2/position" = Vector2(500, 220)
+nodes/change_batteries_trigger/node = SubResource("AnimationNodeOneShot_gs2nd")
+nodes/change_batteries_trigger/position = Vector2(1480, 0)
 nodes/crowbar_Swing_timescale/node = SubResource("AnimationNodeTimeScale_6uxev")
-nodes/crowbar_Swing_timescale/position = Vector2(2020, 400)
+nodes/crowbar_Swing_timescale/position = Vector2(2440, 340)
 nodes/crowbar_prepare/node = SubResource("AnimationNodeOneShot_yf1bc")
-nodes/crowbar_prepare/position = Vector2(1880, 20)
+nodes/crowbar_prepare/position = Vector2(2380, 40)
 nodes/crowbar_prepare_timescale/node = SubResource("AnimationNodeTimeScale_7ay31")
-nodes/crowbar_prepare_timescale/position = Vector2(1560, 320)
+nodes/crowbar_prepare_timescale/position = Vector2(2080, 340)
 nodes/crowbar_swing/node = SubResource("AnimationNodeOneShot_x81h2")
-nodes/crowbar_swing/position = Vector2(2300, 40)
+nodes/crowbar_swing/position = Vector2(2680, 60)
 nodes/fix_pivot_movement/node = SubResource("AnimationNodeBlend2_i8rto")
 nodes/fix_pivot_movement/position = Vector2(-40, 0)
 nodes/floor_blend/node = SubResource("AnimationNodeBlend2_kecm2")
 nodes/floor_blend/position = Vector2(360, 0)
+nodes/load_gun_trigger/node = SubResource("AnimationNodeOneShot_pj02h")
+nodes/load_gun_trigger/position = Vector2(1260, 20)
 "nodes/losing balance_anim/node" = SubResource("AnimationNodeAnimation_5xjhm")
-"nodes/losing balance_anim/position" = Vector2(1000, 500)
+"nodes/losing balance_anim/position" = Vector2(1620, 500)
 nodes/losing_balance/node = SubResource("AnimationNodeBlend2_rl3gr")
-nodes/losing_balance/position = Vector2(1340, 40)
-nodes/output/position = Vector2(2560, 60)
+nodes/losing_balance/position = Vector2(2100, 60)
+nodes/output/position = Vector2(2940, 80)
+nodes/pills_trigger/node = SubResource("AnimationNodeOneShot_bgwig")
+nodes/pills_trigger/position = Vector2(1840, 20)
 nodes/prepare_gun_trigger/node = SubResource("AnimationNodeOneShot_otsha")
-nodes/prepare_gun_trigger/position = Vector2(1040, 20)
+nodes/prepare_gun_trigger/position = Vector2(1000, 0)
 nodes/unbalanced_blend/node = SubResource("AnimationNodeBlend2_qem71")
 nodes/unbalanced_blend/position = Vector2(700, 0)
-node_connections = [&"TimeScale", 0, &"losing balance_anim", &"TimeScale 2", 0, &"Animation", &"crowbar_Swing_timescale", 0, &"Animation 6", &"crowbar_prepare", 0, &"losing_balance", &"crowbar_prepare", 1, &"crowbar_prepare_timescale", &"crowbar_prepare_timescale", 0, &"Animation 7", &"crowbar_swing", 0, &"crowbar_prepare", &"crowbar_swing", 1, &"crowbar_Swing_timescale", &"fix_pivot_movement", 0, &"Animation 4", &"fix_pivot_movement", 1, &"Animation 5", &"floor_blend", 0, &"fix_pivot_movement", &"floor_blend", 1, &"Animation 3", &"losing_balance", 0, &"prepare_gun_trigger", &"losing_balance", 1, &"TimeScale", &"output", 0, &"crowbar_swing", &"prepare_gun_trigger", 0, &"unbalanced_blend", &"prepare_gun_trigger", 1, &"Animation 2", &"unbalanced_blend", 0, &"floor_blend", &"unbalanced_blend", 1, &"TimeScale 2"]
+node_connections = [&"TimeScale", 0, &"losing balance_anim", &"TimeScale 2", 0, &"Animation", &"change_batteries_trigger", 0, &"load_gun_trigger", &"change_batteries_trigger", 1, &"Animation 9", &"crowbar_Swing_timescale", 0, &"Animation 6", &"crowbar_prepare", 0, &"losing_balance", &"crowbar_prepare", 1, &"crowbar_prepare_timescale", &"crowbar_prepare_timescale", 0, &"Animation 7", &"crowbar_swing", 0, &"crowbar_prepare", &"crowbar_swing", 1, &"crowbar_Swing_timescale", &"fix_pivot_movement", 0, &"Animation 4", &"fix_pivot_movement", 1, &"Animation 5", &"floor_blend", 0, &"fix_pivot_movement", &"floor_blend", 1, &"Animation 3", &"load_gun_trigger", 0, &"prepare_gun_trigger", &"load_gun_trigger", 1, &"Animation 8", &"losing_balance", 0, &"pills_trigger", &"losing_balance", 1, &"TimeScale", &"output", 0, &"crowbar_swing", &"pills_trigger", 0, &"change_batteries_trigger", &"pills_trigger", 1, &"Animation 10", &"prepare_gun_trigger", 0, &"unbalanced_blend", &"prepare_gun_trigger", 1, &"Animation 2", &"unbalanced_blend", 0, &"floor_blend", &"unbalanced_blend", 1, &"TimeScale 2"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_e43ec"]
 size = Vector3(0.615, 1, 1)
@@ -612,6 +721,12 @@ one_shot = true
 
 [node name="TakePill" type="Node" parent="StateMachine"]
 script = ExtResource("13_dsee1")
+
+[node name="LoadGun" type="Node" parent="StateMachine"]
+script = ExtResource("14_3bkdw")
+
+[node name="ChangeBatteries" type="Node" parent="StateMachine"]
+script = ExtResource("15_6uppe")
 
 [node name="PlayerCapsule" type="MeshInstance3D" parent="."]
 visible = false
@@ -828,6 +943,14 @@ visible = false
 transform = Transform3D(-0.365312, -0.126945, 0.136132, 0, 0.299855, 0.279619, -0.186138, 0.249142, -0.267172, -0.085, -0.244, -0.957)
 visible = false
 
+[node name="FlaslightModel" parent="AnimatedObjects" instance=ExtResource("28_lrh3t")]
+transform = Transform3D(0.375, 0, 0, 0, 0.375, 0, 0, 0, 0.375, 0, 0.25, -0.116873)
+visible = false
+
+[node name="PillsModel" parent="AnimatedObjects" instance=ExtResource("29_vkalu")]
+transform = Transform3D(0.12, 0, 0, 0, 0.0940471, 0.0745328, 0, -0.0745328, 0.0940471, 0, 0.177635, -0.132516)
+visible = false
+
 [node name="Timers" type="Node" parent="."]
 
 [node name="DamagedHealTimer" type="Timer" parent="Timers"]
@@ -841,6 +964,9 @@ tree_root = SubResource("AnimationNodeBlendTree_x2kci")
 anim_player = NodePath("../AnimationPlayer")
 parameters/TimeScale/scale = 2.0
 "parameters/TimeScale 2/scale" = 0.8
+parameters/change_batteries_trigger/active = false
+parameters/change_batteries_trigger/internal_active = false
+parameters/change_batteries_trigger/request = 0
 parameters/crowbar_Swing_timescale/scale = 1.0
 parameters/crowbar_prepare/active = false
 parameters/crowbar_prepare/internal_active = false
@@ -851,7 +977,13 @@ parameters/crowbar_swing/internal_active = false
 parameters/crowbar_swing/request = 0
 parameters/fix_pivot_movement/blend_amount = 0.0
 parameters/floor_blend/blend_amount = 0.0
+parameters/load_gun_trigger/active = false
+parameters/load_gun_trigger/internal_active = false
+parameters/load_gun_trigger/request = 0
 parameters/losing_balance/blend_amount = 0.0
+parameters/pills_trigger/active = false
+parameters/pills_trigger/internal_active = false
+parameters/pills_trigger/request = 0
 parameters/prepare_gun_trigger/active = false
 parameters/prepare_gun_trigger/internal_active = false
 parameters/prepare_gun_trigger/request = 0

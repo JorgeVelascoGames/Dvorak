@@ -41,6 +41,15 @@ func input(event):
 	if event.is_action_pressed("drop_walker"):
 		player.try_grab_walker()
 	
+	if event.is_action_pressed("take_pills"):
+		state_machine.transition_to("TakePill", {})
+	
+	if event.is_action_pressed("load_gun") and player.current_weapon == player.WEAPON.gun:
+		state_machine.transition_to("LoadGun", {})
+	
+	if event.is_action_pressed("change_battery") and player.current_weapon == player.WEAPON.flashlight and player.flashlight.empty_battery:
+		state_machine.transition_to("ChangeBatteries", {})
+	
 	if event is InputEventMouseMotion:
 		mouse_motion = -event.relative * 0.001
 

@@ -41,10 +41,11 @@ func toggle_flashlight() -> void:
 
 
 func add_battery() -> void:
-	var remaining_time := flashlight_battery.time_left
 	flashlight_battery.stop()
+	hide()
 	#play sound
-	flashlight_battery.start(remaining_time + extra_time_on_pickup)
+	flashlight_battery.wait_time = extra_time_on_pickup
+	empty_battery = true
 
 
 func move_flashlight(follow_item : Node3D = get_parent()) -> void:

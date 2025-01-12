@@ -21,7 +21,7 @@ signal balance_added(amount : int)
 @export var getting_hit_cost : float
 @export var balance_recovery : float
 @export var bonus_balance_recovery : float
-@export var pills_balance_recovery := 120.00
+@export var pill_balance_recovery := 120.00
 @export var damaged_balance_penalty := 15.00
 @export var weapon_balance_penalty := 25.00
 
@@ -132,7 +132,7 @@ func _on_balance_recovery_timer_timeout():
 	else:
 		objective_balance -= bonus_balance_recovery / 2
 	if not $PillBonusTimer.is_stopped():
-		objective_balance -= pills_balance_recovery / 2
+		objective_balance -= pill_balance_recovery / 2
 	if objective_balance < 1:
 		objective_balance = 1
 	

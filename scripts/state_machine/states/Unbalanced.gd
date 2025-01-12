@@ -26,6 +26,9 @@ var finished_state := false
 
 
 func enter(_msg : ={}) -> void:
+	if player.flashlight.visible:
+		player.flashlight.hide()
+		player.flashlight.flashlight_battery.paused = true
 	finished_state = false
 	player.velocity = Vector3.ZERO
 	left_key_selection = left_side_keys.pick_random()
