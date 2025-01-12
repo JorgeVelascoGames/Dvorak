@@ -556,7 +556,6 @@ fadein_time = 2.0
 [sub_resource type="AnimationNodeBlend2" id="AnimationNodeBlend2_qem71"]
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_x2kci"]
-graph_offset = Vector2(832.259, -326.718)
 nodes/Animation/node = SubResource("AnimationNodeAnimation_3dwcv")
 nodes/Animation/position = Vector2(300, 380)
 "nodes/Animation 10/node" = SubResource("AnimationNodeAnimation_rnanc")

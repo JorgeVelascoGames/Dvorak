@@ -14,6 +14,7 @@ class_name PlayerAnimationController
 var ratio := 0.4
 var anim_value : float
 
+
 func _process(delta: float) -> void:
 	losing_balance(delta)
 
