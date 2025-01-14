@@ -622,6 +622,13 @@ axis_lock_angular_z = true
 floor_max_angle = 0.959931
 script = ExtResource("1_ref5g")
 speed = 0.2
+fall_multiplier = null
+camera_sensibility = null
+can_jump = null
+damaged = null
+time_to_heal_up = null
+camBobSpeed = null
+camBobUpDown = null
 
 [node name="SubViewportContainer" type="SubViewportContainer" parent="."]
 anchors_preset = 15
@@ -896,25 +903,47 @@ grow_vertical = 0
 text = "test
 "
 
-[node name="TopText" type="MarginContainer" parent="PlayerUI"]
-visible = false
+[node name="ControlHints" type="HBoxContainer" parent="PlayerUI"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = 12.0
 grow_horizontal = 2
 grow_vertical = 2
-
-[node name="GrabWalkerUI" type="HBoxContainer" parent="PlayerUI/TopText"]
-layout_mode = 2
 alignment = 1
 
-[node name="TextureRect" type="TextureRect" parent="PlayerUI/TopText/GrabWalkerUI"]
+[node name="R-Text" type="MarginContainer" parent="PlayerUI/ControlHints"]
 visible = false
 layout_mode = 2
 
-[node name="TopLable" type="Label" parent="PlayerUI/TopText/GrabWalkerUI"]
+[node name="GrabWalkerUI" type="HBoxContainer" parent="PlayerUI/ControlHints/R-Text"]
+layout_mode = 2
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="PlayerUI/ControlHints/R-Text/GrabWalkerUI"]
+visible = false
+layout_mode = 2
+
+[node name="TopLable" type="Label" parent="PlayerUI/ControlHints/R-Text/GrabWalkerUI"]
+layout_mode = 2
+size_flags_vertical = 0
+text = "R- Grab walker"
+label_settings = SubResource("LabelSettings_eftwr")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="I-Text" type="MarginContainer" parent="PlayerUI/ControlHints"]
+layout_mode = 2
+
+[node name="GrabWalkerUI" type="HBoxContainer" parent="PlayerUI/ControlHints/I-Text"]
+layout_mode = 2
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="PlayerUI/ControlHints/I-Text/GrabWalkerUI"]
+visible = false
+layout_mode = 2
+
+[node name="TopLable" type="Label" parent="PlayerUI/ControlHints/I-Text/GrabWalkerUI"]
 layout_mode = 2
 size_flags_vertical = 0
 text = "R- Grab walker"

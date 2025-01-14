@@ -124,6 +124,7 @@ transform = Transform3D(2.18855, 0.670652, 3.8613e-08, -3.1427e-15, -1.00055e-07
 
 [node name="GunInteract" type="Node" parent="GunSelectorHitbox"]
 script = ExtResource("2_j43j1")
+description = "Take gun"
 
 [node name="CrowbarSelectorHitbox" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.168601, 0.347891, 0.0314156)
@@ -139,6 +140,7 @@ transform = Transform3D(-0.318204, 0.0661168, 2.89006e-09, 0, -1.42062e-08, 0.32
 
 [node name="CrowbarInteract" type="Node" parent="CrowbarSelectorHitbox"]
 script = ExtResource("2_j43j1")
+description = "Take crowbar"
 
 [node name="FlashlightInteract" type="StaticBody3D" parent="."]
 collision_layer = 64
@@ -150,6 +152,7 @@ shape = SubResource("BoxShape3D_y4t8g")
 
 [node name="FlashlightInteract" type="Node" parent="FlashlightInteract"]
 script = ExtResource("2_j43j1")
+description = "Take flashlight"
 
 [node name="WalkerGrabArea" type="Area3D" parent="."]
 collision_layer = 0

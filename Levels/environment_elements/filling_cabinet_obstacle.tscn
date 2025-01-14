@@ -40,6 +40,7 @@ graph_offset = Vector2(56, -69)
 
 [node name="FillingCabinetObstacle" type="Node3D"]
 script = ExtResource("1_xf6dv")
+max_number_of_bullets = 3
 
 [node name="FilingCabinetAnimated" parent="." instance=ExtResource("1_q6gxq")]
 

@@ -4,19 +4,19 @@ class_name PlayerUI
 @onready var player_gameplay_info: Label = $PlayerGameplayInfo
 @onready var timer: Timer = $Timer
 @onready var walker: WalkerModel = $"../WalkerFixedPoint/Walker"
-@onready var top_text: MarginContainer = $TopText
 @onready var top_lable: Label = $TopText/GrabWalkerUI/TopLable
 @onready var state_machine: StateMachine = $"../StateMachine"
+@onready var r_text: MarginContainer = $"ControlHints/R-Text"
+@onready var i_text: MarginContainer = $"ControlHints/I-Text"
 
 var tween : Tween
+var r_hint_priority := 0
 
 
 func _ready() -> void:
 	player_gameplay_info.text = ""
-
-
-func _process(delta: float) -> void:
-	process_top_text(delta)
+	r_text.hide()
+	i_text.hide()
 
 
 func display_gameplay_text(text : String, time : float) -> void:
@@ -33,19 +33,26 @@ func display_gameplay_text(text : String, time : float) -> void:
 	await tween.finished
 	player_gameplay_info.text = ""
 
+##Call this method on process with a priority higher than 0
+func show_interaction_hint(hint : String) -> void:
+	i_text.show()
+	$"ControlHints/I-Text/GrabWalkerUI/TopLable".text = hint
 
-func process_top_text(delta) -> void:
-	if state_machine.state is Walker:
-		top_text.hide()
+
+func hide_interaction_hint() -> void:
+	i_text.hide()
+	$"ControlHints/I-Text/GrabWalkerUI/TopLable".text = ""
+
+##Call this method on process with a priority higher than 0
+func show_constant_hint(hint : String, priority := 0) -> void:
+	if r_hint_priority > priority:
 		return
-	
-	for body in walker.walker_grab_area.get_overlapping_bodies():
-		if body is Player:
-			display_top_text("R - Grab Walker")
-			return
-	top_text.hide()
+	r_hint_priority = priority
+	r_text.show()
+	$"ControlHints/R-Text/GrabWalkerUI/TopLable".text = hint
 
 
-func display_top_text(text : String) -> void:
-	top_text.show()
-	top_lable.text = text
+func hide_constant_hint() -> void:
+	r_hint_priority = 0
+	r_text.hide()
+	$"ControlHints/R-Text/GrabWalkerUI/TopLable".text = ""

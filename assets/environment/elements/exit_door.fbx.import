@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://dtath7fw6h5e2"
-path="res://.godot/imported/Drone.glb-26b535d3c19ed9af1ff06fc15b09c994.scn"
+uid="uid://b7pbaomybkxfp"
+path="res://.godot/imported/exit_door.fbx-a1ae1846273a66cb0e60a9085bfa2c84.scn"
 
 [deps]
 
-source_file="res://Enemy/Drone.glb"
-dest_files=["res://.godot/imported/Drone.glb-26b535d3c19ed9af1ff06fc15b09c994.scn"]
+source_file="res://assets/environment/elements/exit_door.fbx"
+dest_files=["res://.godot/imported/exit_door.fbx-a1ae1846273a66cb0e60a9085bfa2c84.scn"]
 
 [params]
 
@@ -27,10 +27,11 @@ meshes/force_disable_compression=false
 skins/use_named_skins=true
 animation/import=true
 animation/fps=30
-animation/trimming=false
+animation/trimming=true
 animation/remove_immutable_tracks=true
 animation/import_rest_as_RESET=false
 import_script/path=""
 _subresources={}
-gltf/naming_version=1
-gltf/embedded_image_handling=1
+fbx/importer=0
+fbx/allow_geometry_helper_nodes=false
+fbx/embedded_image_handling=1

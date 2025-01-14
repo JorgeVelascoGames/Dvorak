@@ -83,7 +83,25 @@ navigation_mesh = SubResource("NavigationMesh_hkrcb")
 
 [node name="ExitGate" parent="NavigationRegion3D" instance=ExtResource("8_xg4ny")]
 unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 33.7559, 0, -16.3926)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 37.0301, 0, -12.8118)
+
+[node name="Gate" parent="NavigationRegion3D/ExitGate" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0.0154648)
+
+[node name="MainSwitch" parent="NavigationRegion3D/ExitGate" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.64918, 1.37832, 0.032135)
+
+[node name="PassSwitch" parent="NavigationRegion3D/ExitGate" index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.31959, 1.378, 0.0415192)
+
+[node name="PassSwitch2" parent="NavigationRegion3D/ExitGate" index="3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.69686, 1.378, 0.042)
+
+[node name="PassSwitch3" parent="NavigationRegion3D/ExitGate" index="4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.05516, 1.378, 0.042)
+
+[node name="PassSwitch4" parent="NavigationRegion3D/ExitGate" index="5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.42031, 1.378, 0.042)
 
 [node name="FillingCabinets" type="Node3D" parent="NavigationRegion3D"]
 
@@ -376,7 +394,7 @@ omni_attenuation = 1.745
 [node name="Entities" type="Node3D" parent="."]
 
 [node name="Player" parent="Entities" instance=ExtResource("2_2aoio")]
-transform = Transform3D(-0.999422, 0, -0.0340275, 0, 1, 0, 0.0340275, 0, -0.999422, 14.6115, 1.61237, -2.28579)
+transform = Transform3D(-0.425006, 0, -0.905192, 0, 1, 0, 0.905192, 0, -0.425006, 34.2407, 1.61237, -13.121)
 
 [node name="Decoration" type="Node3D" parent="."]
 
@@ -516,6 +534,7 @@ transform = Transform3D(-1.07093e-08, -0.245, 0, 0.245, -1.07093e-08, 0, 0, 0, 0
 [node name="emergency_light4" parent="EmergencyLights" instance=ExtResource("13_3rriw")]
 transform = Transform3D(-1.07093e-08, -0.245, 0, 0.245, -1.07093e-08, 0, 0, 0, 0.245, 23.9433, 7.23671, -13.0957)
 
+[editable path="NavigationRegion3D/ExitGate"]
 [editable path="Lamps/LampLight"]
 [editable path="Lamps/LampLight/LampModel"]
 [editable path="Lights/Light"]

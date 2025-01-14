@@ -36,6 +36,7 @@ var current_weapon : WEAPON = WEAPON.none
 @onready var inventory: Inventory = $Components/Inventory
 @onready var flashlight_pivot: Node3D = $FlashlightPivot
 @onready var flashlight : Flashlight = walker.flashlight
+@onready var interactable_ray: RayCast3D = $CameraPivot/FollowPivot/WorldCamera/InteractableRay
 
 #onready variables
 @onready var original_world_camera_fov = world_camera.fov
@@ -55,6 +56,13 @@ func _process(delta: float) -> void:
 	_delta += delta
 	if _delta > 10:
 		delta = 0
+	#Scan raycast for hints
+	if interactable_ray.is_colliding():
+		var collision = interactable_ray.get_collider()
+		if collision is Interactable:
+			player_ui.show_interaction_hint(collision.description)
+			return
+	player_ui.hide_interaction_hint()
 
 
 func _physics_process(delta):

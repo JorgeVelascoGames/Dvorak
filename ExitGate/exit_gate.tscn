@@ -2,13 +2,11 @@
 
 [ext_resource type="Script" path="res://ExitGate/exit_gate.gd" id="1_71loh"]
 [ext_resource type="Script" path="res://components/interactable.gd" id="1_s1pqe"]
+[ext_resource type="PackedScene" uid="uid://chmdaewj61wpa" path="res://assets/environment/elements/exit_door.tscn" id="3_sy4dp"]
 [ext_resource type="PackedScene" uid="uid://cfpfgy53aqnh2" path="res://ExitGate/pass_switch.tscn" id="3_t31dc"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_t08g3"]
-size = Vector3(1, 2, 0.06)
-
-[sub_resource type="BoxMesh" id="BoxMesh_rk4un"]
-size = Vector3(0.525, 1, 0.06)
+size = Vector3(2.15695, 2.2229, 0.0572217)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_gt4jj"]
 size = Vector3(0.1, 0.15, 0.1)
@@ -26,12 +24,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 script = ExtResource("1_s1pqe")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Gate"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.62939e-05, 0.61145, -0.00138916)
 shape = SubResource("BoxShape3D_t08g3")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Gate"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.00874913)
-mesh = SubResource("BoxMesh_rk4un")
+[node name="ExitDoor" parent="Gate" instance=ExtResource("3_sy4dp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.513737, 0)
 
 [node name="MainSwitch" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.555713, 0.521547, 0.032136)
