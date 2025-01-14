@@ -14,6 +14,21 @@ signal WalkerInteracted
 @onready var walker_grab_area: Area3D = $WalkerGrabArea
 
 
+func _ready() -> void:
+	await get_tree().create_timer(2).timeout
+	print(walker_grab_area.get_overlapping_bodies())
+
+
+func _process(delta: float) -> void:
+	if walker_grab_area.get_overlapping_bodies().is_empty():
+		player.player_ui.hide_constant_hint()
+		return
+	if walker_grab_area.get_overlapping_bodies()[0] is Player and player.states_with_interact.has(player.state_machine.state.name):
+		player.player_ui.show_constant_hint("R - Grab walker", 1)
+	else:
+		player.player_ui.hide_constant_hint()
+
+
 func flashlight_togle() -> void:
 	flashlight.toggle_flashlight()
 
@@ -73,7 +88,7 @@ func drop_weapons():
 
 
 func try_pick_walker() -> void:
-	for body in $WalkerGrabArea.get_overlapping_bodies():
+	for body in walker_grab_area.get_overlapping_bodies():
 		if body is Player:
 			WalkerInteracted.emit()
 

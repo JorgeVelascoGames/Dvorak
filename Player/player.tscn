@@ -622,13 +622,6 @@ axis_lock_angular_z = true
 floor_max_angle = 0.959931
 script = ExtResource("1_ref5g")
 speed = 0.2
-fall_multiplier = null
-camera_sensibility = null
-can_jump = null
-damaged = null
-time_to_heal_up = null
-camBobSpeed = null
-camBobUpDown = null
 
 [node name="SubViewportContainer" type="SubViewportContainer" parent="."]
 anchors_preset = 15

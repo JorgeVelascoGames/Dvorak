@@ -44,10 +44,6 @@ max_number_of_bullets = 3
 
 [node name="FilingCabinetAnimated" parent="." instance=ExtResource("1_q6gxq")]
 
-[node name="Skeleton3D" parent="FilingCabinetAnimated/filing_cabinet" index="0"]
-bones/0/position = Vector3(2.18125e-18, 1.16204e-10, -0.00215907)
-bones/0/rotation = Quaternion(0.707107, 5.33851e-08, 5.33851e-08, 0.707107)
-
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]

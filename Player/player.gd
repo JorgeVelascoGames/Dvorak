@@ -36,13 +36,14 @@ var current_weapon : WEAPON = WEAPON.none
 @onready var inventory: Inventory = $Components/Inventory
 @onready var flashlight_pivot: Node3D = $FlashlightPivot
 @onready var flashlight : Flashlight = walker.flashlight
-@onready var interactable_ray: RayCast3D = $CameraPivot/FollowPivot/WorldCamera/InteractableRay
 
 #onready variables
 @onready var original_world_camera_fov = world_camera.fov
 @onready var original_weapon_camera_fov = weapon_camera.fov
 
 var originCamPos : Vector3
+var states_with_interact := ["Idle", "Walk"]
+
 
 func _ready():
 	apply_floor_snap()
@@ -57,12 +58,13 @@ func _process(delta: float) -> void:
 	if _delta > 10:
 		delta = 0
 	#Scan raycast for hints
-	if interactable_ray.is_colliding():
+	if interactable_ray.is_colliding() and states_with_interact.has(state_machine.state.name):
 		var collision = interactable_ray.get_collider()
-		if collision is Interactable:
-			player_ui.show_interaction_hint(collision.description)
-			return
-	player_ui.hide_interaction_hint()
+		for child in collision.get_children():
+			if child is Interactable:
+				player_ui.show_interaction_hint(child.description)
+	else:
+		player_ui.hide_interaction_hint()
 
 
 func _physics_process(delta):
