@@ -1,12 +1,14 @@
-[gd_scene load_steps=17 format=4 uid="uid://4j0uw0ki1luc"]
+[gd_scene load_steps=22 format=4 uid="uid://4j0uw0ki1luc"]
 
 [ext_resource type="Script" path="res://player/walker.gd" id="1_qi8h2"]
+[ext_resource type="Resource" uid="uid://bujtbayqemong" path="res://scripts/resources/walker_hint.tres" id="2_0raew"]
 [ext_resource type="Script" path="res://components/interactable.gd" id="2_j43j1"]
 [ext_resource type="Script" path="res://player/flashlight.gd" id="3_rrijc"]
 [ext_resource type="Texture2D" uid="uid://bu8vu75fka0yh" path="res://assets/props/walker/walker_walker_BaseColor.1001.png" id="4_bl81j"]
 [ext_resource type="PackedScene" uid="uid://cv00qs5ggy5x" path="res://assets/props/flaslight/flaslight.tscn" id="4_pmj0g"]
 [ext_resource type="PackedScene" uid="uid://cpyss678yatou" path="res://assets/props/gun/gun_model.tscn" id="6_wgb0m"]
 [ext_resource type="PackedScene" uid="uid://ctrkoynx6fbcj" path="res://assets/props/crowbar/crowbar.tscn" id="7_4ysws"]
+[ext_resource type="Script" path="res://scripts/hint.gd" id="8_xklfv"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_2f4qr"]
 size = Vector3(0.605, 0.62085, 0.288818)
@@ -58,11 +60,26 @@ albedo_texture = ExtResource("4_bl81j")
 [sub_resource type="BoxShape3D" id="BoxShape3D_tkfnx"]
 size = Vector3(0.1823, 0.0754639, 0.3)
 
+[sub_resource type="Resource" id="Resource_nvtge"]
+script = ExtResource("8_xklfv")
+hint = "I - Grab gun"
+priority = 3
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_6yy4d"]
 size = Vector3(0.199463, 0.117126, 0.735291)
 
+[sub_resource type="Resource" id="Resource_gddrp"]
+script = ExtResource("8_xklfv")
+hint = "I - Grab crowbar"
+priority = 3
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_y4t8g"]
 size = Vector3(0.154358, 0.237122, 0.321838)
+
+[sub_resource type="Resource" id="Resource_d5x5d"]
+script = ExtResource("8_xklfv")
+hint = "I - Grab flashlight"
+priority = 3
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ix1yc"]
 size = Vector3(0.735474, 1, 0.338867)
@@ -70,6 +87,7 @@ size = Vector3(0.735474, 1, 0.338867)
 [node name="Walker" type="Node3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0294226, -0.0214159)
 script = ExtResource("1_qi8h2")
+walker_hint = ExtResource("2_0raew")
 
 [node name="WalkerRigidBody" type="StaticBody3D" parent="."]
 constant_linear_velocity = Vector3(0, -9, 0)
@@ -124,7 +142,7 @@ transform = Transform3D(2.18855, 0.670652, 3.8613e-08, -3.1427e-15, -1.00055e-07
 
 [node name="GunInteract" type="Node" parent="GunSelectorHitbox"]
 script = ExtResource("2_j43j1")
-description = "Take gun"
+interactable_hint = SubResource("Resource_nvtge")
 
 [node name="CrowbarSelectorHitbox" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.168601, 0.347891, 0.0314156)
@@ -140,7 +158,7 @@ transform = Transform3D(-0.318204, 0.0661168, 2.89006e-09, 0, -1.42062e-08, 0.32
 
 [node name="CrowbarInteract" type="Node" parent="CrowbarSelectorHitbox"]
 script = ExtResource("2_j43j1")
-description = "Take crowbar"
+interactable_hint = SubResource("Resource_gddrp")
 
 [node name="FlashlightInteract" type="StaticBody3D" parent="."]
 collision_layer = 64
@@ -152,7 +170,7 @@ shape = SubResource("BoxShape3D_y4t8g")
 
 [node name="FlashlightInteract" type="Node" parent="FlashlightInteract"]
 script = ExtResource("2_j43j1")
-description = "Take flashlight"
+interactable_hint = SubResource("Resource_d5x5d")
 
 [node name="WalkerGrabArea" type="Area3D" parent="."]
 collision_layer = 0

@@ -43,6 +43,7 @@ var current_weapon : WEAPON = WEAPON.none
 
 var originCamPos : Vector3
 var states_with_interact := ["Idle", "Walk"]
+var current_interactable_hint : Hint
 
 
 func _ready():
@@ -62,9 +63,12 @@ func _process(delta: float) -> void:
 		var collision = interactable_ray.get_collider()
 		for child in collision.get_children():
 			if child is Interactable:
-				player_ui.show_interaction_hint(child.description)
+				player_ui.add_interaction_hint(child.interactable_hint)
+				if current_interactable_hint != child.interactable_hint:
+					player_ui.hide_interaction_hint(current_interactable_hint) #Just to make sure all hints are removed from the array in case there is some problem
+				current_interactable_hint = child.interactable_hint
 	else:
-		player_ui.hide_interaction_hint()
+		player_ui.hide_interaction_hint(current_interactable_hint)
 
 
 func _physics_process(delta):

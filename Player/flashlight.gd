@@ -2,6 +2,7 @@ extends SpotLight3D
 class_name Flashlight
 
 @export var extra_time_on_pickup := 40.0
+@export var recharge_hint : Hint
 
 @onready var tweakling_timer: Timer = $TweaklingTimer
 @onready var flashlight_battery: Timer = $FlashlightBattery
@@ -25,7 +26,9 @@ func _process(delta: float) -> void:
 		battery_below_25_percent = false
 	
 	if empty_battery and player.current_weapon == player.WEAPON.flashlight:
-		player.player_ui.show_constant_hint("B - Change battery")
+		player.player_ui.add_constant_hint(recharge_hint)
+	else:
+		player.player_ui.hide_constant_hint(recharge_hint)
 
 
 func toggle_flashlight() -> void:
@@ -50,7 +53,7 @@ func add_battery() -> void:
 	#play sound
 	flashlight_battery.wait_time = extra_time_on_pickup
 	empty_battery = false
-	player.player_ui.hide_constant_hint()
+	player.player_ui.hide_constant_hint(recharge_hint)
 
 
 func move_flashlight(follow_item : Node3D = get_parent()) -> void:

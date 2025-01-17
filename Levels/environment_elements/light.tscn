@@ -1,12 +1,18 @@
-[gd_scene load_steps=9 format=3 uid="uid://72kpfpnalr3a"]
+[gd_scene load_steps=11 format=3 uid="uid://72kpfpnalr3a"]
 
 [ext_resource type="Script" path="res://Levels/environment_elements/light.gd" id="1_27npf"]
 [ext_resource type="Script" path="res://components/interactable.gd" id="2_vk1i6"]
+[ext_resource type="Script" path="res://scripts/hint.gd" id="3_ebt33"]
 [ext_resource type="PackedScene" uid="uid://bepj5mbs82d3y" path="res://assets/props/swich/swich.tscn" id="4_aogh2"]
 [ext_resource type="PackedScene" uid="uid://bvbwpj3cl6pdr" path="res://assets/props/lights/lights.tscn" id="5_etyl4"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_rj3cs"]
 size = Vector3(1, 1, 0.298828)
+
+[sub_resource type="Resource" id="Resource_87p4s"]
+script = ExtResource("3_ebt33")
+hint = "I - (Hold) Switch lights"
+priority = 3
 
 [sub_resource type="Animation" id="Animation_5mhlq"]
 length = 0.001
@@ -62,6 +68,7 @@ shape = SubResource("BoxShape3D_rj3cs")
 
 [node name="Interactable" type="Node" parent="Switch"]
 script = ExtResource("2_vk1i6")
+interactable_hint = SubResource("Resource_87p4s")
 long_interaction = true
 necessary_keys_to_press_min = 10
 

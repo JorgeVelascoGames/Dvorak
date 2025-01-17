@@ -3,8 +3,16 @@ class_name AmmoCounter
 
 @export var ammo_stored := 15
 @export var max_ammo_loaded := 8
+@export var reload_hint : Hint 
+
 @onready var ammo_loaded := max_ammo_loaded
 @onready var player_ui: PlayerUI = $"../../PlayerUI"
+@onready var player: Player = $"../.."
+
+
+func _process(delta: float) -> void:
+	if player.current_weapon != player.WEAPON.gun:
+		player_ui.hide_constant_hint(reload_hint)
 
 
 func pick_up_ammo(amount : int) -> void:
@@ -32,6 +40,7 @@ func reload() -> void:
 		ammo_loaded = max_ammo_loaded
 	
 	player_ui.display_gameplay_text("You loaded %d bullets" %loaded_bullets, 2)
+	player_ui.hide_constant_hint(reload_hint)
 
 
 func try_fire_shot() -> bool:
@@ -39,4 +48,5 @@ func try_fire_shot() -> bool:
 		ammo_loaded -= 1
 		return true
 	else:
+		player_ui.add_constant_hint(reload_hint)
 		return false

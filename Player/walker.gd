@@ -3,6 +3,8 @@ class_name WalkerModel
 
 signal WalkerInteracted
 
+@export var walker_hint : Hint
+
 @onready var free_walker_position = $FreeWalkerPosition
 @onready var flashlight: SpotLight3D = %Flashlight
 @onready var walker_model: MeshInstance3D = $WalkerModel
@@ -21,12 +23,12 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	if walker_grab_area.get_overlapping_bodies().is_empty():
-		player.player_ui.hide_constant_hint()
+		player.player_ui.hide_constant_hint(walker_hint)
 		return
 	if walker_grab_area.get_overlapping_bodies()[0] is Player and player.states_with_interact.has(player.state_machine.state.name):
-		player.player_ui.show_constant_hint("R - Grab walker", 1)
+		player.player_ui.add_constant_hint(walker_hint)
 	else:
-		player.player_ui.hide_constant_hint()
+		player.player_ui.hide_constant_hint(walker_hint)
 
 
 func flashlight_togle() -> void:

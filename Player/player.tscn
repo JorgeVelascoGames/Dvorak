@@ -1,4 +1,4 @@
-[gd_scene load_steps=79 format=3 uid="uid://m6pypgl566n1"]
+[gd_scene load_steps=80 format=3 uid="uid://m6pypgl566n1"]
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_ref5g"]
 [ext_resource type="Script" path="res://player/smooth_camera.gd" id="2_cywkd"]
@@ -23,6 +23,7 @@
 [ext_resource type="Script" path="res://scripts/state_machine/states/load_gun.gd" id="14_3bkdw"]
 [ext_resource type="Script" path="res://scripts/state_machine/states/change_batteries.gd" id="15_6uppe"]
 [ext_resource type="Script" path="res://player/inventory.gd" id="15_8pfmq"]
+[ext_resource type="Resource" uid="uid://c27ts5odnmaxq" path="res://scripts/resources/reload_hint.tres" id="18_6q2xb"]
 [ext_resource type="PackedScene" uid="uid://4j0uw0ki1luc" path="res://player/walker.tscn" id="20_qts6k"]
 [ext_resource type="FontFile" uid="uid://cxbeti4rmsnty" path="res://assets/fonts/cormorant_garamond/CormorantGaramond-Regular.ttf" id="21_23yvg"]
 [ext_resource type="PackedScene" uid="uid://cpyss678yatou" path="res://assets/props/gun/gun_model.tscn" id="21_lgr1q"]
@@ -749,6 +750,7 @@ bonus_balance_recovery = 60.0
 
 [node name="AmmoCounter" type="Node" parent="Components"]
 script = ExtResource("11_xb6v7")
+reload_hint = ExtResource("18_6q2xb")
 
 [node name="Inventory" type="Node" parent="Components"]
 script = ExtResource("15_8pfmq")
@@ -905,19 +907,19 @@ grow_horizontal = 2
 grow_vertical = 2
 alignment = 1
 
-[node name="R-Text" type="MarginContainer" parent="PlayerUI/ControlHints"]
+[node name="Const-Text" type="MarginContainer" parent="PlayerUI/ControlHints"]
 visible = false
 layout_mode = 2
 
-[node name="GrabWalkerUI" type="HBoxContainer" parent="PlayerUI/ControlHints/R-Text"]
+[node name="GrabWalkerUI" type="HBoxContainer" parent="PlayerUI/ControlHints/Const-Text"]
 layout_mode = 2
 alignment = 1
 
-[node name="TextureRect" type="TextureRect" parent="PlayerUI/ControlHints/R-Text/GrabWalkerUI"]
+[node name="TextureRect" type="TextureRect" parent="PlayerUI/ControlHints/Const-Text/GrabWalkerUI"]
 visible = false
 layout_mode = 2
 
-[node name="TopLable" type="Label" parent="PlayerUI/ControlHints/R-Text/GrabWalkerUI"]
+[node name="ConstLable" type="Label" parent="PlayerUI/ControlHints/Const-Text/GrabWalkerUI"]
 layout_mode = 2
 size_flags_vertical = 0
 text = "R- Grab walker"
@@ -926,6 +928,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="I-Text" type="MarginContainer" parent="PlayerUI/ControlHints"]
+visible = false
 layout_mode = 2
 
 [node name="GrabWalkerUI" type="HBoxContainer" parent="PlayerUI/ControlHints/I-Text"]
@@ -936,7 +939,7 @@ alignment = 1
 visible = false
 layout_mode = 2
 
-[node name="TopLable" type="Label" parent="PlayerUI/ControlHints/I-Text/GrabWalkerUI"]
+[node name="InteractionLable" type="Label" parent="PlayerUI/ControlHints/I-Text/GrabWalkerUI"]
 layout_mode = 2
 size_flags_vertical = 0
 text = "R- Grab walker"

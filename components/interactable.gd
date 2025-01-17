@@ -1,7 +1,7 @@
 extends Node
 class_name Interactable
 
-@export var description := "Interact"
+@export var interactable_hint : Hint
 
 signal on_interact
 signal on_long_interact
