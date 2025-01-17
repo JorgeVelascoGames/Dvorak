@@ -7,6 +7,7 @@ class_name Flashlight
 @onready var flashlight_battery: Timer = $FlashlightBattery
 @onready var starting_battery_time := flashlight_battery.wait_time
 @onready var item_to_follow : Node3D = get_parent()
+@onready var player : Player = get_tree().get_first_node_in_group("player")
 
 var battery_below_25_percent := false
 var empty_battery := false
@@ -22,6 +23,9 @@ func _process(delta: float) -> void:
 		battery_below_25_percent = true
 	else:
 		battery_below_25_percent = false
+	
+	if empty_battery and player.current_weapon == player.WEAPON.flashlight:
+		player.player_ui.show_constant_hint("B - Change battery")
 
 
 func toggle_flashlight() -> void:
@@ -46,6 +50,7 @@ func add_battery() -> void:
 	#play sound
 	flashlight_battery.wait_time = extra_time_on_pickup
 	empty_battery = false
+	player.player_ui.hide_constant_hint()
 
 
 func move_flashlight(follow_item : Node3D = get_parent()) -> void:
