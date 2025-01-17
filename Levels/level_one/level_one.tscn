@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://b37la44wjrp4u"]
+[gd_scene load_steps=25 format=3 uid="uid://b37la44wjrp4u"]
 
 [ext_resource type="PackedScene" uid="uid://dqk45r48r427t" path="res://Levels/level_one/level_one_scenario.tscn" id="1_jujem"]
 [ext_resource type="Environment" uid="uid://c42wra3u6yo6u" path="res://Levels/world_environment.tres" id="1_rc4ww"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://dnlj0cpdwjsyl" path="res://Levels/rooms/room_1.tscn" id="8_kvrpp"]
 [ext_resource type="PackedScene" uid="uid://c5vmfb6wrd0un" path="res://ExitGate/exit_gate.tscn" id="8_xg4ny"]
 [ext_resource type="Script" path="res://randomization/randomizer_position.gd" id="9_0che1"]
+[ext_resource type="PackedScene" uid="uid://npbkx5rdduqq" path="res://Levels/rooms/room_6.tscn" id="9_0hx0m"]
 [ext_resource type="PackedScene" uid="uid://b7cb30x5rpa17" path="res://Levels/rooms/room_3.tscn" id="9_07q1x"]
 [ext_resource type="PackedScene" uid="uid://ca11q5l28hjt8" path="res://Levels/rooms/room_4.tscn" id="10_jl4wr"]
 [ext_resource type="Script" path="res://randomization/randomize_deleter.gd" id="10_wfg25"]
@@ -21,13 +22,15 @@
 [ext_resource type="PackedScene" uid="uid://b8gbxyaua8ftu" path="res://assets/props/bed/bed.tscn" id="14_na6ay"]
 [ext_resource type="PackedScene" uid="uid://bvbwpj3cl6pdr" path="res://assets/props/lights/lights.tscn" id="14_xelpn"]
 [ext_resource type="Script" path="res://randomization/randomize_self_destruct.gd" id="15_md1aq"]
+[ext_resource type="PackedScene" uid="uid://qyjmhcrcrko3" path="res://components/enemy_spawner.tscn" id="23_1vq12"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_hkrcb"]
 cell_size = 0.1
 agent_radius = 0.1
 
-[node name="LevelOne" type="Node3D"]
+[node name="LevelOne" type="Node3D" node_paths=PackedStringArray("enemy_container") groups=["level_manager"]]
 script = ExtResource("1_scdlh")
+enemy_container = NodePath("Entities/Enemies")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = ExtResource("1_rc4ww")
@@ -41,7 +44,7 @@ unique_name_in_owner = true
 script = ExtResource("6_hflwe")
 rooms_array = [NodePath("../RoomsSpawnPosition/Marker3D"), NodePath("../RoomsSpawnPosition/Marker3D2"), NodePath("../RoomsSpawnPosition/Marker3D3"), NodePath("../RoomsSpawnPosition/Marker3D4"), NodePath("../RoomsSpawnPosition/Marker3D5"), NodePath("../RoomsSpawnPosition/Marker3D6"), NodePath("../RoomsSpawnPosition/Marker3D7"), NodePath("../RoomsSpawnPosition/Marker3D8")]
 rooms_father = NodePath("../NavigationRegion3D/ScenarioSpawnerParent")
-rooms = Array[PackedScene]([ExtResource("8_kvrpp"), ExtResource("8_e3r7r"), ExtResource("9_07q1x"), ExtResource("10_jl4wr"), ExtResource("11_47c1n"), ExtResource("11_47c1n"), ExtResource("11_47c1n"), ExtResource("11_47c1n")])
+rooms = Array[PackedScene]([ExtResource("8_kvrpp"), ExtResource("8_e3r7r"), ExtResource("9_07q1x"), ExtResource("10_jl4wr"), ExtResource("11_47c1n"), ExtResource("9_0hx0m"), ExtResource("8_kvrpp"), ExtResource("8_e3r7r"), ExtResource("9_07q1x"), ExtResource("10_jl4wr"), ExtResource("11_47c1n"), ExtResource("9_0hx0m")])
 
 [node name="RandomizerPosition" type="Marker3D" parent="MapRandomizer" node_paths=PackedStringArray("item")]
 script = ExtResource("9_0che1")
@@ -395,13 +398,8 @@ omni_attenuation = 1.745
 
 [node name="Player" parent="Entities" instance=ExtResource("2_2aoio")]
 transform = Transform3D(-0.425006, 0, -0.905192, 0, 1, 0, 0.905192, 0, -0.425006, 34.2407, 1.61237, -13.121)
-fall_multiplier = 2.5
-camera_sensibility = 1.2
-can_jump = true
-damaged = false
-time_to_heal_up = 30.0
-camBobSpeed = 4
-camBobUpDown = 0.1
+
+[node name="Enemies" type="Node3D" parent="Entities"]
 
 [node name="Decoration" type="Node3D" parent="."]
 
@@ -540,6 +538,25 @@ transform = Transform3D(-1.07093e-08, -0.245, 0, 0.245, -1.07093e-08, 0, 0, 0, 0
 
 [node name="emergency_light4" parent="EmergencyLights" instance=ExtResource("13_3rriw")]
 transform = Transform3D(-1.07093e-08, -0.245, 0, 0.245, -1.07093e-08, 0, 0, 0, 0.245, 23.9433, 7.23671, -13.0957)
+
+[node name="EnemySpawners" type="Node3D" parent="."]
+
+[node name="EnemySpawner" parent="EnemySpawners" instance=ExtResource("23_1vq12")]
+transform = Transform3D(-0.805691, 0, -0.592337, 0, 1, 0, 0.592337, 0, -0.805691, 23.2924, 6.40982, -22.6026)
+start_spawn_on_ready = true
+
+[node name="EnemySpawner2" parent="EnemySpawners" instance=ExtResource("23_1vq12")]
+transform = Transform3D(-0.805691, 0, -0.592337, 0, 1, 0, 0.592337, 0, -0.805691, 1.45975, 6.40982, -13.0402)
+start_spawn_on_ready = true
+
+[node name="EnemySpawner3" parent="EnemySpawners" instance=ExtResource("23_1vq12")]
+transform = Transform3D(-0.0335041, 0, -0.999439, 0, 1, 0, 0.999439, 0, -0.0335041, 6.3535, 1.80668, 2.58486)
+start_spawn_on_ready = true
+
+[node name="EnemySpawner4" parent="EnemySpawners" instance=ExtResource("23_1vq12")]
+transform = Transform3D(-0.773674, 0, -0.633583, 0, 1, 0, 0.633583, 0, -0.773674, -0.00560871, 1.41435, -22.946)
+start_spawn_on_ready = true
+spawn_countdown = 30.0
 
 [editable path="NavigationRegion3D/ExitGate"]
 [editable path="Lamps/LampLight"]

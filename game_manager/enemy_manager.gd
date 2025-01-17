@@ -3,12 +3,20 @@ class_name EnemyManager
 
 @export var max_enemies_on_level := 12
 @export var spawn_frecuency := 15.0
+@export var enemies_on_load : int
 
 @onready var spawner_timer: Timer = $SpawnerTimer
 
-var enemy_list : Array[Enemy]
+var enemy_list : Array[Enemy] = []
 var spawn_blockers : Array
-var spawners : Array[EnemySpawner]
+var spawners : Array[EnemySpawner] = []
+
+const INFANTICIDE = preload("res://Enemy/infanticide/infanticide.tscn")
+
+
+func _ready() -> void:
+	for i in enemies_on_load:
+		request_spawn()
 
 
 func _can_spawn_enemy() -> bool:
@@ -23,7 +31,11 @@ func kill_all_enemies() -> void:
 
 
 func request_spawn() -> void:
-	pass
+	if not _can_spawn_enemy():
+		return
+	if not spawners.pick_random().spawn(true):
+		await get_tree().physics_frame
+		request_spawn()
 
 
 func _on_spawner_timer_timeout() -> void:

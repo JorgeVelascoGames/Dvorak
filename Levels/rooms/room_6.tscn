@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://randomization/room.gd" id="1_nn5up"]
 [ext_resource type="PackedScene" uid="uid://dycdd0wd0kswp" path="res://Levels/environment_elements/cross.tscn" id="2_j1nbp"]
 [ext_resource type="Texture2D" uid="uid://cfe7wybvony37" path="res://assets/textures/grey_wall.png" id="5_stlt6"]
-[ext_resource type="Script" path="res://randomization/randomize_deleter.gd" id="6_my4ko"]
+[ext_resource type="PackedScene" uid="uid://qyjmhcrcrko3" path="res://components/enemy_spawner.tscn" id="6_06e3e"]
 [ext_resource type="PackedScene" uid="uid://brysxkhoj2p7v" path="res://Levels/environment_elements/filling_cabinet_obstacle.tscn" id="7_jr864"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_kk2a0"]
@@ -82,11 +82,6 @@ operation = 2
 size = Vector3(1.5, 3.54, 5.78882)
 material = SubResource("StandardMaterial3D_1k1q5")
 
-[node name="RandomizeDeleter" type="Marker3D" parent="." node_paths=PackedStringArray("elements")]
-script = ExtResource("6_my4ko")
-elements = [NodePath(""), NodePath("")]
-randomize_at_ready = true
-
 [node name="FillingCabinets" type="Node3D" parent="."]
 
 [node name="FillingCabinetObstacle" parent="FillingCabinets" instance=ExtResource("7_jr864")]
@@ -97,3 +92,11 @@ transform = Transform3D(1, 0, 1.06581e-14, 0, 1, 0, -1.06581e-14, 0, 1, -0.12935
 
 [node name="FillingCabinetObstacle3" parent="FillingCabinets" instance=ExtResource("7_jr864")]
 transform = Transform3D(8.9407e-08, 0, -1, 0, 1, 0, 1, 0, 8.9407e-08, -2.46941, -0.164389, -2.01735)
+
+[node name="EnemySpawners" type="Node3D" parent="."]
+
+[node name="EnemySpawner" parent="EnemySpawners" instance=ExtResource("6_06e3e")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.903295, 0)
+
+[node name="EnemySpawner2" parent="EnemySpawners" instance=ExtResource("6_06e3e")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.639872, 0.903295, -3.83493)

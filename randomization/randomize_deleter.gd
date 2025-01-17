@@ -6,6 +6,8 @@ class_name RandomizeDeleter
 
 
 func start_randomization() -> void:
+	if elements.size() < 2:
+		return
 	randomize()
 	elements.shuffle()
 	elements.pop_back()

@@ -7,7 +7,6 @@ signal update_interaction_hints
 @onready var player_gameplay_info: Label = $PlayerGameplayInfo
 @onready var timer: Timer = $Timer
 @onready var walker: WalkerModel = $"../WalkerFixedPoint/Walker"
-@onready var top_lable: Label = $TopText/GrabWalkerUI/TopLable
 @onready var state_machine: StateMachine = $"../StateMachine"
 @onready var const_text: MarginContainer = $"ControlHints/Const-Text"
 @onready var i_text: MarginContainer = $"ControlHints/I-Text"

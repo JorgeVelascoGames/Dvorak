@@ -7,11 +7,12 @@ class_name EnemySpawner
 @export var spawn_countdown := 0.0 
 @export var scene_to_spawn : PackedScene
 ##The node in which the spawned node will be nested. If empty, its nested on the root
-@export var node_to_parent : Node 
 
+@onready var node_to_parent = get_tree().get_first_node_in_group("level_manager").enemy_container 
 @onready var spawn_timer: Timer = $SpawnTimer
 @onready var visible_on_screen_notifier_3d: VisibleOnScreenNotifier3D = $VisibleOnScreenNotifier3D
 @onready var enemy_manager : EnemyManager = AppManager.game_manager.enemy_manager
+@onready var detection_area: Area3D = $DetectionArea
 
 
 # Called when the node enters the scene tree for the first time.
@@ -19,13 +20,15 @@ func _ready() -> void:
 	enemy_manager.spawners.append(self)
 	if start_spawn_on_ready:
 		spawn()
-	if not node_to_parent:
-		node_to_parent = self
 
 
-func spawn() -> void:
+func spawn(is_provoked = false) -> bool:
 	if not enemy_manager._can_spawn_enemy():
-		return
+		return false
+	
+	for body in detection_area.get_overlapping_bodies():
+		if body is Enemy:
+			return false
 	
 	if visible_on_screen_notifier_3d.is_on_screen():
 		await visible_on_screen_notifier_3d.screen_exited
@@ -37,12 +40,13 @@ func spawn() -> void:
 	
 	node_to_parent.add_child(new_instance)
 	new_instance.global_position = global_position
-	new_instance.provoke = true
+	new_instance.rotation = rotation
+	new_instance.provoke = is_provoked
 	
 	if spawn_countdown > 0.0:
 		spawn_timer.start(spawn_countdown)
-
+	return true
 
 func _on_spawn_timer_timeout() -> void:
 	if enemy_manager._can_spawn_enemy():
-		spawn()
+		spawn(true)

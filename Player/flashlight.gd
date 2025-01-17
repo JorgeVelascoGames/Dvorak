@@ -13,6 +13,7 @@ class_name Flashlight
 var battery_below_25_percent := false
 var empty_battery := false
 
+
 func _ready() -> void:
 	visible = false
 	print(item_to_follow)

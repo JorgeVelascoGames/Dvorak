@@ -25,6 +25,7 @@ var gravity: float = ProjectSettings.get_setting("physics/3d/default_gravity")
 func _ready() -> void:
 	await get_tree().process_frame
 	AppManager.game_manager.enemy_manager.enemy_list.append(self)
+	reparent(AppManager.game_manager.current_level_manager.enemy_container)
 	model.top_level = true
 	if provoke_on_ready:
 		provoke = true
@@ -51,6 +52,9 @@ func _process(_delta: float) -> void:
 
 
 func _physics_process(_delta: float) -> void:
+	# Add the gravity.
+	if not is_on_floor(): 
+		velocity.y -= gravity * _delta
 	if not is_active:
 		return
 	if not can_move:
@@ -80,9 +84,6 @@ func movement_process(_delta: float) -> void:
 	if distance < aggro_range:
 		provoke = true
 	
-	# Add the gravity.
-	if not is_on_floor(): 
-		velocity.y -= gravity * _delta
 	
 	if direction:
 		velocity.x = direction.x * speed

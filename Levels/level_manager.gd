@@ -2,6 +2,8 @@ extends Node3D
 ##This class goes on the root node of a level
 class_name LevelManager
 
+@export var enemy_container : Node3D
+
 @onready var exit_gate : ExitGate = %ExitGate
 @onready var navigation_region_3d : NavigationRegion3D= $NavigationRegion3D
 @onready var map_randomizer: MapRandomizer = %MapRandomizer
@@ -10,6 +12,7 @@ class_name LevelManager
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	AppManager.game_manager.current_level_manager = self
 	generate_rooms()
 
 

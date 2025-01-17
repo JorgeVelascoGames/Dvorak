@@ -14,6 +14,7 @@ enum APP_STATE {lenguage, advert, menu, game}
 
 var current_app_state := APP_STATE.lenguage
 var current_screen : Node
+var current_level_manager : LevelManager
 
 
 # Called when the node enters the scene tree for the first time.
