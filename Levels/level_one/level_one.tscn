@@ -25,8 +25,9 @@
 [ext_resource type="PackedScene" uid="uid://qyjmhcrcrko3" path="res://components/enemy_spawner.tscn" id="23_1vq12"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_hkrcb"]
+geometry_parsed_geometry_type = 2
 cell_size = 0.1
-agent_radius = 0.1
+agent_radius = 0.3
 
 [node name="LevelOne" type="Node3D" node_paths=PackedStringArray("enemy_container") groups=["level_manager"]]
 script = ExtResource("1_scdlh")
@@ -397,7 +398,7 @@ omni_attenuation = 1.745
 [node name="Entities" type="Node3D" parent="."]
 
 [node name="Player" parent="Entities" instance=ExtResource("2_2aoio")]
-transform = Transform3D(-0.425006, 0, -0.905192, 0, 1, 0, 0.905192, 0, -0.425006, 34.2407, 1.61237, -13.121)
+transform = Transform3D(0.220834, 0, 0.975313, 0, 1, 0, -0.975313, 0, 0.220834, 27.3428, 2.658, 2.32659)
 
 [node name="Enemies" type="Node3D" parent="Entities"]
 

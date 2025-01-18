@@ -15,8 +15,7 @@ const INFANTICIDE = preload("res://Enemy/infanticide/infanticide.tscn")
 
 
 func _ready() -> void:
-	for i in enemies_on_load:
-		request_spawn()
+	pass
 
 
 func _can_spawn_enemy() -> bool:

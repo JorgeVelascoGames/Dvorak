@@ -11,6 +11,15 @@ class_name PassSwitch
 var switch_active := false
 
 
+func _ready() -> void:
+	if switch_active:
+		activated_light.show()
+		deactivate_light.hide()
+	else:
+		activated_light.hide()
+		deactivate_light.show()
+
+
 func _on_interactable_on_interact():
 	switch_active = !switch_active
 	
