@@ -1,12 +1,18 @@
-[gd_scene load_steps=8 format=3 uid="uid://c5vmfb6wrd0un"]
+[gd_scene load_steps=10 format=3 uid="uid://c5vmfb6wrd0un"]
 
 [ext_resource type="Script" path="res://ExitGate/exit_gate.gd" id="1_71loh"]
 [ext_resource type="Script" path="res://components/interactable.gd" id="1_s1pqe"]
 [ext_resource type="PackedScene" uid="uid://chmdaewj61wpa" path="res://assets/environment/elements/exit_door.tscn" id="3_sy4dp"]
 [ext_resource type="PackedScene" uid="uid://cfpfgy53aqnh2" path="res://ExitGate/pass_switch.tscn" id="3_t31dc"]
+[ext_resource type="Script" path="res://scripts/hint.gd" id="4_bsdjp"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_t08g3"]
 size = Vector3(2.15695, 2.2229, 0.0572217)
+
+[sub_resource type="Resource" id="Resource_tuxbc"]
+script = ExtResource("4_bsdjp")
+hint = "I - Try to open doors"
+priority = 20
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_gt4jj"]
 size = Vector3(0.1, 0.15, 0.1)
@@ -35,6 +41,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.555713, 0.521547, 0.032136
 
 [node name="Interactable" type="Node" parent="MainSwitch"]
 script = ExtResource("1_s1pqe")
+interactable_hint = SubResource("Resource_tuxbc")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="MainSwitch"]
 shape = SubResource("BoxShape3D_gt4jj")

@@ -1,7 +1,7 @@
 
-- Montar todas las habitaciones
-- Terminar la decoración del nivel
+- ~~Montar todas las habitaciones~~
+- ~~Terminar la decoración del nivel~~
 - ~~Modelar la puerta de salida~~
-- Nuevos interruptores
+- ~~Nuevos interruptores~~
 - ~~Segundo enemigo~~
-- Mejorar animación de ataque con palanca
+- ~~Mejorar animación de ataque con palanca~~

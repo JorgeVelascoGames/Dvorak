@@ -99,3 +99,5 @@ omni_range = 5.82458
 omni_attenuation = 1.745
 
 [connection signal="on_long_interact" from="Switch/Interactable" to="." method="_on_interactable_on_long_interact"]
+[connection signal="on_start_long_interaction" from="Switch/Interactable" to="." method="_on_interactable_on_start_long_interaction"]
+[connection signal="on_stop_long_interaction" from="Switch/Interactable" to="." method="_on_interactable_on_stop_long_interaction"]

@@ -248,6 +248,7 @@ change_battery={
 3d_physics/layer_7="interactable"
 3d_physics/layer_8="enemy_hitbox"
 3d_physics/layer_9="walker_interactable"
+3d_physics/layer_10="enemy_interactable"
 
 [rendering]
 

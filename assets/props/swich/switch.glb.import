@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://d0n8ygqseherq"
-path="res://.godot/imported/swich.fbx-7c5fb36e6311f0c28e2d020d97999871.scn"
+uid="uid://h4rdpqvxxbsy"
+path="res://.godot/imported/switch.glb-6e576f1227a324ea485cab8cacc66488.scn"
 
 [deps]
 
-source_file="res://assets/props/swich/swich.fbx"
-dest_files=["res://.godot/imported/swich.fbx-7c5fb36e6311f0c28e2d020d97999871.scn"]
+source_file="res://assets/props/swich/switch.glb"
+dest_files=["res://.godot/imported/switch.glb-6e576f1227a324ea485cab8cacc66488.scn"]
 
 [params]
 
@@ -27,7 +27,7 @@ meshes/force_disable_compression=false
 skins/use_named_skins=true
 animation/import=true
 animation/fps=30
-animation/trimming=true
+animation/trimming=false
 animation/remove_immutable_tracks=true
 animation/import_rest_as_RESET=false
 import_script/path=""
@@ -1834,6 +1834,5 @@ _subresources={
 }
 }
 }
-fbx/importer=0
-fbx/allow_geometry_helper_nodes=false
-fbx/embedded_image_handling=1
+gltf/naming_version=1
+gltf/embedded_image_handling=1

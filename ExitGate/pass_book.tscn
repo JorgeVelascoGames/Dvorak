@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://dj1xeiiysi3o5"]
+[gd_scene load_steps=10 format=3 uid="uid://dj1xeiiysi3o5"]
 
 [ext_resource type="Script" path="res://ExitGate/pass_book.gd" id="1_vqmkl"]
 [ext_resource type="Script" path="res://components/interactable.gd" id="2_38db5"]
 [ext_resource type="PackedScene" uid="uid://bsid5sgbt2jlj" path="res://assets/props/atril/atril.tscn" id="2_ahbig"]
 [ext_resource type="PackedScene" uid="uid://cwexc7x6763dc" path="res://assets/props/book/book.tscn" id="3_cgwqo"]
+[ext_resource type="Script" path="res://scripts/hint.gd" id="5_flnum"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_0sn8r"]
 font_size = 45
@@ -13,6 +14,11 @@ outline_color = Color(0.408329, 0.408329, 0.408329, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ec1a2"]
 size = Vector3(0.375, 1, 0.28)
+
+[sub_resource type="Resource" id="Resource_mtmup"]
+script = ExtResource("5_flnum")
+hint = "I - (Hold) Search"
+priority = 12
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_6cw2q"]
 size = Vector3(0.31, 0.245, 0.33)
@@ -72,6 +78,7 @@ collision_mask = 0
 
 [node name="Interactable" type="Node" parent="StaticBody3D2"]
 script = ExtResource("2_38db5")
+interactable_hint = SubResource("Resource_mtmup")
 long_interaction = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D2"]
