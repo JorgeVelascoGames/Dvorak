@@ -8,6 +8,7 @@ class_name LevelManager
 @onready var navigation_region_3d : NavigationRegion3D= $NavigationRegion3D
 @onready var map_randomizer: MapRandomizer = %MapRandomizer
 @onready var black_screen: ColorRect = $LevelUI/BlackScreen
+@onready var white_screen: ColorRect = $LevelUI/WhiteScreen
 
 
 # Called when the node enters the scene tree for the first time.
@@ -26,3 +27,10 @@ func generate_rooms() -> void:
 	await navigation_region_3d.bake_finished
 	var tween := get_tree().create_tween()
 	tween.tween_property(black_screen, "color", Color(0,0,0,0), 4.0)
+
+
+func finish_level() -> void:
+	var tween := get_tree().create_tween()
+	tween.tween_property(white_screen, "color", Color.WHITE, 4.0)
+	await tween.finished
+	AppManager.game_manager.game_level_manager.back_to_main_menu()

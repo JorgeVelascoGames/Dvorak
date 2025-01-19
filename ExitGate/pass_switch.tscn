@@ -8,7 +8,7 @@
 
 [sub_resource type="Resource" id="Resource_aljus"]
 script = ExtResource("3_33ov2")
-hint = "I - Activate/deactivate switch"
+hint = "i- Activate/deactivate switch"
 priority = 16
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_87h8t"]

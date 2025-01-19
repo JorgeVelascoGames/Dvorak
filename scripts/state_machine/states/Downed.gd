@@ -13,11 +13,11 @@ var top_side_keys = ["top_key_4", "top_key_5", "top_key_6", "top_key_7", "top_ke
 var bot_side_keys = ["bot_key_v", "bot_key_b", "bot_key_f", "bot_key_g",  "bot_key_h"]
 var correct_key_pressed : int = 0
 
-@onready var placeholder_l_able = $"../../PlayerUI/BalancedUI/PlaceholderLAble"
 @onready var animation_player = $"../../AnimationPlayer"
 @onready var camera_pivot = $"../../CameraPivot"
 @onready var camera_pivot_pos_y : float = camera_pivot.position.y
 @onready var animation_tree: PlayerAnimationController = $"../../AnimationTree"
+@onready var balanced_ui: BalanceUI = $"../../PlayerUI/BalancedUI"
 
 
 func enter(_msg : ={}) -> void:
@@ -25,8 +25,7 @@ func enter(_msg : ={}) -> void:
 	player.velocity = Vector3.ZERO
 	left_key_selection = top_side_keys.pick_random()
 	right_key_selection = bot_side_keys.pick_random()
-	placeholder_l_able.show()
-	placeholder_l_able.text = left_key_selection + " + " + right_key_selection
+	balanced_ui.display_keys(left_key_selection, right_key_selection)
 	#animation_player.play("floor")
 	blend_animations()
 
@@ -67,7 +66,7 @@ func _correct_key() -> void:
 
 func finish_state() -> void:
 	correct_key_pressed = 0
-	placeholder_l_able.hide()
+	balanced_ui.h_box_container.hide()
 	await get_tree().create_timer(0.4).timeout
 	#animation_player.stop()
 	var tween = create_tween().set_parallel(true)

@@ -2,10 +2,11 @@ extends Node3D
 class_name ExitGate
 
 signal pass_and_books_ready
-signal on_calamity
 
 #Export variables
 @export var main_switch_cd := 30.0
+
+@onready var player_ui : PlayerUI = get_tree().get_first_node_in_group("player_ui")
 
 #Variables
 var pass_switches :Array[PassSwitch]= []
@@ -55,6 +56,7 @@ func check_solution() -> bool:
 	
 	index = 0
 	print("SOLUTION IS CORRECT")
+	$Gate/GateInteractable.process_mode = Node.PROCESS_MODE_DISABLED
 	return true
 
 
@@ -72,16 +74,20 @@ func _on_interactable_on_interact():
 	print("press main switch...")
 	if main_switch_cd_timer.time_left > 0:
 		#SOUND
+		player_ui.display_gameplay_text("The switch is locked for %d more seconds" %main_switch_cd_timer.time_left, 3)
 		return
 	main_switch_cd_timer.start(main_switch_cd)
 	print(check_solution())
 	if check_solution():
 		door_is_open = true #OPEN DOOR
+		player_ui.display_gameplay_text("The doors are unlocked. Use them to continue", 4)
 	else:
-		on_calamity.emit()
+		AppManager.game_manager.on_calamity.emit()
+		player_ui.display_gameplay_text("The combination is incorrect. Now everyone knows you've returned...", 4)
 
 
 func _on_gate_interactable_on_interact():
 	if door_is_open:
-		print("LEVEL FINISHED")
-		pass #NEXT LEVEL
+		AppManager.game_manager.current_level_manager.finish_level()
+	else:
+		player_ui.display_gameplay_text("It's locked", 3)

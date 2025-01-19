@@ -28,7 +28,7 @@ func _ready() -> void:
 	switch_light()
 	if is_tweaking_light:
 		twink_light()
-
+	AppManager.game_manager.on_calamity.connect(on_calamity)
 
 func on_switch_press() -> void:
 	switch_light()
@@ -90,6 +90,18 @@ func switch_light() -> void:
 	else:
 		animation_tree.switch_into_off_position()
 		switch.collision_layer = 7
+
+
+func on_calamity() -> void:
+	light_on = false
+	for light in lights_array:
+		light.visible = light_on
+		light.light_energy = light_original_intensity
+	position_lights.visible = false
+	
+	animation_tree.switch_into_off_position()
+	$Switch/CollisionShape3D.disabled = true
+	
 
 
 func _on_interactable_on_long_interact() -> void:

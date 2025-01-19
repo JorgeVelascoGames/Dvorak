@@ -1,7 +1,7 @@
 extends PlayerState
 class_name PlayerLongInteraction
 
-@onready var placeholder_l_able = $"../../PlayerUI/BalancedUI/PlaceholderLAble"
+@onready var balanced_ui: BalanceUI = $"../../PlayerUI/BalancedUI"
 
 #Private variables
 var interactable : Interactable
@@ -23,8 +23,8 @@ func enter(_msg : ={}) -> void:
 	player.velocity = Vector3.ZERO
 	top_key_selection = top_side_keys.pick_random()
 	right_key_selection = right_side_keys.pick_random()
-	placeholder_l_able.show()
-	placeholder_l_able.text = top_key_selection + " + " + right_key_selection
+	balanced_ui.h_box_container.show()
+	balanced_ui.display_keys(top_key_selection, right_key_selection)
 
 
 func update(_delta):
@@ -67,4 +67,4 @@ func cancel_and_finish() -> void:
 
 func exit() -> void:
 	correct_key_pressed = 0
-	placeholder_l_able.hide()
+	balanced_ui.h_box_container.hide()

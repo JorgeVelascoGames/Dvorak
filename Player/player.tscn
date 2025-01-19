@@ -1,4 +1,4 @@
-[gd_scene load_steps=80 format=3 uid="uid://m6pypgl566n1"]
+[gd_scene load_steps=85 format=3 uid="uid://m6pypgl566n1"]
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_ref5g"]
 [ext_resource type="Script" path="res://player/smooth_camera.gd" id="2_cywkd"]
@@ -25,13 +25,17 @@
 [ext_resource type="Script" path="res://player/inventory.gd" id="15_8pfmq"]
 [ext_resource type="Resource" uid="uid://c27ts5odnmaxq" path="res://scripts/resources/reload_hint.tres" id="18_6q2xb"]
 [ext_resource type="PackedScene" uid="uid://4j0uw0ki1luc" path="res://player/walker.tscn" id="20_qts6k"]
-[ext_resource type="FontFile" uid="uid://cxbeti4rmsnty" path="res://assets/fonts/cormorant_garamond/CormorantGaramond-Regular.ttf" id="21_23yvg"]
 [ext_resource type="PackedScene" uid="uid://cpyss678yatou" path="res://assets/props/gun/gun_model.tscn" id="21_lgr1q"]
 [ext_resource type="Script" path="res://player/player_animation_controller.gd" id="22_j0g4a"]
 [ext_resource type="PackedScene" uid="uid://ctrkoynx6fbcj" path="res://assets/props/crowbar/crowbar.tscn" id="22_r00kl"]
 [ext_resource type="Script" path="res://player/crowbar_attack_hitbox.gd" id="24_nhdqm"]
+[ext_resource type="FontFile" uid="uid://djkxaekxrwieb" path="res://assets/fonts/roboto/Roboto-Italic.ttf" id="26_ekr4f"]
+[ext_resource type="Script" path="res://player/crosshair.gd" id="27_ktygo"]
 [ext_resource type="PackedScene" uid="uid://cv00qs5ggy5x" path="res://assets/props/flaslight/flaslight.tscn" id="28_lrh3t"]
+[ext_resource type="Script" path="res://player/balanced_ui.gd" id="28_qoh17"]
+[ext_resource type="Texture2D" uid="uid://7g1tf1lcm1l7" path="res://assets/UI/tile_0233.png" id="28_rfyh2"]
 [ext_resource type="PackedScene" uid="uid://ccacel4hrjcs8" path="res://assets/props/pills/pills.tscn" id="29_vkalu"]
+[ext_resource type="FontFile" uid="uid://8cel7ajxycai" path="res://assets/fonts/roboto/Roboto-Black.ttf" id="30_yu0h2"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_fyred"]
 
@@ -101,14 +105,18 @@ font = ExtResource("8_dofuu")
 font_size = 64
 
 [sub_resource type="LabelSettings" id="LabelSettings_3m322"]
-font = ExtResource("21_23yvg")
+font = ExtResource("26_ekr4f")
 font_size = 20
 outline_size = 2
 outline_color = Color(0.165656, 0.165657, 0.165656, 1)
 shadow_size = 4
 
+[sub_resource type="LabelSettings" id="LabelSettings_qdkx3"]
+font = ExtResource("30_yu0h2")
+font_color = Color(0, 0, 0, 1)
+
 [sub_resource type="LabelSettings" id="LabelSettings_eftwr"]
-font = ExtResource("21_23yvg")
+font = ExtResource("26_ekr4f")
 font_size = 15
 outline_size = 2
 outline_color = Color(0.165656, 0.165657, 0.165656, 1)
@@ -871,6 +879,10 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
+[node name="Control" type="Control" parent="PlayerUI/CenterContainer"]
+layout_mode = 2
+script = ExtResource("27_ktygo")
+
 [node name="Timer" type="Timer" parent="PlayerUI"]
 
 [node name="BalancedUI" type="Control" parent="PlayerUI"]
@@ -880,23 +892,75 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("28_qoh17")
+modulate_color_light = Color(0.784314, 0.784314, 0.784314, 1)
+modulate_color_dark = Color(0.27451, 0.27451, 0.27451, 1)
 
-[node name="PlaceholderLAble" type="Label" parent="PlayerUI/BalancedUI"]
-visible = false
+[node name="HBoxContainer" type="HBoxContainer" parent="PlayerUI/BalancedUI"]
 layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
+anchors_preset = 12
 anchor_top = 1.0
-anchor_right = 0.5
+anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -119.0
-offset_top = -57.0
-offset_right = 118.0
-offset_bottom = -32.0
+offset_top = -46.0
+offset_bottom = -10.0
 grow_horizontal = 2
 grow_vertical = 0
-text = "test
-"
+alignment = 1
+
+[node name="LeftTexture" type="TextureRect" parent="PlayerUI/BalancedUI/HBoxContainer"]
+modulate = Color(0.27451, 0.266667, 0.266667, 1)
+layout_mode = 2
+texture = ExtResource("28_rfyh2")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="LeftLable" type="Label" parent="PlayerUI/BalancedUI/HBoxContainer/LeftTexture"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -10.5
+offset_top = -11.5
+offset_right = 8.5
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "5"
+label_settings = SubResource("LabelSettings_qdkx3")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="RightTexture" type="TextureRect" parent="PlayerUI/BalancedUI/HBoxContainer"]
+modulate = Color(0.817521, 0.817521, 0.817521, 1)
+layout_mode = 2
+texture = ExtResource("28_rfyh2")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="RightLAble" type="Label" parent="PlayerUI/BalancedUI/HBoxContainer/RightTexture"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -10.5
+offset_top = -11.5
+offset_right = 8.5
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "S"
+label_settings = SubResource("LabelSettings_qdkx3")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BalanceAnimationTimer" type="Timer" parent="PlayerUI/BalancedUI"]
+wait_time = 0.2
+autostart = true
 
 [node name="ControlHints" type="HBoxContainer" parent="PlayerUI"]
 layout_mode = 1

@@ -44,11 +44,11 @@ mouse_filter = 2
 script = ExtResource("9_whl67")
 spawn_frecuency = 70.0
 enemies_on_load = 3
+no_enemies = true
 
 [node name="SpawnerTimer" type="Timer" parent="EnemyManager"]
 
 [node name="EnemiesStateChecker" type="Timer" parent="EnemyManager"]
-autostart = true
 
 [connection signal="NewSceneLoaded" from="LoadingScreen" to="." method="_on_loading_screen_new_scene_loaded"]
 [connection signal="timeout" from="EnemyManager/SpawnerTimer" to="EnemyManager" method="_on_spawner_timer_timeout"]

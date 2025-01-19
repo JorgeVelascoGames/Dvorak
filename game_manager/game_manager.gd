@@ -3,6 +3,8 @@ class_name GameManager
 
 enum APP_STATE {lenguage, advert, menu, game}
 
+signal on_calamity
+
 @export var lenguage_selecton_menu : PackedScene
 @export var advert_scree: PackedScene
 @export var main_menu : PackedScene

@@ -17,12 +17,12 @@ var finished_state := false
 
 @onready var original_margin_of_error : float = margin_of_error
 @onready var timer = $Timer
-@onready var placeholder_l_able = $"../../PlayerUI/BalancedUI/PlaceholderLAble"
 @onready var error_timer = $ErrorTimer
 @onready var animation_player = $"../../AnimationPlayer"
 @onready var camera_pivot = $"../../CameraPivot"
 @onready var camera_pivot_pos_y : float = camera_pivot.position.y
 @onready var animation_tree = $"../../AnimationTree"
+@onready var balanced_ui: BalanceUI = $"../../PlayerUI/BalancedUI"
 
 
 func enter(_msg : ={}) -> void:
@@ -33,8 +33,7 @@ func enter(_msg : ={}) -> void:
 	player.velocity = Vector3.ZERO
 	left_key_selection = left_side_keys.pick_random()
 	right_key_selection = right_side_keys.pick_random()
-	placeholder_l_able.show()
-	placeholder_l_able.text = left_key_selection + " + " + right_key_selection
+	balanced_ui.display_keys(left_key_selection, right_key_selection)
 	timer.start(time_to_keep_balance)
 	error_timer.start(margin_of_error)
 	#animation_player.play("unbalanced")
@@ -93,7 +92,7 @@ func finish_state(state : String) -> void:
 	timer.stop()
 	error_timer.stop()
 	correct_key_pressed = 0
-	placeholder_l_able.hide()
+	balanced_ui.h_box_container.hide()
 	
 	var tween
 	

@@ -4,7 +4,6 @@ class_name LoadGun
 @export var min_keys_to_press := 12
 @export var max_keys_to_press := 33
 
-@onready var placeholder_l_able = $"../../PlayerUI/BalancedUI/PlaceholderLAble"
 @onready var inventory: Inventory = $"../../Components/Inventory"
 @onready var player_ui: PlayerUI = $"../../PlayerUI"
 @onready var balance: Balance = $"../../Components/Balance"
@@ -13,6 +12,7 @@ class_name LoadGun
 @onready var animated_gun: Node3D = $"../../AnimatedObjects/GunModel"
 @onready var gun_initial_position := animated_gun.position
 @onready var animation_tree: PlayerAnimationController = $"../../AnimationTree"
+@onready var balanced_ui: BalanceUI = $"../../PlayerUI/BalancedUI"
 
 var necessary_keys_to_press : int
 var right_key_selection : String
@@ -30,8 +30,7 @@ func enter(_msg : ={}) -> void:
 	player.velocity = Vector3.ZERO
 	left_key_selection = left_side_keys.pick_random()
 	right_key_selection = right_side_keys.pick_random()
-	placeholder_l_able.show()
-	placeholder_l_able.text = left_key_selection + " + " + right_key_selection
+	balanced_ui.display_keys(left_side_keys, right_side_keys)
 	
 	animated_gun.show()
 	animated_gun.position = Vector3(.3, 0.0, .2)
@@ -79,4 +78,4 @@ func exit() -> void:
 	animation_tree["parameters/load_gun_trigger/request"] = AnimationNodeOneShot.ONE_SHOT_REQUEST_ABORT
 	animated_gun.hide()
 	correct_key_pressed = 0
-	placeholder_l_able.hide()
+	balanced_ui.h_box_container.hide()

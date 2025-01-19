@@ -4,7 +4,6 @@ class_name ChangeBatteries
 @export var min_keys_to_press := 12
 @export var max_keys_to_press := 33
 
-@onready var placeholder_l_able = $"../../PlayerUI/BalancedUI/PlaceholderLAble"
 @onready var inventory: Inventory = $"../../Components/Inventory"
 @onready var player_ui: PlayerUI = $"../../PlayerUI"
 @onready var balance: Balance = $"../../Components/Balance"
@@ -12,6 +11,7 @@ class_name ChangeBatteries
 @onready var flaslight_model: Node3D = $"../../AnimatedObjects/FlaslightModel"
 @onready var flashlight_initial_pos := flaslight_model.position
 @onready var animation_tree: PlayerAnimationController = $"../../AnimationTree"
+@onready var balanced_ui: BalanceUI = $"../../PlayerUI/BalancedUI"
 
 var necessary_keys_to_press : int
 var right_key_selection : String
@@ -29,8 +29,7 @@ func enter(_msg : ={}) -> void:
 	player.velocity = Vector3.ZERO
 	left_key_selection = left_side_keys.pick_random()
 	right_key_selection = right_side_keys.pick_random()
-	placeholder_l_able.show()
-	placeholder_l_able.text = left_key_selection + " + " + right_key_selection
+	balance
 	flaslight_model.show()
 	flaslight_model.position = Vector3(.3, 0.0, .2)
 	tween = get_tree().create_tween()
@@ -39,6 +38,7 @@ func enter(_msg : ={}) -> void:
 	tween.tween_property(flaslight_model, "position", flashlight_initial_pos, 0.6).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_BACK)
 	tween.tween_property(camera_pivot, "rotation", target_rotation, 0.45)
 	animation_tree["parameters/change_batteries_trigger/request"] = AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE
+	balanced_ui.display_keys(left_key_selection, right_key_selection)
 
 
 func update(_delta):
@@ -77,4 +77,4 @@ func exit() -> void:
 	animation_tree["parameters/change_batteries_trigger/request"] = AnimationNodeOneShot.ONE_SHOT_REQUEST_ABORT
 	flaslight_model.hide()
 	correct_key_pressed = 0
-	placeholder_l_able.hide()
+	balanced_ui.h_box_container.hide()

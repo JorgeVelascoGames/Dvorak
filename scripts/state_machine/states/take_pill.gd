@@ -4,7 +4,7 @@ class_name TakePill
 @export var min_keys_to_press := 12
 @export var max_keys_to_press := 33
 
-@onready var placeholder_l_able = $"../../PlayerUI/BalancedUI/PlaceholderLAble"
+@onready var balanced_ui: BalanceUI = $"../../PlayerUI/BalancedUI"
 @onready var inventory: Inventory = $"../../Components/Inventory"
 @onready var player_ui: PlayerUI = $"../../PlayerUI"
 @onready var balance: Balance = $"../../Components/Balance"
@@ -30,8 +30,7 @@ func enter(_msg : ={}) -> void:
 	player.velocity = Vector3.ZERO
 	left_key_selection = left_side_keys.pick_random()
 	right_key_selection = right_side_keys.pick_random()
-	placeholder_l_able.show()
-	placeholder_l_able.text = left_key_selection + " + " + right_key_selection
+	balanced_ui.display_keys(left_key_selection, right_key_selection)
 	
 	animated_gun.show()
 	animated_gun.position = Vector3(.3, 0.0, .2)
@@ -79,5 +78,5 @@ func cancel_and_finish() -> void:
 func exit() -> void:
 	correct_key_pressed = 0
 	animation_tree["parameters/pills_trigger/request"] = AnimationNodeOneShot.ONE_SHOT_REQUEST_ABORT
-	placeholder_l_able.hide()
+	balanced_ui.h_box_container.hide()
 	animated_gun.hide()

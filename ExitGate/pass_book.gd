@@ -46,6 +46,7 @@ func set_up_book(state: bool, number : int) -> void:
 			switch_order = str(number)
 	
 	text = final_text.format([switch_order, switch_state])
+	print(text)
 
 
 func _on_interactable_on_long_interact() -> void:

@@ -1,8 +1,10 @@
-[gd_scene load_steps=2 format=3 uid="uid://bqgujieo32yk3"]
+[gd_scene load_steps=3 format=3 uid="uid://bqgujieo32yk3"]
 
 [ext_resource type="PackedScene" uid="uid://175qhmdk25l2" path="res://assets/props/lamp/lamp_model.tscn" id="1_2l5al"]
+[ext_resource type="Script" path="res://Levels/environment_elements/lamp_light.gd" id="1_gnpj4"]
 
 [node name="LampLight" type="Node3D"]
+script = ExtResource("1_gnpj4")
 
 [node name="LampModel" parent="." instance=ExtResource("1_2l5al")]
 transform = Transform3D(0.53, 0, 0, 0, 0.53, 0, 0, 0, 0.53, 0, 0, 0)

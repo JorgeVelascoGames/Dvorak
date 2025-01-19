@@ -10,7 +10,7 @@ size = Vector3(0.535, 1.0356, 0.555)
 
 [sub_resource type="Resource" id="Resource_onuc4"]
 script = ExtResource("4_bo8m7")
-hint = "I - (Hold) Search"
+hint = "i - (Hold) Search"
 priority = 0
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_wqu7j"]
@@ -49,6 +49,10 @@ script = ExtResource("1_xf6dv")
 max_number_of_bullets = 3
 
 [node name="FilingCabinetAnimated" parent="." instance=ExtResource("1_q6gxq")]
+
+[node name="Skeleton3D" parent="FilingCabinetAnimated/filing_cabinet" index="0"]
+bones/0/position = Vector3(2.18125e-18, 1.16204e-10, -0.00215907)
+bones/0/rotation = Quaternion(0.707107, 5.33851e-08, 5.33851e-08, 0.707107)
 
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
 

@@ -67,7 +67,7 @@ size = Vector3(0.1823, 0.0754639, 0.3)
 
 [sub_resource type="Resource" id="Resource_nvtge"]
 script = ExtResource("8_xklfv")
-hint = "I - Grab gun"
+hint = "i- Grab gun"
 priority = 3
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_6yy4d"]
@@ -75,7 +75,7 @@ size = Vector3(0.199463, 0.117126, 0.735291)
 
 [sub_resource type="Resource" id="Resource_gddrp"]
 script = ExtResource("8_xklfv")
-hint = "I - Grab crowbar"
+hint = "i - Grab crowbar"
 priority = 3
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_y4t8g"]
@@ -83,7 +83,7 @@ size = Vector3(0.154358, 0.237122, 0.321838)
 
 [sub_resource type="Resource" id="Resource_d5x5d"]
 script = ExtResource("8_xklfv")
-hint = "I - Grab flashlight"
+hint = "i - Grab flashlight"
 priority = 3
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ix1yc"]

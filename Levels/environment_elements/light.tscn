@@ -11,7 +11,7 @@ size = Vector3(1, 1, 0.298828)
 
 [sub_resource type="Resource" id="Resource_87p4s"]
 script = ExtResource("3_ebt33")
-hint = "I - (Hold) Switch lights"
+hint = "i - (Hold) Switch lights"
 priority = 3
 
 [sub_resource type="Animation" id="Animation_5mhlq"]

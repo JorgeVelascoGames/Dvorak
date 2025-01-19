@@ -67,8 +67,8 @@ func _process(delta: float) -> void:
 				if current_interactable_hint != child.interactable_hint:
 					player_ui.hide_interaction_hint(current_interactable_hint) #Just to make sure all hints are removed from the array in case there is some problem
 				current_interactable_hint = child.interactable_hint
-	else:
-		player_ui.hide_interaction_hint(current_interactable_hint)
+				return
+	player_ui.hide_interaction_hint(current_interactable_hint)
 
 
 func _physics_process(delta):
