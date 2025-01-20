@@ -3,12 +3,10 @@
 [ext_resource type="Script" path="res://Levels/environment_elements/cross.gd" id="1_u1ftr"]
 [ext_resource type="Script" path="res://components/interactable.gd" id="2_1dwm3"]
 [ext_resource type="Script" path="res://scripts/hint.gd" id="3_oo8gl"]
-
-[sub_resource type="BoxMesh" id="BoxMesh_fhkk4"]
-size = Vector3(1, 2.14, 0.35)
+[ext_resource type="PackedScene" uid="uid://dgqx33tlwe0q2" path="res://assets/props/cross/cross.tscn" id="4_xgb0q"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_2sy5j"]
-size = Vector3(1, 2.295, 0.505)
+size = Vector3(1.24896, 1.71281, 0.124541)
 
 [sub_resource type="Resource" id="Resource_l0t20"]
 script = ExtResource("3_oo8gl")
@@ -21,12 +19,10 @@ radius = 4.19265
 [node name="Cross" type="Node3D"]
 script = ExtResource("1_u1ftr")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-mesh = SubResource("BoxMesh_fhkk4")
-
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.011322, 0.884328, 0.01979)
 shape = SubResource("BoxShape3D_2sy5j")
 
 [node name="Interactable" type="Node" parent="StaticBody3D/CollisionShape3D"]
@@ -45,5 +41,8 @@ collision_mask = 8
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
 shape = SubResource("SphereShape3D_hccxu")
+
+[node name="cross" parent="." instance=ExtResource("4_xgb0q")]
+transform = Transform3D(0.265, 0, 0, 0, 0.265, 0, 0, 0, 0.265, 0, 0, 0)
 
 [connection signal="on_interact" from="StaticBody3D/CollisionShape3D/Interactable" to="." method="_on_interactable_on_interact"]

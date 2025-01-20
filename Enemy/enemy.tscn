@@ -86,6 +86,11 @@ collision_mask = 0
 [node name="EnemyAnimation" type="AnimationTree" parent="."]
 script = ExtResource("6_5mhlw")
 
-[connection signal="body_entered" from="HurtBox" to="." method="_on_collision_detection_body_entered"]
-[connection signal="body_exited" from="HurtBox" to="." method="_on_collision_detection_body_exited"]
+[node name="DetectionArea" type="Area3D" parent="."]
+collision_layer = 0
+collision_mask = 8
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="DetectionArea"]
+
+[connection signal="body_entered" from="HurtBox" to="." method="_on_hurt_box_body_entered"]
 [connection signal="timeout" from="EnemyAudioManager/StepsTimer" to="EnemyAudioManager" method="_on_steps_timer_timeout"]

@@ -6,14 +6,10 @@ extends Node3D
 @onready var audio_stream_player: AudioStreamPlayer = $AudioStreamPlayer
 @onready var original_light_energy : float = directional_light_3d.light_energy
 
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	directional_light_3d.light_energy = 0.0
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
 
 
 func _on_interactable_on_interact() -> void:
@@ -30,5 +26,9 @@ func _on_interactable_on_interact() -> void:
 	player.player_ui.display_gameplay_text("“I am the light of the world. Whoever follows me will not walk in darkness, but will have the light of life.”", 3)
 	await  tween.finished
 	await get_tree().create_timer(cross_light_duration).timeout
+	$cross.trigger_dissolve(4)
+	tween = get_tree().create_tween()
 	tween.tween_property(directional_light_3d, "light_energy", 1.2, 5.5)
+	await tween.finished
 	AppManager.game_manager.enemy_manager.spawn_blockers.erase(self)
+	queue_free()
