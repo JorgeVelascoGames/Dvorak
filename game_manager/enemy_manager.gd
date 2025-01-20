@@ -10,6 +10,7 @@ class_name EnemyManager
 
 var can_spawn := false
 var enemy_list : Array[Enemy] = []
+##While there is something in this array, nothing will spawn
 var spawn_blockers : Array
 var spawners : Array[EnemySpawner] = []
 

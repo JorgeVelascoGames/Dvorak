@@ -36,15 +36,19 @@ var current_weapon : WEAPON = WEAPON.none
 @onready var inventory: Inventory = $Components/Inventory
 @onready var flashlight_pivot: Node3D = $FlashlightPivot
 @onready var flashlight : Flashlight = walker.flashlight
+@onready var damaged_overlay: ColorRect = $PlayerUI/DamagedOverlay
 
 #onready variables
 @onready var original_world_camera_fov = world_camera.fov
 @onready var original_weapon_camera_fov = weapon_camera.fov
+@onready var damage_texture_original_color : Color = damaged_overlay.color
 
 var originCamPos : Vector3
 var states_with_interact := ["Idle", "Walk"]
 var current_interactable_hint : Hint
 var player_inactive := false
+var heal_tween : Tween
+
 
 func _ready():
 	apply_floor_snap()
@@ -109,15 +113,27 @@ func player_hit() -> void:
 	else:
 		damaged = true
 		damaged_heal_timer.start(time_to_heal_up)
+		damaged_overlay.show()
+		heal_tween = get_tree().create_tween()
+		heal_tween.tween_property(damaged_overlay, "color", Color(0,0,0,0), time_to_heal_up)
 
 
+##This is for healing up before the timer runs out (with items or something like that)
 func heal_up() -> void:
 	damaged = false
 	damaged_heal_timer.stop()
+	heal_tween.kill()
+	heal_tween = get_tree().create_tween()
+	heal_tween.tween_property(damaged_overlay, "color", Color(0,0,0,0), 2.0)
+	await heal_tween.finished
+	damaged_overlay.hide()
+	damaged_overlay.color = damage_texture_original_color
 
 
 func _on_damaged_heal_timer_timeout():
-	heal_up()
+	damaged = false
+	damaged_overlay.hide()
+	damaged_overlay.color = damage_texture_original_color
 
 
 func pick_up_flashlight() -> void:

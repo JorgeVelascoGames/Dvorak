@@ -10,6 +10,7 @@ class_name GameLevelManager
 var current_game_scene : Node
 var current_level_index : int
 
+
 func enter_game_level() -> void:
 	#check for save file
 	load_game_level()

@@ -1,4 +1,4 @@
-[gd_scene load_steps=85 format=3 uid="uid://m6pypgl566n1"]
+[gd_scene load_steps=81 format=3 uid="uid://m6pypgl566n1"]
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_ref5g"]
 [ext_resource type="Script" path="res://player/smooth_camera.gd" id="2_cywkd"]
@@ -6,7 +6,6 @@
 [ext_resource type="Script" path="res://scripts/state_machine/states/idle.gd" id="3_4b8lt"]
 [ext_resource type="Script" path="res://scripts/state_machine/states/walk.gd" id="4_gw7tn"]
 [ext_resource type="Script" path="res://scripts/state_machine/states/walker.gd" id="5_h6v2u"]
-[ext_resource type="Texture2D" uid="uid://di7tj31llxo0i" path="res://player/damage.png" id="6_km1pl"]
 [ext_resource type="Script" path="res://scripts/state_machine/states/aim.gd" id="6_rtwvu"]
 [ext_resource type="Script" path="res://scripts/state_machine/states/prepare_gun.gd" id="7_hfrgh"]
 [ext_resource type="PackedScene" uid="uid://bjq2dkpgpnav7" path="res://player/game_over_menu.tscn" id="7_keanm"]
@@ -39,74 +38,13 @@
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_fyred"]
 
-[sub_resource type="Animation" id="Animation_yibg3"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:scale")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(1, 1)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:modulate")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 0)]
-}
-
-[sub_resource type="Animation" id="Animation_2b66e"]
-resource_name = "TakeDamage"
-length = 0.4
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:scale")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.4),
-"transitions": PackedFloat32Array(-2, -2),
-"update": 0,
-"values": [Vector2(1, 1), Vector2(1.5, 1.5)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:modulate")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.4),
-"transitions": PackedFloat32Array(-2, -2),
-"update": 0,
-"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_xp5da"]
-_data = {
-"RESET": SubResource("Animation_yibg3"),
-"TakeDamage": SubResource("Animation_2b66e")
-}
-
 [sub_resource type="LabelSettings" id="LabelSettings_cswfq"]
 font = ExtResource("8_dofuu")
 font_size = 64
 
 [sub_resource type="LabelSettings" id="LabelSettings_3m322"]
 font = ExtResource("26_ekr4f")
-font_size = 20
+font_size = 15
 outline_size = 2
 outline_color = Color(0.165656, 0.165657, 0.165656, 1)
 shadow_size = 4
@@ -812,27 +750,6 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 script = ExtResource("14_0ypvp")
 
-[node name="DamageTexture" type="TextureRect" parent="PlayerUI"]
-modulate = Color(1, 1, 1, 0)
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -416.0
-offset_top = -204.0
-offset_right = 696.0
-offset_bottom = 404.0
-grow_horizontal = 2
-grow_vertical = 2
-pivot_offset = Vector2(576, 324)
-mouse_filter = 2
-texture = ExtResource("6_km1pl")
-
-[node name="DamageAnimationPlayer" type="AnimationPlayer" parent="PlayerUI/DamageTexture"]
-libraries = {
-"": SubResource("AnimationLibrary_xp5da")
-}
-
 [node name="MarginContainer" type="MarginContainer" parent="PlayerUI"]
 layout_mode = 1
 anchors_preset = 15
@@ -1010,6 +927,15 @@ text = "R- Grab walker"
 label_settings = SubResource("LabelSettings_eftwr")
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="DamagedOverlay" type="ColorRect" parent="PlayerUI"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 1, 1, 0)
 
 [node name="WalkerFixedPoint" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.756069, -0.712773)

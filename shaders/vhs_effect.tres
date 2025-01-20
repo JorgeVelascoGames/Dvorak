@@ -1,0 +1,11 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://bige30rvp1or"]
+
+[ext_resource type="Shader" path="res://shaders/vhs.gdshader" id="1_rut7s"]
+
+[resource]
+shader = ExtResource("1_rut7s")
+shader_parameter/shake = 1.89
+shader_parameter/noiseQuality = 250.0
+shader_parameter/noiseIntensity = 0.002
+shader_parameter/offsetIntensity = 0.001
+shader_parameter/colorOffsetIntensity = 0.5
