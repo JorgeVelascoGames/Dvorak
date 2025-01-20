@@ -474,16 +474,15 @@ autoplay = "rig|Idle_01"
 
 [node name="Light" parent="MainMenuScenario" instance=ExtResource("8_ap1g7")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 2.05745, 2.06461, 0.408363)
-light_on = true
 is_tweaking_light = true
 
-[node name="Switch" parent="MainMenuScenario/Light" index="2"]
+[node name="Switch" parent="MainMenuScenario/Light" index="1"]
 visible = false
 
-[node name="lights" parent="MainMenuScenario/Light" index="3"]
+[node name="lights" parent="MainMenuScenario/Light" index="2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.98023e-08, 0, 0.728648)
 
-[node name="OmniLight3D" parent="MainMenuScenario/Light" index="4"]
+[node name="OmniLight3D" parent="MainMenuScenario/Light" index="3"]
 omni_attenuation = 0.836
 
 [node name="FogVolume" type="FogVolume" parent="MainMenuScenario"]

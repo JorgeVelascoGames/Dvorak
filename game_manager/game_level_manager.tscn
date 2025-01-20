@@ -1,7 +1,6 @@
-[gd_scene load_steps=6 format=3 uid="uid://bgouurh1fbjwr"]
+[gd_scene load_steps=5 format=3 uid="uid://bgouurh1fbjwr"]
 
 [ext_resource type="Script" path="res://game_manager/game_level_manager.gd" id="1_oks1f"]
-[ext_resource type="PackedScene" uid="uid://ben6fpbmg6r7h" path="res://game_manager/loading_screen.tscn" id="2_c0svm"]
 [ext_resource type="PackedScene" uid="uid://b62fd7a6q7pm" path="res://Levels/Sandbox.tscn" id="2_tcflp"]
 [ext_resource type="Script" path="res://game_manager/save_screen.gd" id="3_k02ah"]
 
@@ -10,9 +9,6 @@
 [node name="GameLevelManager" type="Node"]
 script = ExtResource("1_oks1f")
 level_one = ExtResource("2_tcflp")
-
-[node name="LoadingScreen" parent="." instance=ExtResource("2_c0svm")]
-visible = false
 
 [node name="SaveScreen" type="Control" parent="."]
 visible = false
@@ -52,6 +48,5 @@ text = "Next level
 layout_mode = 2
 text = "Save and quit"
 
-[connection signal="NewSceneLoaded" from="LoadingScreen" to="." method="_on_loading_screen_new_scene_loaded"]
 [connection signal="pressed" from="SaveScreen/VBoxContainer/NextLevelButton" to="SaveScreen" method="_on_next_level_button_pressed"]
 [connection signal="pressed" from="SaveScreen/VBoxContainer/SaveAndQuitButton" to="SaveScreen" method="_on_save_and_quit_button_pressed"]

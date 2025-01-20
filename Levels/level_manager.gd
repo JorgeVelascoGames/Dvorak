@@ -2,6 +2,8 @@ extends Node3D
 ##This class goes on the root node of a level
 class_name LevelManager
 
+signal finish_current_level
+
 @export var enemy_container : Node3D
 
 @onready var exit_gate : ExitGate = %ExitGate
@@ -30,7 +32,12 @@ func generate_rooms() -> void:
 
 
 func finish_level() -> void:
+	finish_current_level.emit()
 	var tween := get_tree().create_tween()
 	tween.tween_property(white_screen, "color", Color.WHITE, 4.0)
 	await tween.finished
 	AppManager.game_manager.game_level_manager.back_to_main_menu()
+
+
+func lost_level() -> void:
+	finish_current_level.emit()

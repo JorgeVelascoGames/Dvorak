@@ -43,7 +43,7 @@ func load_new_screen(screen : APP_STATE) -> void:
 	if screen == APP_STATE.menu:
 		loading_screen.load_scene(main_menu)
 	if screen == APP_STATE.game:
-		current_screen.queue_free()
+		#current_screen.queue_free()
 		game_level_manager.enter_game_level()
 
 

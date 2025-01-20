@@ -28,5 +28,6 @@ func _process(delta: float) -> void:
 	if ResourceLoader.THREAD_LOAD_LOADED:
 		is_loading = false
 		var new_scene = ResourceLoader.load_threaded_get(scene_loading).instantiate()
+		print(typeof(new_scene))
 		NewSceneLoaded.emit(new_scene)
 		hide()

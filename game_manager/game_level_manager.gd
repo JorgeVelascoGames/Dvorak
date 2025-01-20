@@ -6,7 +6,6 @@ class_name GameLevelManager
 @export var level_three : PackedScene
 
 @onready var save_screen: Control = $SaveScreen
-@onready var loading_screen: LoadingScreen = $LoadingScreen
 
 var current_game_scene : Node
 var current_level_index : int
@@ -25,17 +24,16 @@ func load_game_level(level : int = 1) -> void:
 	
 	if current_game_scene:
 		current_game_scene.queue_free()
-	
-	if level == 1:
-		loading_screen.load_scene(level_one)
-	if level == 2:
-		loading_screen.load_scene(level_two)
-	if level == 3:
-		loading_screen.load_scene(level_three)
+	match level:
+		1:
+			AppManager.game_manager.loading_screen.load_scene(level_one)
+		2:
+			AppManager.game_manager.loading_screen.load_scene(level_two)
+		3:
+			AppManager.game_manager.loading_screen.load_scene(level_three)
 
 
 func back_to_main_menu() -> void:
-	current_game_scene.queue_free()
 	AppManager.game_manager.load_new_screen(AppManager.game_manager.APP_STATE.menu)
 
 

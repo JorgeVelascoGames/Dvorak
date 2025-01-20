@@ -44,7 +44,7 @@ var current_weapon : WEAPON = WEAPON.none
 var originCamPos : Vector3
 var states_with_interact := ["Idle", "Walk"]
 var current_interactable_hint : Hint
-
+var player_inactive := false
 
 func _ready():
 	apply_floor_snap()
@@ -52,6 +52,8 @@ func _ready():
 	PathfindingManager.set_up_player(self)
 	await get_tree().physics_frame
 	originCamPos = camera_pivot.position #Esta posición la marca la animación "no movement pivot"
+	await get_tree().physics_frame
+	AppManager.game_manager.current_level_manager.finish_current_level.connect(player_finish_level)
 
 
 func _process(delta: float) -> void:
@@ -84,6 +86,8 @@ func direction(delta) -> Vector3:
 
 
 func process_gravity(delta):
+	if player_inactive:
+		return
 	if not is_on_floor():
 		if velocity.y >=0:
 			velocity.y -= gravity * delta
@@ -128,3 +132,12 @@ func toggle_flashlight() -> void:
 func _on_walker_walker_interacted() -> void:
 	if get_floor_normal().abs().is_equal_approx(Vector3.UP):
 		state_machine.transition_to("Walker", {})
+
+
+func player_finish_level() -> void:
+	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+	state_machine.transition_to("Idle", {})
+	state_machine.process_mode = Node.PROCESS_MODE_DISABLED
+	player_inactive = true
+	PathfindingManager.set_up_player(null)
+	$PlayerCollisionShape.disabled = true
