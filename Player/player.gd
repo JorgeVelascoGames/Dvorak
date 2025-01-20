@@ -109,7 +109,7 @@ func try_grab_walker():
 
 func player_hit() -> void:
 	if damaged:
-		pass#TODO
+		player_die()
 	else:
 		damaged = true
 		damaged_heal_timer.start(time_to_heal_up)
@@ -157,3 +157,7 @@ func player_finish_level() -> void:
 	player_inactive = true
 	PathfindingManager.set_up_player(null)
 	$PlayerCollisionShape.disabled = true
+
+
+func player_die() -> void:
+	player_finish_level()
