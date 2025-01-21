@@ -552,6 +552,9 @@ transform = Transform3D(4.68118e-16, 1.07093e-08, 0.245, 0.245, -1.07093e-08, 0,
 [node name="emergency_light3" parent="EmergencyLights" instance=ExtResource("13_3rriw")]
 transform = Transform3D(-1.07093e-08, -0.245, 0, 0.245, -1.07093e-08, 0, 0, 0, 0.245, 30.9489, 2.54865, 1.2622)
 
+[node name="emergency_light5" parent="EmergencyLights" instance=ExtResource("13_3rriw")]
+transform = Transform3D(-1.07093e-08, 0.245, -2.14186e-08, 0.245, 1.07093e-08, -9.36237e-16, 0, -2.14186e-08, -0.245, 13.0557, 2.12973, -14.2687)
+
 [node name="emergency_light4" parent="EmergencyLights" instance=ExtResource("13_3rriw")]
 transform = Transform3D(-1.07093e-08, -0.245, 0, 0.245, -1.07093e-08, 0, 0, 0, 0.245, 23.9433, 7.23671, -13.0957)
 

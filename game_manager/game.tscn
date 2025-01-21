@@ -44,7 +44,6 @@ mouse_filter = 2
 script = ExtResource("9_whl67")
 spawn_frecuency = 70.0
 enemies_on_load = 3
-no_enemies = true
 
 [node name="SpawnerTimer" type="Timer" parent="EnemyManager"]
 

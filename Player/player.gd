@@ -59,7 +59,8 @@ func _ready():
 	await get_tree().physics_frame
 	AppManager.game_manager.current_level_manager.finish_current_level.connect(player_finish_level)
 	await get_tree().create_timer(5).timeout
-	player_die()
+	#player_die()
+
 
 func _process(delta: float) -> void:
 	_delta += delta
