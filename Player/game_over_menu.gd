@@ -2,7 +2,6 @@ extends Control
 
 
 func game_over() -> void:
-	get_tree().paused = true
 	visible = true
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 

@@ -26,8 +26,8 @@ shader_parameter/noise_texture = SubResource("NoiseTexture2D_js4kb")
 albedo_texture = ExtResource("3_v25xa")
 
 [node name="cross" instance=ExtResource("1_d8a0g")]
-script = ExtResource("2_d8nce")
 
 [node name="Cube" parent="." index="0"]
 material_override = SubResource("ShaderMaterial_67cb0")
 surface_material_override/0 = SubResource("StandardMaterial3D_njhm7")
+script = ExtResource("2_d8nce")

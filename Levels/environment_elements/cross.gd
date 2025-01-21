@@ -26,7 +26,7 @@ func _on_interactable_on_interact() -> void:
 	player.player_ui.display_gameplay_text("“I am the light of the world. Whoever follows me will not walk in darkness, but will have the light of life.”", 3)
 	await  tween.finished
 	await get_tree().create_timer(cross_light_duration).timeout
-	$cross.trigger_dissolve(4)
+	$cross/Cube.trigger_dissolve(4)
 	tween = get_tree().create_tween()
 	tween.tween_property(directional_light_3d, "light_energy", 1.2, 5.5)
 	await tween.finished

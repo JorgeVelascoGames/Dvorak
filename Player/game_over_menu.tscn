@@ -1,19 +1,16 @@
-[gd_scene load_steps=8 format=3 uid="uid://bjq2dkpgpnav7"]
+[gd_scene load_steps=7 format=3 uid="uid://bjq2dkpgpnav7"]
 
 [ext_resource type="FontFile" uid="uid://dc0vrsfwu33ll" path="res://assets/fonts/roboto/Roboto-Regular.ttf" id="1_m5pj6"]
 [ext_resource type="Script" path="res://player/game_over_menu.gd" id="2_xyt45"]
-[ext_resource type="Shader" uid="uid://m4ionommu674" path="res://player/game_over_menu.tres" id="3_ulhy6"]
+[ext_resource type="FontFile" uid="uid://8cel7ajxycai" path="res://assets/fonts/roboto/Roboto-Black.ttf" id="4_v4s57"]
+[ext_resource type="FontFile" uid="uid://capvrpuujdf4q" path="res://assets/fonts/roboto/Roboto-Light.ttf" id="5_ccguw"]
 
 [sub_resource type="Theme" id="Theme_2yb2q"]
 default_font = ExtResource("1_m5pj6")
 default_font_size = 64
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_i1o57"]
-shader = ExtResource("3_ulhy6")
-
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_018q4"]
-
 [sub_resource type="LabelSettings" id="LabelSettings_ado22"]
+font = ExtResource("4_v4s57")
 
 [node name="GameOverMenu" type="Control"]
 layout_mode = 3
@@ -26,33 +23,39 @@ size_flags_vertical = 4
 theme = SubResource("Theme_2yb2q")
 script = ExtResource("2_xyt45")
 
-[node name="BackgroundBlur" type="TextureRect" parent="."]
-material = SubResource("ShaderMaterial_i1o57")
+[node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = SubResource("PlaceholderTexture2D_018q4")
+mouse_filter = 1
+color = Color(0.682353, 0.156863, 0.2, 0.298039)
 
 [node name="CenterContainer" type="CenterContainer" parent="."]
-layout_mode = 0
-offset_right = 366.0
-offset_bottom = 195.0
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
 layout_mode = 2
+alignment = 1
 
 [node name="Label" type="Label" parent="CenterContainer/VBoxContainer"]
 layout_mode = 2
-text = "YOU DIED"
+text = "YOU FAILED
+"
 label_settings = SubResource("LabelSettings_ado22")
 horizontal_alignment = 1
 
 [node name="RestartButton" type="Button" parent="CenterContainer/VBoxContainer"]
 process_mode = 3
 layout_mode = 2
+theme_override_fonts/font = ExtResource("5_ccguw")
 theme_override_font_sizes/font_size = 21
 text = "PLAY AGAIN
 "
@@ -60,6 +63,7 @@ text = "PLAY AGAIN
 [node name="QuitButton" type="Button" parent="CenterContainer/VBoxContainer"]
 process_mode = 3
 layout_mode = 2
+theme_override_fonts/font = ExtResource("5_ccguw")
 theme_override_font_sizes/font_size = 21
 text = "QUIT
 "

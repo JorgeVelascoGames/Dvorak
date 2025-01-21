@@ -58,7 +58,8 @@ func _ready():
 	originCamPos = camera_pivot.position #Esta posición la marca la animación "no movement pivot"
 	await get_tree().physics_frame
 	AppManager.game_manager.current_level_manager.finish_current_level.connect(player_finish_level)
-
+	await get_tree().create_timer(5).timeout
+	player_die()
 
 func _process(delta: float) -> void:
 	_delta += delta
@@ -151,9 +152,10 @@ func _on_walker_walker_interacted() -> void:
 
 
 func player_finish_level() -> void:
-	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+	velocity = Vector3.ZERO
 	state_machine.transition_to("Idle", {})
 	state_machine.process_mode = Node.PROCESS_MODE_DISABLED
+	$AnimationTree.process_mode = Node.PROCESS_MODE_DISABLED
 	player_inactive = true
 	PathfindingManager.set_up_player(null)
 	$PlayerCollisionShape.disabled = true
@@ -161,3 +163,9 @@ func player_finish_level() -> void:
 
 func player_die() -> void:
 	player_finish_level()
+	var tween = get_tree().create_tween()
+	tween.set_parallel()
+	tween.tween_property(camera_pivot, "rotation_degrees", Vector3(90, 0, 0), .75)
+	tween.tween_property(camera_pivot, "position", Vector3(0, -1, 0), 1)
+	await tween.finished
+	$PlayerUI/GameOverMenu.game_over()

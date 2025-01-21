@@ -38,12 +38,15 @@ func load_new_screen(screen : APP_STATE) -> void:
 		current_screen.queue_free()
 	if screen == APP_STATE.lenguage:
 		loading_screen.load_scene(lenguage_selecton_menu)
+		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 	if screen == APP_STATE.advert:
 		loading_screen.load_scene(advert_scree)
+		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	if screen == APP_STATE.menu:
 		loading_screen.load_scene(main_menu)
+		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 	if screen == APP_STATE.game:
-		#current_screen.queue_free()
+		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 		game_level_manager.enter_game_level()
 
 
