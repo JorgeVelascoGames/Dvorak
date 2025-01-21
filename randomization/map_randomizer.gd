@@ -3,18 +3,18 @@ class_name MapRandomizer
 
 signal finish_randomization
 
-@export var rooms_array : Array[Marker3D]
+@export var rooms_array : Array[Marker3D] = []
 @export var closed_room_door : PackedScene
 @export var closed_rooms : int = 0
 @export var rooms_father : Node3D
 @export var min_items_to_spawn : int
 @export var max_items_to_spawn : int
 @export var items_father : Node3D
-@export var rooms : Array[PackedScene]
+@export var rooms : Array[PackedScene] =[]
 @export var randomizer_container : Node3D
 
-var items : Array[PackedScene]
-var instantiated_rooms : Array[Room]
+var items : Array[PackedScene] = []
+var instantiated_rooms : Array[Room] = []
 
 
 func _ready() -> void:
@@ -50,10 +50,13 @@ func spawn_rooms() -> void:
 			new_door.position = position.position #We let unused rooms closed
 			new_door.rotation = position.rotation
 	
-	rooms.shuffle()
+	var rooms_scenes_array : Array[PackedScene] = []
+	for room in rooms:
+		rooms_scenes_array.append(room)
+	rooms_scenes_array.shuffle()
 	
 	for room_position in rooms_array:
-		var new_room = rooms.pop_back().instantiate() as Room
+		var new_room = rooms_scenes_array.pop_back().instantiate() as Room
 		rooms_father.add_child(new_room)
 		new_room.position = room_position.position
 		new_room.rotation = room_position.rotation
