@@ -576,6 +576,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 stretch = true
 metadata/_edit_use_anchors_ = true
 
@@ -751,11 +752,6 @@ size_flags_vertical = 3
 mouse_filter = 2
 script = ExtResource("14_0ypvp")
 
-[node name="GameOverMenu" parent="PlayerUI" instance=ExtResource("7_keanm")]
-visible = false
-layout_mode = 1
-mouse_filter = 1
-
 [node name="MarginContainer" type="MarginContainer" parent="PlayerUI"]
 layout_mode = 1
 anchors_preset = 15
@@ -888,6 +884,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 alignment = 1
 
 [node name="Const-Text" type="MarginContainer" parent="PlayerUI/ControlHints"]
@@ -939,6 +936,11 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 color = Color(1, 1, 1, 0)
+
+[node name="GameOverMenu" parent="PlayerUI" instance=ExtResource("7_keanm")]
+visible = false
+layout_mode = 1
+mouse_filter = 1
 
 [node name="WalkerFixedPoint" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.756069, -0.712773)
