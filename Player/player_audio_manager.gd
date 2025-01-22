@@ -35,7 +35,11 @@ func prepare_gun() -> void:
 
 
 func crowbar_swing() -> void:
-	pass
+	item.stream = CROWBAR_SWING
+	item.pitch_scale = randf_range(0.8, 1.15)
+	item.play()
+	await item.finished
+	item.pitch_scale = 1
 
 
 func gun_out_of_bullets() -> void:
@@ -43,10 +47,8 @@ func gun_out_of_bullets() -> void:
 	item.volume_db += 12.0
 	item.play(0.40)
 	await item.finished
-	item.pitch_scale += randf_range(-0.1, 0.2)
-	await item.finished
 	item.volume_db = 0.0
-	item.pitch_scale = 1
+
 
 func cancel_item_sound() -> void:
 	item.stop()
