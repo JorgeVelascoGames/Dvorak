@@ -83,12 +83,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "To do.md",
+                "file": "Atributions.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "To do"
+              "title": "Atributions"
             }
           }
         ],
@@ -235,11 +235,11 @@
   },
   "active": "1c4d2d49e99e1b83",
   "lastOpenFiles": [
+    "To do.md",
     "Doing.md",
     "Bug y arreglos.md",
     "Todo/Demo.md",
     "Todo/Desarrollo.md",
-    "To do.md",
     "Todo/Arte.md",
     "Ideas/Mecánicas.md",
     "Atributions.md",
