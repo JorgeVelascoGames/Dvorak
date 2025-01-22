@@ -19,6 +19,13 @@ func load_gun() -> void:
 func shoot_gun() -> void:
 	pass
 
+func crowbar_swing() -> void:
+	pass
+
+
+func gun_out_of_bullets() -> void:
+	pass
+
 
 func start_footsteps(is_on_walker := true, running := false) -> void:
 	var correct_footsteps = walker_footsteps_time

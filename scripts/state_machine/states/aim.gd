@@ -80,10 +80,11 @@ func exit() -> void:
 func fire() -> void:
 	if ammo_counter.try_fire_shot() == false:
 		state_machine.transition_to("Idle", {})
-		#Sound
+		player.player_audio_manager.gun_out_of_bullets()
+		player.player_ui.display_gameplay_text("The gun is unloaded", 2)
 		return
 	
-	print(gun_ray.get_collider())
+	player.player_audio_manager.shoot_gun()
 	if gun_ray.is_colliding() and gun_ray.get_collider().owner is Enemy:
 		gun_ray.get_collider().owner.enemy_die()
 	

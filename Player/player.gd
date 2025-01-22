@@ -37,6 +37,7 @@ var current_weapon : WEAPON = WEAPON.none
 @onready var flashlight_pivot: Node3D = $FlashlightPivot
 @onready var flashlight : Flashlight = walker.flashlight
 @onready var damaged_overlay: ColorRect = $PlayerUI/DamagedOverlay
+@onready var player_audio_manager: PlayerAudioManager = $PlayerAudioManager
 
 #onready variables
 @onready var original_world_camera_fov = world_camera.fov

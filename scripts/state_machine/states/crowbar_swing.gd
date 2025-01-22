@@ -15,6 +15,7 @@ func enter(_msg : ={}) -> void:
 	player.interactable_ray.process_mode = Node.PROCESS_MODE_DISABLED
 	player.velocity = Vector3.ZERO
 	await get_tree().physics_frame
+	player.player_audio_manager.crowbar_swing()
 	crowbar_attack_hitbox.monitoring = true
 	animation_tree["parameters/crowbar_swing/request"] = AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE
 	await animation_tree.animation_finished
