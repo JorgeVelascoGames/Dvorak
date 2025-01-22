@@ -9,6 +9,7 @@ class_name PlayerAim
 @onready var aiming_gun: Node3D = $"../../SubViewportContainer/SubViewport/WeaponCamera/GunModel"
 @onready var initial_gun_pos := aiming_gun.position
 @onready var prepare_gun: PrepareGun = $"../PrepareGun"
+@onready var crosshair: CenterContainer = $"../../PlayerUI/Crosshair"
 
 @export var aim_multiplier: float = 0.3
 @export var aim_speed: float = 0.5
@@ -21,6 +22,7 @@ var randomized_sensibility: float = 1.0
 var tween : Tween
 
 func enter(_msg : ={}) -> void:
+	crosshair.hide()
 	player.velocity = Vector3.ZERO
 	world_camera.shaking = true
 	aiming_gun.visible = true
@@ -65,6 +67,7 @@ func handle_camera_rotation(_delta:float) -> void:
 
 
 func exit() -> void:
+	crosshair.show()
 	world_camera.shaking = false
 	if tween:
 		tween.kill()

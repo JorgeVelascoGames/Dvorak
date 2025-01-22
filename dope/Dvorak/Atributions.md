@@ -12,3 +12,7 @@ swing 1136AM 2 231022_0626 by klankbeeld -- https://freesound.org/s/720463/ -- L
 Intense Gore Sound: Opening Chest Cavity by MinecraftGamerLR -- https://freesound.org/s/728695/ -- License: Attribution 4.0
 
 Footsteps on slush by xkeril -- https://freesound.org/s/611278/ -- License: Creative Commons 0
+
+Gun trigger pull 5 by JakLocke -- https://freesound.org/s/412298/ -- License: Attribution 4.0
+
+Switch 28.wav by LG -- https://freesound.org/s/72181/ -- License: Attribution 4.0

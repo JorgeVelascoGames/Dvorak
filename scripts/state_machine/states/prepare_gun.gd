@@ -11,11 +11,13 @@ class_name PrepareGun
 var tween : Tween
 var crowbar_prepare := false
 
+
 func enter(_msg : ={}) -> void:
 	player.interactable_ray.process_mode = Node.PROCESS_MODE_DISABLED
 	player.velocity = Vector3.ZERO
 	
 	if player.current_weapon == player.WEAPON.gun:
+		player.player_audio_manager.prepare_gun()
 		animated_gun.show()
 		animated_gun.position = Vector3(.3, 0.0, .2)
 		tween = get_tree().create_tween()
@@ -63,5 +65,6 @@ func exit() -> void:
 	animation_tree["parameters/crowbar_prepare/request"] = AnimationNodeOneShot.ONE_SHOT_REQUEST_ABORT
 	#animation_player.stop()
 	animated_gun.hide()
+	player.player_audio_manager.cancel_item_sound()
 	player.interactable_ray.process_mode = Node.PROCESS_MODE_INHERIT
 	crowbar_prepare = false

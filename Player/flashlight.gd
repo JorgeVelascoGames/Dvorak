@@ -33,7 +33,8 @@ func _process(delta: float) -> void:
 
 
 func toggle_flashlight() -> void:
-	#play sound 
+	player.player_audio_manager.flashlight_switch()
+	
 	if empty_battery:
 		return
 	

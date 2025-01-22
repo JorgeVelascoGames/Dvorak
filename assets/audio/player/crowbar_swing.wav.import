@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://bvu5g6kqp27vn"
-path="res://.godot/imported/crowbar_swing.wav-d2adfc1c4e815b9c3afa73a364ed9cb3.sample"
+path="res://.godot/imported/crowbar_swing.wav-dd7afbb27798982acae2e989fe63cd5d.sample"
 
 [deps]
 
-source_file="res://assets/audio/crowbar_swing.wav"
-dest_files=["res://.godot/imported/crowbar_swing.wav-d2adfc1c4e815b9c3afa73a364ed9cb3.sample"]
+source_file="res://assets/audio/player/crowbar_swing.wav"
+dest_files=["res://.godot/imported/crowbar_swing.wav-dd7afbb27798982acae2e989fe63cd5d.sample"]
 
 [params]
 
