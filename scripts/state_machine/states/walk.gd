@@ -13,7 +13,10 @@ var sprinting := false
 
 func enter(_msg : ={}) -> void:
 	sprinting = false
-
+	if state_machine.last_state == "":
+		$"../../WalkerFixedPoint/Walker".free_walker()
+	else:
+		print(state_machine.last_state)
 
 func update(delta):
 	pass

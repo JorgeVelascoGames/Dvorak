@@ -1,0 +1,75 @@
+[gd_scene load_steps=5 format=3 uid="uid://bb8divagmrtfg"]
+
+[ext_resource type="Script" path="res://Levels/tutorial/tutorial_pop_up.gd" id="1_lrclo"]
+[ext_resource type="FontFile" uid="uid://8cel7ajxycai" path="res://assets/fonts/roboto/Roboto-Black.ttf" id="2_3wbma"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mf4wk"]
+bg_color = Color(0.670588, 0.670588, 0.670588, 0)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0.194349, 0.194349, 0.194349, 1)
+border_blend = true
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_vxf0i"]
+
+[node name="TutorialPopUp" type="Control"]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_lrclo")
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.368627, 0.368627, 0.368627, 0.694118)
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -118.5
+offset_top = -71.5
+offset_right = 118.5
+offset_bottom = 71.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_mf4wk")
+
+[node name="TextureRect" type="TextureRect" parent="PanelContainer"]
+layout_mode = 2
+texture = SubResource("PlaceholderTexture2D_vxf0i")
+stretch_mode = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="ContinueButton" type="Button" parent="PanelContainer/MarginContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+theme_override_fonts/font = ExtResource("2_3wbma")
+text = "Continue"
+
+[connection signal="pressed" from="PanelContainer/MarginContainer/ContinueButton" to="." method="_on_continue_button_pressed"]

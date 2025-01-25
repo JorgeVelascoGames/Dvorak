@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://b37la44wjrp4u"]
+[gd_scene load_steps=26 format=3 uid="uid://b37la44wjrp4u"]
 
 [ext_resource type="PackedScene" uid="uid://dqk45r48r427t" path="res://Levels/level_one/level_one_scenario.tscn" id="1_jujem"]
 [ext_resource type="Environment" uid="uid://c42wra3u6yo6u" path="res://Levels/world_environment.tres" id="1_rc4ww"]
@@ -23,6 +23,7 @@
 [ext_resource type="PackedScene" uid="uid://bvbwpj3cl6pdr" path="res://assets/props/lights/lights.tscn" id="14_xelpn"]
 [ext_resource type="Script" path="res://randomization/randomize_self_destruct.gd" id="15_md1aq"]
 [ext_resource type="PackedScene" uid="uid://qyjmhcrcrko3" path="res://components/enemy_spawner.tscn" id="23_1vq12"]
+[ext_resource type="PackedScene" uid="uid://bb8divagmrtfg" path="res://Levels/tutorial/tutorial_pop_up.tscn" id="24_lg7jd"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_hkrcb"]
 geometry_parsed_geometry_type = 2
@@ -576,6 +577,8 @@ start_spawn_on_ready = true
 transform = Transform3D(-0.773674, 0, -0.633583, 0, 1, 0, 0.633583, 0, -0.773674, -0.00560871, 1.41435, -22.946)
 start_spawn_on_ready = true
 spawn_countdown = 30.0
+
+[node name="TutorialPopUp" parent="." instance=ExtResource("24_lg7jd")]
 
 [editable path="NavigationRegion3D/ExitGate"]
 [editable path="Lamps/LampLight"]

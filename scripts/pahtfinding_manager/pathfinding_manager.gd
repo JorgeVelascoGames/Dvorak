@@ -6,9 +6,11 @@ var player_position: Vector3
 @onready var timer = $Timer
 @onready var waypoints := get_tree().get_nodes_in_group("Waypoints")
 
+
 func _ready() -> void:
 	for point in waypoints:
 		print(point)
+
 
 func set_up_player(current_player: Player) -> void:
 	player = current_player

@@ -1,0 +1,55 @@
+[gd_scene load_steps=5 format=3 uid="uid://bxr2s8atmausr"]
+
+[ext_resource type="Environment" uid="uid://c42wra3u6yo6u" path="res://Levels/world_environment.tres" id="1_t5pyh"]
+[ext_resource type="Material" uid="uid://crg8cijrbcnfr" path="res://materials/floor_mat.tres" id="2_euwto"]
+[ext_resource type="PackedScene" uid="uid://m6pypgl566n1" path="res://player/player.tscn" id="3_mhhpd"]
+[ext_resource type="PackedScene" uid="uid://bb8divagmrtfg" path="res://Levels/tutorial/tutorial_pop_up.tscn" id="4_hwno4"]
+
+[node name="Tutorial" type="Node3D"]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = ExtResource("1_t5pyh")
+
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="."]
+use_collision = true
+
+[node name="CSGBox3D" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.27609, 0, 0.850159)
+size = Vector3(17.9202, 1, 22.7863)
+material = ExtResource("2_euwto")
+
+[node name="Player" parent="." instance=ExtResource("3_mhhpd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.68073, 0)
+
+[node name="StateMachine" parent="Player" index="1"]
+initial_state = NodePath("Walk")
+
+[node name="Walker" parent="Player/WalkerFixedPoint" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.187813, -3.35263)
+
+[node name="GunModel" parent="Player/AnimatedObjects" index="0"]
+transform = Transform3D(-5.79198e-06, 1.6, 0, -1.6, -5.79198e-06, 0, 0, 0, 1.6, 0, 0.25, -0.116873)
+
+[node name="Crowbar" parent="Player/AnimatedObjects" index="1"]
+transform = Transform3D(-0.365312, -0.126945, 0.136132, 0, 0.299855, 0.279619, -0.186138, 0.249142, -0.267172, -0.085, -0.244, -0.957)
+
+[node name="PillsModel" parent="Player/AnimatedObjects" index="3"]
+transform = Transform3D(0.12, 0, 0, 0, 0.0940471, 0.0745328, 0, -0.0745328, 0.0940471, 0, 0.177635, -0.132516)
+
+[node name="Tutorial" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TutorialPopUp" parent="Tutorial" instance=ExtResource("4_hwno4")]
+layout_mode = 1
+
+[editable path="Player"]
+[editable path="Player/SubViewportContainer/SubViewport/WeaponCamera/GunModel"]

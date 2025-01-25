@@ -570,6 +570,13 @@ axis_lock_angular_z = true
 floor_max_angle = 0.959931
 script = ExtResource("1_ref5g")
 speed = 0.2
+fall_multiplier = null
+camera_sensibility = null
+can_jump = null
+damaged = null
+time_to_heal_up = null
+camBobSpeed = null
+camBobUpDown = null
 
 [node name="SubViewportContainer" type="SubViewportContainer" parent="."]
 anchors_preset = 15
@@ -944,7 +951,7 @@ layout_mode = 1
 mouse_filter = 1
 
 [node name="WalkerFixedPoint" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.756069, -0.712773)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.705582, -0.711028)
 
 [node name="Walker" parent="WalkerFixedPoint" instance=ExtResource("20_qts6k")]
 
