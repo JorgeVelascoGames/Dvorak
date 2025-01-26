@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://0okvdhm4fa7k"]
 
 [ext_resource type="Material" uid="uid://ciyx0k2mf8b5f" path="res://Levels/materials/grey.tres" id="1_ims4r"]
-[ext_resource type="PackedScene" uid="uid://0wduiiq6476g" path="res://enemy/braid/braid.tscn" id="2_5r3b1"]
+[ext_resource type="PackedScene" uid="uid://0wduiiq6476g" path="res://Enemy/braid/braid.tscn" id="2_5r3b1"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_avluy"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)

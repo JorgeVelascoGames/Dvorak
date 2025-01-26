@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://u0i0m1o3gr4h"]
 
-[ext_resource type="Script" path="res://enemy/braid/decal_spawner.gd" id="1_3jphk"]
+[ext_resource type="Script" path="res://Enemy/braid/decal_spawner.gd" id="1_3jphk"]
 
 [node name="DecalSpawner" type="Node3D"]
 script = ExtResource("1_3jphk")

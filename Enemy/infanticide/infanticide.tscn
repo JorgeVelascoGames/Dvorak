@@ -1,8 +1,8 @@
 [gd_scene load_steps=13 format=3 uid="uid://dalflm7oaesga"]
 
-[ext_resource type="PackedScene" uid="uid://omjxjkehmmbw" path="res://enemy/enemy.tscn" id="1_t7x4i"]
+[ext_resource type="PackedScene" uid="uid://omjxjkehmmbw" path="res://Enemy/enemy.tscn" id="1_t7x4i"]
 [ext_resource type="PackedScene" uid="uid://bii28bvpdhx41" path="res://assets/enemies/infanticide_model.tscn" id="2_wcyie"]
-[ext_resource type="Script" path="res://enemy/enemy_shy/visible_on_screen.gd" id="3_se4fx"]
+[ext_resource type="Script" path="res://Enemy/enemy_shy/visible_on_screen.gd" id="3_se4fx"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_cxu4l"]
 radius = 0.3
