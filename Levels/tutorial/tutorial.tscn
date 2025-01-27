@@ -28,6 +28,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.68073, 0)
 [node name="StateMachine" parent="Player" index="1"]
 initial_state = NodePath("Walk")
 
+[node name="CameraPivot" parent="Player" index="5"]
+transform = Transform3D(1, 0, 0, 0, 0.258816, 0.965927, 0, -0.965927, 0.258816, 0, 0.54, 0)
+
 [node name="Walker" parent="Player/WalkerFixedPoint" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.187813, -3.35263)
 
