@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://kuj7yvujy1rh"
+path="res://.godot/imported/book throw 2.wav-827b92a6bc6b7f08053d3a508e5445e0.sample"
+
+[deps]
+
+source_file="res://assets/audio/book_vfx/book throw 2.wav"
+dest_files=["res://.godot/imported/book throw 2.wav-827b92a6bc6b7f08053d3a508e5445e0.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

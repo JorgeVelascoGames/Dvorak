@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://cp1ua7py3k6kj"
+path="res://.godot/imported/dagger sheath 3.wav-d0a9f62f0143e892e2f6e005ee41992c.sample"
+
+[deps]
+
+source_file="res://assets/audio/player/pick_gun/dagger sheath 3.wav"
+dest_files=["res://.godot/imported/dagger sheath 3.wav-d0a9f62f0143e892e2f6e005ee41992c.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0
