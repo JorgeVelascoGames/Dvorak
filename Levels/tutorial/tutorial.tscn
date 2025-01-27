@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://bxr2s8atmausr"]
+[gd_scene load_steps=8 format=3 uid="uid://bxr2s8atmausr"]
 
 [ext_resource type="Environment" uid="uid://c42wra3u6yo6u" path="res://Levels/world_environment.tres" id="1_t5pyh"]
 [ext_resource type="Material" uid="uid://crg8cijrbcnfr" path="res://materials/floor_mat.tres" id="2_euwto"]
 [ext_resource type="PackedScene" uid="uid://m6pypgl566n1" path="res://player/player.tscn" id="3_mhhpd"]
 [ext_resource type="PackedScene" uid="uid://bb8divagmrtfg" path="res://Levels/tutorial/tutorial_pop_up.tscn" id="4_hwno4"]
 [ext_resource type="FontFile" uid="uid://ned2dcl2wpyb" path="res://assets/fonts/roboto/Roboto-LightItalic.ttf" id="5_aqw5p"]
+[ext_resource type="LabelSettings" uid="uid://un4p01kkltty" path="res://Levels/tutorial/tutorial_text_lable_settings.tres" id="6_fvtu7"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_igksg"]
 size = Vector3(4.71265, 2.6416, 1)
@@ -37,6 +38,9 @@ initial_state = NodePath("Walk")
 
 [node name="CameraPivot" parent="Player" index="5"]
 transform = Transform3D(1, 0, 0, 0, 0.258816, 0.965927, 0, -0.965927, 0.258816, 0, 0.54, 0)
+
+[node name="GunRay" parent="Player/CameraPivot/FollowPivot/WorldCamera" index="3"]
+transform = Transform3D(5.79386e-09, 2, -1.92145e-10, -1.99561, 5.79387e-09, 0.132548, 0.132548, -1.91953e-10, 1.99561, -4.23963e-09, -0.0353529, -0.286992)
 
 [node name="Walker" parent="Player/WalkerFixedPoint" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.187813, -7.42409)
@@ -78,7 +82,7 @@ layout_mode = 1
 [node name="Label2" parent="Tutorial/BalanceTutorial/PanelContainer/MarginContainer/VBoxContainer" index="0"]
 text = "As you lose your balance, the world around you begins to spin.
 
-If you completely lose your balance, quickly press the indicated keys, or you’ll collapse to the ground."
+If you completely lose your balance, quickly press the indicated keys in succession, or you’ll collapse to the ground."
 
 [node name="HSeparator" parent="Tutorial/BalanceTutorial/PanelContainer/MarginContainer/VBoxContainer" index="1"]
 visible = false
@@ -124,8 +128,34 @@ vertical_alignment = 2
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.18689, 0.820801, -2.31789)
 shape = SubResource("BoxShape3D_igksg")
 
+[node name="LightTutorial" parent="Tutorial" instance=ExtResource("4_hwno4")]
+layout_mode = 1
+
+[node name="Label2" parent="Tutorial/LightTutorial/PanelContainer/MarginContainer/VBoxContainer" index="0"]
+text = "In front of you, you can see a switch. Leave the walker to interact with it using the \"i\" key."
+
+[node name="Label4" type="Label" parent="Tutorial/LightTutorial/PanelContainer/MarginContainer/VBoxContainer" index="1"]
+custom_minimum_size = Vector2(15, 0)
+layout_mode = 2
+text = "Hold down the interact key while pressing the indicated keys in succession until it turns on."
+label_settings = ExtResource("6_fvtu7")
+autowrap_mode = 2
+
+[node name="Label3" parent="Tutorial/LightTutorial/PanelContainer/MarginContainer/VBoxContainer" index="3"]
+custom_minimum_size = Vector2(74.065, 0)
+theme_override_fonts/font = ExtResource("5_aqw5p")
+theme_override_font_sizes/font_size = 11
+text = "Those who pursue you want to catch you in the dark."
+label_settings = null
+horizontal_alignment = 1
+
+[node name="CollisionShape3D" parent="Tutorial/LightTutorial/PlayerDetector" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.18689, 0.820801, -2.31789)
+shape = SubResource("BoxShape3D_igksg")
+
 [editable path="Player"]
 [editable path="Player/SubViewportContainer/SubViewport/WeaponCamera/GunModel"]
 [editable path="Tutorial/MovementTutorial"]
 [editable path="Tutorial/BalanceTutorial"]
 [editable path="Tutorial/WalkerTutorial"]
+[editable path="Tutorial/LightTutorial"]
