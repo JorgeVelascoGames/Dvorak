@@ -1,9 +1,13 @@
-[gd_scene load_steps=5 format=3 uid="uid://bxr2s8atmausr"]
+[gd_scene load_steps=7 format=3 uid="uid://bxr2s8atmausr"]
 
 [ext_resource type="Environment" uid="uid://c42wra3u6yo6u" path="res://Levels/world_environment.tres" id="1_t5pyh"]
 [ext_resource type="Material" uid="uid://crg8cijrbcnfr" path="res://materials/floor_mat.tres" id="2_euwto"]
 [ext_resource type="PackedScene" uid="uid://m6pypgl566n1" path="res://player/player.tscn" id="3_mhhpd"]
 [ext_resource type="PackedScene" uid="uid://bb8divagmrtfg" path="res://Levels/tutorial/tutorial_pop_up.tscn" id="4_hwno4"]
+[ext_resource type="FontFile" uid="uid://ned2dcl2wpyb" path="res://assets/fonts/roboto/Roboto-LightItalic.ttf" id="5_aqw5p"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_igksg"]
+size = Vector3(4.71265, 2.6416, 1)
 
 [node name="Tutorial" type="Node3D"]
 
@@ -23,7 +27,10 @@ size = Vector3(17.9202, 1, 22.7863)
 material = ExtResource("2_euwto")
 
 [node name="Player" parent="." instance=ExtResource("3_mhhpd")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.68073, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.68073, 3.31511)
+
+[node name="SubViewport" parent="Player/SubViewportContainer" index="0"]
+size = Vector2i(640, 360)
 
 [node name="StateMachine" parent="Player" index="1"]
 initial_state = NodePath("Walk")
@@ -32,7 +39,7 @@ initial_state = NodePath("Walk")
 transform = Transform3D(1, 0, 0, 0, 0.258816, 0.965927, 0, -0.965927, 0.258816, 0, 0.54, 0)
 
 [node name="Walker" parent="Player/WalkerFixedPoint" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.187813, -3.35263)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.187813, -7.42409)
 
 [node name="GunModel" parent="Player/AnimatedObjects" index="0"]
 transform = Transform3D(-5.79198e-06, 1.6, 0, -1.6, -5.79198e-06, 0, 0, 0, 1.6, 0, 0.25, -0.116873)
@@ -51,8 +58,74 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="TutorialPopUp" parent="Tutorial" instance=ExtResource("4_hwno4")]
+[node name="MovementTutorial" parent="Tutorial" instance=ExtResource("4_hwno4")]
+visible = false
 layout_mode = 1
+open_on_ready = true
+open_on_ready_dealy = 3.0
+
+[node name="Label2" parent="Tutorial/MovementTutorial/PanelContainer/MarginContainer/VBoxContainer" index="0"]
+text = "Use the WASD keys to move.
+Use SHIFT to sprint."
+
+[node name="Label3" parent="Tutorial/MovementTutorial/PanelContainer/MarginContainer/VBoxContainer" index="2"]
+text = "Fast and abrupt movements cause you to lose balance progressively."
+
+[node name="BalanceTutorial" parent="Tutorial" instance=ExtResource("4_hwno4")]
+visible = false
+layout_mode = 1
+
+[node name="Label2" parent="Tutorial/BalanceTutorial/PanelContainer/MarginContainer/VBoxContainer" index="0"]
+text = "As you lose your balance, the world around you begins to spin.
+
+If you completely lose your balance, quickly press the indicated keys, or you’ll collapse to the ground."
+
+[node name="HSeparator" parent="Tutorial/BalanceTutorial/PanelContainer/MarginContainer/VBoxContainer" index="1"]
+visible = false
+
+[node name="Label3" parent="Tutorial/BalanceTutorial/PanelContainer/MarginContainer/VBoxContainer" index="2"]
+custom_minimum_size = Vector2(0, 49.995)
+size_flags_vertical = 10
+theme_override_fonts/font = ExtResource("5_aqw5p")
+theme_override_font_sizes/font_size = 11
+text = "You should try it now while it’s still safe…"
+label_settings = null
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="CollisionShape3D" parent="Tutorial/BalanceTutorial/PlayerDetector" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.18689, 0.820801, -2.31789)
+shape = SubResource("BoxShape3D_igksg")
+
+[node name="WalkerTutorial" parent="Tutorial" instance=ExtResource("4_hwno4")]
+visible = false
+layout_mode = 1
+
+[node name="Label2" parent="Tutorial/WalkerTutorial/PanelContainer/MarginContainer/VBoxContainer" index="0"]
+text = "Grab onto the walker to regain your balance.
+
+Moving with the walker doesn’t cause any loss of balance, but your movement will be limited."
+
+[node name="HSeparator" parent="Tutorial/WalkerTutorial/PanelContainer/MarginContainer/VBoxContainer" index="1"]
+visible = false
+
+[node name="Label3" parent="Tutorial/WalkerTutorial/PanelContainer/MarginContainer/VBoxContainer" index="2"]
+visible = false
+custom_minimum_size = Vector2(0, 49.995)
+size_flags_horizontal = 4
+size_flags_vertical = 10
+theme_override_fonts/font = ExtResource("5_aqw5p")
+theme_override_font_sizes/font_size = 11
+text = "You should try it now while it’s still safe…"
+label_settings = null
+vertical_alignment = 2
+
+[node name="CollisionShape3D" parent="Tutorial/WalkerTutorial/PlayerDetector" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.18689, 0.820801, -2.31789)
+shape = SubResource("BoxShape3D_igksg")
 
 [editable path="Player"]
 [editable path="Player/SubViewportContainer/SubViewport/WeaponCamera/GunModel"]
+[editable path="Tutorial/MovementTutorial"]
+[editable path="Tutorial/BalanceTutorial"]
+[editable path="Tutorial/WalkerTutorial"]
