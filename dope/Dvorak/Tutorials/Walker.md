@@ -1,0 +1,2 @@
+- Grab onto the walker to quickly regain your balance.
+- Moving with the walker doesn’t cause any loss of balance, but your movement will be limited.

@@ -1,0 +1,4 @@
+- Hold down the right mouse button to ready the crowbar.
+- When it’s ready, press the left mouse button to strike.
+- Striking with the crowbar severely affects your balance.
+- *Try to hit enemies from behind to avoid taking damage.*

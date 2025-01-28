@@ -1,0 +1,3 @@
+- In front of you, you can see a switch. Leave the walker (R key) to interact with it using the "i" key.
+- Hold down the interact key while pressing the indicated keys in succession until it turns on.
+- *Those who pursue you want to catch you in the dark.*

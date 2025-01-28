@@ -1,0 +1,4 @@
+- Hold down the right mouse button to ready your weapon and aim.
+- While aiming, press the left mouse button to shoot.
+- Reload the gun by holding down the “L” key and pressing the indicated keys in succession.
+- Each shot causes a significant loss of balance.

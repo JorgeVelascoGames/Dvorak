@@ -1,0 +1,3 @@
+- In front of you, there’s a filing cabinet. Drop the walker (R key) to move closer and interact with it.
+-  Hold down the "i" key and press the indicated keys in succession to search for resources.
+- You can find bullets for the pistol, batteries for the flashlight, or pills to restore your balance and health.

@@ -1,10 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://bxr2s8atmausr"]
+[gd_scene load_steps=7 format=3 uid="uid://bxr2s8atmausr"]
 
 [ext_resource type="Environment" uid="uid://c42wra3u6yo6u" path="res://Levels/world_environment.tres" id="1_t5pyh"]
 [ext_resource type="Material" uid="uid://crg8cijrbcnfr" path="res://materials/floor_mat.tres" id="2_euwto"]
 [ext_resource type="PackedScene" uid="uid://m6pypgl566n1" path="res://player/player.tscn" id="3_mhhpd"]
 [ext_resource type="PackedScene" uid="uid://bb8divagmrtfg" path="res://Levels/tutorial/tutorial_pop_up.tscn" id="4_hwno4"]
-[ext_resource type="FontFile" uid="uid://ned2dcl2wpyb" path="res://assets/fonts/roboto/Roboto-LightItalic.ttf" id="5_aqw5p"]
 [ext_resource type="LabelSettings" uid="uid://un4p01kkltty" path="res://Levels/tutorial/tutorial_text_lable_settings.tres" id="6_fvtu7"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_igksg"]
@@ -68,34 +67,12 @@ layout_mode = 1
 open_on_ready = true
 open_on_ready_dealy = 3.0
 
-[node name="Label2" parent="Tutorial/MovementTutorial/PanelContainer/MarginContainer/VBoxContainer" index="0"]
-text = "Use the WASD keys to move.
-Use SHIFT to sprint."
-
-[node name="Label3" parent="Tutorial/MovementTutorial/PanelContainer/MarginContainer/VBoxContainer" index="2"]
-text = "Fast and abrupt movements cause you to lose balance progressively."
-
 [node name="BalanceTutorial" parent="Tutorial" instance=ExtResource("4_hwno4")]
 visible = false
 layout_mode = 1
 
-[node name="Label2" parent="Tutorial/BalanceTutorial/PanelContainer/MarginContainer/VBoxContainer" index="0"]
-text = "As you lose your balance, the world around you begins to spin.
-
-If you completely lose your balance, quickly press the indicated keys in succession, or you’ll collapse to the ground."
-
-[node name="HSeparator" parent="Tutorial/BalanceTutorial/PanelContainer/MarginContainer/VBoxContainer" index="1"]
+[node name="HSeparator" parent="Tutorial/BalanceTutorial/PanelContainer/MarginContainer/VBoxContainer" index="2"]
 visible = false
-
-[node name="Label3" parent="Tutorial/BalanceTutorial/PanelContainer/MarginContainer/VBoxContainer" index="2"]
-custom_minimum_size = Vector2(0, 49.995)
-size_flags_vertical = 10
-theme_override_fonts/font = ExtResource("5_aqw5p")
-theme_override_font_sizes/font_size = 11
-text = "You should try it now while it’s still safe…"
-label_settings = null
-horizontal_alignment = 1
-vertical_alignment = 2
 
 [node name="CollisionShape3D" parent="Tutorial/BalanceTutorial/PlayerDetector" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.18689, 0.820801, -2.31789)
@@ -105,51 +82,99 @@ shape = SubResource("BoxShape3D_igksg")
 visible = false
 layout_mode = 1
 
-[node name="Label2" parent="Tutorial/WalkerTutorial/PanelContainer/MarginContainer/VBoxContainer" index="0"]
-text = "Grab onto the walker to regain your balance.
-
-Moving with the walker doesn’t cause any loss of balance, but your movement will be limited."
-
-[node name="HSeparator" parent="Tutorial/WalkerTutorial/PanelContainer/MarginContainer/VBoxContainer" index="1"]
+[node name="HSeparator" parent="Tutorial/WalkerTutorial/PanelContainer/MarginContainer/VBoxContainer" index="2"]
 visible = false
-
-[node name="Label3" parent="Tutorial/WalkerTutorial/PanelContainer/MarginContainer/VBoxContainer" index="2"]
-visible = false
-custom_minimum_size = Vector2(0, 49.995)
-size_flags_horizontal = 4
-size_flags_vertical = 10
-theme_override_fonts/font = ExtResource("5_aqw5p")
-theme_override_font_sizes/font_size = 11
-text = "You should try it now while it’s still safe…"
-label_settings = null
-vertical_alignment = 2
 
 [node name="CollisionShape3D" parent="Tutorial/WalkerTutorial/PlayerDetector" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.18689, 0.820801, -2.31789)
 shape = SubResource("BoxShape3D_igksg")
 
-[node name="LightTutorial" parent="Tutorial" instance=ExtResource("4_hwno4")]
+[node name="FlashlightTutorial" parent="Tutorial" instance=ExtResource("4_hwno4")]
+visible = false
 layout_mode = 1
 
-[node name="Label2" parent="Tutorial/LightTutorial/PanelContainer/MarginContainer/VBoxContainer" index="0"]
-text = "In front of you, you can see a switch. Leave the walker to interact with it using the \"i\" key."
+[node name="HSeparator" parent="Tutorial/FlashlightTutorial/PanelContainer/MarginContainer/VBoxContainer" index="2"]
+visible = false
 
-[node name="Label4" type="Label" parent="Tutorial/LightTutorial/PanelContainer/MarginContainer/VBoxContainer" index="1"]
+[node name="CollisionShape3D" parent="Tutorial/FlashlightTutorial/PlayerDetector" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.18689, 0.820801, -2.31789)
+shape = SubResource("BoxShape3D_igksg")
+
+[node name="FlashlightPickUpTutorial" parent="Tutorial" instance=ExtResource("4_hwno4")]
+visible = false
+layout_mode = 1
+
+[node name="HSeparator" parent="Tutorial/FlashlightPickUpTutorial/PanelContainer/MarginContainer/VBoxContainer" index="2"]
+visible = false
+
+[node name="CollisionShape3D" parent="Tutorial/FlashlightPickUpTutorial/PlayerDetector" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.18689, 0.820801, -2.31789)
+shape = SubResource("BoxShape3D_igksg")
+
+[node name="GunPickUpTutorial" parent="Tutorial" instance=ExtResource("4_hwno4")]
+visible = false
+layout_mode = 1
+
+[node name="HSeparator" parent="Tutorial/GunPickUpTutorial/PanelContainer/MarginContainer/VBoxContainer" index="2"]
+visible = false
+
+[node name="CollisionShape3D" parent="Tutorial/GunPickUpTutorial/PlayerDetector" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.18689, 0.820801, -2.31789)
+shape = SubResource("BoxShape3D_igksg")
+
+[node name="CrowbarPickingTutorial" parent="Tutorial" instance=ExtResource("4_hwno4")]
+visible = false
+layout_mode = 1
+
+[node name="HSeparator" parent="Tutorial/CrowbarPickingTutorial/PanelContainer/MarginContainer/VBoxContainer" index="2"]
+visible = false
+
+[node name="CollisionShape3D" parent="Tutorial/CrowbarPickingTutorial/PlayerDetector" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.18689, 0.820801, -2.31789)
+shape = SubResource("BoxShape3D_igksg")
+
+[node name="LightSwitchTutorial" parent="Tutorial" instance=ExtResource("4_hwno4")]
+visible = false
+layout_mode = 1
+
+[node name="Label4" type="Label" parent="Tutorial/LightSwitchTutorial/PanelContainer/MarginContainer/VBoxContainer" index="1"]
 custom_minimum_size = Vector2(15, 0)
 layout_mode = 2
 text = "Hold down the interact key while pressing the indicated keys in succession until it turns on."
 label_settings = ExtResource("6_fvtu7")
 autowrap_mode = 2
 
-[node name="Label3" parent="Tutorial/LightTutorial/PanelContainer/MarginContainer/VBoxContainer" index="3"]
-custom_minimum_size = Vector2(74.065, 0)
-theme_override_fonts/font = ExtResource("5_aqw5p")
-theme_override_font_sizes/font_size = 11
-text = "Those who pursue you want to catch you in the dark."
-label_settings = null
-horizontal_alignment = 1
+[node name="CollisionShape3D" parent="Tutorial/LightSwitchTutorial/PlayerDetector" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.18689, 0.820801, -2.31789)
+shape = SubResource("BoxShape3D_igksg")
 
-[node name="CollisionShape3D" parent="Tutorial/LightTutorial/PlayerDetector" index="0"]
+[node name="CabinetSearchingTutorial" parent="Tutorial" instance=ExtResource("4_hwno4")]
+visible = false
+layout_mode = 1
+
+[node name="Label4" type="Label" parent="Tutorial/CabinetSearchingTutorial/PanelContainer/MarginContainer/VBoxContainer" index="1"]
+custom_minimum_size = Vector2(15, 0)
+layout_mode = 2
+text = "Hold down the interact key while pressing the indicated keys in succession until it turns on."
+label_settings = ExtResource("6_fvtu7")
+autowrap_mode = 2
+
+[node name="CollisionShape3D" parent="Tutorial/CabinetSearchingTutorial/PlayerDetector" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.18689, 0.820801, -2.31789)
+shape = SubResource("BoxShape3D_igksg")
+
+[node name="EnemyTutorial" parent="Tutorial" instance=ExtResource("4_hwno4")]
+visible = false
+layout_mode = 1
+
+[node name="Label4" type="Label" parent="Tutorial/EnemyTutorial/PanelContainer/MarginContainer/VBoxContainer" index="1"]
+custom_minimum_size = Vector2(15, 0)
+layout_mode = 2
+text = "Hold down the interact key while pressing the indicated keys in succession until it turns on."
+label_settings = ExtResource("6_fvtu7")
+autowrap_mode = 2
+
+[node name="CollisionShape3D" parent="Tutorial/EnemyTutorial/PlayerDetector" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.18689, 0.820801, -2.31789)
 shape = SubResource("BoxShape3D_igksg")
 
@@ -158,4 +183,10 @@ shape = SubResource("BoxShape3D_igksg")
 [editable path="Tutorial/MovementTutorial"]
 [editable path="Tutorial/BalanceTutorial"]
 [editable path="Tutorial/WalkerTutorial"]
-[editable path="Tutorial/LightTutorial"]
+[editable path="Tutorial/FlashlightTutorial"]
+[editable path="Tutorial/FlashlightPickUpTutorial"]
+[editable path="Tutorial/GunPickUpTutorial"]
+[editable path="Tutorial/CrowbarPickingTutorial"]
+[editable path="Tutorial/LightSwitchTutorial"]
+[editable path="Tutorial/CabinetSearchingTutorial"]
+[editable path="Tutorial/EnemyTutorial"]

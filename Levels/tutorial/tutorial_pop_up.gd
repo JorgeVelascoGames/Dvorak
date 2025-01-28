@@ -1,6 +1,8 @@
 extends Control
 class_name TutorialPopUp
 
+signal finished_tutorial
+
 @export var open_on_ready := false
 @export var open_on_ready_dealy := 0.0
 ##Wait said amount of time once the tutorial has already been triggered to show
@@ -31,6 +33,8 @@ func close_tutorial() -> void:
 	hide()
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	get_tree().paused = false
+	await get_tree().process_frame
+	finished_tutorial.emit()
 
 
 func _on_continue_button_pressed() -> void:

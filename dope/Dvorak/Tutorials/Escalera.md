@@ -1,0 +1,3 @@
+- You can’t go up or down stairs while using the walker.
+- Drop it (R key) to climb on foot.
+- Remember you can take one of the items with you (the flashlight, the pistol, or the crowbar).

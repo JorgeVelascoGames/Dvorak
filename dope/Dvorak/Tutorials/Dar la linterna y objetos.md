@@ -1,0 +1,2 @@
+- Use the SPACEBAR to turn on and off the flashlight you carry over your walker.
+- You can also drop the walker (R key) and pick up the objects you find on it. Do so to learn more about them.

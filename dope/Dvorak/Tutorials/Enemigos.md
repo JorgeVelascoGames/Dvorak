@@ -1,0 +1,5 @@
+- In front of you, there’s an enemy. Some will follow you when you’re not looking, while others behave differently.
+- Shoot them in the head with the pistol or strike them with the crowbar to end their agony.
+- If they catch you, you’ll be wounded, and then severely wounded.
+- If they catch you while you’re severely wounded, the game is over.
+- You can heal automatically after some time, or by consuming pills found in the filing cabinets (P key).

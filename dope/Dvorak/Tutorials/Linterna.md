@@ -1,0 +1,2 @@
+- While holding the flashlight, press and hold the “B” key and then press the indicated keys in succession to replace the battery with a new one.
+- Look for fresh batteries around the map so you can keep using the flashlight.

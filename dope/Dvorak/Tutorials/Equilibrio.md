@@ -1,0 +1,3 @@
+- As you lose your balance, the world around you begins to spin.
+- If you completely lose your balance, quickly press the indicated keys, or you’ll collapse to the ground.
+- *You should try it now while it’s still safe…*
