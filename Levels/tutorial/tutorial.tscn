@@ -351,6 +351,7 @@ visible = false
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.18689, 0.820801, -2.31789)
 
 [node name="StairsTutorial" parent="Tutorial" instance=ExtResource("4_hwno4")]
+visible = false
 layout_mode = 1
 
 [node name="Label4" type="Label" parent="Tutorial/StairsTutorial/PanelContainer/MarginContainer/VBoxContainer/LabelMargincontainer" index="0"]
