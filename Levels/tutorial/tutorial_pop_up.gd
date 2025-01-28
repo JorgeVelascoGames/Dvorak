@@ -10,12 +10,14 @@ signal finished_tutorial
 
 var already_displayed := false
 
+
 func _ready() -> void:
 	hide()
 	
 	if open_on_ready:
 		await get_tree().create_timer(open_on_ready_dealy).timeout
 		open_tutorial()
+
 
 func open_tutorial() -> void:
 	if already_displayed:
