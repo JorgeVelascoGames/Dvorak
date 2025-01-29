@@ -33,9 +33,6 @@ initial_state = NodePath("Walk")
 [node name="CameraPivot" parent="Player" index="5"]
 transform = Transform3D(1, 0, 0, 0, 0.258816, 0.965927, 0, -0.965927, 0.258816, 0, 0.54, 0)
 
-[node name="GunRay" parent="Player/CameraPivot/FollowPivot/WorldCamera" index="3"]
-transform = Transform3D(5.79386e-09, 2, -1.92145e-10, -1.99561, 5.79387e-09, 0.132548, 0.132548, -1.91953e-10, 1.99561, -4.23963e-09, -0.0353529, -0.286992)
-
 [node name="Walker" parent="Player/WalkerFixedPoint" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.187813, -7.42409)
 
