@@ -19,6 +19,8 @@ func enter(_msg : ={}) -> void:
 		print(state_machine.last_state)
 
 func update(delta):
+	if player.health_state == player.HEALTH_STATE.dying:
+		sprinting = false
 	pass
 	#if player.direction(delta) == Vector3.ZERO:
 		#state_machine.transition_to("Idle", {})
@@ -36,7 +38,7 @@ func update(delta):
 
 
 func physics_update(delta: float) -> void:
-	if Input.is_action_pressed("sprint"):
+	if Input.is_action_pressed("sprint") and player.health_state != player.HEALTH_STATE.dying:
 		sprinting = true
 	else:
 		sprinting = false

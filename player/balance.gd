@@ -9,20 +9,21 @@ signal balance_added(amount : int)
 @export_category("Balance value parameters")
 @export var max_balance:= 2000.00
 @export var current_balance := 1.00
-@export var leaving_walker_cost : float
-@export var forward_movement_cost : float
+@export var leaving_walker_cost := 20.00
+@export var forward_movement_cost := 75
 @export var sprint_penalty := 130.00
-@export var backward_movement_cost : float
-@export var side_movement_cost : float
+@export var backward_movement_cost := 170.00
+@export var side_movement_cost := 130.00
 @export var rotation_cost_divident := 15.00
-@export var preparing_gun_cost : float
-@export var swing_cost := 200.0
-@export var shooting_cost : float
+@export var preparing_gun_cost := 30.00
+@export var swing_cost := 200.00
+@export var shooting_cost := 150.00
 @export var getting_hit_cost : float
 @export var balance_recovery : float
 @export var bonus_balance_recovery : float
 @export var pill_balance_recovery := 120.00
 @export var damaged_balance_penalty := 15.00
+@export var dying_balance_penalty := 25.00
 @export var weapon_balance_penalty := 25.00
 
 #Variables
@@ -33,7 +34,7 @@ var carry_weapon := false
 #Components
 @onready var balance_recovery_timer = $BalanceRecoveryTimer
 @onready var balance_bar = $UI/BalanceBar
-@onready var player = $"../.."
+@onready var player : Player = owner as Player
 @onready var walk: Walk = $"../../StateMachine/Walk"
 
 
@@ -88,8 +89,10 @@ func swing() -> void:
 
 func add_balance(amount : int) -> void:
 	current_balance += amount
-	if player.damaged:
+	if player.health_state == player.HEALTH_STATE.injure:
 		current_balance += amount * (damaged_balance_penalty / 100)
+	elif player.health_state == player.HEALTH_STATE.dying:
+		current_balance += amount * (dying_balance_penalty /100)
 	
 	if carry_weapon:
 		current_balance += amount * (weapon_balance_penalty / 100) 

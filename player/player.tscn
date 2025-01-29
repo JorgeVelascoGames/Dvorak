@@ -1,4 +1,4 @@
-[gd_scene load_steps=82 format=3 uid="uid://m6pypgl566n1"]
+[gd_scene load_steps=83 format=3 uid="uid://m6pypgl566n1"]
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_ref5g"]
 [ext_resource type="Script" path="res://player/smooth_camera.gd" id="2_cywkd"]
@@ -23,6 +23,7 @@
 [ext_resource type="Script" path="res://scripts/state_machine/states/change_batteries.gd" id="15_6uppe"]
 [ext_resource type="Script" path="res://player/inventory.gd" id="15_8pfmq"]
 [ext_resource type="Resource" uid="uid://c27ts5odnmaxq" path="res://scripts/resources/reload_hint.tres" id="18_6q2xb"]
+[ext_resource type="Script" path="res://player/player_health.gd" id="20_8ocdq"]
 [ext_resource type="PackedScene" uid="uid://4j0uw0ki1luc" path="res://player/walker.tscn" id="20_qts6k"]
 [ext_resource type="PackedScene" uid="uid://cpyss678yatou" path="res://assets/props/gun/gun_model.tscn" id="21_lgr1q"]
 [ext_resource type="Script" path="res://player/player_animation_controller.gd" id="22_j0g4a"]
@@ -570,13 +571,6 @@ axis_lock_angular_z = true
 floor_max_angle = 0.959931
 script = ExtResource("1_ref5g")
 speed = 0.2
-fall_multiplier = null
-camera_sensibility = null
-can_jump = null
-damaged = null
-time_to_heal_up = null
-camBobSpeed = null
-camBobUpDown = null
 
 [node name="SubViewportContainer" type="SubViewportContainer" parent="."]
 anchors_preset = 15
@@ -591,7 +585,7 @@ metadata/_edit_use_anchors_ = true
 [node name="SubViewport" type="SubViewport" parent="SubViewportContainer"]
 transparent_bg = true
 handle_input_locally = false
-size = Vector2i(320, 240)
+size = Vector2i(640, 360)
 render_target_update_mode = 4
 
 [node name="WeaponCamera" type="Camera3D" parent="SubViewportContainer/SubViewport"]
@@ -691,14 +685,8 @@ mesh = SubResource("CapsuleMesh_fyred")
 
 [node name="Balance" parent="Components" instance=ExtResource("10_m7euy")]
 max_balance = 6000.0
-leaving_walker_cost = 20.0
-forward_movement_cost = 75.0
 sprint_penalty = 150.0
-backward_movement_cost = 170.0
-side_movement_cost = 130.0
 rotation_cost_divident = 30.0
-preparing_gun_cost = 30.0
-shooting_cost = 50.0
 getting_hit_cost = 500.0
 balance_recovery = 30.0
 bonus_balance_recovery = 60.0
@@ -709,6 +697,11 @@ reload_hint = ExtResource("18_6q2xb")
 
 [node name="Inventory" type="Node" parent="Components"]
 script = ExtResource("15_8pfmq")
+
+[node name="PlayerHealth" type="Node" parent="Components"]
+script = ExtResource("20_8ocdq")
+
+[node name="DamagedHealTimer" type="Timer" parent="Components/PlayerHealth"]
 
 [node name="PlayerCollisionShape" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.270905, -0.355084)
@@ -979,10 +972,6 @@ visible = false
 transform = Transform3D(0.12, 0, 0, 0, 0.0940471, 0.0745328, 0, -0.0745328, 0.0940471, 0, 0.177635, -0.132516)
 visible = false
 
-[node name="Timers" type="Node" parent="."]
-
-[node name="DamagedHealTimer" type="Timer" parent="Timers"]
-
 [node name="AnimationTree" type="AnimationTree" parent="."]
 process_thread_group = 1
 process_thread_group_order = 0
@@ -1056,9 +1045,9 @@ script = ExtResource("36_f26nf")
 [connection signal="timeout" from="StateMachine/Aim/SensibilityTimer" to="StateMachine/Aim" method="_on_sensibility_timer_timeout"]
 [connection signal="timeout" from="StateMachine/Unbalanced/Timer" to="StateMachine/Unbalanced" method="_on_timer_timeout"]
 [connection signal="timeout" from="StateMachine/Unbalanced/ErrorTimer" to="StateMachine/Unbalanced" method="_on_error_timer_timeout"]
+[connection signal="timeout" from="Components/PlayerHealth/DamagedHealTimer" to="." method="_on_damaged_heal_timer_timeout"]
 [connection signal="timeout" from="CameraPivot/FollowPivot/WorldCamera/AimShakeTimer" to="CameraPivot/FollowPivot/WorldCamera" method="_on_aim_shake_timer_timeout"]
 [connection signal="WalkerInteracted" from="WalkerFixedPoint/Walker" to="." method="_on_walker_walker_interacted"]
-[connection signal="timeout" from="Timers/DamagedHealTimer" to="." method="_on_damaged_heal_timer_timeout"]
 [connection signal="body_entered" from="CrowbarAttackHitbox" to="CrowbarAttackHitbox" method="_on_body_entered"]
 [connection signal="timeout" from="PlayerAudioManager/FootStepsTimer" to="PlayerAudioManager" method="_on_foot_steps_timer_timeout"]
 

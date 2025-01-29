@@ -5,7 +5,7 @@
 [ext_resource type="Material" uid="uid://crg8cijrbcnfr" path="res://materials/floor_mat.tres" id="3_f0p8v"]
 [ext_resource type="Texture2D" uid="uid://cv4idnyo4nqik" path="res://assets/textures/metal_background.jpg" id="4_4cm6p"]
 [ext_resource type="Material" uid="uid://cehysutb1sgal" path="res://materials/cealing_mat.tres" id="4_6iimo"]
-[ext_resource type="Texture2D" uid="uid://35ej51myrd1r" path="res://assets/textures/DefaultMaterial_Base_color.png" id="5_16038"]
+[ext_resource type="Texture2D" uid="uid://35ej51myrd1r" path="res://assets/textures/brick_dirty.png" id="5_16038"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_e2w2f"]
 albedo_texture = ExtResource("4_4cm6p")
