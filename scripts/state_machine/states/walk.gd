@@ -38,7 +38,7 @@ func update(delta):
 
 
 func physics_update(delta: float) -> void:
-	if Input.is_action_pressed("sprint") and player.health_state != player.HEALTH_STATE.dying:
+	if Input.is_action_pressed("sprint") and player.player_health.health_state != player.player_health.HEALTH_STATE.dying:
 		sprinting = true
 	else:
 		sprinting = false

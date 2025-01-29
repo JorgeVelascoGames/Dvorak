@@ -21,10 +21,10 @@ noise = SubResource("FastNoiseLite_y1wwo")
 shader = ExtResource("7_dlfm1")
 shader_parameter/vhs_resolution = Vector2(640, 360)
 shader_parameter/samples = 2
-shader_parameter/crease_noise = 0.0
+shader_parameter/crease_noise = 1.8
 shader_parameter/crease_opacity = 0.5
 shader_parameter/filter_intensity = 0.1
-shader_parameter/tape_crease_smear = 0.2
+shader_parameter/tape_crease_smear = 0.1
 shader_parameter/tape_crease_intensity = 0.2
 shader_parameter/tape_crease_jitter = 0.1
 shader_parameter/tape_crease_speed = 0.5
@@ -53,7 +53,8 @@ level_one = ExtResource("6_4me3d")
 [node name="LoadingScreen" parent="." instance=ExtResource("4_v3kow")]
 visible = false
 
-[node name="VHSEffect" type="ColorRect" parent="."]
+[node name="VHSEffect" type="ColorRect" parent="." groups=["vhs_effect"]]
+visible = false
 z_index = 1000
 material = SubResource("ShaderMaterial_u0avb")
 anchors_preset = 15
