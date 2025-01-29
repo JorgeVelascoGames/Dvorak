@@ -28,6 +28,7 @@ func _process(delta: float) -> void:
 	if ResourceLoader.THREAD_LOAD_LOADED:
 		is_loading = false
 		var new_scene = ResourceLoader.load_threaded_get(scene_loading).instantiate()
+		$"../SubViewportContainer/SubViewport".add_child(new_scene)
 		#await get_tree().create_timer(2.0).timeout
 		NewSceneLoaded.emit(new_scene)
 		hide()

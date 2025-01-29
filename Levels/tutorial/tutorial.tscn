@@ -26,22 +26,9 @@ material = ExtResource("2_euwto")
 
 [node name="Player" parent="." instance=ExtResource("3_mhhpd")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.68073, 3.31511)
-fall_multiplier = 2.5
-camera_sensibility = 1.2
-can_jump = true
-time_to_heal_up = 30.0
-camBobSpeed = 4
-camBobUpDown = 0.1
-
-[node name="SubViewport" parent="Player/SubViewportContainer" index="0"]
-size = Vector2i(640, 360)
 
 [node name="StateMachine" parent="Player" index="1"]
 initial_state = NodePath("Walk")
-
-[node name="Balance" parent="Player/Components" index="0"]
-forward_movement_cost = 75
-shooting_cost = 300
 
 [node name="CameraPivot" parent="Player" index="5"]
 transform = Transform3D(1, 0, 0, 0, 0.258816, 0.965927, 0, -0.965927, 0.258816, 0, 0.54, 0)

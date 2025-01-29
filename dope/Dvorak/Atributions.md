@@ -16,3 +16,8 @@ Footsteps on slush by xkeril -- https://freesound.org/s/611278/ -- License: Crea
 Gun trigger pull 5 by JakLocke -- https://freesound.org/s/412298/ -- License: Attribution 4.0
 
 Switch 28.wav by LG -- https://freesound.org/s/72181/ -- License: Attribution 4.0
+
+Baseboard and tutorial screen metal texture ```
+Created using <Metal 021> from ambientCG.com,
+licensed under the Creative Commons CC0 1.0 Universal License.
+```

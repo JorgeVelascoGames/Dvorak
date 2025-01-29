@@ -19,7 +19,7 @@ func enter(_msg : ={}) -> void:
 		print(state_machine.last_state)
 
 func update(delta):
-	if player.health_state == player.HEALTH_STATE.dying:
+	if player.player_health.health_state == player.player_health.HEALTH_STATE.dying:
 		sprinting = false
 	pass
 	#if player.direction(delta) == Vector3.ZERO:

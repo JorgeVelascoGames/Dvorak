@@ -89,9 +89,9 @@ func swing() -> void:
 
 func add_balance(amount : int) -> void:
 	current_balance += amount
-	if player.health_state == player.HEALTH_STATE.injure:
+	if player.player_health.health_state == player.player_health.HEALTH_STATE.injure:
 		current_balance += amount * (damaged_balance_penalty / 100)
-	elif player.health_state == player.HEALTH_STATE.dying:
+	elif player.player_health.health_state == player.player_health.HEALTH_STATE.dying:
 		current_balance += amount * (dying_balance_penalty /100)
 	
 	if carry_weapon:
