@@ -6,8 +6,8 @@ enum HEALTH_STATE {healthy, injure, dying}
 signal new_heal_state(HEAL_STATE)
 
 @export var health_state := HEALTH_STATE.healthy
-@export var time_to_heal_up := 30.0
-@export var time_to_recover_from_dying := 20.0
+@export var time_to_heal_up := 5.0
+@export var time_to_recover_from_dying := 5.0
 
 @export_category("In-game messages")
 @export var full_health_messages : Array[String] = []
@@ -31,10 +31,10 @@ func player_hit() -> void:
 	#Dying state last less
 	if health_state == HEALTH_STATE.injure:
 		damaged_heal_timer.start(time_to_heal_up)
-		player.player_ui.display_gameplay_text(damaged_messages.pick_random(), 3)
+		player.player_ui.display_gameplay_text(damaged_messages.pick_random(), 5)
 	else:
 		damaged_heal_timer.start(time_to_recover_from_dying)
-		player.player_ui.display_gameplay_text(dying_messages.pick_random(), 3)
+		player.player_ui.display_gameplay_text(dying_messages.pick_random(), 5)
 
 
 func _input(event: InputEvent) -> void:
@@ -47,7 +47,7 @@ func heal_up() -> void:
 		return
 	change_health_state(health_state - 1)
 	if health_state == HEALTH_STATE.healthy:
-		player.player_ui.display_gameplay_text(full_health_messages.pick_random(), 3) 
+		player.player_ui.display_gameplay_text(full_health_messages.pick_random(), 5) 
 	damaged_heal_timer.stop()
 	if health_state != HEALTH_STATE.healthy:
 		damaged_heal_timer.start(time_to_heal_up)
@@ -59,6 +59,7 @@ func change_health_state(new_state : HEALTH_STATE) -> void:
 		HEALTH_STATE.healthy:
 			vhs_effect.close_vhs_effect(3)
 		HEALTH_STATE.injure:
+			vhs_effect.show()
 			vhs_effect.shader_mat.set_shader_parameter("tape_crease_smear", 0.3)
 			vhs_effect.shader_mat.set_shader_parameter("crease_noise", 0.3)
 		HEALTH_STATE.dying:
