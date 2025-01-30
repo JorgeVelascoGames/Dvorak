@@ -1,63 +1,37 @@
-[gd_scene load_steps=9 format=3 uid="uid://bxr2s8atmausr"]
+[gd_scene load_steps=7 format=3 uid="uid://bxr2s8atmausr"]
 
 [ext_resource type="Environment" uid="uid://c42wra3u6yo6u" path="res://Levels/world_environment.tres" id="1_t5pyh"]
-[ext_resource type="Material" uid="uid://crg8cijrbcnfr" path="res://materials/floor_mat.tres" id="2_euwto"]
 [ext_resource type="PackedScene" uid="uid://m6pypgl566n1" path="res://player/player.tscn" id="3_mhhpd"]
-[ext_resource type="Texture2D" uid="uid://35ej51myrd1r" path="res://assets/textures/brick_dirty.png" id="3_uo2b1"]
 [ext_resource type="PackedScene" uid="uid://bb8divagmrtfg" path="res://Levels/tutorial/tutorial_pop_up.tscn" id="4_hwno4"]
 [ext_resource type="LabelSettings" uid="uid://un4p01kkltty" path="res://Levels/tutorial/tutorial_text_lable_settings.tres" id="6_fvtu7"]
 [ext_resource type="FontFile" uid="uid://djkxaekxrwieb" path="res://assets/fonts/roboto/Roboto-Italic.ttf" id="6_h0a1b"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ttrti"]
-albedo_texture = ExtResource("3_uo2b1")
-uv1_triplanar = true
-uv1_world_triplanar = true
+[ext_resource type="PackedScene" uid="uid://dhepkg5i8hdu6" path="res://Levels/tutorial/tutorial_level.tscn" id="6_jtwhb"]
 
 [node name="Tutorial" type="Node3D"]
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
-shadow_enabled = true
+transform = Transform3D(-0.772366, -0.160025, 0.61469, 0.391725, 0.641789, 0.659286, -0.500003, 0.749999, -0.43301, 0, 10.0059, 0)
+
+[node name="DirectionalLight3D2" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.889886, -0.0822055, -0.448715, 0.391725, 0.641789, 0.659286, 0.233783, -0.762462, 0.603321, -0.758778, 10.0059, 0)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = ExtResource("1_t5pyh")
 
-[node name="CSGCombiner3D" type="CSGCombiner3D" parent="."]
-use_collision = true
-
-[node name="CSGBox3D" type="CSGBox3D" parent="CSGCombiner3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.27609, 0, 0.850159)
-size = Vector3(17.9202, 1, 22.7863)
-material = ExtResource("2_euwto")
-
-[node name="CSGBox3D2" type="CSGBox3D" parent="CSGCombiner3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0579834, 1.80493, -8.99155)
-size = Vector3(5.71313, 4.60986, 1)
-material = SubResource("StandardMaterial3D_ttrti")
-
 [node name="Player" parent="." instance=ExtResource("3_mhhpd")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.68073, 3.31511)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.302529, 1.94404, 11.3565)
 
 [node name="StateMachine" parent="Player" index="1"]
 initial_state = NodePath("Walk")
-
-[node name="CameraPivot" parent="Player" index="5"]
-transform = Transform3D(1, 0, 0, 0, 0.258816, 0.965927, 0, -0.965927, 0.258816, 0, 0.54, 0)
 
 [node name="GunRay" parent="Player/CameraPivot/FollowPivot/WorldCamera" index="3"]
 transform = Transform3D(5.79386e-09, 2, -1.92145e-10, -1.99561, 5.79387e-09, 0.132548, 0.132548, -1.91953e-10, 1.99561, -4.23963e-09, -0.0353529, -0.286992)
 
 [node name="Walker" parent="Player/WalkerFixedPoint" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.187813, -7.42409)
-
-[node name="GunModel" parent="Player/AnimatedObjects" index="0"]
-transform = Transform3D(-5.79198e-06, 1.6, 0, -1.6, -5.79198e-06, 0, 0, 0, 1.6, 0, 0.25, -0.116873)
+transform = Transform3D(-0.00300197, 0, -0.999995, 0, 1, 0, 0.999995, 0, -0.00300197, 1.98955, -0.948841, -10.3287)
 
 [node name="Crowbar" parent="Player/AnimatedObjects" index="1"]
 transform = Transform3D(-0.365312, -0.126945, 0.136132, 0, 0.299855, 0.279619, -0.186138, 0.249142, -0.267172, -0.085, -0.244, -0.957)
-
-[node name="PillsModel" parent="Player/AnimatedObjects" index="3"]
-transform = Transform3D(0.12, 0, 0, 0, 0.0940471, 0.0745328, 0, -0.0745328, 0.0940471, 0, 0.177635, -0.132516)
 
 [node name="Tutorial" type="Control" parent="."]
 layout_mode = 3
@@ -381,6 +355,8 @@ visible = false
 
 [node name="CollisionShape3D" parent="Tutorial/StairsTutorial/PlayerDetector" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.18689, 0.820801, -2.31789)
+
+[node name="tutorial_level" parent="." instance=ExtResource("6_jtwhb")]
 
 [editable path="Player"]
 [editable path="Player/SubViewportContainer/SubViewport/WeaponCamera/GunModel"]
