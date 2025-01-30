@@ -243,6 +243,7 @@ change_battery={
 
 3d_render/layer_6="enemies"
 3d_render/layer_7="world"
+3d_render/layer_20="world_decals"
 3d_physics/layer_1="World"
 3d_physics/layer_2="WorldItems"
 3d_physics/layer_3="Player"

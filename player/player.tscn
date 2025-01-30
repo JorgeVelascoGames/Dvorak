@@ -1,4 +1,4 @@
-[gd_scene load_steps=83 format=3 uid="uid://m6pypgl566n1"]
+[gd_scene load_steps=84 format=3 uid="uid://m6pypgl566n1"]
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_ref5g"]
 [ext_resource type="Script" path="res://player/smooth_camera.gd" id="2_cywkd"]
@@ -36,6 +36,7 @@
 [ext_resource type="Texture2D" uid="uid://7g1tf1lcm1l7" path="res://assets/UI/tile_0233.png" id="28_rfyh2"]
 [ext_resource type="PackedScene" uid="uid://ccacel4hrjcs8" path="res://assets/props/pills/pills.tscn" id="29_vkalu"]
 [ext_resource type="FontFile" uid="uid://8cel7ajxycai" path="res://assets/fonts/roboto/Roboto-Black.ttf" id="30_yu0h2"]
+[ext_resource type="Texture2D" uid="uid://3akc2hs6kgh" path="res://assets/textures/blood/blood_3.png" id="31_2n2rm"]
 [ext_resource type="Script" path="res://player/player_audio_manager.gd" id="36_f26nf"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_fyred"]
@@ -931,18 +932,23 @@ label_settings = SubResource("LabelSettings_eftwr")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="DamagedOverlay" type="ColorRect" parent="PlayerUI"]
+[node name="DyingOverlay" type="TextureRect" parent="PlayerUI"]
+visible = false
+modulate = Color(0.192157, 0.192157, 0.192157, 1)
+z_index = -90
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-mouse_filter = 2
-color = Color(1, 1, 1, 0)
+texture = ExtResource("31_2n2rm")
+expand_mode = 2
+stretch_mode = 5
 
 [node name="GameOverMenu" parent="PlayerUI" instance=ExtResource("7_keanm")]
 visible = false
+z_index = 765
 layout_mode = 1
 mouse_filter = 1
 
@@ -1048,7 +1054,7 @@ script = ExtResource("36_f26nf")
 [connection signal="timeout" from="StateMachine/Aim/SensibilityTimer" to="StateMachine/Aim" method="_on_sensibility_timer_timeout"]
 [connection signal="timeout" from="StateMachine/Unbalanced/Timer" to="StateMachine/Unbalanced" method="_on_timer_timeout"]
 [connection signal="timeout" from="StateMachine/Unbalanced/ErrorTimer" to="StateMachine/Unbalanced" method="_on_error_timer_timeout"]
-[connection signal="timeout" from="Components/PlayerHealth/DamagedHealTimer" to="." method="_on_damaged_heal_timer_timeout"]
+[connection signal="timeout" from="Components/PlayerHealth/DamagedHealTimer" to="Components/PlayerHealth" method="_on_damaged_heal_timer_timeout"]
 [connection signal="timeout" from="CameraPivot/FollowPivot/WorldCamera/AimShakeTimer" to="CameraPivot/FollowPivot/WorldCamera" method="_on_aim_shake_timer_timeout"]
 [connection signal="WalkerInteracted" from="WalkerFixedPoint/Walker" to="." method="_on_walker_walker_interacted"]
 [connection signal="body_entered" from="CrowbarAttackHitbox" to="CrowbarAttackHitbox" method="_on_body_entered"]

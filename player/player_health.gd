@@ -6,19 +6,22 @@ enum HEALTH_STATE {healthy, injure, dying}
 signal new_heal_state(HEAL_STATE)
 
 @export var health_state := HEALTH_STATE.healthy
-@export var time_to_heal_up := 5.0
-@export var time_to_recover_from_dying := 5.0
+@export var time_to_heal_up := 30.00
+@export var time_to_recover_from_dying := 15.00
 
 @export_category("In-game messages")
 @export var full_health_messages : Array[String] = []
 @export var damaged_messages : Array[String] = []
 @export var dying_messages : Array[String] = []
 
+@export var dying_overlay_textures : Array[Texture2D] = []
+
 @onready var player : Player = owner as Player
 @onready var damaged_heal_timer: Timer = $DamagedHealTimer
 @onready var vhs_effect : VHSEffect = get_tree().get_first_node_in_group("vhs_effect")
 
 var heal_tween : Tween
+var injured_screen_overlay
 
 
 func player_hit() -> void:
@@ -58,13 +61,20 @@ func change_health_state(new_state : HEALTH_STATE) -> void:
 	match health_state:
 		HEALTH_STATE.healthy:
 			vhs_effect.close_vhs_effect(3)
+			$"../../PlayerUI/DyingOverlay".hide()
 		HEALTH_STATE.injure:
 			vhs_effect.show()
 			vhs_effect.shader_mat.set_shader_parameter("tape_crease_smear", 0.3)
 			vhs_effect.shader_mat.set_shader_parameter("crease_noise", 0.3)
+			$"../../PlayerUI/DyingOverlay".hide()
 		HEALTH_STATE.dying:
+			$"../../PlayerUI/DyingOverlay".show()
 			vhs_effect.shader_mat.set_shader_parameter("tape_crease_smear", 2.0)
 			vhs_effect.shader_mat.set_shader_parameter("crease_noise", 2.0)
 			vhs_effect.tween_crease_noise(0.3, time_to_recover_from_dying)
 			vhs_effect.tween_tape_crease_smear(0.3, time_to_recover_from_dying)
 	new_heal_state.emit(new_state)
+
+
+func _on_damaged_heal_timer_timeout() -> void:
+	heal_up()

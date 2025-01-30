@@ -1,11 +1,21 @@
-[gd_scene load_steps=10 format=3 uid="uid://dqk45r48r427t"]
+[gd_scene load_steps=13 format=3 uid="uid://dqk45r48r427t"]
 
 [ext_resource type="PackedScene" uid="uid://d11friq1q7r58" path="res://assets/environment/level_one.blend" id="1_ldfa7"]
 [ext_resource type="Material" uid="uid://dst813utgj4hq" path="res://materials/walls_mat.tres" id="2_acyha"]
+[ext_resource type="Texture2D" uid="uid://ohwsnfvhlwo4" path="res://assets/textures/dirt_mat_overlay.png" id="2_rf5x7"]
 [ext_resource type="Material" uid="uid://crg8cijrbcnfr" path="res://materials/floor_mat.tres" id="3_f0p8v"]
 [ext_resource type="Texture2D" uid="uid://cv4idnyo4nqik" path="res://assets/textures/metal_background.jpg" id="4_4cm6p"]
 [ext_resource type="Material" uid="uid://cehysutb1sgal" path="res://materials/cealing_mat.tres" id="4_6iimo"]
 [ext_resource type="Texture2D" uid="uid://dv10yy23j70et" path="res://assets/textures/wall_top.png" id="5_w2o3h"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xrsb0"]
+transparency = 1
+albedo_color = Color(1, 1, 1, 0.847059)
+albedo_texture = ExtResource("2_rf5x7")
+uv1_scale = Vector3(0.5, 0.5, 0.5)
+uv1_offset = Vector3(0.7, 0, 0)
+uv1_triplanar = true
+uv1_world_triplanar = true
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_e2w2f"]
 albedo_texture = ExtResource("4_4cm6p")
@@ -21,9 +31,14 @@ uv1_world_triplanar = true
 transparency = 1
 albedo_color = Color(1, 1, 1, 0)
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dw47c"]
+albedo_texture = ExtResource("2_rf5x7")
+
 [node name="LevelOneScenario" instance=ExtResource("1_ldfa7")]
 
 [node name="floor" parent="." index="0"]
+layers = 524289
+material_overlay = SubResource("StandardMaterial3D_xrsb0")
 surface_material_override/0 = ExtResource("2_acyha")
 surface_material_override/1 = ExtResource("3_f0p8v")
 surface_material_override/2 = SubResource("StandardMaterial3D_e2w2f")
@@ -34,7 +49,12 @@ surface_material_override/4 = SubResource("StandardMaterial3D_86jw6")
 collision_mask = 0
 
 [node name="cealing" parent="." index="1"]
+layers = 524289
+material_override = SubResource("StandardMaterial3D_dw47c")
 surface_material_override/0 = ExtResource("4_6iimo")
+
+[node name="room" parent="." index="2"]
+layers = 524289
 
 [node name="stairs_01" parent="." index="3"]
 surface_material_override/0 = ExtResource("3_f0p8v")

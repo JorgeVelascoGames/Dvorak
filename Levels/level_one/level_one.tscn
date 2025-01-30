@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://b37la44wjrp4u"]
+[gd_scene load_steps=28 format=3 uid="uid://b37la44wjrp4u"]
 
 [ext_resource type="PackedScene" uid="uid://dqk45r48r427t" path="res://Levels/level_one/level_one_scenario.tscn" id="1_jujem"]
 [ext_resource type="Environment" uid="uid://c42wra3u6yo6u" path="res://Levels/world_environment.tres" id="1_rc4ww"]
@@ -24,6 +24,8 @@
 [ext_resource type="Script" path="res://randomization/randomize_self_destruct.gd" id="15_md1aq"]
 [ext_resource type="PackedScene" uid="uid://qyjmhcrcrko3" path="res://components/enemy_spawner.tscn" id="23_1vq12"]
 [ext_resource type="PackedScene" uid="uid://bb8divagmrtfg" path="res://Levels/tutorial/tutorial_pop_up.tscn" id="24_lg7jd"]
+[ext_resource type="Texture2D" uid="uid://dmgav0cgffyij" path="res://assets/textures/blood/blood_footsteps.png" id="25_h3682"]
+[ext_resource type="Texture2D" uid="uid://3akc2hs6kgh" path="res://assets/textures/blood/blood_3.png" id="26_kf7ps"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_hkrcb"]
 geometry_parsed_geometry_type = 2
@@ -579,6 +581,32 @@ start_spawn_on_ready = true
 spawn_countdown = 30.0
 
 [node name="TutorialPopUp" parent="." instance=ExtResource("24_lg7jd")]
+
+[node name="Decals" type="Node3D" parent="."]
+
+[node name="Decal" type="Decal" parent="Decals"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.115194, 0.182012, -19.2332)
+size = Vector3(1.1001, 1, 1)
+texture_albedo = ExtResource("25_h3682")
+cull_mask = 524288
+
+[node name="Decal2" type="Decal" parent="Decals"]
+transform = Transform3D(0.998423, 0, 0.0561352, 0, 1, 0, -0.0561352, 0, 0.998423, -0.115194, 0.182012, -18.3538)
+size = Vector3(1.1001, 1, 1)
+texture_albedo = ExtResource("25_h3682")
+cull_mask = 524288
+
+[node name="Decal3" type="Decal" parent="Decals"]
+transform = Transform3D(0.994977, 0, -0.100101, 0, 1, 0, 0.100101, 0, 0.994977, -0.254522, 0.182012, -17.3979)
+size = Vector3(1.1001, 1, 1)
+texture_albedo = ExtResource("25_h3682")
+cull_mask = 524288
+
+[node name="Decal4" type="Decal" parent="Decals"]
+transform = Transform3D(-4.34953e-08, 0.995056, -0.0993197, -1, -4.37114e-08, 0, -4.3414e-09, 0.0993197, 0.995055, -1.33588, 1.53817, -16.8808)
+size = Vector3(1.1001, 1, 1)
+texture_albedo = ExtResource("26_kf7ps")
+cull_mask = 524288
 
 [editable path="NavigationRegion3D/ExitGate"]
 [editable path="Lamps/LampLight"]
