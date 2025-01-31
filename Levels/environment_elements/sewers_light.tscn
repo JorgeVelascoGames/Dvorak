@@ -1,6 +1,10 @@
-[gd_scene load_steps=2 format=3 uid="uid://bnrvch032t16x"]
+[gd_scene load_steps=4 format=3 uid="uid://bnrvch032t16x"]
 
 [ext_resource type="PackedScene" uid="uid://rd6woanfk4nl" path="res://assets/props/emergency_light/emergency_light.tscn" id="1_c2mf2"]
+[ext_resource type="Texture2D" uid="uid://drih67xaf2oru" path="res://assets/props/emergency_light/sewers_lights_texture.png" id="2_wrcon"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ycqtq"]
+albedo_texture = ExtResource("2_wrcon")
 
 [node name="SewersLight" type="Node3D"]
 
@@ -8,11 +12,15 @@
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
 
 [node name="emergency_light" parent="emergency_light" index="0"]
+material_override = SubResource("StandardMaterial3D_ycqtq")
 cast_shadow = 0
 
 [node name="OmniLight3D" type="OmniLight3D" parent="emergency_light"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.242382, -1.05949e-08)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.310962, -1.35926e-08)
 light_color = Color(0.57973, 0.532792, 0.431505, 1)
 light_energy = 3.0
+shadow_enabled = true
+omni_range = 8.0
+omni_attenuation = 2.0
 
 [editable path="emergency_light"]
