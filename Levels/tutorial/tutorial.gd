@@ -25,6 +25,5 @@ func _on_exit_gate_pass_and_books_ready() -> void:
 	exit_gate = $ExitGate
 	exit_gate.pass_books.shuffle()
 	for book in exit_gate.pass_books:
-		add_child(book)
 		book.global_position = books_positions[exit_gate.pass_books.find(book)].global_position
 		book.rotation_degrees = Vector3(0, 90, 0)

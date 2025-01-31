@@ -16,6 +16,7 @@ extends CharacterBody3D
 @onready var player : Player = get_tree().get_first_node_in_group("player")
 @onready var model: Node3D = $Model
 
+var current_target
 var provoke := false
 var can_move := true
 # Get the gravity from the project settings to be synced with RigidBody nodes.
@@ -63,8 +64,6 @@ func _physics_process(_delta: float) -> void:
 
 
 func movement_process(_delta: float) -> void:
-	var current_target
-	
 	if provoke:
 		current_target = player
 	
@@ -81,8 +80,8 @@ func movement_process(_delta: float) -> void:
 	
 	var direction = global_position.direction_to(next_position)
 	
-	if distance < aggro_range:
-		provoke = true
+	#if distance < aggro_range:
+		#provoke = true
 	
 	
 	if direction:

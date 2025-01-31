@@ -42,10 +42,10 @@ void fragment() {
 
     // ALBEDO solo usa la parte rgb
     ALBEDO = surface_color.rgb;
-    
+
     // El alfa final mezcla la alpha original con la máscara de disolución
     ALPHA = surface_color.a * dissolve_noise;
-    
+
     // Usamos dissolve_amount para cortar píxeles si lo deseas
     ALPHA_SCISSOR_THRESHOLD = dissolve_amount;
 
@@ -53,4 +53,3 @@ void fragment() {
     EMISSION = surface_emission * glow_intensity;
     ROUGHNESS = 0.5;
 }
-

@@ -51,5 +51,5 @@ func load_new_screen(screen : APP_STATE) -> void:
 
 
 func _on_loading_screen_new_scene_loaded(scene: Node) -> void:
-	add_child(scene)
+	#add_child(scene)
 	current_screen = scene

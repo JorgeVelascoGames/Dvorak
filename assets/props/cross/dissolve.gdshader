@@ -16,31 +16,31 @@ uniform sampler2D noise_texture;
 
 void fragment() {
 	float dissolve_noise = texture(noise_texture, UV).r;
-	
+
 	float border_mask = 0.0;
 	if (dissolve_amount > 0.0) {
 		float border_size = dissolve_amount + glow_border_width;
-		
+
 		border_mask = 1.0 - smoothstep(
 			border_size - glow_border_smoothness,
 			border_size + glow_border_smoothness,
 			dissolve_noise
 		);
 	}
-	
+
 	vec3 surface_emission = mix(vec3(0.0), glow_color, border_mask);
 
 	// Obtenemos el color de la textura en lugar de usar "base_color".
 	vec3 base_tex_color = texture(base_texture, UV).rgb;
-	
+
 	// Mezclamos la textura con el "mask" de disolución.
 	vec3 surface_color = mix(base_tex_color, vec3(0.0), border_mask);
-	
+
 	// Si no es la cara frontal, usamos el "inside_color".
 	if (!FRONT_FACING) {
 		surface_color = inside_color;
 	}
-	
+
 	ALBEDO = surface_color;
 	EMISSION = surface_emission * glow_intensity;
 	ROUGHNESS = 0.5;
