@@ -1,0 +1,21 @@
+[gd_scene load_steps=5 format=3 uid="uid://do4qopnfif1gf"]
+
+[ext_resource type="PackedScene" uid="uid://72kpfpnalr3a" path="res://Levels/environment_elements/light.tscn" id="1_cmpuu"]
+[ext_resource type="PackedScene" uid="uid://rd6woanfk4nl" path="res://assets/props/emergency_light/emergency_light.tscn" id="2_f6ghx"]
+[ext_resource type="Texture2D" uid="uid://drih67xaf2oru" path="res://assets/props/emergency_light/sewers_lights_texture.png" id="3_j0jds"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ofhu3"]
+albedo_texture = ExtResource("3_j0jds")
+
+[node name="LightSwitchSewers" instance=ExtResource("1_cmpuu")]
+
+[node name="lights" parent="." index="2"]
+visible = false
+
+[node name="emergency_light" parent="." index="4" instance=ExtResource("2_f6ghx")]
+
+[node name="emergency_light" parent="emergency_light" index="0"]
+transform = Transform3D(-2.52435e-28, -9.28918, -2.76839e-07, 1.08892e-06, 8.79976e-15, -9.28918, 9.28918, -2.76839e-07, 8.12086e-07, -7.22296e-09, -0.215207, 0)
+material_override = SubResource("StandardMaterial3D_ofhu3")
+
+[editable path="emergency_light"]

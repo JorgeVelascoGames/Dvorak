@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=4 uid="uid://bxr2s8atmausr"]
+[gd_scene load_steps=39 format=4 uid="uid://bxr2s8atmausr"]
 
 [ext_resource type="Script" path="res://Levels/tutorial/tutorial.gd" id="1_nb02s"]
 [ext_resource type="Environment" uid="uid://c42wra3u6yo6u" path="res://Levels/world_environment.tres" id="1_t5pyh"]
@@ -12,8 +12,14 @@
 [ext_resource type="PackedScene" uid="uid://bnrvch032t16x" path="res://Levels/environment_elements/sewers_light.tscn" id="8_s75u1"]
 [ext_resource type="PackedScene" uid="uid://8wrjjgkmhajd" path="res://Levels/environment_elements/pipes.tscn" id="9_7w7fq"]
 [ext_resource type="PackedScene" uid="uid://cfpfgy53aqnh2" path="res://ExitGate/pass_switch.tscn" id="9_pak0w"]
+[ext_resource type="PackedScene" uid="uid://do4qopnfif1gf" path="res://Levels/environment_elements/light_switch_sewers.tscn" id="9_upkgh"]
+[ext_resource type="PackedScene" uid="uid://rd6woanfk4nl" path="res://assets/props/emergency_light/emergency_light.tscn" id="10_5chf5"]
 [ext_resource type="Texture2D" uid="uid://bseddrslwbp50" path="res://assets/props/pipes/Sewer_Pipes.png" id="10_syycr"]
+[ext_resource type="Texture2D" uid="uid://drih67xaf2oru" path="res://assets/props/emergency_light/sewers_lights_texture.png" id="11_pfypn"]
 [ext_resource type="LabelSettings" uid="uid://uvcnfvkxej6y" path="res://game_ui/flavour_text_lable_settings.tres" id="14_851xi"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ofhu3"]
+albedo_texture = ExtResource("11_pfypn")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mfm4o"]
 resource_name = "Pipes"
@@ -262,6 +268,49 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.8771, 5.96046e-08, -3.0119
 
 [node name="BookSpawn2" type="Marker3D" parent="."]
 transform = Transform3D(-0.992749, 0, -0.120206, 0, 1, 0, 0.120206, 0, -0.992749, 10.1844, 5, -2.029)
+
+[node name="LightSwitches" type="Node3D" parent="."]
+
+[node name="LightSwitchSewers" parent="LightSwitches" instance=ExtResource("9_upkgh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.31331, 1.2424, 12.0575)
+light_original_intensity = 3.0
+
+[node name="Switch" parent="LightSwitches/LightSwitchSewers" index="1"]
+transform = Transform3D(-0.5, 0, -4.37114e-08, 0, 0.5, 0, 4.37114e-08, 0, -0.5, -1.42869, 0, 0.380034)
+
+[node name="OmniLight3D" parent="LightSwitches/LightSwitchSewers" index="3"]
+transform = Transform3D(1, 0, 0, 0, 0.648492, 0.761221, 0, -0.761221, 0.648492, -1.30899, 1.23561, -2.95582)
+
+[node name="emergency_light" parent="LightSwitches/LightSwitchSewers" index="4"]
+transform = Transform3D(1, 0, 0, 0, 0.648492, 0.761221, 0, -0.761221, 0.648492, -1.30899, 1.51964, -3.28923)
+
+[node name="OmniLight3D3" type="OmniLight3D" parent="LightSwitches/LightSwitchSewers"]
+transform = Transform3D(-1, 6.65481e-08, -5.6693e-08, 0, 0.648492, 0.761221, 8.74228e-08, 0.761221, -0.648492, 7.60343, 1.23561, -0.203714)
+light_energy = 1.2
+shadow_enabled = true
+omni_range = 5.82458
+omni_attenuation = 1.745
+
+[node name="emergency_light3" parent="LightSwitches/LightSwitchSewers" instance=ExtResource("10_5chf5")]
+transform = Transform3D(-1, 6.65481e-08, -5.6693e-08, 0, 0.648492, 0.761221, 8.74228e-08, 0.761221, -0.648492, 7.60343, 1.51964, 0.129693)
+
+[node name="emergency_light" parent="LightSwitches/LightSwitchSewers/emergency_light3" index="0"]
+transform = Transform3D(-2.52435e-28, -9.28918, -2.76839e-07, 1.08892e-06, 8.79976e-15, -9.28918, 9.28918, -2.76839e-07, 8.12086e-07, -7.22296e-09, -0.215207, 0)
+material_override = SubResource("StandardMaterial3D_ofhu3")
+
+[node name="OmniLight3D2" type="OmniLight3D" parent="LightSwitches/LightSwitchSewers"]
+transform = Transform3D(1, 0, 0, 0, 0.859469, 0.511188, 0, -0.511188, 0.859469, 3.26298, 0.595613, -2.03049)
+light_energy = 1.2
+shadow_enabled = true
+omni_range = 5.82458
+omni_attenuation = 1.745
+
+[node name="emergency_light2" parent="LightSwitches/LightSwitchSewers" instance=ExtResource("10_5chf5")]
+transform = Transform3D(1, 0, 0, 0, 0.859469, 0.511188, 0, -0.511188, 0.859469, 3.26298, 0.972052, -2.25439)
+
+[node name="emergency_light" parent="LightSwitches/LightSwitchSewers/emergency_light2" index="0"]
+transform = Transform3D(-2.52435e-28, -9.28918, -2.76839e-07, 1.08892e-06, 8.79976e-15, -9.28918, 9.28918, -2.76839e-07, 8.12086e-07, -7.22296e-09, -0.215207, 0)
+material_override = SubResource("StandardMaterial3D_ofhu3")
 
 [node name="Decoration" type="Node3D" parent="."]
 
@@ -730,6 +779,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.18689, 0.820801, -2.31789)
 [editable path="Player/WalkerFixedPoint/Walker/GunSelectorHitbox/GunModel"]
 [editable path="Player/WalkerFixedPoint/Walker/CrowbarSelectorHitbox/Crowbar"]
 [editable path="ExitGate"]
+[editable path="LightSwitches/LightSwitchSewers"]
+[editable path="LightSwitches/LightSwitchSewers/emergency_light"]
+[editable path="LightSwitches/LightSwitchSewers/emergency_light3"]
+[editable path="LightSwitches/LightSwitchSewers/emergency_light2"]
 [editable path="Decoration/Sewer"]
 [editable path="Tutorial/MovementTutorial"]
 [editable path="Tutorial/BalanceTutorial"]

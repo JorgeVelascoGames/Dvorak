@@ -245,7 +245,7 @@ transform = Transform3D(0.0357542, 0, 0.999361, 0, 1, 0, -0.999361, 0, 0.0357542
 is_tweaking_light = true
 
 [node name="Switch" parent="Lights/Light" index="1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.16363, -1.53293, -0.745369)
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -3.16363, -1.25777, -0.745369)
 
 [node name="lights" parent="Lights/Light" index="2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.68327, 0, 0.167554)
@@ -276,7 +276,7 @@ omni_attenuation = 1.745
 [node name="Light2" parent="Lights" instance=ExtResource("5_fux4b")]
 
 [node name="Switch" parent="Lights/Light2" index="1"]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 14.8816, 1.08285, -14.755)
+transform = Transform3D(-2.18557e-08, 0, -0.5, 0, 0.5, 0, 0.5, 0, -2.18557e-08, 14.8816, 1.31075, -14.755)
 
 [node name="lights" parent="Lights/Light2" index="2"]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 13.9326, 2.47663, -17.6963)
@@ -317,7 +317,7 @@ omni_attenuation = 1.745
 [node name="Light3" parent="Lights" instance=ExtResource("5_fux4b")]
 
 [node name="Switch" parent="Lights/Light3" index="1"]
-transform = Transform3D(1.31134e-07, 0, 1, 0, 1, 0, -1, 0, 1.31134e-07, 0.615346, 5.86701, 0.87231)
+transform = Transform3D(3.7749e-08, 0, 0.5, 0, 0.5, 0, -0.5, 0, 3.7749e-08, 0.569003, 6.32909, 0.87231)
 
 [node name="lights" parent="Lights/Light3" index="2"]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 1.29079, 7.45414, 0)
@@ -348,7 +348,7 @@ omni_attenuation = 1.745
 [node name="Light4" parent="Lights" instance=ExtResource("5_fux4b")]
 
 [node name="Switch" parent="Lights/Light4" index="1"]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 20.8992, 1.73504, 3.37383)
+transform = Transform3D(-0.5, 0, -7.54979e-08, 0, 0.5, 0, 7.54979e-08, 0, -0.5, 20.8992, 1.80038, 3.42786)
 
 [node name="lights" parent="Lights/Light4" index="2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.88278, 2.98806, 2.41413)
@@ -380,13 +380,13 @@ omni_attenuation = 1.745
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29.7961, 7.44771, -22.7984)
 
 [node name="Switch" parent="Lights/Light5" index="1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.81036, -1.42412, -0.573561)
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -1.81036, -1.1135, -0.632025)
 
 [node name="Light6" parent="Lights" instance=ExtResource("5_fux4b")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.5683, 7.44771, -13.2192)
 
 [node name="Switch" parent="Lights/Light6" index="1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.81036, -1.42412, -0.649498)
+transform = Transform3D(0.496134, 0, 0, 0, 0.496134, 0, 0, 0, 0.496134, -1.81036, -1.18577, -0.712404)
 
 [node name="lights" parent="Lights/Light6" index="2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.86251, 0, 0)
@@ -470,10 +470,10 @@ transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 24.471
 transform = Transform3D(1, 0, -1.74846e-07, 0, 1, 0, 1.74846e-07, 0, 1, 28.6436, 0, -14.0754)
 
 [node name="door_closed31" parent="Decoration/Doors" instance=ExtResource("14_6smjs")]
-transform = Transform3D(1, 0, -1.74846e-07, 0, 1, 0, 1.74846e-07, 0, 1, 20.671, 5, -14.075)
+transform = Transform3D(1, 0, -1.74846e-07, 0, 1, 0, 1.74846e-07, 0, 1, 20.671, 5, -14.0431)
 
 [node name="door_closed32" parent="Decoration/Doors" instance=ExtResource("14_6smjs")]
-transform = Transform3D(1, 0, -1.74846e-07, 0, 1, 0, 1.74846e-07, 0, 1, 14.7761, 5, -14.075)
+transform = Transform3D(1, 0, -1.74846e-07, 0, 1, 0, 1.74846e-07, 0, 1, 14.7761, 5, -14.0394)
 
 [node name="door_closed33" parent="Decoration/Doors" instance=ExtResource("14_6smjs")]
 transform = Transform3D(1, 0, -1.74846e-07, 0, 1, 0, 1.74846e-07, 0, 1, 7.2781, 5, -14.075)
