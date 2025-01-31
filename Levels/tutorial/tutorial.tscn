@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=4 uid="uid://bxr2s8atmausr"]
+[gd_scene load_steps=35 format=4 uid="uid://bxr2s8atmausr"]
 
 [ext_resource type="Script" path="res://Levels/tutorial/tutorial.gd" id="1_nb02s"]
 [ext_resource type="Environment" uid="uid://c42wra3u6yo6u" path="res://Levels/world_environment.tres" id="1_t5pyh"]
@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://8wrjjgkmhajd" path="res://Levels/environment_elements/pipes.tscn" id="9_7w7fq"]
 [ext_resource type="PackedScene" uid="uid://cfpfgy53aqnh2" path="res://ExitGate/pass_switch.tscn" id="9_pak0w"]
 [ext_resource type="Texture2D" uid="uid://bseddrslwbp50" path="res://assets/props/pipes/Sewer_Pipes.png" id="10_syycr"]
+[ext_resource type="LabelSettings" uid="uid://uvcnfvkxej6y" path="res://game_ui/flavour_text_lable_settings.tres" id="14_851xi"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mfm4o"]
 resource_name = "Pipes"
@@ -375,6 +376,8 @@ text = "Use the WASD keys to move.
 
 Use SHIFT to sprint.
 
+Use MOUSE to look around.
+
 Fast and abrupt movements cause you to lose balance progressively."
 label_settings = ExtResource("6_fvtu7")
 autowrap_mode = 2
@@ -386,7 +389,6 @@ visible = false
 visible = false
 
 [node name="BalanceTutorial" parent="Tutorial" instance=ExtResource("4_hwno4")]
-visible = false
 layout_mode = 1
 
 [node name="Label" type="Label" parent="Tutorial/BalanceTutorial/PanelContainer/MarginContainer/VBoxContainer/LabelMargincontainer" index="0"]
@@ -405,9 +407,8 @@ custom_minimum_size = Vector2(0, 12)
 [node name="Label" type="Label" parent="Tutorial/BalanceTutorial/PanelContainer/MarginContainer/VBoxContainer/LabelMargincontainer2" index="0"]
 custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
-theme_override_fonts/font = ExtResource("6_h0a1b")
-theme_override_font_sizes/font_size = 11
 text = "You should try it now while it’s still safe…"
+label_settings = ExtResource("14_851xi")
 horizontal_alignment = 1
 autowrap_mode = 2
 
@@ -439,6 +440,7 @@ transform = Transform3D(0.710259, 0, 0.70394, 0, 1, 0, -0.70394, 0, 0.710259, 2.
 shape = SubResource("BoxShape3D_rdbqf")
 
 [node name="FlashlightTutorial" parent="Tutorial" instance=ExtResource("4_hwno4")]
+visible = false
 layout_mode = 1
 
 [node name="Label" type="Label" parent="Tutorial/FlashlightTutorial/PanelContainer/MarginContainer/VBoxContainer/LabelMargincontainer" index="0"]
@@ -479,6 +481,9 @@ autowrap_mode = 2
 [node name="HSeparator" parent="Tutorial/FlashlightPickUpTutorial/PanelContainer/MarginContainer/VBoxContainer" index="1"]
 visible = false
 
+[node name="LabelMargincontainer2" parent="Tutorial/FlashlightPickUpTutorial/PanelContainer/MarginContainer/VBoxContainer" index="2"]
+visible = false
+
 [node name="CollisionShape3D" parent="Tutorial/FlashlightPickUpTutorial/PlayerDetector" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.18689, 0.820801, -2.31789)
 
@@ -502,9 +507,8 @@ autowrap_mode = 2
 
 [node name="Label" type="Label" parent="Tutorial/GunPickUpTutorial/PanelContainer/MarginContainer/VBoxContainer/LabelMargincontainer2" index="0"]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("6_h0a1b")
-theme_override_font_sizes/font_size = 11
 text = "Don't waste all your bullets..."
+label_settings = ExtResource("6_fvtu7")
 horizontal_alignment = 1
 
 [node name="CollisionShape3D" parent="Tutorial/GunPickUpTutorial/PlayerDetector" index="0"]
@@ -528,9 +532,8 @@ autowrap_mode = 2
 
 [node name="Label" type="Label" parent="Tutorial/CrowbarPickingTutorial/PanelContainer/MarginContainer/VBoxContainer/LabelMargincontainer2" index="0"]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("6_h0a1b")
-theme_override_font_sizes/font_size = 11
 text = "Try to hit enemies from behind to avoid taking damage"
+label_settings = ExtResource("6_fvtu7")
 horizontal_alignment = 1
 
 [node name="CollisionShape3D" parent="Tutorial/CrowbarPickingTutorial/PlayerDetector" index="0"]
@@ -555,6 +558,7 @@ layout_mode = 2
 theme_override_fonts/font = ExtResource("6_h0a1b")
 theme_override_font_sizes/font_size = 11
 text = "Those who pursue you want to catch you in the dark	"
+label_settings = ExtResource("14_851xi")
 horizontal_alignment = 1
 autowrap_mode = 2
 
@@ -633,9 +637,8 @@ autowrap_mode = 2
 [node name="Label" type="Label" parent="Tutorial/EndGameTutorial/PanelContainer/MarginContainer/VBoxContainer/LabelMargincontainer2" index="0"]
 custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
-theme_override_fonts/font = ExtResource("6_h0a1b")
-theme_override_font_sizes/font_size = 11
 text = "If you try to leave without entering the correct combination, things can get complicated very quickly..."
+label_settings = ExtResource("6_fvtu7")
 horizontal_alignment = 1
 autowrap_mode = 2
 
@@ -712,6 +715,7 @@ layout_mode = 2
 theme_override_fonts/font = ExtResource("6_h0a1b")
 theme_override_font_sizes/font_size = 11
 text = "You can now press ESC to exit the tutorial—there’s nothing more to see here…"
+label_settings = ExtResource("14_851xi")
 horizontal_alignment = 1
 
 [node name="CollisionShape3D" parent="Tutorial/ErrorTutorial/PlayerDetector" index="0"]

@@ -18,9 +18,9 @@ cast_shadow = 0
 [node name="OmniLight3D" type="OmniLight3D" parent="emergency_light"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.310962, -1.35926e-08)
 light_color = Color(0.57973, 0.532792, 0.431505, 1)
-light_energy = 3.0
+light_energy = 5.0
 shadow_enabled = true
-omni_range = 8.0
+omni_range = 14.0
 omni_attenuation = 2.0
 
 [editable path="emergency_light"]
