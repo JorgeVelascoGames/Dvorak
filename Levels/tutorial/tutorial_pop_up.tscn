@@ -1,8 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://bb8divagmrtfg"]
+[gd_scene load_steps=7 format=3 uid="uid://bb8divagmrtfg"]
 
 [ext_resource type="Script" path="res://Levels/tutorial/tutorial_pop_up.gd" id="1_lrclo"]
 [ext_resource type="FontFile" uid="uid://8cel7ajxycai" path="res://assets/fonts/roboto/Roboto-Black.ttf" id="2_3wbma"]
 [ext_resource type="Texture2D" uid="uid://cv4idnyo4nqik" path="res://assets/textures/metal_background.jpg" id="2_5arar"]
+[ext_resource type="LabelSettings" uid="uid://un4p01kkltty" path="res://Levels/tutorial/tutorial_text_lable_settings.tres" id="3_ffpvq"]
+[ext_resource type="LabelSettings" uid="uid://uvcnfvkxej6y" path="res://game_ui/flavour_text_lable_settings.tres" id="4_f1p6u"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mf4wk"]
 bg_color = Color(0.670588, 0.670588, 0.670588, 0)
@@ -37,49 +39,72 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.180392, 0.180392, 0.180392, 0.8)
 
-[node name="PanelContainer" type="PanelContainer" parent="."]
+[node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/margin_left = 60
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 60
+theme_override_constants/margin_bottom = 12
+
+[node name="PanelContainer" type="PanelContainer" parent="MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 4
 theme_override_styles/panel = SubResource("StyleBoxFlat_mf4wk")
 
-[node name="TextureRect" type="TextureRect" parent="PanelContainer"]
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/PanelContainer"]
 modulate = Color(1, 1, 1, 0.588235)
 layout_mode = 2
 texture = ExtResource("2_5arar")
 expand_mode = 2
 stretch_mode = 1
 
-[node name="MarginContainer" type="MarginContainer" parent="PanelContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/PanelContainer"]
 layout_mode = 2
 theme_override_constants/margin_left = 5
 theme_override_constants/margin_top = 5
 theme_override_constants/margin_right = 5
 theme_override_constants/margin_bottom = 5
 
-[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/PanelContainer/MarginContainer"]
 layout_mode = 2
 alignment = 1
 
-[node name="LabelMargincontainer" type="MarginContainer" parent="PanelContainer/MarginContainer/VBoxContainer"]
+[node name="LabelMargincontainer" type="MarginContainer" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer"]
 custom_minimum_size = Vector2(0, 33)
 layout_mode = 2
 
-[node name="HSeparator" type="HSeparator" parent="PanelContainer/MarginContainer/VBoxContainer"]
+[node name="MainTextLabel" type="Label" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/LabelMargincontainer"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+label_settings = ExtResource("3_ffpvq")
+autowrap_mode = 3
+
+[node name="HSeparator" type="HSeparator" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer"]
+visible = false
 layout_mode = 2
 
-[node name="LabelMargincontainer2" type="MarginContainer" parent="PanelContainer/MarginContainer/VBoxContainer"]
+[node name="LabelMargincontainer2" type="MarginContainer" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer"]
+visible = false
 custom_minimum_size = Vector2(0, 33)
 layout_mode = 2
 
-[node name="ButtonMargin" type="MarginContainer" parent="PanelContainer/MarginContainer/VBoxContainer"]
+[node name="ItalicTextLabel" type="Label" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/LabelMargincontainer2"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+label_settings = ExtResource("4_f1p6u")
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="ButtonMargin" type="MarginContainer" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer"]
 custom_minimum_size = Vector2(0, 45)
 layout_mode = 2
 
-[node name="ContinueButton" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer/ButtonMargin"]
+[node name="ContinueButton" type="Button" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/ButtonMargin"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 4
@@ -87,16 +112,11 @@ size_flags_vertical = 8
 theme_override_fonts/font = ExtResource("2_3wbma")
 text = "Continue"
 
-[node name="MarginContainer" type="MarginContainer" parent="."]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
 [node name="PlayerDetector" type="Area3D" parent="."]
 collision_layer = 0
 collision_mask = 4
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="PlayerDetector"]
 
-[connection signal="pressed" from="PanelContainer/MarginContainer/VBoxContainer/ButtonMargin/ContinueButton" to="." method="_on_continue_button_pressed"]
+[connection signal="pressed" from="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/ButtonMargin/ContinueButton" to="." method="_on_continue_button_pressed"]
 [connection signal="body_entered" from="PlayerDetector" to="." method="_on_player_detector_body_entered"]

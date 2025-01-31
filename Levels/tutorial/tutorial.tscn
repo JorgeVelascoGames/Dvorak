@@ -200,6 +200,181 @@ script = ExtResource("1_nb02s")
 books_positions = [NodePath("BookSpawn"), NodePath("BookSpawn2")]
 enemy_container = NodePath("Enemies")
 
+[node name="Tutorial_ErrorTutorial_PanelContainer_MarginContainer_VBoxContainer_LabelMargincontainer2#Label" type="Label" parent="."]
+theme_override_fonts/font = ExtResource("6_h0a1b")
+theme_override_font_sizes/font_size = 11
+text = "You can now press ESC to exit the tutorial—there’s nothing more to see here…"
+label_settings = ExtResource("14_851xi")
+horizontal_alignment = 1
+
+[node name="Tutorial_ErrorTutorial_PanelContainer_MarginContainer_VBoxContainer_LabelMargincontainer#Label4" type="Label" parent="."]
+custom_minimum_size = Vector2(15, 0)
+text = "This time you’ve entered the wrong combination. Remember to look for the books to discover where each switch needs to be set, and also remember that with every new playthrough, this pattern changes.
+
+ Make sure you don’t touch the red switch (always to the left of the exit door) until you’ve placed all the switches in their correct positions."
+label_settings = ExtResource("6_fvtu7")
+autowrap_mode = 2
+
+[node name="Tutorial_StairsTutorial_PanelContainer_MarginContainer_VBoxContainer_LabelMargincontainer#Label4" type="Label" parent="."]
+custom_minimum_size = Vector2(15, 0)
+text = "You can’t go up or down stairs while using the walker.
+
+Drop it (R key) to climb on foot.
+
+ Remember you can take one of the items with you (the flashlight, the pistol, or the crowbar)."
+label_settings = ExtResource("6_fvtu7")
+autowrap_mode = 2
+
+[node name="Tutorial_BookTutorial_PanelContainer_MarginContainer_VBoxContainer_LabelMargincontainer#Label4" type="Label" parent="."]
+custom_minimum_size = Vector2(15, 0)
+text = "Here’s a password book.
+
+There is one book for each switch in the level—find them all to learn the correct positions for each switch.
+
+Hold down the interact key (\"i\") while pressing the indicated buttons in succession to search the book."
+label_settings = ExtResource("6_fvtu7")
+autowrap_mode = 2
+
+[node name="Tutorial_EndGameTutorial_PanelContainer_MarginContainer_VBoxContainer_LabelMargincontainer2#Label" type="Label" parent="."]
+custom_minimum_size = Vector2(300, 0)
+text = "If you try to leave without entering the correct combination, things can get complicated very quickly..."
+label_settings = ExtResource("6_fvtu7")
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="Tutorial_EndGameTutorial_PanelContainer_MarginContainer_VBoxContainer_LabelMargincontainer#Label4" type="Label" parent="."]
+custom_minimum_size = Vector2(15, 0)
+text = "To escape and finish the level, you need to set the switches on the right side of the door to their correct positions.
+
+Each playthrough, these positions change, so you’ll have to search the books scattered around the rooms to find out where each switch should be set.
+
+Once you think you have the correct pattern, press the switch on the left side of the door to open it and escape."
+label_settings = ExtResource("6_fvtu7")
+autowrap_mode = 2
+
+[node name="Tutorial_EnemyTutorial_PanelContainer_MarginContainer_VBoxContainer_LabelMargincontainer#Label4" type="Label" parent="."]
+custom_minimum_size = Vector2(15, 0)
+text = " In front of you, there’s an enemy. Some will follow you when you’re not looking, while others behave differently.
+- Shoot them in the head with the pistol or strike them with the crowbar to end their agony.
+- If they catch you, you’ll be wounded, and then severely wounded.
+- If they catch you while you’re severely wounded, the game is over.
+- You can heal automatically after some time, or by consuming pills found in the filing cabinets (P key)."
+label_settings = ExtResource("6_fvtu7")
+autowrap_mode = 3
+
+[node name="Tutorial_CabinetSearchingTutorial_PanelContainer_MarginContainer_VBoxContainer_LabelMargincontainer#Label" type="Label" parent="."]
+custom_minimum_size = Vector2(300, 0)
+text = "In front of you, there’s a filing cabinet. Drop the walker (R key) to move closer and interact with it.
+
+ Hold down the \"i\" key and press the indicated keys in succession to search for resources.
+
+You can find bullets for the pistol, batteries for the flashlight, or pills to restore your balance and health."
+label_settings = ExtResource("6_fvtu7")
+autowrap_mode = 2
+
+[node name="Tutorial_LightSwitchTutorial_PanelContainer_MarginContainer_VBoxContainer_LabelMargincontainer2#Label" type="Label" parent="."]
+custom_minimum_size = Vector2(300, 0)
+theme_override_fonts/font = ExtResource("6_h0a1b")
+theme_override_font_sizes/font_size = 11
+text = "Those who pursue you want to catch you in the dark	"
+label_settings = ExtResource("14_851xi")
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="Tutorial_LightSwitchTutorial_PanelContainer_MarginContainer_VBoxContainer_LabelMargincontainer#Label4" type="Label" parent="."]
+custom_minimum_size = Vector2(15, 0)
+text = "In front of you, you can see a switch. Leave the walker (R key) to interact with it using the \"i\" key.
+
+Hold down the interact key while pressing the indicated keys in succession until it turns on."
+label_settings = ExtResource("6_fvtu7")
+autowrap_mode = 2
+
+[node name="Tutorial_CrowbarPickingTutorial_PanelContainer_MarginContainer_VBoxContainer_LabelMargincontainer2#Label" type="Label" parent="."]
+text = "Try to hit enemies from behind to avoid taking damage"
+label_settings = ExtResource("6_fvtu7")
+horizontal_alignment = 1
+
+[node name="Tutorial_CrowbarPickingTutorial_PanelContainer_MarginContainer_VBoxContainer_LabelMargincontainer#Label" type="Label" parent="."]
+custom_minimum_size = Vector2(300, 0)
+text = "Hold down the right mouse button to ready the crowbar.
+
+When it’s ready, press the left mouse button to strike.
+
+Striking with the crowbar severely affects your balance."
+label_settings = ExtResource("6_fvtu7")
+autowrap_mode = 2
+
+[node name="Tutorial_GunPickUpTutorial_PanelContainer_MarginContainer_VBoxContainer_LabelMargincontainer2#Label" type="Label" parent="."]
+text = "Don't waste all your bullets..."
+label_settings = ExtResource("6_fvtu7")
+horizontal_alignment = 1
+
+[node name="Tutorial_GunPickUpTutorial_PanelContainer_MarginContainer_VBoxContainer_LabelMargincontainer#Label" type="Label" parent="."]
+custom_minimum_size = Vector2(300, 0)
+text = "Hold down the right mouse button to ready your weapon and aim.
+
+While aiming, press the left mouse button to shoot.
+
+Reload the gun by holding down the “L” key and pressing the indicated keys in succession.
+
+Each shot causes a significant loss of balance."
+label_settings = ExtResource("6_fvtu7")
+autowrap_mode = 2
+
+[node name="Tutorial_FlashlightPickUpTutorial_PanelContainer_MarginContainer_VBoxContainer_LabelMargincontainer#Label" type="Label" parent="."]
+custom_minimum_size = Vector2(300, 0)
+text = "While holding the flashlight, press and hold the “B” key and then press the indicated keys in succession to replace the battery with a new one.
+
+Use SPACE BAR to turn it on/off
+
+Look for fresh batteries around the map so you can keep using the flashlight."
+label_settings = ExtResource("6_fvtu7")
+autowrap_mode = 2
+
+[node name="Tutorial_FlashlightTutorial_PanelContainer_MarginContainer_VBoxContainer_LabelMargincontainer#Label" type="Label" parent="."]
+custom_minimum_size = Vector2(300, 0)
+text = "Use the SPACEBAR while on your walker to turn on and off the flashlight.
+
+ You can also drop the walker (R key) and pick up the objects you find on it (\"i\" key). Do so to learn more about them."
+label_settings = ExtResource("6_fvtu7")
+autowrap_mode = 2
+
+[node name="Tutorial_WalkerTutorial_PanelContainer_MarginContainer_VBoxContainer_LabelMargincontainer#Label" type="Label" parent="."]
+custom_minimum_size = Vector2(1.955, 0)
+text = " Grab onto the walker to quickly regain your balance.
+
+Moving with the walker doesn’t cause any loss of balance, but your movement will be limited."
+label_settings = ExtResource("6_fvtu7")
+autowrap_mode = 2
+
+[node name="Tutorial_BalanceTutorial_PanelContainer_MarginContainer_VBoxContainer_LabelMargincontainer2#Label" type="Label" parent="."]
+custom_minimum_size = Vector2(300, 0)
+text = "You should try it now while it’s still safe…"
+label_settings = ExtResource("14_851xi")
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="Tutorial_BalanceTutorial_PanelContainer_MarginContainer_VBoxContainer_LabelMargincontainer#Label" type="Label" parent="."]
+custom_minimum_size = Vector2(300, 0)
+text = "As you lose your balance, the world around you begins to spin.
+
+If you completely lose your balance, quickly press the indicated keys, or you’ll collapse to the ground."
+label_settings = ExtResource("6_fvtu7")
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="Tutorial_MovementTutorial_PanelContainer_MarginContainer_VBoxContainer_LabelMargincontainer#Label" type="Label" parent="."]
+custom_minimum_size = Vector2(300, 0)
+text = "Use the WASD keys to move.
+
+Use SHIFT to sprint.
+
+Use MOUSE to look around.
+
+Fast and abrupt movements cause you to lose balance progressively."
+label_settings = ExtResource("6_fvtu7")
+autowrap_mode = 2
+
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = ExtResource("1_t5pyh")
 
@@ -208,6 +383,9 @@ transform = Transform3D(0.999928, 0, 0.0120249, 0, 1, 0, -0.0120249, 0, 0.999928
 
 [node name="StateMachine" parent="Player" index="1"]
 initial_state = NodePath("Walk")
+
+[node name="CameraPivot" parent="Player" index="5"]
+transform = Transform3D(1, 0, 0, 0, 0.258816, 0.965927, 0, -0.965927, 0.258816, 0, 0.54, 0)
 
 [node name="GunRay" parent="Player/CameraPivot/FollowPivot/WorldCamera" index="3"]
 transform = Transform3D(5.79386e-09, 2, -1.92145e-10, -1.99561, 5.79387e-09, 0.132548, 0.132548, -1.91953e-10, 1.99561, -4.23963e-09, -0.0353529, -0.286992)
@@ -440,48 +618,9 @@ layout_mode = 1
 open_on_ready = true
 open_on_ready_dealy = 5.0
 
-[node name="Label" type="Label" parent="Tutorial/MovementTutorial/PanelContainer/MarginContainer/VBoxContainer/LabelMargincontainer" index="0"]
-custom_minimum_size = Vector2(300, 0)
-layout_mode = 2
-text = "Use the WASD keys to move.
-
-Use SHIFT to sprint.
-
-Use MOUSE to look around.
-
-Fast and abrupt movements cause you to lose balance progressively."
-label_settings = ExtResource("6_fvtu7")
-autowrap_mode = 2
-
-[node name="HSeparator" parent="Tutorial/MovementTutorial/PanelContainer/MarginContainer/VBoxContainer" index="1"]
-visible = false
-
-[node name="LabelMargincontainer2" parent="Tutorial/MovementTutorial/PanelContainer/MarginContainer/VBoxContainer" index="2"]
-visible = false
-
 [node name="BalanceTutorial" parent="Tutorial" instance=ExtResource("4_hwno4")]
+visible = false
 layout_mode = 1
-
-[node name="Label" type="Label" parent="Tutorial/BalanceTutorial/PanelContainer/MarginContainer/VBoxContainer/LabelMargincontainer" index="0"]
-custom_minimum_size = Vector2(300, 0)
-layout_mode = 2
-text = "As you lose your balance, the world around you begins to spin.
-
-If you completely lose your balance, quickly press the indicated keys, or you’ll collapse to the ground."
-label_settings = ExtResource("6_fvtu7")
-vertical_alignment = 1
-autowrap_mode = 2
-
-[node name="HSeparator" parent="Tutorial/BalanceTutorial/PanelContainer/MarginContainer/VBoxContainer" index="1"]
-custom_minimum_size = Vector2(0, 12)
-
-[node name="Label" type="Label" parent="Tutorial/BalanceTutorial/PanelContainer/MarginContainer/VBoxContainer/LabelMargincontainer2" index="0"]
-custom_minimum_size = Vector2(300, 0)
-layout_mode = 2
-text = "You should try it now while it’s still safe…"
-label_settings = ExtResource("14_851xi")
-horizontal_alignment = 1
-autowrap_mode = 2
 
 [node name="CollisionShape3D" parent="Tutorial/BalanceTutorial/PlayerDetector" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.18689, 0.820801, 5.82792)
@@ -491,21 +630,6 @@ shape = SubResource("BoxShape3D_7c8in")
 visible = false
 layout_mode = 1
 
-[node name="Label" type="Label" parent="Tutorial/WalkerTutorial/PanelContainer/MarginContainer/VBoxContainer/LabelMargincontainer" index="0"]
-custom_minimum_size = Vector2(1.955, 0)
-layout_mode = 2
-text = " Grab onto the walker to quickly regain your balance.
-
-Moving with the walker doesn’t cause any loss of balance, but your movement will be limited."
-label_settings = ExtResource("6_fvtu7")
-autowrap_mode = 2
-
-[node name="HSeparator" parent="Tutorial/WalkerTutorial/PanelContainer/MarginContainer/VBoxContainer" index="1"]
-visible = false
-
-[node name="LabelMargincontainer2" parent="Tutorial/WalkerTutorial/PanelContainer/MarginContainer/VBoxContainer" index="2"]
-visible = false
-
 [node name="CollisionShape3D" parent="Tutorial/WalkerTutorial/PlayerDetector" index="0"]
 transform = Transform3D(0.710259, 0, 0.70394, 0, 1, 0, -0.70394, 0, 0.710259, 2.19176, 0.820801, 0.0837683)
 shape = SubResource("BoxShape3D_rdbqf")
@@ -513,21 +637,6 @@ shape = SubResource("BoxShape3D_rdbqf")
 [node name="FlashlightTutorial" parent="Tutorial" instance=ExtResource("4_hwno4")]
 visible = false
 layout_mode = 1
-
-[node name="Label" type="Label" parent="Tutorial/FlashlightTutorial/PanelContainer/MarginContainer/VBoxContainer/LabelMargincontainer" index="0"]
-custom_minimum_size = Vector2(300, 0)
-layout_mode = 2
-text = "Use the SPACEBAR while on your walker to turn on and off the flashlight.
-
- You can also drop the walker (R key) and pick up the objects you find on it (\"i\" key). Do so to learn more about them."
-label_settings = ExtResource("6_fvtu7")
-autowrap_mode = 2
-
-[node name="HSeparator" parent="Tutorial/FlashlightTutorial/PanelContainer/MarginContainer/VBoxContainer" index="1"]
-visible = false
-
-[node name="LabelMargincontainer2" parent="Tutorial/FlashlightTutorial/PanelContainer/MarginContainer/VBoxContainer" index="2"]
-visible = false
 
 [node name="CollisionShape3D" parent="Tutorial/FlashlightTutorial/PlayerDetector" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.80202, 0.820801, 2.02589)
@@ -538,23 +647,6 @@ visible = false
 layout_mode = 1
 delay_to_show = 1.0
 
-[node name="Label" type="Label" parent="Tutorial/FlashlightPickUpTutorial/PanelContainer/MarginContainer/VBoxContainer/LabelMargincontainer" index="0"]
-custom_minimum_size = Vector2(300, 0)
-layout_mode = 2
-text = "While holding the flashlight, press and hold the “B” key and then press the indicated keys in succession to replace the battery with a new one.
-
-Use SPACE BAR to turn it on/off
-
-Look for fresh batteries around the map so you can keep using the flashlight."
-label_settings = ExtResource("6_fvtu7")
-autowrap_mode = 2
-
-[node name="HSeparator" parent="Tutorial/FlashlightPickUpTutorial/PanelContainer/MarginContainer/VBoxContainer" index="1"]
-visible = false
-
-[node name="LabelMargincontainer2" parent="Tutorial/FlashlightPickUpTutorial/PanelContainer/MarginContainer/VBoxContainer" index="2"]
-visible = false
-
 [node name="CollisionShape3D" parent="Tutorial/FlashlightPickUpTutorial/PlayerDetector" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.18689, 0.820801, -2.31789)
 
@@ -562,25 +654,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.18689, 0.820801, -2.31789)
 visible = false
 layout_mode = 1
 delay_to_show = 1.0
-
-[node name="Label" type="Label" parent="Tutorial/GunPickUpTutorial/PanelContainer/MarginContainer/VBoxContainer/LabelMargincontainer" index="0"]
-custom_minimum_size = Vector2(300, 0)
-layout_mode = 2
-text = "Hold down the right mouse button to ready your weapon and aim.
-
-While aiming, press the left mouse button to shoot.
-
-Reload the gun by holding down the “L” key and pressing the indicated keys in succession.
-
-Each shot causes a significant loss of balance."
-label_settings = ExtResource("6_fvtu7")
-autowrap_mode = 2
-
-[node name="Label" type="Label" parent="Tutorial/GunPickUpTutorial/PanelContainer/MarginContainer/VBoxContainer/LabelMargincontainer2" index="0"]
-layout_mode = 2
-text = "Don't waste all your bullets..."
-label_settings = ExtResource("6_fvtu7")
-horizontal_alignment = 1
 
 [node name="CollisionShape3D" parent="Tutorial/GunPickUpTutorial/PlayerDetector" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.18689, 0.820801, -2.31789)
@@ -590,48 +663,12 @@ visible = false
 layout_mode = 1
 delay_to_show = 1.0
 
-[node name="Label" type="Label" parent="Tutorial/CrowbarPickingTutorial/PanelContainer/MarginContainer/VBoxContainer/LabelMargincontainer" index="0"]
-custom_minimum_size = Vector2(300, 0)
-layout_mode = 2
-text = "Hold down the right mouse button to ready the crowbar.
-
-When it’s ready, press the left mouse button to strike.
-
-Striking with the crowbar severely affects your balance."
-label_settings = ExtResource("6_fvtu7")
-autowrap_mode = 2
-
-[node name="Label" type="Label" parent="Tutorial/CrowbarPickingTutorial/PanelContainer/MarginContainer/VBoxContainer/LabelMargincontainer2" index="0"]
-layout_mode = 2
-text = "Try to hit enemies from behind to avoid taking damage"
-label_settings = ExtResource("6_fvtu7")
-horizontal_alignment = 1
-
 [node name="CollisionShape3D" parent="Tutorial/CrowbarPickingTutorial/PlayerDetector" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.18689, 0.820801, -2.31789)
 
 [node name="LightSwitchTutorial" parent="Tutorial" instance=ExtResource("4_hwno4")]
 visible = false
 layout_mode = 1
-
-[node name="Label4" type="Label" parent="Tutorial/LightSwitchTutorial/PanelContainer/MarginContainer/VBoxContainer/LabelMargincontainer" index="0"]
-custom_minimum_size = Vector2(15, 0)
-layout_mode = 2
-text = "In front of you, you can see a switch. Leave the walker (R key) to interact with it using the \"i\" key.
-
-Hold down the interact key while pressing the indicated keys in succession until it turns on."
-label_settings = ExtResource("6_fvtu7")
-autowrap_mode = 2
-
-[node name="Label" type="Label" parent="Tutorial/LightSwitchTutorial/PanelContainer/MarginContainer/VBoxContainer/LabelMargincontainer2" index="0"]
-custom_minimum_size = Vector2(300, 0)
-layout_mode = 2
-theme_override_fonts/font = ExtResource("6_h0a1b")
-theme_override_font_sizes/font_size = 11
-text = "Those who pursue you want to catch you in the dark	"
-label_settings = ExtResource("14_851xi")
-horizontal_alignment = 1
-autowrap_mode = 2
 
 [node name="CollisionShape3D" parent="Tutorial/LightSwitchTutorial/PlayerDetector" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.24818, 0.820801, 9.98205)
@@ -641,46 +678,13 @@ shape = SubResource("BoxShape3D_5v4ux")
 visible = false
 layout_mode = 1
 
-[node name="Label" type="Label" parent="Tutorial/CabinetSearchingTutorial/PanelContainer/MarginContainer/VBoxContainer/LabelMargincontainer" index="0"]
-custom_minimum_size = Vector2(300, 0)
-layout_mode = 2
-text = "In front of you, there’s a filing cabinet. Drop the walker (R key) to move closer and interact with it.
-
- Hold down the \"i\" key and press the indicated keys in succession to search for resources.
-
-You can find bullets for the pistol, batteries for the flashlight, or pills to restore your balance and health."
-label_settings = ExtResource("6_fvtu7")
-autowrap_mode = 2
-
-[node name="HSeparator" parent="Tutorial/CabinetSearchingTutorial/PanelContainer/MarginContainer/VBoxContainer" index="1"]
-visible = false
-
-[node name="LabelMargincontainer2" parent="Tutorial/CabinetSearchingTutorial/PanelContainer/MarginContainer/VBoxContainer" index="2"]
-visible = false
-
 [node name="CollisionShape3D" parent="Tutorial/CabinetSearchingTutorial/PlayerDetector" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.1171, 0.820801, 10.6105)
 shape = SubResource("BoxShape3D_8aqqs")
 
 [node name="EnemyTutorial" parent="Tutorial" instance=ExtResource("4_hwno4")]
+visible = false
 layout_mode = 1
-
-[node name="Label4" type="Label" parent="Tutorial/EnemyTutorial/PanelContainer/MarginContainer/VBoxContainer/LabelMargincontainer" index="0"]
-custom_minimum_size = Vector2(15, 0)
-layout_mode = 2
-text = " In front of you, there’s an enemy. Some will follow you when you’re not looking, while others behave differently.
-- Shoot them in the head with the pistol or strike them with the crowbar to end their agony.
-- If they catch you, you’ll be wounded, and then severely wounded.
-- If they catch you while you’re severely wounded, the game is over.
-- You can heal automatically after some time, or by consuming pills found in the filing cabinets (P key)."
-label_settings = ExtResource("6_fvtu7")
-autowrap_mode = 3
-
-[node name="HSeparator" parent="Tutorial/EnemyTutorial/PanelContainer/MarginContainer/VBoxContainer" index="1"]
-visible = false
-
-[node name="LabelMargincontainer2" parent="Tutorial/EnemyTutorial/PanelContainer/MarginContainer/VBoxContainer" index="2"]
-visible = false
 
 [node name="CollisionShape3D" parent="Tutorial/EnemyTutorial/PlayerDetector" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.5928, 0.820801, 5.14726)
@@ -691,25 +695,6 @@ disabled = true
 visible = false
 layout_mode = 1
 
-[node name="Label4" type="Label" parent="Tutorial/EndGameTutorial/PanelContainer/MarginContainer/VBoxContainer/LabelMargincontainer" index="0"]
-custom_minimum_size = Vector2(15, 0)
-layout_mode = 2
-text = "To escape and finish the level, you need to set the switches on the right side of the door to their correct positions.
-
-Each playthrough, these positions change, so you’ll have to search the books scattered around the rooms to find out where each switch should be set.
-
-Once you think you have the correct pattern, press the switch on the left side of the door to open it and escape."
-label_settings = ExtResource("6_fvtu7")
-autowrap_mode = 2
-
-[node name="Label" type="Label" parent="Tutorial/EndGameTutorial/PanelContainer/MarginContainer/VBoxContainer/LabelMargincontainer2" index="0"]
-custom_minimum_size = Vector2(300, 0)
-layout_mode = 2
-text = "If you try to leave without entering the correct combination, things can get complicated very quickly..."
-label_settings = ExtResource("6_fvtu7")
-horizontal_alignment = 1
-autowrap_mode = 2
-
 [node name="CollisionShape3D" parent="Tutorial/EndGameTutorial/PlayerDetector" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28.2126, 0.820801, -0.228019)
 shape = SubResource("BoxShape3D_ew0y6")
@@ -717,23 +702,6 @@ shape = SubResource("BoxShape3D_ew0y6")
 [node name="BookTutorial" parent="Tutorial" instance=ExtResource("4_hwno4")]
 visible = false
 layout_mode = 1
-
-[node name="Label4" type="Label" parent="Tutorial/BookTutorial/PanelContainer/MarginContainer/VBoxContainer/LabelMargincontainer" index="0"]
-custom_minimum_size = Vector2(15, 0)
-layout_mode = 2
-text = "Here’s a password book.
-
-There is one book for each switch in the level—find them all to learn the correct positions for each switch.
-
-Hold down the interact key (\"i\") while pressing the indicated buttons in succession to search the book."
-label_settings = ExtResource("6_fvtu7")
-autowrap_mode = 2
-
-[node name="HSeparator" parent="Tutorial/BookTutorial/PanelContainer/MarginContainer/VBoxContainer" index="1"]
-visible = false
-
-[node name="LabelMargincontainer2" parent="Tutorial/BookTutorial/PanelContainer/MarginContainer/VBoxContainer" index="2"]
-visible = false
 
 [node name="CollisionShape3D" parent="Tutorial/BookTutorial/PlayerDetector" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.0995, 0.820801, -1.8998)
@@ -743,23 +711,6 @@ shape = SubResource("BoxShape3D_ui2f8")
 visible = false
 layout_mode = 1
 
-[node name="Label4" type="Label" parent="Tutorial/StairsTutorial/PanelContainer/MarginContainer/VBoxContainer/LabelMargincontainer" index="0"]
-custom_minimum_size = Vector2(15, 0)
-layout_mode = 2
-text = "You can’t go up or down stairs while using the walker.
-
-Drop it (R key) to climb on foot.
-
- Remember you can take one of the items with you (the flashlight, the pistol, or the crowbar)."
-label_settings = ExtResource("6_fvtu7")
-autowrap_mode = 2
-
-[node name="HSeparator" parent="Tutorial/StairsTutorial/PanelContainer/MarginContainer/VBoxContainer" index="1"]
-visible = false
-
-[node name="LabelMargincontainer2" parent="Tutorial/StairsTutorial/PanelContainer/MarginContainer/VBoxContainer" index="2"]
-visible = false
-
 [node name="CollisionShape3D" parent="Tutorial/StairsTutorial/PlayerDetector" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.5304, 0.820801, -1.7156)
 shape = SubResource("BoxShape3D_okonx")
@@ -768,23 +719,6 @@ shape = SubResource("BoxShape3D_okonx")
 visible = false
 layout_mode = 1
 delay_to_show = 2.0
-
-[node name="Label4" type="Label" parent="Tutorial/ErrorTutorial/PanelContainer/MarginContainer/VBoxContainer/LabelMargincontainer" index="0"]
-custom_minimum_size = Vector2(15, 0)
-layout_mode = 2
-text = "This time you’ve entered the wrong combination. Remember to look for the books to discover where each switch needs to be set, and also remember that with every new playthrough, this pattern changes.
-
- Make sure you don’t touch the red switch (always to the left of the exit door) until you’ve placed all the switches in their correct positions."
-label_settings = ExtResource("6_fvtu7")
-autowrap_mode = 2
-
-[node name="Label" type="Label" parent="Tutorial/ErrorTutorial/PanelContainer/MarginContainer/VBoxContainer/LabelMargincontainer2" index="0"]
-layout_mode = 2
-theme_override_fonts/font = ExtResource("6_h0a1b")
-theme_override_font_sizes/font_size = 11
-text = "You can now press ESC to exit the tutorial—there’s nothing more to see here…"
-label_settings = ExtResource("14_851xi")
-horizontal_alignment = 1
 
 [node name="CollisionShape3D" parent="Tutorial/ErrorTutorial/PlayerDetector" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.18689, 0.820801, -2.31789)
@@ -803,7 +737,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.18689, 0.820801, -2.31789)
 [editable path="LightSwitches/LightSwitchSewers/emergency_light3"]
 [editable path="LightSwitches/LightSwitchSewers/emergency_light2"]
 [editable path="Decoration/Sewer"]
-[editable path="Tutorial/MovementTutorial"]
 [editable path="Tutorial/BalanceTutorial"]
 [editable path="Tutorial/WalkerTutorial"]
 [editable path="Tutorial/FlashlightTutorial"]
