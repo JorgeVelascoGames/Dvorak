@@ -12,7 +12,6 @@ signal update_interaction_hints
 @onready var i_text: MarginContainer = $"ControlHints/I-Text"
 @onready var const_lable: Label = $"ControlHints/Const-Text/GrabWalkerUI/ConstLable"
 @onready var interaction_lable: Label = $"ControlHints/I-Text/GrabWalkerUI/InteractionLable"
-@onready var damaged_overlay: ColorRect = $DamagedOverlay
 
 var tween : Tween
 var r_hint_priority := 0

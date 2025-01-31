@@ -1,0 +1,18 @@
+[gd_scene load_steps=2 format=3 uid="uid://bnrvch032t16x"]
+
+[ext_resource type="PackedScene" uid="uid://rd6woanfk4nl" path="res://assets/props/emergency_light/emergency_light.tscn" id="1_c2mf2"]
+
+[node name="SewersLight" type="Node3D"]
+
+[node name="emergency_light" parent="." instance=ExtResource("1_c2mf2")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
+
+[node name="emergency_light" parent="emergency_light" index="0"]
+cast_shadow = 0
+
+[node name="OmniLight3D" type="OmniLight3D" parent="emergency_light"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.242382, -1.05949e-08)
+light_color = Color(0.57973, 0.532792, 0.431505, 1)
+light_energy = 3.0
+
+[editable path="emergency_light"]

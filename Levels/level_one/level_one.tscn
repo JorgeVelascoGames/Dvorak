@@ -104,15 +104,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.64918, 1.37832, 0.032135)
 [node name="PassSwitch" parent="NavigationRegion3D/ExitGate" index="2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.31959, 1.378, 0.0415192)
 
-[node name="PassSwitch2" parent="NavigationRegion3D/ExitGate" index="3"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.69686, 1.378, 0.042)
-
-[node name="PassSwitch3" parent="NavigationRegion3D/ExitGate" index="4"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.05516, 1.378, 0.042)
-
-[node name="PassSwitch4" parent="NavigationRegion3D/ExitGate" index="5"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.42031, 1.378, 0.042)
-
 [node name="FillingCabinets" type="Node3D" parent="NavigationRegion3D"]
 
 [node name="Set1" type="Node3D" parent="NavigationRegion3D/FillingCabinets"]

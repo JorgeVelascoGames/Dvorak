@@ -14,6 +14,10 @@ var already_displayed := false
 func _ready() -> void:
 	hide()
 	
+	for child in get_children(true):
+		if child is Label:
+			texture_filter = TEXTURE_FILTER_LINEAR
+	
 	if open_on_ready:
 		await get_tree().create_timer(open_on_ready_dealy).timeout
 		open_tutorial()
@@ -26,15 +30,16 @@ func open_tutorial() -> void:
 	already_displayed = true
 	
 	await get_tree().create_timer(delay_to_show).timeout
+	reparent(AppManager.game_manager)
 	show()
 	Input.mouse_mode = Input.MOUSE_MODE_CONFINED
-	get_tree().paused = true
+	AppManager.game_manager.current_level_manager.process_mode = Node.PROCESS_MODE_DISABLED
 
 
 func close_tutorial() -> void:
 	hide()
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
-	get_tree().paused = false
+	AppManager.game_manager.current_level_manager.process_mode = Node.PROCESS_MODE_INHERIT
 	await get_tree().process_frame
 	finished_tutorial.emit()
 

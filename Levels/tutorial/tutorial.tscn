@@ -1,37 +1,129 @@
-[gd_scene load_steps=7 format=3 uid="uid://bxr2s8atmausr"]
+[gd_scene load_steps=21 format=3 uid="uid://bxr2s8atmausr"]
 
+[ext_resource type="Script" path="res://Levels/tutorial/tutorial.gd" id="1_nb02s"]
 [ext_resource type="Environment" uid="uid://c42wra3u6yo6u" path="res://Levels/world_environment.tres" id="1_t5pyh"]
 [ext_resource type="PackedScene" uid="uid://m6pypgl566n1" path="res://player/player.tscn" id="3_mhhpd"]
 [ext_resource type="PackedScene" uid="uid://bb8divagmrtfg" path="res://Levels/tutorial/tutorial_pop_up.tscn" id="4_hwno4"]
 [ext_resource type="LabelSettings" uid="uid://un4p01kkltty" path="res://Levels/tutorial/tutorial_text_lable_settings.tres" id="6_fvtu7"]
 [ext_resource type="FontFile" uid="uid://djkxaekxrwieb" path="res://assets/fonts/roboto/Roboto-Italic.ttf" id="6_h0a1b"]
+[ext_resource type="NavigationMesh" uid="uid://c63lgdg06alye" path="res://Levels/navmesh.tres" id="6_ivr52"]
 [ext_resource type="PackedScene" uid="uid://dhepkg5i8hdu6" path="res://Levels/tutorial/tutorial_level.tscn" id="6_jtwhb"]
+[ext_resource type="PackedScene" uid="uid://c5vmfb6wrd0un" path="res://ExitGate/exit_gate.tscn" id="8_aep8v"]
+[ext_resource type="PackedScene" uid="uid://bnrvch032t16x" path="res://Levels/environment_elements/sewers_light.tscn" id="8_s75u1"]
+[ext_resource type="PackedScene" uid="uid://cfpfgy53aqnh2" path="res://ExitGate/pass_switch.tscn" id="9_pak0w"]
 
-[node name="Tutorial" type="Node3D"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_7c8in"]
+size = Vector3(4.12, 3.32, 1.115)
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(-0.772366, -0.160025, 0.61469, 0.391725, 0.641789, 0.659286, -0.500003, 0.749999, -0.43301, 0, 10.0059, 0)
+[sub_resource type="BoxShape3D" id="BoxShape3D_rdbqf"]
+size = Vector3(1.37842, 1, 3.11829)
 
-[node name="DirectionalLight3D2" type="DirectionalLight3D" parent="."]
-transform = Transform3D(0.889886, -0.0822055, -0.448715, 0.391725, 0.641789, 0.659286, 0.233783, -0.762462, 0.603321, -0.758778, 10.0059, 0)
+[sub_resource type="BoxShape3D" id="BoxShape3D_4rklb"]
+size = Vector3(2.76904, 1, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_5v4ux"]
+size = Vector3(4.76709, 1, 2.91553)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_8aqqs"]
+size = Vector3(1, 1, 2.01086)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_hh7u4"]
+size = Vector3(1.69116, 1, 1.98059)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ew0y6"]
+size = Vector3(1.90918, 1, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ui2f8"]
+size = Vector3(1, 1, 4.14722)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_okonx"]
+size = Vector3(1, 1, 2.20459)
+
+[node name="Tutorial" type="Node3D" node_paths=PackedStringArray("books_positions")]
+script = ExtResource("1_nb02s")
+books_positions = [NodePath("BookSpawn"), NodePath("BookSpawn2")]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = ExtResource("1_t5pyh")
 
 [node name="Player" parent="." instance=ExtResource("3_mhhpd")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.302529, 1.94404, 11.3565)
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -0.248199, 1.17994, 10.2047)
 
 [node name="StateMachine" parent="Player" index="1"]
 initial_state = NodePath("Walk")
 
-[node name="GunRay" parent="Player/CameraPivot/FollowPivot/WorldCamera" index="3"]
-transform = Transform3D(5.79386e-09, 2, -1.92145e-10, -1.99561, 5.79387e-09, 0.132548, 0.132548, -1.91953e-10, 1.99561, -4.23963e-09, -0.0353529, -0.286992)
-
 [node name="Walker" parent="Player/WalkerFixedPoint" index="0"]
-transform = Transform3D(-0.00300197, 0, -0.999995, 0, 1, 0, 0.999995, 0, -0.00300197, 1.98955, -0.948841, -10.3287)
+transform = Transform3D(0.0049919, 0, 0.999987, 0, 1, 0, -0.999987, 0, 0.0049919, -2.70336, -0.190146, 10.6418)
 
 [node name="Crowbar" parent="Player/AnimatedObjects" index="1"]
 transform = Transform3D(-0.365312, -0.126945, 0.136132, 0, 0.299855, 0.279619, -0.186138, 0.249142, -0.267172, -0.085, -0.244, -0.957)
+
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
+navigation_mesh = ExtResource("6_ivr52")
+
+[node name="tutorial_level" parent="NavigationRegion3D" instance=ExtResource("6_jtwhb")]
+
+[node name="ExitGate" parent="." instance=ExtResource("8_aep8v")]
+transform = Transform3D(1, 0, -1.06581e-14, 0, 1, 0, 1.06581e-14, 0, 1, 28.459, 0, -4.00629)
+
+[node name="MainSwitch" parent="ExitGate" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.53385, 0.9591, 0.032135)
+
+[node name="PassSwitch" parent="ExitGate" index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.26117, 0.961632, 0.0180779)
+
+[node name="PassSwitch2" parent="ExitGate" instance=ExtResource("9_pak0w")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.58074, 0.961632, 0.0180779)
+switch_index = 2
+
+[node name="Lights" type="Node3D" parent="."]
+
+[node name="SewersLight" parent="Lights" instance=ExtResource("8_s75u1")]
+transform = Transform3D(-2.05037e-08, 0.883161, 0.469071, 3.86042e-08, 0.469071, -0.883161, -1, 0, -4.37114e-08, -0.671795, 2.24551, 7.35622)
+
+[node name="SewersLight2" parent="Lights" instance=ExtResource("8_s75u1")]
+transform = Transform3D(-4.35907e-08, 0.845653, 0.533733, -3.24547e-09, 0.533733, -0.845653, -1, -3.85949e-08, -2.05213e-08, -1.42402, 3.07926, 0.322842)
+
+[node name="SewersLight5" parent="Lights" instance=ExtResource("8_s75u1")]
+transform = Transform3D(-1, -7.55595e-08, -4.38515e-08, -3.24547e-09, 0.533733, -0.845653, 8.73021e-08, -0.845653, -0.533733, 0.156221, 3.07926, 11.968)
+
+[node name="SewersLight3" parent="Lights" instance=ExtResource("8_s75u1")]
+transform = Transform3D(-4.37114e-08, -0.882948, -0.469472, 0, 0.469472, -0.882948, 1, -3.85949e-08, -2.05213e-08, 0.734552, 2.22652, 2.74591)
+
+[node name="SewersLight4" parent="Lights" instance=ExtResource("8_s75u1")]
+transform = Transform3D(1, 0, 1.74846e-07, 1.54379e-07, 0.469472, -0.882948, -8.2085e-08, 0.882948, 0.469472, 5.1775, 2.24501, -0.707563)
+
+[node name="BookSpawn" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.8771, 5.96046e-08, -3.01197)
+
+[node name="BookSpawn2" type="Marker3D" parent="."]
+transform = Transform3D(-0.992749, 0, -0.120206, 0, 1, 0, 0.120206, 0, -0.992749, 10.1844, 5, -2.029)
+
+[node name="LevelUI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="BlackScreen" type="ColorRect" parent="LevelUI"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="WhiteScreen" type="ColorRect" parent="LevelUI"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.890196, 0.890196, 0.890196, 0)
 
 [node name="Tutorial" type="Control" parent="."]
 layout_mode = 3
@@ -45,7 +137,7 @@ grow_vertical = 2
 visible = false
 layout_mode = 1
 open_on_ready = true
-open_on_ready_dealy = 3.0
+open_on_ready_dealy = 5.0
 
 [node name="Label" type="Label" parent="Tutorial/MovementTutorial/PanelContainer/MarginContainer/VBoxContainer/LabelMargincontainer" index="0"]
 custom_minimum_size = Vector2(300, 0)
@@ -73,7 +165,7 @@ custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
 text = "As you lose your balance, the world around you begins to spin.
 
- If you completely lose your balance, quickly press the indicated keys, or you’ll collapse to the ground."
+If you completely lose your balance, quickly press the indicated keys, or you’ll collapse to the ground."
 label_settings = ExtResource("6_fvtu7")
 vertical_alignment = 1
 autowrap_mode = 2
@@ -91,7 +183,8 @@ horizontal_alignment = 1
 autowrap_mode = 2
 
 [node name="CollisionShape3D" parent="Tutorial/BalanceTutorial/PlayerDetector" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.18689, 0.820801, -2.31789)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.18689, 0.820801, 5.82792)
+shape = SubResource("BoxShape3D_7c8in")
 
 [node name="WalkerTutorial" parent="Tutorial" instance=ExtResource("4_hwno4")]
 visible = false
@@ -113,18 +206,18 @@ visible = false
 visible = false
 
 [node name="CollisionShape3D" parent="Tutorial/WalkerTutorial/PlayerDetector" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.18689, 0.820801, -2.31789)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.99896, 0.820801, -0.390048)
+shape = SubResource("BoxShape3D_rdbqf")
 
 [node name="FlashlightTutorial" parent="Tutorial" instance=ExtResource("4_hwno4")]
-visible = false
 layout_mode = 1
 
 [node name="Label" type="Label" parent="Tutorial/FlashlightTutorial/PanelContainer/MarginContainer/VBoxContainer/LabelMargincontainer" index="0"]
 custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
-text = "Use the SPACEBAR to turn on and off the flashlight you carry over your walker.
+text = "Use the SPACEBAR while on your walker to turn on and off the flashlight.
 
- You can also drop the walker (R key) and pick up the objects you find on it. Do so to learn more about them."
+ You can also drop the walker (R key) and pick up the objects you find on it (\"i\" key). Do so to learn more about them."
 label_settings = ExtResource("6_fvtu7")
 autowrap_mode = 2
 
@@ -135,16 +228,20 @@ visible = false
 visible = false
 
 [node name="CollisionShape3D" parent="Tutorial/FlashlightTutorial/PlayerDetector" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.18689, 0.820801, -2.31789)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.80202, 0.820801, 2.09693)
+shape = SubResource("BoxShape3D_4rklb")
 
 [node name="FlashlightPickUpTutorial" parent="Tutorial" instance=ExtResource("4_hwno4")]
 visible = false
 layout_mode = 1
+delay_to_show = 1.0
 
 [node name="Label" type="Label" parent="Tutorial/FlashlightPickUpTutorial/PanelContainer/MarginContainer/VBoxContainer/LabelMargincontainer" index="0"]
 custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
 text = "While holding the flashlight, press and hold the “B” key and then press the indicated keys in succession to replace the battery with a new one.
+
+Use SPACE BAR to turn it on/off
 
 Look for fresh batteries around the map so you can keep using the flashlight."
 label_settings = ExtResource("6_fvtu7")
@@ -159,6 +256,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.18689, 0.820801, -2.31789)
 [node name="GunPickUpTutorial" parent="Tutorial" instance=ExtResource("4_hwno4")]
 visible = false
 layout_mode = 1
+delay_to_show = 1.0
 
 [node name="Label" type="Label" parent="Tutorial/GunPickUpTutorial/PanelContainer/MarginContainer/VBoxContainer/LabelMargincontainer" index="0"]
 custom_minimum_size = Vector2(300, 0)
@@ -166,7 +264,10 @@ layout_mode = 2
 text = "Hold down the right mouse button to ready your weapon and aim.
 
 While aiming, press the left mouse button to shoot.
-Reload the gun by holding down the “L” key and pressing the indicated keys in succession."
+
+Reload the gun by holding down the “L” key and pressing the indicated keys in succession.
+
+Each shot causes a significant loss of balance."
 label_settings = ExtResource("6_fvtu7")
 autowrap_mode = 2
 
@@ -174,7 +275,7 @@ autowrap_mode = 2
 layout_mode = 2
 theme_override_fonts/font = ExtResource("6_h0a1b")
 theme_override_font_sizes/font_size = 11
-text = "Each shot causes a significant loss of balance."
+text = "Don't waste all your bullets..."
 horizontal_alignment = 1
 
 [node name="CollisionShape3D" parent="Tutorial/GunPickUpTutorial/PlayerDetector" index="0"]
@@ -183,6 +284,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.18689, 0.820801, -2.31789)
 [node name="CrowbarPickingTutorial" parent="Tutorial" instance=ExtResource("4_hwno4")]
 visible = false
 layout_mode = 1
+delay_to_show = 1.0
 
 [node name="Label" type="Label" parent="Tutorial/CrowbarPickingTutorial/PanelContainer/MarginContainer/VBoxContainer/LabelMargincontainer" index="0"]
 custom_minimum_size = Vector2(300, 0)
@@ -228,7 +330,8 @@ horizontal_alignment = 1
 autowrap_mode = 2
 
 [node name="CollisionShape3D" parent="Tutorial/LightSwitchTutorial/PlayerDetector" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.18689, 0.820801, -2.31789)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.24818, 0.820801, 10.406)
+shape = SubResource("BoxShape3D_5v4ux")
 
 [node name="CabinetSearchingTutorial" parent="Tutorial" instance=ExtResource("4_hwno4")]
 visible = false
@@ -252,7 +355,8 @@ visible = false
 visible = false
 
 [node name="CollisionShape3D" parent="Tutorial/CabinetSearchingTutorial/PlayerDetector" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.18689, 0.820801, -2.31789)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.1171, 0.820801, 10.6105)
+shape = SubResource("BoxShape3D_8aqqs")
 
 [node name="EnemyTutorial" parent="Tutorial" instance=ExtResource("4_hwno4")]
 visible = false
@@ -279,7 +383,8 @@ visible = false
 visible = false
 
 [node name="CollisionShape3D" parent="Tutorial/EnemyTutorial/PlayerDetector" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.18689, 0.820801, -2.31789)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.5928, 0.820801, 5.14726)
+shape = SubResource("BoxShape3D_hh7u4")
 
 [node name="EndGameTutorial" parent="Tutorial" instance=ExtResource("4_hwno4")]
 visible = false
@@ -306,7 +411,8 @@ horizontal_alignment = 1
 autowrap_mode = 2
 
 [node name="CollisionShape3D" parent="Tutorial/EndGameTutorial/PlayerDetector" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.18689, 0.820801, -2.31789)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28.2126, 0.820801, -0.228019)
+shape = SubResource("BoxShape3D_ew0y6")
 
 [node name="BookTutorial" parent="Tutorial" instance=ExtResource("4_hwno4")]
 visible = false
@@ -330,7 +436,8 @@ visible = false
 visible = false
 
 [node name="CollisionShape3D" parent="Tutorial/BookTutorial/PlayerDetector" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.18689, 0.820801, -2.31789)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.0995, 0.820801, -1.8998)
+shape = SubResource("BoxShape3D_ui2f8")
 
 [node name="StairsTutorial" parent="Tutorial" instance=ExtResource("4_hwno4")]
 visible = false
@@ -354,12 +461,42 @@ visible = false
 visible = false
 
 [node name="CollisionShape3D" parent="Tutorial/StairsTutorial/PlayerDetector" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.5304, 0.820801, -1.7156)
+shape = SubResource("BoxShape3D_okonx")
+
+[node name="ErrorTutorial" parent="Tutorial" instance=ExtResource("4_hwno4")]
+visible = false
+layout_mode = 1
+delay_to_show = 2.0
+
+[node name="Label4" type="Label" parent="Tutorial/ErrorTutorial/PanelContainer/MarginContainer/VBoxContainer/LabelMargincontainer" index="0"]
+custom_minimum_size = Vector2(15, 0)
+layout_mode = 2
+text = "This time you’ve entered the wrong combination. Remember to look for the books to discover where each switch needs to be set, and also remember that with every new playthrough, this pattern changes.
+
+ Make sure you don’t touch the red switch (always to the left of the exit door) until you’ve placed all the switches in their correct positions."
+label_settings = ExtResource("6_fvtu7")
+autowrap_mode = 2
+
+[node name="Label" type="Label" parent="Tutorial/ErrorTutorial/PanelContainer/MarginContainer/VBoxContainer/LabelMargincontainer2" index="0"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("6_h0a1b")
+theme_override_font_sizes/font_size = 11
+text = "You can now press ESC to exit the tutorial—there’s nothing more to see here…"
+horizontal_alignment = 1
+
+[node name="CollisionShape3D" parent="Tutorial/ErrorTutorial/PlayerDetector" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.18689, 0.820801, -2.31789)
 
-[node name="tutorial_level" parent="." instance=ExtResource("6_jtwhb")]
+[connection signal="pass_and_books_ready" from="ExitGate" to="." method="_on_exit_gate_pass_and_books_ready"]
 
 [editable path="Player"]
 [editable path="Player/SubViewportContainer/SubViewport/WeaponCamera/GunModel"]
+[editable path="Player/WalkerFixedPoint/Walker"]
+[editable path="Player/WalkerFixedPoint/Walker/FlaslightModel"]
+[editable path="Player/WalkerFixedPoint/Walker/GunSelectorHitbox/GunModel"]
+[editable path="Player/WalkerFixedPoint/Walker/CrowbarSelectorHitbox/Crowbar"]
+[editable path="ExitGate"]
 [editable path="Tutorial/MovementTutorial"]
 [editable path="Tutorial/BalanceTutorial"]
 [editable path="Tutorial/WalkerTutorial"]
@@ -373,3 +510,4 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.18689, 0.820801, -2.31789)
 [editable path="Tutorial/EndGameTutorial"]
 [editable path="Tutorial/BookTutorial"]
 [editable path="Tutorial/StairsTutorial"]
+[editable path="Tutorial/ErrorTutorial"]

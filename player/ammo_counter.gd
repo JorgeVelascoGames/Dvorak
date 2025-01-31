@@ -28,6 +28,7 @@ func reload() -> void:
 	var empty_slots := max_ammo_loaded - ammo_loaded
 	var loaded_bullets : int
 	if empty_slots == 0:
+		player_ui.display_gameplay_text("The magazine is already full", 2)
 		return
 	
 	if empty_slots >= ammo_stored:

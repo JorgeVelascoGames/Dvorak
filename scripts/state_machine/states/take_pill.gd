@@ -67,6 +67,7 @@ func _correct_key() -> void:
 func finish_state() -> void:
 	if inventory.use_pills():
 		$"../../Components/Balance".take_pill()
+		player.player_health.heal_up()
 		player_ui.display_gameplay_text("You took a pill", 3)
 	state_machine.transition_to("Idle", {})
 

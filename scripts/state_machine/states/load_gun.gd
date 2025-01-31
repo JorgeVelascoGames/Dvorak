@@ -30,7 +30,7 @@ func enter(_msg : ={}) -> void:
 	player.velocity = Vector3.ZERO
 	left_key_selection = left_side_keys.pick_random()
 	right_key_selection = right_side_keys.pick_random()
-	balanced_ui.display_keys(left_side_keys, right_side_keys)
+	balanced_ui.display_keys(left_key_selection, right_key_selection)
 	
 	animated_gun.show()
 	animated_gun.position = Vector3(.3, 0.0, .2)

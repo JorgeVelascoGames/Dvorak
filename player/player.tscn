@@ -674,6 +674,7 @@ script = ExtResource("13_dsee1")
 
 [node name="LoadGun" type="Node" parent="StateMachine"]
 script = ExtResource("14_3bkdw")
+cooldown = 2.0
 
 [node name="ChangeBatteries" type="Node" parent="StateMachine"]
 script = ExtResource("15_6uppe")

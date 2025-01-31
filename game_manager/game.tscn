@@ -5,8 +5,8 @@
 [ext_resource type="PackedScene" uid="uid://bfqpamqydtspv" path="res://game_manager/advert_screen.tscn" id="2_wrocf"]
 [ext_resource type="PackedScene" uid="uid://6xaa4aqthxji" path="res://game_manager/lenguage_selection.tscn" id="3_gm0jn"]
 [ext_resource type="PackedScene" uid="uid://ben6fpbmg6r7h" path="res://game_manager/loading_screen.tscn" id="4_v3kow"]
-[ext_resource type="PackedScene" uid="uid://b37la44wjrp4u" path="res://Levels/level_one/level_one.tscn" id="6_4me3d"]
 [ext_resource type="PackedScene" uid="uid://bgouurh1fbjwr" path="res://game_manager/game_level_manager.tscn" id="6_7vbrb"]
+[ext_resource type="PackedScene" uid="uid://bxr2s8atmausr" path="res://Levels/tutorial/tutorial.tscn" id="6_k1ata"]
 [ext_resource type="Shader" path="res://shaders/vhs.gdshader" id="7_dlfm1"]
 [ext_resource type="Shader" path="res://shaders/psx_shader.gdshader" id="8_odn3b"]
 [ext_resource type="Script" path="res://game_manager/vhs_effect.gd" id="9_73ht4"]
@@ -48,7 +48,7 @@ advert_scree = ExtResource("2_wrocf")
 main_menu = ExtResource("2_qnsev")
 
 [node name="GameLevelManager" parent="." instance=ExtResource("6_7vbrb")]
-level_one = ExtResource("6_4me3d")
+level_one = ExtResource("6_k1ata")
 
 [node name="LoadingScreen" parent="." instance=ExtResource("4_v3kow")]
 visible = false
@@ -80,11 +80,17 @@ material = SubResource("ShaderMaterial_sx0k1")
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_right = 4.0
+offset_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+stretch = true
 
 [node name="SubViewport" type="SubViewport" parent="SubViewportContainer"]
 handle_input_locally = false
+canvas_item_default_texture_filter = 0
+audio_listener_enable_2d = true
+audio_listener_enable_3d = true
 size = Vector2i(644, 361)
 render_target_update_mode = 4
 

@@ -97,12 +97,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Tutorials/Tutorial.md",
+                "file": "Atributions.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Tutorial"
+              "title": "Atributions"
             }
           }
         ],
@@ -269,6 +269,7 @@
   },
   "active": "92128996f9e94e22",
   "lastOpenFiles": [
+    "Tutorials/Tutorial.md",
     "Atributions.md",
     "Tutorials/Escalera.md",
     "Tutorials/Libros.md",
@@ -283,7 +284,6 @@
     "Tutorials/Walker.md",
     "Tutorials/Equilibrio.md",
     "Tutorials/Tutorial inicial.md",
-    "Tutorials/Tutorial.md",
     "Untitled",
     "Tutorials",
     "Arte/Estandarización.md",
