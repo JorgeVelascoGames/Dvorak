@@ -14,7 +14,8 @@ class_name EnemyAudioManager
 
 
 func _ready() -> void:
-	constant_audio.play()
+	pass
+	#constant_audio.play()
 	#spawn_sound.play()
 
 
