@@ -111,12 +111,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Bug y arreglos.md",
+                "file": "Doing.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Bug y arreglos"
+              "title": "Doing"
             }
           }
         ],
@@ -284,6 +284,7 @@
   },
   "active": "6a91cbf362fa8c0a",
   "lastOpenFiles": [
+    "Bug y arreglos.md",
     "Tutorials/Enemigos.md",
     "Tutorials/Tutorial.md",
     "Atributions.md",
@@ -305,7 +306,6 @@
     "Ideas/Procedimientos técnicos..md",
     "To do.md",
     "Doing.md",
-    "Bug y arreglos.md",
     "Todo/Sonido.md",
     "Todo/Página de steam.md",
     "Todo/Mail list.md",
