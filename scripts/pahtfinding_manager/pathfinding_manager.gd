@@ -17,6 +17,8 @@ func set_up_player(current_player: Player) -> void:
 
 
 func _on_timer_timeout():
+	if AppManager.game_manager.current_app_state != GameManager.APP_STATE.game:
+		player = null
 	if player:
 		player_position = player.global_position
 

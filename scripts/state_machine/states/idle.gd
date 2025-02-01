@@ -32,6 +32,9 @@ func physics_update(delta: float) -> void:
 
 
 func input(event):
+	if event.is_action_pressed("esc"):
+		$"../../PlayerUI/PlayerGameMenu".open()
+	
 	if event.is_action_pressed("flashlight"):
 		player.toggle_flashlight()
 	
@@ -68,6 +71,8 @@ func interact() -> void:
 
 
 func handle_camera_rotation(_delta:float) -> void:
+	if player.player_ui.player_game_menu.visible:
+		return
 	player.rotate_y(mouse_motion.x * player.camera_sensibility)
 	player.camera_pivot.rotate_x(mouse_motion.y * player.camera_sensibility)
 	player.camera_pivot.rotation_degrees.x = clampf(

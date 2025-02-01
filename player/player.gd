@@ -134,5 +134,6 @@ func player_die() -> void:
 	tween.set_parallel()
 	tween.tween_property(camera_pivot, "rotation_degrees", Vector3(90, 0, 0), .75)
 	tween.tween_property(camera_pivot, "position", Vector3(0, -1, 0), 1)
+	PathfindingManager.player = null
 	await tween.finished
 	$PlayerUI/GameOverMenu.game_over()

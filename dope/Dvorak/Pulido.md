@@ -1,0 +1,1 @@
+-Las pantallas deberian transicionar con un fundido, idealmente con el efecto vhs

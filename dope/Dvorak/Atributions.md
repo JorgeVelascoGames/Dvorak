@@ -23,3 +23,5 @@ licensed under the Creative Commons CC0 1.0 Universal License.
 	```
 
 "Sewers - PSX" (https://skfb.ly/p8LZY) by Elbolillo is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/).
+
+"Hospital Trolley" (https://skfb.ly/oOzKS) by creative_beast is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/).
