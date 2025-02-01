@@ -26,7 +26,7 @@ func _ready() -> void:
 	
 	if open_on_ready:
 		await get_tree().create_timer(open_on_ready_dealy).timeout
-		try_open_tutorial()
+		open_tutorial()
 
 
 func set_up_text() -> void:
@@ -37,12 +37,16 @@ func set_up_text() -> void:
 		italic_text_label.text = tutorial_text_italic
 
 
-func try_open_tutorial() -> void:
-	owner.open_tutorial_pop_up(self)
+func open_tutorial() -> void:
+	while(AppManager.game_manager.current_level_manager.tutorial_on_display):
+		await get_tree().process_frame
+	AppManager.game_manager.current_level_manager.tutorial_on_display = self
+	show_tutorial()
 
 
 func show_tutorial() -> void:
 	if already_displayed:
+		AppManager.game_manager.current_level_manager.tutorial_on_display = null
 		return
 	
 	already_displayed = true
@@ -59,6 +63,7 @@ func close_tutorial() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	AppManager.game_manager.current_level_manager.process_mode = Node.PROCESS_MODE_INHERIT
 	await get_tree().process_frame
+	AppManager.game_manager.current_level_manager.tutorial_on_display = null
 	finished_tutorial.emit()
 	
 	if tutorial_to_chain:
@@ -71,4 +76,4 @@ func _on_continue_button_pressed() -> void:
 
 func _on_player_detector_body_entered(body: Node3D) -> void:
 	if body is Player:
-		try_open_tutorial()
+		open_tutorial()
