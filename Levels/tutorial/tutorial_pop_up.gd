@@ -26,7 +26,7 @@ func _ready() -> void:
 	
 	if open_on_ready:
 		await get_tree().create_timer(open_on_ready_dealy).timeout
-		open_tutorial()
+		try_open_tutorial()
 
 
 func set_up_text() -> void:
@@ -37,7 +37,11 @@ func set_up_text() -> void:
 		italic_text_label.text = tutorial_text_italic
 
 
-func open_tutorial() -> void:
+func try_open_tutorial() -> void:
+	owner.open_tutorial_pop_up(self)
+
+
+func show_tutorial() -> void:
 	if already_displayed:
 		return
 	
@@ -67,4 +71,4 @@ func _on_continue_button_pressed() -> void:
 
 func _on_player_detector_body_entered(body: Node3D) -> void:
 	if body is Player:
-		open_tutorial()
+		try_open_tutorial()
