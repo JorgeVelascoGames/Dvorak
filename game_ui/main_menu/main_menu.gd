@@ -14,7 +14,7 @@ func _process(delta: float) -> void:
 
 
 func _on_play_button_pressed() -> void:
-	AppManager.game_manager.next_app_state()
+	AppManager.game_manager.load_new_screen(GameManager.APP_STATE.game)
 
 
 func _on_exit_button_pressed() -> void:
@@ -24,3 +24,7 @@ func _on_exit_button_pressed() -> void:
 func _on_steam_button_pressed() -> void:
 	if steam_url != "":
 		OS.shell_open(steam_url)
+
+
+func _on_tutorial_pressed() -> void:
+	AppManager.game_manager.game_level_manager.load_tutorial()

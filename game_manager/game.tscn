@@ -1,10 +1,11 @@
-[gd_scene load_steps=16 format=3 uid="uid://8snq2dhojamu"]
+[gd_scene load_steps=17 format=3 uid="uid://8snq2dhojamu"]
 
 [ext_resource type="Script" path="res://game_manager/game_manager.gd" id="1_d4jsh"]
 [ext_resource type="PackedScene" uid="uid://dh6gl16kfd242" path="res://game_ui/main_menu/main_menu.tscn" id="2_qnsev"]
 [ext_resource type="PackedScene" uid="uid://bfqpamqydtspv" path="res://game_manager/advert_screen.tscn" id="2_wrocf"]
 [ext_resource type="PackedScene" uid="uid://6xaa4aqthxji" path="res://game_manager/lenguage_selection.tscn" id="3_gm0jn"]
 [ext_resource type="PackedScene" uid="uid://ben6fpbmg6r7h" path="res://game_manager/loading_screen.tscn" id="4_v3kow"]
+[ext_resource type="PackedScene" uid="uid://b37la44wjrp4u" path="res://Levels/level_one/level_one.tscn" id="6_1rvxs"]
 [ext_resource type="PackedScene" uid="uid://bgouurh1fbjwr" path="res://game_manager/game_level_manager.tscn" id="6_7vbrb"]
 [ext_resource type="PackedScene" uid="uid://bxr2s8atmausr" path="res://Levels/tutorial/tutorial.tscn" id="6_k1ata"]
 [ext_resource type="Shader" path="res://shaders/vhs.gdshader" id="7_dlfm1"]
@@ -46,9 +47,10 @@ script = ExtResource("1_d4jsh")
 lenguage_selecton_menu = ExtResource("3_gm0jn")
 advert_scree = ExtResource("2_wrocf")
 main_menu = ExtResource("2_qnsev")
+tutorial = ExtResource("6_k1ata")
 
 [node name="GameLevelManager" parent="." instance=ExtResource("6_7vbrb")]
-level_one = ExtResource("6_k1ata")
+level_one = ExtResource("6_1rvxs")
 
 [node name="LoadingScreen" parent="." instance=ExtResource("4_v3kow")]
 visible = false

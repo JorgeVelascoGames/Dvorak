@@ -34,6 +34,10 @@ func load_game_level(level : int = 1) -> void:
 			AppManager.game_manager.loading_screen.load_scene(level_three)
 
 
+func load_tutorial() -> void:
+	AppManager.game_manager.load_new_screen(GameManager.APP_STATE.tutorial)
+
+
 func back_to_main_menu() -> void:
 	AppManager.game_manager.load_new_screen(AppManager.game_manager.APP_STATE.menu)
 

@@ -1,13 +1,14 @@
 extends Node
 class_name GameManager
 
-enum APP_STATE {lenguage, advert, menu, game}
+enum APP_STATE {lenguage, advert, menu, game, tutorial}
 
 signal on_calamity
 
 @export var lenguage_selecton_menu : PackedScene
 @export var advert_scree: PackedScene
 @export var main_menu : PackedScene
+@export var tutorial : PackedScene
 @export var first_scene := APP_STATE.lenguage
 
 @onready var loading_screen: LoadingScreen = $LoadingScreen
@@ -23,13 +24,6 @@ var current_level_manager : LevelManager
 func _ready() -> void:
 	AppManager.game_manager = self
 	load_new_screen(first_scene)
-
-
-func next_app_state() -> void:
-	if current_app_state != APP_STATE.game:
-		@warning_ignore("int_as_enum_without_cast")
-		current_app_state += 1
-		load_new_screen(current_app_state)
 
 
 func load_new_screen(screen : APP_STATE) -> void:
@@ -48,6 +42,9 @@ func load_new_screen(screen : APP_STATE) -> void:
 	if screen == APP_STATE.game:
 		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 		game_level_manager.enter_game_level()
+	if screen == APP_STATE.tutorial:
+		loading_screen.load_scene(tutorial)
+		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 
 
 func _on_loading_screen_new_scene_loaded(scene: Node) -> void:

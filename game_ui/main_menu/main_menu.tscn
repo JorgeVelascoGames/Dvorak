@@ -73,10 +73,12 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 20.0
-offset_bottom = -13.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/margin_left = 22
+theme_override_constants/margin_top = 22
+theme_override_constants/margin_right = 22
+theme_override_constants/margin_bottom = 22
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MainMenuUI/MarginContainer"]
 custom_minimum_size = Vector2(50, 0)
@@ -87,6 +89,11 @@ alignment = 1
 [node name="PlayButton" type="Button" parent="MainMenuUI/MarginContainer/VBoxContainer"]
 layout_mode = 2
 text = "Play"
+
+[node name="Tutorial" type="Button" parent="MainMenuUI/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Tutorial
+"
 
 [node name="ExitButton" type="Button" parent="MainMenuUI/MarginContainer/VBoxContainer"]
 layout_mode = 2
@@ -503,6 +510,7 @@ transform = Transform3D(0.958567, 0, 0.284869, 0, 1, 0, -0.284869, 0, 0.958567, 
 transform = Transform3D(0.0505929, 0.579959, -0.813073, 0, 0.814116, 0.580703, 0.998719, -0.0293795, 0.0411885, -3.757, 1.11, -1.421)
 
 [connection signal="pressed" from="MainMenuUI/MarginContainer/VBoxContainer/PlayButton" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="MainMenuUI/MarginContainer/VBoxContainer/Tutorial" to="." method="_on_tutorial_pressed"]
 [connection signal="pressed" from="MainMenuUI/MarginContainer/VBoxContainer/ExitButton" to="." method="_on_exit_button_pressed"]
 [connection signal="pressed" from="MainMenuUI/MarginContainer/HBoxContainer/SteamButton" to="." method="_on_steam_button_pressed"]
 

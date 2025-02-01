@@ -70,7 +70,6 @@ func movement_process(_delta: float) -> void:
 	if current_target == null:
 		return
 	
-	var distance = global_position.distance_to(current_target.global_position)
 	var next_position = navigation_agent_3d.get_next_path_position()
 	
 	if always_face_player:
@@ -80,8 +79,6 @@ func movement_process(_delta: float) -> void:
 	
 	var direction = global_position.direction_to(next_position)
 	
-	#if distance < aggro_range:
-		#provoke = true
 	
 	
 	if direction:
@@ -111,3 +108,8 @@ func _on_hurt_box_body_entered(body: Node3D) -> void:
 		for enemy_body in $DetectionArea.get_overlapping_bodies():
 			if enemy_body is Enemy:
 				enemy_body.enemy_die()
+
+
+func _on_aggro_area_body_entered(body: Node3D) -> void:
+	if body is Player:
+		provoke = true

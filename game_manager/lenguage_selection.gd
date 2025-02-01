@@ -12,4 +12,4 @@ func _process(delta: float) -> void:
 
 
 func _on_button_pressed() -> void:
-	AppManager.game_manager.next_app_state()
+	AppManager.game_manager.load_new_screen(GameManager.APP_STATE.advert)

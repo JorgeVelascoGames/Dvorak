@@ -3,12 +3,13 @@ class_name TutorialPopUp
 
 signal finished_tutorial
 
-@export var tutorial_text : String
-@export var tutorial_text_italic : String
+@export_multiline var tutorial_text : String
+@export_multiline var tutorial_text_italic : String
 @export var open_on_ready := false
 @export var open_on_ready_dealy := 0.0
 ##Wait said amount of time once the tutorial has already been triggered to show
 @export var delay_to_show := 0.0
+@export var tutorial_to_chain : TutorialPopUp
 
 @onready var main_text_label: Label = $MarginContainer/PanelContainer/MarginContainer/VBoxContainer/LabelMargincontainer/MainTextLabel
 @onready var h_separator: HSeparator = $MarginContainer/PanelContainer/MarginContainer/VBoxContainer/HSeparator
@@ -55,6 +56,9 @@ func close_tutorial() -> void:
 	AppManager.game_manager.current_level_manager.process_mode = Node.PROCESS_MODE_INHERIT
 	await get_tree().process_frame
 	finished_tutorial.emit()
+	
+	if tutorial_to_chain:
+		tutorial_to_chain.open_tutorial()
 
 
 func _on_continue_button_pressed() -> void:

@@ -36,7 +36,7 @@ func finish_level() -> void:
 	var tween := get_tree().create_tween()
 	tween.tween_property(white_screen, "color", Color.WHITE, 4.0)
 	await tween.finished
-	AppManager.game_manager.game_level_manager.back_to_main_menu()
+	AppManager.game_manager.load_new_screen(GameManager.APP_STATE.menu)
 
 
 func lost_level() -> void:

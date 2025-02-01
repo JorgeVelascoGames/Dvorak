@@ -21,4 +21,4 @@ func _input(event: InputEvent) -> void:
 		return
 	
 	if event.is_pressed() and (event is InputEventKey or event is InputEventMouseButton or event is InputEventJoypadButton):
-		AppManager.game_manager.next_app_state()
+		AppManager.game_manager.load_new_screen(GameManager.APP_STATE.menu)

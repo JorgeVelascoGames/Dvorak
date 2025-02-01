@@ -1,12 +1,9 @@
-[gd_scene load_steps=40 format=4 uid="uid://bxr2s8atmausr"]
+[gd_scene load_steps=39 format=4 uid="uid://bxr2s8atmausr"]
 
 [ext_resource type="Script" path="res://Levels/tutorial/tutorial.gd" id="1_nb02s"]
 [ext_resource type="Environment" uid="uid://c42wra3u6yo6u" path="res://Levels/world_environment.tres" id="1_t5pyh"]
 [ext_resource type="PackedScene" uid="uid://m6pypgl566n1" path="res://player/player.tscn" id="3_mhhpd"]
 [ext_resource type="PackedScene" uid="uid://bb8divagmrtfg" path="res://Levels/tutorial/tutorial_pop_up.tscn" id="4_hwno4"]
-[ext_resource type="LabelSettings" uid="uid://un4p01kkltty" path="res://Levels/tutorial/tutorial_text_lable_settings.tres" id="6_fvtu7"]
-[ext_resource type="FontFile" uid="uid://djkxaekxrwieb" path="res://assets/fonts/roboto/Roboto-Italic.ttf" id="6_h0a1b"]
-[ext_resource type="NavigationMesh" uid="uid://c63lgdg06alye" path="res://Levels/navmesh.tres" id="6_ivr52"]
 [ext_resource type="PackedScene" uid="uid://dhepkg5i8hdu6" path="res://Levels/tutorial/tutorial_level.tscn" id="6_jtwhb"]
 [ext_resource type="PackedScene" uid="uid://c5vmfb6wrd0un" path="res://ExitGate/exit_gate.tscn" id="8_aep8v"]
 [ext_resource type="PackedScene" uid="uid://bnrvch032t16x" path="res://Levels/environment_elements/sewers_light.tscn" id="8_s75u1"]
@@ -16,8 +13,14 @@
 [ext_resource type="PackedScene" uid="uid://rd6woanfk4nl" path="res://assets/props/emergency_light/emergency_light.tscn" id="10_5chf5"]
 [ext_resource type="Texture2D" uid="uid://bseddrslwbp50" path="res://assets/props/pipes/Sewer_Pipes.png" id="10_syycr"]
 [ext_resource type="Texture2D" uid="uid://drih67xaf2oru" path="res://assets/props/emergency_light/sewers_lights_texture.png" id="11_pfypn"]
-[ext_resource type="LabelSettings" uid="uid://uvcnfvkxej6y" path="res://game_ui/flavour_text_lable_settings.tres" id="14_851xi"]
+[ext_resource type="PackedScene" uid="uid://brysxkhoj2p7v" path="res://Levels/environment_elements/filling_cabinet_obstacle.tscn" id="14_18exx"]
 [ext_resource type="PackedScene" uid="uid://dalflm7oaesga" path="res://Enemy/infanticide/infanticide.tscn" id="14_smla2"]
+
+[sub_resource type="NavigationMesh" id="NavigationMesh_ff842"]
+vertices = PackedVector3Array(-109.25, 0.5, -59.25, -108.25, 0.5, -59.25, -108.25, 0.5, -60.25, -111.75, 0.5, -62.75, -111.75, 0.5, -59.25, -111, 0.5, -59.25, -108.25, 0.5, -62, -108.25, 0.5, -62.75, -111, 0.5, -55.25, -109.25, 0.5, -55.25, -104.25, 0.5, -62, -104.25, 0.5, -60.25, -111, 0.5, -45.75, -111.75, 0.5, -45.75, -111.75, 0.5, -45, -111.75, 0.5, -43.25, -112, 0.5, -42.25, -111, 0.5, -42.25, -108.25, 0.5, -45, -108.25, 0.5, -45.75, -109.25, 0.5, -45.75, -109.25, 0.5, -42, -108.25, 0.5, -42, -108.25, 0.5, -43.25, -111, 0.5, -38.25, -109.25, 0.5, -38.25, -104.25, 0.5, -43.25, -104.25, 0.5, -45, -115.75, 0.5, -45, -115.75, 0.5, -43.25, -111, 0.5, -49.75, -109.25, 0.5, -49.75, -111, 0.5, -28.75, -112, 0.5, -28.75, -112, 0.5, -28, -112, 0.5, -26.25, -112, 0.5, -25.25, -111, 0.5, -25.25, -109.25, 0.5, -25, -108.25, 0.5, -25, -108, 0.5, -26.25, -108.25, 0.5, -28.75, -109.25, 0.5, -28.75, -115.75, 0.5, -28, -115.75, 0.5, -26.25, -109.25, 0.5, -32.75, -111, 0.5, -32.75, -111, 0.5, -21.25, -109.25, 0.5, -21.25, -122.75, 0.5, 0, -122.75, 0.5, 1.75, -116, 0.5, 1.75, -116, 0.5, 0, -104.25, 0.5, 0, -111, 0.5, -5, -111, 0.5, 6.75, -109.25, 0.5, 6.75, -104.25, 0.5, 1.75, -109.25, 0.5, -5, -109.25, 0.5, -11.75, -111, 0.5, -11.75, -116, 0.5, 6.75, -104.25, 0.5, 6.75, -104.25, 0.5, -5, -116, 0.5, -5, -111, 0.5, 13.75, -109.25, 0.5, 13.75, -97.25, 0.5, 1.75, -97.25, 0.5, 0, -92.5, 5.25, -8.5, -92.5, 5, -8, -92.25, 5, -8.5, -92.25, 4.75, -8, -92, 4.75, -8.5, -92, 4.5, -8, -91.75, 4.5, -8.5, -91.75, 4.25, -8, -91.5, 4.25, -8.5, -91.5, 4, -8, -91.25, 4, -8.5, -91.25, 3.75, -8, -91, 3.75, -8.5, -90.5, 3.25, -9.75, -91, 3.5, -8, -90.75, 3.5, -8.5, -90.5, 3.25, -8, -96.75, 5.5, -9.75, -96.75, 5.5, -8, -92.75, 5.5, -8.5, -93, 5.5, -9.75, -92.75, 5.5, -8, -90.25, 2.75, -8.5, -90.25, 2.75, -9.5, -87.25, 0.5, -9.75, -88.25, 0.75, -9.5, -88.25, 0.75, -8.5, -87.25, 0.5, -8, -88.3333, 0.75, -9.75, 15.75, 2.75, -1.5, 15.75, 2.75, -2.5, 15.5, 2.75, -2.75, 15.5, 2.75, -1, 22.25, 0.5, -2.75, 17.75, 0.75, -2.5, 17.75, 0.75, -1.5, 22.25, 0.5, -1, 18.2, 0.5, -2.75, 27.25, 0.5, 1.25, 29, 0.5, 1.5, 29, 0.5, -0.25, 27.25, 0.5, -0.25, 30.75, 0.5, -4, 22.25, 0.5, -4, 18.2, 0.5, -1, 30.75, 0.5, -0.25, 22.25, 0.5, -0.25, 13.5, 5.25, -1.5, 13.5, 5, -1, 13.75, 5, -1.5, 13.75, 4.75, -1, 14, 4.75, -1.5, 14, 4.5, -1, 14.25, 4.5, -1.5, 14.25, 4.25, -1, 14.5, 4.25, -1.5, 14.5, 4, -1, 14.75, 4, -1.5, 14.75, 3.75, -1, 15, 3.75, -1.5, 15, 3.5, -1, 15.25, 3.5, -1.5, 9.25, 5.5, -2.75, 9.25, 5.5, -1, 13.25, 5.5, -1.5, 13, 5.5, -2.75, 13.25, 5.5, -1, 6.25, 0.5, 1, 6.25, 0.5, 1.75, 7.25, 0.5, 1.75, 10, 0.5, 9.75, 10, 0.5, 8.75, 9, 0.5, 8.75, 4.25, 0.5, -0.75, 4.25, 0.5, 1, 6.25, 0.5, -0.75, 7.25, 0.5, 8.75, 9, 0.5, 1.75, 6.25, 0.5, 8.75, 6.25, 0.5, 12.5, 10, 0.5, 11.5, 10, 0.5, 12.5, 10, 0.5, 1.75, 10, 0.5, -2, 6.25, 0.5, -2, 13.75, 0.5, 11.5, 13.5, 0.5, 9.75, 1, 0.5, 2, 2, 0.5, 2, 2, 0.5, 1, 2, 0.5, -0.75, -0.75, 0.5, 2, -0.75, 0.5, 8.75, 1, 0.5, 8.75, 2, 0.5, -1.75, -1.75, 0.5, -1.75, -1.75, 0.5, 2, -1.75, 0.5, 8.75, -1.75, 0.5, 12.5, 2, 0.5, 12.5, 2, 0.5, 8.75, 27.25, 0.5, 3, 26.25, 0.5, 3, 26.25, 0.5, 4, 29, 0.5, 3, 20.75, 0.5, 4, 20.75, 0.5, 5.75, 26.25, 0.5, 5.75, 26.25, 0.5, 6.75, 30, 0.5, 6.75, 30, 0.5, 3, 18, 0.5, 6.75, 19, 0.5, 6.75, 19, 0.5, 5.75, 16.25, 0.5, 8.5, 15.25, 0.5, 8.5, 15.25, 0.5, 9.75, 15.25, 0.5, 11.25, 15.25, 0.5, 3, 15.25, 0.5, 6.75, 16.25, 0.5, 6.75, 19, 0.5, 4, 18, 0.5, 8.5, 15.25, 0.5, 12.25, 19, 0.5, 12.25, 19, 0.5, 8.5, 19, 0.5, 3)
+polygons = [PackedInt32Array(2, 1, 0), PackedInt32Array(5, 4, 2), PackedInt32Array(2, 4, 6), PackedInt32Array(6, 4, 3), PackedInt32Array(3, 7, 6), PackedInt32Array(2, 0, 5), PackedInt32Array(0, 9, 5), PackedInt32Array(5, 9, 8), PackedInt32Array(11, 2, 10), PackedInt32Array(10, 2, 6), PackedInt32Array(14, 13, 12), PackedInt32Array(17, 16, 15), PackedInt32Array(20, 19, 18), PackedInt32Array(23, 22, 21), PackedInt32Array(25, 24, 21), PackedInt32Array(21, 24, 17), PackedInt32Array(20, 18, 23), PackedInt32Array(17, 15, 21), PackedInt32Array(21, 15, 23), PackedInt32Array(23, 15, 20), PackedInt32Array(20, 15, 12), PackedInt32Array(18, 27, 23), PackedInt32Array(23, 27, 26), PackedInt32Array(14, 15, 28), PackedInt32Array(28, 15, 29), PackedInt32Array(31, 20, 30), PackedInt32Array(30, 20, 12), PackedInt32Array(12, 15, 14), PackedInt32Array(34, 33, 32), PackedInt32Array(37, 36, 35), PackedInt32Array(40, 39, 38), PackedInt32Array(42, 41, 40), PackedInt32Array(37, 35, 38), PackedInt32Array(38, 35, 40), PackedInt32Array(40, 35, 42), PackedInt32Array(42, 35, 32), PackedInt32Array(34, 35, 43), PackedInt32Array(43, 35, 44), PackedInt32Array(32, 46, 42), PackedInt32Array(42, 46, 45), PackedInt32Array(35, 34, 32), PackedInt32Array(48, 47, 38), PackedInt32Array(38, 47, 37), PackedInt32Array(52, 51, 49), PackedInt32Array(49, 51, 50), PackedInt32Array(57, 56, 53), PackedInt32Array(53, 56, 55), PackedInt32Array(53, 55, 51), PackedInt32Array(53, 51, 54), PackedInt32Array(54, 60, 58), PackedInt32Array(58, 60, 59), PackedInt32Array(51, 52, 54), PackedInt32Array(55, 61, 51), PackedInt32Array(57, 62, 56), PackedInt32Array(58, 63, 53), PackedInt32Array(52, 64, 54), PackedInt32Array(56, 66, 55), PackedInt32Array(55, 66, 65), PackedInt32Array(54, 58, 53), PackedInt32Array(53, 68, 57), PackedInt32Array(57, 68, 67), PackedInt32Array(71, 70, 69), PackedInt32Array(73, 72, 71), PackedInt32Array(75, 74, 73), PackedInt32Array(77, 76, 75), PackedInt32Array(79, 78, 77), PackedInt32Array(80, 79, 81), PackedInt32Array(81, 79, 82), PackedInt32Array(83, 81, 84), PackedInt32Array(84, 81, 82), PackedInt32Array(85, 84, 82), PackedInt32Array(82, 88, 89), PackedInt32Array(89, 88, 86), PackedInt32Array(86, 88, 87), PackedInt32Array(88, 82, 69), PackedInt32Array(82, 79, 77), PackedInt32Array(82, 77, 75), PackedInt32Array(82, 75, 73), PackedInt32Array(82, 73, 71), PackedInt32Array(82, 71, 69), PackedInt32Array(69, 90, 88), PackedInt32Array(88, 90, 87), PackedInt32Array(92, 91, 82), PackedInt32Array(82, 91, 85), PackedInt32Array(94, 93, 95), PackedInt32Array(95, 93, 96), PackedInt32Array(93, 94, 97), PackedInt32Array(97, 94, 92), PackedInt32Array(97, 92, 82), PackedInt32Array(91, 95, 85), PackedInt32Array(85, 95, 96), PackedInt32Array(99, 98, 100), PackedInt32Array(100, 98, 101), PackedInt32Array(103, 102, 104), PackedInt32Array(104, 102, 105), PackedInt32Array(99, 100, 103), PackedInt32Array(103, 100, 106), PackedInt32Array(103, 106, 102), PackedInt32Array(110, 109, 107), PackedInt32Array(107, 109, 108), PackedInt32Array(109, 110, 111), PackedInt32Array(111, 110, 102), PackedInt32Array(111, 102, 112), PackedInt32Array(98, 104, 101), PackedInt32Array(101, 104, 113), PackedInt32Array(113, 104, 105), PackedInt32Array(111, 114, 109), PackedInt32Array(110, 105, 102), PackedInt32Array(110, 115, 105), PackedInt32Array(118, 117, 116), PackedInt32Array(120, 119, 118), PackedInt32Array(122, 121, 120), PackedInt32Array(124, 123, 122), PackedInt32Array(126, 125, 124), PackedInt32Array(127, 126, 128), PackedInt32Array(128, 126, 100), PackedInt32Array(129, 128, 130), PackedInt32Array(130, 128, 100), PackedInt32Array(101, 130, 100), PackedInt32Array(100, 133, 134), PackedInt32Array(134, 133, 131), PackedInt32Array(131, 133, 132), PackedInt32Array(133, 100, 116), PackedInt32Array(100, 126, 124), PackedInt32Array(100, 124, 122), PackedInt32Array(100, 122, 120), PackedInt32Array(100, 120, 118), PackedInt32Array(100, 118, 116), PackedInt32Array(116, 135, 133), PackedInt32Array(133, 135, 132), PackedInt32Array(138, 137, 136), PackedInt32Array(141, 140, 139), PackedInt32Array(144, 136, 142), PackedInt32Array(142, 136, 143), PackedInt32Array(146, 141, 138), PackedInt32Array(138, 141, 145), PackedInt32Array(138, 136, 144), PackedInt32Array(145, 139, 147), PackedInt32Array(147, 139, 149), PackedInt32Array(147, 149, 148), PackedInt32Array(149, 150, 148), PackedInt32Array(152, 151, 146), PackedInt32Array(144, 153, 138), PackedInt32Array(138, 153, 146), PackedInt32Array(146, 153, 152), PackedInt32Array(141, 139, 145), PackedInt32Array(139, 155, 149), PackedInt32Array(149, 155, 154), PackedInt32Array(158, 157, 156), PackedInt32Array(158, 159, 143), PackedInt32Array(143, 159, 142), PackedInt32Array(156, 162, 160), PackedInt32Array(160, 162, 161), PackedInt32Array(156, 159, 158), PackedInt32Array(159, 156, 163), PackedInt32Array(163, 156, 160), PackedInt32Array(163, 160, 164), PackedInt32Array(160, 165, 164), PackedInt32Array(167, 166, 161), PackedInt32Array(162, 169, 168), PackedInt32Array(162, 168, 161), PackedInt32Array(161, 168, 167), PackedInt32Array(172, 171, 170), PackedInt32Array(173, 170, 108), PackedInt32Array(108, 170, 107), PackedInt32Array(172, 176, 174), PackedInt32Array(174, 176, 175), PackedInt32Array(172, 170, 173), PackedInt32Array(178, 177, 176), PackedInt32Array(173, 179, 172), PackedInt32Array(172, 179, 176), PackedInt32Array(176, 179, 178), PackedInt32Array(182, 181, 180), PackedInt32Array(185, 184, 183), PackedInt32Array(186, 154, 185), PackedInt32Array(185, 154, 155), PackedInt32Array(189, 188, 187), PackedInt32Array(190, 174, 182), PackedInt32Array(182, 174, 175), PackedInt32Array(180, 191, 189), PackedInt32Array(189, 191, 183), PackedInt32Array(180, 190, 182), PackedInt32Array(185, 183, 186), PackedInt32Array(186, 183, 192), PackedInt32Array(192, 183, 191), PackedInt32Array(192, 191, 193), PackedInt32Array(191, 194, 193), PackedInt32Array(190, 180, 195), PackedInt32Array(195, 180, 189), PackedInt32Array(195, 189, 187)]
+agent_radius = 0.0
+filter_ledge_spans = true
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ofhu3"]
 albedo_texture = ExtResource("11_pfypn")
@@ -168,242 +171,58 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_ls5gg")
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_7c8in"]
-size = Vector3(4.12, 3.32, 1.115)
+[sub_resource type="BoxShape3D" id="BoxShape3D_rm604"]
+size = Vector3(2.04626, 1, 0.826416)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_rdbqf"]
-size = Vector3(1.80237, 1, 2.02545)
+[sub_resource type="BoxShape3D" id="BoxShape3D_xo77p"]
+size = Vector3(4.06396, 1, 1)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_4rklb"]
-size = Vector3(2.76904, 1, 1.14209)
+[sub_resource type="BoxShape3D" id="BoxShape3D_gjbil"]
+size = Vector3(1, 1, 2.8374)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_5v4ux"]
-size = Vector3(4.76709, 1, 3.76343)
+[sub_resource type="BoxShape3D" id="BoxShape3D_ghcnx"]
+size = Vector3(2.36523, 1, 2.06555)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_8aqqs"]
-size = Vector3(1, 1, 2.01086)
+[sub_resource type="BoxShape3D" id="BoxShape3D_u0bml"]
+size = Vector3(3.27271, 1.84753, 1)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_hh7u4"]
-size = Vector3(1.69116, 1, 1.98059)
+[sub_resource type="BoxShape3D" id="BoxShape3D_ko527"]
+size = Vector3(1, 2.0249, 2.10455)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_ew0y6"]
-size = Vector3(1.90918, 1, 1)
+[sub_resource type="BoxShape3D" id="BoxShape3D_4g3et"]
+size = Vector3(1.17529, 1.72571, 2.15735)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_ui2f8"]
-size = Vector3(1, 1, 4.14722)
+[sub_resource type="BoxShape3D" id="BoxShape3D_7ptv8"]
+size = Vector3(1.44141, 1, 1)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_okonx"]
-size = Vector3(1, 1, 2.20459)
+[sub_resource type="BoxShape3D" id="BoxShape3D_hpvva"]
+size = Vector3(0.68457, 1, 1.16748)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_dpgkw"]
+size = Vector3(1.2782, 1.26062, 2.50696)
 
 [node name="Tutorial" type="Node3D" node_paths=PackedStringArray("books_positions", "enemy_container")]
 script = ExtResource("1_nb02s")
 books_positions = [NodePath("BookSpawn"), NodePath("BookSpawn2")]
 enemy_container = NodePath("Enemies")
 
-[node name="Tutorial_ErrorTutorial_PanelContainer_MarginContainer_VBoxContainer_LabelMargincontainer2#Label" type="Label" parent="."]
-theme_override_fonts/font = ExtResource("6_h0a1b")
-theme_override_font_sizes/font_size = 11
-text = "You can now press ESC to exit the tutorial—there’s nothing more to see here…"
-label_settings = ExtResource("14_851xi")
-horizontal_alignment = 1
-
-[node name="Tutorial_ErrorTutorial_PanelContainer_MarginContainer_VBoxContainer_LabelMargincontainer#Label4" type="Label" parent="."]
-custom_minimum_size = Vector2(15, 0)
-text = "This time you’ve entered the wrong combination. Remember to look for the books to discover where each switch needs to be set, and also remember that with every new playthrough, this pattern changes.
-
- Make sure you don’t touch the red switch (always to the left of the exit door) until you’ve placed all the switches in their correct positions."
-label_settings = ExtResource("6_fvtu7")
-autowrap_mode = 2
-
-[node name="Tutorial_StairsTutorial_PanelContainer_MarginContainer_VBoxContainer_LabelMargincontainer#Label4" type="Label" parent="."]
-custom_minimum_size = Vector2(15, 0)
-text = "You can’t go up or down stairs while using the walker.
-
-Drop it (R key) to climb on foot.
-
- Remember you can take one of the items with you (the flashlight, the pistol, or the crowbar)."
-label_settings = ExtResource("6_fvtu7")
-autowrap_mode = 2
-
-[node name="Tutorial_BookTutorial_PanelContainer_MarginContainer_VBoxContainer_LabelMargincontainer#Label4" type="Label" parent="."]
-custom_minimum_size = Vector2(15, 0)
-text = "Here’s a password book.
-
-There is one book for each switch in the level—find them all to learn the correct positions for each switch.
-
-Hold down the interact key (\"i\") while pressing the indicated buttons in succession to search the book."
-label_settings = ExtResource("6_fvtu7")
-autowrap_mode = 2
-
-[node name="Tutorial_EndGameTutorial_PanelContainer_MarginContainer_VBoxContainer_LabelMargincontainer2#Label" type="Label" parent="."]
-custom_minimum_size = Vector2(300, 0)
-text = "If you try to leave without entering the correct combination, things can get complicated very quickly..."
-label_settings = ExtResource("6_fvtu7")
-horizontal_alignment = 1
-autowrap_mode = 2
-
-[node name="Tutorial_EndGameTutorial_PanelContainer_MarginContainer_VBoxContainer_LabelMargincontainer#Label4" type="Label" parent="."]
-custom_minimum_size = Vector2(15, 0)
-text = "To escape and finish the level, you need to set the switches on the right side of the door to their correct positions.
-
-Each playthrough, these positions change, so you’ll have to search the books scattered around the rooms to find out where each switch should be set.
-
-Once you think you have the correct pattern, press the switch on the left side of the door to open it and escape."
-label_settings = ExtResource("6_fvtu7")
-autowrap_mode = 2
-
-[node name="Tutorial_EnemyTutorial_PanelContainer_MarginContainer_VBoxContainer_LabelMargincontainer#Label4" type="Label" parent="."]
-custom_minimum_size = Vector2(15, 0)
-text = " In front of you, there’s an enemy. Some will follow you when you’re not looking, while others behave differently.
-- Shoot them in the head with the pistol or strike them with the crowbar to end their agony.
-- If they catch you, you’ll be wounded, and then severely wounded.
-- If they catch you while you’re severely wounded, the game is over.
-- You can heal automatically after some time, or by consuming pills found in the filing cabinets (P key)."
-label_settings = ExtResource("6_fvtu7")
-autowrap_mode = 3
-
-[node name="Tutorial_CabinetSearchingTutorial_PanelContainer_MarginContainer_VBoxContainer_LabelMargincontainer#Label" type="Label" parent="."]
-custom_minimum_size = Vector2(300, 0)
-text = "In front of you, there’s a filing cabinet. Drop the walker (R key) to move closer and interact with it.
-
- Hold down the \"i\" key and press the indicated keys in succession to search for resources.
-
-You can find bullets for the pistol, batteries for the flashlight, or pills to restore your balance and health."
-label_settings = ExtResource("6_fvtu7")
-autowrap_mode = 2
-
-[node name="Tutorial_LightSwitchTutorial_PanelContainer_MarginContainer_VBoxContainer_LabelMargincontainer2#Label" type="Label" parent="."]
-custom_minimum_size = Vector2(300, 0)
-theme_override_fonts/font = ExtResource("6_h0a1b")
-theme_override_font_sizes/font_size = 11
-text = "Those who pursue you want to catch you in the dark	"
-label_settings = ExtResource("14_851xi")
-horizontal_alignment = 1
-autowrap_mode = 2
-
-[node name="Tutorial_LightSwitchTutorial_PanelContainer_MarginContainer_VBoxContainer_LabelMargincontainer#Label4" type="Label" parent="."]
-custom_minimum_size = Vector2(15, 0)
-text = "In front of you, you can see a switch. Leave the walker (R key) to interact with it using the \"i\" key.
-
-Hold down the interact key while pressing the indicated keys in succession until it turns on."
-label_settings = ExtResource("6_fvtu7")
-autowrap_mode = 2
-
-[node name="Tutorial_CrowbarPickingTutorial_PanelContainer_MarginContainer_VBoxContainer_LabelMargincontainer2#Label" type="Label" parent="."]
-text = "Try to hit enemies from behind to avoid taking damage"
-label_settings = ExtResource("6_fvtu7")
-horizontal_alignment = 1
-
-[node name="Tutorial_CrowbarPickingTutorial_PanelContainer_MarginContainer_VBoxContainer_LabelMargincontainer#Label" type="Label" parent="."]
-custom_minimum_size = Vector2(300, 0)
-text = "Hold down the right mouse button to ready the crowbar.
-
-When it’s ready, press the left mouse button to strike.
-
-Striking with the crowbar severely affects your balance."
-label_settings = ExtResource("6_fvtu7")
-autowrap_mode = 2
-
-[node name="Tutorial_GunPickUpTutorial_PanelContainer_MarginContainer_VBoxContainer_LabelMargincontainer2#Label" type="Label" parent="."]
-text = "Don't waste all your bullets..."
-label_settings = ExtResource("6_fvtu7")
-horizontal_alignment = 1
-
-[node name="Tutorial_GunPickUpTutorial_PanelContainer_MarginContainer_VBoxContainer_LabelMargincontainer#Label" type="Label" parent="."]
-custom_minimum_size = Vector2(300, 0)
-text = "Hold down the right mouse button to ready your weapon and aim.
-
-While aiming, press the left mouse button to shoot.
-
-Reload the gun by holding down the “L” key and pressing the indicated keys in succession.
-
-Each shot causes a significant loss of balance."
-label_settings = ExtResource("6_fvtu7")
-autowrap_mode = 2
-
-[node name="Tutorial_FlashlightPickUpTutorial_PanelContainer_MarginContainer_VBoxContainer_LabelMargincontainer#Label" type="Label" parent="."]
-custom_minimum_size = Vector2(300, 0)
-text = "While holding the flashlight, press and hold the “B” key and then press the indicated keys in succession to replace the battery with a new one.
-
-Use SPACE BAR to turn it on/off
-
-Look for fresh batteries around the map so you can keep using the flashlight."
-label_settings = ExtResource("6_fvtu7")
-autowrap_mode = 2
-
-[node name="Tutorial_FlashlightTutorial_PanelContainer_MarginContainer_VBoxContainer_LabelMargincontainer#Label" type="Label" parent="."]
-custom_minimum_size = Vector2(300, 0)
-text = "Use the SPACEBAR while on your walker to turn on and off the flashlight.
-
- You can also drop the walker (R key) and pick up the objects you find on it (\"i\" key). Do so to learn more about them."
-label_settings = ExtResource("6_fvtu7")
-autowrap_mode = 2
-
-[node name="Tutorial_WalkerTutorial_PanelContainer_MarginContainer_VBoxContainer_LabelMargincontainer#Label" type="Label" parent="."]
-custom_minimum_size = Vector2(1.955, 0)
-text = " Grab onto the walker to quickly regain your balance.
-
-Moving with the walker doesn’t cause any loss of balance, but your movement will be limited."
-label_settings = ExtResource("6_fvtu7")
-autowrap_mode = 2
-
-[node name="Tutorial_BalanceTutorial_PanelContainer_MarginContainer_VBoxContainer_LabelMargincontainer2#Label" type="Label" parent="."]
-custom_minimum_size = Vector2(300, 0)
-text = "You should try it now while it’s still safe…"
-label_settings = ExtResource("14_851xi")
-horizontal_alignment = 1
-autowrap_mode = 2
-
-[node name="Tutorial_BalanceTutorial_PanelContainer_MarginContainer_VBoxContainer_LabelMargincontainer#Label" type="Label" parent="."]
-custom_minimum_size = Vector2(300, 0)
-text = "As you lose your balance, the world around you begins to spin.
-
-If you completely lose your balance, quickly press the indicated keys, or you’ll collapse to the ground."
-label_settings = ExtResource("6_fvtu7")
-vertical_alignment = 1
-autowrap_mode = 2
-
-[node name="Tutorial_MovementTutorial_PanelContainer_MarginContainer_VBoxContainer_LabelMargincontainer#Label" type="Label" parent="."]
-custom_minimum_size = Vector2(300, 0)
-text = "Use the WASD keys to move.
-
-Use SHIFT to sprint.
-
-Use MOUSE to look around.
-
-Fast and abrupt movements cause you to lose balance progressively."
-label_settings = ExtResource("6_fvtu7")
-autowrap_mode = 2
-
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = ExtResource("1_t5pyh")
 
 [node name="Player" parent="." instance=ExtResource("3_mhhpd")]
-transform = Transform3D(0.999928, 0, 0.0120249, 0, 1, 0, -0.0120249, 0, 0.999928, 17.2918, 1.17994, 6.12207)
+transform = Transform3D(0.999928, 0, 0.0120249, 0, 1, 0, -0.0120249, 0, 0.999928, 0.116918, 1.17994, 10.0257)
 
 [node name="StateMachine" parent="Player" index="1"]
 initial_state = NodePath("Walk")
 
-[node name="CameraPivot" parent="Player" index="5"]
-transform = Transform3D(1, 0, 0, 0, 0.258816, 0.965927, 0, -0.965927, 0.258816, 0, 0.54, 0)
-
-[node name="GunRay" parent="Player/CameraPivot/FollowPivot/WorldCamera" index="3"]
-transform = Transform3D(5.79386e-09, 2, -1.92145e-10, -1.99561, 5.79387e-09, 0.132548, 0.132548, -1.91953e-10, 1.99561, -4.23963e-09, -0.0353529, -0.286992)
-
 [node name="Walker" parent="Player/WalkerFixedPoint" index="0"]
-transform = Transform3D(-0.00499181, 0, -0.999987, 0, 1, 0, 0.999987, 0, -0.00499181, 2.53182, -0.190146, -9.37058)
-
-[node name="GunModel" parent="Player/AnimatedObjects" index="0"]
-transform = Transform3D(-5.79198e-06, 1.6, 0, -1.6, -5.79198e-06, 0, 0, 0, 1.6, 0, 0.25, -0.116873)
+transform = Transform3D(-0.00499181, 0, -0.999987, 0, 1, 0, 0.999987, 0, -0.00499181, 4.7239, -0.190146, -8.81313)
 
 [node name="Crowbar" parent="Player/AnimatedObjects" index="1"]
 transform = Transform3D(-0.365312, -0.126945, 0.136132, 0, 0.299855, 0.279619, -0.186138, 0.249142, -0.267172, -0.085, -0.244, -0.957)
 
-[node name="PillsModel" parent="Player/AnimatedObjects" index="3"]
-transform = Transform3D(0.12, 0, 0, 0, 0.0940471, 0.0745328, 0, -0.0745328, 0.0940471, 0, 0.177635, -0.132516)
-
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
-navigation_mesh = ExtResource("6_ivr52")
+navigation_mesh = SubResource("NavigationMesh_ff842")
 
 [node name="tutorial_level" parent="NavigationRegion3D" instance=ExtResource("6_jtwhb")]
 
@@ -452,6 +271,30 @@ transform = Transform3D(0.997645, 0.0627325, 0.0277353, -0.0256941, 0.716725, -0
 
 [node name="SewersLight9" parent="Lights" instance=ExtResource("8_s75u1")]
 transform = Transform3D(0.0559824, -0.611385, -0.630856, -0.0226181, 0.630922, -0.613457, 0.878212, 0.0552225, 0.024415, 29.6819, 2.80991, 5.04737)
+
+[node name="SewersLight11" parent="Lights" instance=ExtResource("8_s75u1")]
+transform = Transform3D(-0.880285, 0, -7.69571e-08, 0, 0.880286, 0, 7.6957e-08, 0, -0.880287, 30.0463, 1.88011, 0.0235575)
+
+[node name="SewersLight12" parent="Lights" instance=ExtResource("8_s75u1")]
+transform = Transform3D(-0.880285, 0, -7.69571e-08, 0, 0.880286, 0, 7.6957e-08, 0, -0.880287, 25.8866, 1.88011, 0.0235575)
+
+[node name="SewersLight16" parent="Lights" instance=ExtResource("8_s75u1")]
+transform = Transform3D(-0.880285, 0, -7.69571e-08, 0, 0.880286, 0, 7.6957e-08, 0, -0.880287, 16.908, 2.51873, -0.974962)
+
+[node name="SewersLight17" parent="Lights" instance=ExtResource("8_s75u1")]
+transform = Transform3D(-0.880285, 0, -7.69571e-08, 0, 0.880286, 0, 7.6957e-08, 0, -0.880287, 13.7354, 5.83841, -0.974962)
+
+[node name="SewersLight18" parent="Lights" instance=ExtResource("8_s75u1")]
+transform = Transform3D(-1.92392e-07, 0, 0.880287, 0, 0.880286, 0, -0.880285, 0, -1.92393e-07, 8.9599, 6.99672, -1.95587)
+
+[node name="SewersLight13" parent="Lights" instance=ExtResource("8_s75u1")]
+transform = Transform3D(0.880285, 0, 1.53914e-07, 0, 0.880286, 0, -1.53914e-07, 0, 0.880287, 23.9318, 1.88011, -4.0428)
+
+[node name="SewersLight14" parent="Lights" instance=ExtResource("8_s75u1")]
+transform = Transform3D(0.880285, 0, 1.53914e-07, 1.37107e-07, 0.399998, -0.78416, -6.99377e-08, 0.784159, 0.399998, 21.0103, 2.23264, -2.72565)
+
+[node name="SewersLight15" parent="Lights" instance=ExtResource("8_s75u1")]
+transform = Transform3D(-0.880285, -6.85534e-08, -1.88883e-07, 1.37107e-07, 0.399998, -0.78416, 1.46895e-07, -0.784159, -0.399998, 19.4436, 2.23264, -1.29883)
 
 [node name="BookSpawn" type="Marker3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.8771, 5.96046e-08, -3.01197)
@@ -576,7 +419,216 @@ skeleton = NodePath("")
 [node name="Infanticide" parent="Enemies" instance=ExtResource("14_smla2")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 26.9447, 0, 4.85852)
 provoke_on_ready = false
-aggro_range = 5.0
+
+[node name="Hitbox" parent="Enemies/Infanticide" index="4"]
+transform = Transform3D(-1, 7.55567e-14, -8.74228e-08, -7.10543e-14, 1, 8.64267e-07, 8.74228e-08, 8.64267e-07, -1, -0.0064292, 1.6433, -0.213371)
+
+[node name="Skeleton3D" parent="Enemies/Infanticide/Model/infanticideModel/rig" index="0"]
+bones/1/position = Vector3(0.00648199, 0.0416464, 0.958833)
+bones/9/position = Vector3(0.217954, -0.0516649, 1.18472)
+bones/11/position = Vector3(-0.240673, -0.04777, 1.18842)
+bones/13/position = Vector3(0.132323, -0.0946206, 0.475598)
+bones/13/rotation = Quaternion(0.936645, -0.157008, 0.301661, 0.0839331)
+bones/13/scale = Vector3(1, 23.6971, 1)
+bones/15/position = Vector3(-0.0722537, -0.122673, 0.4803)
+bones/15/rotation = Quaternion(0.945033, 0.141072, -0.285444, 0.0743804)
+bones/15/scale = Vector3(1, 22.6756, 1)
+bones/18/position = Vector3(0.00642908, -0.0118933, -0.0200258)
+bones/35/rotation = Quaternion(0.974335, 0.0126132, -0.0738747, 0.212262)
+bones/35/scale = Vector3(0.994335, 0.994335, 0.994335)
+bones/36/rotation = Quaternion(0.214731, 4.93468e-08, -3.52832e-08, 0.976673)
+bones/37/rotation = Quaternion(-0.739081, 0.163602, 0.130041, 0.640378)
+bones/37/scale = Vector3(1.00776, 1.00776, 1.00776)
+bones/45/scale = Vector3(1.00776, 1.00775, 1.00776)
+bones/48/rotation = Quaternion(-2.18252e-07, 0.099122, 1.48233e-07, 0.995075)
+bones/48/scale = Vector3(1.00776, 1.00776, 1.00776)
+bones/51/scale = Vector3(1.0057, 1.0057, 1.0057)
+bones/53/scale = Vector3(1.0057, 1.0057, 1.0057)
+bones/56/rotation = Quaternion(0.961239, -0.0194345, -0.142252, 0.235384)
+bones/56/scale = Vector3(0.99451, 0.994511, 0.99451)
+bones/57/rotation = Quaternion(0.211902, -6.52888e-08, 3.69499e-08, 0.977291)
+bones/58/rotation = Quaternion(-0.735024, -0.0602404, -0.0652198, 0.672204)
+bones/58/scale = Vector3(1.00751, 1.00751, 1.00752)
+bones/66/scale = Vector3(1.00751, 1.00751, 1.00751)
+bones/69/rotation = Quaternion(-1.72124e-07, -0.0365307, -1.16355e-07, 0.999333)
+bones/69/scale = Vector3(1.00751, 1.00751, 1.00751)
+bones/72/scale = Vector3(1.00552, 1.00552, 1.00552)
+bones/74/scale = Vector3(1.00552, 1.00552, 1.00552)
+bones/87/rotation = Quaternion(-0.693315, 0.102391, -0.122175, 0.702783)
+bones/88/rotation = Quaternion(-0.0889125, -0.229915, -0.0210983, 0.968911)
+bones/88/scale = Vector3(0.994335, 0.994335, 0.994335)
+bones/89/rotation = Quaternion(0.214731, 4.93468e-08, -3.52832e-08, 0.976673)
+bones/91/rotation = Quaternion(0.968189, 0.0568068, 0.131892, 0.204908)
+bones/94/rotation = Quaternion(0.968189, 0.0568067, 0.131892, 0.204908)
+bones/95/rotation = Quaternion(-1.4494e-08, -0.104042, -1.30103e-08, 0.994573)
+bones/96/rotation = Quaternion(0.21353, -0.10393, 0.0227106, 0.971127)
+bones/97/rotation = Quaternion(-2.98975e-08, 0.140393, -1.32491e-08, 0.990096)
+bones/98/rotation = Quaternion(-0.750541, 0.0722592, 0.0251758, 0.656379)
+bones/98/scale = Vector3(0.996266, 0.996258, 1.00753)
+bones/111/rotation = Quaternion(-0.714283, -0.101603, 0.122591, 0.681504)
+bones/112/rotation = Quaternion(-0.0902189, 0.015794, 0.00143091, 0.995796)
+bones/112/scale = Vector3(0.99451, 0.994511, 0.99451)
+bones/113/rotation = Quaternion(0.211902, -6.52888e-08, 3.69499e-08, 0.977291)
+bones/115/rotation = Quaternion(0.961691, -0.0186521, -0.139186, 0.235437)
+bones/118/rotation = Quaternion(0.961691, -0.0186521, -0.139186, 0.235437)
+bones/120/rotation = Quaternion(0.21194, -0.0016207, 0.00034953, 0.977281)
+bones/121/rotation = Quaternion(-1.70946e-08, -0.0779903, 2.73773e-08, 0.996954)
+bones/122/rotation = Quaternion(-0.738285, -0.00801376, -0.00811547, 0.674393)
+bones/122/scale = Vector3(0.996366, 0.996184, 1.0075)
+bones/158/rotation = Quaternion(-0.142112, -0.00247159, -0.0202164, 0.989641)
+bones/181/rotation = Quaternion(-0.0760101, -0.00447804, 0.0236199, 0.996817)
+bones/183/rotation = Quaternion(-0.0878966, -0.594101, 0.798179, 0.0472176)
+bones/184/rotation = Quaternion(-0.18026, 0.0182951, 0.00335362, 0.983443)
+bones/184/scale = Vector3(0.993631, 0.993632, 0.993631)
+bones/185/rotation = Quaternion(0.414477, 1.16156e-06, 1.83732e-08, 0.91006)
+bones/194/rotation = Quaternion(-0.142108, -0.00269212, -0.0202481, 0.98964)
+bones/197/rotation = Quaternion(0.315279, -0.0013491, -0.0103023, 0.948942)
+bones/198/rotation = Quaternion(0.297493, 0.00455004, 0.0196436, 0.954511)
+bones/200/position = Vector3(-0.0172499, -0.0107104, 0.00524804)
+bones/201/rotation = Quaternion(0.396868, -0.000164209, -0.00194513, 0.917874)
+bones/202/rotation = Quaternion(0.409445, 0.00101372, 0.0048148, 0.912322)
+bones/205/rotation = Quaternion(0.315279, -0.0013491, -0.0103023, 0.948942)
+bones/206/rotation = Quaternion(0.297493, 0.00455004, 0.0196436, 0.954511)
+bones/208/scale = Vector3(1, 0.856447, 1)
+bones/210/position = Vector3(-0.0172499, -0.0107104, 0.00524804)
+bones/211/rotation = Quaternion(0.396868, -0.000164209, -0.00194513, 0.917874)
+bones/212/rotation = Quaternion(0.409445, 0.00101372, 0.0048148, 0.912322)
+bones/214/position = Vector3(-0.0172499, -0.0107105, 0.00524804)
+bones/214/scale = Vector3(1, 0.843212, 1)
+bones/220/rotation = Quaternion(0.315279, -0.00134986, -0.0103023, 0.948942)
+bones/222/rotation = Quaternion(0.297493, 0.00454943, 0.0196439, 0.954511)
+bones/232/position = Vector3(-0.0172499, -0.0107104, 0.00524804)
+bones/234/rotation = Quaternion(0.396868, -0.000164029, -0.00194513, 0.917874)
+bones/236/rotation = Quaternion(0.409445, 0.00101458, 0.00481452, 0.912322)
+bones/244/position = Vector3(-0.0172499, -0.0107104, 0.00524804)
+bones/246/rotation = Quaternion(-0.0797533, 0.673142, 0.152863, 0.719133)
+bones/247/rotation = Quaternion(0.205804, 0.0401022, -0.110035, 0.97156)
+bones/248/rotation = Quaternion(-0.0817719, -0.000911658, 0.00429293, 0.996641)
+bones/249/rotation = Quaternion(-0.0540908, 0.00165685, -0.0102563, 0.998482)
+bones/251/rotation = Quaternion(0.205804, 0.0401022, -0.110035, 0.97156)
+bones/252/rotation = Quaternion(-0.0817719, -0.000911658, 0.00429293, 0.996641)
+bones/253/rotation = Quaternion(-0.0540908, 0.00165685, -0.0102563, 0.998482)
+bones/255/rotation = Quaternion(0.205804, 0.0401023, -0.110035, 0.97156)
+bones/255/scale = Vector3(1, 1.09266, 1)
+bones/259/rotation = Quaternion(0.205804, 0.0401024, -0.110035, 0.97156)
+bones/261/rotation = Quaternion(-0.0817715, -0.000912244, 0.00429324, 0.996642)
+bones/263/rotation = Quaternion(-0.0540895, 0.00165562, -0.010256, 0.998482)
+bones/271/rotation = Quaternion(0.205804, 0.0401022, -0.110035, 0.97156)
+bones/273/rotation = Quaternion(-0.0398055, 0.624839, 0.138023, 0.767426)
+bones/274/position = Vector3(-0.00254349, 0.0545812, 0.0104573)
+bones/274/rotation = Quaternion(0.209252, -0.154667, -0.029368, 0.965106)
+bones/275/rotation = Quaternion(0.436455, -0.0185195, -0.0275494, 0.899114)
+bones/276/rotation = Quaternion(0.400079, 0.0286857, 0.0703164, 0.913329)
+bones/278/position = Vector3(-0.00254349, 0.0545812, 0.0104573)
+bones/278/rotation = Quaternion(0.209252, -0.154667, -0.029368, 0.965106)
+bones/279/rotation = Quaternion(0.436455, -0.0185195, -0.0275494, 0.899114)
+bones/280/rotation = Quaternion(0.400079, 0.0286857, 0.0703164, 0.913329)
+bones/282/position = Vector3(-0.00254349, 0.0545812, 0.0104573)
+bones/282/rotation = Quaternion(0.208577, -0.163304, -0.0313005, 0.963768)
+bones/282/scale = Vector3(1, 0.751877, 1)
+bones/286/position = Vector3(-0.00254349, 0.0545812, 0.0104573)
+bones/286/rotation = Quaternion(0.208577, -0.163303, -0.0313006, 0.963768)
+bones/288/rotation = Quaternion(0.436115, -0.0107019, -0.0313432, 0.899281)
+bones/290/rotation = Quaternion(0.400088, 0.0286858, 0.0703157, 0.913325)
+bones/298/position = Vector3(-0.00254349, 0.0545812, 0.0104573)
+bones/298/rotation = Quaternion(0.209252, -0.154667, -0.029368, 0.965106)
+bones/301/position = Vector3(-0.00113614, 0.0547943, 0.00865717)
+bones/302/rotation = Quaternion(0.433919, 0.00315353, 0.0210395, 0.900701)
+bones/303/rotation = Quaternion(0.522857, -0.0140156, -0.0807079, 0.848475)
+bones/305/position = Vector3(-0.00113614, 0.0547943, 0.00865717)
+bones/306/rotation = Quaternion(0.433919, 0.00315353, 0.0210395, 0.900701)
+bones/307/rotation = Quaternion(0.522857, -0.0140156, -0.0807079, 0.848475)
+bones/309/position = Vector3(-0.00113615, 0.0547943, 0.00865718)
+bones/309/scale = Vector3(1, 0.809743, 1)
+bones/313/position = Vector3(-0.00113614, 0.0547943, 0.00865717)
+bones/315/rotation = Quaternion(0.433919, 0.00315305, 0.0210397, 0.900701)
+bones/317/rotation = Quaternion(0.522856, -0.0140138, -0.0807073, 0.848476)
+bones/325/position = Vector3(-0.00113614, 0.0547943, 0.00865717)
+bones/357/rotation = Quaternion(0.0953703, -0.594978, 0.797083, -0.0395403)
+bones/358/rotation = Quaternion(-0.179408, -0.018298, -0.00333775, 0.983599)
+bones/358/scale = Vector3(0.993645, 0.993645, 0.993645)
+bones/359/rotation = Quaternion(0.412564, -1.15511e-06, -2.111e-08, 0.910928)
+bones/371/rotation = Quaternion(0.286688, 0.00103951, 0.0103383, 0.957968)
+bones/372/rotation = Quaternion(0.268745, -0.00395925, -0.0197713, 0.963)
+bones/374/position = Vector3(0.0148936, -0.00848154, -0.00289039)
+bones/375/rotation = Quaternion(0.226392, -0.000186158, 0.0019431, 0.974034)
+bones/376/rotation = Quaternion(0.239758, -0.00013683, -0.00491877, 0.97082)
+bones/379/rotation = Quaternion(0.286688, 0.00103951, 0.0103383, 0.957968)
+bones/380/rotation = Quaternion(0.268745, -0.00395925, -0.0197713, 0.963)
+bones/382/scale = Vector3(1, 0.875724, 1)
+bones/384/position = Vector3(0.0148936, -0.00848154, -0.00289039)
+bones/385/rotation = Quaternion(0.226392, -0.000186158, 0.0019431, 0.974034)
+bones/386/rotation = Quaternion(0.239758, -0.00013683, -0.00491877, 0.97082)
+bones/388/position = Vector3(0.0148935, -0.00848162, -0.0028904)
+bones/388/scale = Vector3(1, 0.957633, 1)
+bones/394/rotation = Quaternion(0.286689, 0.0010404, 0.0103381, 0.957967)
+bones/396/rotation = Quaternion(0.268744, -0.00395849, -0.0197714, 0.963001)
+bones/406/position = Vector3(0.0148936, -0.00848154, -0.00289039)
+bones/408/rotation = Quaternion(0.226392, -0.000186312, 0.00194312, 0.974034)
+bones/410/rotation = Quaternion(0.239759, -0.000137585, -0.00491833, 0.97082)
+bones/418/position = Vector3(0.0148936, -0.00848154, -0.00289039)
+bones/421/position = Vector3(-0.00183987, 0.0573618, -0.00303951)
+bones/421/rotation = Quaternion(0.200687, -0.0326794, 0.0729643, 0.976388)
+bones/422/rotation = Quaternion(-0.0840255, 0.0042625, -0.0040093, 0.996446)
+bones/423/rotation = Quaternion(-0.0563343, -0.00167988, 0.0102523, 0.998358)
+bones/425/position = Vector3(-0.00183987, 0.0573618, -0.00303951)
+bones/425/rotation = Quaternion(0.200687, -0.0326794, 0.0729643, 0.976388)
+bones/426/rotation = Quaternion(-0.0840255, 0.0042625, -0.0040093, 0.996446)
+bones/427/rotation = Quaternion(-0.0563343, -0.00167988, 0.0102523, 0.998358)
+bones/429/position = Vector3(-0.00183986, 0.0573618, -0.00303951)
+bones/429/rotation = Quaternion(0.200449, -0.0295063, 0.0736161, 0.976489)
+bones/429/scale = Vector3(1, 1.09409, 1)
+bones/433/position = Vector3(-0.00183987, 0.0573618, -0.00303951)
+bones/433/rotation = Quaternion(0.200449, -0.0295065, 0.073616, 0.976489)
+bones/435/rotation = Quaternion(-0.0840109, 0.000921965, -0.00429118, 0.996455)
+bones/437/rotation = Quaternion(-0.0563331, -0.00167867, 0.0102522, 0.998358)
+bones/445/position = Vector3(-0.00183987, 0.0573618, -0.00303951)
+bones/445/rotation = Quaternion(0.200687, -0.0326794, 0.0729643, 0.976388)
+bones/448/position = Vector3(-0.00368979, 0.0575401, -0.00858995)
+bones/448/rotation = Quaternion(0.118491, 0.152228, 0.0428358, 0.980282)
+bones/449/rotation = Quaternion(0.252611, 0.00567107, 0.0324926, 0.967006)
+bones/450/rotation = Quaternion(0.214504, -0.0144389, -0.074557, 0.973766)
+bones/452/position = Vector3(-0.00368979, 0.0575401, -0.00858995)
+bones/452/rotation = Quaternion(0.118491, 0.152228, 0.0428358, 0.980282)
+bones/453/rotation = Quaternion(0.252611, 0.00567107, 0.0324926, 0.967006)
+bones/454/rotation = Quaternion(0.214504, -0.0144389, -0.074557, 0.973766)
+bones/456/position = Vector3(-0.00368979, 0.0575401, -0.00858995)
+bones/456/rotation = Quaternion(0.118435, 0.153487, 0.0429879, 0.980085)
+bones/456/scale = Vector3(1, 0.876365, 1)
+bones/460/position = Vector3(-0.00368979, 0.0575401, -0.00858995)
+bones/460/rotation = Quaternion(0.118435, 0.153486, 0.0429879, 0.980085)
+bones/462/rotation = Quaternion(0.252568, 0.00439072, 0.0328275, 0.967012)
+bones/464/rotation = Quaternion(0.214504, -0.0144383, -0.0745567, 0.973766)
+bones/472/position = Vector3(-0.00368979, 0.0575401, -0.00858995)
+bones/472/rotation = Quaternion(0.118491, 0.152228, 0.0428358, 0.980282)
+bones/475/position = Vector3(-0.001003, 0.0554564, -0.00356968)
+bones/476/rotation = Quaternion(0.102256, 0.00417894, -0.02086, 0.994531)
+bones/477/rotation = Quaternion(0.203646, -0.0142251, 0.0806708, 0.975612)
+bones/479/position = Vector3(-0.001003, 0.0554564, -0.00356968)
+bones/480/rotation = Quaternion(0.102256, 0.00417894, -0.02086, 0.994531)
+bones/481/rotation = Quaternion(0.203646, -0.0142251, 0.0806708, 0.975612)
+bones/483/position = Vector3(-0.001003, 0.0554564, -0.00356967)
+bones/483/scale = Vector3(1, 1.03053, 1)
+bones/487/position = Vector3(-0.001003, 0.0554564, -0.00356968)
+bones/489/rotation = Quaternion(0.102256, 0.00417934, -0.0208601, 0.994531)
+bones/491/rotation = Quaternion(0.203644, -0.014227, 0.0806699, 0.975612)
+bones/499/position = Vector3(-0.001003, 0.0554564, -0.00356968)
+bones/523/position = Vector3(0.378959, 0.600872, 1.57977)
+bones/530/position = Vector3(-0.366199, 0.600872, 1.57977)
+bones/547/position = Vector3(-0.203051, -1.00453, 0.536493)
+bones/564/position = Vector3(0.215197, -1.0047, 0.536493)
+
+[node name="BoneAttachment3D" parent="Enemies/Infanticide/Model/infanticideModel/rig/Skeleton3D" index="1"]
+transform = Transform3D(1, -1.35525e-20, 1.42109e-14, 2.84217e-14, 7.45058e-07, -1, -7.10543e-14, 1, 7.45058e-07, 0.00642908, -0.213371, 1.6433)
+
+[node name="CollisionShape3D" parent="Enemies/Infanticide/AggroArea" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0891771, 0.851964, -7.46859)
+shape = SubResource("BoxShape3D_rm604")
+
+[node name="FillingCabinet" type="Node3D" parent="."]
+
+[node name="FillingCabinetObstacle" parent="FillingCabinet" instance=ExtResource("14_18exx")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 18.7068, 0, 10.5074)
 
 [node name="LevelUI" type="Control" parent="."]
 layout_mode = 3
@@ -615,113 +667,150 @@ grow_vertical = 2
 [node name="MovementTutorial" parent="Tutorial" instance=ExtResource("4_hwno4")]
 visible = false
 layout_mode = 1
+tutorial_text = "Use the WASD keys to move.
+
+Use SHIFT to sprint.
+
+Use MOUSE to look around.
+
+Fast and abrupt movements cause you to lose balance progressively."
 open_on_ready = true
 open_on_ready_dealy = 5.0
 
 [node name="BalanceTutorial" parent="Tutorial" instance=ExtResource("4_hwno4")]
 visible = false
 layout_mode = 1
+tutorial_text = "As you lose your balance, the world around you begins to spin.If you completely lose your balance, quickly press the indicated keys, or you’ll collapse to the ground."
+tutorial_text_italic = "You should try it now while it’s still safe…"
 
 [node name="CollisionShape3D" parent="Tutorial/BalanceTutorial/PlayerDetector" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.18689, 0.820801, 5.82792)
-shape = SubResource("BoxShape3D_7c8in")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.703857, 0, 1.67786)
+shape = SubResource("BoxShape3D_xo77p")
 
 [node name="WalkerTutorial" parent="Tutorial" instance=ExtResource("4_hwno4")]
 visible = false
 layout_mode = 1
+tutorial_text = " Grab onto the walker (\"R\" key) to quickly regain your balance.
+
+Moving with the walker doesn’t cause any loss of balance, but your movement will be limited.
+
+Press W to move forward. While standing still, press A or D to rotate."
 
 [node name="CollisionShape3D" parent="Tutorial/WalkerTutorial/PlayerDetector" index="0"]
-transform = Transform3D(0.710259, 0, 0.70394, 0, 1, 0, -0.70394, 0, 0.710259, 2.19176, 0.820801, 0.0837683)
-shape = SubResource("BoxShape3D_rdbqf")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.07006, 0, -0.0964355)
+shape = SubResource("BoxShape3D_gjbil")
 
 [node name="FlashlightTutorial" parent="Tutorial" instance=ExtResource("4_hwno4")]
 visible = false
 layout_mode = 1
+tutorial_text = "Use the SPACEBAR while on your walker to turn on and off the flashlight.
+
+You can also drop the walker (R key) and pick up the objects you find on it (\"i\" key). Do so to learn more about them."
 
 [node name="CollisionShape3D" parent="Tutorial/FlashlightTutorial/PlayerDetector" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.80202, 0.820801, 2.02589)
-shape = SubResource("BoxShape3D_4rklb")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.37024, 0, 0.532776)
+shape = SubResource("BoxShape3D_ghcnx")
 
 [node name="FlashlightPickUpTutorial" parent="Tutorial" instance=ExtResource("4_hwno4")]
 visible = false
 layout_mode = 1
-delay_to_show = 1.0
+tutorial_text = "Use SPACE BAR to turn it on/off.
 
-[node name="CollisionShape3D" parent="Tutorial/FlashlightPickUpTutorial/PlayerDetector" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.18689, 0.820801, -2.31789)
+While holding the flashlight, press and hold the “B” key and then press the indicated keys in succession to replace the battery with a new one."
+tutorial_text_italic = "Look for fresh batteries around the map so you can keep using the flashlight."
+delay_to_show = 1.0
 
 [node name="GunPickUpTutorial" parent="Tutorial" instance=ExtResource("4_hwno4")]
 visible = false
 layout_mode = 1
+tutorial_text = "Hold down the right mouse button to ready your weapon and aim.While aiming, press the left mouse button to shoot.Reload the gun by holding down the “L” key and pressing the indicated keys in succession.Each shot causes a significant loss of balance."
+tutorial_text_italic = "Don't waste all your bullets..."
 delay_to_show = 1.0
-
-[node name="CollisionShape3D" parent="Tutorial/GunPickUpTutorial/PlayerDetector" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.18689, 0.820801, -2.31789)
 
 [node name="CrowbarPickingTutorial" parent="Tutorial" instance=ExtResource("4_hwno4")]
 visible = false
 layout_mode = 1
+tutorial_text = "Hold down the right mouse button to ready the crowbar.When it’s ready, press the left mouse button to strike.Striking with the crowbar severely affects your balance."
+tutorial_text_italic = "Try to hit enemies from behind to avoid taking damage"
 delay_to_show = 1.0
-
-[node name="CollisionShape3D" parent="Tutorial/CrowbarPickingTutorial/PlayerDetector" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.18689, 0.820801, -2.31789)
 
 [node name="LightSwitchTutorial" parent="Tutorial" instance=ExtResource("4_hwno4")]
 visible = false
 layout_mode = 1
+tutorial_text = "In front of you, you can see a switch. Leave the walker (R key) to interact with it using the \"i\" key.Hold down the interact key while pressing the indicated keys in succession until it turns on."
+tutorial_text_italic = "Those who pursue you want to catch you in the dark"
 
 [node name="CollisionShape3D" parent="Tutorial/LightSwitchTutorial/PlayerDetector" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.24818, 0.820801, 9.98205)
-shape = SubResource("BoxShape3D_5v4ux")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.30064, 0.423767, 8.62047)
+shape = SubResource("BoxShape3D_u0bml")
 
 [node name="CabinetSearchingTutorial" parent="Tutorial" instance=ExtResource("4_hwno4")]
 visible = false
 layout_mode = 1
+tutorial_text = "In front of you, there’s a filing cabinet. Drop the walker (R key) to move closer and interact with it. Hold down the \"i\" key and press the indicated keys in succession to search for resources.You can find bullets for the pistol, batteries for the flashlight, or pills to restore your balance and health."
 
 [node name="CollisionShape3D" parent="Tutorial/CabinetSearchingTutorial/PlayerDetector" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.1171, 0.820801, 10.6105)
-shape = SubResource("BoxShape3D_8aqqs")
+transform = Transform3D(1.25431, 0, 0, 0, 1.25431, 0, 0, 0, 1.25431, 15.3653, 0.642774, 10.6345)
+shape = SubResource("BoxShape3D_ko527")
 
-[node name="EnemyTutorial" parent="Tutorial" instance=ExtResource("4_hwno4")]
+[node name="EnemyTutorial" parent="Tutorial" node_paths=PackedStringArray("tutorial_to_chain") instance=ExtResource("4_hwno4")]
 visible = false
 layout_mode = 1
+tutorial_text = "In front of you, there’s an enemy. 
+
+Some will follow you when you’re not looking, while others behave differently.
+
+Shoot them in the head with the pistol or strike them with the crowbar to end their agony."
+tutorial_to_chain = NodePath("../EnemyTutorial2")
 
 [node name="CollisionShape3D" parent="Tutorial/EnemyTutorial/PlayerDetector" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.5928, 0.820801, 5.14726)
-shape = SubResource("BoxShape3D_hh7u4")
-disabled = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.4545, 0.677816, 5.03302)
+shape = SubResource("BoxShape3D_4g3et")
+
+[node name="EnemyTutorial2" parent="Tutorial" instance=ExtResource("4_hwno4")]
+visible = false
+layout_mode = 1
+tutorial_text = "If they catch you, you’ll be wounded, and then severely wounded.
+
+If they catch you while you’re severely wounded, the game is over.
+
+You can heal automatically after some time, or by consuming pills found in the filing cabinets (P key)."
+delay_to_show = 0.6
 
 [node name="EndGameTutorial" parent="Tutorial" instance=ExtResource("4_hwno4")]
 visible = false
 layout_mode = 1
+tutorial_text = "To escape and finish the level, you need to set the switches on the right side of the door to their correct positions.Each playthrough, these positions change, so you’ll have to search the books scattered around the rooms to find out where each switch should be set.Once you think you have the correct pattern, press the switch on the left side of the door to open it and escape."
+tutorial_text_italic = "If you try to leave without entering the correct combination, things can get complicated very quickly..."
 
 [node name="CollisionShape3D" parent="Tutorial/EndGameTutorial/PlayerDetector" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28.2126, 0.820801, -0.228019)
-shape = SubResource("BoxShape3D_ew0y6")
+transform = Transform3D(1.8451, 0, 0, 0, 1.8451, 0, 0, 0, 1.8451, 27.8355, 0, -0.855018)
+shape = SubResource("BoxShape3D_7ptv8")
 
 [node name="BookTutorial" parent="Tutorial" instance=ExtResource("4_hwno4")]
 visible = false
 layout_mode = 1
+tutorial_text = "Here’s a password book.There is one book for each switch in the level—find them all to learn the correct positions for each switch.Hold down the interact key (\"i\") while pressing the indicated buttons in succession to search the book."
 
 [node name="CollisionShape3D" parent="Tutorial/BookTutorial/PlayerDetector" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.0995, 0.820801, -1.8998)
-shape = SubResource("BoxShape3D_ui2f8")
+transform = Transform3D(1.63891, 0, 0, 0, 1.63891, 0, 0, 0, 4.86914, 24.0407, 0, -2.85084)
+shape = SubResource("BoxShape3D_hpvva")
 
 [node name="StairsTutorial" parent="Tutorial" instance=ExtResource("4_hwno4")]
 visible = false
 layout_mode = 1
+tutorial_text = "You can’t go up or down stairs while using the walker.Drop it (R key) to climb on foot. Remember you can take one of the items with you (the flashlight, the pistol, or the crowbar)."
 
 [node name="CollisionShape3D" parent="Tutorial/StairsTutorial/PlayerDetector" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.5304, 0.820801, -1.7156)
-shape = SubResource("BoxShape3D_okonx")
+transform = Transform3D(1.08604, 0, 0, 0, 1.08604, 0, 0, 0, 1.08604, 18.8531, 0.163372, -1.80651)
+shape = SubResource("BoxShape3D_dpgkw")
 
 [node name="ErrorTutorial" parent="Tutorial" instance=ExtResource("4_hwno4")]
 visible = false
 layout_mode = 1
+tutorial_text = "This time you’ve entered the wrong combination. Remember to look for the books to discover where each switch needs to be set, and also remember that with every new playthrough, this pattern changes. Make sure you don’t touch the red switch (always to the left of the exit door) until you’ve placed all the switches in their correct positions."
+tutorial_text_italic = "You can now press ESC to exit the tutorial—there’s nothing more to see here…"
 delay_to_show = 2.0
-
-[node name="CollisionShape3D" parent="Tutorial/ErrorTutorial/PlayerDetector" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.18689, 0.820801, -2.31789)
 
 [connection signal="pass_and_books_ready" from="ExitGate" to="." method="_on_exit_gate_pass_and_books_ready"]
 
@@ -737,16 +826,14 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.18689, 0.820801, -2.31789)
 [editable path="LightSwitches/LightSwitchSewers/emergency_light3"]
 [editable path="LightSwitches/LightSwitchSewers/emergency_light2"]
 [editable path="Decoration/Sewer"]
+[editable path="Enemies/Infanticide"]
+[editable path="Enemies/Infanticide/Model/infanticideModel"]
 [editable path="Tutorial/BalanceTutorial"]
 [editable path="Tutorial/WalkerTutorial"]
 [editable path="Tutorial/FlashlightTutorial"]
-[editable path="Tutorial/FlashlightPickUpTutorial"]
-[editable path="Tutorial/GunPickUpTutorial"]
-[editable path="Tutorial/CrowbarPickingTutorial"]
 [editable path="Tutorial/LightSwitchTutorial"]
 [editable path="Tutorial/CabinetSearchingTutorial"]
 [editable path="Tutorial/EnemyTutorial"]
 [editable path="Tutorial/EndGameTutorial"]
 [editable path="Tutorial/BookTutorial"]
 [editable path="Tutorial/StairsTutorial"]
-[editable path="Tutorial/ErrorTutorial"]
