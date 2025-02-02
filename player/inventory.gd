@@ -3,6 +3,7 @@ class_name Inventory
 
 @onready var player_ui: PlayerUI = $"../../PlayerUI"
 
+var ammo_stored := 15
 var batteries_amount := 0
 var pills := 0
 
@@ -37,3 +38,8 @@ func use_pills() -> bool:
 		return true
 	player_ui.display_gameplay_text("You don't have any pills left", 4)
 	return false
+
+
+func lose_item_random() -> void:
+	pass
+	
