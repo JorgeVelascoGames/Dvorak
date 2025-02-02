@@ -11,7 +11,7 @@
 
 -La linterna deberai ser más potente
 
--El andador se queda atascado delante del archivador y no puede entrar en esa habitación
+~~-El andador se queda atascado delante del archivador y no puede entrar en esa habitación~~
 
 -Revisar uso de fuentes
 

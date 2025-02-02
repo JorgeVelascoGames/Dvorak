@@ -659,6 +659,7 @@ one_shot = true
 
 [node name="Downed" type="Node" parent="StateMachine"]
 script = ExtResource("9_q33c7")
+probability_to_lose_items = 33
 
 [node name="PlayerLongInteraction" type="Node" parent="StateMachine"]
 script = ExtResource("10_b71wi")

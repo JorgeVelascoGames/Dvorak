@@ -3,6 +3,13 @@ class_name Downed
 
 @export var necessary_keys_to_press_min := 15
 @export var necessary_keys_to_press_max := 25
+@export_range(0, 100) var probability_to_lose_items : int
+
+@onready var animation_player = $"../../AnimationPlayer"
+@onready var camera_pivot = $"../../CameraPivot"
+@onready var camera_pivot_pos_y : float = camera_pivot.position.y
+@onready var animation_tree: PlayerAnimationController = $"../../AnimationTree"
+@onready var balanced_ui: BalanceUI = $"../../PlayerUI/BalancedUI"
 
 var necessary_keys_to_press : int 
 var left_key_selection : String
@@ -12,12 +19,8 @@ var current_side : KeyboardSide = KeyboardSide.right
 var top_side_keys = ["top_key_4", "top_key_5", "top_key_6", "top_key_7", "top_key_t","top_key_y"]
 var bot_side_keys = ["bot_key_v", "bot_key_b", "bot_key_f", "bot_key_g",  "bot_key_h"]
 var correct_key_pressed : int = 0
-
-@onready var animation_player = $"../../AnimationPlayer"
-@onready var camera_pivot = $"../../CameraPivot"
-@onready var camera_pivot_pos_y : float = camera_pivot.position.y
-@onready var animation_tree: PlayerAnimationController = $"../../AnimationTree"
-@onready var balanced_ui: BalanceUI = $"../../PlayerUI/BalancedUI"
+var difficulty_increase := 5
+var max_difficulty_increase_coef := 2.2
 
 
 func enter(_msg : ={}) -> void:
@@ -28,7 +31,9 @@ func enter(_msg : ={}) -> void:
 	balanced_ui.display_keys(left_key_selection, right_key_selection)
 	#animation_player.play("floor")
 	blend_animations()
-
+	
+	if randi_range(0, 100) < probability_to_lose_items:
+		player.inventory.lose_item_random()
 
 func update(_delta):
 	pass
@@ -85,4 +90,11 @@ func blend_to_fix_pivot(amount : float) -> void:
 
 
 func exit() -> void:
-	pass
+	#increase de difficulty for the next time
+	necessary_keys_to_press_min += difficulty_increase
+	necessary_keys_to_press_max += difficulty_increase
+	necessary_keys_to_press_min = clampi(necessary_keys_to_press_min, 1, necessary_keys_to_press_min * max_difficulty_increase_coef)
+	necessary_keys_to_press_max = clampi(necessary_keys_to_press_max, 1, necessary_keys_to_press_max * max_difficulty_increase_coef)
+	if necessary_keys_to_press_max >= necessary_keys_to_press_max * max_difficulty_increase_coef:
+		probability_to_lose_items += probability_to_lose_items * 0.2
+		probability_to_lose_items = clampi(probability_to_lose_items, 1, 90)
