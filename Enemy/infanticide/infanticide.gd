@@ -5,6 +5,7 @@ class_name InfanticideEnemy
 
 var original_speed : float
 var super_speed := 14.00
+var vhs_tween : Tween
 var dying_quotes = [
 	"A sin remains unconfessed: this is not the end of their torment… nor of your guilt",
 	"Another life ends at your hands, but your conscience bleeds anew, unhealed by silent prayers",
@@ -31,16 +32,20 @@ func _process(delta: float) -> void:
 
 
 func shot_infanticide_enemy() -> void:
+	if vhs_tween:
+		vhs_tween.kill()
+	player.player_ui.player_vhs_effect.show()
 	player.player_ui.display_gameplay_text(dying_quotes.pick_random(), 5)
 	player.player_ui.player_vhs_effect.shader_mat.set_shader_parameter("crease_noise", 2.0)
 	player.player_ui.player_vhs_effect.shader_mat.set_shader_parameter("tape_crease_smear", 2.0)
 	player.player_ui.player_vhs_effect.shader_mat.set_shader_parameter("noise_intensity", 0.2)
-	var tween = get_tree().create_tween()
-	tween.set_parallel()
-	tween.tween_method(_close_vhs_effect, 2.0, 0.0, 0.6)
-	tween.tween_method(_close_vhs_noise, 0.2, 0.0, 0.4)
-	await tween.finished
-	hide()
+	vhs_tween = get_tree().create_tween()
+	vhs_tween.set_parallel()
+	vhs_tween.tween_method(_close_vhs_effect, 2.0, 0.0, 0.6)
+	vhs_tween.tween_method(_close_vhs_noise, 0.2, 0.0, 0.4)
+	await vhs_tween.finished
+	vhs_tween = null
+	player.player_ui.player_vhs_effect.hide()
 
 
 func _close_vhs_effect(amount : float) -> void:

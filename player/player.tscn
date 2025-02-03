@@ -86,7 +86,7 @@ shader_parameter/tape_crease_speed = 0.5
 shader_parameter/tape_crease_discoloration = 1.0
 shader_parameter/bottom_border_thickness = 15.4
 shader_parameter/bottom_border_jitter = 18.5
-shader_parameter/noise_intensity = 0.1
+shader_parameter/noise_intensity = 0.0
 shader_parameter/noise_texture = SubResource("NoiseTexture2D_fla38")
 
 [sub_resource type="Animation" id="Animation_1ivek"]
@@ -1049,6 +1049,7 @@ layout_mode = 1
 mouse_filter = 1
 
 [node name="PlayerVHSEffect" type="ColorRect" parent="PlayerUI" groups=["vhs_effect"]]
+visible = false
 z_index = 1000
 material = SubResource("ShaderMaterial_khsgn")
 layout_mode = 1
