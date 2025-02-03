@@ -32,4 +32,21 @@ func _process(delta: float) -> void:
 
 func shot_infanticide_enemy() -> void:
 	player.player_ui.display_gameplay_text(dying_quotes.pick_random(), 5)
-	#TODO vhs effect here
+	player.player_ui.player_vhs_effect.shader_mat.set_shader_parameter("crease_noise", 2.0)
+	player.player_ui.player_vhs_effect.shader_mat.set_shader_parameter("tape_crease_smear", 2.0)
+	player.player_ui.player_vhs_effect.shader_mat.set_shader_parameter("noise_intensity", 0.2)
+	var tween = get_tree().create_tween()
+	tween.set_parallel()
+	tween.tween_method(_close_vhs_effect, 2.0, 0.0, 0.6)
+	tween.tween_method(_close_vhs_noise, 0.2, 0.0, 0.4)
+	await tween.finished
+	hide()
+
+
+func _close_vhs_effect(amount : float) -> void:
+	player.player_ui.player_vhs_effect.shader_mat.set_shader_parameter("crease_noise", amount)
+	player.player_ui.player_vhs_effect.shader_mat.set_shader_parameter("tape_crease_smear", amount)
+
+
+func _close_vhs_noise(amount : float) -> void:
+	player.player_ui.player_vhs_effect.shader_mat.set_shader_parameter("noise_intensity", amount)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=86 format=3 uid="uid://m6pypgl566n1"]
+[gd_scene load_steps=91 format=3 uid="uid://m6pypgl566n1"]
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_ref5g"]
 [ext_resource type="Script" path="res://player/smooth_camera.gd" id="2_cywkd"]
@@ -39,6 +39,8 @@
 [ext_resource type="Script" path="res://player/player_game_menu.gd" id="31_0c3op"]
 [ext_resource type="Texture2D" uid="uid://3akc2hs6kgh" path="res://assets/textures/blood/blood_3.png" id="31_2n2rm"]
 [ext_resource type="LabelSettings" uid="uid://uvcnfvkxej6y" path="res://game_ui/flavour_text_lable_settings.tres" id="31_u8436"]
+[ext_resource type="Shader" path="res://shaders/vhs.gdshader" id="34_l5ybq"]
+[ext_resource type="Script" path="res://game_manager/vhs_effect.gd" id="35_5ytlk"]
 [ext_resource type="Script" path="res://player/player_audio_manager.gd" id="36_f26nf"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_fyred"]
@@ -64,6 +66,28 @@ font_size = 15
 outline_size = 2
 outline_color = Color(0.165656, 0.165657, 0.165656, 1)
 shadow_size = 4
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_acskl"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_fla38"]
+noise = SubResource("FastNoiseLite_acskl")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_khsgn"]
+shader = ExtResource("34_l5ybq")
+shader_parameter/vhs_resolution = Vector2(640, 360)
+shader_parameter/samples = 2
+shader_parameter/crease_noise = 1.8
+shader_parameter/crease_opacity = 0.5
+shader_parameter/filter_intensity = 0.1
+shader_parameter/tape_crease_smear = 0.1
+shader_parameter/tape_crease_intensity = 0.2
+shader_parameter/tape_crease_jitter = 0.1
+shader_parameter/tape_crease_speed = 0.5
+shader_parameter/tape_crease_discoloration = 1.0
+shader_parameter/bottom_border_thickness = 15.4
+shader_parameter/bottom_border_jitter = 18.5
+shader_parameter/noise_intensity = 0.1
+shader_parameter/noise_texture = SubResource("NoiseTexture2D_fla38")
 
 [sub_resource type="Animation" id="Animation_1ivek"]
 length = 0.001
@@ -1023,6 +1047,18 @@ visible = false
 z_index = 765
 layout_mode = 1
 mouse_filter = 1
+
+[node name="PlayerVHSEffect" type="ColorRect" parent="PlayerUI" groups=["vhs_effect"]]
+z_index = 1000
+material = SubResource("ShaderMaterial_khsgn")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("35_5ytlk")
 
 [node name="WalkerFixedPoint" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.705582, -0.711028)

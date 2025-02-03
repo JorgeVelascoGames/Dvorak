@@ -13,6 +13,7 @@ signal update_interaction_hints
 @onready var const_lable: Label = $"ControlHints/Const-Text/GrabWalkerUI/ConstLable"
 @onready var interaction_lable: Label = $"ControlHints/I-Text/GrabWalkerUI/InteractionLable"
 @onready var player_game_menu: Control = $PlayerGameMenu
+@onready var player_vhs_effect: VHSEffect = $PlayerVHSEffect
 
 var tween : Tween
 var r_hint_priority := 0
