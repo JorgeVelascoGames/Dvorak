@@ -29,11 +29,17 @@ func _ready() -> void:
 	i_text.hide()
 
 
-func display_gameplay_text(text : String, time : float) -> void:
+func display_gameplay_text(text : String, time : float, low_priority_text  := false, clean_text := false) -> void:
+	if low_priority_text and player_gameplay_info.text != "":
+		return
 	if !timer.is_stopped():
 		timer.stop()
 	if tween != null and tween.is_running():
-		tween.kill #This 2 ifs are in case multiple messages come at the same time
+		tween.kill #In case multiple messages come at the same time
+	
+	if clean_text:
+		player_gameplay_info.text = ""
+	
 	player_gameplay_info.modulate.a = 1
 	player_gameplay_info.text += "\n" + text
 	timer.start(time)
@@ -41,6 +47,7 @@ func display_gameplay_text(text : String, time : float) -> void:
 	tween = get_tree().create_tween()
 	tween.tween_property(player_gameplay_info, "modulate:a", 0.0, 2.0)
 	await tween.finished
+	tween = null
 	player_gameplay_info.text = ""
 
 

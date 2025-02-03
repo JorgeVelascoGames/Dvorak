@@ -34,15 +34,17 @@ func _process(delta: float) -> void:
 func shot_infanticide_enemy() -> void:
 	if vhs_tween:
 		vhs_tween.kill()
+	if not player.player_ui.player_vhs_effect.visible:#That makes sure that only one quote is shown at a time
+		player.player_ui.display_gameplay_text(dying_quotes.pick_random(), 5)
+	
 	player.player_ui.player_vhs_effect.show()
-	player.player_ui.display_gameplay_text(dying_quotes.pick_random(), 5)
 	player.player_ui.player_vhs_effect.shader_mat.set_shader_parameter("crease_noise", 2.0)
 	player.player_ui.player_vhs_effect.shader_mat.set_shader_parameter("tape_crease_smear", 2.0)
 	player.player_ui.player_vhs_effect.shader_mat.set_shader_parameter("noise_intensity", 0.2)
 	vhs_tween = get_tree().create_tween()
 	vhs_tween.set_parallel()
-	vhs_tween.tween_method(_close_vhs_effect, 2.0, 0.0, 0.6)
-	vhs_tween.tween_method(_close_vhs_noise, 0.2, 0.0, 0.4)
+	vhs_tween.tween_method(_close_vhs_effect, 2.0, 0.0, 2.0).set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_ELASTIC)
+	vhs_tween.tween_method(_close_vhs_noise, 0.2, 0.0, 2.0).set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_ELASTIC)
 	await vhs_tween.finished
 	vhs_tween = null
 	player.player_ui.player_vhs_effect.hide()
