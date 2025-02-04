@@ -1,10 +1,11 @@
-[gd_scene load_steps=11 format=3 uid="uid://72kpfpnalr3a"]
+[gd_scene load_steps=12 format=3 uid="uid://72kpfpnalr3a"]
 
 [ext_resource type="Script" path="res://Levels/environment_elements/light.gd" id="1_27npf"]
 [ext_resource type="Script" path="res://components/interactable.gd" id="2_vk1i6"]
 [ext_resource type="Script" path="res://scripts/hint.gd" id="3_ebt33"]
 [ext_resource type="PackedScene" uid="uid://bepj5mbs82d3y" path="res://assets/props/swich/swich.tscn" id="4_aogh2"]
 [ext_resource type="PackedScene" uid="uid://bvbwpj3cl6pdr" path="res://assets/props/lights/lights.tscn" id="5_etyl4"]
+[ext_resource type="PackedScene" uid="uid://rd6woanfk4nl" path="res://assets/props/emergency_light/emergency_light.tscn" id="5_tx7f1"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_rj3cs"]
 size = Vector3(1, 1, 0.298828)
@@ -76,14 +77,20 @@ necessary_keys_to_press_min = 10
 
 [node name="swich" parent="Switch" instance=ExtResource("4_aogh2")]
 
-[node name="PositionLights" type="OmniLight3D" parent="Switch"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.682938, 0.158029)
+[node name="emergency_light" parent="Switch" instance=ExtResource("5_tx7f1")]
+transform = Transform3D(0.346423, 0, 0, 0, -1.51426e-08, -0.346423, 0, 0.346423, -1.51426e-08, -0.0084548, 0.750394, -0.147136)
+
+[node name="emergency_light" parent="Switch/emergency_light" index="0"]
+cast_shadow = 0
+
+[node name="PositionLights" type="OmniLight3D" parent="Switch/emergency_light"]
+transform = Transform3D(5.77329, 0, 0, 0, -2.52359e-07, 5.77329, 0, -5.77329, -2.52359e-07, 0, 0.299459, 0)
 light_color = Color(0.959004, 0, 0.126767, 1)
 light_energy = 0.4
 shadow_enabled = true
 omni_range = 0.629138
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Switch/PositionLights"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Switch/emergency_light/PositionLights"]
 libraries = {
 "": SubResource("AnimationLibrary_l04qy")
 }
@@ -101,3 +108,5 @@ omni_attenuation = 1.745
 [connection signal="on_long_interact" from="Switch/Interactable" to="." method="_on_interactable_on_long_interact"]
 [connection signal="on_start_long_interaction" from="Switch/Interactable" to="." method="_on_interactable_on_start_long_interaction"]
 [connection signal="on_stop_long_interaction" from="Switch/Interactable" to="." method="_on_interactable_on_stop_long_interaction"]
+
+[editable path="Switch/emergency_light"]

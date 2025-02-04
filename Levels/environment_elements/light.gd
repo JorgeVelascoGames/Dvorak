@@ -5,7 +5,7 @@ extends Node3D
 
 @onready var light_timer: Timer = $LightTimer
 @onready var switch_sound: AudioStreamPlayer3D = $Switch/SwitchSound
-@onready var position_lights: OmniLight3D = $Switch/PositionLights
+@onready var position_lights: OmniLight3D = $Switch/emergency_light/PositionLights
 @onready var animation_player: AnimationPlayer = $Switch/PositionLights/AnimationPlayer
 @onready var animation_tree: SwitchAnimation = $Switch/swich/AnimationTree
 @onready var switch: StaticBody3D = $Switch
