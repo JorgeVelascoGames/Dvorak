@@ -1048,7 +1048,7 @@ z_index = 765
 layout_mode = 1
 mouse_filter = 1
 
-[node name="PlayerVHSEffect" type="ColorRect" parent="PlayerUI" groups=["vhs_effect"]]
+[node name="PlayerVHSEffect" type="ColorRect" parent="PlayerUI"]
 visible = false
 z_index = 1000
 material = SubResource("ShaderMaterial_khsgn")
