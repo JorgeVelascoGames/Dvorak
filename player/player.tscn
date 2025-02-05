@@ -827,6 +827,7 @@ horizontal_alignment = 1
 autowrap_mode = 3
 
 [node name="Crosshair" type="CenterContainer" parent="PlayerUI"]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0

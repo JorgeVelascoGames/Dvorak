@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://b37la44wjrp4u"]
+[gd_scene load_steps=29 format=3 uid="uid://b37la44wjrp4u"]
 
 [ext_resource type="PackedScene" uid="uid://dqk45r48r427t" path="res://Levels/level_one/level_one_scenario.tscn" id="1_jujem"]
 [ext_resource type="Environment" uid="uid://c42wra3u6yo6u" path="res://Levels/world_environment.tres" id="1_rc4ww"]
@@ -20,6 +20,7 @@
 [ext_resource type="PackedScene" uid="uid://bqgujieo32yk3" path="res://Levels/environment_elements/lamp_light.tscn" id="13_jxmsh"]
 [ext_resource type="PackedScene" uid="uid://78mr2us2ett5" path="res://assets/environment/elements/door_closed.tscn" id="14_6smjs"]
 [ext_resource type="PackedScene" uid="uid://b8gbxyaua8ftu" path="res://assets/props/bed/bed.tscn" id="14_na6ay"]
+[ext_resource type="PackedScene" uid="uid://cfpfgy53aqnh2" path="res://ExitGate/pass_switch.tscn" id="14_o22yu"]
 [ext_resource type="PackedScene" uid="uid://bvbwpj3cl6pdr" path="res://assets/props/lights/lights.tscn" id="14_xelpn"]
 [ext_resource type="Script" path="res://randomization/randomize_self_destruct.gd" id="15_md1aq"]
 [ext_resource type="PackedScene" uid="uid://qyjmhcrcrko3" path="res://components/enemy_spawner.tscn" id="23_1vq12"]
@@ -99,10 +100,16 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0.0154648)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0434456, 0.398006, -0.00138855)
 
 [node name="MainSwitch" parent="NavigationRegion3D/ExitGate" index="1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.64918, 1.37832, 0.032135)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.64918, 1.37832, 0.101871)
 
 [node name="PassSwitch" parent="NavigationRegion3D/ExitGate" index="2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.31959, 1.378, 0.0415192)
+
+[node name="PassSwitch2" parent="NavigationRegion3D/ExitGate" instance=ExtResource("14_o22yu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.74717, 1.378, 0.0415192)
+
+[node name="PassSwitch3" parent="NavigationRegion3D/ExitGate" instance=ExtResource("14_o22yu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.14589, 1.378, 0.0415192)
 
 [node name="FillingCabinets" type="Node3D" parent="NavigationRegion3D"]
 
@@ -407,7 +414,7 @@ omni_attenuation = 1.745
 [node name="Entities" type="Node3D" parent="."]
 
 [node name="Player" parent="Entities" instance=ExtResource("2_2aoio")]
-transform = Transform3D(-0.999899, 0, -0.0143111, 0, 1, 0, 0.0143111, 0, -0.999899, 35.3082, 1.38103, -13.8394)
+transform = Transform3D(-0.221293, 0, 0.975209, 0, 1, 0, -0.975209, 0, -0.221293, 33.8064, 1.23232, -12.5149)
 
 [node name="Enemies" type="Node3D" parent="Entities"]
 
@@ -600,6 +607,7 @@ texture_albedo = ExtResource("26_kf7ps")
 cull_mask = 524288
 
 [editable path="NavigationRegion3D/ExitGate"]
+[editable path="NavigationRegion3D/ExitGate/MainSwitch/switch"]
 [editable path="Lamps/LampLight"]
 [editable path="Lamps/LampLight/LampModel"]
 [editable path="Lights/Light"]
