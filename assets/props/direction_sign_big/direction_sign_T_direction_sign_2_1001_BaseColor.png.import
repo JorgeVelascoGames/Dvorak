@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cisk1m05j147p"
-path.s3tc="res://.godot/imported/heart_rate_monitor_heart_monitor_BaseColor.png-6c9b15a0ac093395bda90762fc5e5b60.s3tc.ctex"
+uid="uid://b4x2kgg068ome"
+path.s3tc="res://.godot/imported/direction_sign_T_direction_sign_2_1001_BaseColor.png-60cdbc26e3c1e51024d201bce1bdda54.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://assets/props/heart_rate_monitor/heart_rate_monitor_heart_monitor_BaseColor.png"
-dest_files=["res://.godot/imported/heart_rate_monitor_heart_monitor_BaseColor.png-6c9b15a0ac093395bda90762fc5e5b60.s3tc.ctex"]
+source_file="res://assets/props/direction_sign_big/direction_sign_T_direction_sign_2_1001_BaseColor.png"
+dest_files=["res://.godot/imported/direction_sign_T_direction_sign_2_1001_BaseColor.png-60cdbc26e3c1e51024d201bce1bdda54.s3tc.ctex"]
 
 [params]
 

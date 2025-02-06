@@ -36,4 +36,6 @@ licensed under the Creative Commons CC0 1.0 Universal License.
 
 "Curtain -Emergency -Injection -Hospital - 14MB" (https://skfb.ly/oWFFB) by Mehdi Shahsavan is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/).
 
-"[Stylized] Vending machine" (https://skfb.ly/6YuWO) by metrosp is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/).
+"Low-poly Papers Set" (https://skfb.ly/o8yVS) by Hox_Lira is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/).
+
+"Hospital direction sign" (https://skfb.ly/ozJGq) by Sousinho is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/).

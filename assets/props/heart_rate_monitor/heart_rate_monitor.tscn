@@ -1,0 +1,109 @@
+[gd_scene load_steps=4 format=3 uid="uid://cbnwnqnchu358"]
+
+[ext_resource type="PackedScene" uid="uid://duxur8rksp4x0" path="res://assets/props/heart_rate_monitor/heart_rate_monitor.fbx" id="1_5xdj2"]
+[ext_resource type="Texture2D" uid="uid://cisk1m05j147p" path="res://assets/props/heart_rate_monitor/heart_rate_monitor_heart_monitor_BaseColor.png" id="2_ynnlb"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3h7rs"]
+albedo_texture = ExtResource("2_ynnlb")
+
+[node name="heart_rate_monitor" instance=ExtResource("1_5xdj2")]
+
+[node name="Vertical Pole" parent="." index="0"]
+transform = Transform3D(2.53992, 0, 0, 0, -3.02782e-07, 2.53992, 0, -2.53992, -3.02782e-07, -0.0174677, 0.484627, -0.0184857)
+surface_material_override/0 = SubResource("StandardMaterial3D_3h7rs")
+
+[node name="Legs" parent="." index="1"]
+transform = Transform3D(2.53992, 0, 0, 0, -3.02782e-07, 2.53992, 0, -2.53992, -3.02782e-07, -0.0173833, 0.156682, -0.0190516)
+surface_material_override/0 = SubResource("StandardMaterial3D_3h7rs")
+
+[node name="Basket_Clinger" parent="." index="2"]
+transform = Transform3D(2.53992, 0, 0, 0, -3.02782e-07, 2.53992, 0, -2.53992, -3.02782e-07, -0.0174677, 0.994461, -0.0184857)
+surface_material_override/0 = SubResource("StandardMaterial3D_3h7rs")
+
+[node name="Basket_Clinger2" parent="." index="3"]
+transform = Transform3D(2.53992, 0, 0, 0, -3.02782e-07, 2.53992, 0, -2.53992, -3.02782e-07, -0.0174677, 0.885609, -0.0184857)
+surface_material_override/0 = SubResource("StandardMaterial3D_3h7rs")
+
+[node name="Basket" parent="." index="4"]
+transform = Transform3D(2.53992, 0, 0, 0, -3.02782e-07, 2.53992, 0, -2.53992, -3.02782e-07, -0.0174677, 0.959039, -0.10664)
+surface_material_override/0 = SubResource("StandardMaterial3D_3h7rs")
+
+[node name="Support Basket" parent="." index="5"]
+transform = Transform3D(2.53992, 0, 0, 0, -3.02782e-07, 2.53992, 0, -2.53992, -3.02782e-07, -0.0174677, 0.933393, -0.0506916)
+surface_material_override/0 = SubResource("StandardMaterial3D_3h7rs")
+
+[node name="Support" parent="." index="6"]
+transform = Transform3D(2.53992, 0, 0, 0, -3.02782e-07, 2.53992, 0, -2.53992, -3.02782e-07, -0.0174677, 1.48939, -0.00690091)
+surface_material_override/0 = SubResource("StandardMaterial3D_3h7rs")
+
+[node name="Monitor" parent="." index="7"]
+transform = Transform3D(2.53992, 0, 0, 0, -3.02782e-07, 2.53992, 0, -2.53992, -3.02782e-07, -0.0174677, 1.67458, 0.0649381)
+surface_material_override/0 = SubResource("StandardMaterial3D_3h7rs")
+
+[node name="Button Platform" parent="." index="8"]
+transform = Transform3D(2.53992, 0, 0, 0, -3.02782e-07, 2.53992, 0, -2.53992, -3.02782e-07, -0.0174677, 1.49577, -0.144344)
+surface_material_override/0 = SubResource("StandardMaterial3D_3h7rs")
+
+[node name="Button1" parent="." index="9"]
+transform = Transform3D(2.53992, 0, 0, 0, -3.02782e-07, 2.53992, 0, -2.53992, -3.02782e-07, 0.192236, 1.488, -0.142408)
+surface_material_override/0 = SubResource("StandardMaterial3D_3h7rs")
+
+[node name="Button2" parent="." index="10"]
+transform = Transform3D(2.53992, 0, 0, 0, -3.02782e-07, 2.53992, 0, -2.53992, -3.02782e-07, 0.169095, 1.488, -0.142408)
+surface_material_override/0 = SubResource("StandardMaterial3D_3h7rs")
+
+[node name="BigButton1" parent="." index="11"]
+transform = Transform3D(2.53992, 0, 0, 0, -3.02782e-07, 2.53992, 0, -2.53992, -3.02782e-07, 0.123373, 1.50451, -0.14453)
+surface_material_override/0 = SubResource("StandardMaterial3D_3h7rs")
+
+[node name="MediumButton1" parent="." index="12"]
+transform = Transform3D(2.53992, 0, 0, 0, -3.02782e-07, 2.53992, 0, -2.53992, -3.02782e-07, 0.0525672, 1.50324, -0.14453)
+surface_material_override/0 = SubResource("StandardMaterial3D_3h7rs")
+
+[node name="MediumButton2" parent="." index="13"]
+transform = Transform3D(2.53992, 0, 0, 0, -3.02782e-07, 2.53992, 0, -2.53992, -3.02782e-07, 0.0244364, 1.50139, -0.14453)
+surface_material_override/0 = SubResource("StandardMaterial3D_3h7rs")
+
+[node name="MediumButton3" parent="." index="14"]
+transform = Transform3D(2.53992, 0, 0, 0, -3.02782e-07, 2.53992, 0, -2.53992, -3.02782e-07, -0.00554436, 1.50075, -0.14453)
+surface_material_override/0 = SubResource("StandardMaterial3D_3h7rs")
+
+[node name="MediumButton4" parent="." index="15"]
+transform = Transform3D(2.53992, 0, 0, 0, -3.02782e-07, 2.53992, 0, -2.53992, -3.02782e-07, -0.0380128, 1.5012, -0.14453)
+surface_material_override/0 = SubResource("StandardMaterial3D_3h7rs")
+
+[node name="MediumButton5" parent="." index="16"]
+transform = Transform3D(2.53992, 0, 0, 0, -3.02782e-07, 2.53992, 0, -2.53992, -3.02782e-07, -0.0699072, 1.50107, -0.14453)
+surface_material_override/0 = SubResource("StandardMaterial3D_3h7rs")
+
+[node name="MediumButton6" parent="." index="17"]
+transform = Transform3D(2.53992, 0, 0, 0, -3.02782e-07, 2.53992, 0, -2.53992, -3.02782e-07, -0.100016, 1.50279, -0.14453)
+surface_material_override/0 = SubResource("StandardMaterial3D_3h7rs")
+
+[node name="BigButton2" parent="." index="18"]
+transform = Transform3D(2.53992, 0, 0, 0, -3.02782e-07, 2.53992, 0, -2.53992, -3.02782e-07, -0.158319, 1.49747, -0.14453)
+surface_material_override/0 = SubResource("StandardMaterial3D_3h7rs")
+
+[node name="Cylinder_009" parent="." index="19"]
+transform = Transform3D(2.53992, 0, 0, 0, -3.02782e-07, 2.53992, 0, -2.53992, -3.02782e-07, 0.215113, 1.72188, -0.045882)
+surface_material_override/0 = SubResource("StandardMaterial3D_3h7rs")
+
+[node name="Cylinder_011" parent="." index="20"]
+transform = Transform3D(2.53992, 0, 0, 0, -3.02782e-07, 2.53992, 0, -2.53992, -3.02782e-07, 0.218994, 1.75752, -0.045882)
+surface_material_override/0 = SubResource("StandardMaterial3D_3h7rs")
+
+[node name="Cylinder_012" parent="." index="21"]
+transform = Transform3D(2.53992, 0, 0, 0, -3.02782e-07, 2.53992, 0, -2.53992, -3.02782e-07, 0.218994, 1.75752, -0.045882)
+surface_material_override/0 = SubResource("StandardMaterial3D_3h7rs")
+
+[node name="Cylinder_013" parent="." index="22"]
+transform = Transform3D(2.53992, 0, 0, 0, -3.02782e-07, 2.53992, 0, -2.53992, -3.02782e-07, 0.218994, 1.79026, -0.045882)
+surface_material_override/0 = SubResource("StandardMaterial3D_3h7rs")
+
+[node name="Cylinder_014" parent="." index="23"]
+transform = Transform3D(2.53992, 0, 0, 0, -3.02782e-07, 2.53992, 0, -2.53992, -3.02782e-07, 0.218994, 1.81876, -0.045882)
+surface_material_override/0 = SubResource("StandardMaterial3D_3h7rs")
+
+[node name="Power Prongs" parent="." index="24"]
+transform = Transform3D(2.53992, 0, 0, 0, -3.02782e-07, 2.53992, 0, -2.53992, -3.02782e-07, -0.00930905, 1.58851, 0.224979)
+surface_material_override/0 = SubResource("StandardMaterial3D_3h7rs")
