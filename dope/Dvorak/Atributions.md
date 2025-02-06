@@ -25,3 +25,15 @@ licensed under the Creative Commons CC0 1.0 Universal License.
 "Sewers - PSX" (https://skfb.ly/p8LZY) by Elbolillo is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/).
 
 "Hospital Trolley" (https://skfb.ly/oOzKS) by creative_beast is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/).
+
+"Air Conditioning Anim" (https://skfb.ly/6WZ8C) by MKV245 is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/).
+
+"Heart Rate Monitor" (https://skfb.ly/oTRvr) by Surgdan is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/).
+
+"Waiting Chair" (https://skfb.ly/oOwvZ) by creative_beast is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/).
+
+"Hospital Stretcher" (https://skfb.ly/6vALF) by Gunnar Correa is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/).
+
+"Curtain -Emergency -Injection -Hospital - 14MB" (https://skfb.ly/oWFFB) by Mehdi Shahsavan is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/).
+
+"[Stylized] Vending machine" (https://skfb.ly/6YuWO) by metrosp is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/).

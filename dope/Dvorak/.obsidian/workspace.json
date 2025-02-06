@@ -154,12 +154,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Arte/Estandarización.md",
+                "file": "Atributions.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Estandarización"
+              "title": "Atributions"
             }
           }
         ],
@@ -328,17 +328,17 @@
   },
   "active": "eb7e0e14505b54e1",
   "lastOpenFiles": [
+    "To do.md",
+    "Arte/Estandarización.md",
     "Ideas/Ambiente.md",
     "Ideas/Brainstorming.md",
     "Pulido.md",
-    "To do.md",
     "Bug y notas.md",
     "Doing.md",
     "Ideas/Logros.md",
     "Ideas/Mecánicas.md",
     "Ideas/Mejoras.md",
     "Ideas/Procedimientos técnicos..md",
-    "Arte/Estandarización.md",
     "Atributions.md",
     "Tutorials/Enemigos.md",
     "Tutorials/Tutorial.md",
