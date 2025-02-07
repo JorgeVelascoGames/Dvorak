@@ -424,7 +424,7 @@ omni_attenuation = 1.745
 [node name="Entities" type="Node3D" parent="."]
 
 [node name="Player" parent="Entities" instance=ExtResource("2_2aoio")]
-transform = Transform3D(-0.221293, 0, 0.975209, 0, 1, 0, -0.975209, 0, -0.221293, 33.8064, 1.23232, -12.5149)
+transform = Transform3D(-0.221293, 0, 0.975209, 0, 1, 0, -0.975209, 0, -0.221293, 33.8064, 0.955824, -12.5149)
 
 [node name="Enemies" type="Node3D" parent="Entities"]
 
