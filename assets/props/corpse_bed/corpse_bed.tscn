@@ -1,0 +1,28 @@
+[gd_scene load_steps=10 format=3 uid="uid://durrfwbbthbm6"]
+
+[ext_resource type="PackedScene" uid="uid://b0ug67j8y8pt3" path="res://assets/props/corpse_bed/MacaTriangulate.fbx" id="1_ihfb8"]
+[ext_resource type="Texture2D" uid="uid://s8ha4lu0gry7" path="res://assets/props/corpse_bed/MacaTriangulate_MetalBranco_BaseColor.png" id="2_0d3l7"]
+[ext_resource type="Texture2D" uid="uid://81t6rlbepesk" path="res://assets/props/corpse_bed/MacaTriangulate_Lencol_BaseColor.png" id="3_0x4no"]
+[ext_resource type="Texture2D" uid="uid://bkakw206ne1tb" path="res://assets/props/corpse_bed/MacaTriangulate_MetalEscuro_BaseColor.png" id="4_vivu2"]
+[ext_resource type="Texture2D" uid="uid://b3ndejaag8vj8" path="res://assets/props/corpse_bed/MacaTriangulate_Colchao_BaseColor.png" id="5_dgtfo"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ufpt1"]
+albedo_texture = ExtResource("2_0d3l7")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2er6g"]
+albedo_texture = ExtResource("3_0x4no")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_iu5we"]
+albedo_texture = ExtResource("4_vivu2")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_576ec"]
+albedo_texture = ExtResource("5_dgtfo")
+
+[node name="CorpseBed" instance=ExtResource("1_ihfb8")]
+
+[node name="Maca" parent="." index="0"]
+transform = Transform3D(-0.0956701, 0, 0, 0, 0.0297896, 0, 0, 0, -0.0297896, -0.0386208, 0.957189, -0.213116)
+surface_material_override/0 = SubResource("StandardMaterial3D_ufpt1")
+surface_material_override/1 = SubResource("StandardMaterial3D_2er6g")
+surface_material_override/2 = SubResource("StandardMaterial3D_iu5we")
+surface_material_override/3 = SubResource("StandardMaterial3D_576ec")

@@ -154,12 +154,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Atributions.md",
+                "file": "To do.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Atributions"
+              "title": "To do"
             }
           }
         ],
@@ -328,18 +328,18 @@
   },
   "active": "eb7e0e14505b54e1",
   "lastOpenFiles": [
+    "Doing.md",
+    "Atributions.md",
     "To do.md",
     "Arte/Estandarización.md",
     "Ideas/Ambiente.md",
     "Ideas/Brainstorming.md",
     "Pulido.md",
     "Bug y notas.md",
-    "Doing.md",
     "Ideas/Logros.md",
     "Ideas/Mecánicas.md",
     "Ideas/Mejoras.md",
     "Ideas/Procedimientos técnicos..md",
-    "Atributions.md",
     "Tutorials/Enemigos.md",
     "Tutorials/Tutorial.md",
     "Tutorials/Escalera.md",

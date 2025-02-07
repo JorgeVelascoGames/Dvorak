@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://6bjfdyvafoiu"]
+
+[ext_resource type="PackedScene" uid="uid://lcvmhobixmp1" path="res://assets/props/trolley/trolley.tscn" id="1_6ys2g"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_4vbom"]
+size = Vector3(1.03247, 0.790527, 0.539307)
+
+[node name="TrolleyObstacle" type="Node3D"]
+
+[node name="Trolley" parent="." instance=ExtResource("1_6ys2g")]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1.02208, 0, 0, 0, 1.02208, 0, 0, 0, 1.02208, -0.000124766, 0.397903, -0.00162195)
+shape = SubResource("BoxShape3D_4vbom")
