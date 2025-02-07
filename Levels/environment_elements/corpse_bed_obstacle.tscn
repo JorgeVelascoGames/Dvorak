@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://bqubil7yqh6xl"]
+
+[ext_resource type="PackedScene" uid="uid://durrfwbbthbm6" path="res://assets/props/corpse_bed/corpse_bed.tscn" id="1_73kld"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_x2s85"]
+size = Vector3(2.14996, 1.29352, 1.07019)
+
+[node name="CorpseBedObstacle" type="Node3D"]
+
+[node name="CorpseBed" parent="." instance=ExtResource("1_73kld")]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0279846, 0.535004, -0.195374)
+shape = SubResource("BoxShape3D_x2s85")

@@ -5,8 +5,10 @@
 - ~~Nuevos interruptores~~
 - ~~Segundo enemigo~~
 - ~~Mejorar animación de ataque con palanca~~
-- Tutorial
+- ~~Tutorial~~
 - Aplicar daño con palanca
 - Aplicar screen overlay de estado dañado
 - Terminar sonidos
+- Añadir detalles al escenario
+- Reworkear algunas habitaciones con nuevos assets
  

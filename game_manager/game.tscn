@@ -70,7 +70,7 @@ script = ExtResource("9_73ht4")
 [node name="EnemyManager" type="Node" parent="."]
 script = ExtResource("9_whl67")
 spawn_frecuency = 70.0
-enemies_on_load = 3
+enemies_on_load = 1
 no_enemies = true
 
 [node name="SpawnerTimer" type="Timer" parent="EnemyManager"]

@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://bbxqlpn2enp4b"]
+
+[ext_resource type="PackedScene" uid="uid://3myl350ygrtc" path="res://assets/props/waiting_chair/waiting_chair.tscn" id="1_o0owt"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_j7cr1"]
+size = Vector3(2.29156, 0.476074, 0.837891)
+
+[node name="WaitingChairsObstacle" type="Node3D"]
+
+[node name="Waiting Chair" parent="." instance=ExtResource("1_o0owt")]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Waiting Chair"]
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Waiting Chair/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00698853, 0.261963, 0.103516)
+shape = SubResource("BoxShape3D_j7cr1")

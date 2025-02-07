@@ -152,12 +152,14 @@
             "id": "eb7e0e14505b54e1",
             "type": "leaf",
             "state": {
-              "type": "release-notes",
+              "type": "markdown",
               "state": {
-                "currentVersion": "1.8.4"
+                "file": "To do.md",
+                "mode": "source",
+                "source": false
               },
-              "icon": "lucide-book-up",
-              "title": "Release Notes 1.8.4"
+              "icon": "lucide-file",
+              "title": "To do"
             }
           }
         ],
@@ -326,12 +328,18 @@
   },
   "active": "eb7e0e14505b54e1",
   "lastOpenFiles": [
-    "Ideas/Mecánicas.md",
-    "Bug y notas.md",
-    "Atributions.md",
-    "Pulido.md",
-    "To do.md",
     "Doing.md",
+    "Atributions.md",
+    "To do.md",
+    "Arte/Estandarización.md",
+    "Ideas/Ambiente.md",
+    "Ideas/Brainstorming.md",
+    "Pulido.md",
+    "Bug y notas.md",
+    "Ideas/Logros.md",
+    "Ideas/Mecánicas.md",
+    "Ideas/Mejoras.md",
+    "Ideas/Procedimientos técnicos..md",
     "Tutorials/Enemigos.md",
     "Tutorials/Tutorial.md",
     "Tutorials/Escalera.md",
@@ -348,12 +356,6 @@
     "Tutorials/Tutorial inicial.md",
     "Untitled",
     "Tutorials",
-    "Arte/Estandarización.md",
-    "Ideas/Procedimientos técnicos..md",
-    "Todo/Sonido.md",
-    "Todo/Página de steam.md",
-    "Todo/Mail list.md",
-    "Todo/Demo.md",
     "Arte",
     "Software",
     "Ideas",
