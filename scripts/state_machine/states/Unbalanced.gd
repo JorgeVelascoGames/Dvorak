@@ -10,7 +10,7 @@ var left_key_selection : String
 var right_key_selection : String
 enum KeyboardSide {left, right}
 var current_side : KeyboardSide = KeyboardSide.right
-var left_side_keys = ["left_key_0", "left_key_9", "left_key_p", "left_key_o", "left_key_i", "left_key_l", "left_key_k", "left_key_m"]#left and right were confused due to severe lack of sleep
+var left_side_keys = ["left_key_0", "left_key_9", "left_key_p", "left_key_o", "left_key_k", "left_key_m"]#left and right were confused due to severe lack of sleep
 var right_side_keys = ["right_key_1", "right_key_2", "right_key_q", "right_key_e", "right_key_z", "right_key_x", "right_key_c", "right_key_3"]
 var correct_key_pressed : int = 0
 var finished_state := false

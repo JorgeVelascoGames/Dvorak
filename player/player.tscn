@@ -1,4 +1,4 @@
-[gd_scene load_steps=91 format=3 uid="uid://m6pypgl566n1"]
+[gd_scene load_steps=92 format=3 uid="uid://m6pypgl566n1"]
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_ref5g"]
 [ext_resource type="Script" path="res://player/smooth_camera.gd" id="2_cywkd"]
@@ -35,9 +35,10 @@
 [ext_resource type="Script" path="res://player/balanced_ui.gd" id="28_qoh17"]
 [ext_resource type="Texture2D" uid="uid://7g1tf1lcm1l7" path="res://assets/UI/tile_0233.png" id="28_rfyh2"]
 [ext_resource type="PackedScene" uid="uid://ccacel4hrjcs8" path="res://assets/props/pills/pills.tscn" id="29_vkalu"]
+[ext_resource type="Texture2D" uid="uid://cngiemxinj0jx" path="res://assets/UI/screen_overlay_balance_01.png" id="30_c2sls"]
 [ext_resource type="FontFile" uid="uid://8cel7ajxycai" path="res://assets/fonts/roboto/Roboto-Black.ttf" id="30_yu0h2"]
 [ext_resource type="Script" path="res://player/player_game_menu.gd" id="31_0c3op"]
-[ext_resource type="Texture2D" uid="uid://3akc2hs6kgh" path="res://assets/textures/blood/blood_3.png" id="31_2n2rm"]
+[ext_resource type="Texture2D" uid="uid://bm0w456skdflw" path="res://assets/UI/screen_overlay_02.png" id="31_i030a"]
 [ext_resource type="LabelSettings" uid="uid://uvcnfvkxej6y" path="res://game_ui/flavour_text_lable_settings.tres" id="31_u8436"]
 [ext_resource type="Shader" path="res://shaders/vhs.gdshader" id="34_l5ybq"]
 [ext_resource type="Script" path="res://game_manager/vhs_effect.gd" id="35_5ytlk"]
@@ -58,6 +59,7 @@ shadow_size = 4
 
 [sub_resource type="LabelSettings" id="LabelSettings_qdkx3"]
 font = ExtResource("30_yu0h2")
+font_size = 33
 font_color = Color(0, 0, 0, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_eftwr"]
@@ -683,7 +685,7 @@ one_shot = true
 
 [node name="Downed" type="Node" parent="StateMachine"]
 script = ExtResource("9_q33c7")
-probability_to_lose_items = 33
+probability_to_lose_items = 80
 
 [node name="PlayerLongInteraction" type="Node" parent="StateMachine"]
 script = ExtResource("10_b71wi")
@@ -873,15 +875,9 @@ stretch_mode = 5
 
 [node name="LeftLable" type="Label" parent="PlayerUI/BalancedUI/HBoxContainer/LeftTexture"]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -10.5
-offset_top = -11.5
-offset_right = 8.5
-offset_bottom = 11.5
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 text = "5"
@@ -898,15 +894,9 @@ stretch_mode = 5
 
 [node name="RightLAble" type="Label" parent="PlayerUI/BalancedUI/HBoxContainer/RightTexture"]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -10.5
-offset_top = -11.5
-offset_right = 8.5
-offset_bottom = 11.5
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 text = "S"
@@ -968,9 +958,9 @@ label_settings = SubResource("LabelSettings_eftwr")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="DyingOverlay" type="TextureRect" parent="PlayerUI"]
-visible = false
-modulate = Color(0.192157, 0.192157, 0.192157, 1)
+[node name="DamagedOverlay" type="TextureRect" parent="PlayerUI"]
+modulate = Color(0, 0, 0, 0.694118)
+self_modulate = Color(0.699653, 0.699654, 0.699653, 1)
 z_index = -90
 layout_mode = 1
 anchors_preset = 15
@@ -978,7 +968,30 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("31_2n2rm")
+texture = ExtResource("30_c2sls")
+expand_mode = 2
+stretch_mode = 5
+
+[node name="HearthBeat" type="ColorRect" parent="PlayerUI"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="DyingOverlay" type="TextureRect" parent="PlayerUI"]
+visible = false
+modulate = Color(0.823529, 0.823529, 0.823529, 1)
+z_index = -90
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("31_i030a")
 expand_mode = 2
 stretch_mode = 5
 

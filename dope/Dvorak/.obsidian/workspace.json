@@ -6,7 +6,6 @@
       {
         "id": "e359ced9b77aead0",
         "type": "tabs",
-        "dimension": 55.14705882352941,
         "children": [
           {
             "id": "cef1813cea61e526",
@@ -14,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Todo/Detalles de pulido.md",
+                "file": "Atributions.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Detalles de pulido"
+              "title": "Atributions"
             }
           },
           {
@@ -160,28 +159,6 @@
               },
               "icon": "lucide-file",
               "title": "To do"
-            }
-          }
-        ],
-        "currentTab": 10
-      },
-      {
-        "id": "7418f88c23d6d67e",
-        "type": "tabs",
-        "dimension": 44.85294117647059,
-        "children": [
-          {
-            "id": "5ac6848064a3d1aa",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Tutorials/Tutorial.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "Tutorial"
             }
           }
         ]
@@ -326,11 +303,13 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "eb7e0e14505b54e1",
+  "active": "cef1813cea61e526",
   "lastOpenFiles": [
+    "To do.md",
+    "Todo/Detalles de pulido.md",
+    "Tutorials/Tutorial.md",
     "Doing.md",
     "Atributions.md",
-    "To do.md",
     "Arte/Estandarización.md",
     "Ideas/Ambiente.md",
     "Ideas/Brainstorming.md",
@@ -341,7 +320,6 @@
     "Ideas/Mejoras.md",
     "Ideas/Procedimientos técnicos..md",
     "Tutorials/Enemigos.md",
-    "Tutorials/Tutorial.md",
     "Tutorials/Escalera.md",
     "Tutorials/Libros.md",
     "Tutorials/Final de nivel.md",
@@ -353,7 +331,6 @@
     "Tutorials/Dar la linterna y objetos.md",
     "Tutorials/Walker.md",
     "Tutorials/Equilibrio.md",
-    "Tutorials/Tutorial inicial.md",
     "Untitled",
     "Tutorials",
     "Arte",

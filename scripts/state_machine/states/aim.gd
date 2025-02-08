@@ -88,11 +88,12 @@ func fire() -> void:
 		return
 	
 	player.player_audio_manager.shoot_gun()
-	var collision = gun_ray.get_collider().owner
-	if gun_ray.is_colliding() and collision is Enemy:
-		if collision is InfanticideEnemy:
-			collision.shot_infanticide_enemy()
-		gun_ray.get_collider().owner.enemy_die()
+	if gun_ray.get_collider():
+		var collision = gun_ray.get_collider().owner
+		if gun_ray.is_colliding() and collision is Enemy:
+			if collision is InfanticideEnemy:
+				collision.shot_infanticide_enemy()
+			gun_ray.get_collider().owner.enemy_die()
 	
 	world_camera.weapon_recoil()
 	balance.add_balance(balance.shooting_cost)
