@@ -1,4 +1,4 @@
-[gd_scene load_steps=92 format=3 uid="uid://m6pypgl566n1"]
+[gd_scene load_steps=91 format=3 uid="uid://m6pypgl566n1"]
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_ref5g"]
 [ext_resource type="Script" path="res://player/smooth_camera.gd" id="2_cywkd"]
@@ -34,9 +34,9 @@
 [ext_resource type="PackedScene" uid="uid://cv00qs5ggy5x" path="res://assets/props/flaslight/flaslight.tscn" id="28_lrh3t"]
 [ext_resource type="Script" path="res://player/balanced_ui.gd" id="28_qoh17"]
 [ext_resource type="Texture2D" uid="uid://7g1tf1lcm1l7" path="res://assets/UI/tile_0233.png" id="28_rfyh2"]
+[ext_resource type="LabelSettings" uid="uid://c8klxxn36vp7j" path="res://game_ui/quick_time_event.tres" id="29_rdawv"]
 [ext_resource type="PackedScene" uid="uid://ccacel4hrjcs8" path="res://assets/props/pills/pills.tscn" id="29_vkalu"]
 [ext_resource type="Texture2D" uid="uid://cngiemxinj0jx" path="res://assets/UI/screen_overlay_balance_01.png" id="30_c2sls"]
-[ext_resource type="FontFile" uid="uid://8cel7ajxycai" path="res://assets/fonts/roboto/Roboto-Black.ttf" id="30_yu0h2"]
 [ext_resource type="Script" path="res://player/player_game_menu.gd" id="31_0c3op"]
 [ext_resource type="Texture2D" uid="uid://bm0w456skdflw" path="res://assets/UI/screen_overlay_02.png" id="31_i030a"]
 [ext_resource type="LabelSettings" uid="uid://uvcnfvkxej6y" path="res://game_ui/flavour_text_lable_settings.tres" id="31_u8436"]
@@ -56,11 +56,6 @@ font_size = 15
 outline_size = 2
 outline_color = Color(0.165656, 0.165657, 0.165656, 1)
 shadow_size = 4
-
-[sub_resource type="LabelSettings" id="LabelSettings_qdkx3"]
-font = ExtResource("30_yu0h2")
-font_size = 33
-font_color = Color(0, 0, 0, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_eftwr"]
 font = ExtResource("26_ekr4f")
@@ -880,8 +875,8 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-text = "5"
-label_settings = SubResource("LabelSettings_qdkx3")
+text = "S"
+label_settings = ExtResource("29_rdawv")
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -900,7 +895,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 text = "S"
-label_settings = SubResource("LabelSettings_qdkx3")
+label_settings = ExtResource("29_rdawv")
 horizontal_alignment = 1
 vertical_alignment = 1
 

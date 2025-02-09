@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://dqk45r48r427t"]
+[gd_scene load_steps=12 format=3 uid="uid://dqk45r48r427t"]
 
 [ext_resource type="PackedScene" uid="uid://d11friq1q7r58" path="res://assets/environment/level_one.blend" id="1_ldfa7"]
 [ext_resource type="Material" uid="uid://dst813utgj4hq" path="res://materials/walls_mat.tres" id="2_acyha"]
@@ -30,9 +30,7 @@ uv1_world_triplanar = true
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_86jw6"]
 transparency = 1
 albedo_color = Color(1, 1, 1, 0)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dw47c"]
-albedo_texture = ExtResource("2_rf5x7")
+uv1_world_triplanar = true
 
 [node name="LevelOneScenario" instance=ExtResource("1_ldfa7")]
 
@@ -50,7 +48,6 @@ collision_mask = 0
 
 [node name="cealing" parent="." index="1"]
 layers = 524289
-material_override = SubResource("StandardMaterial3D_dw47c")
 surface_material_override/0 = ExtResource("4_6iimo")
 
 [node name="room" parent="." index="2"]

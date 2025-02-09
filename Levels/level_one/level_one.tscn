@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://b37la44wjrp4u"]
+[gd_scene load_steps=37 format=3 uid="uid://b37la44wjrp4u"]
 
 [ext_resource type="PackedScene" uid="uid://dqk45r48r427t" path="res://Levels/level_one/level_one_scenario.tscn" id="1_jujem"]
 [ext_resource type="Environment" uid="uid://c42wra3u6yo6u" path="res://Levels/world_environment.tres" id="1_rc4ww"]
@@ -34,6 +34,7 @@
 [ext_resource type="PackedScene" uid="uid://6bjfdyvafoiu" path="res://Levels/environment_elements/trolley_obstacle.tscn" id="28_p8cp4"]
 [ext_resource type="PackedScene" uid="uid://bsek7niojuln7" path="res://assets/props/corpse/corpse.tscn" id="28_udafe"]
 [ext_resource type="PackedScene" uid="uid://durrfwbbthbm6" path="res://assets/props/corpse_bed/corpse_bed.tscn" id="29_80sou"]
+[ext_resource type="PackedScene" uid="uid://dkr3xuxvgu4nu" path="res://Levels/environment_elements/wheelchair_obstacle.tscn" id="30_yu1sw"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_hkrcb"]
 geometry_parsed_geometry_type = 2
@@ -428,137 +429,137 @@ transform = Transform3D(-0.221293, 0, 0.975209, 0, 1, 0, -0.975209, 0, -0.221293
 
 [node name="Enemies" type="Node3D" parent="Entities"]
 
-[node name="Decoration" type="Node3D" parent="."]
+[node name="DecorationAndObstacles" type="Node3D" parent="."]
 
-[node name="Doors" type="Node3D" parent="Decoration"]
+[node name="Doors" type="Node3D" parent="DecorationAndObstacles"]
 
-[node name="door_closed" parent="Decoration/Doors" instance=ExtResource("14_6smjs")]
+[node name="door_closed" parent="DecorationAndObstacles/Doors" instance=ExtResource("14_6smjs")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -1.05929, 0, -2.01613)
 
-[node name="door_closed2" parent="Decoration/Doors" instance=ExtResource("14_6smjs")]
+[node name="door_closed2" parent="DecorationAndObstacles/Doors" instance=ExtResource("14_6smjs")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -2.99867, 0, -5.08853)
 
-[node name="door_closed4" parent="Decoration/Doors" instance=ExtResource("14_6smjs")]
+[node name="door_closed4" parent="DecorationAndObstacles/Doors" instance=ExtResource("14_6smjs")]
 transform = Transform3D(1.19249e-08, 0, -1, 0, 1, 0, 1, 0, 1.19249e-08, 1.05683, 0, -11.1827)
 
-[node name="door_closed12" parent="Decoration/Doors" instance=ExtResource("14_6smjs")]
+[node name="door_closed12" parent="DecorationAndObstacles/Doors" instance=ExtResource("14_6smjs")]
 transform = Transform3D(1.19249e-08, 0, -1, 0, 1, 0, 1, 0, 1.19249e-08, 10.5646, 0, -13.7861)
 
-[node name="door_closed5" parent="Decoration/Doors" instance=ExtResource("14_6smjs")]
+[node name="door_closed5" parent="DecorationAndObstacles/Doors" instance=ExtResource("14_6smjs")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, -24.066)
 
-[node name="door_closed10" parent="Decoration/Doors" instance=ExtResource("14_6smjs")]
+[node name="door_closed10" parent="DecorationAndObstacles/Doors" instance=ExtResource("14_6smjs")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.5, 0, -24.066)
 
-[node name="door_closed11" parent="Decoration/Doors" instance=ExtResource("14_6smjs")]
+[node name="door_closed11" parent="DecorationAndObstacles/Doors" instance=ExtResource("14_6smjs")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.5, 0, -24.066)
 
-[node name="door_closed13" parent="Decoration/Doors" instance=ExtResource("14_6smjs")]
+[node name="door_closed13" parent="DecorationAndObstacles/Doors" instance=ExtResource("14_6smjs")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 24.5672, 0, -20.4336)
 
-[node name="door_closed14" parent="Decoration/Doors" instance=ExtResource("14_6smjs")]
+[node name="door_closed14" parent="DecorationAndObstacles/Doors" instance=ExtResource("14_6smjs")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.7933, 0, -25.0403)
 
-[node name="door_closed25" parent="Decoration/Doors" instance=ExtResource("14_6smjs")]
+[node name="door_closed25" parent="DecorationAndObstacles/Doors" instance=ExtResource("14_6smjs")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 27.9826, 0, -1.55101)
 
-[node name="door_closed26" parent="Decoration/Doors" instance=ExtResource("14_6smjs")]
+[node name="door_closed26" parent="DecorationAndObstacles/Doors" instance=ExtResource("14_6smjs")]
 transform = Transform3D(1.31134e-07, -0.00511379, 0.999987, 0, 0.999987, 0.00511379, -1, -6.70593e-10, 1.31132e-07, 28.0374, -0.00201041, -9.99912)
 
-[node name="door_closed27" parent="Decoration/Doors" instance=ExtResource("14_6smjs")]
+[node name="door_closed27" parent="DecorationAndObstacles/Doors" instance=ExtResource("14_6smjs")]
 transform = Transform3D(-4.37125e-08, -0.00511379, -0.999987, 4.47062e-10, 0.999987, -0.00511379, 1, -6.70593e-10, -4.37097e-08, 31.0057, 0.013169, -5.64688)
 
-[node name="door_closed15" parent="Decoration/Doors" instance=ExtResource("14_6smjs")]
+[node name="door_closed15" parent="DecorationAndObstacles/Doors" instance=ExtResource("14_6smjs")]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 19.7933, 0, -15.9721)
 
-[node name="door_closed16" parent="Decoration/Doors" instance=ExtResource("14_6smjs")]
+[node name="door_closed16" parent="DecorationAndObstacles/Doors" instance=ExtResource("14_6smjs")]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 19.7933, 0, -15.9721)
 
-[node name="door_closed17" parent="Decoration/Doors" instance=ExtResource("14_6smjs")]
+[node name="door_closed17" parent="DecorationAndObstacles/Doors" instance=ExtResource("14_6smjs")]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 19.7933, 0, -0.957685)
 
-[node name="door_closed28" parent="Decoration/Doors" instance=ExtResource("14_6smjs")]
+[node name="door_closed28" parent="DecorationAndObstacles/Doors" instance=ExtResource("14_6smjs")]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 18.8352, 0, -11.9545)
 
-[node name="door_closed30" parent="Decoration/Doors" instance=ExtResource("14_6smjs")]
+[node name="door_closed30" parent="DecorationAndObstacles/Doors" instance=ExtResource("14_6smjs")]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 24.4715, 0, -11.9545)
 
-[node name="door_closed29" parent="Decoration/Doors" instance=ExtResource("14_6smjs")]
+[node name="door_closed29" parent="DecorationAndObstacles/Doors" instance=ExtResource("14_6smjs")]
 transform = Transform3D(1, 0, -1.74846e-07, 0, 1, 0, 1.74846e-07, 0, 1, 28.6436, 0, -14.0422)
 
-[node name="door_closed42" parent="Decoration/Doors" instance=ExtResource("14_6smjs")]
+[node name="door_closed42" parent="DecorationAndObstacles/Doors" instance=ExtResource("14_6smjs")]
 transform = Transform3D(1, 0, -1.74846e-07, 0, 1, 0, 1.74846e-07, 0, 1, 21.3354, 0, -14.0422)
 
-[node name="door_closed31" parent="Decoration/Doors" instance=ExtResource("14_6smjs")]
+[node name="door_closed31" parent="DecorationAndObstacles/Doors" instance=ExtResource("14_6smjs")]
 transform = Transform3D(1, 0, -1.74846e-07, 0, 1, 0, 1.74846e-07, 0, 1, 20.671, 5, -14.0431)
 
-[node name="door_closed32" parent="Decoration/Doors" instance=ExtResource("14_6smjs")]
+[node name="door_closed32" parent="DecorationAndObstacles/Doors" instance=ExtResource("14_6smjs")]
 transform = Transform3D(1, 0, -1.74846e-07, 0, 1, 0, 1.74846e-07, 0, 1, 14.7761, 5, -14.0394)
 
-[node name="door_closed33" parent="Decoration/Doors" instance=ExtResource("14_6smjs")]
+[node name="door_closed33" parent="DecorationAndObstacles/Doors" instance=ExtResource("14_6smjs")]
 transform = Transform3D(1, 0, -1.74846e-07, 0, 1, 0, 1.74846e-07, 0, 1, 7.2781, 5, -14.075)
 
-[node name="door_closed34" parent="Decoration/Doors" instance=ExtResource("14_6smjs")]
+[node name="door_closed34" parent="DecorationAndObstacles/Doors" instance=ExtResource("14_6smjs")]
 transform = Transform3D(1, 0, -1.74846e-07, 0, 1, 0, 1.74846e-07, 0, 1, -4, 5, 1.443)
 
-[node name="door_closed35" parent="Decoration/Doors" instance=ExtResource("14_6smjs")]
+[node name="door_closed35" parent="DecorationAndObstacles/Doors" instance=ExtResource("14_6smjs")]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -7, 5, 3.07868)
 
-[node name="door_closed36" parent="Decoration/Doors" instance=ExtResource("14_6smjs")]
+[node name="door_closed36" parent="DecorationAndObstacles/Doors" instance=ExtResource("14_6smjs")]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -1, 5, 3.07868)
 
-[node name="door_closed37" parent="Decoration/Doors" instance=ExtResource("14_6smjs")]
+[node name="door_closed37" parent="DecorationAndObstacles/Doors" instance=ExtResource("14_6smjs")]
 transform = Transform3D(1, 0, -1.74846e-07, 0, 1, 0, 1.74846e-07, 0, 1, 29.1044, 5, -23.5479)
 
-[node name="door_closed38" parent="Decoration/Doors" instance=ExtResource("14_6smjs")]
+[node name="door_closed38" parent="DecorationAndObstacles/Doors" instance=ExtResource("14_6smjs")]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 26.1044, 5, -21.9659)
 
-[node name="door_closed39" parent="Decoration/Doors" instance=ExtResource("14_6smjs")]
+[node name="door_closed39" parent="DecorationAndObstacles/Doors" instance=ExtResource("14_6smjs")]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 32.1044, 5, -21.9659)
 
-[node name="door_closed40" parent="Decoration/Doors" instance=ExtResource("14_6smjs")]
+[node name="door_closed40" parent="DecorationAndObstacles/Doors" instance=ExtResource("14_6smjs")]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 20.4874, 5, -0.500105)
 
-[node name="door_closed41" parent="Decoration/Doors" instance=ExtResource("14_6smjs")]
+[node name="door_closed41" parent="DecorationAndObstacles/Doors" instance=ExtResource("14_6smjs")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.47375, 5, -14.4913)
 
-[node name="door_closed18" parent="Decoration/Doors" instance=ExtResource("14_6smjs")]
+[node name="door_closed18" parent="DecorationAndObstacles/Doors" instance=ExtResource("14_6smjs")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.7933, 0, -10.0502)
 
-[node name="door_closed19" parent="Decoration/Doors" instance=ExtResource("14_6smjs")]
+[node name="door_closed19" parent="DecorationAndObstacles/Doors" instance=ExtResource("14_6smjs")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26.901, 0.472166, 1.4293)
 
-[node name="door_closed20" parent="Decoration/Doors" instance=ExtResource("14_6smjs")]
+[node name="door_closed20" parent="DecorationAndObstacles/Doors" instance=ExtResource("14_6smjs")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.2293, 0.472166, 1.4293)
 
-[node name="door_closed21" parent="Decoration/Doors" instance=ExtResource("14_6smjs")]
+[node name="door_closed21" parent="DecorationAndObstacles/Doors" instance=ExtResource("14_6smjs")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.01512, 0.472166, 1.4293)
 
-[node name="door_closed22" parent="Decoration/Doors" instance=ExtResource("14_6smjs")]
+[node name="door_closed22" parent="DecorationAndObstacles/Doors" instance=ExtResource("14_6smjs")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 1.28334, 0.472166, 3.53392)
 
-[node name="door_closed23" parent="Decoration/Doors" instance=ExtResource("14_6smjs")]
+[node name="door_closed23" parent="DecorationAndObstacles/Doors" instance=ExtResource("14_6smjs")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 11.2327, 0.472166, 3.53392)
 
-[node name="door_closed24" parent="Decoration/Doors" instance=ExtResource("14_6smjs")]
+[node name="door_closed24" parent="DecorationAndObstacles/Doors" instance=ExtResource("14_6smjs")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 22.7792, 0.472166, 3.53392)
 
-[node name="door_closed6" parent="Decoration/Doors" instance=ExtResource("14_6smjs")]
+[node name="door_closed6" parent="DecorationAndObstacles/Doors" instance=ExtResource("14_6smjs")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.44898, 0, -21.5304)
 
-[node name="door_closed7" parent="Decoration/Doors" instance=ExtResource("14_6smjs")]
+[node name="door_closed7" parent="DecorationAndObstacles/Doors" instance=ExtResource("14_6smjs")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -3.84929, 0, -7.94533)
 
-[node name="door_closed8" parent="Decoration/Doors" instance=ExtResource("14_6smjs")]
+[node name="door_closed8" parent="DecorationAndObstacles/Doors" instance=ExtResource("14_6smjs")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.3172, 0, -9.55491)
 
-[node name="door_closed9" parent="Decoration/Doors" instance=ExtResource("14_6smjs")]
+[node name="door_closed9" parent="DecorationAndObstacles/Doors" instance=ExtResource("14_6smjs")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.19793, 0, -9.55491)
 
-[node name="corpse2" parent="Decoration" instance=ExtResource("28_udafe")]
+[node name="corpse2" parent="DecorationAndObstacles" instance=ExtResource("28_udafe")]
 transform = Transform3D(-3.40591e-08, 0, -0.779182, 0, 0.779182, 0, 0.779182, 0, -3.40591e-08, 36.8564, 0.63918, -15.3958)
 
-[node name="Skeleton3D" parent="Decoration/corpse2/rig" index="0"]
+[node name="Skeleton3D" parent="DecorationAndObstacles/corpse2/rig" index="0"]
 bones/1/position = Vector3(0, 0.0510321, 0.933647)
 bones/4/rotation = Quaternion(0.0345997, -4.91954e-05, 0.0302329, 0.998944)
 bones/5/rotation = Quaternion(0.17478, -0.00765422, -0.0315403, 0.984073)
@@ -735,89 +736,97 @@ bones/404/rotation = Quaternion(0.961249, 5.84961e-08, -2.03964e-07, -0.275683)
 bones/407/rotation = Quaternion(-4.54828e-08, -1.49012e-08, 1, 2.10432e-16)
 bones/408/position = Vector3(-0.423594, 0.505908, 0.903756)
 
-[node name="corpse3" parent="Decoration" instance=ExtResource("28_udafe")]
+[node name="corpse3" parent="DecorationAndObstacles" instance=ExtResource("28_udafe")]
 transform = Transform3D(-3.40591e-08, 0, -0.779182, 0, 0.779182, 0, 0.779182, 0, -3.40591e-08, 36.9182, 0.00366545, -9.53819)
 
-[node name="AnimationPlayer" parent="Decoration/corpse3" index="1"]
+[node name="AnimationPlayer" parent="DecorationAndObstacles/corpse3" index="1"]
 autoplay = "sit_down"
 
-[node name="WaitingChairs" type="Node3D" parent="Decoration"]
+[node name="WaitingChairs" type="Node3D" parent="DecorationAndObstacles"]
 
-[node name="WaitingChairsObstacle" parent="Decoration/WaitingChairs" instance=ExtResource("24_udu26")]
+[node name="WaitingChairsObstacle" parent="DecorationAndObstacles/WaitingChairs" instance=ExtResource("24_udu26")]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 34.3896, 2.38419e-07, -9.54763)
 
-[node name="WaitingChairsObstacle9" parent="Decoration/WaitingChairs" instance=ExtResource("24_udu26")]
+[node name="WaitingChairsObstacle9" parent="DecorationAndObstacles/WaitingChairs" instance=ExtResource("24_udu26")]
 transform = Transform3D(1, 0, -1.74846e-07, 0, 1, 0, 1.74846e-07, 0, 1, 25.4393, 7.15256e-07, -13.7661)
 
-[node name="WaitingChairsObstacle10" parent="Decoration/WaitingChairs" instance=ExtResource("24_udu26")]
+[node name="WaitingChairsObstacle10" parent="DecorationAndObstacles/WaitingChairs" instance=ExtResource("24_udu26")]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 20.761, 7.15256e-07, -12.3715)
 
-[node name="WaitingChairsObstacle2" parent="Decoration/WaitingChairs" instance=ExtResource("24_udu26")]
+[node name="WaitingChairsObstacle2" parent="DecorationAndObstacles/WaitingChairs" instance=ExtResource("24_udu26")]
 transform = Transform3D(1.31134e-07, 0, 1, 0, 1, 0, -1, 0, 1.31134e-07, 32.4911, 2.38419e-07, -15.5367)
 
-[node name="WaitingChairsObstacle7" parent="Decoration/WaitingChairs" instance=ExtResource("24_udu26")]
+[node name="WaitingChairsObstacle7" parent="DecorationAndObstacles/WaitingChairs" instance=ExtResource("24_udu26")]
 transform = Transform3D(1.31134e-07, 0, 1, 0, 1, 0, -1, 0, 1.31134e-07, -0.508877, 2.38419e-07, -15.6764)
 
-[node name="WaitingChairsObstacle8" parent="Decoration/WaitingChairs" instance=ExtResource("24_udu26")]
+[node name="WaitingChairsObstacle8" parent="DecorationAndObstacles/WaitingChairs" instance=ExtResource("24_udu26")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.584119, 2.38419e-07, -5.81004)
 
-[node name="WaitingChairsObstacle3" parent="Decoration/WaitingChairs" instance=ExtResource("24_udu26")]
+[node name="WaitingChairsObstacle3" parent="DecorationAndObstacles/WaitingChairs" instance=ExtResource("24_udu26")]
 transform = Transform3D(1.31134e-07, 0, 1, 0, 1, 0, -1, 0, 1.31134e-07, 28.5485, 2.38419e-07, -6.59987)
 
-[node name="WaitingChairsObstacle4" parent="Decoration/WaitingChairs" instance=ExtResource("24_udu26")]
+[node name="WaitingChairsObstacle4" parent="DecorationAndObstacles/WaitingChairs" instance=ExtResource("24_udu26")]
 transform = Transform3D(-2.18557e-07, 0, -1, 0, 1, 0, 1, 0, -2.18557e-07, 30.4412, 2.38419e-07, -3.52856)
 
-[node name="WaitingChairsObstacle5" parent="Decoration/WaitingChairs" instance=ExtResource("24_udu26")]
+[node name="WaitingChairsObstacle5" parent="DecorationAndObstacles/WaitingChairs" instance=ExtResource("24_udu26")]
 transform = Transform3D(1, 0, -3.49691e-07, 0, 1, 0, 3.49691e-07, 0, 1, 22.9396, 0.476074, 1.97343)
 
-[node name="WaitingChairsObstacle6" parent="Decoration/WaitingChairs" instance=ExtResource("24_udu26")]
+[node name="WaitingChairsObstacle6" parent="DecorationAndObstacles/WaitingChairs" instance=ExtResource("24_udu26")]
 transform = Transform3D(-1, 0, 2.62268e-07, 0, 1, 0, -2.62268e-07, 0, -1, 4.77462, 0.476074, 3.08075)
 
-[node name="signs" type="Node3D" parent="Decoration"]
+[node name="signs" type="Node3D" parent="DecorationAndObstacles"]
 
-[node name="direction_sign" parent="Decoration/signs" instance=ExtResource("25_wuc35")]
+[node name="direction_sign" parent="DecorationAndObstacles/signs" instance=ExtResource("25_wuc35")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.36065, 2.27966, 1.52828)
 
-[node name="direction_sign2" parent="Decoration/signs" instance=ExtResource("25_wuc35")]
+[node name="direction_sign2" parent="DecorationAndObstacles/signs" instance=ExtResource("25_wuc35")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.86408, 1.69908, -23.9868)
 
-[node name="HeartRateMonitor" type="Node3D" parent="Decoration"]
+[node name="HeartRateMonitor" type="Node3D" parent="DecorationAndObstacles"]
 
-[node name="HeartRateMonitorObstacle" parent="Decoration/HeartRateMonitor" instance=ExtResource("26_gx22f")]
+[node name="HeartRateMonitorObstacle" parent="DecorationAndObstacles/HeartRateMonitor" instance=ExtResource("26_gx22f")]
 transform = Transform3D(0.782836, 0, -0.622228, 0, 1, 0, 0.622228, 0, 0.782836, -0.487391, 0, -11.1201)
 
-[node name="HeartRateMonitorObstacle2" parent="Decoration/HeartRateMonitor" instance=ExtResource("26_gx22f")]
+[node name="HeartRateMonitorObstacle2" parent="DecorationAndObstacles/HeartRateMonitor" instance=ExtResource("26_gx22f")]
 transform = Transform3D(-0.93418, 0, -0.356803, 0, 1, 0, 0.356803, 0, -0.93418, 13.546, 0, -10.891)
 
-[node name="AirConditioning" type="Node3D" parent="Decoration"]
+[node name="AirConditioning" type="Node3D" parent="DecorationAndObstacles"]
 
-[node name="air conditioning_anim" parent="Decoration/AirConditioning" instance=ExtResource("27_dau8g")]
+[node name="air conditioning_anim" parent="DecorationAndObstacles/AirConditioning" instance=ExtResource("27_dau8g")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.856394, 1.78798, 0)
 
-[node name="air conditioning_anim2" parent="Decoration/AirConditioning" instance=ExtResource("27_dau8g")]
+[node name="air conditioning_anim2" parent="DecorationAndObstacles/AirConditioning" instance=ExtResource("27_dau8g")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -0.853488, 1.78798, -21.5227)
 
-[node name="air conditioning_anim3" parent="Decoration/AirConditioning" instance=ExtResource("27_dau8g")]
+[node name="air conditioning_anim3" parent="DecorationAndObstacles/AirConditioning" instance=ExtResource("27_dau8g")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 13.1181, 1.78798, -21.5227)
 
-[node name="air conditioning_anim4" parent="Decoration/AirConditioning" instance=ExtResource("27_dau8g")]
+[node name="air conditioning_anim4" parent="DecorationAndObstacles/AirConditioning" instance=ExtResource("27_dau8g")]
 transform = Transform3D(1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, 14.8175, 1.78798, -3.922)
 
-[node name="air conditioning_anim5" parent="Decoration/AirConditioning" instance=ExtResource("27_dau8g")]
+[node name="air conditioning_anim5" parent="DecorationAndObstacles/AirConditioning" instance=ExtResource("27_dau8g")]
 transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 24.956, 2.19684, 3.32678)
 
-[node name="air conditioning_anim6" parent="Decoration/AirConditioning" instance=ExtResource("27_dau8g")]
+[node name="air conditioning_anim6" parent="DecorationAndObstacles/AirConditioning" instance=ExtResource("27_dau8g")]
 transform = Transform3D(-2.13809e-07, 0, 0.978277, 0, 0.978277, 0, -0.978277, 0, -2.13809e-07, 30.1411, 1.75248, -13.8911)
 
-[node name="Trolleis" type="Node3D" parent="Decoration"]
+[node name="Trolleis" type="Node3D" parent="DecorationAndObstacles"]
 
-[node name="TrolleyObstacle" parent="Decoration/Trolleis" instance=ExtResource("28_p8cp4")]
+[node name="TrolleyObstacle" parent="DecorationAndObstacles/Trolleis" instance=ExtResource("28_p8cp4")]
 transform = Transform3D(0.367362, -0.930078, 4.0655e-08, 0, -4.37114e-08, -1, 0.930078, 0.367362, -1.60579e-08, 29.1133, 0.32526, -12.2642)
 
-[node name="CorpseBed" type="Node3D" parent="Decoration"]
+[node name="CorpseBed" type="Node3D" parent="DecorationAndObstacles"]
 
-[node name="CorpseBed" parent="Decoration/CorpseBed" instance=ExtResource("29_80sou")]
+[node name="CorpseBed" parent="DecorationAndObstacles/CorpseBed" instance=ExtResource("29_80sou")]
 transform = Transform3D(0.293809, 0, 0.597521, 0, 0.665849, 0, -0.597521, 0, 0.293809, 30.2902, 0, -10.3939)
+
+[node name="Wheelchairs" type="Node3D" parent="DecorationAndObstacles"]
+
+[node name="WheelchairObstacle" parent="DecorationAndObstacles/Wheelchairs" instance=ExtResource("30_yu1sw")]
+transform = Transform3D(-0.154262, 0, -0.51948, 0, 0.5419, 0, 0.51948, 0, -0.154262, 14.4587, -1.19209e-07, -1.31074)
+
+[node name="WheelchairObstacle2" parent="DecorationAndObstacles/Wheelchairs" instance=ExtResource("30_yu1sw")]
+transform = Transform3D(-0.154262, -0.51948, 1.86265e-08, 0, -2.36872e-08, -0.5419, 0.51948, -0.154262, 1.49012e-08, -0.0972745, 0.352241, -20.1404)
 
 [node name="EmergencyLights" type="Node3D" parent="."]
 
@@ -901,5 +910,5 @@ cull_mask = 524288
 [editable path="Lights/Light5/Switch/emergency_light"]
 [editable path="Lights/Light6"]
 [editable path="Lights/Light6/Switch/emergency_light"]
-[editable path="Decoration/corpse2"]
-[editable path="Decoration/corpse3"]
+[editable path="DecorationAndObstacles/corpse2"]
+[editable path="DecorationAndObstacles/corpse3"]

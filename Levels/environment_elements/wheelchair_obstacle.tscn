@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://dkr3xuxvgu4nu"]
+
+[ext_resource type="PackedScene" uid="uid://ben5eoim6xgw2" path="res://assets/props/wheelchair/wheelchair.tscn" id="1_ofr1n"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_os6r5"]
+size = Vector3(1.49561, 1.86523, 1.10828)
+
+[node name="WheelchairObstacle" type="Node3D"]
+
+[node name="Wheelchair" parent="." instance=ExtResource("1_ofr1n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.930347, 0)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Wheelchair"]
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Wheelchair/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.252197, 0.00585938, 0.0116577)
+shape = SubResource("BoxShape3D_os6r5")
