@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://dfdwh0py85qbd"]
+
+[ext_resource type="Script" path="res://Levels/environment_elements/audio_triggerer.gd" id="1_vp2bj"]
+
+[node name="AudioTriggerer" type="Node3D"]
+script = ExtResource("1_vp2bj")
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
