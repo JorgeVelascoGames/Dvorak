@@ -28,7 +28,7 @@ func show_first_warning() -> void:
 	if first_warning_timer.time_left > 0:
 		return
 	
-	player_ui.display_gameplay_text(first_warning_messages.pick_random(), 3)
+	player_ui.display_gameplay_text(first_warning_messages.pick_random(), 3, true)
 	first_warning_timer.start(first_warning_cd)
 
 
@@ -36,7 +36,7 @@ func show_second_warning() -> void:
 	if second_warning_timer.time_left > 0:
 		return
 	
-	player_ui.display_gameplay_text(second_warning_messages.pick_random(), 3)
+	player_ui.display_gameplay_text(second_warning_messages.pick_random(), 3, true)
 	second_warning_timer.start(second_warning_cd)
 
 
@@ -44,7 +44,7 @@ func show_third_warning() -> void:
 	if third_warning_timer.time_left > 0:
 		return
 	
-	player_ui.display_gameplay_text(third_warning_messages.pick_random(), 3)
+	player_ui.display_gameplay_text(third_warning_messages.pick_random(), 3, true)
 	third_warning_timer.start(third_warning_cd)
 
 
