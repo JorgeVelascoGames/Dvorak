@@ -1,4 +1,4 @@
-[gd_scene load_steps=94 format=3 uid="uid://m6pypgl566n1"]
+[gd_scene load_steps=98 format=3 uid="uid://m6pypgl566n1"]
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_ref5g"]
 [ext_resource type="Script" path="res://player/smooth_camera.gd" id="2_cywkd"]
@@ -45,6 +45,7 @@
 [ext_resource type="Script" path="res://player/player_audio_manager.gd" id="36_f26nf"]
 [ext_resource type="AudioStream" uid="uid://cn6b3yjuqakb1" path="res://assets/audio/player/foot_step.wav" id="44_6afom"]
 [ext_resource type="AudioStream" uid="uid://b4m717t5h023o" path="res://assets/audio/player/walker_draging.wav" id="45_2ydpv"]
+[ext_resource type="AudioStream" uid="uid://c2t7j43t8n85h" path="res://assets/audio/bell.wav" id="46_ki68j"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_fyred"]
 
@@ -65,6 +66,43 @@ font_size = 15
 outline_size = 2
 outline_color = Color(0.165656, 0.165657, 0.165656, 1)
 shadow_size = 4
+
+[sub_resource type="Animation" id="Animation_61kqb"]
+resource_name = "balance"
+length = 4.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(-0.0333333, 1.03333, 2.03333, 3.03333, 4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(0.823529, 0.823529, 0.823529, 0), Color(0.823529, 0.823529, 0.823529, 1), Color(0.823529, 0.823529, 0.823529, 0), Color(0.823529, 0.823529, 0.823529, 1), Color(0.823529, 0.823529, 0.823529, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_xr14j"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.823529, 0.823529, 0.823529, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_0afux"]
+_data = {
+"RESET": SubResource("Animation_xr14j"),
+"balance": SubResource("Animation_61kqb")
+}
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_acskl"]
 
@@ -718,11 +756,11 @@ mesh = SubResource("CapsuleMesh_fyred")
 [node name="Components" type="Node" parent="."]
 
 [node name="Balance" parent="Components" instance=ExtResource("10_m7euy")]
-max_balance = 4000.0
+max_balance = 7000.0
 sprint_penalty = 150.0
 rotation_cost_divident = 30.0
 getting_hit_cost = 500.0
-balance_recovery = 30.0
+balance_recovery = 5.0
 bonus_balance_recovery = 60.0
 
 [node name="AmmoCounter" type="Node" parent="Components"]
@@ -962,8 +1000,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="BalanceOverlay" type="TextureRect" parent="PlayerUI"]
-visible = false
-modulate = Color(0.823529, 0.823529, 0.823529, 1)
+modulate = Color(0.823529, 0.823529, 0.823529, 0)
 z_index = -90
 layout_mode = 1
 anchors_preset = 15
@@ -971,9 +1008,14 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("31_i030a")
+texture = ExtResource("30_c2sls")
 expand_mode = 2
 stretch_mode = 5
+
+[node name="BalanceOverlayAnimationPlayer" type="AnimationPlayer" parent="PlayerUI/BalanceOverlay"]
+libraries = {
+"": SubResource("AnimationLibrary_0afux")
+}
 
 [node name="DamagedOverlay" type="TextureRect" parent="PlayerUI"]
 visible = false
@@ -1169,7 +1211,7 @@ shape = SubResource("BoxShape3D_e43ec")
 
 [node name="FlashlightPivot" type="Node3D" parent="."]
 
-[node name="PlayerAudioManager" type="Node3D" parent="."]
+[node name="PlayerAudioManager" type="Node3D" parent="." groups=["player_audio"]]
 script = ExtResource("36_f26nf")
 walk_footsteps_time = 2.0
 walker_footsteps_time = 1.0
@@ -1191,6 +1233,10 @@ pitch_scale = 0.85
 [node name="Item" type="AudioStreamPlayer3D" parent="PlayerAudioManager"]
 
 [node name="FootStepsTimer" type="Timer" parent="PlayerAudioManager"]
+
+[node name="BalanceClues" type="AudioStreamPlayer" parent="PlayerAudioManager"]
+stream = ExtResource("46_ki68j")
+volume_db = 15.0
 
 [connection signal="transitioned" from="StateMachine" to="Components/Balance" method="_on_state_machine_transitioned"]
 [connection signal="transitioned" from="StateMachine" to="AnimationTree" method="_on_state_machine_transitioned"]

@@ -11,6 +11,7 @@ class_name PlayerAudioManager
 @onready var item: AudioStreamPlayer3D = $Item
 @onready var foot_steps_timer: Timer = $FootStepsTimer
 @onready var state_machine: StateMachine = $"../StateMachine"
+@onready var balance_clues: AudioStreamPlayer = $BalanceClues
 
 const CROWBAR_SWING = preload("res://assets/audio/player/crowbar_swing.wav")
 const FOOT_STEP = preload("res://assets/audio/player/foot_step.wav")
@@ -105,6 +106,10 @@ func check_correct_footsteps_timer() -> void:
 	elif  state_machine.state.name == "Walk" and not $"../StateMachine/Walk".sprinting:
 		correct_footsteps_timer = walker_footsteps_time
 
+
+func play_balance_clue(pitch : float = 1.0) -> void:
+	balance_clues.pitch_scale = pitch
+	balance_clues.play()
 
 
 func _on_foot_steps_timer_timeout() -> void:

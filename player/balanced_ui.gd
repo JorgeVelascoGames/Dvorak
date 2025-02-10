@@ -16,10 +16,10 @@ func _ready() -> void:
 
 
 func display_keys(key_1 : String, key_2 : String) -> void:
-	key_1 = key_1.to_upper()
+	key_1 = key_1.to_lower()
 	key_1 = key_1.reverse()
 	key_1 = key_1.left(1)
-	key_2 = key_2.to_upper()
+	key_2 = key_2.to_lower()
 	key_2 = key_2.reverse()
 	key_2 = key_2.left(1)
 	h_box_container.show()

@@ -17,6 +17,7 @@ extends Node
 @onready var third_warning_timer: Timer = $ThirdWarningTimer
 @onready var balance: Balance = $".."
 @onready var player_ui: PlayerUI = get_tree().get_first_node_in_group("player_ui") as PlayerUI
+@onready var player_audio : PlayerAudioManager = get_tree().get_first_node_in_group("player_audio") as PlayerAudioManager
 
 var first_threshold_passed := false
 var second_threshold_passed := false
@@ -30,7 +31,8 @@ func show_first_warning() -> void:
 	
 	player_ui.display_gameplay_text(first_warning_messages.pick_random(), 3, true)
 	first_warning_timer.start(first_warning_cd)
-
+	player_ui.balance_overlay_animation_player.play("balance")
+	player_audio.play_balance_clue()
 
 func show_second_warning() -> void:
 	if second_warning_timer.time_left > 0:
@@ -38,6 +40,8 @@ func show_second_warning() -> void:
 	
 	player_ui.display_gameplay_text(second_warning_messages.pick_random(), 3, true)
 	second_warning_timer.start(second_warning_cd)
+	player_ui.balance_overlay_animation_player.play("balance")
+	player_audio.play_balance_clue(.8)
 
 
 func show_third_warning() -> void:
@@ -46,6 +50,8 @@ func show_third_warning() -> void:
 	
 	player_ui.display_gameplay_text(third_warning_messages.pick_random(), 3, true)
 	third_warning_timer.start(third_warning_cd)
+	player_ui.balance_overlay_animation_player.play("balance")
+	player_audio.play_balance_clue(.6)
 
 
 func _on_balance_balance_added(amount: int) -> void:

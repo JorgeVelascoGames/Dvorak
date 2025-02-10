@@ -14,6 +14,10 @@ signal update_interaction_hints
 @onready var interaction_lable: Label = $"ControlHints/I-Text/GrabWalkerUI/InteractionLable"
 @onready var player_game_menu: Control = $PlayerGameMenu
 @onready var player_vhs_effect: VHSEffect = $PlayerVHSEffect
+@onready var balance_overlay: TextureRect = $BalanceOverlay
+@onready var balance_overlay_animation_player: AnimationPlayer = $BalanceOverlay/BalanceOverlayAnimationPlayer
+
+const SCREEN_OVERLAY_BALANCE_01 = preload("uid://cngiemxinj0jx")
 
 var tween : Tween
 var r_hint_priority := 0
