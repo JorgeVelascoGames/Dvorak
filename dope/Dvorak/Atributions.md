@@ -53,3 +53,7 @@ baby laughing around 6 months old by andreaskg -- https://freesound.org/s/537312
 "Wheelchair 3.0" (https://skfb.ly/Is9W) by neverfollow81 is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/).
 
 Trying to open a locked door by Kodack -- https://freesound.org/s/256606/ -- License: Creative Commons 0
+
+mechanism.mp3 by Rhulk -- https://freesound.org/s/245462/ -- License: Creative Commons 0
+
+Bell 08.wav by Kyster -- https://freesound.org/s/79438/ -- License: Attribution 4.0

@@ -1,4 +1,4 @@
-[gd_scene load_steps=91 format=3 uid="uid://m6pypgl566n1"]
+[gd_scene load_steps=94 format=3 uid="uid://m6pypgl566n1"]
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_ref5g"]
 [ext_resource type="Script" path="res://player/smooth_camera.gd" id="2_cywkd"]
@@ -43,6 +43,8 @@
 [ext_resource type="Shader" path="res://shaders/vhs.gdshader" id="34_l5ybq"]
 [ext_resource type="Script" path="res://game_manager/vhs_effect.gd" id="35_5ytlk"]
 [ext_resource type="Script" path="res://player/player_audio_manager.gd" id="36_f26nf"]
+[ext_resource type="AudioStream" uid="uid://cn6b3yjuqakb1" path="res://assets/audio/player/foot_step.wav" id="44_6afom"]
+[ext_resource type="AudioStream" uid="uid://b4m717t5h023o" path="res://assets/audio/player/walker_draging.wav" id="45_2ydpv"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_fyred"]
 
@@ -585,6 +587,12 @@ node_connections = [&"TimeScale", 0, &"losing balance_anim", &"TimeScale 2", 0, 
 [sub_resource type="BoxShape3D" id="BoxShape3D_e43ec"]
 size = Vector3(0.615, 1, 1)
 
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_3oo6b"]
+playback_mode = 1
+random_pitch = 1.2
+streams_count = 1
+stream_0/stream = ExtResource("44_6afom")
+
 [node name="Player" type="CharacterBody3D" groups=["player"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 collision_layer = 4
@@ -954,6 +962,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="DamagedOverlay" type="TextureRect" parent="PlayerUI"]
+visible = false
 modulate = Color(0, 0, 0, 0.694118)
 self_modulate = Color(0.699653, 0.699654, 0.699653, 1)
 z_index = -90
@@ -1146,14 +1155,24 @@ shape = SubResource("BoxShape3D_e43ec")
 
 [node name="FlashlightPivot" type="Node3D" parent="."]
 
-[node name="PlayerAudioManager" type="Node" parent="."]
+[node name="PlayerAudioManager" type="Node3D" parent="."]
 script = ExtResource("36_f26nf")
+walk_footsteps_time = 2.0
+walker_footsteps_time = 1.0
+run_footsteps_time = 0.5
 
 [node name="PlayerVoice" type="AudioStreamPlayer3D" parent="PlayerAudioManager"]
 
 [node name="PlayerFootsteps" type="AudioStreamPlayer3D" parent="PlayerAudioManager"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.935457, 0)
+stream = SubResource("AudioStreamRandomizer_3oo6b")
+volume_db = -23.0
 
 [node name="WalkerWheels" type="AudioStreamPlayer3D" parent="PlayerAudioManager"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.939767, -0.870794)
+stream = ExtResource("45_2ydpv")
+volume_db = -18.0
+pitch_scale = 0.85
 
 [node name="Item" type="AudioStreamPlayer3D" parent="PlayerAudioManager"]
 
@@ -1161,6 +1180,7 @@ script = ExtResource("36_f26nf")
 
 [connection signal="transitioned" from="StateMachine" to="Components/Balance" method="_on_state_machine_transitioned"]
 [connection signal="transitioned" from="StateMachine" to="AnimationTree" method="_on_state_machine_transitioned"]
+[connection signal="transitioned" from="StateMachine" to="PlayerAudioManager" method="_on_state_machine_transitioned"]
 [connection signal="timeout" from="StateMachine/Aim/SensibilityTimer" to="StateMachine/Aim" method="_on_sensibility_timer_timeout"]
 [connection signal="timeout" from="StateMachine/Unbalanced/Timer" to="StateMachine/Unbalanced" method="_on_timer_timeout"]
 [connection signal="timeout" from="StateMachine/Unbalanced/ErrorTimer" to="StateMachine/Unbalanced" method="_on_error_timer_timeout"]

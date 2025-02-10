@@ -10,6 +10,7 @@ class_name PlayerAudioManager
 @onready var walker_wheels: AudioStreamPlayer3D = $WalkerWheels
 @onready var item: AudioStreamPlayer3D = $Item
 @onready var foot_steps_timer: Timer = $FootStepsTimer
+@onready var state_machine: StateMachine = $"../StateMachine"
 
 const CROWBAR_SWING = preload("res://assets/audio/player/crowbar_swing.wav")
 const FOOT_STEP = preload("res://assets/audio/player/foot_step.wav")
@@ -18,6 +19,24 @@ const PREP_GUN = preload("res://assets/audio/player/prep_gun.wav")
 const RELOAD_GUN = preload("res://assets/audio/player/reload_gun.wav")
 const GUN_TRIGGER = preload("res://assets/audio/player/gun_trigger.mp3")
 const FLASHLIGHT_SWITCH = preload("res://assets/audio/player/flashlight_switch.wav")
+
+var correct_footsteps_timer : float = 0.0
+var moving := false
+
+
+func _process(delta: float) -> void:
+	check_correct_footsteps_timer()
+	if state_machine.state.name == "Walker":
+		if $"../StateMachine/Walker".movement != Walker.MOVEMENT_TYPE.idle:
+			if not moving:
+				start_footsteps()
+			moving = true
+			if not walker_wheels.is_playing():
+				walker_wheels.play()
+		else :
+			moving = false
+			walker_wheels.stop()
+			foot_steps_timer.stop()
 
 
 func load_gun() -> void:
@@ -54,13 +73,8 @@ func cancel_item_sound() -> void:
 	item.stop()
 
 
-func start_footsteps(is_on_walker := true, running := false) -> void:
-	var correct_footsteps = walker_footsteps_time
-	if is_on_walker:
-		correct_footsteps = walker_footsteps_time
-	if not is_on_walker and running:
-		correct_footsteps = run_footsteps_time
-	foot_steps_timer.start(correct_footsteps)
+func start_footsteps() -> void:
+	foot_steps_timer.start(correct_footsteps_timer)
 
 
 func stop_footsteps() -> void:
@@ -83,5 +97,27 @@ func flashlight_switch() -> void:
 	item.volume_db = 0.0
 
 
+func check_correct_footsteps_timer() -> void:
+	if state_machine.state.name == "Walker":
+		correct_footsteps_timer = walker_footsteps_time
+	elif  state_machine.state.name == "Walk" and $"../StateMachine/Walk".sprinting:
+		correct_footsteps_timer = run_footsteps_time
+	elif  state_machine.state.name == "Walk" and not $"../StateMachine/Walk".sprinting:
+		correct_footsteps_timer = walker_footsteps_time
+
+
+
 func _on_foot_steps_timer_timeout() -> void:
 	player_footsteps.play()
+	if moving:
+		start_footsteps()
+
+
+func _on_state_machine_transitioned(state_name: Variant) -> void:
+	if state_name == "Walk":
+		if not moving:
+			start_footsteps()
+		moving = true
+	else:
+		moving = false
+		foot_steps_timer.stop()
