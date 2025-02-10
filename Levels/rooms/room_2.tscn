@@ -51,7 +51,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.50611, 0.889645, -3.03384)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.638104, 0.456615, -0.290334)
 
 [node name="Cross" parent="." instance=ExtResource("5_olr7g")]
-transform = Transform3D(1, 0, -1.06581e-14, 0, 1, 0, 1.06581e-14, 0, 1, 0.910936, 0.982012, 1.59916)
+transform = Transform3D(1, 0, -1.06581e-14, 0, 1, 0, 1.06581e-14, 0, 1, 0.678285, 0.420963, 1.38914)
 
 [node name="emergency_light" parent="." instance=ExtResource("7_yls4g")]
 transform = Transform3D(-1.07093e-08, -0.245, 0, 0.245, -1.07093e-08, 0, 0, 0, 0.245, -2.924, 1.312, 0)
@@ -129,3 +129,4 @@ transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0.7950
 transform = Transform3D(-0.0109604, 0, -0.99994, 0, 1, 0, 0.99994, 0, -0.0109604, 0.971538, 1.03572, 3.11922)
 
 [editable path="lights/Light"]
+[editable path="lights/Light/Switch/emergency_light"]
