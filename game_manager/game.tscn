@@ -72,6 +72,7 @@ script = ExtResource("9_whl67")
 max_enemies_on_level = 4
 spawn_frecuency = 40.0
 enemies_on_load = 1
+no_enemies = true
 
 [node name="SpawnerTimer" type="Timer" parent="EnemyManager"]
 
