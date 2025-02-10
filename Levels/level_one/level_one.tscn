@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=3 uid="uid://b37la44wjrp4u"]
+[gd_scene load_steps=43 format=3 uid="uid://b37la44wjrp4u"]
 
 [ext_resource type="PackedScene" uid="uid://dqk45r48r427t" path="res://Levels/level_one/level_one_scenario.tscn" id="1_jujem"]
 [ext_resource type="Environment" uid="uid://c42wra3u6yo6u" path="res://Levels/world_environment.tres" id="1_rc4ww"]
@@ -35,6 +35,7 @@
 [ext_resource type="PackedScene" uid="uid://bsek7niojuln7" path="res://assets/props/corpse/corpse.tscn" id="28_udafe"]
 [ext_resource type="PackedScene" uid="uid://durrfwbbthbm6" path="res://assets/props/corpse_bed/corpse_bed.tscn" id="29_80sou"]
 [ext_resource type="PackedScene" uid="uid://dkr3xuxvgu4nu" path="res://Levels/environment_elements/wheelchair_obstacle.tscn" id="30_yu1sw"]
+[ext_resource type="Texture2D" uid="uid://bdxy3nle62xug" path="res://assets/textures/blood/blood_1.png" id="35_5cms3"]
 [ext_resource type="PackedScene" uid="uid://dfdwh0py85qbd" path="res://Levels/environment_elements/audio_triggerer.tscn" id="36_dp5fl"]
 [ext_resource type="AudioStream" uid="uid://weph0pv7itv" path="res://assets/audio/ambient/force_door.wav" id="37_8p0g5"]
 [ext_resource type="AudioStream" uid="uid://c0qqnbr716c6g" path="res://assets/audio/ambient/newborn_cry.wav" id="38_oa0xf"]
@@ -215,6 +216,9 @@ transform = Transform3D(0.293809, 0, 0.597521, 0, 0.665849, 0, -0.597521, 0, 0.2
 [node name="HeartRateMonitorObstacle" parent="NavigationRegion3D/Obstacles/HeartRateMonitor" instance=ExtResource("26_gx22f")]
 transform = Transform3D(0.782836, 0, -0.622228, 0, 1, 0, 0.622228, 0, 0.782836, -0.487391, 0, -11.1201)
 
+[node name="HeartRateMonitorObstacle3" parent="NavigationRegion3D/Obstacles/HeartRateMonitor" instance=ExtResource("26_gx22f")]
+transform = Transform3D(0.782836, 0, -0.622228, 0, 1, 0, 0.622228, 0, 0.782836, 0.972425, 4.99192, -13.453)
+
 [node name="HeartRateMonitorObstacle2" parent="NavigationRegion3D/Obstacles/HeartRateMonitor" instance=ExtResource("26_gx22f")]
 transform = Transform3D(-0.93418, 0, -0.356803, 0, 1, 0, 0.356803, 0, -0.93418, 13.546, 0, -10.891)
 
@@ -231,6 +235,9 @@ transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 20.761
 
 [node name="WaitingChairsObstacle11" parent="NavigationRegion3D/Obstacles/WaitingChairs" instance=ExtResource("24_udu26")]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 2.5818, 9.53675e-07, -22.498)
+
+[node name="WaitingChairsObstacle12" parent="NavigationRegion3D/Obstacles/WaitingChairs" instance=ExtResource("24_udu26")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 10.2221, 9.53675e-07, -22.498)
 
 [node name="WaitingChairsObstacle2" parent="NavigationRegion3D/Obstacles/WaitingChairs" instance=ExtResource("24_udu26")]
 transform = Transform3D(1.31134e-07, 0, 1, 0, 1, 0, -1, 0, 1.31134e-07, 32.4911, 2.38419e-07, -15.5367)
@@ -258,11 +265,34 @@ transform = Transform3D(-1, 0, 2.62268e-07, 0, 1, 0, -2.62268e-07, 0, -1, 4.7746
 [node name="WheelchairObstacle" parent="NavigationRegion3D/Obstacles/Wheelchairs" instance=ExtResource("30_yu1sw")]
 transform = Transform3D(-0.154262, 0, -0.51948, 0, 0.5419, 0, 0.51948, 0, -0.154262, 14.4587, -1.19209e-07, -1.31074)
 
+[node name="WheelchairObstacle7" parent="NavigationRegion3D/Obstacles/Wheelchairs" instance=ExtResource("30_yu1sw")]
+transform = Transform3D(-0.428133, 0, -0.332202, 0, 0.5419, 0, 0.332202, 0, -0.428133, 36.0942, -1.19209e-07, -16.0962)
+
 [node name="WheelchairObstacle3" parent="NavigationRegion3D/Obstacles/Wheelchairs" instance=ExtResource("30_yu1sw")]
 transform = Transform3D(-0.523225, 0, -0.141039, 0, 0.5419, 0, 0.141039, 0, -0.523225, 5.28758, -1.19209e-07, -23.3855)
 
+[node name="WheelchairObstacle4" parent="NavigationRegion3D/Obstacles/Wheelchairs" instance=ExtResource("30_yu1sw")]
+transform = Transform3D(-0.203903, 0, -0.502076, 0, 0.5419, 0, 0.502076, 0, -0.203903, 13.5467, -1.19209e-07, -18.3501)
+
+[node name="WheelchairObstacle5" parent="NavigationRegion3D/Obstacles/Wheelchairs" instance=ExtResource("30_yu1sw")]
+transform = Transform3D(0.486612, 0, -0.238463, 0, 0.5419, 0, 0.238463, 0, 0.486612, 13.6239, 1.1921e-07, -16.7538)
+
+[node name="WheelchairObstacle6" parent="NavigationRegion3D/Obstacles/Wheelchairs" instance=ExtResource("30_yu1sw")]
+transform = Transform3D(0.250155, 0.480706, -9.4166e-09, -0.0251338, 0.0130793, 0.54116, 0.480049, -0.249812, 0.0283332, 14.0082, 0.286207, -21.4093)
+
 [node name="WheelchairObstacle2" parent="NavigationRegion3D/Obstacles/Wheelchairs" instance=ExtResource("30_yu1sw")]
 transform = Transform3D(-0.154262, -0.51948, 1.86265e-08, 0, -2.36872e-08, -0.5419, 0.51948, -0.154262, 1.49012e-08, -0.0972745, 0.352241, -20.1404)
+
+[node name="Trolleis" type="Node3D" parent="NavigationRegion3D/Obstacles"]
+
+[node name="TrolleyObstacle" parent="NavigationRegion3D/Obstacles/Trolleis" instance=ExtResource("28_p8cp4")]
+transform = Transform3D(0.367362, -0.930078, 4.0655e-08, 0, -4.37114e-08, -1, 0.930078, 0.367362, -1.60579e-08, 29.1133, 0.32526, -12.2642)
+
+[node name="TrolleyObstacle2" parent="NavigationRegion3D/Obstacles/Trolleis" instance=ExtResource("28_p8cp4")]
+transform = Transform3D(0.970469, 0, 0.241228, 0, 1, 0, -0.241228, 0, 0.970469, 18.9266, 0.101219, -12.5218)
+
+[node name="TrolleyObstacle3" parent="NavigationRegion3D/Obstacles/Trolleis" instance=ExtResource("28_p8cp4")]
+transform = Transform3D(0.248115, 0, 0.968731, 0, 1, 0, -0.968731, 0, 0.248115, 0.423252, 0.00622731, -7.98707)
 
 [node name="LevelUI" type="Control" parent="."]
 layout_mode = 3
@@ -838,10 +868,8 @@ transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 24.956, 
 [node name="air conditioning_anim6" parent="Decoration/AirConditioning" instance=ExtResource("27_dau8g")]
 transform = Transform3D(-2.13809e-07, 0, 0.978277, 0, 0.978277, 0, -0.978277, 0, -2.13809e-07, 30.1411, 1.75248, -13.8911)
 
-[node name="Trolleis" type="Node3D" parent="Decoration"]
-
-[node name="TrolleyObstacle" parent="Decoration/Trolleis" instance=ExtResource("28_p8cp4")]
-transform = Transform3D(0.367362, -0.930078, 4.0655e-08, 0, -4.37114e-08, -1, 0.930078, 0.367362, -1.60579e-08, 29.1133, 0.32526, -12.2642)
+[node name="air conditioning_anim7" parent="Decoration/AirConditioning" instance=ExtResource("27_dau8g")]
+transform = Transform3D(2.99333e-07, 0, -0.978277, 0, 0.978277, 0, 0.978277, 0, 2.99333e-07, 32.6936, 1.75248, -9.14411)
 
 [node name="EmergencyLights" type="Node3D" parent="."]
 
@@ -899,6 +927,12 @@ cull_mask = 524288
 transform = Transform3D(0.994977, 0, -0.100101, 0, 1, 0, 0.100101, 0, 0.994977, -0.254522, 0.182012, -17.3979)
 size = Vector3(1.1001, 1, 1)
 texture_albedo = ExtResource("25_h3682")
+cull_mask = 524288
+
+[node name="Decal5" type="Decal" parent="Decals"]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 31.9916, 1.73552, -15.7297)
+size = Vector3(1.1001, 1, 1.42383)
+texture_albedo = ExtResource("35_5cms3")
 cull_mask = 524288
 
 [node name="Decal4" type="Decal" parent="Decals"]
