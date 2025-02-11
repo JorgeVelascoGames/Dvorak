@@ -125,9 +125,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.31959, 1.378, 0.0415192)
 
 [node name="PassSwitch2" parent="NavigationRegion3D/ExitGate" instance=ExtResource("14_o22yu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.74717, 1.378, 0.0415192)
+switch_index = 2
 
 [node name="PassSwitch3" parent="NavigationRegion3D/ExitGate" instance=ExtResource("14_o22yu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.14589, 1.378, 0.0415192)
+switch_index = 3
 
 [node name="FillingCabinets" type="Node3D" parent="NavigationRegion3D"]
 
@@ -351,9 +353,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18, 5, -5)
 [node name="LampLight" parent="Lamps" instance=ExtResource("13_jxmsh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 34.2789, 2.28097, -11.8971)
 
-[node name="LampLight2" parent="Lamps" instance=ExtResource("13_jxmsh")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 34.2789, 2.28097, -16.2127)
-
 [node name="Lights" type="Node3D" parent="."]
 
 [node name="Light" parent="Lights" instance=ExtResource("5_fux4b")]
@@ -390,6 +389,7 @@ omni_range = 5.82458
 omni_attenuation = 1.745
 
 [node name="Light2" parent="Lights" instance=ExtResource("5_fux4b")]
+is_tweaking_light = true
 
 [node name="Switch" parent="Lights/Light2" index="1"]
 transform = Transform3D(-2.18557e-08, 0, -0.5, 0, 0.5, 0, 0.5, 0, -2.18557e-08, 14.8816, 1.31075, -14.755)
@@ -431,6 +431,7 @@ omni_range = 5.82458
 omni_attenuation = 1.745
 
 [node name="Light3" parent="Lights" instance=ExtResource("5_fux4b")]
+is_tweaking_light = true
 
 [node name="Switch" parent="Lights/Light3" index="1"]
 transform = Transform3D(3.7749e-08, 0, 0.5, 0, 0.5, 0, -0.5, 0, 3.7749e-08, 0.569003, 6.32909, 0.87231)
@@ -462,6 +463,7 @@ omni_range = 5.82458
 omni_attenuation = 1.745
 
 [node name="Light4" parent="Lights" instance=ExtResource("5_fux4b")]
+is_tweaking_light = true
 
 [node name="Switch" parent="Lights/Light4" index="1"]
 transform = Transform3D(-0.5, 0, -7.54979e-08, 0, 0.5, 0, 7.54979e-08, 0, -0.5, 20.8992, 1.80038, 3.42786)
@@ -494,12 +496,14 @@ omni_attenuation = 1.745
 
 [node name="Light5" parent="Lights" instance=ExtResource("5_fux4b")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29.7961, 7.44771, -22.7984)
+is_tweaking_light = true
 
 [node name="Switch" parent="Lights/Light5" index="1"]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -1.81036, -1.1135, -0.632025)
 
 [node name="Light6" parent="Lights" instance=ExtResource("5_fux4b")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.5683, 7.44771, -13.2192)
+is_tweaking_light = true
 
 [node name="Switch" parent="Lights/Light6" index="1"]
 transform = Transform3D(0.496134, 0, 0, 0, 0.496134, 0, 0, 0, 0.496134, -1.81036, -1.18577, -0.712404)
@@ -876,6 +880,9 @@ transform = Transform3D(2.99333e-07, 0, -0.978277, 0, 0.978277, 0, 0.978277, 0, 
 [node name="emergency_light" parent="EmergencyLights" instance=ExtResource("13_3rriw")]
 transform = Transform3D(1.07093e-08, 0.245, -2.14186e-08, 0.245, -1.07093e-08, 0, -9.36237e-16, -2.14186e-08, -0.245, -9.94365, 6.88033, 2.37458)
 
+[node name="emergency_light6" parent="EmergencyLights" instance=ExtResource("13_3rriw")]
+transform = Transform3D(-1.07093e-08, -0.245, 4.28372e-08, 0.245, -1.07093e-08, 0, 1.87247e-15, 4.28372e-08, 0.245, 34.9459, 7.27838, -22.2776)
+
 [node name="emergency_light2" parent="EmergencyLights" instance=ExtResource("13_3rriw")]
 transform = Transform3D(4.68118e-16, 1.07093e-08, 0.245, 0.245, -1.07093e-08, 0, 1.07093e-08, 0.245, -1.07093e-08, -0.524738, 2.33441, -23.9464)
 
@@ -1031,8 +1038,6 @@ randomize_at_ready = true
 [editable path="NavigationRegion3D/ExitGate/MainSwitch/switch"]
 [editable path="Lamps/LampLight"]
 [editable path="Lamps/LampLight/LampModel"]
-[editable path="Lamps/LampLight2"]
-[editable path="Lamps/LampLight2/LampModel"]
 [editable path="Lights/Light"]
 [editable path="Lights/Light/Switch/emergency_light"]
 [editable path="Lights/Light2"]

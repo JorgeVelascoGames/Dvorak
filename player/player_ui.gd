@@ -132,10 +132,18 @@ func _on_player_health_new_heal_state(HEAL_STATE: PlayerHealth.HEALTH_STATE) -> 
 		PlayerHealth.HEALTH_STATE.healthy:
 			damaged_overlay.hide()
 			dying_overlay.hide()
+			player_vhs_effect.close_vhs_effect(3)
 		PlayerHealth.HEALTH_STATE.injure:
 			damaged_overlay.show()
 			dying_overlay.hide()
+			player_vhs_effect.show()
+			player_vhs_effect.shader_mat.set_shader_parameter("tape_crease_smear", 0.3)
+			player_vhs_effect.shader_mat.set_shader_parameter("crease_noise", 0.3)
 		PlayerHealth.HEALTH_STATE.dying:
 			dying_overlay.texture = dying_overlay_screens.pick_random()
 			damaged_overlay.show()
 			dying_overlay.show()
+			player_vhs_effect.shader_mat.set_shader_parameter("tape_crease_smear", 2.0)
+			player_vhs_effect.shader_mat.set_shader_parameter("crease_noise", 2.0)
+			player_vhs_effect.tween_crease_noise(0.3, player_health.time_to_recover_from_dying)
+			player_vhs_effect.tween_tape_crease_smear(0.3, player_health.time_to_recover_from_dying)

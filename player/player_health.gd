@@ -58,21 +58,6 @@ func heal_up() -> void:
 
 func change_health_state(new_state : HEALTH_STATE) -> void:
 	health_state = new_state
-	match health_state:
-		HEALTH_STATE.healthy:
-			vhs_effect.close_vhs_effect(3)
-			$"../../PlayerUI/DyingOverlay".hide()
-		HEALTH_STATE.injure:
-			vhs_effect.show()
-			vhs_effect.shader_mat.set_shader_parameter("tape_crease_smear", 0.3)
-			vhs_effect.shader_mat.set_shader_parameter("crease_noise", 0.3)
-			$"../../PlayerUI/DyingOverlay".hide()
-		HEALTH_STATE.dying:
-			$"../../PlayerUI/DyingOverlay".show()
-			vhs_effect.shader_mat.set_shader_parameter("tape_crease_smear", 2.0)
-			vhs_effect.shader_mat.set_shader_parameter("crease_noise", 2.0)
-			vhs_effect.tween_crease_noise(0.3, time_to_recover_from_dying)
-			vhs_effect.tween_tape_crease_smear(0.3, time_to_recover_from_dying)
 	new_heal_state.emit(new_state)
 
 

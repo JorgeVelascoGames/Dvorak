@@ -44,9 +44,9 @@ func _tween_tape_crease_smear(amount : float) -> void:
 
 ##Use for closing the VHS overlay effect in a given time. Doesn't cause conflict if its reactivated by some effect before closing
 func close_vhs_effect(time : float) -> void:
-	is_closing = true
 	tween_crease_noise(0, time)
 	tween_tape_crease_smear(0, time)
+	is_closing = true
 	await get_tree().create_timer(time).timeout
 	if is_closing:
 		hide()

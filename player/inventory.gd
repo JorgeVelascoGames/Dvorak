@@ -16,6 +16,7 @@ var lost_item_messages : Array[String] = [
 	"A harsh jolt scatters %d %s around you, echoing your own disorientation"
 ]
 
+
 func pick_batteries(amount : int = 1) -> void:
 	batteries_amount += amount
 	if amount == 1:
@@ -49,7 +50,7 @@ func use_pills() -> bool:
 
 
 func lose_item_random() -> void:
-	var item_types = ["bullet, pill, battery"]
+	var item_types = ["bullet", "pill", "battery"]
 	if ammo_stored <= 0:
 		item_types.erase("bullet")
 	if batteries_amount <= 0:
@@ -61,6 +62,7 @@ func lose_item_random() -> void:
 		return
 	
 	var selected_item_type = item_types.pick_random()
+	print(selected_item_type)
 	match selected_item_type:
 		"bullet":
 			lose_bullets()

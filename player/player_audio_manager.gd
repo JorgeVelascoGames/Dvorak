@@ -21,6 +21,26 @@ const RELOAD_GUN = preload("res://assets/audio/player/reload_gun.wav")
 const GUN_TRIGGER = preload("res://assets/audio/player/gun_trigger.mp3")
 const FLASHLIGHT_SWITCH = preload("res://assets/audio/player/flashlight_switch.wav")
 
+var gun_fire_no_bullets : Array = [
+	preload("uid://hri8nosrsv4e"),
+	preload("uid://bsu4usamya3hn"),
+	preload("uid://bea8gigu3p2gn"),
+	preload("uid://cr2u4kqvx3kk8"),
+	preload("uid://x2iim7qlvpg7"),
+	preload("uid://unsd0trqiei"),
+	preload("uid://xthpi6pyfgx5")
+]
+
+var pick_gun : Array = [
+	preload("uid://di7jhw2sp6a63"),
+	preload("uid://djdff8alalnn6"),
+	preload("uid://cp1ua7py3k6kj"),
+	preload("uid://dxd65fnfbiolk"),
+	preload("uid://d3cxobewjmigc"),
+	preload("uid://br4vs2jybr6xw"),
+	preload("uid://dt8uxbm6feg8p"),
+]
+
 var correct_footsteps_timer : float = 0.0
 var moving := false
 
@@ -41,7 +61,12 @@ func _process(delta: float) -> void:
 
 
 func load_gun() -> void:
-	pass
+	item.stream = RELOAD_GUN
+	item.play()
+
+
+func stop_load_gun() -> void:
+	item.stop()
 
 
 func shoot_gun() -> void:
@@ -63,7 +88,7 @@ func crowbar_swing() -> void:
 
 
 func gun_out_of_bullets() -> void:
-	item.stream = GUN_TRIGGER
+	item.stream = gun_fire_no_bullets.pick_random()
 	item.volume_db += 12.0
 	item.play(0.40)
 	await item.finished

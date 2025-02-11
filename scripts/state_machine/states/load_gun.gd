@@ -31,6 +31,7 @@ func enter(_msg : ={}) -> void:
 	left_key_selection = left_side_keys.pick_random()
 	right_key_selection = right_side_keys.pick_random()
 	balanced_ui.display_keys(left_key_selection, right_key_selection)
+	player.player_audio_manager.load_gun()
 	
 	animated_gun.show()
 	animated_gun.position = Vector3(.3, 0.0, .2)
@@ -75,6 +76,7 @@ func cancel_and_finish() -> void:
 
 
 func exit() -> void:
+	player.player_audio_manager.load_gun()
 	animation_tree["parameters/load_gun_trigger/request"] = AnimationNodeOneShot.ONE_SHOT_REQUEST_ABORT
 	animated_gun.hide()
 	correct_key_pressed = 0

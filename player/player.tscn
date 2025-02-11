@@ -62,6 +62,21 @@ outline_size = 2
 outline_color = Color(0.165656, 0.165657, 0.165656, 1)
 shadow_size = 4
 
+[sub_resource type="Animation" id="Animation_xr14j"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.823529, 0.823529, 0.823529, 0)]
+}
+
 [sub_resource type="Animation" id="Animation_61kqb"]
 resource_name = "balance"
 length = 4.0
@@ -78,7 +93,13 @@ tracks/0/keys = {
 "values": [Color(0.823529, 0.823529, 0.823529, 0), Color(0.823529, 0.823529, 0.823529, 1), Color(0.823529, 0.823529, 0.823529, 0), Color(0.823529, 0.823529, 0.823529, 1), Color(0.823529, 0.823529, 0.823529, 0)]
 }
 
-[sub_resource type="Animation" id="Animation_xr14j"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_0afux"]
+_data = {
+"RESET": SubResource("Animation_xr14j"),
+"balance": SubResource("Animation_61kqb")
+}
+
+[sub_resource type="Animation" id="Animation_nxnfr"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -90,13 +111,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Color(0.823529, 0.823529, 0.823529, 0)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_0afux"]
-_data = {
-"RESET": SubResource("Animation_xr14j"),
-"balance": SubResource("Animation_61kqb")
+"values": [Color(1, 1, 1, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_a0n8q"]
@@ -114,21 +129,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
-}
-
-[sub_resource type="Animation" id="Animation_nxnfr"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 0)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_dktf4"]
@@ -812,6 +812,7 @@ script = ExtResource("15_8pfmq")
 
 [node name="PlayerHealth" type="Node" parent="Components"]
 script = ExtResource("20_8ocdq")
+time_to_heal_up = 5.0
 full_health_messages = Array[String](["Strength surges back—your body remembers what it means to endure", "The weight lifts, the pain fades, and you stand renewed", "Your breath steadies, your wounds seal—another chance to fight", "The specter of death retreats, if only for a moment", "A second wind fills your lungs, defying the shadows that sought you", "You feel whole again, but scars remember", "Pain is gone, but its memory lingers—you will not falter", "Grace fills your limbs, and your wounds close—His mercy endures", "The pain is lifted, your path restored—rise, for your trial is not yet over", "You stand renewed, as if the hand of the divine has granted you reprieve"])
 damaged_messages = Array[String](["Your breath falters, pain creeping into your every step", "A crimson stain blooms—your body betrays you", "Your limbs grow heavy, your heartbeat hammers in your ears", "The wound stings, a cruel reminder that you are still alive", "Warm blood trickles down—weakness seeps in", "You stumble, the world tilting as agony sets in", "Your strength wavers, but you are not done yet", "Your flesh is torn, yet suffering is but the path to salvation", "A trial of pain, a test of faith—endure, and He shall not forsake you", "Blood spills, but in suffering, the soul is refined"])
 dying_messages = Array[String](["Each step is a struggle, each breath a desperate plea", "Darkness lingers at the edges of your vision—your body is failing", "Your hands tremble, your legs barely obey—this is the end drawing near", "A cold weight settles in your chest. You are slipping away", "Pain is distant now, replaced by the creeping embrace of oblivion", "Your body is a shattered vessel, moving only by sheer will", "You are on borrowed time, and the debt is coming due", "Your body crumbles, but the soul must not waver—He watches still", "Each step is a penance, each breath a prayer—redemption nears", "The veil grows thin, and the weight of sin presses upon you"])
@@ -960,7 +961,6 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="BalanceOverlay" type="TextureRect" parent="PlayerUI"]
-visible = false
 modulate = Color(0.823529, 0.823529, 0.823529, 0)
 z_index = -90
 layout_mode = 1
@@ -980,8 +980,6 @@ libraries = {
 
 [node name="DamagedOverlay" type="TextureRect" parent="PlayerUI"]
 visible = false
-modulate = Color(0, 0, 0, 0.694118)
-self_modulate = Color(0.699653, 0.699654, 0.699653, 1)
 z_index = -90
 layout_mode = 1
 anchors_preset = 15
