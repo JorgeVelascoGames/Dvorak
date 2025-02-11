@@ -1,5 +1,7 @@
 extends Node
 
+signal new_threshold_reached(threshold : DANGER_THRESHOLD)
+
 @export var first_warning_cd : float
 @export var second_warning_cd : float
 @export var third_warning_cd : float
@@ -19,9 +21,8 @@ extends Node
 @onready var player_ui: PlayerUI = get_tree().get_first_node_in_group("player_ui") as PlayerUI
 @onready var player_audio : PlayerAudioManager = get_tree().get_first_node_in_group("player_audio") as PlayerAudioManager
 
-var first_threshold_passed := false
-var second_threshold_passed := false
-var third_threshold_passed := false
+enum DANGER_THRESHOLD {none, first, second, third}
+var danger_state : DANGER_THRESHOLD = DANGER_THRESHOLD.first
 
 #aviso de que el equilibrio ha bajado a menos de 15%
 
@@ -54,20 +55,30 @@ func show_third_warning() -> void:
 	player_audio.play_balance_clue(.6)
 
 
-func _on_balance_balance_added(amount: int) -> void:
-	if balance.get_percentage() > first_warning_threshold and first_threshold_passed == false:
+func _balance_added() -> void:
+	var percentage = balance.get_percentage()
+	if percentage < first_warning_threshold and danger_state != 0:
+		change_threshold(0)
+		return
+	if percentage < second_warning_threshold and percentage > first_warning_threshold and danger_state != 1:
+		change_threshold(1)
 		show_first_warning()
-		first_threshold_passed = true
-	if balance.get_percentage() > second_warning_threshold and second_threshold_passed == false:
+		return
+	if percentage < third_warning_threshold and percentage > second_warning_threshold and danger_state != 2:
+		change_threshold(2)
 		show_second_warning()
-		second_threshold_passed = true
-	if balance.get_percentage() > third_warning_threshold and third_threshold_passed == false:
+		return
+	if  percentage > third_warning_threshold and danger_state != 3:
+		change_threshold(3)
 		show_third_warning()
-		third_threshold_passed = true
-		
-	if balance.get_percentage() < first_warning_threshold:
-		first_threshold_passed = false
-	if balance.get_percentage() < second_warning_threshold:
-		second_threshold_passed = false
-	if balance.get_percentage() < third_warning_threshold:
-		third_threshold_passed = false
+
+
+func change_threshold(threshold : DANGER_THRESHOLD) -> void:
+	if danger_state == threshold:
+		return
+	danger_state = threshold
+	new_threshold_reached.emit(danger_state)
+
+
+func _on_check_balance_state_timeout() -> void:
+	_balance_added()

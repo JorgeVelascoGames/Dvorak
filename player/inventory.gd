@@ -8,7 +8,7 @@ var batteries_amount := 0
 var pills := 0
 var lost_item_messages : Array[String] = [
 	"As you hit the ground, %d %s scattered into the darkness…",
-	"Your trembling hands fail you—%d %S slip away, beyond reach",
+	"Your trembling hands fail you. %d %s slip away, beyond reach",
 	"A brutal impact claims %d %s, left behind on the cold floor",
 	"In your fall, %d %s tumble from your grasp, lost among the shadows",
 	"The impact rattles your senses; %d %s spill out like fragments of hope",

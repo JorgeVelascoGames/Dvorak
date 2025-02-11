@@ -19,7 +19,6 @@ signal balance_added(amount : int)
 @export var swing_cost := 200.00
 @export var shooting_cost := 150.00
 @export var getting_hit_cost : float
-@export var balance_recovery : float
 @export var bonus_balance_recovery : float
 @export var walker_balance_recovery := 100.00
 @export var pill_balance_recovery := 120.00
@@ -99,8 +98,8 @@ func add_balance(amount : int) -> void:
 		current_balance += amount * (weapon_balance_penalty / 100) 
 	
 	if current_balance >= max_balance:
-		reset_balance()
-		player.state_machine.transition_to("Unbalanced", {})
+		if player.state_machine.state.name != "Unbalanced" and player.state_machine.state.name != "Downed":
+			player.state_machine.transition_to("Unbalanced", {})
 	
 	balance_added.emit(amount)
 	update_ui()
@@ -131,10 +130,6 @@ func take_pill() -> void:
 func _on_balance_recovery_timer_timeout():
 	var objective_balance := current_balance
 	
-	if direction:
-		objective_balance -= balance_recovery / 2 #We divide by 2 because the timer goes every 0.5 secs
-	else:
-		objective_balance -= bonus_balance_recovery / 2
 	if not $PillBonusTimer.is_stopped():
 		objective_balance -= pill_balance_recovery / 2
 	if player.state_machine.state.name == "Walker":

@@ -1,4 +1,4 @@
-[gd_scene load_steps=103 format=3 uid="uid://m6pypgl566n1"]
+[gd_scene load_steps=106 format=3 uid="uid://m6pypgl566n1"]
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_ref5g"]
 [ext_resource type="Script" path="res://player/smooth_camera.gd" id="2_cywkd"]
@@ -13,7 +13,6 @@
 [ext_resource type="FontFile" uid="uid://dc0vrsfwu33ll" path="res://assets/fonts/roboto/Roboto-Regular.ttf" id="8_dofuu"]
 [ext_resource type="Script" path="res://scripts/state_machine/states/Downed.gd" id="9_q33c7"]
 [ext_resource type="Script" path="res://scripts/state_machine/states/long_interaction.gd" id="10_b71wi"]
-[ext_resource type="PackedScene" uid="uid://shutxn8dpbys" path="res://player/balance.tscn" id="10_m7euy"]
 [ext_resource type="Script" path="res://player/ammo_counter.gd" id="11_xb6v7"]
 [ext_resource type="Script" path="res://scripts/state_machine/states/crowbar_swing.gd" id="12_6so70"]
 [ext_resource type="Shape3D" uid="uid://df6y055xrghl7" path="res://player/player_normal_collision_shape.tres" id="12_6t6rn"]
@@ -22,7 +21,10 @@
 [ext_resource type="Script" path="res://scripts/state_machine/states/load_gun.gd" id="14_3bkdw"]
 [ext_resource type="Script" path="res://scripts/state_machine/states/change_batteries.gd" id="15_6uppe"]
 [ext_resource type="Script" path="res://player/inventory.gd" id="15_8pfmq"]
+[ext_resource type="Script" path="res://player/balance.gd" id="16_ipk1w"]
+[ext_resource type="PackedScene" uid="uid://cdlefkst24dm8" path="res://player/player_ui.tscn" id="17_e0317"]
 [ext_resource type="Resource" uid="uid://c27ts5odnmaxq" path="res://scripts/resources/reload_hint.tres" id="18_6q2xb"]
+[ext_resource type="Script" path="res://player/balance_feedback.gd" id="18_y0x57"]
 [ext_resource type="Script" path="res://player/player_health.gd" id="20_8ocdq"]
 [ext_resource type="PackedScene" uid="uid://4j0uw0ki1luc" path="res://player/walker.tscn" id="20_qts6k"]
 [ext_resource type="PackedScene" uid="uid://cpyss678yatou" path="res://assets/props/gun/gun_model.tscn" id="21_lgr1q"]
@@ -48,6 +50,7 @@
 [ext_resource type="AudioStream" uid="uid://cn6b3yjuqakb1" path="res://assets/audio/player/foot_step.wav" id="44_6afom"]
 [ext_resource type="AudioStream" uid="uid://b4m717t5h023o" path="res://assets/audio/player/walker_draging.wav" id="45_2ydpv"]
 [ext_resource type="AudioStream" uid="uid://c2t7j43t8n85h" path="res://assets/audio/bell.wav" id="46_ki68j"]
+[ext_resource type="AudioStream" uid="uid://lgeiirv5ghph" path="res://assets/audio/player/hearthbeat.wav" id="49_234b6"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_fyred"]
 
@@ -161,8 +164,8 @@ shader_parameter/tape_crease_intensity = 0.2
 shader_parameter/tape_crease_jitter = 0.1
 shader_parameter/tape_crease_speed = 0.5
 shader_parameter/tape_crease_discoloration = 1.0
-shader_parameter/bottom_border_thickness = 15.4
-shader_parameter/bottom_border_jitter = 18.5
+shader_parameter/bottom_border_thickness = 0.0
+shader_parameter/bottom_border_jitter = 0.0
 shader_parameter/noise_intensity = 0.0
 shader_parameter/noise_texture = SubResource("NoiseTexture2D_fla38")
 
@@ -795,13 +798,73 @@ mesh = SubResource("CapsuleMesh_fyred")
 
 [node name="Components" type="Node" parent="."]
 
-[node name="Balance" parent="Components" instance=ExtResource("10_m7euy")]
+[node name="Balance" type="Node" parent="Components"]
+script = ExtResource("16_ipk1w")
 max_balance = 7000.0
 sprint_penalty = 150.0
 rotation_cost_divident = 30.0
 getting_hit_cost = 500.0
-balance_recovery = 5.0
 bonus_balance_recovery = 60.0
+
+[node name="BalanceRecoveryTimer" type="Timer" parent="Components/Balance"]
+wait_time = 0.5
+autostart = true
+
+[node name="PillBonusTimer" type="Timer" parent="Components/Balance"]
+wait_time = 12.0
+one_shot = true
+
+[node name="UI" parent="Components/Balance" instance=ExtResource("17_e0317")]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 0.0
+offset_bottom = 0.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+
+[node name="BalanceBar" type="ProgressBar" parent="Components/Balance/UI"]
+visible = false
+visibility_layer = 3
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -57.5
+offset_top = -35.665
+offset_right = 57.5
+offset_bottom = -21.665
+grow_horizontal = 2
+grow_vertical = 0
+show_percentage = false
+
+[node name="BalanceFeedback" type="Node" parent="Components/Balance"]
+script = ExtResource("18_y0x57")
+first_warning_cd = 4.0
+second_warning_cd = 4.0
+third_warning_cd = 4.0
+first_warning_threshold = 35
+second_warning_threshold = 65
+third_warning_threshold = 90
+first_warning_messages = Array[String](["Your vision blurs, as if the room itself is swaying", "A cold sweat breaks across your skin; something feels wrong", "You hear a faint ringing in your ears, like distant whispers", "The walls seem closer, the air heavier", "Your steps feel unsteady, as though the floor is shifting beneath you"])
+second_warning_messages = Array[String](["The room spins uncontrollably; your grip on reality weakens", "Your pulse races as shadows twist and warp before your eyes", "Each breath feels heavier, suffocating in the ever-narrowing space", "You struggle to stay upright, your mind drowning in a whirlpool of confusion", "It feels like you're sinking, the weight of the world pressing down on you"])
+third_warning_messages = Array[String](["The world collapses around you; nothing feels real anymore", "Your body betrays you, trembling uncontrollably, as your thoughts fracture", "It’s too late. The walls are closing in, crushing your sense of self", "The ground beneath you is gone; you’re falling into an endless abyss", "A creeping void overtakes your mind; there's no escape now"])
+
+[node name="FirstWarningTimer" type="Timer" parent="Components/Balance/BalanceFeedback"]
+one_shot = true
+
+[node name="SecondWarningTimer" type="Timer" parent="Components/Balance/BalanceFeedback"]
+one_shot = true
+
+[node name="ThirdWarningTimer" type="Timer" parent="Components/Balance/BalanceFeedback"]
+one_shot = true
+
+[node name="CheckBalanceState" type="Timer" parent="Components/Balance/BalanceFeedback"]
+wait_time = 0.4
+autostart = true
 
 [node name="AmmoCounter" type="Node" parent="Components"]
 script = ExtResource("11_xb6v7")
@@ -1297,12 +1360,19 @@ pitch_scale = 0.85
 stream = ExtResource("46_ki68j")
 volume_db = 15.0
 
+[node name="Heartbeat" type="AudioStreamPlayer" parent="PlayerAudioManager"]
+stream = ExtResource("49_234b6")
+volume_db = 12.0
+
 [connection signal="transitioned" from="StateMachine" to="Components/Balance" method="_on_state_machine_transitioned"]
 [connection signal="transitioned" from="StateMachine" to="AnimationTree" method="_on_state_machine_transitioned"]
 [connection signal="transitioned" from="StateMachine" to="PlayerAudioManager" method="_on_state_machine_transitioned"]
 [connection signal="timeout" from="StateMachine/Aim/SensibilityTimer" to="StateMachine/Aim" method="_on_sensibility_timer_timeout"]
 [connection signal="timeout" from="StateMachine/Unbalanced/Timer" to="StateMachine/Unbalanced" method="_on_timer_timeout"]
 [connection signal="timeout" from="StateMachine/Unbalanced/ErrorTimer" to="StateMachine/Unbalanced" method="_on_error_timer_timeout"]
+[connection signal="timeout" from="Components/Balance/BalanceRecoveryTimer" to="Components/Balance" method="_on_balance_recovery_timer_timeout"]
+[connection signal="new_threshold_reached" from="Components/Balance/BalanceFeedback" to="PlayerAudioManager" method="_on_balance_feedback_new_threshold_reached"]
+[connection signal="timeout" from="Components/Balance/BalanceFeedback/CheckBalanceState" to="Components/Balance/BalanceFeedback" method="_on_check_balance_state_timeout"]
 [connection signal="new_heal_state" from="Components/PlayerHealth" to="PlayerUI" method="_on_player_health_new_heal_state"]
 [connection signal="timeout" from="Components/PlayerHealth/DamagedHealTimer" to="Components/PlayerHealth" method="_on_damaged_heal_timer_timeout"]
 [connection signal="timeout" from="CameraPivot/FollowPivot/WorldCamera/AimShakeTimer" to="CameraPivot/FollowPivot/WorldCamera" method="_on_aim_shake_timer_timeout"]

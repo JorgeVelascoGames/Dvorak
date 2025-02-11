@@ -88,6 +88,8 @@ func _correct_key() -> void:
 
 
 func finish_state(state : String) -> void:
+	if state != "Downed":
+		$"../../Components/Balance".reset_balance()
 	finished_state = true
 	timer.stop()
 	error_timer.stop()

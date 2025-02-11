@@ -91,6 +91,7 @@ func blend_to_fix_pivot(amount : float) -> void:
 
 func exit() -> void:
 	#increase de difficulty for the next time
+	$"../../Components/Balance".reset_balance()
 	necessary_keys_to_press_min += difficulty_increase
 	necessary_keys_to_press_max += difficulty_increase
 	necessary_keys_to_press_min = clampi(necessary_keys_to_press_min, 1, necessary_keys_to_press_min * max_difficulty_increase_coef)

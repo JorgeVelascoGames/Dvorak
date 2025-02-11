@@ -12,6 +12,8 @@ class_name PlayerAudioManager
 @onready var foot_steps_timer: Timer = $FootStepsTimer
 @onready var state_machine: StateMachine = $"../StateMachine"
 @onready var balance_clues: AudioStreamPlayer = $BalanceClues
+@onready var heartbeat: AudioStreamPlayer = $Heartbeat
+@onready var hearthbeat_tween : Tween = get_tree().create_tween()
 
 const CROWBAR_SWING = preload("res://assets/audio/player/crowbar_swing.wav")
 const FOOT_STEP = preload("res://assets/audio/player/foot_step.wav")
@@ -137,6 +139,25 @@ func play_balance_clue(pitch : float = 1.0) -> void:
 	balance_clues.play()
 
 
+func start_hearthbeat() -> void:
+	if hearthbeat_tween.is_running():
+		hearthbeat_tween.kill()
+	heartbeat.volume_db = -33
+	heartbeat.play()
+	hearthbeat_tween = get_tree().create_tween()
+	hearthbeat_tween.tween_property(heartbeat, "volume_db", 12, 3)
+
+
+func stop_hearthbeat() -> void:
+	if hearthbeat_tween.is_running():
+		hearthbeat_tween.kill()
+	hearthbeat_tween.kill()
+	hearthbeat_tween = get_tree().create_tween()
+	hearthbeat_tween.tween_property(heartbeat, "volume_db", -33, 7)
+	await hearthbeat_tween.finished
+	heartbeat.stop()
+
+
 func _on_foot_steps_timer_timeout() -> void:
 	player_footsteps.play()
 	if moving:
@@ -151,3 +172,12 @@ func _on_state_machine_transitioned(state_name: Variant) -> void:
 	else:
 		moving = false
 		foot_steps_timer.stop()
+
+
+func _on_balance_feedback_new_threshold_reached(threshold: int) -> void:
+	if threshold == 3:
+		start_hearthbeat()
+		return
+	
+	if heartbeat.playing and threshold != 3:
+		stop_hearthbeat()
