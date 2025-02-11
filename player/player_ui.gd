@@ -16,6 +16,10 @@ signal update_interaction_hints
 @onready var player_vhs_effect: VHSEffect = $PlayerVHSEffect
 @onready var balance_overlay: TextureRect = $BalanceOverlay
 @onready var balance_overlay_animation_player: AnimationPlayer = $BalanceOverlay/BalanceOverlayAnimationPlayer
+@onready var danger_overlay: TextureRect = $DangerOverlay
+@onready var player_health: PlayerHealth = $"../Components/PlayerHealth"
+@onready var damaged_overlay: TextureRect = $DamagedOverlay
+@onready var dying_overlay: TextureRect = $DyingOverlay
 
 const SCREEN_OVERLAY_BALANCE_01 = preload("uid://cngiemxinj0jx")
 
@@ -23,6 +27,16 @@ var tween : Tween
 var r_hint_priority := 0
 var constant_hints_to_display : Array[Hint] = []
 var interact_hints_to_display : Array[Hint] = []
+var dying_overlay_screens : Array[CompressedTexture2D] = [
+	preload("uid://bm0w456skdflw"),
+	preload("uid://2p6oygmy1yto"),
+	preload("uid://dcu5m0bd1f3lg")
+]
+var danger_overlay_screens : Array[CompressedTexture2D] = [
+	preload("uid://cybbasys4aa0v"),
+	preload("uid://ghviyvynlgu2"),
+	preload("uid://coammvgktdxvh")
+]
 
 
 func _ready() -> void:
@@ -111,3 +125,17 @@ func write_interaction_hints() -> void:
 	
 	i_text.show()
 	interaction_lable.text = selected_hint.hint
+
+
+func _on_player_health_new_heal_state(HEAL_STATE: PlayerHealth.HEALTH_STATE) -> void:
+	match HEAL_STATE:
+		PlayerHealth.HEALTH_STATE.healthy:
+			damaged_overlay.hide()
+			dying_overlay.hide()
+		PlayerHealth.HEALTH_STATE.injure:
+			damaged_overlay.show()
+			dying_overlay.hide()
+		PlayerHealth.HEALTH_STATE.dying:
+			dying_overlay.texture = dying_overlay_screens.pick_random()
+			damaged_overlay.show()
+			dying_overlay.show()

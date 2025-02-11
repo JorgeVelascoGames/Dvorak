@@ -1,4 +1,4 @@
-[gd_scene load_steps=98 format=3 uid="uid://m6pypgl566n1"]
+[gd_scene load_steps=103 format=3 uid="uid://m6pypgl566n1"]
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_ref5g"]
 [ext_resource type="Script" path="res://player/smooth_camera.gd" id="2_cywkd"]
@@ -31,6 +31,7 @@
 [ext_resource type="Script" path="res://player/crowbar_attack_hitbox.gd" id="24_nhdqm"]
 [ext_resource type="FontFile" uid="uid://djkxaekxrwieb" path="res://assets/fonts/roboto/Roboto-Italic.ttf" id="26_ekr4f"]
 [ext_resource type="Script" path="res://player/crosshair.gd" id="27_ktygo"]
+[ext_resource type="Texture2D" uid="uid://brv17rwye8h7b" path="res://assets/UI/screen_overlay_01.png" id="28_43xm4"]
 [ext_resource type="PackedScene" uid="uid://cv00qs5ggy5x" path="res://assets/props/flaslight/flaslight.tscn" id="28_lrh3t"]
 [ext_resource type="Script" path="res://player/balanced_ui.gd" id="28_qoh17"]
 [ext_resource type="Texture2D" uid="uid://7g1tf1lcm1l7" path="res://assets/UI/tile_0233.png" id="28_rfyh2"]
@@ -40,6 +41,7 @@
 [ext_resource type="Script" path="res://player/player_game_menu.gd" id="31_0c3op"]
 [ext_resource type="Texture2D" uid="uid://bm0w456skdflw" path="res://assets/UI/screen_overlay_02.png" id="31_i030a"]
 [ext_resource type="LabelSettings" uid="uid://uvcnfvkxej6y" path="res://game_ui/flavour_text_lable_settings.tres" id="31_u8436"]
+[ext_resource type="Texture2D" uid="uid://cybbasys4aa0v" path="res://assets/UI/screen_overlay_danger_01.png" id="32_sb6m1"]
 [ext_resource type="Shader" path="res://shaders/vhs.gdshader" id="34_l5ybq"]
 [ext_resource type="Script" path="res://game_manager/vhs_effect.gd" id="35_5ytlk"]
 [ext_resource type="Script" path="res://player/player_audio_manager.gd" id="36_f26nf"]
@@ -52,13 +54,6 @@
 [sub_resource type="LabelSettings" id="LabelSettings_cswfq"]
 font = ExtResource("8_dofuu")
 font_size = 64
-
-[sub_resource type="LabelSettings" id="LabelSettings_3m322"]
-font = ExtResource("26_ekr4f")
-font_size = 15
-outline_size = 2
-outline_color = Color(0.165656, 0.165657, 0.165656, 1)
-shadow_size = 4
 
 [sub_resource type="LabelSettings" id="LabelSettings_eftwr"]
 font = ExtResource("26_ekr4f")
@@ -103,6 +98,51 @@ _data = {
 "RESET": SubResource("Animation_xr14j"),
 "balance": SubResource("Animation_61kqb")
 }
+
+[sub_resource type="Animation" id="Animation_a0n8q"]
+resource_name = "danger"
+length = 2.0
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_nxnfr"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_dktf4"]
+_data = {
+"RESET": SubResource("Animation_nxnfr"),
+"danger": SubResource("Animation_a0n8q")
+}
+
+[sub_resource type="LabelSettings" id="LabelSettings_3m322"]
+font = ExtResource("26_ekr4f")
+font_size = 15
+outline_size = 2
+outline_color = Color(0.165656, 0.165657, 0.165656, 1)
+shadow_size = 4
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_acskl"]
 
@@ -854,21 +894,6 @@ size_flags_horizontal = 0
 size_flags_vertical = 0
 label_settings = SubResource("LabelSettings_cswfq")
 
-[node name="PlayerGameplayInfo" type="Label" parent="PlayerUI"]
-layout_mode = 1
-anchors_preset = 14
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-offset_top = -14.0
-offset_bottom = 12.0
-grow_horizontal = 2
-grow_vertical = 2
-text = "dfasdfa"
-label_settings = SubResource("LabelSettings_3m322")
-horizontal_alignment = 1
-autowrap_mode = 3
-
 [node name="Crosshair" type="CenterContainer" parent="PlayerUI"]
 visible = false
 layout_mode = 1
@@ -883,6 +908,133 @@ layout_mode = 2
 script = ExtResource("27_ktygo")
 
 [node name="Timer" type="Timer" parent="PlayerUI"]
+
+[node name="ControlHints" type="HBoxContainer" parent="PlayerUI"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+alignment = 1
+
+[node name="Const-Text" type="MarginContainer" parent="PlayerUI/ControlHints"]
+visible = false
+layout_mode = 2
+
+[node name="GrabWalkerUI" type="HBoxContainer" parent="PlayerUI/ControlHints/Const-Text"]
+layout_mode = 2
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="PlayerUI/ControlHints/Const-Text/GrabWalkerUI"]
+visible = false
+layout_mode = 2
+
+[node name="ConstLable" type="Label" parent="PlayerUI/ControlHints/Const-Text/GrabWalkerUI"]
+layout_mode = 2
+size_flags_vertical = 0
+text = "R- Grab walker"
+label_settings = SubResource("LabelSettings_eftwr")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="I-Text" type="MarginContainer" parent="PlayerUI/ControlHints"]
+visible = false
+layout_mode = 2
+
+[node name="GrabWalkerUI" type="HBoxContainer" parent="PlayerUI/ControlHints/I-Text"]
+layout_mode = 2
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="PlayerUI/ControlHints/I-Text/GrabWalkerUI"]
+visible = false
+layout_mode = 2
+
+[node name="InteractionLable" type="Label" parent="PlayerUI/ControlHints/I-Text/GrabWalkerUI"]
+layout_mode = 2
+size_flags_vertical = 0
+text = "R- Grab walker"
+label_settings = SubResource("LabelSettings_eftwr")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BalanceOverlay" type="TextureRect" parent="PlayerUI"]
+visible = false
+modulate = Color(0.823529, 0.823529, 0.823529, 0)
+z_index = -90
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("30_c2sls")
+expand_mode = 2
+stretch_mode = 5
+
+[node name="BalanceOverlayAnimationPlayer" type="AnimationPlayer" parent="PlayerUI/BalanceOverlay"]
+libraries = {
+"": SubResource("AnimationLibrary_0afux")
+}
+
+[node name="DamagedOverlay" type="TextureRect" parent="PlayerUI"]
+visible = false
+modulate = Color(0, 0, 0, 0.694118)
+self_modulate = Color(0.699653, 0.699654, 0.699653, 1)
+z_index = -90
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("28_43xm4")
+expand_mode = 2
+stretch_mode = 5
+
+[node name="HearthBeat" type="ColorRect" parent="PlayerUI"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="DyingOverlay" type="TextureRect" parent="PlayerUI"]
+visible = false
+modulate = Color(0.823529, 0.823529, 0.823529, 1)
+z_index = -90
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("31_i030a")
+expand_mode = 2
+stretch_mode = 5
+
+[node name="DangerOverlay" type="TextureRect" parent="PlayerUI"]
+visible = false
+modulate = Color(1, 1, 1, 0)
+z_index = -90
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("32_sb6m1")
+expand_mode = 2
+stretch_mode = 5
+
+[node name="DangerOverlayAnimator" type="AnimationPlayer" parent="PlayerUI/DangerOverlay"]
+libraries = {
+"": SubResource("AnimationLibrary_dktf4")
+}
+autoplay = "danger"
 
 [node name="BalancedUI" type="Control" parent="PlayerUI"]
 layout_mode = 1
@@ -949,111 +1101,20 @@ vertical_alignment = 1
 wait_time = 0.2
 autostart = true
 
-[node name="ControlHints" type="HBoxContainer" parent="PlayerUI"]
+[node name="PlayerGameplayInfo" type="Label" parent="PlayerUI"]
 layout_mode = 1
-anchors_preset = 15
+anchors_preset = 14
+anchor_top = 0.5
 anchor_right = 1.0
-anchor_bottom = 1.0
+anchor_bottom = 0.5
+offset_top = -14.0
+offset_bottom = 12.0
 grow_horizontal = 2
 grow_vertical = 2
-mouse_filter = 2
-alignment = 1
-
-[node name="Const-Text" type="MarginContainer" parent="PlayerUI/ControlHints"]
-visible = false
-layout_mode = 2
-
-[node name="GrabWalkerUI" type="HBoxContainer" parent="PlayerUI/ControlHints/Const-Text"]
-layout_mode = 2
-alignment = 1
-
-[node name="TextureRect" type="TextureRect" parent="PlayerUI/ControlHints/Const-Text/GrabWalkerUI"]
-visible = false
-layout_mode = 2
-
-[node name="ConstLable" type="Label" parent="PlayerUI/ControlHints/Const-Text/GrabWalkerUI"]
-layout_mode = 2
-size_flags_vertical = 0
-text = "R- Grab walker"
-label_settings = SubResource("LabelSettings_eftwr")
+text = "dfasdfa"
+label_settings = SubResource("LabelSettings_3m322")
 horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="I-Text" type="MarginContainer" parent="PlayerUI/ControlHints"]
-visible = false
-layout_mode = 2
-
-[node name="GrabWalkerUI" type="HBoxContainer" parent="PlayerUI/ControlHints/I-Text"]
-layout_mode = 2
-alignment = 1
-
-[node name="TextureRect" type="TextureRect" parent="PlayerUI/ControlHints/I-Text/GrabWalkerUI"]
-visible = false
-layout_mode = 2
-
-[node name="InteractionLable" type="Label" parent="PlayerUI/ControlHints/I-Text/GrabWalkerUI"]
-layout_mode = 2
-size_flags_vertical = 0
-text = "R- Grab walker"
-label_settings = SubResource("LabelSettings_eftwr")
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="BalanceOverlay" type="TextureRect" parent="PlayerUI"]
-modulate = Color(0.823529, 0.823529, 0.823529, 0)
-z_index = -90
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("30_c2sls")
-expand_mode = 2
-stretch_mode = 5
-
-[node name="BalanceOverlayAnimationPlayer" type="AnimationPlayer" parent="PlayerUI/BalanceOverlay"]
-libraries = {
-"": SubResource("AnimationLibrary_0afux")
-}
-
-[node name="DamagedOverlay" type="TextureRect" parent="PlayerUI"]
-visible = false
-modulate = Color(0, 0, 0, 0.694118)
-self_modulate = Color(0.699653, 0.699654, 0.699653, 1)
-z_index = -90
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("30_c2sls")
-expand_mode = 2
-stretch_mode = 5
-
-[node name="HearthBeat" type="ColorRect" parent="PlayerUI"]
-visible = false
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="DyingOverlay" type="TextureRect" parent="PlayerUI"]
-visible = false
-modulate = Color(0.823529, 0.823529, 0.823529, 1)
-z_index = -90
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("31_i030a")
-expand_mode = 2
-stretch_mode = 5
+autowrap_mode = 3
 
 [node name="PlayerVHSEffect" type="ColorRect" parent="PlayerUI"]
 visible = false
@@ -1244,6 +1305,7 @@ volume_db = 15.0
 [connection signal="timeout" from="StateMachine/Aim/SensibilityTimer" to="StateMachine/Aim" method="_on_sensibility_timer_timeout"]
 [connection signal="timeout" from="StateMachine/Unbalanced/Timer" to="StateMachine/Unbalanced" method="_on_timer_timeout"]
 [connection signal="timeout" from="StateMachine/Unbalanced/ErrorTimer" to="StateMachine/Unbalanced" method="_on_error_timer_timeout"]
+[connection signal="new_heal_state" from="Components/PlayerHealth" to="PlayerUI" method="_on_player_health_new_heal_state"]
 [connection signal="timeout" from="Components/PlayerHealth/DamagedHealTimer" to="Components/PlayerHealth" method="_on_damaged_heal_timer_timeout"]
 [connection signal="timeout" from="CameraPivot/FollowPivot/WorldCamera/AimShakeTimer" to="CameraPivot/FollowPivot/WorldCamera" method="_on_aim_shake_timer_timeout"]
 [connection signal="pressed" from="PlayerUI/PlayerGameMenu/PanelContainer/HBoxContainer/ButtonsPanel/Buttons/ResumeButton" to="PlayerUI/PlayerGameMenu" method="_on_resume_button_pressed"]

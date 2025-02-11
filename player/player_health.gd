@@ -3,7 +3,7 @@ class_name PlayerHealth
 
 enum HEALTH_STATE {healthy, injure, dying}
 
-signal new_heal_state(HEAL_STATE)
+signal new_heal_state(HEAL_STATE : HEALTH_STATE)
 
 @export var health_state := HEALTH_STATE.healthy
 @export var time_to_heal_up := 30.00
@@ -40,9 +40,9 @@ func player_hit() -> void:
 		player.player_ui.display_gameplay_text(dying_messages.pick_random(), 5)
 
 
-#func _input(event: InputEvent) -> void:
-	#if event.is_action_pressed("test"):
-		#player_hit()
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("test"):
+		player_hit()
 
 
 func heal_up() -> void:
