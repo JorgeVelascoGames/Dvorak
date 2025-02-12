@@ -4,7 +4,9 @@ class_name InfanticideEnemy
 @onready var visible_on_screen_notifier_3d: VisibleOnScreenNotifier3D = $VisibleOnScreenNotifier3D
 @onready var infanticide_audio: AudioStreamPlayer3D = $InfanticideAudio
 
-var queue_audio_file
+var queue_audio_file : Array = [
+	preload("res://assets/audio/crying_woman.wav")
+]
 var original_speed : float
 var super_speed := 14.00
 var vhs_tween : Tween
@@ -70,5 +72,5 @@ func play_audio_queu() -> void:
 	if audio_queu_played:
 		return
 	audio_queu_played = true
-	infanticide_audio.stream = queue_audio_file
+	infanticide_audio.stream = queue_audio_file.pick_random()
 	infanticide_audio.play()
