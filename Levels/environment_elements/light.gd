@@ -4,11 +4,12 @@ extends Node3D
 @export var light_original_intensity := 1.0 ##The light energy of every single light on this switch
 
 @onready var light_timer: Timer = $LightTimer
-@onready var switch_sound: AudioStreamPlayer3D = $Switch/SwitchSound
 @onready var position_lights: OmniLight3D = $Switch/emergency_light/PositionLights
 #@onready var animation_player: AnimationPlayer = $Switch/PositionLights/AnimationPlayer
 @onready var animation_tree: SwitchAnimation = $Switch/swich/AnimationTree
 @onready var switch: StaticBody3D = $Switch
+@onready var switch_audio: AudioStreamPlayer3D = $Switch/SwitchAudio
+@onready var forcing_audio: AudioStreamPlayer3D = $Switch/ForcingAudio
 
 const LIGHT_BUBBLE_SOUND = preload("res://Levels/environment_elements/light_bubble_sound.tscn")
 
@@ -33,7 +34,7 @@ func _ready() -> void:
 func on_switch_press() -> void:
 	switch_light()
 	
-	#PLAY SOUND TODO
+	switch_audio.play()
 	
 	if light_on:
 		pass #play sound
@@ -106,11 +107,14 @@ func on_calamity() -> void:
 
 func _on_interactable_on_long_interact() -> void:
 	on_switch_press()
+	forcing_audio.stop()
 
 
 func _on_interactable_on_start_long_interaction() -> void:
 	animation_tree.start_moving_animation()
+	forcing_audio.play()
 
 
 func _on_interactable_on_stop_long_interaction() -> void:
 	animation_tree.switch_into_off_position()
+	forcing_audio.stop()

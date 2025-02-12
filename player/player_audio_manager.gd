@@ -43,6 +43,17 @@ var pick_gun : Array = [
 	preload("uid://dt8uxbm6feg8p"),
 ]
 
+var pick_flashlight : Array = [
+	preload("uid://d3adyamccyiak"),
+	preload("uid://dedc5kyfigoge"),
+	preload("uid://bg6guxjjmp637"),
+	preload("uid://pkhhjiq3huno"),
+	preload("uid://bqdi6mj4n7ddd"),
+	preload("uid://deav6ifwhxtsb"),
+	preload("uid://by2tfddml4kjd"),
+	preload("uid://bqjljb3qtvtxn"),
+]
+
 var correct_footsteps_timer : float = 0.0
 var moving := false
 
@@ -62,6 +73,7 @@ func _process(delta: float) -> void:
 			foot_steps_timer.stop()
 
 
+#region Gun
 func load_gun() -> void:
 	item.stream = RELOAD_GUN
 	item.play()
@@ -81,12 +93,9 @@ func prepare_gun() -> void:
 	item.play()
 
 
-func crowbar_swing() -> void:
-	item.stream = CROWBAR_SWING
-	item.pitch_scale = randf_range(0.8, 1.15)
+func pick_up_gun() -> void:
+	item.stream = pick_gun.pick_random()
 	item.play()
-	await item.finished
-	item.pitch_scale = 1
 
 
 func gun_out_of_bullets() -> void:
@@ -95,12 +104,22 @@ func gun_out_of_bullets() -> void:
 	item.play(0.40)
 	await item.finished
 	item.volume_db = 0.0
+#endregion
+
+
+func crowbar_swing() -> void:
+	item.stream = CROWBAR_SWING
+	item.pitch_scale = randf_range(0.8, 1.15)
+	item.play()
+	await item.finished
+	item.pitch_scale = 1
 
 
 func cancel_item_sound() -> void:
 	item.stop()
 
 
+#region Player movement
 func start_footsteps() -> void:
 	foot_steps_timer.start(correct_footsteps_timer)
 
@@ -115,13 +134,6 @@ func start_walker_wheels() -> void:
 
 func stop_walker_wheels() -> void:
 	walker_wheels.stop()
-
-
-func flashlight_switch() -> void:
-	item.stream = FLASHLIGHT_SWITCH
-	item.volume_db = 10.0
-	item.play()
-	await item.finished
 	item.volume_db = 0.0
 
 
@@ -132,6 +144,35 @@ func check_correct_footsteps_timer() -> void:
 		correct_footsteps_timer = run_footsteps_time
 	elif  state_machine.state.name == "Walk" and not $"../StateMachine/Walk".sprinting:
 		correct_footsteps_timer = walker_footsteps_time
+#endregion
+
+
+#region Flashlight
+func flashlight_switch() -> void:
+	item.stream = FLASHLIGHT_SWITCH
+	item.volume_db = 10.0
+	item.play()
+	await item.finished
+	item.volume_db = 0
+
+
+func pick_up_flashlight() -> void:
+	item.stream = pick_flashlight.pick_random()
+	item.volume_db = 10.0
+	item.play()
+	await item.finished
+	item.volume_db = 0
+#endregion
+
+
+func drop_item() -> void:
+	item.stream = pick_flashlight.pick_random()
+	item.volume_db = 10
+	item.pitch_scale = 1.2
+	item.play()
+	await item.finished
+	item.pitch_scale = 1
+	item.volume_db = 0
 
 
 func play_balance_clue(pitch : float = 1.0) -> void:

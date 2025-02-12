@@ -56,4 +56,6 @@ Trying to open a locked door by Kodack -- https://freesound.org/s/256606/ -- Lic
 
 mechanism.mp3 by Rhulk -- https://freesound.org/s/245462/ -- License: Creative Commons 0
 
-Bell 08.wav by Kyster -- https://freesound.org/s/79438/ -- License: Attribution 4.0
+Bell 08.wav by Kyster -- https://freesound.org/s/79438/ -- License: Attribution 
+
+4.0Cabinet_Sliding_Drawers_Open__wooden_kitchen_02 by MattRuthSound -- https://freesound.org/s/550360/ -- License: Attribution 4.0

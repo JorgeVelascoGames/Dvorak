@@ -5,10 +5,13 @@ class_name PassBook
 
 #Components
 @onready var cool_down = $Timers/CoolDown #How much time needs the book to be interactable again after the text has fade out
+@onready var reading_book_audio: AudioStreamPlayer3D = $ReadingBookAudio
+@onready var close_book_audio: AudioStreamPlayer3D = $CloseBookAudio
 
 var switch_number : int
 var switch_correct_state : bool
 var text : String
+var is_reading := false
 
 
 func set_up_book(state: bool, number : int) -> void:
@@ -50,9 +53,23 @@ func set_up_book(state: bool, number : int) -> void:
 
 
 func _on_interactable_on_long_interact() -> void:
-	if cool_down.time_left > 0:
-		return
+	is_reading = false
 	
 	var player_ui = get_tree().get_first_node_in_group("player_ui") as PlayerUI
 	
 	player_ui.display_gameplay_text(text, time_to_show_text)
+
+
+func _on_interactable_on_start_long_interaction() -> void:
+	if cool_down.time_left > 0:
+		var player = get_tree().get_first_node_in_group("player") as Player
+		player.state_machine.transition_to("Idle", {})
+		return
+	is_reading = true
+	while is_reading:
+		reading_book_audio.play()
+		await reading_book_audio.finished
+
+
+func _on_interactable_on_stop_long_interaction() -> void:
+	is_reading = false

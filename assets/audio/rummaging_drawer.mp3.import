@@ -12,7 +12,7 @@ dest_files=["res://.godot/imported/rummaging_drawer.mp3-c0f486b6291783616ce8072d
 
 [params]
 
-loop=false
+loop=true
 loop_offset=0
 bpm=0
 beat_count=0

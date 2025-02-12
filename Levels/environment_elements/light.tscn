@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://72kpfpnalr3a"]
+[gd_scene load_steps=21 format=3 uid="uid://72kpfpnalr3a"]
 
 [ext_resource type="Script" path="res://Levels/environment_elements/light.gd" id="1_27npf"]
 [ext_resource type="Script" path="res://components/interactable.gd" id="2_vk1i6"]
@@ -6,6 +6,14 @@
 [ext_resource type="PackedScene" uid="uid://bepj5mbs82d3y" path="res://assets/props/swich/swich.tscn" id="4_aogh2"]
 [ext_resource type="PackedScene" uid="uid://bvbwpj3cl6pdr" path="res://assets/props/lights/lights.tscn" id="5_etyl4"]
 [ext_resource type="PackedScene" uid="uid://rd6woanfk4nl" path="res://assets/props/emergency_light/emergency_light.tscn" id="5_tx7f1"]
+[ext_resource type="AudioStream" uid="uid://cal18ohk6qgrb" path="res://assets/audio/switch_action/button assorted 42.wav" id="6_tp8em"]
+[ext_resource type="AudioStream" uid="uid://dvrmabqtiqhil" path="res://assets/audio/switch_action/button assorted 43.wav" id="7_8xfqx"]
+[ext_resource type="AudioStream" uid="uid://b8eobuyk0drp8" path="res://assets/audio/switch_action/button assorted 50.wav" id="8_2886j"]
+[ext_resource type="AudioStream" uid="uid://djxgxa265ygcp" path="res://assets/audio/switch_action/button assorted 51.wav" id="9_j1fm5"]
+[ext_resource type="AudioStream" uid="uid://ckrj4upysnbif" path="res://assets/audio/switch_action/button assorted 52.wav" id="10_vocmg"]
+[ext_resource type="AudioStream" uid="uid://nqrk7vm5dxfs" path="res://assets/audio/switch_action/button assorted 53.wav" id="11_qty28"]
+[ext_resource type="AudioStream" uid="uid://bgev4kcioi2c1" path="res://assets/audio/switch_action/button assorted 54.wav" id="12_h05l7"]
+[ext_resource type="AudioStream" uid="uid://krxxq2a7ixds" path="res://assets/audio/switch_long_interaction.wav" id="13_epsbh"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_rj3cs"]
 size = Vector3(1, 1, 0.298828)
@@ -53,6 +61,17 @@ _data = {
 "twink": SubResource("Animation_yq5m8")
 }
 
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_vaowg"]
+random_pitch = 1.15
+streams_count = 7
+stream_0/stream = ExtResource("6_tp8em")
+stream_1/stream = ExtResource("7_8xfqx")
+stream_2/stream = ExtResource("8_2886j")
+stream_3/stream = ExtResource("9_j1fm5")
+stream_4/stream = ExtResource("10_vocmg")
+stream_5/stream = ExtResource("11_qty28")
+stream_6/stream = ExtResource("12_h05l7")
+
 [node name="Light" type="Node3D"]
 script = ExtResource("1_27npf")
 
@@ -72,8 +91,6 @@ script = ExtResource("2_vk1i6")
 interactable_hint = SubResource("Resource_87p4s")
 long_interaction = true
 necessary_keys_to_press_min = 10
-
-[node name="SwitchSound" type="AudioStreamPlayer3D" parent="Switch"]
 
 [node name="swich" parent="Switch" instance=ExtResource("4_aogh2")]
 
@@ -95,6 +112,14 @@ libraries = {
 "": SubResource("AnimationLibrary_l04qy")
 }
 autoplay = "twink"
+
+[node name="SwitchAudio" type="AudioStreamPlayer3D" parent="Switch"]
+stream = SubResource("AudioStreamRandomizer_vaowg")
+volume_db = 12.0
+
+[node name="ForcingAudio" type="AudioStreamPlayer3D" parent="Switch"]
+stream = ExtResource("13_epsbh")
+max_db = 6.0
 
 [node name="lights" parent="." instance=ExtResource("5_etyl4")]
 

@@ -5,6 +5,7 @@ class_name PassSwitch
 @onready var deactivate_light: OmniLight3D = $DeactivateLight
 @onready var animation_tree: SwitchAnimation = $swich/AnimationTree
 @onready var player_ui : PlayerUI = get_tree().get_first_node_in_group("player_ui")
+@onready var audio: AudioStreamPlayer3D = $Audio
 
 #Exported variables
 @export var switch_index : int
@@ -49,3 +50,5 @@ func _on_interactable_on_interact():
 		deactivate_light.show()
 		animation_tree.switch_into_off_position()
 		player_ui.display_gameplay_text("You deactivated the %s switch" %order, 2)
+	
+	audio.play()

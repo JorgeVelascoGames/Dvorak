@@ -1,10 +1,28 @@
-[gd_scene load_steps=10 format=3 uid="uid://dj1xeiiysi3o5"]
+[gd_scene load_steps=30 format=3 uid="uid://dj1xeiiysi3o5"]
 
 [ext_resource type="Script" path="res://ExitGate/pass_book.gd" id="1_vqmkl"]
 [ext_resource type="Script" path="res://components/interactable.gd" id="2_38db5"]
 [ext_resource type="PackedScene" uid="uid://bsid5sgbt2jlj" path="res://assets/props/atril/atril.tscn" id="2_ahbig"]
 [ext_resource type="PackedScene" uid="uid://cwexc7x6763dc" path="res://assets/props/book/book.tscn" id="3_cgwqo"]
 [ext_resource type="Script" path="res://scripts/hint.gd" id="5_flnum"]
+[ext_resource type="AudioStream" uid="uid://xjm466h0n431" path="res://assets/audio/book_vfx/book handled 1.wav" id="6_kn0jr"]
+[ext_resource type="AudioStream" uid="uid://q5y0ctvdg7hp" path="res://assets/audio/book_vfx/book handled 2.wav" id="7_yrf53"]
+[ext_resource type="AudioStream" uid="uid://dervsibexmp53" path="res://assets/audio/book_vfx/book handled 11.wav" id="8_cl8vm"]
+[ext_resource type="AudioStream" uid="uid://ctipmuae8t4xu" path="res://assets/audio/book_vfx/book handled 12.wav" id="9_plh2y"]
+[ext_resource type="AudioStream" uid="uid://dqwpmeqy26uge" path="res://assets/audio/book_vfx/book handled 13.wav" id="10_pr8dx"]
+[ext_resource type="AudioStream" uid="uid://cvcwmlbhakkr0" path="res://assets/audio/book_vfx/book handled 14.wav" id="11_mwaqa"]
+[ext_resource type="AudioStream" uid="uid://cnpaeanog2cjs" path="res://assets/audio/book_vfx/book handled 3.wav" id="12_axi63"]
+[ext_resource type="AudioStream" uid="uid://cw7sl1dwjuo2g" path="res://assets/audio/book_vfx/book handled 4.wav" id="13_5uytk"]
+[ext_resource type="AudioStream" uid="uid://blrrbayy0mhs" path="res://assets/audio/book_vfx/book handled 5.wav" id="14_h3a6x"]
+[ext_resource type="AudioStream" uid="uid://dra28pbcpy7k3" path="res://assets/audio/book_vfx/book handled 6.wav" id="15_hrarm"]
+[ext_resource type="AudioStream" uid="uid://b6r61ufnfv2tw" path="res://assets/audio/book_vfx/book handled 7.wav" id="16_mbtns"]
+[ext_resource type="AudioStream" uid="uid://bugqqxdrpt2fx" path="res://assets/audio/book_vfx/book handled 8.wav" id="17_ypsr7"]
+[ext_resource type="AudioStream" uid="uid://bdqbjcamlx531" path="res://assets/audio/book_vfx/book handled 9.wav" id="18_a0t02"]
+[ext_resource type="AudioStream" uid="uid://bv6mrkm3lgwdd" path="res://assets/audio/book_vfx/book handled 10.wav" id="19_8bhv0"]
+[ext_resource type="AudioStream" uid="uid://7gxs6l1bnh7i" path="res://assets/audio/book_vfx/book throw 1.wav" id="20_rmguc"]
+[ext_resource type="AudioStream" uid="uid://kuj7yvujy1rh" path="res://assets/audio/book_vfx/book throw 2.wav" id="21_n8nqe"]
+[ext_resource type="AudioStream" uid="uid://dg6e0k644mgbg" path="res://assets/audio/book_vfx/book throw 3.wav" id="22_vywvm"]
+[ext_resource type="AudioStream" uid="uid://soi3g0gsbe3p" path="res://assets/audio/book_vfx/book throw 4.wav" id="23_wggyq"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_0sn8r"]
 font_size = 45
@@ -22,6 +40,31 @@ priority = 12
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_6cw2q"]
 size = Vector3(0.31, 0.245, 0.33)
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_eyt46"]
+streams_count = 14
+stream_0/stream = ExtResource("6_kn0jr")
+stream_1/stream = ExtResource("7_yrf53")
+stream_2/stream = ExtResource("12_axi63")
+stream_3/stream = ExtResource("13_5uytk")
+stream_4/stream = ExtResource("14_h3a6x")
+stream_5/stream = ExtResource("15_hrarm")
+stream_6/stream = ExtResource("16_mbtns")
+stream_7/stream = ExtResource("17_ypsr7")
+stream_8/stream = ExtResource("18_a0t02")
+stream_9/stream = ExtResource("19_8bhv0")
+stream_10/stream = ExtResource("8_cl8vm")
+stream_11/stream = ExtResource("9_plh2y")
+stream_12/stream = ExtResource("10_pr8dx")
+stream_13/stream = ExtResource("11_mwaqa")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_vv4dk"]
+random_pitch = 12.0
+streams_count = 4
+stream_0/stream = ExtResource("20_rmguc")
+stream_1/stream = ExtResource("21_n8nqe")
+stream_2/stream = ExtResource("22_vywvm")
+stream_3/stream = ExtResource("23_wggyq")
 
 [node name="PassBook" type="Node3D"]
 script = ExtResource("1_vqmkl")
@@ -85,4 +128,13 @@ long_interaction = true
 transform = Transform3D(1, 0, 0, 0, 0.86544, -0.501012, 0, 0.501012, 0.86544, 0, 0, 0)
 shape = SubResource("BoxShape3D_6cw2q")
 
+[node name="ReadingBookAudio" type="AudioStreamPlayer3D" parent="."]
+stream = SubResource("AudioStreamRandomizer_eyt46")
+
+[node name="CloseBookAudio" type="AudioStreamPlayer3D" parent="."]
+stream = SubResource("AudioStreamRandomizer_vv4dk")
+volume_db = 12.0
+
 [connection signal="on_long_interact" from="StaticBody3D2/Interactable" to="." method="_on_interactable_on_long_interact"]
+[connection signal="on_start_long_interaction" from="StaticBody3D2/Interactable" to="." method="_on_interactable_on_start_long_interaction"]
+[connection signal="on_stop_long_interaction" from="StaticBody3D2/Interactable" to="." method="_on_interactable_on_stop_long_interaction"]

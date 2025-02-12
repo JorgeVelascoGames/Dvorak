@@ -67,7 +67,7 @@ func _correct_key() -> void:
 
 func finish_state() -> void:
 	ammo_counter.reload()
-	#TODO sound
+	player.player_audio_manager.load_gun()
 	state_machine.transition_to("Idle", {})
 
 
@@ -76,7 +76,6 @@ func cancel_and_finish() -> void:
 
 
 func exit() -> void:
-	player.player_audio_manager.load_gun()
 	animation_tree["parameters/load_gun_trigger/request"] = AnimationNodeOneShot.ONE_SHOT_REQUEST_ABORT
 	animated_gun.hide()
 	correct_key_pressed = 0

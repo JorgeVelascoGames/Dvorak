@@ -64,6 +64,7 @@ func pick_up_gun():
 	flashlight_model.show()
 	flashlight.move_flashlight()
 	player.current_weapon = player.WEAPON.gun
+	player.player_audio_manager.pick_up_gun()
 
 
 func pick_up_crowbar():
@@ -79,6 +80,7 @@ func pick_up_flashlight() -> void:
 	gun_model.show()
 	flashlight_model.hide()
 	player.current_weapon = player.WEAPON.flashlight
+	player.player_audio_manager.pick_up_flashlight()
 
 
 func drop_weapons():
@@ -87,6 +89,7 @@ func drop_weapons():
 	flashlight_model.show()
 	flashlight.move_flashlight()
 	player.current_weapon = player.WEAPON.none
+	player.player_audio_manager.drop_item()
 
 
 func try_pick_walker() -> void:

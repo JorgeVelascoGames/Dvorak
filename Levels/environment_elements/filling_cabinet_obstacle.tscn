@@ -1,9 +1,10 @@
-[gd_scene load_steps=15 format=3 uid="uid://brysxkhoj2p7v"]
+[gd_scene load_steps=16 format=3 uid="uid://brysxkhoj2p7v"]
 
 [ext_resource type="PackedScene" uid="uid://d0dkjcykl2xdc" path="res://assets/props/filing_cabinet/filing_cabinet.tscn" id="1_q6gxq"]
 [ext_resource type="Script" path="res://Levels/environment_elements/filling_cabinet_obstacle.gd" id="1_xf6dv"]
 [ext_resource type="Script" path="res://components/interactable.gd" id="2_2c21f"]
 [ext_resource type="Script" path="res://scripts/hint.gd" id="4_bo8m7"]
+[ext_resource type="AudioStream" uid="uid://b0f5jif4xifq4" path="res://assets/audio/rummaging_drawer.mp3" id="5_v6aar"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_u7n5k"]
 size = Vector3(0.535, 1.0356, 0.555)
@@ -46,9 +47,12 @@ graph_offset = Vector2(56, -69)
 
 [node name="FillingCabinetObstacle" type="Node3D"]
 script = ExtResource("1_xf6dv")
-max_number_of_bullets = 3
 
 [node name="FilingCabinetAnimated" parent="." instance=ExtResource("1_q6gxq")]
+
+[node name="Skeleton3D" parent="FilingCabinetAnimated/filing_cabinet" index="0"]
+bones/0/position = Vector3(2.18125e-18, 1.16204e-10, -0.00215907)
+bones/0/rotation = Quaternion(0.707107, 5.33851e-08, 5.33851e-08, 0.707107)
 
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
 
@@ -67,6 +71,11 @@ necessary_keys_to_press_max = 45
 root_node = NodePath("../FilingCabinetAnimated")
 tree_root = SubResource("AnimationNodeStateMachine_3kdou")
 anim_player = NodePath("../FilingCabinetAnimated/AnimationPlayer")
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.717567, 0.085019)
+stream = ExtResource("5_v6aar")
+volume_db = 7.0
 
 [connection signal="on_long_interact" from="StaticBody3D/Interactable" to="." method="_on_interactable_on_long_interact"]
 [connection signal="on_start_long_interaction" from="StaticBody3D/Interactable" to="." method="_on_interactable_on_start_long_interaction"]
