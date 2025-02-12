@@ -2,10 +2,13 @@ extends Enemy
 class_name InfanticideEnemy
 
 @onready var visible_on_screen_notifier_3d: VisibleOnScreenNotifier3D = $VisibleOnScreenNotifier3D
+@onready var infanticide_audio: AudioStreamPlayer3D = $InfanticideAudio
 
+var queue_audio_file
 var original_speed : float
 var super_speed := 14.00
 var vhs_tween : Tween
+var audio_queu_played := false
 var dying_quotes = [
 	"A sin remains unconfessed: this is not the end of their torment… nor of your guilt",
 	"Another life ends at your hands, but your conscience bleeds anew, unhealed by silent prayers",
@@ -14,6 +17,7 @@ var dying_quotes = [
 	"They collapse at your feet, but absolution slips away: you sense you’ve not reached the end of your cruelty",
 	"With their final breath, you discover a deeper cruelty still within you…"
 ]
+
 
 func _ready() -> void:
 	super()
@@ -29,6 +33,9 @@ func _process(delta: float) -> void:
 			speed = super_speed
 		else:
 			speed = original_speed
+	
+		if distance < 5 and not visible_on_screen_notifier_3d.is_on_screen():
+			play_audio_queu()
 
 
 func shot_infanticide_enemy() -> void:
@@ -57,3 +64,11 @@ func _close_vhs_effect(amount : float) -> void:
 
 func _close_vhs_noise(amount : float) -> void:
 	player.player_ui.player_vhs_effect.shader_mat.set_shader_parameter("noise_intensity", amount)
+
+
+func play_audio_queu() -> void:
+	if audio_queu_played:
+		return
+	audio_queu_played = true
+	infanticide_audio.stream = queue_audio_file
+	infanticide_audio.play()

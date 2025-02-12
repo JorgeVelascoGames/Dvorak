@@ -33,11 +33,6 @@ func play_dead_audio(stop_constant_sound : bool = true) -> Signal:
 	return dead_audio.finished
 
 
-func play_random_step_sound() -> void:
-	pass
-	#steps_sound.play()
-
-
 func play_sfx() -> Signal:
 	#vfx.play()
 	return vfx.finished
