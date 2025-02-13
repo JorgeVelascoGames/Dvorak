@@ -1,6 +1,5 @@
 extends Randomizer 
-##This class takes a number of elements from a list and delets everything except for one
-class_name RandomizeDeleter
+class_name RandomizeDeleter##This class takes a number of elements from a list and delets everything except for one
 
 @export var elements : Array[Node3D] = []
 

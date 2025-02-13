@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=3 uid="uid://b37la44wjrp4u"]
+[gd_scene load_steps=45 format=3 uid="uid://b37la44wjrp4u"]
 
 [ext_resource type="PackedScene" uid="uid://dqk45r48r427t" path="res://Levels/level_one/level_one_scenario.tscn" id="1_jujem"]
 [ext_resource type="Environment" uid="uid://c42wra3u6yo6u" path="res://Levels/world_environment.tres" id="1_rc4ww"]
@@ -39,6 +39,7 @@
 [ext_resource type="PackedScene" uid="uid://dfdwh0py85qbd" path="res://Levels/environment_elements/audio_triggerer.tscn" id="36_dp5fl"]
 [ext_resource type="AudioStream" uid="uid://weph0pv7itv" path="res://assets/audio/ambient/force_door.wav" id="37_8p0g5"]
 [ext_resource type="AudioStream" uid="uid://c0qqnbr716c6g" path="res://assets/audio/ambient/newborn_cry.wav" id="38_oa0xf"]
+[ext_resource type="AudioStream" uid="uid://pr0usaqumern" path="res://assets/audio/ambient/girl_scream.wav" id="40_5kdeu"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_hkrcb"]
 geometry_parsed_geometry_type = 2
@@ -50,6 +51,9 @@ size = Vector3(1, 1.74023, 1.34424)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ydtm8"]
 size = Vector3(2.22497, 1.66797, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_q85wg"]
+size = Vector3(1.84842, 2.11035, 1)
 
 [node name="LevelOne" type="Node3D" node_paths=PackedStringArray("enemy_container") groups=["level_manager"]]
 script = ExtResource("1_scdlh")
@@ -596,10 +600,10 @@ transform = Transform3D(1, 0, -1.74846e-07, 0, 1, 0, 1.74846e-07, 0, 1, 21.3354,
 transform = Transform3D(1, 0, -1.74846e-07, 0, 1, 0, 1.74846e-07, 0, 1, 20.671, 5, -14.0431)
 
 [node name="door_closed32" parent="Decoration/Doors" instance=ExtResource("14_6smjs")]
-transform = Transform3D(1, 0, -1.74846e-07, 0, 1, 0, 1.74846e-07, 0, 1, 14.7761, 5, -14.0394)
+transform = Transform3D(1, 0, -1.74846e-07, 0, 1, 0, 1.74846e-07, 0, 1, 14.7761, 5, -14.0261)
 
 [node name="door_closed33" parent="Decoration/Doors" instance=ExtResource("14_6smjs")]
-transform = Transform3D(1, 0, -1.74846e-07, 0, 1, 0, 1.74846e-07, 0, 1, 7.2781, 5, -14.075)
+transform = Transform3D(1, 0, -1.74846e-07, 0, 1, 0, 1.74846e-07, 0, 1, 7.2781, 5, -14.0617)
 
 [node name="door_closed34" parent="Decoration/Doors" instance=ExtResource("14_6smjs")]
 transform = Transform3D(1, 0, -1.74846e-07, 0, 1, 0, 1.74846e-07, 0, 1, -4, 5, 1.443)
@@ -1034,6 +1038,47 @@ script = ExtResource("10_wfg25")
 elements = [NodePath("../BabyCrying"), NodePath("../BabyCrying2"), NodePath("../BabyCrying3")]
 randomize_at_ready = true
 
+[node name="GirlScreamDeleter" type="Marker3D" parent="AmbientSounds" node_paths=PackedStringArray("elements")]
+script = ExtResource("10_wfg25")
+elements = [NodePath("../GirlScream"), NodePath("../GirlScream2"), NodePath("../GirlScream3")]
+randomize_at_ready = true
+
+[node name="GirlScream" parent="AmbientSounds" instance=ExtResource("36_dp5fl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.04786, 0, -2.15008)
+
+[node name="AudioStreamPlayer3D" parent="AmbientSounds/GirlScream" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.11196, 0)
+stream = ExtResource("40_5kdeu")
+volume_db = 8.713
+
+[node name="CollisionShape3D" parent="AmbientSounds/GirlScream/Area3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.06538, 0.555176, 0)
+shape = SubResource("BoxShape3D_q85wg")
+
+[node name="GirlScream2" parent="AmbientSounds" instance=ExtResource("36_dp5fl")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 7.19991, 5.7162, -15.0317)
+
+[node name="AudioStreamPlayer3D" parent="AmbientSounds/GirlScream2" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.638057, 0)
+stream = ExtResource("40_5kdeu")
+volume_db = 8.713
+
+[node name="CollisionShape3D" parent="AmbientSounds/GirlScream2/Area3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.06538, 0.555176, 0)
+shape = SubResource("BoxShape3D_q85wg")
+
+[node name="GirlScream3" parent="AmbientSounds" instance=ExtResource("36_dp5fl")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.568133, 0.696767, -25.5688)
+
+[node name="AudioStreamPlayer3D" parent="AmbientSounds/GirlScream3" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.638057, 0)
+stream = ExtResource("40_5kdeu")
+volume_db = 8.713
+
+[node name="CollisionShape3D" parent="AmbientSounds/GirlScream3/Area3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.06538, 0.555176, 0)
+shape = SubResource("BoxShape3D_q85wg")
+
 [editable path="NavigationRegion3D/ExitGate"]
 [editable path="NavigationRegion3D/ExitGate/MainSwitch/switch"]
 [editable path="Lamps/LampLight"]
@@ -1059,3 +1104,6 @@ randomize_at_ready = true
 [editable path="AmbientSounds/BabyCrying"]
 [editable path="AmbientSounds/BabyCrying2"]
 [editable path="AmbientSounds/BabyCrying3"]
+[editable path="AmbientSounds/GirlScream"]
+[editable path="AmbientSounds/GirlScream2"]
+[editable path="AmbientSounds/GirlScream3"]

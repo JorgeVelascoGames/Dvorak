@@ -668,7 +668,7 @@ nodes/unbalanced_blend/position = Vector2(700, 0)
 node_connections = [&"TimeScale", 0, &"losing balance_anim", &"TimeScale 2", 0, &"Animation", &"change_batteries_trigger", 0, &"load_gun_trigger", &"change_batteries_trigger", 1, &"Animation 9", &"crowbar_Swing_timescale", 0, &"Animation 6", &"crowbar_prepare", 0, &"losing_balance", &"crowbar_prepare", 1, &"crowbar_prepare_timescale", &"crowbar_prepare_timescale", 0, &"Animation 7", &"crowbar_swing", 0, &"crowbar_prepare", &"crowbar_swing", 1, &"crowbar_Swing_timescale", &"fix_pivot_movement", 0, &"Animation 4", &"fix_pivot_movement", 1, &"Animation 5", &"floor_blend", 0, &"fix_pivot_movement", &"floor_blend", 1, &"Animation 3", &"load_gun_trigger", 0, &"prepare_gun_trigger", &"load_gun_trigger", 1, &"Animation 8", &"losing_balance", 0, &"pills_trigger", &"losing_balance", 1, &"TimeScale", &"output", 0, &"crowbar_swing", &"pills_trigger", 0, &"change_batteries_trigger", &"pills_trigger", 1, &"Animation 10", &"prepare_gun_trigger", 0, &"unbalanced_blend", &"prepare_gun_trigger", 1, &"Animation 2", &"unbalanced_blend", 0, &"floor_blend", &"unbalanced_blend", 1, &"TimeScale 2"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_e43ec"]
-size = Vector3(0.615, 1.40515, 1.02783)
+size = Vector3(0.615, 1.40515, 0.921508)
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_3oo6b"]
 playback_mode = 1
@@ -1331,13 +1331,14 @@ parameters/unbalanced_blend/blend_amount = 0.0
 script = ExtResource("22_j0g4a")
 
 [node name="CrowbarAttackHitbox" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.646118)
 collision_layer = 0
 collision_mask = 30719
 monitoring = false
 script = ExtResource("24_nhdqm")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="CrowbarAttackHitbox"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0120463, -0.694071)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0120463, -0.29838)
 shape = SubResource("BoxShape3D_e43ec")
 
 [node name="FlashlightPivot" type="Node3D" parent="."]
