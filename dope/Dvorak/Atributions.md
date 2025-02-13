@@ -59,3 +59,7 @@ mechanism.mp3 by Rhulk -- https://freesound.org/s/245462/ -- License: Creative C
 Bell 08.wav by Kyster -- https://freesound.org/s/79438/ -- License: Attribution 
 
 4.0Cabinet_Sliding_Drawers_Open__wooden_kitchen_02 by MattRuthSound -- https://freesound.org/s/550360/ -- License: Attribution 4.0
+
+Little woman screaming sound effect by Mastersoundboy2005 -- https://freesound.org/s/733539/ -- License: Creative Commons 0
+
+Scream- woman- pain 1 by Valerie-Vivegnis -- https://freesound.org/s/767887/ -- License: Attribution 4.0

@@ -666,7 +666,7 @@ nodes/unbalanced_blend/position = Vector2(700, 0)
 node_connections = [&"TimeScale", 0, &"losing balance_anim", &"TimeScale 2", 0, &"Animation", &"change_batteries_trigger", 0, &"load_gun_trigger", &"change_batteries_trigger", 1, &"Animation 9", &"crowbar_Swing_timescale", 0, &"Animation 6", &"crowbar_prepare", 0, &"losing_balance", &"crowbar_prepare", 1, &"crowbar_prepare_timescale", &"crowbar_prepare_timescale", 0, &"Animation 7", &"crowbar_swing", 0, &"crowbar_prepare", &"crowbar_swing", 1, &"crowbar_Swing_timescale", &"fix_pivot_movement", 0, &"Animation 4", &"fix_pivot_movement", 1, &"Animation 5", &"floor_blend", 0, &"fix_pivot_movement", &"floor_blend", 1, &"Animation 3", &"load_gun_trigger", 0, &"prepare_gun_trigger", &"load_gun_trigger", 1, &"Animation 8", &"losing_balance", 0, &"pills_trigger", &"losing_balance", 1, &"TimeScale", &"output", 0, &"crowbar_swing", &"pills_trigger", 0, &"change_batteries_trigger", &"pills_trigger", 1, &"Animation 10", &"prepare_gun_trigger", 0, &"unbalanced_blend", &"prepare_gun_trigger", 1, &"Animation 2", &"unbalanced_blend", 0, &"floor_blend", &"unbalanced_blend", 1, &"TimeScale 2"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_e43ec"]
-size = Vector3(0.615, 1, 1)
+size = Vector3(0.615, 1.40515, 1.02783)
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_3oo6b"]
 playback_mode = 1
@@ -803,6 +803,7 @@ script = ExtResource("16_ipk1w")
 max_balance = 7000.0
 sprint_penalty = 150.0
 rotation_cost_divident = 30.0
+swing_cost = 1000.0
 getting_hit_cost = 500.0
 bonus_balance_recovery = 60.0
 
@@ -875,7 +876,6 @@ script = ExtResource("15_8pfmq")
 
 [node name="PlayerHealth" type="Node" parent="Components"]
 script = ExtResource("20_8ocdq")
-time_to_heal_up = 5.0
 full_health_messages = Array[String](["Strength surges back—your body remembers what it means to endure", "The weight lifts, the pain fades, and you stand renewed", "Your breath steadies, your wounds seal—another chance to fight", "The specter of death retreats, if only for a moment", "A second wind fills your lungs, defying the shadows that sought you", "You feel whole again, but scars remember", "Pain is gone, but its memory lingers—you will not falter", "Grace fills your limbs, and your wounds close—His mercy endures", "The pain is lifted, your path restored—rise, for your trial is not yet over", "You stand renewed, as if the hand of the divine has granted you reprieve"])
 damaged_messages = Array[String](["Your breath falters, pain creeping into your every step", "A crimson stain blooms—your body betrays you", "Your limbs grow heavy, your heartbeat hammers in your ears", "The wound stings, a cruel reminder that you are still alive", "Warm blood trickles down—weakness seeps in", "You stumble, the world tilting as agony sets in", "Your strength wavers, but you are not done yet", "Your flesh is torn, yet suffering is but the path to salvation", "A trial of pain, a test of faith—endure, and He shall not forsake you", "Blood spills, but in suffering, the soul is refined"])
 dying_messages = Array[String](["Each step is a struggle, each breath a desperate plea", "Darkness lingers at the edges of your vision—your body is failing", "Your hands tremble, your legs barely obey—this is the end drawing near", "A cold weight settles in your chest. You are slipping away", "Pain is distant now, replaced by the creeping embrace of oblivion", "Your body is a shattered vessel, moving only by sheer will", "You are on borrowed time, and the debt is coming due", "Your body crumbles, but the soul must not waver—He watches still", "Each step is a penance, each breath a prayer—redemption nears", "The veil grows thin, and the weight of sin presses upon you"])
@@ -1323,12 +1323,12 @@ script = ExtResource("22_j0g4a")
 
 [node name="CrowbarAttackHitbox" type="Area3D" parent="."]
 collision_layer = 0
-collision_mask = 128
+collision_mask = 30719
 monitoring = false
 script = ExtResource("24_nhdqm")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="CrowbarAttackHitbox"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.214622, -0.680155)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0120463, -0.694071)
 shape = SubResource("BoxShape3D_e43ec")
 
 [node name="FlashlightPivot" type="Node3D" parent="."]
@@ -1379,7 +1379,7 @@ volume_db = 12.0
 [connection signal="pressed" from="PlayerUI/PlayerGameMenu/PanelContainer/HBoxContainer/ButtonsPanel/Buttons/ResumeButton" to="PlayerUI/PlayerGameMenu" method="_on_resume_button_pressed"]
 [connection signal="pressed" from="PlayerUI/PlayerGameMenu/PanelContainer/HBoxContainer/ButtonsPanel/Buttons/QuitButton" to="PlayerUI/PlayerGameMenu" method="_on_quit_button_pressed"]
 [connection signal="WalkerInteracted" from="WalkerFixedPoint/Walker" to="." method="_on_walker_walker_interacted"]
-[connection signal="body_entered" from="CrowbarAttackHitbox" to="CrowbarAttackHitbox" method="_on_body_entered"]
+[connection signal="area_entered" from="CrowbarAttackHitbox" to="CrowbarAttackHitbox" method="_on_area_entered"]
 [connection signal="timeout" from="PlayerAudioManager/FootStepsTimer" to="PlayerAudioManager" method="_on_foot_steps_timer_timeout"]
 
 [editable path="SubViewportContainer/SubViewport/WeaponCamera/GunModel"]

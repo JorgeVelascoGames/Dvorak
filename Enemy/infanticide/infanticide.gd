@@ -5,7 +5,8 @@ class_name InfanticideEnemy
 @onready var infanticide_audio: AudioStreamPlayer3D = $InfanticideAudio
 
 var queue_audio_file : Array = [
-	preload("res://assets/audio/crying_woman.wav")
+	preload("res://assets/audio/crying_woman.wav"),
+	preload("res://assets/audio/enemy_walking.wav")
 ]
 var original_speed : float
 var super_speed := 14.00
@@ -20,10 +21,13 @@ var dying_quotes = [
 	"With their final breath, you discover a deeper cruelty still within you…"
 ]
 
+const INFANTIZIDE_DISOLVE = preload("res://assets/enemies/infantizide_disolve.tres")
+
 
 func _ready() -> void:
 	super()
 	original_speed = speed
+	$VisibleOnScreenNotifier3D.screen_entered.connect(on_screen_enter)
 
 
 func _process(delta: float) -> void:
@@ -40,11 +44,16 @@ func _process(delta: float) -> void:
 			play_audio_queu()
 
 
-func shot_infanticide_enemy() -> void:
+func die_effect() -> void:
 	if vhs_tween:
 		vhs_tween.kill()
-	if not player.player_ui.player_vhs_effect.visible:#That makes sure that only one quote is shown at a time
-		player.player_ui.display_gameplay_text(dying_quotes.pick_random(), 5)
+	
+	player.player_ui.display_gameplay_text(dying_quotes.pick_random(), 5, true)
+	
+	$DeadAudio.play()
+	
+	$Model/infanticideModel/rig/Skeleton3D/infanticide.material_override = INFANTIZIDE_DISOLVE
+	$Model/infanticideModel/rig/Skeleton3D/infanticide.trigger_dissolve(2.5)
 	
 	player.player_ui.player_vhs_effect.show()
 	player.player_ui.player_vhs_effect.shader_mat.set_shader_parameter("crease_noise", 2.0)
@@ -57,6 +66,11 @@ func shot_infanticide_enemy() -> void:
 	await vhs_tween.finished
 	vhs_tween = null
 	player.player_ui.player_vhs_effect.hide()
+
+
+func enemy_die():
+	die_effect()
+	super()
 
 
 func _close_vhs_effect(amount : float) -> void:
@@ -74,3 +88,7 @@ func play_audio_queu() -> void:
 	audio_queu_played = true
 	infanticide_audio.stream = queue_audio_file.pick_random()
 	infanticide_audio.play()
+
+
+func on_screen_enter() -> void:
+	infanticide_audio.stop()

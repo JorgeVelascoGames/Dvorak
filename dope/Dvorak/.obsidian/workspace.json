@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Atributions.md",
+                "file": "To do.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Atributions"
+              "title": "To do"
             }
           }
         ]
@@ -165,11 +165,11 @@
   },
   "active": "cef1813cea61e526",
   "lastOpenFiles": [
+    "Atributions.md",
     "To do.md",
     "Todo/Detalles de pulido.md",
     "Tutorials/Tutorial.md",
     "Doing.md",
-    "Atributions.md",
     "Arte/Estandarización.md",
     "Ideas/Ambiente.md",
     "Ideas/Brainstorming.md",
