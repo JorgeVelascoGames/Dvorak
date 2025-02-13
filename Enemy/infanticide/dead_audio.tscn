@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://cfqocdjivavxa"]
+
+[ext_resource type="AudioStream" uid="uid://qxcbt677wjj" path="res://assets/audio/infanticide_dead.wav" id="1_skjeo"]
+
+[node name="DeadAudio" type="AudioStreamPlayer3D"]
+stream = ExtResource("1_skjeo")
+volume_db = 33.0
+unit_size = 34.39
+max_db = 6.0
+autoplay = true

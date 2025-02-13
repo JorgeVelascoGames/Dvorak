@@ -1,4 +1,4 @@
-[gd_scene load_steps=106 format=3 uid="uid://m6pypgl566n1"]
+[gd_scene load_steps=109 format=3 uid="uid://m6pypgl566n1"]
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_ref5g"]
 [ext_resource type="Script" path="res://player/smooth_camera.gd" id="2_cywkd"]
@@ -51,6 +51,8 @@
 [ext_resource type="AudioStream" uid="uid://b4m717t5h023o" path="res://assets/audio/player/walker_draging.wav" id="45_2ydpv"]
 [ext_resource type="AudioStream" uid="uid://c2t7j43t8n85h" path="res://assets/audio/bell.wav" id="46_ki68j"]
 [ext_resource type="AudioStream" uid="uid://lgeiirv5ghph" path="res://assets/audio/player/hearthbeat.wav" id="49_234b6"]
+[ext_resource type="AudioStream" uid="uid://u4m6ea32w656" path="res://assets/audio/hit_flesh.mp3" id="52_4w4ci"]
+[ext_resource type="AudioStream" uid="uid://c6ogjlv610iok" path="res://assets/audio/hit_flesh.wav" id="53_2yagw"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_fyred"]
 
@@ -674,6 +676,12 @@ random_pitch = 1.2
 streams_count = 1
 stream_0/stream = ExtResource("44_6afom")
 
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_is4bw"]
+random_pitch = 1.15
+streams_count = 2
+stream_0/stream = ExtResource("52_4w4ci")
+stream_1/stream = ExtResource("53_2yagw")
+
 [node name="Player" type="CharacterBody3D" groups=["player"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 collision_layer = 4
@@ -873,6 +881,8 @@ reload_hint = ExtResource("18_6q2xb")
 
 [node name="Inventory" type="Node" parent="Components"]
 script = ExtResource("15_8pfmq")
+batteries_amount = 2
+pills = 2
 
 [node name="PlayerHealth" type="Node" parent="Components"]
 script = ExtResource("20_8ocdq")
@@ -959,7 +969,6 @@ size_flags_vertical = 0
 label_settings = SubResource("LabelSettings_cswfq")
 
 [node name="Crosshair" type="CenterContainer" parent="PlayerUI"]
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -1363,6 +1372,9 @@ volume_db = 15.0
 [node name="Heartbeat" type="AudioStreamPlayer" parent="PlayerAudioManager"]
 stream = ExtResource("49_234b6")
 volume_db = 12.0
+
+[node name="HitFlesh" type="AudioStreamPlayer" parent="PlayerAudioManager"]
+stream = SubResource("AudioStreamRandomizer_is4bw")
 
 [connection signal="transitioned" from="StateMachine" to="Components/Balance" method="_on_state_machine_transitioned"]
 [connection signal="transitioned" from="StateMachine" to="AnimationTree" method="_on_state_machine_transitioned"]

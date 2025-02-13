@@ -44,7 +44,7 @@ func enter(_msg : ={}) -> void:
 
 
 func update(_delta):
-	if Input.is_action_just_released("interact"):
+	if Input.is_action_just_released("load_gun"):
 		cancel_and_finish()
 
 
@@ -67,12 +67,14 @@ func _correct_key() -> void:
 
 func finish_state() -> void:
 	ammo_counter.reload()
-	player.player_audio_manager.load_gun()
+	player.player_audio_manager.stop_load_gun()
+	player.player_audio_manager.finish_load_gun()
 	state_machine.transition_to("Idle", {})
 
 
 func cancel_and_finish() -> void:
 	state_machine.transition_to("Idle", {})
+	player.player_audio_manager.stop_load_gun()
 
 
 func exit() -> void:

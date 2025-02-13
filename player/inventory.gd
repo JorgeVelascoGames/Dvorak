@@ -3,9 +3,10 @@ class_name Inventory
 
 @onready var player_ui: PlayerUI = $"../../PlayerUI"
 
-var ammo_stored := 15
-var batteries_amount := 0
-var pills := 0
+@export var ammo_stored := 15
+@export var batteries_amount := 0
+@export var pills := 0
+
 var lost_item_messages : Array[String] = [
 	"As you hit the ground, %d %s scattered into the darkness…",
 	"Your trembling hands fail you. %d %s slip away, beyond reach",

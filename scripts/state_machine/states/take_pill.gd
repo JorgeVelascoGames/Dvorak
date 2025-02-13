@@ -25,6 +25,7 @@ var tween : Tween
 
 
 func enter(_msg : ={}) -> void:
+	player.player_audio_manager.opening_pills()
 	randomize()
 	necessary_keys_to_press = randi_range(min_keys_to_press, max_keys_to_press)
 	player.velocity = Vector3.ZERO
@@ -43,7 +44,7 @@ func enter(_msg : ={}) -> void:
 
 
 func update(_delta):
-	if Input.is_action_just_released("interact"):
+	if Input.is_action_just_released("take_pills"):
 		cancel_and_finish()
 
 
@@ -65,15 +66,21 @@ func _correct_key() -> void:
 
 
 func finish_state() -> void:
+	player.player_audio_manager.cancel_item_sound()
 	if inventory.use_pills():
 		$"../../Components/Balance".take_pill()
 		player.player_health.heal_up()
 		player_ui.display_gameplay_text("You took a pill", 3)
+		player.player_audio_manager.swallow_pills()
+	else:
+		player_ui.display_gameplay_text("You don't have any more pills left...", 3)
+		player.player_audio_manager.no_pills()
 	state_machine.transition_to("Idle", {})
 
 
 func cancel_and_finish() -> void:
 	state_machine.transition_to("Idle", {})
+	player.player_audio_manager.cancel_item_sound()
 
 
 func exit() -> void:

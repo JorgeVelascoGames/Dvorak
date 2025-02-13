@@ -25,6 +25,7 @@ var injured_screen_overlay
 
 
 func player_hit() -> void:
+	$"../../PlayerAudioManager".hit_flesh()
 	if health_state == HEALTH_STATE.dying:
 		player.player_die()
 		return

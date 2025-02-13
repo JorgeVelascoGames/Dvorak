@@ -16,7 +16,6 @@ var empty_battery := false
 
 func _ready() -> void:
 	visible = false
-	print(item_to_follow)
 
 
 func _process(delta: float) -> void:

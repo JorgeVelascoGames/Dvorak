@@ -124,7 +124,7 @@ script = ExtResource("3_rrijc")
 recharge_hint = SubResource("Resource_n7n3o")
 
 [node name="FlashlightBattery" type="Timer" parent="FlashlightFixPosition/Flashlight"]
-wait_time = 4000.0
+wait_time = 3.0
 
 [node name="TweaklingTimer" type="Timer" parent="FlashlightFixPosition/Flashlight"]
 

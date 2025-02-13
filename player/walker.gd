@@ -73,6 +73,7 @@ func pick_up_crowbar():
 	flashlight_model.show()
 	flashlight.move_flashlight()
 	player.current_weapon = player.WEAPON.crowbar
+	player.player_audio_manager.pick_up_crowbar()
 
 
 func pick_up_flashlight() -> void:

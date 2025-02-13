@@ -63,3 +63,13 @@ Bell 08.wav by Kyster -- https://freesound.org/s/79438/ -- License: Attribution
 Little woman screaming sound effect by Mastersoundboy2005 -- https://freesound.org/s/733539/ -- License: Creative Commons 0
 
 Scream- woman- pain 1 by Valerie-Vivegnis -- https://freesound.org/s/767887/ -- License: Attribution 4.0
+
+04.wav by edwin_p_manchester -- https://freesound.org/s/3216/ -- License: Attribution 4.0
+
+Pill Bottle & Pills.wav by SMuntsinger -- https://freesound.org/s/449606/ -- License: Creative Commons 0
+
+Empty Beer Bottles Clinking, Clanking.wav by Fugeni -- https://freesound.org/s/416288/ -- License: Creative Commons 0
+
+TakingPills.wav by n00bdesign -- https://freesound.org/s/337633/ -- License: Creative Commons 0
+
+Pound of Flesh 1 by magnuswaker -- https://freesound.org/s/522091/ -- License: Creative Commons 0

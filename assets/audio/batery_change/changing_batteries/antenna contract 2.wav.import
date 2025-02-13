@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://cnft885tp1lf8"
+path="res://.godot/imported/antenna contract 2.wav-2ac1fd5250dce2af8869f410fa7a6175.sample"
+
+[deps]
+
+source_file="res://assets/audio/batery_change/changing_batteries/antenna contract 2.wav"
+dest_files=["res://.godot/imported/antenna contract 2.wav-2ac1fd5250dce2af8869f410fa7a6175.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

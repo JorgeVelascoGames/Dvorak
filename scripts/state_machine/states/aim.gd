@@ -94,6 +94,7 @@ func fire() -> void:
 			#if collision is InfanticideEnemy:
 				#collision.shot_infanticide_enemy()
 			gun_ray.get_collider().owner.enemy_die()
+			player.player_audio_manager.hit_flesh()
 	
 	world_camera.weapon_recoil()
 	balance.add_balance(balance.shooting_cost)

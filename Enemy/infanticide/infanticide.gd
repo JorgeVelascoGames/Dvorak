@@ -22,7 +22,7 @@ var dying_quotes = [
 ]
 
 const INFANTIZIDE_DISOLVE = preload("res://assets/enemies/infantizide_disolve.tres")
-
+const DEAD_AUDIO = preload("res://Enemy/infanticide/dead_audio.tscn")
 
 func _ready() -> void:
 	super()
@@ -50,7 +50,9 @@ func die_effect() -> void:
 	
 	player.player_ui.display_gameplay_text(dying_quotes.pick_random(), 5, true)
 	
-	$DeadAudio.play()
+	var audio = DEAD_AUDIO.instantiate()
+	get_tree().root.add_child(audio)
+	audio.position = position
 	
 	player.player_ui.player_vhs_effect.show()
 	player.player_ui.player_vhs_effect.shader_mat.set_shader_parameter("crease_noise", 2.0)
@@ -69,7 +71,7 @@ func enemy_die(with_effect : bool = true):
 	if with_effect:
 		die_effect()
 	$Model/infanticideModel/rig/Skeleton3D/infanticide.material_override = INFANTIZIDE_DISOLVE
-	$Model/infanticideModel/rig/Skeleton3D/infanticide.trigger_dissolve(2.5)
+	$Model/infanticideModel/rig/Skeleton3D/infanticide.trigger_dissolve(2.3)
 	super()
 
 
