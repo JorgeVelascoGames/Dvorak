@@ -107,7 +107,7 @@ func _on_hurt_box_body_entered(body: Node3D) -> void:
 		enemy_die()
 		for enemy_body in $DetectionArea.get_overlapping_bodies():
 			if enemy_body is Enemy:
-				enemy_body.enemy_die()
+				enemy_body.enemy_die(false)
 
 
 func _on_aggro_area_body_entered(body: Node3D) -> void:

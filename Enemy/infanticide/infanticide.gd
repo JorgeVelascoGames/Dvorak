@@ -52,9 +52,6 @@ func die_effect() -> void:
 	
 	$DeadAudio.play()
 	
-	$Model/infanticideModel/rig/Skeleton3D/infanticide.material_override = INFANTIZIDE_DISOLVE
-	$Model/infanticideModel/rig/Skeleton3D/infanticide.trigger_dissolve(2.5)
-	
 	player.player_ui.player_vhs_effect.show()
 	player.player_ui.player_vhs_effect.shader_mat.set_shader_parameter("crease_noise", 2.0)
 	player.player_ui.player_vhs_effect.shader_mat.set_shader_parameter("tape_crease_smear", 2.0)
@@ -68,8 +65,11 @@ func die_effect() -> void:
 	player.player_ui.player_vhs_effect.hide()
 
 
-func enemy_die():
-	die_effect()
+func enemy_die(with_effect : bool = true):
+	if with_effect:
+		die_effect()
+	$Model/infanticideModel/rig/Skeleton3D/infanticide.material_override = INFANTIZIDE_DISOLVE
+	$Model/infanticideModel/rig/Skeleton3D/infanticide.trigger_dissolve(2.5)
 	super()
 
 
