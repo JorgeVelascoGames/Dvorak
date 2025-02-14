@@ -6,7 +6,8 @@ extends Node3D
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	AppManager.game_manager.on_calamity.connect(on_calamity)
+	if AppManager.game_manager:
+		AppManager.game_manager.on_calamity.connect(on_calamity)
 
 
 func on_calamity() -> void:
