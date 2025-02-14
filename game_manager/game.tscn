@@ -52,9 +52,6 @@ tutorial = ExtResource("6_k1ata")
 [node name="GameLevelManager" parent="." instance=ExtResource("6_7vbrb")]
 level_one = ExtResource("6_1rvxs")
 
-[node name="LoadingScreen" parent="." instance=ExtResource("4_v3kow")]
-visible = false
-
 [node name="VHSEffect" type="ColorRect" parent="." groups=["vhs_effect"]]
 visible = false
 z_index = 1000
@@ -96,6 +93,8 @@ audio_listener_enable_3d = true
 size = Vector2i(644, 361)
 render_target_update_mode = 4
 
-[connection signal="NewSceneLoaded" from="LoadingScreen" to="." method="_on_loading_screen_new_scene_loaded"]
+[node name="LoadingScreen" parent="." instance=ExtResource("4_v3kow")]
+
 [connection signal="timeout" from="EnemyManager/SpawnerTimer" to="EnemyManager" method="_on_spawner_timer_timeout"]
 [connection signal="timeout" from="EnemyManager/EnemiesStateChecker" to="EnemyManager" method="_on_enemies_state_checker_timeout"]
+[connection signal="NewSceneLoaded" from="LoadingScreen" to="." method="_on_loading_screen_new_scene_loaded"]

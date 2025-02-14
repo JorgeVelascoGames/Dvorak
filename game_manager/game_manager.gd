@@ -9,7 +9,7 @@ signal on_calamity
 @export var advert_scree: PackedScene
 @export var main_menu : PackedScene
 @export var tutorial : PackedScene
-@export var first_scene := APP_STATE.lenguage
+@export var first_scene := APP_STATE.advert
 
 @onready var loading_screen: LoadingScreen = $LoadingScreen
 @onready var game_level_manager: GameLevelManager = $GameLevelManager

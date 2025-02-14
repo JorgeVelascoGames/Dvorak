@@ -1,0 +1,20 @@
+[gd_scene load_steps=5 format=3 uid="uid://c8ykvuhn5qt4r"]
+
+[ext_resource type="PackedScene" uid="uid://b1eshhu4saiqm" path="res://assets/environment/mockup/gound.fbx" id="1_ohs7u"]
+[ext_resource type="Texture2D" uid="uid://clcu2q1s5ka7f" path="res://assets/environment/mockup/plane_DefaultMaterial_BaseColor.png" id="2_mbj1v"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_swta3"]
+albedo_texture = ExtResource("2_mbj1v")
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_2rtv1"]
+data = PackedVector3Array(0.06, -0.06, 0, -0.06, -0.06, 0, -0.06, 0.06, 0, -0.06, 0.06, 0, 0.06, 0.06, 0, 0.06, -0.06, 0)
+
+[node name="gound" instance=ExtResource("1_ohs7u")]
+
+[node name="Plane" parent="." index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_swta3")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Plane" index="0"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Plane/StaticBody3D" index="0"]
+shape = SubResource("ConcavePolygonShape3D_2rtv1")
