@@ -47,15 +47,18 @@ func set_random_pass() -> void:
 
 
 func check_solution() -> bool:
+	$MainSwitch/SwitchSound.play()
 	var index := 0
 	for code in pass_code:
 		if code != pass_switches[index].switch_active:
+			$Gate/Alarm.play()
 			print("SOLUTION IS INCORRECT")
 			return false
 		index +=1
 	
 	index = 0
 	print("SOLUTION IS CORRECT")
+	$MainSwitch/switch/AnimationPlayer.play("activating", .1)
 	$Gate/GateInteractable.process_mode = Node.PROCESS_MODE_DISABLED
 	return true
 

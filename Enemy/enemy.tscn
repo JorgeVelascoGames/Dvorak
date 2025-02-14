@@ -32,6 +32,7 @@ script = ExtResource("1_kexvc")
 speed = 3.0
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
+path_postprocessing = 1
 
 [node name="HurtBox" type="Area3D" parent="."]
 collision_layer = 0

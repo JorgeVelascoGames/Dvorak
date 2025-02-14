@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://c5vmfb6wrd0un"]
+[gd_scene load_steps=23 format=3 uid="uid://c5vmfb6wrd0un"]
 
 [ext_resource type="Script" path="res://ExitGate/exit_gate.gd" id="1_71loh"]
 [ext_resource type="Script" path="res://components/interactable.gd" id="1_s1pqe"]
@@ -6,7 +6,15 @@
 [ext_resource type="PackedScene" uid="uid://cfpfgy53aqnh2" path="res://ExitGate/pass_switch.tscn" id="3_t31dc"]
 [ext_resource type="Script" path="res://scripts/hint.gd" id="4_bsdjp"]
 [ext_resource type="PackedScene" uid="uid://h4rdpqvxxbsy" path="res://assets/props/swich/switch.glb" id="5_5vk1x"]
-[ext_resource type="Texture2D" uid="uid://b1xu8kk1ghur3" path="res://assets/props/swich/swich_DefaultMaterial_BaseColor.png" id="6_htjip"]
+[ext_resource type="AudioStream" uid="uid://by0ct61p7d2fs" path="res://assets/audio/ambient/alarm.wav" id="5_i4l1s"]
+[ext_resource type="Texture2D" uid="uid://cethk8m78loa2" path="res://assets/props/swich/switch_special.png" id="6_1p6h6"]
+[ext_resource type="AudioStream" uid="uid://cal18ohk6qgrb" path="res://assets/audio/switch_action/button assorted 42.wav" id="7_2eb1b"]
+[ext_resource type="AudioStream" uid="uid://dvrmabqtiqhil" path="res://assets/audio/switch_action/button assorted 43.wav" id="8_ducgt"]
+[ext_resource type="AudioStream" uid="uid://b8eobuyk0drp8" path="res://assets/audio/switch_action/button assorted 50.wav" id="9_ui1x6"]
+[ext_resource type="AudioStream" uid="uid://djxgxa265ygcp" path="res://assets/audio/switch_action/button assorted 51.wav" id="10_vb55u"]
+[ext_resource type="AudioStream" uid="uid://ckrj4upysnbif" path="res://assets/audio/switch_action/button assorted 52.wav" id="11_j2eo4"]
+[ext_resource type="AudioStream" uid="uid://nqrk7vm5dxfs" path="res://assets/audio/switch_action/button assorted 53.wav" id="12_thuaj"]
+[ext_resource type="AudioStream" uid="uid://bgev4kcioi2c1" path="res://assets/audio/switch_action/button assorted 54.wav" id="13_h102r"]
 
 [sub_resource type="Resource" id="Resource_157kt"]
 script = ExtResource("4_bsdjp")
@@ -28,7 +36,18 @@ size = Vector3(0.1, 0.15, 0.1)
 size = Vector3(0.1, 0.15, 0.1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_arf1y"]
-albedo_texture = ExtResource("6_htjip")
+albedo_texture = ExtResource("6_1p6h6")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_5jllc"]
+random_pitch = 1.2
+streams_count = 7
+stream_0/stream = ExtResource("7_2eb1b")
+stream_1/stream = ExtResource("8_ducgt")
+stream_2/stream = ExtResource("9_ui1x6")
+stream_3/stream = ExtResource("10_vb55u")
+stream_4/stream = ExtResource("11_j2eo4")
+stream_5/stream = ExtResource("12_thuaj")
+stream_6/stream = ExtResource("13_h102r")
 
 [node name="ExitGate" type="Node3D"]
 script = ExtResource("1_71loh")
@@ -46,6 +65,9 @@ shape = SubResource("BoxShape3D_t08g3")
 
 [node name="ExitDoor" parent="Gate" instance=ExtResource("3_sy4dp")]
 transform = Transform3D(0.9, 0, 0, 0, 0.9, 0, 0, 0, 0.9, 0, -0.513737, 0)
+
+[node name="Alarm" type="AudioStreamPlayer3D" parent="Gate"]
+stream = ExtResource("5_i4l1s")
 
 [node name="MainSwitch" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.555713, 0.521547, 0.032136)
@@ -67,8 +89,17 @@ transform = Transform3D(0.511499, 0, 0, 0, 0.511499, 0, 0, 0, 0.511499, 0, 0, 0)
 [node name="Armature" parent="MainSwitch/switch" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 
+[node name="Skeleton3D" parent="MainSwitch/switch/Armature" index="0"]
+bones/0/position = Vector3(0, 0, 0)
+
 [node name="exit_gate_switch" parent="MainSwitch/switch/Armature/Skeleton3D" index="0"]
 surface_material_override/0 = SubResource("StandardMaterial3D_arf1y")
+
+[node name="AnimationPlayer" parent="MainSwitch/switch" index="1"]
+autoplay = "Off"
+
+[node name="SwitchSound" type="AudioStreamPlayer3D" parent="MainSwitch"]
+stream = SubResource("AudioStreamRandomizer_5jllc")
 
 [node name="PassSwitch" parent="." instance=ExtResource("3_t31dc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.70311, 0.505819, 0)

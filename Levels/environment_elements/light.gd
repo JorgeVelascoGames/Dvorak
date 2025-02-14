@@ -1,5 +1,6 @@
 extends Node3D
 
+@export var start_lighted := false
 @export var is_tweaking_light := false
 @export var light_original_intensity := 1.0 ##The light energy of every single light on this switch
 
@@ -26,7 +27,8 @@ func _ready() -> void:
 			lights_array.append(child)
 			var sound = LIGHT_BUBBLE_SOUND.instantiate() as AudioStreamPlayer3D
 			child.add_child(sound)
-	switch_light()
+	if not start_lighted:
+		switch_light()
 	if is_tweaking_light:
 		twink_light()
 	AppManager.game_manager.on_calamity.connect(on_calamity)

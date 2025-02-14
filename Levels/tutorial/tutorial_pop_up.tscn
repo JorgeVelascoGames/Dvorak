@@ -3,21 +3,9 @@
 [ext_resource type="Script" path="res://Levels/tutorial/tutorial_pop_up.gd" id="1_lrclo"]
 [ext_resource type="FontFile" uid="uid://8cel7ajxycai" path="res://assets/fonts/roboto/Roboto-Black.ttf" id="2_3wbma"]
 [ext_resource type="Texture2D" uid="uid://cv4idnyo4nqik" path="res://assets/textures/metal_background.jpg" id="2_5arar"]
+[ext_resource type="Theme" uid="uid://cnn86axpbtyme" path="res://game_ui/main_theme.tres" id="2_qq4rh"]
 [ext_resource type="LabelSettings" uid="uid://un4p01kkltty" path="res://Levels/tutorial/tutorial_text_lable_settings.tres" id="3_ffpvq"]
 [ext_resource type="LabelSettings" uid="uid://uvcnfvkxej6y" path="res://game_ui/flavour_text_lable_settings.tres" id="4_f1p6u"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mf4wk"]
-bg_color = Color(0.670588, 0.670588, 0.670588, 0)
-border_width_left = 5
-border_width_top = 5
-border_width_right = 5
-border_width_bottom = 5
-border_color = Color(0.194349, 0.194349, 0.194349, 1)
-border_blend = true
-corner_radius_top_left = 5
-corner_radius_top_right = 5
-corner_radius_bottom_right = 5
-corner_radius_bottom_left = 5
 
 [node name="TutorialPopUp" type="Control"]
 process_mode = 3
@@ -55,7 +43,7 @@ theme_override_constants/margin_bottom = 12
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-theme_override_styles/panel = SubResource("StyleBoxFlat_mf4wk")
+theme = ExtResource("2_qq4rh")
 
 [node name="TextureRect" type="TextureRect" parent="MarginContainer/PanelContainer"]
 modulate = Color(1, 1, 1, 0.588235)
@@ -75,6 +63,7 @@ theme_override_constants/margin_bottom = 5
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/PanelContainer/MarginContainer"]
 layout_mode = 2
+theme = ExtResource("2_qq4rh")
 alignment = 1
 
 [node name="LabelMargincontainer" type="MarginContainer" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer"]

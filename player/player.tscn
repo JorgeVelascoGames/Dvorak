@@ -1,4 +1,4 @@
-[gd_scene load_steps=109 format=3 uid="uid://m6pypgl566n1"]
+[gd_scene load_steps=111 format=3 uid="uid://m6pypgl566n1"]
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_ref5g"]
 [ext_resource type="Script" path="res://player/smooth_camera.gd" id="2_cywkd"]
@@ -47,6 +47,8 @@
 [ext_resource type="Shader" path="res://shaders/vhs.gdshader" id="34_l5ybq"]
 [ext_resource type="Script" path="res://game_manager/vhs_effect.gd" id="35_5ytlk"]
 [ext_resource type="Script" path="res://player/player_audio_manager.gd" id="36_f26nf"]
+[ext_resource type="Theme" uid="uid://cnn86axpbtyme" path="res://game_ui/main_theme.tres" id="39_6wgt5"]
+[ext_resource type="Texture2D" uid="uid://cv4idnyo4nqik" path="res://assets/textures/metal_background.jpg" id="40_ahubd"]
 [ext_resource type="AudioStream" uid="uid://cn6b3yjuqakb1" path="res://assets/audio/player/foot_step.wav" id="44_6afom"]
 [ext_resource type="AudioStream" uid="uid://b4m717t5h023o" path="res://assets/audio/player/walker_draging.wav" id="45_2ydpv"]
 [ext_resource type="AudioStream" uid="uid://c2t7j43t8n85h" path="res://assets/audio/bell.wav" id="46_ki68j"]
@@ -1219,6 +1221,14 @@ anchor_right = 0.5
 anchor_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("39_6wgt5")
+
+[node name="TextureRect" type="TextureRect" parent="PlayerUI/PlayerGameMenu/PanelContainer"]
+modulate = Color(1, 1, 1, 0.588235)
+layout_mode = 2
+texture = ExtResource("40_ahubd")
+expand_mode = 2
+stretch_mode = 1
 
 [node name="HBoxContainer" type="HBoxContainer" parent="PlayerUI/PlayerGameMenu/PanelContainer"]
 layout_mode = 2
@@ -1231,10 +1241,12 @@ layout_mode = 2
 
 [node name="ResumeButton" type="Button" parent="PlayerUI/PlayerGameMenu/PanelContainer/HBoxContainer/ButtonsPanel/Buttons"]
 layout_mode = 2
+theme = ExtResource("39_6wgt5")
 text = "Resume"
 
 [node name="QuitButton" type="Button" parent="PlayerUI/PlayerGameMenu/PanelContainer/HBoxContainer/ButtonsPanel/Buttons"]
 layout_mode = 2
+theme = ExtResource("39_6wgt5")
 text = "Exit"
 
 [node name="ControllsPanel" type="PanelContainer" parent="PlayerUI/PlayerGameMenu/PanelContainer/HBoxContainer"]
@@ -1250,6 +1262,7 @@ theme_override_constants/margin_bottom = 5
 [node name="Controlls" type="Label" parent="PlayerUI/PlayerGameMenu/PanelContainer/HBoxContainer/ControllsPanel/MarginContainer"]
 custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
+theme_override_constants/line_spacing = 6
 text = "W, A, S, D – Move
 I (press/hold) – Interact
 Right Mouse Button (M2) – Prepare weapon

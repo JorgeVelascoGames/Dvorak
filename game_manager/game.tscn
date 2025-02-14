@@ -15,7 +15,7 @@
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_y1wwo"]
 
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_fla38"]
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_45pf8"]
 noise = SubResource("FastNoiseLite_y1wwo")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_u0avb"]
@@ -33,7 +33,7 @@ shader_parameter/tape_crease_discoloration = 1.0
 shader_parameter/bottom_border_thickness = 15.4
 shader_parameter/bottom_border_jitter = 18.5
 shader_parameter/noise_intensity = 0.0
-shader_parameter/noise_texture = SubResource("NoiseTexture2D_fla38")
+shader_parameter/noise_texture = SubResource("NoiseTexture2D_45pf8")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_sx0k1"]
 shader = ExtResource("8_odn3b")
@@ -72,7 +72,6 @@ script = ExtResource("9_whl67")
 max_enemies_on_level = 4
 spawn_frecuency = 40.0
 enemies_on_load = 1
-no_enemies = true
 
 [node name="SpawnerTimer" type="Timer" parent="EnemyManager"]
 

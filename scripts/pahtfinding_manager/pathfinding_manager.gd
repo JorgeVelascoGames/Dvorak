@@ -8,8 +8,9 @@ var player_position: Vector3
 
 
 func _ready() -> void:
-	for point in waypoints:
-		print(point)
+	pass
+	#for point in waypoints:
+		#print(point)
 
 
 func set_up_player(current_player: Player) -> void:
@@ -19,10 +20,11 @@ func set_up_player(current_player: Player) -> void:
 func _on_timer_timeout():
 	if AppManager.game_manager == null:
 		return
-	if AppManager.game_manager.current_app_state != GameManager.APP_STATE.game:
+	if AppManager.game_manager.current_app_state == GameManager.APP_STATE.menu:
 		player = null
 	if player:
 		player_position = player.global_position
+		print(player_position)
 
 
 func get_random_waypoint(last_waypoint : Marker3D = null) -> Marker3D:

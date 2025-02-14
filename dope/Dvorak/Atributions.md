@@ -73,3 +73,9 @@ Empty Beer Bottles Clinking, Clanking.wav by Fugeni -- https://freesound.org/s/4
 TakingPills.wav by n00bdesign -- https://freesound.org/s/337633/ -- License: Creative Commons 0
 
 Pound of Flesh 1 by magnuswaker -- https://freesound.org/s/522091/ -- License: Creative Commons 0
+
+creepy newborn cry by zacnie -- https://freesound.org/s/646299/ -- License: Attribution 4.0
+
+Great Factory Alarm by EinTon -- https://freesound.org/s/443271/ -- License: Attribution 3.0
+
+VHS VCR Static Noise and Glitches by SkyernAklea -- https://freesound.org/s/508187/ -- License: Attribution 4.0

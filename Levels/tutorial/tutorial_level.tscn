@@ -30,6 +30,8 @@ albedo_color = Color(1, 1, 1, 0)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gegmy"]
 albedo_texture = ExtResource("3_okg34")
+uv1_triplanar = true
+uv1_world_triplanar = true
 
 [node name="tutorial_level" instance=ExtResource("1_4gk20")]
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=45 format=3 uid="uid://b37la44wjrp4u"]
+[gd_scene load_steps=44 format=3 uid="uid://b37la44wjrp4u"]
 
 [ext_resource type="PackedScene" uid="uid://dqk45r48r427t" path="res://Levels/level_one/level_one_scenario.tscn" id="1_jujem"]
 [ext_resource type="Environment" uid="uid://c42wra3u6yo6u" path="res://Levels/world_environment.tres" id="1_rc4ww"]
@@ -24,7 +24,6 @@
 [ext_resource type="PackedScene" uid="uid://bvbwpj3cl6pdr" path="res://assets/props/lights/lights.tscn" id="14_xelpn"]
 [ext_resource type="Script" path="res://randomization/randomize_self_destruct.gd" id="15_md1aq"]
 [ext_resource type="PackedScene" uid="uid://qyjmhcrcrko3" path="res://components/enemy_spawner.tscn" id="23_1vq12"]
-[ext_resource type="PackedScene" uid="uid://bb8divagmrtfg" path="res://Levels/tutorial/tutorial_pop_up.tscn" id="24_lg7jd"]
 [ext_resource type="PackedScene" uid="uid://bbxqlpn2enp4b" path="res://Levels/environment_elements/waiting_chairs_obstacle.tscn" id="24_udu26"]
 [ext_resource type="Texture2D" uid="uid://dmgav0cgffyij" path="res://assets/textures/blood/blood_footsteps.png" id="25_h3682"]
 [ext_resource type="PackedScene" uid="uid://cqb1t6ixl2lse" path="res://assets/props/direction_sign_big/direction_sign.tscn" id="25_wuc35"]
@@ -355,7 +354,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18, 5, -5)
 [node name="Lamps" type="Node3D" parent="."]
 
 [node name="LampLight" parent="Lamps" instance=ExtResource("13_jxmsh")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 34.2789, 2.28097, -11.8971)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 34.2789, 2.28097, -12.74)
 
 [node name="Lights" type="Node3D" parent="."]
 
@@ -527,13 +526,6 @@ light_energy = 1.2
 shadow_enabled = true
 omni_range = 5.82458
 omni_attenuation = 1.745
-
-[node name="Entities" type="Node3D" parent="."]
-
-[node name="Player" parent="Entities" instance=ExtResource("2_2aoio")]
-transform = Transform3D(-0.221293, 0, 0.975209, 0, 1, 0, -0.975209, 0, -0.221293, 33.8064, 0.955824, -12.5149)
-
-[node name="Enemies" type="Node3D" parent="Entities"]
 
 [node name="Decoration" type="Node3D" parent="."]
 
@@ -885,7 +877,7 @@ transform = Transform3D(2.99333e-07, 0, -0.978277, 0, 0.978277, 0, 0.978277, 0, 
 transform = Transform3D(1.07093e-08, 0.245, -2.14186e-08, 0.245, -1.07093e-08, 0, -9.36237e-16, -2.14186e-08, -0.245, -9.94365, 6.88033, 2.37458)
 
 [node name="emergency_light6" parent="EmergencyLights" instance=ExtResource("13_3rriw")]
-transform = Transform3D(-1.07093e-08, -0.245, 4.28372e-08, 0.245, -1.07093e-08, 0, 1.87247e-15, 4.28372e-08, 0.245, 34.9459, 7.27838, -22.2776)
+transform = Transform3D(-1.07093e-08, -0.245, 4.28372e-08, 0.245, -1.07093e-08, 0, 1.87247e-15, 4.28372e-08, 0.245, 34.9459, 5.83458, -20.6999)
 
 [node name="emergency_light2" parent="EmergencyLights" instance=ExtResource("13_3rriw")]
 transform = Transform3D(4.68118e-16, 1.07093e-08, 0.245, 0.245, -1.07093e-08, 0, 1.07093e-08, 0.245, -1.07093e-08, -0.524738, 2.33441, -23.9464)
@@ -917,8 +909,6 @@ start_spawn_on_ready = true
 transform = Transform3D(-0.773674, 0, -0.633583, 0, 1, 0, 0.633583, 0, -0.773674, -0.00560871, 1.41435, -22.946)
 start_spawn_on_ready = true
 spawn_countdown = 30.0
-
-[node name="TutorialPopUp" parent="." instance=ExtResource("24_lg7jd")]
 
 [node name="Decals" type="Node3D" parent="."]
 
@@ -1078,6 +1068,13 @@ volume_db = 8.713
 [node name="CollisionShape3D" parent="AmbientSounds/GirlScream3/Area3D" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.06538, 0.555176, 0)
 shape = SubResource("BoxShape3D_q85wg")
+
+[node name="Entities" type="Node3D" parent="."]
+
+[node name="Player" parent="Entities" instance=ExtResource("2_2aoio")]
+transform = Transform3D(0.00945899, 0, -0.999957, 0, 1, 0, 0.999957, 0, 0.00945899, 33.6843, 0.955824, -12.5149)
+
+[node name="Enemies" type="Node3D" parent="Entities"]
 
 [editable path="NavigationRegion3D/ExitGate"]
 [editable path="NavigationRegion3D/ExitGate/MainSwitch/switch"]

@@ -12,4 +12,5 @@
 - Añadir detalles al escenario
 - Reworkear algunas habitaciones con nuevos assets
 - Pantalla de fin de demo
+- Rehacer main menu
  
