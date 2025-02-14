@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "To do.md",
+                "file": "Doing.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "To do"
+              "title": "Doing"
             }
           }
         ]
@@ -165,16 +165,16 @@
   },
   "active": "cef1813cea61e526",
   "lastOpenFiles": [
-    "Atributions.md",
-    "Doing.md",
     "Pulido.md",
     "To do.md",
+    "Bug y notas.md",
+    "Atributions.md",
+    "Doing.md",
     "Todo/Detalles de pulido.md",
     "Tutorials/Tutorial.md",
     "Arte/Estandarización.md",
     "Ideas/Ambiente.md",
     "Ideas/Brainstorming.md",
-    "Bug y notas.md",
     "Ideas/Logros.md",
     "Ideas/Mecánicas.md",
     "Ideas/Mejoras.md",

@@ -1,0 +1,2 @@
+-Terminar de implementar pantalla final
+-Arreglar bug texto desvaneciente
