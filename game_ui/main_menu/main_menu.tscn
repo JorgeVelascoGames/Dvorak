@@ -136,6 +136,7 @@ grow_vertical = 2
 texture = ExtResource("2_n8dxx")
 
 [node name="VHSEffect" type="ColorRect" parent="MainMenuUI"]
+visible = false
 z_index = 1000
 material = SubResource("ShaderMaterial_d1uv4")
 layout_mode = 1
@@ -212,6 +213,14 @@ text = "Whislist on steam"
 icon = ExtResource("5_cnxsy")
 expand_icon = true
 
+[node name="Label" type="Label" parent="MainMenuUI/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+theme_override_colors/font_color = Color(0.47788, 0.47788, 0.47788, 1)
+theme_override_font_sizes/font_size = 9
+text = "Demo Version 0.73.012 — Does not represent the final product"
+
 [node name="BlackScreen" type="ColorRect" parent="MainMenuUI"]
 layout_mode = 1
 anchors_preset = 15
@@ -238,7 +247,7 @@ anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_top = 362.0
-offset_bottom = 2583.0
+offset_bottom = 71083.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/margin_left = 66

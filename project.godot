@@ -14,9 +14,9 @@ config/name="What remains of my sins"
 run/main_scene="res://game_manager/game.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 run/max_fps=60
-boot_splash/bg_color=Color(0.00820202, 0.00820203, 0.00820202, 1)
-boot_splash/show_image=false
-config/icon="res://icon.svg"
+boot_splash/bg_color=Color(0, 0, 0, 1)
+boot_splash/image="res://splash_image.png"
+config/icon="res://icon.svg.png"
 
 [autoload]
 
@@ -29,6 +29,7 @@ window/size/viewport_width=640
 window/size/viewport_height=360
 window/size/mode=3
 window/stretch/mode="viewport"
+mouse_cursor/custom_image="res://cursor.png"
 
 [gui]
 

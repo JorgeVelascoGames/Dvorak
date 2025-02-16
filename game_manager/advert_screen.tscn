@@ -41,7 +41,7 @@ theme_override_constants/margin_bottom = 15
 custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
 theme_override_font_sizes/font_size = 23
-text = "It's strongly recommended to play this game without taking notes. 
+text = "It's strongly recommended to play this game without taking notes
 
 It's also recommended to use headphones"
 label_settings = ExtResource("2_fx0dx")
