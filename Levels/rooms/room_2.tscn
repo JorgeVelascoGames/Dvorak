@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://bj1jq0pdwxof7"]
+[gd_scene load_steps=13 format=3 uid="uid://bj1jq0pdwxof7"]
 
 [ext_resource type="Script" path="res://randomization/room.gd" id="1_0fqrf"]
 [ext_resource type="PackedScene" uid="uid://72kpfpnalr3a" path="res://Levels/environment_elements/light.tscn" id="4_8lc8e"]
@@ -8,7 +8,6 @@
 [ext_resource type="PackedScene" uid="uid://b8gbxyaua8ftu" path="res://assets/props/bed/bed.tscn" id="6_h5fjh"]
 [ext_resource type="PackedScene" uid="uid://b14r0ayr0hufl" path="res://Levels/environment_elements/emergency_light.tscn" id="7_yls4g"]
 [ext_resource type="Script" path="res://randomization/randomizer_position.gd" id="8_cynoc"]
-[ext_resource type="PackedScene" uid="uid://qyjmhcrcrko3" path="res://components/enemy_spawner.tscn" id="9_dsim3"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_kk2a0"]
 size = Vector2(9, 9)
@@ -122,11 +121,6 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 1.7932
 
 [node name="Marker3D3" type="Marker3D" parent="Randomizers/RandomizerPosition"]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0.795038, 0.945321, -1.44649)
-
-[node name="EnemySpawners" type="Node3D" parent="."]
-
-[node name="EnemySpawner" parent="EnemySpawners" instance=ExtResource("9_dsim3")]
-transform = Transform3D(-0.0109604, 0, -0.99994, 0, 1, 0, 0.99994, 0, -0.0109604, 0.971538, 1.03572, 3.11922)
 
 [editable path="lights/Light"]
 [editable path="lights/Light/Switch/emergency_light"]

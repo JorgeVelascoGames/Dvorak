@@ -95,6 +95,8 @@ script = ExtResource("1_qi8h2")
 walker_hint = ExtResource("2_0raew")
 
 [node name="WalkerRigidBody" type="StaticBody3D" parent="."]
+collision_layer = 1024
+collision_mask = 1025
 constant_linear_velocity = Vector3(0, -9, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="WalkerRigidBody"]
@@ -124,7 +126,7 @@ script = ExtResource("3_rrijc")
 recharge_hint = SubResource("Resource_n7n3o")
 
 [node name="FlashlightBattery" type="Timer" parent="FlashlightFixPosition/Flashlight"]
-wait_time = 3.0
+wait_time = 60.0
 
 [node name="TweaklingTimer" type="Timer" parent="FlashlightFixPosition/Flashlight"]
 

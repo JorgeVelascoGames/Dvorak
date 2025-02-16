@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=4 uid="uid://omjxjkehmmbw"]
+[gd_scene load_steps=13 format=4 uid="uid://omjxjkehmmbw"]
 
 [ext_resource type="Script" path="res://Enemy/enemy.gd" id="1_kexvc"]
 [ext_resource type="Script" path="res://Enemy/enemy_audio_manager.gd" id="3_hbalh"]
@@ -23,6 +23,11 @@ random_volume_offset_db = 0.07
 streams_count = 2
 stream_0/stream = ExtResource("6_28lw8")
 stream_1/stream = ExtResource("7_y5kby")
+
+[sub_resource type="SphereMesh" id="SphereMesh_41u0w"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_i7jwm"]
+albedo_color = Color(0.588264, 0.119009, 1.92523e-07, 1)
 
 [node name="Enemy" type="CharacterBody3D"]
 collision_layer = 16
@@ -96,6 +101,12 @@ collision_mask = 8
 [node name="AggroArea" type="Area3D" parent="."]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="AggroArea"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+visible = false
+layers = 262144
+mesh = SubResource("SphereMesh_41u0w")
+surface_material_override/0 = SubResource("StandardMaterial3D_i7jwm")
 
 [connection signal="body_entered" from="HurtBox" to="." method="_on_hurt_box_body_entered"]
 [connection signal="timeout" from="EnemyAudioManager/StepsTimer" to="EnemyAudioManager" method="_on_steps_timer_timeout"]

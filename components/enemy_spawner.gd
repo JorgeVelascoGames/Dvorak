@@ -24,17 +24,13 @@ func _ready() -> void:
 	
 	enemy_manager.spawners.append(self)
 	if start_spawn_on_ready:
-		spawn()
+		spawn(true)
 	AppManager.game_manager.on_calamity.connect(on_calamity)
 
 
-func spawn(is_provoked = false) -> bool:
+func spawn(is_provoked = false) -> void:
 	if not enemy_manager._can_spawn_enemy():
-		return false
-	
-	for body in detection_area.get_overlapping_bodies():
-		if body is Enemy:
-			return false
+		return
 	
 	if visible_on_screen_notifier_3d.is_on_screen():
 		await visible_on_screen_notifier_3d.screen_exited
@@ -51,7 +47,6 @@ func spawn(is_provoked = false) -> bool:
 	
 	if spawn_countdown > 0.0:
 		spawn_timer.start(spawn_countdown)
-	return true
 
 
 func on_calamity() -> void:

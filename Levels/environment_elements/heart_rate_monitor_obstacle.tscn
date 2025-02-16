@@ -10,6 +10,7 @@ height = 1.83897
 [node name="heart_rate_monitor" parent="." instance=ExtResource("1_ykdyk")]
 
 [node name="StaticBody3D2" type="StaticBody3D" parent="heart_rate_monitor"]
+collision_layer = 1024
 collision_mask = 0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="heart_rate_monitor/StaticBody3D2"]

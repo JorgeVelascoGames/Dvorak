@@ -1,0 +1,38 @@
+[remap]
+
+importer="texture"
+type="CompressedTexture2D"
+uid="uid://ct1cejjhl4tam"
+path.s3tc="res://.godot/imported/tree_bark_brown_lowres_64x64_n.png-94b7d05e95f91065d47d9de867ab057b.s3tc.ctex"
+metadata={
+"imported_formats": ["s3tc_bptc"],
+"vram_texture": true
+}
+generator_parameters={
+"md5": "45b894e66e9a70df3b5ba93446208f38"
+}
+
+[deps]
+
+source_file="res://assets/environment/mockup/tree_bark_brown_lowres_64x64_n.png"
+dest_files=["res://.godot/imported/tree_bark_brown_lowres_64x64_n.png-94b7d05e95f91065d47d9de867ab057b.s3tc.ctex"]
+
+[params]
+
+compress/mode=2
+compress/high_quality=false
+compress/lossy_quality=0.7
+compress/hdr_compression=1
+compress/normal_map=1
+compress/channel_pack=0
+mipmaps/generate=true
+mipmaps/limit=-1
+roughness/mode=1
+roughness/src_normal="res://assets/environment/mockup/tree_bark_brown_lowres_64x64_n.png"
+process/fix_alpha_border=true
+process/premult_alpha=false
+process/normal_map_invert_y=false
+process/hdr_as_srgb=false
+process/hdr_clamp_exposure=false
+process/size_limit=0
+detect_3d/compress_to=0

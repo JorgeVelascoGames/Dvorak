@@ -43,5 +43,4 @@ func back_to_main_menu() -> void:
 
 
 func _on_loading_screen_new_scene_loaded(scene: Node) -> void:
-	add_child(scene)
 	current_game_scene = scene

@@ -24,7 +24,6 @@ func _on_timer_timeout():
 		player = null
 	if player:
 		player_position = player.global_position
-		print(player_position)
 
 
 func get_random_waypoint(last_waypoint : Marker3D = null) -> Marker3D:

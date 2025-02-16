@@ -687,7 +687,7 @@ stream_1/stream = ExtResource("53_2yagw")
 [node name="Player" type="CharacterBody3D" groups=["player"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 collision_layer = 4
-collision_mask = 3
+collision_mask = 1027
 axis_lock_angular_x = true
 axis_lock_angular_y = true
 axis_lock_angular_z = true
@@ -712,7 +712,7 @@ size = Vector2i(640, 360)
 render_target_update_mode = 4
 
 [node name="WeaponCamera" type="Camera3D" parent="SubViewportContainer/SubViewport"]
-cull_mask = 2
+cull_mask = 262146
 fov = 33.0
 
 [node name="GunModel" parent="SubViewportContainer/SubViewport/WeaponCamera" instance=ExtResource("21_lgr1q")]
@@ -816,6 +816,7 @@ rotation_cost_divident = 30.0
 swing_cost = 1000.0
 getting_hit_cost = 500.0
 bonus_balance_recovery = 60.0
+pill_balance_recovery = 300.0
 
 [node name="BalanceRecoveryTimer" type="Timer" parent="Components/Balance"]
 wait_time = 0.5
@@ -883,8 +884,9 @@ reload_hint = ExtResource("18_6q2xb")
 
 [node name="Inventory" type="Node" parent="Components"]
 script = ExtResource("15_8pfmq")
-batteries_amount = 2
-pills = 2
+ammo_stored = 3
+batteries_amount = 1
+pills = 1
 
 [node name="PlayerHealth" type="Node" parent="Components"]
 script = ExtResource("20_8ocdq")
@@ -905,7 +907,7 @@ transform = Transform3D(1, 0, 0, 0, 0.258816, 0.965927, 0, -0.965927, 0.258816, 
 top_level = true
 
 [node name="WorldCamera" type="Camera3D" parent="CameraPivot/FollowPivot"]
-cull_mask = 1048573
+cull_mask = 786429
 fov = 33.0
 script = ExtResource("2_cywkd")
 speed = 20.0
@@ -919,14 +921,14 @@ autostart = true
 
 [node name="InteractableRay" type="RayCast3D" parent="CameraPivot/FollowPivot/WorldCamera"]
 target_position = Vector3(0, 0, -2)
-collision_mask = 65
+collision_mask = 1089
 hit_from_inside = true
 debug_shape_thickness = 1
 
 [node name="GunRay" type="RayCast3D" parent="CameraPivot/FollowPivot/WorldCamera"]
 transform = Transform3D(5.79386e-09, 2, -1.92145e-10, -1.99561, 5.79387e-09, 0.132548, 0.132548, -1.91953e-10, 1.99561, -4.23963e-09, -0.0353529, -0.286992)
 target_position = Vector3(0, 0, -12)
-collision_mask = 129
+collision_mask = 1153
 hit_from_inside = true
 collide_with_areas = true
 debug_shape_custom_color = Color(0.756863, 0.00392157, 0.941176, 1)
@@ -936,7 +938,7 @@ debug_shape_thickness = 1
 layers = 3
 light_color = Color(0.572988, 0.572988, 0.572988, 1)
 light_energy = 0.35
-omni_range = 2.07782
+omni_range = 1.78239
 omni_attenuation = 0.0
 
 [node name="PlayerUI" type="Control" parent="." groups=["player_ui"]]
@@ -1402,6 +1404,7 @@ stream = SubResource("AudioStreamRandomizer_is4bw")
 [connection signal="new_heal_state" from="Components/PlayerHealth" to="PlayerUI" method="_on_player_health_new_heal_state"]
 [connection signal="timeout" from="Components/PlayerHealth/DamagedHealTimer" to="Components/PlayerHealth" method="_on_damaged_heal_timer_timeout"]
 [connection signal="timeout" from="CameraPivot/FollowPivot/WorldCamera/AimShakeTimer" to="CameraPivot/FollowPivot/WorldCamera" method="_on_aim_shake_timer_timeout"]
+[connection signal="timeout" from="PlayerUI/Timer" to="PlayerUI" method="_on_timer_timeout"]
 [connection signal="pressed" from="PlayerUI/PlayerGameMenu/PanelContainer/HBoxContainer/ButtonsPanel/Buttons/ResumeButton" to="PlayerUI/PlayerGameMenu" method="_on_resume_button_pressed"]
 [connection signal="pressed" from="PlayerUI/PlayerGameMenu/PanelContainer/HBoxContainer/ButtonsPanel/Buttons/QuitButton" to="PlayerUI/PlayerGameMenu" method="_on_quit_button_pressed"]
 [connection signal="WalkerInteracted" from="WalkerFixedPoint/Walker" to="." method="_on_walker_walker_interacted"]

@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://cqdyeeuqjcj5e"]
+
+[ext_resource type="PackedScene" uid="uid://dgmb4e30rjjif" path="res://assets/environment/mockup/tree.glb" id="1_glhny"]
+
+[node name="tree" instance=ExtResource("1_glhny")]
+
+[node name="pinetree" parent="." index="0"]
+transform = Transform3D(0.743551, 0, 0.74355, 0, 1.06932, 0, -0.74355, 0, 0.743551, 0, 0, 0)

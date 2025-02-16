@@ -1,13 +1,16 @@
-[gd_scene load_steps=12 format=3 uid="uid://xuvgoo2dnfs1"]
+[gd_scene load_steps=21 format=3 uid="uid://xuvgoo2dnfs1"]
 
+[ext_resource type="Script" path="res://Levels/end_demo_screen.gd" id="1_3o4so"]
 [ext_resource type="Texture2D" uid="uid://clcu2q1s5ka7f" path="res://assets/environment/mockup/plane_DefaultMaterial_BaseColor.png" id="1_px3fs"]
 [ext_resource type="PackedScene" uid="uid://m6pypgl566n1" path="res://player/player.tscn" id="2_e2k5i"]
 [ext_resource type="Theme" uid="uid://cnn86axpbtyme" path="res://game_ui/main_theme.tres" id="3_ubujr"]
+[ext_resource type="Texture2D" uid="uid://dfouanxxf6dsj" path="res://assets/textures/building.png" id="3_uyqhq"]
 [ext_resource type="Texture2D" uid="uid://cv4idnyo4nqik" path="res://assets/textures/metal_background.jpg" id="4_okuul"]
 [ext_resource type="LabelSettings" uid="uid://uvcnfvkxej6y" path="res://game_ui/flavour_text_lable_settings.tres" id="6_brr08"]
+[ext_resource type="MeshLibrary" uid="uid://btl62rslgkd7d" path="res://assets/environment/mockup/tree.tres" id="9_w0pnm"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_l4l8r"]
-size = Vector2(44, 44)
+size = Vector2(70, 70)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_e51s4"]
 albedo_texture = ExtResource("1_px3fs")
@@ -15,8 +18,57 @@ uv1_scale = Vector3(0.12, 0.12, 0.12)
 uv1_triplanar = true
 uv1_world_triplanar = true
 
-[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_8fgwt"]
-data = PackedVector3Array(16.5, 0, 16.5, -16.5, 0, 16.5, 16.5, 0, -16.5, -16.5, 0, 16.5, -16.5, 0, -16.5, 16.5, 0, -16.5)
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_oqfhw"]
+data = PackedVector3Array(35, 0, 35, -35, 0, 35, 35, 0, -35, -35, 0, 35, -35, 0, -35, 35, 0, -35)
+
+[sub_resource type="BoxMesh" id="BoxMesh_fy767"]
+size = Vector3(33, 23, 23)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vwh2g"]
+albedo_texture = ExtResource("3_uyqhq")
+uv1_scale = Vector3(0.22, 0.22, 0.22)
+uv1_triplanar = true
+uv1_world_triplanar = true
+
+[sub_resource type="BoxMesh" id="BoxMesh_gi6fd"]
+size = Vector3(1, 23, 150)
+
+[sub_resource type="Animation" id="Animation_oty8r"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_14rpp"]
+resource_name = "fade"
+length = 5.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 1), Color(0, 0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ch2pq"]
+_data = {
+"RESET": SubResource("Animation_oty8r"),
+"fade": SubResource("Animation_14rpp")
+}
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_u6076"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -36,16 +88,17 @@ tonemap_exposure = 1.61
 sdfgi_enabled = true
 glow_enabled = true
 fog_enabled = true
-fog_light_color = Color(0.231111, 0.25393, 0.289803, 1)
-fog_light_energy = 0.3
-fog_density = 0.009
-fog_depth_curve = 0.406125
-fog_depth_begin = 7.0
-fog_depth_end = 12.0
-volumetric_fog_enabled = true
-volumetric_fog_albedo = Color(0.310617, 0.310617, 0.310617, 1)
+fog_mode = 1
+fog_light_color = Color(0.122252, 0.122252, 0.122252, 1)
+fog_light_energy = 0.8
+fog_density = 0.8
+fog_depth_begin = 1.0
+fog_depth_end = 30.0
+volumetric_fog_density = 0.0
 
 [node name="EndDemoScreen" type="Node3D"]
+script = ExtResource("1_3o4so")
+steam_url = "https://store.steampowered.com/app/2881170/What_remains_of_my_sins/"
 
 [node name="gound" type="Node3D" parent="."]
 
@@ -55,25 +108,63 @@ mesh = SubResource("PlaneMesh_l4l8r")
 skeleton = NodePath("")
 surface_material_override/0 = SubResource("StandardMaterial3D_e51s4")
 
-[node name="StaticBody3D2" type="StaticBody3D" parent="gound/Plane"]
+[node name="StaticBody3D" type="StaticBody3D" parent="gound/Plane"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="gound/Plane/StaticBody3D2"]
-shape = SubResource("ConcavePolygonShape3D_8fgwt")
+[node name="CollisionShape3D" type="CollisionShape3D" parent="gound/Plane/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_oqfhw")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="gound"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 9, -16)
+mesh = SubResource("BoxMesh_fy767")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_vwh2g")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="gound"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -90.4163, 9, -16)
+mesh = SubResource("BoxMesh_gi6fd")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_vwh2g")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="gound"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -16.8056, 9, 63.3115)
+mesh = SubResource("BoxMesh_gi6fd")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_vwh2g")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="gound"]
+transform = Transform3D(0.995488, 0.0948876, 0.00031295, -0.0947002, 0.993719, -0.0596181, -0.005968, 0.0593194, 0.998221, 64.2872, 9, 26.9119)
+mesh = SubResource("BoxMesh_gi6fd")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_vwh2g")
 
 [node name="Player" parent="." instance=ExtResource("2_e2k5i")]
+transform = Transform3D(0.258819, 0, 0.965926, 0, 1, 0, -0.965926, 0, 0.258819, 0, 1, 0)
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="ColorRect"]
+libraries = {
+"": SubResource("AnimationLibrary_ch2pq")
+}
+autoplay = "fade"
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_jo7o6")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
-light_color = Color(0.4, 0.388235, 0.364706, 1)
-light_energy = 3.0
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.00156, 0)
 light_volumetric_fog_energy = 2.67
 omni_range = 9.481
 
 [node name="TutorialPopUp" type="Control" parent="."]
 process_mode = 3
+visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -160,10 +251,24 @@ size_flags_vertical = 8
 theme = ExtResource("3_ubujr")
 text = "Exit"
 
-[node name="PlayerDetector" type="Area3D" parent="TutorialPopUp"]
-collision_layer = 0
-collision_mask = 4
+[node name="GridMap" type="GridMap" parent="."]
+mesh_library = ExtResource("9_w0pnm")
+cell_center_y = false
+data = {
+"cells": PackedInt32Array(65520, 7, 0, 65520, 6, 0, 65520, 4, 0, 65522, 3, 0, 65520, 0, 0, 65520, 65535, 0, 65520, 65534, 0, 65520, 65533, 0, 65521, 65533, 0, 65521, 65532, 0, 65521, 65531, 0, 65521, 65530, 0, 65520, 65530, 0, 65520, 65529, 0, 65520, 65528, 0, 65523, 65530, 0, 65524, 65530, 0, 65525, 65530, 0, 65523, 7, 0, 65524, 7, 0, 65525, 8, 0, 65526, 8, 0, 65527, 8, 0, 65528, 8, 0, 65528, 9, 0, 65529, 9, 0, 65530, 9, 0, 65531, 9, 0, 65532, 10, 0, 65533, 10, 0, 65534, 10, 0, 65535, 10, 0, 0, 10, 0, 1, 9, 0, 2, 9, 0, 3, 9, 0, 4, 9, 0, 5, 9, 0, 6, 9, 0, 7, 9, 0, 8, 9, 0, 2, 8, 0, 5, 8, 0, 1, 8, 0, 1, 7, 0, 0, 6, 0, 65535, 6, 0, 65534, 7, 0, 65533, 7, 0, 65531, 8, 0, 65530, 8, 0, 65529, 8, 0, 65526, 7, 0, 65525, 7, 0, 65522, 6, 0, 65529, 5, 0, 65531, 7, 0, 3, 5, 0, 7, 2, 0, 8, 4, 0, 6, 5, 0, 5, 7, 0, 11, 0, 0, 10, 65535, 0, 11, 65533, 0, 11, 2, 0, 65525, 6, 0, 65529, 6, 0, 65533, 5, 0, 65525, 4, 0, 65524, 65534, 0, 65522, 65535, 0, 65521, 0, 0, 65522, 1, 0, 65523, 1, 0, 65523, 2, 0, 65524, 2, 0, 65524, 1, 0, 65524, 0, 0, 65523, 0, 0, 65526, 3, 0, 65525, 3, 0, 65525, 0, 0, 65528, 3, 0, 6, 13, 0, 5, 13, 0, 5, 14, 0, 4, 14, 0, 3, 14, 0, 2, 14, 0, 1, 14, 0, 0, 14, 0, 65535, 14, 0, 65535, 15, 0, 65534, 15, 0, 65533, 15, 0, 65532, 15, 0, 65531, 15, 0, 65530, 14, 0, 65529, 14, 0, 65528, 13, 0, 65527, 13, 0, 65527, 12, 0, 65526, 12, 0, 65525, 11, 0, 65524, 11, 0, 65524, 10, 0, 65523, 10, 0, 65522, 10, 0, 65521, 9, 0, 65520, 9, 0, 65520, 8, 0, 65519, 8, 0, 65519, 7, 0, 65518, 7, 0, 2, 18, 0, 3, 18, 0, 4, 18, 0, 4, 17, 0, 5, 17, 0, 6, 16, 0, 7, 16, 0, 7, 15, 0, 8, 15, 0, 8, 14, 0, 9, 14, 0, 9, 13, 0, 10, 12, 0, 10, 11, 0, 11, 10, 0, 11, 9, 0, 12, 9, 0, 12, 8, 0, 12, 7, 0, 13, 7, 0, 13, 6, 0, 13, 5, 0, 14, 5, 0, 14, 4, 0, 14, 3, 0, 15, 3, 0, 15, 2, 0, 15, 1, 0, 16, 1, 0, 16, 0, 0, 16, 65535, 0, 17, 65535, 0, 16, 7, 0, 16, 8, 0, 15, 8, 0, 15, 9, 0, 15, 10, 0, 15, 11, 0, 14, 11, 0, 14, 12, 0, 13, 13, 0, 13, 14, 0, 12, 15, 0, 11, 16, 0, 10, 17, 0, 10, 18, 0, 9, 18, 0, 8, 19, 0, 7, 20, 0, 7, 21, 0, 6, 21, 0, 5, 22, 0, 4, 22, 0, 3, 22, 0, 2, 22, 0, 1, 23, 0, 0, 23, 0, 65535, 23, 0, 65534, 23, 0, 65533, 23, 0, 65532, 23, 0, 65531, 23, 0, 65530, 22, 0, 65529, 22, 0, 65528, 21, 0, 65527, 21, 0, 65526, 21, 0, 65525, 20, 0, 65524, 19, 0, 65523, 19, 0, 65522, 18, 0, 65521, 18, 0, 65521, 17, 0, 65520, 17, 0, 65520, 16, 0, 65520, 15, 0, 65519, 15, 0, 65519, 14, 0, 65518, 13, 0, 65517, 13, 0, 65517, 12, 0, 65516, 12, 0, 65511, 1, 0, 65510, 1, 0, 65510, 2, 0, 65509, 2, 0, 65509, 3, 0, 65507, 3, 0, 65506, 5, 0, 65505, 6, 0, 65504, 7, 0, 65504, 8, 0, 65504, 9, 0, 65504, 10, 0, 65504, 11, 0, 65505, 12, 0, 65506, 13, 0, 65506, 14, 0, 65507, 15, 0, 65508, 16, 0, 65510, 17, 0, 65511, 18, 0, 65512, 18, 0, 65513, 19, 0, 65514, 19, 0, 65515, 20, 0, 65517, 20, 0, 65518, 20, 0, 65519, 21, 0, 65520, 20, 0, 65521, 21, 0, 65522, 21, 0, 65524, 21, 0, 65525, 21, 0, 65529, 21, 0, 65530, 21, 0, 65531, 21, 0, 65532, 21, 0, 65533, 21, 0, 65534, 21, 0, 65535, 21, 0, 0, 21, 0, 1, 21, 0, 2, 21, 0, 2, 20, 0, 3, 20, 0, 4, 20, 0, 5, 19, 0, 6, 19, 0, 6, 18, 0, 7, 18, 0, 8, 18, 0, 8, 17, 0, 9, 17, 0, 11, 17, 0, 12, 16, 0, 13, 16, 0, 14, 15, 0, 15, 14, 0, 16, 14, 0, 16, 13, 0, 17, 13, 0, 18, 12, 0, 19, 11, 0, 19, 10, 0, 19, 9, 0, 20, 9, 0, 20, 8, 0, 21, 8, 0, 21, 7, 0, 21, 6, 0, 22, 6, 0, 22, 5, 0, 65533, 20, 0, 65532, 20, 0, 65531, 20, 0, 65530, 19, 0, 65529, 19, 0, 65528, 18, 0, 65527, 18, 0, 65526, 18, 0, 65525, 17, 0, 65524, 17, 0, 65523, 16, 0, 65522, 16, 0, 65521, 15, 0, 65520, 14, 0, 65519, 13, 0, 65518, 11, 0, 65517, 11, 0, 65517, 10, 0, 65517, 8, 0, 65517, 7, 0, 65517, 5, 0, 65517, 4, 0, 65518, 2, 0, 65518, 1, 0, 65518, 0, 0, 65517, 65535, 0, 65518, 65534, 0, 65517, 65532, 0, 65517, 65531, 0, 65517, 65530, 0, 65517, 65529, 0, 65517, 65528, 0)
+}
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="TutorialPopUp/PlayerDetector"]
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.279363, 0.75892, 0.588216, 0.940672, 0.09344, 0.326199, 0.192596, 0.644445, -0.739998, 0, 27, 0)
+light_energy = 0.06
+sky_mode = 2
 
-[connection signal="body_entered" from="TutorialPopUp/PlayerDetector" to="TutorialPopUp" method="_on_player_detector_body_entered"]
+[node name="SpotLight3D" type="SpotLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -18.5125, 7.57195, -5.74758)
+light_color = Color(0.894118, 0.741176, 0.552941, 1)
+light_energy = 2.0
+spot_range = 10.733
+spot_angle = 34.9711
+
+[connection signal="pressed" from="TutorialPopUp/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/WhislistButton" to="." method="_on_whislist_button_pressed"]
+[connection signal="pressed" from="TutorialPopUp/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/ExitButton" to="." method="_on_exit_button_pressed"]

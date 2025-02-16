@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://dnlj0cpdwjsyl"]
+[gd_scene load_steps=11 format=3 uid="uid://dnlj0cpdwjsyl"]
 
 [ext_resource type="Script" path="res://randomization/room.gd" id="1_fe218"]
 [ext_resource type="PackedScene" uid="uid://b8gbxyaua8ftu" path="res://assets/props/bed/bed.tscn" id="2_jf46d"]
@@ -7,7 +7,6 @@
 [ext_resource type="PackedScene" uid="uid://dycdd0wd0kswp" path="res://Levels/environment_elements/cross.tscn" id="5_8qvxo"]
 [ext_resource type="PackedScene" uid="uid://bqgujieo32yk3" path="res://Levels/environment_elements/lamp_light.tscn" id="6_6sxvr"]
 [ext_resource type="PackedScene" uid="uid://brysxkhoj2p7v" path="res://Levels/environment_elements/filling_cabinet_obstacle.tscn" id="6_8tu10"]
-[ext_resource type="PackedScene" uid="uid://qyjmhcrcrko3" path="res://components/enemy_spawner.tscn" id="7_qj7u8"]
 [ext_resource type="PackedScene" uid="uid://dkr3xuxvgu4nu" path="res://Levels/environment_elements/wheelchair_obstacle.tscn" id="9_wy5ws"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_kk2a0"]
@@ -76,11 +75,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.281, 0)
 
 [node name="FillingCabinetObstacle" parent="." instance=ExtResource("6_8tu10")]
 transform = Transform3D(-0.997392, 0, 0.0721763, 0, 1, 0, -0.0721763, 0, -0.997392, -4.0816, 0, 0)
-
-[node name="EnemySpawners" type="Node3D" parent="."]
-
-[node name="EnemySpawner" parent="EnemySpawners" instance=ExtResource("7_qj7u8")]
-transform = Transform3D(0.248876, 0, 0.968535, 0, 1, 0, -0.968535, 0, 0.248876, 2.93743, 0.481844, -1.28659)
 
 [node name="WheelchairObstacle" parent="." instance=ExtResource("9_wy5ws")]
 transform = Transform3D(0.90063, 0, 0.434587, 0, 1, 0, -0.434587, 0, 0.90063, 2.67746, 0, 1.81804)

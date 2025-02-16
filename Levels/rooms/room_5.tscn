@@ -1,11 +1,10 @@
-[gd_scene load_steps=11 format=3 uid="uid://cvp2itootohxc"]
+[gd_scene load_steps=10 format=3 uid="uid://cvp2itootohxc"]
 
 [ext_resource type="Script" path="res://randomization/room.gd" id="1_o16a3"]
 [ext_resource type="PackedScene" uid="uid://brysxkhoj2p7v" path="res://Levels/environment_elements/filling_cabinet_obstacle.tscn" id="2_2lfbw"]
 [ext_resource type="PackedScene" uid="uid://dycdd0wd0kswp" path="res://Levels/environment_elements/cross.tscn" id="4_66wn2"]
 [ext_resource type="Material" uid="uid://dst813utgj4hq" path="res://materials/walls_mat.tres" id="5_w47r0"]
 [ext_resource type="PackedScene" uid="uid://bqgujieo32yk3" path="res://Levels/environment_elements/lamp_light.tscn" id="6_rjm2j"]
-[ext_resource type="PackedScene" uid="uid://qyjmhcrcrko3" path="res://components/enemy_spawner.tscn" id="7_81mjq"]
 [ext_resource type="PackedScene" uid="uid://b8gbxyaua8ftu" path="res://assets/props/bed/bed.tscn" id="7_o6kag"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_kk2a0"]
@@ -90,8 +89,3 @@ transform = Transform3D(0.175727, 0, -0.984439, 0, 1, 0, 0.984439, 0, 0.175727, 
 
 [node name="LampLight" parent="." instance=ExtResource("6_rjm2j")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.00344, 2.281, -0.960496)
-
-[node name="EnemySpawners" type="Node3D" parent="."]
-
-[node name="EnemySpawner" parent="EnemySpawners" instance=ExtResource("7_81mjq")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.02334, 1.03628, 1.24695)

@@ -55,6 +55,8 @@ bones/0/position = Vector3(2.18125e-18, 1.16204e-10, -0.00215907)
 bones/0/rotation = Quaternion(0.707107, 5.33851e-08, 5.33851e-08, 0.707107)
 
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
+collision_layer = 1024
+collision_mask = 0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.351232, 0)

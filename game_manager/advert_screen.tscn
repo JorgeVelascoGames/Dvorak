@@ -1,10 +1,9 @@
 [gd_scene load_steps=4 format=3 uid="uid://bfqpamqydtspv"]
 
 [ext_resource type="Script" path="res://game_manager/advert_screen.gd" id="1_kt0cl"]
+[ext_resource type="LabelSettings" uid="uid://uvcnfvkxej6y" path="res://game_ui/flavour_text_lable_settings.tres" id="2_fx0dx"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_wp0tv"]
-
-[sub_resource type="LabelSettings" id="LabelSettings_wh3mf"]
 
 [node name="AdvertScreen" type="Control"]
 layout_mode = 3
@@ -32,16 +31,29 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = 158.0
-offset_bottom = -21.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/margin_left = 30
+theme_override_constants/margin_right = 30
+theme_override_constants/margin_bottom = 15
+
+[node name="Label2" type="Label" parent="MarginContainer"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 23
+text = "It's strongly recommended to play this game without taking notes. 
+
+It's also recommended to use headphones"
+label_settings = ExtResource("2_fx0dx")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
 
 [node name="Label" type="Label" parent="MarginContainer"]
-visible = false
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 8
+theme_override_font_sizes/font_size = 16
 text = "Press any key to continue
 "
-label_settings = SubResource("LabelSettings_wh3mf")
+label_settings = ExtResource("2_fx0dx")

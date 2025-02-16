@@ -10,6 +10,7 @@ size = Vector3(2.29156, 0.547821, 0.837891)
 [node name="Waiting Chair" parent="." instance=ExtResource("1_o0owt")]
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Waiting Chair"]
+collision_layer = 1024
 collision_mask = 0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Waiting Chair/StaticBody3D"]

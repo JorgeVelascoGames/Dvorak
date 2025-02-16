@@ -10,9 +10,12 @@ config_version=5
 
 [application]
 
-config/name="Dvorak"
+config/name="What remains of my sins"
 run/main_scene="res://game_manager/game.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
+run/max_fps=60
+boot_splash/bg_color=Color(0.00820202, 0.00820203, 0.00820202, 1)
+boot_splash/show_image=false
 config/icon="res://icon.svg"
 
 [autoload]
@@ -248,6 +251,7 @@ esc={
 
 3d_render/layer_6="enemies"
 3d_render/layer_7="world"
+3d_render/layer_19="wallhacks"
 3d_render/layer_20="world_decals"
 3d_physics/layer_1="World"
 3d_physics/layer_2="WorldItems"
@@ -259,6 +263,7 @@ esc={
 3d_physics/layer_8="enemy_hitbox"
 3d_physics/layer_9="walker_interactable"
 3d_physics/layer_10="enemy_interactable"
+3d_physics/layer_11="obstacles"
 
 [rendering]
 

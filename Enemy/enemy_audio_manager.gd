@@ -10,7 +10,6 @@ class_name EnemyAudioManager
 @onready var steps_sound: AudioStreamPlayer3D = $EnemyStepsSound
 @onready var vfx: AudioStreamPlayer3D = $EnemyVFX
 @onready var steps_volume := steps_sound.volume_db
-#TODO
 
 
 func _ready() -> void:

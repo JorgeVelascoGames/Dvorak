@@ -23,12 +23,13 @@ func generate_rooms() -> void:
 	#Generate de rooms
 	map_randomizer.randomize_map(exit_gate)
 	await map_randomizer.finish_randomization
-	await get_tree().create_timer(0.5) #To make sure it wors
+	var tween := get_tree().create_tween()
+	tween.tween_property(black_screen, "color", Color(0,0,0,0), 4.0)
+	AppManager.game_manager.enemy_manager.start_level()
+	await get_tree().create_timer(2.0) #To make sure it wors
 	#bake the navmesh
 	navigation_region_3d.bake_navigation_mesh()
 	await navigation_region_3d.bake_finished
-	var tween := get_tree().create_tween()
-	tween.tween_property(black_screen, "color", Color(0,0,0,0), 4.0)
 
 
 func finish_level() -> void:
@@ -36,7 +37,8 @@ func finish_level() -> void:
 	var tween := get_tree().create_tween()
 	tween.tween_property(white_screen, "color", Color.WHITE, 4.0)
 	await tween.finished
-	AppManager.game_manager.load_new_screen(GameManager.APP_STATE.menu)
+	white_screen.hide()
+	AppManager.game_manager.game_level_manager.next_level()
 
 
 func lost_level() -> void:

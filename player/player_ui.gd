@@ -50,23 +50,19 @@ func _ready() -> void:
 func display_gameplay_text(text : String, time : float, low_priority_text  := false, clean_text := false) -> void:
 	if low_priority_text and player_gameplay_info.text != "":
 		return
-	if !timer.is_stopped():
-		timer.stop()
-	if tween != null and tween.is_running():
-		tween.kill #In case multiple messages come at the same time
+	#if !timer.is_stopped():
+	timer.stop()
 	
+	if tween != null:
+		tween.stop()
+		tween.kill() #In case multiple messages come at the same time
+		player_gameplay_info.modulate.a = 1
 	if clean_text:
 		player_gameplay_info.text = ""
 	
 	player_gameplay_info.modulate.a = 1
 	player_gameplay_info.text += "\n" + text
 	timer.start(time)
-	await timer.timeout
-	tween = get_tree().create_tween()
-	tween.tween_property(player_gameplay_info, "modulate:a", 0.0, 2.0)
-	await tween.finished
-	tween = null
-	player_gameplay_info.text = ""
 
 
 func add_interaction_hint(hint : Hint) -> void:
@@ -147,3 +143,11 @@ func _on_player_health_new_heal_state(HEAL_STATE: PlayerHealth.HEALTH_STATE) -> 
 			player_vhs_effect.shader_mat.set_shader_parameter("crease_noise", 2.0)
 			player_vhs_effect.tween_crease_noise(0.3, player_health.time_to_recover_from_dying)
 			player_vhs_effect.tween_tape_crease_smear(0.3, player_health.time_to_recover_from_dying)
+
+
+func _on_timer_timeout() -> void:
+	tween = get_tree().create_tween()
+	tween.tween_property(player_gameplay_info, "modulate:a", 0.0, 2.0)
+	await tween.finished
+	tween = null
+	player_gameplay_info.text = ""

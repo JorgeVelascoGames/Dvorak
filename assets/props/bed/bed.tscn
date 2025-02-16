@@ -21,6 +21,7 @@ surface_material_override/0 = SubResource("StandardMaterial3D_8fj4j")
 surface_material_override/1 = SubResource("StandardMaterial3D_yowav")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="hospital_bed" index="0"]
+collision_layer = 1024
 collision_mask = 0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="hospital_bed/StaticBody3D" index="0"]

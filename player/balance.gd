@@ -3,6 +3,8 @@ class_name Balance
 
 signal balance_added(amount : int)
 
+@export_category("Debug")
+@export var testing_without_balance := false
 @export var show_ui := false
 
 #Exported variables
@@ -25,6 +27,7 @@ signal balance_added(amount : int)
 @export var damaged_balance_penalty := 15.00
 @export var dying_balance_penalty := 25.00
 @export var weapon_balance_penalty := 25.00
+
 
 #Variables
 var direction : Vector3
@@ -88,6 +91,10 @@ func swing() -> void:
 
 
 func add_balance(amount : int) -> void:
+	if testing_without_balance:
+		reset_balance()
+		return
+	
 	current_balance += amount
 	if player.player_health.health_state == player.player_health.HEALTH_STATE.injure:
 		current_balance += amount * (damaged_balance_penalty / 100)
