@@ -17,6 +17,7 @@ run/max_fps=60
 boot_splash/bg_color=Color(0, 0, 0, 1)
 boot_splash/image="res://splash_image.png"
 config/icon="res://icon.svg.png"
+config/windows_native_icon="res://gameicon.ico.ico"
 
 [autoload]
 
