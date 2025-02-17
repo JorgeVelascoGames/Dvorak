@@ -1238,15 +1238,22 @@ layout_mode = 2
 [node name="ButtonsPanel" type="PanelContainer" parent="PlayerUI/PlayerGameMenu/PanelContainer/HBoxContainer"]
 layout_mode = 2
 
-[node name="Buttons" type="VBoxContainer" parent="PlayerUI/PlayerGameMenu/PanelContainer/HBoxContainer/ButtonsPanel"]
+[node name="MarginContainer" type="MarginContainer" parent="PlayerUI/PlayerGameMenu/PanelContainer/HBoxContainer/ButtonsPanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 6
+theme_override_constants/margin_top = 6
+theme_override_constants/margin_right = 6
+theme_override_constants/margin_bottom = 6
+
+[node name="Buttons" type="VBoxContainer" parent="PlayerUI/PlayerGameMenu/PanelContainer/HBoxContainer/ButtonsPanel/MarginContainer"]
 layout_mode = 2
 
-[node name="ResumeButton" type="Button" parent="PlayerUI/PlayerGameMenu/PanelContainer/HBoxContainer/ButtonsPanel/Buttons"]
+[node name="ResumeButton" type="Button" parent="PlayerUI/PlayerGameMenu/PanelContainer/HBoxContainer/ButtonsPanel/MarginContainer/Buttons"]
 layout_mode = 2
 theme = ExtResource("39_6wgt5")
 text = "Resume"
 
-[node name="QuitButton" type="Button" parent="PlayerUI/PlayerGameMenu/PanelContainer/HBoxContainer/ButtonsPanel/Buttons"]
+[node name="QuitButton" type="Button" parent="PlayerUI/PlayerGameMenu/PanelContainer/HBoxContainer/ButtonsPanel/MarginContainer/Buttons"]
 layout_mode = 2
 theme = ExtResource("39_6wgt5")
 text = "Exit"
@@ -1405,8 +1412,8 @@ stream = SubResource("AudioStreamRandomizer_is4bw")
 [connection signal="timeout" from="Components/PlayerHealth/DamagedHealTimer" to="Components/PlayerHealth" method="_on_damaged_heal_timer_timeout"]
 [connection signal="timeout" from="CameraPivot/FollowPivot/WorldCamera/AimShakeTimer" to="CameraPivot/FollowPivot/WorldCamera" method="_on_aim_shake_timer_timeout"]
 [connection signal="timeout" from="PlayerUI/Timer" to="PlayerUI" method="_on_timer_timeout"]
-[connection signal="pressed" from="PlayerUI/PlayerGameMenu/PanelContainer/HBoxContainer/ButtonsPanel/Buttons/ResumeButton" to="PlayerUI/PlayerGameMenu" method="_on_resume_button_pressed"]
-[connection signal="pressed" from="PlayerUI/PlayerGameMenu/PanelContainer/HBoxContainer/ButtonsPanel/Buttons/QuitButton" to="PlayerUI/PlayerGameMenu" method="_on_quit_button_pressed"]
+[connection signal="pressed" from="PlayerUI/PlayerGameMenu/PanelContainer/HBoxContainer/ButtonsPanel/MarginContainer/Buttons/ResumeButton" to="PlayerUI/PlayerGameMenu" method="_on_resume_button_pressed"]
+[connection signal="pressed" from="PlayerUI/PlayerGameMenu/PanelContainer/HBoxContainer/ButtonsPanel/MarginContainer/Buttons/QuitButton" to="PlayerUI/PlayerGameMenu" method="_on_quit_button_pressed"]
 [connection signal="WalkerInteracted" from="WalkerFixedPoint/Walker" to="." method="_on_walker_walker_interacted"]
 [connection signal="area_entered" from="CrowbarAttackHitbox" to="CrowbarAttackHitbox" method="_on_area_entered"]
 [connection signal="timeout" from="PlayerAudioManager/FootStepsTimer" to="PlayerAudioManager" method="_on_foot_steps_timer_timeout"]
