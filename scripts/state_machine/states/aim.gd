@@ -18,7 +18,7 @@ var jitter_strength: float = 0.005
 #Private variables
 var mouse_motion := Vector2.ZERO
 var rng = RandomNumberGenerator.new()
-var randomized_sensibility: float = 1.0
+var randomized_sensibility: float = 2.0
 var tween : Tween
 
 func enter(_msg : ={}) -> void:
@@ -101,4 +101,4 @@ func fire() -> void:
 
 
 func _on_sensibility_timer_timeout():
-	randomized_sensibility = player.camera_sensibility * rng.randf_range(0.1, 3.0)
+	randomized_sensibility = player.camera_sensibility * rng.randf_range(1.2, 3.0)

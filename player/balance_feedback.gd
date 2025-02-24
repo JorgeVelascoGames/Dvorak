@@ -56,6 +56,10 @@ func show_third_warning() -> void:
 
 
 func _balance_added() -> void:
+	if not $"../PillBonusTimer".is_stopped():
+		return
+	if $"../../../StateMachine".state.name == "Walker":
+		return
 	var percentage = balance.get_percentage()
 	if percentage < first_warning_threshold and danger_state != 0:
 		change_threshold(0)

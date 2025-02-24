@@ -73,7 +73,7 @@ func finish_state() -> void:
 		player_ui.display_gameplay_text("You took a pill", 3)
 		player.player_audio_manager.swallow_pills()
 	else:
-		player_ui.display_gameplay_text("You don't have any more pills left...", 3)
+		#player_ui.display_gameplay_text("You don't have any more pills left...", 3)
 		player.player_audio_manager.no_pills()
 	state_machine.transition_to("Idle", {})
 

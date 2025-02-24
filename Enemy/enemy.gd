@@ -105,7 +105,7 @@ func enemy_die() -> void:
 
 func _on_hurt_box_body_entered(body: Node3D) -> void:
 	if body is Player:
-		$HurtBox/CollisionShape3D.disabled = true
+		$HurtBox.monitoring = false
 		body.player_health.player_hit()
 		enemy_die()
 		for enemy_body in $DetectionArea.get_overlapping_bodies():
