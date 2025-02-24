@@ -35,7 +35,7 @@ size = Vector3(0.375, 1, 0.28)
 
 [sub_resource type="Resource" id="Resource_mtmup"]
 script = ExtResource("5_flnum")
-hint = "I - (Hold) Search"
+hint = "i - (Hold) Search"
 priority = 12
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_6cw2q"]

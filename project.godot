@@ -15,9 +15,12 @@ run/main_scene="res://game_manager/game.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 run/max_fps=60
 boot_splash/bg_color=Color(0, 0, 0, 1)
-boot_splash/image="res://splash_image.png"
+boot_splash/image="res://fulllogo_transparent_small.png"
+boot_splash/fullsize=false
+boot_splash/use_filter=false
 config/icon="res://icon.svg.png"
 config/windows_native_icon="res://gameicon.ico.ico"
+boot_splash/minimum_display_time=4
 
 [autoload]
 

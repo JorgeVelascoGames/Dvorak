@@ -13,8 +13,8 @@ signal on_calamity
 
 @onready var loading_screen: LoadingScreen = $LoadingScreen
 @onready var game_level_manager: GameLevelManager = $GameLevelManager
-@onready var enemy_manager: EnemyManager = $EnemyManager
 
+var enemy_manager: EnemyManager
 var current_app_state := APP_STATE.lenguage
 var current_screen : Node
 var current_level_manager : LevelManager

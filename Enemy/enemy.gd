@@ -15,6 +15,7 @@ extends CharacterBody3D
 @onready var enemy_animation: EnemyAnimator = $EnemyAnimation
 @onready var player : Player = get_tree().get_first_node_in_group("player")
 @onready var model: Node3D = $Model
+@onready var enemy_manager : EnemyManager = get_tree().get_first_node_in_group("enemy_manager")
 
 var current_target
 var provoke := false
@@ -25,7 +26,8 @@ var gravity: float = ProjectSettings.get_setting("physics/3d/default_gravity")
 
 func _ready() -> void:
 	await get_tree().process_frame
-	AppManager.game_manager.enemy_manager.enemy_list.append(self)
+	if enemy_manager:
+		get_tree().get_first_node_in_group("enemy_manager").enemy_list.append(self)
 	reparent(AppManager.game_manager.current_level_manager.enemy_container)
 	model.top_level = true
 	if provoke_on_ready:
@@ -96,7 +98,8 @@ func enemy_die() -> void:
 	enemy_audio_manager.play_dead_audio()
 	await enemy_animation.play_dead_animation()
 	$Model.hide()
-	AppManager.game_manager.enemy_manager.enemy_list.erase(self)
+	if enemy_manager:
+		enemy_manager.enemy_list.erase(self)
 	queue_free()
 
 

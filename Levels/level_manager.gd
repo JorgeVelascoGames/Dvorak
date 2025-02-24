@@ -11,6 +11,7 @@ signal finish_current_level
 @onready var map_randomizer: MapRandomizer = %MapRandomizer
 @onready var black_screen: ColorRect = $LevelUI/BlackScreen
 @onready var white_screen: ColorRect = $LevelUI/WhiteScreen
+@onready var enemy_manager: EnemyManager = $EnemyManager
 
 
 # Called when the node enters the scene tree for the first time.
@@ -25,7 +26,7 @@ func generate_rooms() -> void:
 	await map_randomizer.finish_randomization
 	var tween := get_tree().create_tween()
 	tween.tween_property(black_screen, "color", Color(0,0,0,0), 4.0)
-	AppManager.game_manager.enemy_manager.start_level()
+	enemy_manager.start_level()
 	await get_tree().create_timer(2.0) #To make sure it wors
 	#bake the navmesh
 	navigation_region_3d.bake_navigation_mesh()

@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://8snq2dhojamu"]
+[gd_scene load_steps=17 format=3 uid="uid://8snq2dhojamu"]
 
 [ext_resource type="Script" path="res://game_manager/game_manager.gd" id="1_d4jsh"]
 [ext_resource type="PackedScene" uid="uid://dh6gl16kfd242" path="res://game_ui/main_menu/main_menu.tscn" id="2_qnsev"]
@@ -12,7 +12,6 @@
 [ext_resource type="PackedScene" uid="uid://xuvgoo2dnfs1" path="res://Levels/end_demo_screen.tscn" id="8_aq2r8"]
 [ext_resource type="Shader" path="res://shaders/psx_shader.gdshader" id="8_odn3b"]
 [ext_resource type="Script" path="res://game_manager/vhs_effect.gd" id="9_73ht4"]
-[ext_resource type="Script" path="res://game_manager/enemy_manager.gd" id="9_whl67"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_y1wwo"]
 
@@ -66,16 +65,6 @@ grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("9_73ht4")
 
-[node name="EnemyManager" type="Node" parent="."]
-script = ExtResource("9_whl67")
-max_enemies_on_level = 6
-spawn_frecuency = 30.0
-
-[node name="SpawnerTimer" type="Timer" parent="EnemyManager"]
-one_shot = true
-
-[node name="EnemiesStateChecker" type="Timer" parent="EnemyManager"]
-
 [node name="SubViewportContainer" type="SubViewportContainer" parent="."]
 material = SubResource("ShaderMaterial_sx0k1")
 anchors_preset = 15
@@ -97,7 +86,5 @@ render_target_update_mode = 4
 
 [node name="LoadingScreen" parent="." instance=ExtResource("4_v3kow")]
 
-[connection signal="timeout" from="EnemyManager/SpawnerTimer" to="EnemyManager" method="_on_spawner_timer_timeout"]
-[connection signal="timeout" from="EnemyManager/EnemiesStateChecker" to="EnemyManager" method="_on_enemies_state_checker_timeout"]
 [connection signal="NewSceneLoaded" from="LoadingScreen" to="." method="_on_loading_screen_new_scene_loaded"]
 [connection signal="NewSceneLoaded" from="LoadingScreen" to="GameLevelManager" method="_on_loading_screen_new_scene_loaded"]

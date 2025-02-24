@@ -816,6 +816,7 @@ rotation_cost_divident = 30.0
 swing_cost = 1000.0
 getting_hit_cost = 500.0
 bonus_balance_recovery = 60.0
+walker_balance_recovery = 200.0
 pill_balance_recovery = 300.0
 
 [node name="BalanceRecoveryTimer" type="Timer" parent="Components/Balance"]
@@ -937,8 +938,8 @@ debug_shape_thickness = 1
 [node name="PlayerBaseLight" type="OmniLight3D" parent="CameraPivot/FollowPivot/WorldCamera"]
 layers = 3
 light_color = Color(0.572988, 0.572988, 0.572988, 1)
-light_energy = 0.35
-omni_range = 1.78239
+light_energy = 0.45
+omni_range = 1.96595
 omni_attenuation = 0.0
 
 [node name="PlayerUI" type="Control" parent="." groups=["player_ui"]]
@@ -1398,6 +1399,14 @@ volume_db = 12.0
 
 [node name="HitFlesh" type="AudioStreamPlayer" parent="PlayerAudioManager"]
 stream = SubResource("AudioStreamRandomizer_is4bw")
+
+[node name="GroundLight" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.387951, 0)
+light_energy = 0.3
+light_indirect_energy = 0.0
+light_volumetric_fog_energy = 0.0
+omni_range = 1.10712
+omni_attenuation = 0.0
 
 [connection signal="transitioned" from="StateMachine" to="Components/Balance" method="_on_state_machine_transitioned"]
 [connection signal="transitioned" from="StateMachine" to="AnimationTree" method="_on_state_machine_transitioned"]

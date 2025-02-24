@@ -11,7 +11,7 @@ class_name EnemySpawner
 @onready var node_to_parent = get_tree().get_first_node_in_group("level_manager").enemy_container 
 @onready var spawn_timer: Timer = $SpawnTimer
 @onready var visible_on_screen_notifier_3d: VisibleOnScreenNotifier3D = $VisibleOnScreenNotifier3D
-@onready var enemy_manager : EnemyManager = AppManager.game_manager.enemy_manager
+@onready var enemy_manager : EnemyManager = get_tree().get_first_node_in_group("enemy_manager")
 @onready var detection_area: Area3D = $DetectionArea
 
 var calamity := false

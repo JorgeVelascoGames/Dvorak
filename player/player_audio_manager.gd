@@ -29,34 +29,34 @@ const EMTPY_PILLS = preload("res://assets/audio/player/emtpy_pills.wav")
 const SWALLOW_PILLS = preload("res://assets/audio/player/swallow_pills.wav")
 
 var gun_fire_no_bullets : Array = [
-	preload("uid://hri8nosrsv4e"),
-	preload("uid://bsu4usamya3hn"),
-	preload("uid://bea8gigu3p2gn"),
-	preload("uid://cr2u4kqvx3kk8"),
-	preload("uid://x2iim7qlvpg7"),
-	preload("uid://unsd0trqiei"),
-	preload("uid://xthpi6pyfgx5")
+	preload("res://assets/audio/player/gun_fire_no_bullets/gun fired no bullets 1.wav"),
+	preload("res://assets/audio/player/gun_fire_no_bullets/gun fired no bullets 2.wav"),
+	preload("res://assets/audio/player/gun_fire_no_bullets/gun fired no bullets 3.wav"),
+	preload("res://assets/audio/player/gun_fire_no_bullets/gun fired no bullets 4.wav"),
+	preload("res://assets/audio/player/gun_fire_no_bullets/gun fired no bullets 5.wav"),
+	preload("res://assets/audio/player/gun_fire_no_bullets/gun fired no bullets 6.wav"),
+	preload("res://assets/audio/player/gun_fire_no_bullets/gun fired no bullets 7.wav")
 ]
 
 var pick_gun : Array = [
-	preload("uid://di7jhw2sp6a63"),
-	preload("uid://djdff8alalnn6"),
-	preload("uid://cp1ua7py3k6kj"),
-	preload("uid://dxd65fnfbiolk"),
-	preload("uid://d3cxobewjmigc"),
-	preload("uid://br4vs2jybr6xw"),
-	preload("uid://dt8uxbm6feg8p"),
+	preload("res://assets/audio/player/pick_gun/dagger sheath 1.wav"),
+	preload("res://assets/audio/player/pick_gun/dagger sheath 2.wav"),
+	preload("res://assets/audio/player/pick_gun/dagger sheath 3.wav"),
+	preload("res://assets/audio/player/pick_gun/dagger sheath 4.wav"),
+	preload("res://assets/audio/player/pick_gun/dagger sheath 5.wav"),
+	preload("res://assets/audio/player/pick_gun/dagger sheath 6.wav"),
+	preload("res://assets/audio/player/pick_gun/dagger sheath 7.wav"),
 ]
 
 var pick_flashlight : Array = [
-	preload("uid://d3adyamccyiak"),
-	preload("uid://dedc5kyfigoge"),
-	preload("uid://bg6guxjjmp637"),
-	preload("uid://pkhhjiq3huno"),
-	preload("uid://bqdi6mj4n7ddd"),
-	preload("uid://deav6ifwhxtsb"),
-	preload("uid://by2tfddml4kjd"),
-	preload("uid://bqjljb3qtvtxn"),
+	preload("res://assets/audio/player/pick_flashlight_vfx/bounce on 1.wav"),
+	preload("res://assets/audio/player/pick_flashlight_vfx/bounce on 2.wav"),
+	preload("res://assets/audio/player/pick_flashlight_vfx/bounce on 3.wav"),
+	preload("res://assets/audio/player/pick_flashlight_vfx/bounce on 4.wav"),
+	preload("res://assets/audio/player/pick_flashlight_vfx/bounce on 5.wav"),
+	preload("res://assets/audio/player/pick_flashlight_vfx/bounce on 6.wav"),
+	preload("res://assets/audio/player/pick_flashlight_vfx/bounce on 7.wav"),
+	preload("res://assets/audio/player/pick_flashlight_vfx/bounce on 8.wav"),
 ]
 var drop_item_sfx : Array = [
 	preload("res://assets/audio/drop_item/umbrella close 1.wav"),

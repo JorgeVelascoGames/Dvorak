@@ -21,21 +21,21 @@ signal update_interaction_hints
 @onready var damaged_overlay: TextureRect = $DamagedOverlay
 @onready var dying_overlay: TextureRect = $DyingOverlay
 
-const SCREEN_OVERLAY_BALANCE_01 = preload("uid://cngiemxinj0jx")
+const SCREEN_OVERLAY_BALANCE_01 = preload("res://assets/UI/screen_overlay_balance_01.png")
 
 var tween : Tween
 var r_hint_priority := 0
 var constant_hints_to_display : Array[Hint] = []
 var interact_hints_to_display : Array[Hint] = []
 var dying_overlay_screens : Array[CompressedTexture2D] = [
-	preload("uid://bm0w456skdflw"),
-	preload("uid://2p6oygmy1yto"),
-	preload("uid://dcu5m0bd1f3lg")
+	preload("res://assets/UI/screen_overlay_02.png"),
+	preload("res://assets/UI/screen_overlay_03.png"),
+	preload("res://assets/UI/screen_overlay_04.png")
 ]
 var danger_overlay_screens : Array[CompressedTexture2D] = [
-	preload("uid://cybbasys4aa0v"),
-	preload("uid://ghviyvynlgu2"),
-	preload("uid://coammvgktdxvh")
+	preload("res://assets/UI/screen_overlay_danger_01.png"),
+	preload("res://assets/UI/screen_overlay_danger_02.png"),
+	preload("res://assets/UI/screen_overlay_danger_03.png")
 ]
 
 

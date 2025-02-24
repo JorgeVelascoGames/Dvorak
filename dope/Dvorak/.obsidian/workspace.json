@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "To do.md",
+                "file": "Bug y notas.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "To do"
+              "title": "Bug y notas"
             }
           }
         ]
@@ -165,9 +165,9 @@
   },
   "active": "cef1813cea61e526",
   "lastOpenFiles": [
+    "To do.md",
     "Pulido.md",
     "Doing.md",
-    "To do.md",
     "Bug y notas.md",
     "Atributions.md",
     "Todo/Detalles de pulido.md",

@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://d11friq1q7r58" path="res://assets/environment/level_one.blend" id="1_ldfa7"]
 [ext_resource type="Material" uid="uid://dst813utgj4hq" path="res://materials/walls_mat.tres" id="2_acyha"]
-[ext_resource type="Texture2D" uid="uid://ohwsnfvhlwo4" path="res://assets/textures/dirt_mat_overlay.png" id="2_rf5x7"]
+[ext_resource type="Texture2D" uid="uid://ci07ggqx2retn" path="res://assets/textures/dirt_texture_overlay_highres.png" id="2_rtkmx"]
 [ext_resource type="Material" uid="uid://crg8cijrbcnfr" path="res://materials/floor_mat.tres" id="3_f0p8v"]
 [ext_resource type="Texture2D" uid="uid://cv4idnyo4nqik" path="res://assets/textures/metal_background.jpg" id="4_4cm6p"]
 [ext_resource type="Material" uid="uid://cehysutb1sgal" path="res://materials/cealing_mat.tres" id="4_6iimo"]
@@ -11,7 +11,7 @@
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xrsb0"]
 transparency = 1
 albedo_color = Color(1, 1, 1, 0.847059)
-albedo_texture = ExtResource("2_rf5x7")
+albedo_texture = ExtResource("2_rtkmx")
 uv1_scale = Vector3(0.5, 0.5, 0.5)
 uv1_offset = Vector3(0.7, 0, 0)
 uv1_triplanar = true
