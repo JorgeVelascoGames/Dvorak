@@ -7,6 +7,7 @@ extends LevelManager
 
 func _ready() -> void:
 	AppManager.game_manager.current_level_manager = self
+	return
 	await get_tree().create_timer(15).timeout
 	tutorial_pop_up.show()
 	reparent(AppManager.game_manager)

@@ -20,8 +20,7 @@ var empty_messages = [
 	"You find only dust… as silent as your unspoken prayers",
 	"Emptiness greets you like a whispered condemnation",
 	"Your hope slips away into the void, leaving you with nothing",
-	"All that lingers here is dust, clinging to the last shred of hope you carried",
-	
+	"All that lingers here is dust, clinging to the last shred of hope you carried"
 ]
 const DRAWER_OPEN = preload("res://assets/audio/drawer_open.wav")
 

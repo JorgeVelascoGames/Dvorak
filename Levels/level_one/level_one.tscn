@@ -1729,8 +1729,8 @@ transform = Transform3D(0.00945899, 0, -0.999957, 0, 1, 0, 0.999957, 0, 0.009458
 
 [node name="EnemyManager" type="Node" parent="." groups=["enemy_manager"]]
 script = ExtResource("40_4guxj")
-max_enemies_on_level = 6
-spawn_frecuency = 30.0
+max_enemies_on_level = 3
+spawn_frecuency = 55.0
 initial_delay = 60.0
 
 [node name="SpawnerTimer" type="Timer" parent="EnemyManager"]

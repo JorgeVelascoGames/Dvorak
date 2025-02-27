@@ -220,7 +220,7 @@ size_flags_horizontal = 8
 size_flags_vertical = 8
 theme_override_colors/font_color = Color(0.47788, 0.47788, 0.47788, 1)
 theme_override_font_sizes/font_size = 9
-text = "Demo Version 0.73.012 — Does not represent the final product"
+text = "Demo Version 0.8.1 — Does not represent the final product"
 
 [node name="BlackScreen" type="ColorRect" parent="MainMenuUI"]
 layout_mode = 1

@@ -26,7 +26,8 @@ const DEAD_AUDIO = preload("res://Enemy/infanticide/dead_audio.tscn")
 
 func _ready() -> void:
 	super()
-	original_speed = speed
+	original_speed = speed * randf_range(0.8, 1.0)
+	super_speed = super_speed * randf_range(0.4, 1.0)
 	$VisibleOnScreenNotifier3D.screen_entered.connect(on_screen_enter)
 
 
