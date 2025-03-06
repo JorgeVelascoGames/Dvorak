@@ -1,10 +1,10 @@
 [gd_scene load_steps=23 format=3 uid="uid://c5vmfb6wrd0un"]
 
-[ext_resource type="Script" path="res://ExitGate/exit_gate.gd" id="1_71loh"]
-[ext_resource type="Script" path="res://components/interactable.gd" id="1_s1pqe"]
+[ext_resource type="Script" uid="uid://butl7v1sdg18u" path="res://ExitGate/exit_gate.gd" id="1_71loh"]
+[ext_resource type="Script" uid="uid://dvdm8skpal77r" path="res://components/interactable.gd" id="1_s1pqe"]
 [ext_resource type="PackedScene" uid="uid://chmdaewj61wpa" path="res://assets/environment/elements/exit_door.tscn" id="3_sy4dp"]
 [ext_resource type="PackedScene" uid="uid://cfpfgy53aqnh2" path="res://ExitGate/pass_switch.tscn" id="3_t31dc"]
-[ext_resource type="Script" path="res://scripts/hint.gd" id="4_bsdjp"]
+[ext_resource type="Script" uid="uid://blg88j5imdrl5" path="res://scripts/hint.gd" id="4_bsdjp"]
 [ext_resource type="PackedScene" uid="uid://h4rdpqvxxbsy" path="res://assets/props/swich/switch.glb" id="5_5vk1x"]
 [ext_resource type="AudioStream" uid="uid://by0ct61p7d2fs" path="res://assets/audio/ambient/alarm.wav" id="5_i4l1s"]
 [ext_resource type="Texture2D" uid="uid://cethk8m78loa2" path="res://assets/props/swich/switch_special.png" id="6_1p6h6"]

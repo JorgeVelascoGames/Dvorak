@@ -1,8 +1,8 @@
 [gd_scene load_steps=21 format=3 uid="uid://72kpfpnalr3a"]
 
-[ext_resource type="Script" path="res://Levels/environment_elements/light.gd" id="1_27npf"]
-[ext_resource type="Script" path="res://components/interactable.gd" id="2_vk1i6"]
-[ext_resource type="Script" path="res://scripts/hint.gd" id="3_ebt33"]
+[ext_resource type="Script" uid="uid://b06ps5qktmnru" path="res://Levels/environment_elements/light.gd" id="1_27npf"]
+[ext_resource type="Script" uid="uid://dvdm8skpal77r" path="res://components/interactable.gd" id="2_vk1i6"]
+[ext_resource type="Script" uid="uid://blg88j5imdrl5" path="res://scripts/hint.gd" id="3_ebt33"]
 [ext_resource type="PackedScene" uid="uid://bepj5mbs82d3y" path="res://assets/props/swich/swich.tscn" id="4_aogh2"]
 [ext_resource type="PackedScene" uid="uid://bvbwpj3cl6pdr" path="res://assets/props/lights/lights.tscn" id="5_etyl4"]
 [ext_resource type="PackedScene" uid="uid://rd6woanfk4nl" path="res://assets/props/emergency_light/emergency_light.tscn" id="5_tx7f1"]
@@ -57,8 +57,8 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_l04qy"]
 _data = {
-"RESET": SubResource("Animation_5mhlq"),
-"twink": SubResource("Animation_yq5m8")
+&"RESET": SubResource("Animation_5mhlq"),
+&"twink": SubResource("Animation_yq5m8")
 }
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_vaowg"]

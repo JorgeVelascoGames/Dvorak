@@ -1,13 +1,13 @@
 [gd_scene load_steps=13 format=3 uid="uid://bj1jq0pdwxof7"]
 
-[ext_resource type="Script" path="res://randomization/room.gd" id="1_0fqrf"]
+[ext_resource type="Script" uid="uid://ceppwvleqrbbt" path="res://randomization/room.gd" id="1_0fqrf"]
 [ext_resource type="PackedScene" uid="uid://72kpfpnalr3a" path="res://Levels/environment_elements/light.tscn" id="4_8lc8e"]
 [ext_resource type="Material" uid="uid://dst813utgj4hq" path="res://materials/walls_mat.tres" id="4_skfr1"]
 [ext_resource type="PackedScene" uid="uid://dycdd0wd0kswp" path="res://Levels/environment_elements/cross.tscn" id="5_olr7g"]
 [ext_resource type="PackedScene" uid="uid://brysxkhoj2p7v" path="res://Levels/environment_elements/filling_cabinet_obstacle.tscn" id="5_tkbv0"]
 [ext_resource type="PackedScene" uid="uid://b8gbxyaua8ftu" path="res://assets/props/bed/bed.tscn" id="6_h5fjh"]
 [ext_resource type="PackedScene" uid="uid://b14r0ayr0hufl" path="res://Levels/environment_elements/emergency_light.tscn" id="7_yls4g"]
-[ext_resource type="Script" path="res://randomization/randomizer_position.gd" id="8_cynoc"]
+[ext_resource type="Script" uid="uid://haifxcuo71f7" path="res://randomization/randomizer_position.gd" id="8_cynoc"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_kk2a0"]
 size = Vector2(9, 9)

@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://bfqpamqydtspv"]
 
-[ext_resource type="Script" path="res://game_manager/advert_screen.gd" id="1_kt0cl"]
+[ext_resource type="Script" uid="uid://buwxpn0np1r" path="res://game_manager/advert_screen.gd" id="1_kt0cl"]
 [ext_resource type="LabelSettings" uid="uid://uvcnfvkxej6y" path="res://game_ui/flavour_text_lable_settings.tres" id="2_fx0dx"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_wp0tv"]

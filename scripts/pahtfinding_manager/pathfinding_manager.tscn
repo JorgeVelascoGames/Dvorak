@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://cuejgrtlvpjys"]
 
-[ext_resource type="Script" path="res://scripts/pahtfinding_manager/pathfinding_manager.gd" id="1_mrheo"]
+[ext_resource type="Script" uid="uid://w7ikscm50ba3" path="res://scripts/pahtfinding_manager/pathfinding_manager.gd" id="1_mrheo"]
 
 [node name="PathfindingManager" type="Node"]
 process_thread_group = 2

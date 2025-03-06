@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://h4rdpqvxxbsy" path="res://assets/props/swich/switch.glb" id="1_qn5u3"]
 [ext_resource type="Texture2D" uid="uid://b1xu8kk1ghur3" path="res://assets/props/swich/swich_DefaultMaterial_BaseColor.png" id="2_fdul5"]
-[ext_resource type="Script" path="res://assets/props/swich/switch_animation.gd" id="3_0k133"]
+[ext_resource type="Script" uid="uid://djfb7gm1qvuum" path="res://assets/props/swich/switch_animation.gd" id="3_0k133"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wjvfg"]
 albedo_texture = ExtResource("2_fdul5")

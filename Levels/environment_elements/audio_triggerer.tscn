@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://dfdwh0py85qbd"]
 
-[ext_resource type="Script" path="res://Levels/environment_elements/audio_triggerer.gd" id="1_vp2bj"]
+[ext_resource type="Script" uid="uid://dj00b555o7xyl" path="res://Levels/environment_elements/audio_triggerer.gd" id="1_vp2bj"]
 
 [node name="AudioTriggerer" type="Node3D"]
 script = ExtResource("1_vp2bj")

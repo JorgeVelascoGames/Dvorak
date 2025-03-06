@@ -1,10 +1,10 @@
 [gd_scene load_steps=13 format=4 uid="uid://omjxjkehmmbw"]
 
-[ext_resource type="Script" path="res://Enemy/enemy.gd" id="1_kexvc"]
-[ext_resource type="Script" path="res://Enemy/enemy_audio_manager.gd" id="3_hbalh"]
+[ext_resource type="Script" uid="uid://bgaueulxkbso6" path="res://Enemy/enemy.gd" id="1_kexvc"]
+[ext_resource type="Script" uid="uid://beit6sx7xeaji" path="res://Enemy/enemy_audio_manager.gd" id="3_hbalh"]
 [ext_resource type="AudioStream" uid="uid://dnd4d41uj4b8w" path="res://audio/drone_hit_sound.wav" id="5_rr246"]
 [ext_resource type="AudioStream" uid="uid://88pdpejlqxpf" path="res://audio/drone_dead_sound.wav" id="6_0k5ef"]
-[ext_resource type="Script" path="res://Enemy/enemy_animations.gd" id="6_5mhlw"]
+[ext_resource type="Script" uid="uid://371x8gb6pdr0" path="res://Enemy/enemy_animations.gd" id="6_5mhlw"]
 [ext_resource type="AudioStream" uid="uid://cwuxb61oejc3j" path="res://audio/drone_sound.wav" id="6_28lw8"]
 [ext_resource type="AudioStream" uid="uid://bfoweiatk3r30" path="res://audio/shoot_sound.wav" id="7_y5kby"]
 

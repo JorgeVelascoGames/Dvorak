@@ -1,7 +1,7 @@
 [gd_scene load_steps=12 format=3 uid="uid://dntxkqhhia68"]
 
 [ext_resource type="Texture2D" uid="uid://cvxmhctqpe1qa" path="res://assets/blood_textures/blood_splatters_1.png" id="1_bfcgi"]
-[ext_resource type="Script" path="res://vfx/blood_decal/blood_decal.gd" id="2_ks6t4"]
+[ext_resource type="Script" uid="uid://nays75kbjo26" path="res://vfx/blood_decal/blood_decal.gd" id="2_ks6t4"]
 [ext_resource type="Texture2D" uid="uid://boyslwhppr603" path="res://assets/blood_textures/blood_splatters_2.png" id="3_f5rle"]
 [ext_resource type="Texture2D" uid="uid://dejipry58ns06" path="res://assets/blood_textures/blood_splatters_3.png" id="4_khcaw"]
 [ext_resource type="Texture2D" uid="uid://dnltqxcmqamy0" path="res://assets/blood_textures/blood_splatters_4.png" id="5_gq3xk"]
@@ -80,8 +80,8 @@ tracks/2/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_tilyb"]
 _data = {
-"RESET": SubResource("Animation_pbp6m"),
-"fade_out": SubResource("Animation_h2pe6")
+&"RESET": SubResource("Animation_pbp6m"),
+&"fade_out": SubResource("Animation_h2pe6")
 }
 
 [node name="Decal" type="Decal"]

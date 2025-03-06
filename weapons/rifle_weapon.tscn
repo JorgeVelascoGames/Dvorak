@@ -1,9 +1,11 @@
 [gd_scene load_steps=10 format=3 uid="uid://uneq28fl7o88"]
 
-[ext_resource type="PackedScene" uid="uid://db8mi152yn4gx" path="res://weapons/hitscan_weapon.tscn" id="1_4lalm"]
 [ext_resource type="PackedScene" uid="uid://qhqvktnunb03" path="res://weapons/sparks.tscn" id="2_8xd13"]
 [ext_resource type="PackedScene" uid="uid://dr72w01jmge5s" path="res://weapons/models/Rifle.glb" id="3_wjv5n"]
 [ext_resource type="AudioStream" uid="uid://bfoweiatk3r30" path="res://audio/shoot_sound.wav" id="4_eif67"]
+
+[sub_resource type="Resource" id="Resource_336yo"]
+metadata/__load_path__ = "res://weapons/hitscan_weapon.tscn"
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_180js"]
 emission_enabled = true
@@ -28,7 +30,7 @@ scale_curve = SubResource("CurveTexture_56ila")
 [sub_resource type="BoxMesh" id="BoxMesh_8bigi"]
 size = Vector3(0.1, 0.1, 0.1)
 
-[node name="RifleWeapon" node_paths=PackedStringArray("weapon_mesh", "muzzle_flash") instance=ExtResource("1_4lalm")]
+[node name="RifleWeapon" node_paths=PackedStringArray("weapon_mesh", "muzzle_flash")]
 weapon_damage = 45
 fire_rate = 8.0
 weapon_mesh = NodePath("Rifle")

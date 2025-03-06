@@ -1,6 +1,6 @@
 [gd_scene load_steps=40 format=4 uid="uid://bxr2s8atmausr"]
 
-[ext_resource type="Script" path="res://Levels/tutorial/tutorial.gd" id="1_nb02s"]
+[ext_resource type="Script" uid="uid://dlbklyfnphvsu" path="res://Levels/tutorial/tutorial.gd" id="1_nb02s"]
 [ext_resource type="Environment" uid="uid://c42wra3u6yo6u" path="res://Levels/world_environment.tres" id="1_t5pyh"]
 [ext_resource type="PackedScene" uid="uid://m6pypgl566n1" path="res://player/player.tscn" id="3_mhhpd"]
 [ext_resource type="PackedScene" uid="uid://bb8divagmrtfg" path="res://Levels/tutorial/tutorial_pop_up.tscn" id="4_hwno4"]

@@ -2,18 +2,18 @@
 
 [ext_resource type="PackedScene" uid="uid://dqk45r48r427t" path="res://Levels/level_one/level_one_scenario.tscn" id="1_jujem"]
 [ext_resource type="Environment" uid="uid://c42wra3u6yo6u" path="res://Levels/world_environment.tres" id="1_rc4ww"]
-[ext_resource type="Script" path="res://Levels/level_manager.gd" id="1_scdlh"]
+[ext_resource type="Script" uid="uid://cccjy4xoxi7sj" path="res://Levels/level_manager.gd" id="1_scdlh"]
 [ext_resource type="PackedScene" uid="uid://m6pypgl566n1" path="res://player/player.tscn" id="2_2aoio"]
 [ext_resource type="PackedScene" uid="uid://72kpfpnalr3a" path="res://Levels/environment_elements/light.tscn" id="5_fux4b"]
-[ext_resource type="Script" path="res://randomization/map_randomizer.gd" id="6_hflwe"]
+[ext_resource type="Script" uid="uid://cmayxqfemooxm" path="res://randomization/map_randomizer.gd" id="6_hflwe"]
 [ext_resource type="PackedScene" uid="uid://bj1jq0pdwxof7" path="res://Levels/rooms/room_2.tscn" id="8_e3r7r"]
 [ext_resource type="PackedScene" uid="uid://dnlj0cpdwjsyl" path="res://Levels/rooms/room_1.tscn" id="8_kvrpp"]
 [ext_resource type="PackedScene" uid="uid://c5vmfb6wrd0un" path="res://ExitGate/exit_gate.tscn" id="8_xg4ny"]
-[ext_resource type="Script" path="res://randomization/randomizer_position.gd" id="9_0che1"]
+[ext_resource type="Script" uid="uid://haifxcuo71f7" path="res://randomization/randomizer_position.gd" id="9_0che1"]
 [ext_resource type="PackedScene" uid="uid://npbkx5rdduqq" path="res://Levels/rooms/room_6.tscn" id="9_0hx0m"]
 [ext_resource type="PackedScene" uid="uid://b7cb30x5rpa17" path="res://Levels/rooms/room_3.tscn" id="9_07q1x"]
 [ext_resource type="PackedScene" uid="uid://ca11q5l28hjt8" path="res://Levels/rooms/room_4.tscn" id="10_jl4wr"]
-[ext_resource type="Script" path="res://randomization/randomize_deleter.gd" id="10_wfg25"]
+[ext_resource type="Script" uid="uid://b7lhjw46rqmix" path="res://randomization/randomize_deleter.gd" id="10_wfg25"]
 [ext_resource type="PackedScene" uid="uid://cvp2itootohxc" path="res://Levels/rooms/room_5.tscn" id="11_47c1n"]
 [ext_resource type="PackedScene" uid="uid://b14r0ayr0hufl" path="res://Levels/environment_elements/emergency_light.tscn" id="13_3rriw"]
 [ext_resource type="PackedScene" uid="uid://brysxkhoj2p7v" path="res://Levels/environment_elements/filling_cabinet_obstacle.tscn" id="13_dc2rn"]
@@ -22,7 +22,7 @@
 [ext_resource type="PackedScene" uid="uid://b8gbxyaua8ftu" path="res://assets/props/bed/bed.tscn" id="14_na6ay"]
 [ext_resource type="PackedScene" uid="uid://cfpfgy53aqnh2" path="res://ExitGate/pass_switch.tscn" id="14_o22yu"]
 [ext_resource type="PackedScene" uid="uid://bvbwpj3cl6pdr" path="res://assets/props/lights/lights.tscn" id="14_xelpn"]
-[ext_resource type="Script" path="res://randomization/randomize_self_destruct.gd" id="15_md1aq"]
+[ext_resource type="Script" uid="uid://c87a73qpc8wt8" path="res://randomization/randomize_self_destruct.gd" id="15_md1aq"]
 [ext_resource type="PackedScene" uid="uid://qyjmhcrcrko3" path="res://components/enemy_spawner.tscn" id="23_1vq12"]
 [ext_resource type="PackedScene" uid="uid://bbxqlpn2enp4b" path="res://Levels/environment_elements/waiting_chairs_obstacle.tscn" id="24_udu26"]
 [ext_resource type="Texture2D" uid="uid://dmgav0cgffyij" path="res://assets/textures/blood/blood_footsteps.png" id="25_h3682"]
@@ -38,11 +38,10 @@
 [ext_resource type="PackedScene" uid="uid://dfdwh0py85qbd" path="res://Levels/environment_elements/audio_triggerer.tscn" id="36_dp5fl"]
 [ext_resource type="AudioStream" uid="uid://weph0pv7itv" path="res://assets/audio/ambient/force_door.wav" id="37_8p0g5"]
 [ext_resource type="AudioStream" uid="uid://c0qqnbr716c6g" path="res://assets/audio/ambient/newborn_cry.wav" id="38_oa0xf"]
-[ext_resource type="Script" path="res://game_manager/enemy_manager.gd" id="40_4guxj"]
+[ext_resource type="Script" uid="uid://no2xwkx55msm" path="res://game_manager/enemy_manager.gd" id="40_4guxj"]
 [ext_resource type="AudioStream" uid="uid://pr0usaqumern" path="res://assets/audio/ambient/girl_scream.wav" id="40_5kdeu"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_hkrcb"]
-geometry_parsed_geometry_type = 2
 cell_size = 0.05
 agent_radius = 0.3
 

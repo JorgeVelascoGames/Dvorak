@@ -1,6 +1,6 @@
 [gd_scene load_steps=15 format=3 uid="uid://cadlke6v1i6io"]
 
-[ext_resource type="Shader" path="res://shaders/psx_shader.gdshader" id="1_36lmk"]
+[ext_resource type="Shader" uid="uid://bbtn2mffk1t5v" path="res://shaders/psx_shader.gdshader" id="1_36lmk"]
 [ext_resource type="PackedScene" uid="uid://dqk45r48r427t" path="res://Levels/level_one/level_one_scenario.tscn" id="2_orwwn"]
 [ext_resource type="PackedScene" uid="uid://h4rdpqvxxbsy" path="res://assets/props/swich/switch.glb" id="3_g6apy"]
 [ext_resource type="Texture2D" uid="uid://b1xu8kk1ghur3" path="res://assets/props/swich/swich_DefaultMaterial_BaseColor.png" id="4_jv3gw"]

@@ -1,6 +1,6 @@
 [gd_scene load_steps=21 format=3 uid="uid://xuvgoo2dnfs1"]
 
-[ext_resource type="Script" path="res://Levels/end_demo_screen.gd" id="1_3o4so"]
+[ext_resource type="Script" uid="uid://cvsemh42bvyv4" path="res://Levels/end_demo_screen.gd" id="1_3o4so"]
 [ext_resource type="Texture2D" uid="uid://clcu2q1s5ka7f" path="res://assets/environment/mockup/plane_DefaultMaterial_BaseColor.png" id="1_px3fs"]
 [ext_resource type="PackedScene" uid="uid://m6pypgl566n1" path="res://player/player.tscn" id="2_e2k5i"]
 [ext_resource type="Theme" uid="uid://cnn86axpbtyme" path="res://game_ui/main_theme.tres" id="3_ubujr"]
@@ -66,8 +66,8 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ch2pq"]
 _data = {
-"RESET": SubResource("Animation_oty8r"),
-"fade": SubResource("Animation_14rpp")
+&"RESET": SubResource("Animation_oty8r"),
+&"fade": SubResource("Animation_14rpp")
 }
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_u6076"]

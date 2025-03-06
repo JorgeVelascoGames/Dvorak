@@ -1,8 +1,8 @@
 [gd_scene load_steps=5 format=3 uid="uid://bgouurh1fbjwr"]
 
-[ext_resource type="Script" path="res://game_manager/game_level_manager.gd" id="1_oks1f"]
+[ext_resource type="Script" uid="uid://ekvt7hjvf6mu" path="res://game_manager/game_level_manager.gd" id="1_oks1f"]
 [ext_resource type="PackedScene" uid="uid://b62fd7a6q7pm" path="res://Levels/Sandbox.tscn" id="2_tcflp"]
-[ext_resource type="Script" path="res://game_manager/save_screen.gd" id="3_k02ah"]
+[ext_resource type="Script" uid="uid://iyqjkp52q3l0" path="res://game_manager/save_screen.gd" id="3_k02ah"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_ecotp"]
 

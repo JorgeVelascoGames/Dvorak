@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=3 uid="uid://npbkx5rdduqq"]
 
-[ext_resource type="Script" path="res://randomization/room.gd" id="1_nn5up"]
+[ext_resource type="Script" uid="uid://ceppwvleqrbbt" path="res://randomization/room.gd" id="1_nn5up"]
 [ext_resource type="PackedScene" uid="uid://dycdd0wd0kswp" path="res://Levels/environment_elements/cross.tscn" id="2_j1nbp"]
 [ext_resource type="Texture2D" uid="uid://cfe7wybvony37" path="res://assets/textures/grey_wall.png" id="5_stlt6"]
 [ext_resource type="PackedScene" uid="uid://brysxkhoj2p7v" path="res://Levels/environment_elements/filling_cabinet_obstacle.tscn" id="7_jr864"]

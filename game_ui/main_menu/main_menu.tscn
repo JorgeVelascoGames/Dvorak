@@ -1,7 +1,7 @@
 [gd_scene load_steps=28 format=3 uid="uid://dh6gl16kfd242"]
 
-[ext_resource type="Script" path="res://game_ui/main_menu/main_menu.gd" id="1_q1wtx"]
-[ext_resource type="Shader" path="res://shaders/vhs.gdshader" id="2_gsxr2"]
+[ext_resource type="Script" uid="uid://btfbj6b7kwdof" path="res://game_ui/main_menu/main_menu.gd" id="1_q1wtx"]
+[ext_resource type="Shader" uid="uid://cmahc8ggbq5m2" path="res://shaders/vhs.gdshader" id="2_gsxr2"]
 [ext_resource type="Texture2D" uid="uid://ciddkdf0kf3h4" path="res://assets/UI/game_title.png" id="2_n8dxx"]
 [ext_resource type="FontFile" uid="uid://cwwl7s03c4xdf" path="res://assets/fonts/roboto/Roboto-BoldItalic.ttf" id="3_3m42q"]
 [ext_resource type="Theme" uid="uid://cnn86axpbtyme" path="res://game_ui/main_theme.tres" id="3_tf87f"]
@@ -74,8 +74,8 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_gl8ud"]
 _data = {
-"RESET": SubResource("Animation_mdxx5"),
-"roll_credits": SubResource("Animation_kxou5")
+&"RESET": SubResource("Animation_mdxx5"),
+&"roll_credits": SubResource("Animation_kxou5")
 }
 
 [sub_resource type="Animation" id="Animation_6f0dt"]
@@ -111,8 +111,8 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_61gkd"]
 _data = {
-"RESET": SubResource("Animation_6f0dt"),
-"fade": SubResource("Animation_1c3yt")
+&"RESET": SubResource("Animation_6f0dt"),
+&"fade": SubResource("Animation_1c3yt")
 }
 
 [node name="MainMenu" type="Node3D"]

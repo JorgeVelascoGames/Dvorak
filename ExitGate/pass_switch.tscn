@@ -1,8 +1,8 @@
 [gd_scene load_steps=17 format=3 uid="uid://cfpfgy53aqnh2"]
 
-[ext_resource type="Script" path="res://ExitGate/pass_switch.gd" id="1_8yxc6"]
+[ext_resource type="Script" uid="uid://m1np5k4y1jnf" path="res://ExitGate/pass_switch.gd" id="1_8yxc6"]
 [ext_resource type="PackedScene" uid="uid://cp3wrdmgpagpg" path="res://components/interactable.tscn" id="2_u06qw"]
-[ext_resource type="Script" path="res://scripts/hint.gd" id="3_33ov2"]
+[ext_resource type="Script" uid="uid://blg88j5imdrl5" path="res://scripts/hint.gd" id="3_33ov2"]
 [ext_resource type="PackedScene" uid="uid://bepj5mbs82d3y" path="res://assets/props/swich/swich.tscn" id="3_74aft"]
 [ext_resource type="PackedScene" uid="uid://rd6woanfk4nl" path="res://assets/props/emergency_light/emergency_light.tscn" id="4_d31c3"]
 [ext_resource type="AudioStream" uid="uid://cal18ohk6qgrb" path="res://assets/audio/switch_action/button assorted 42.wav" id="6_qdkrg"]

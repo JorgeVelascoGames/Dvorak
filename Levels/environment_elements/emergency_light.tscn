@@ -83,9 +83,9 @@ resource_name = "idle"
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_kipr3"]
 _data = {
-"RESET": SubResource("Animation_ooeki"),
-"emergency": SubResource("Animation_jeo41"),
-"idle": SubResource("Animation_rkgib")
+&"RESET": SubResource("Animation_ooeki"),
+&"emergency": SubResource("Animation_jeo41"),
+&"idle": SubResource("Animation_rkgib")
 }
 
 [node name="emergency_light" type="Node3D"]

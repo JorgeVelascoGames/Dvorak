@@ -1,9 +1,9 @@
 [gd_scene load_steps=16 format=3 uid="uid://brysxkhoj2p7v"]
 
 [ext_resource type="PackedScene" uid="uid://d0dkjcykl2xdc" path="res://assets/props/filing_cabinet/filing_cabinet.tscn" id="1_q6gxq"]
-[ext_resource type="Script" path="res://Levels/environment_elements/filling_cabinet_obstacle.gd" id="1_xf6dv"]
-[ext_resource type="Script" path="res://components/interactable.gd" id="2_2c21f"]
-[ext_resource type="Script" path="res://scripts/hint.gd" id="4_bo8m7"]
+[ext_resource type="Script" uid="uid://o0t1chqxgqe2" path="res://Levels/environment_elements/filling_cabinet_obstacle.gd" id="1_xf6dv"]
+[ext_resource type="Script" uid="uid://dvdm8skpal77r" path="res://components/interactable.gd" id="2_2c21f"]
+[ext_resource type="Script" uid="uid://blg88j5imdrl5" path="res://scripts/hint.gd" id="4_bo8m7"]
 [ext_resource type="AudioStream" uid="uid://b0f5jif4xifq4" path="res://assets/audio/rummaging_drawer.mp3" id="5_v6aar"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_u7n5k"]

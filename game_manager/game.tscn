@@ -1,6 +1,6 @@
 [gd_scene load_steps=17 format=3 uid="uid://8snq2dhojamu"]
 
-[ext_resource type="Script" path="res://game_manager/game_manager.gd" id="1_d4jsh"]
+[ext_resource type="Script" uid="uid://c0ehw0v0odwqg" path="res://game_manager/game_manager.gd" id="1_d4jsh"]
 [ext_resource type="PackedScene" uid="uid://dh6gl16kfd242" path="res://game_ui/main_menu/main_menu.tscn" id="2_qnsev"]
 [ext_resource type="PackedScene" uid="uid://bfqpamqydtspv" path="res://game_manager/advert_screen.tscn" id="2_wrocf"]
 [ext_resource type="PackedScene" uid="uid://6xaa4aqthxji" path="res://game_manager/lenguage_selection.tscn" id="3_gm0jn"]
@@ -8,10 +8,10 @@
 [ext_resource type="PackedScene" uid="uid://b37la44wjrp4u" path="res://Levels/level_one/level_one.tscn" id="6_1rvxs"]
 [ext_resource type="PackedScene" uid="uid://bgouurh1fbjwr" path="res://game_manager/game_level_manager.tscn" id="6_7vbrb"]
 [ext_resource type="PackedScene" uid="uid://bxr2s8atmausr" path="res://Levels/tutorial/tutorial.tscn" id="6_k1ata"]
-[ext_resource type="Shader" path="res://shaders/vhs.gdshader" id="7_dlfm1"]
+[ext_resource type="Shader" uid="uid://cmahc8ggbq5m2" path="res://shaders/vhs.gdshader" id="7_dlfm1"]
 [ext_resource type="PackedScene" uid="uid://xuvgoo2dnfs1" path="res://Levels/end_demo_screen.tscn" id="8_aq2r8"]
-[ext_resource type="Shader" path="res://shaders/psx_shader.gdshader" id="8_odn3b"]
-[ext_resource type="Script" path="res://game_manager/vhs_effect.gd" id="9_73ht4"]
+[ext_resource type="Shader" uid="uid://bbtn2mffk1t5v" path="res://shaders/psx_shader.gdshader" id="8_odn3b"]
+[ext_resource type="Script" uid="uid://db47p6qwv6gwm" path="res://game_manager/vhs_effect.gd" id="9_73ht4"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_y1wwo"]
 

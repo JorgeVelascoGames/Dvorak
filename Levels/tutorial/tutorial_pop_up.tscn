@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://bb8divagmrtfg"]
 
-[ext_resource type="Script" path="res://Levels/tutorial/tutorial_pop_up.gd" id="1_lrclo"]
+[ext_resource type="Script" uid="uid://cxs5huwy8mmxp" path="res://Levels/tutorial/tutorial_pop_up.gd" id="1_lrclo"]
 [ext_resource type="Texture2D" uid="uid://cv4idnyo4nqik" path="res://assets/textures/metal_background.jpg" id="2_5arar"]
 [ext_resource type="Theme" uid="uid://cnn86axpbtyme" path="res://game_ui/main_theme.tres" id="2_qq4rh"]
 [ext_resource type="LabelSettings" uid="uid://un4p01kkltty" path="res://Levels/tutorial/tutorial_text_lable_settings.tres" id="3_ffpvq"]

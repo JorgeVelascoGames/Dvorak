@@ -1,52 +1,52 @@
 [gd_scene load_steps=111 format=3 uid="uid://m6pypgl566n1"]
 
-[ext_resource type="Script" path="res://player/player.gd" id="1_ref5g"]
-[ext_resource type="Script" path="res://player/smooth_camera.gd" id="2_cywkd"]
-[ext_resource type="Script" path="res://scripts/state_machine/state_machine.gd" id="2_g0cef"]
-[ext_resource type="Script" path="res://scripts/state_machine/states/idle.gd" id="3_4b8lt"]
-[ext_resource type="Script" path="res://scripts/state_machine/states/walk.gd" id="4_gw7tn"]
-[ext_resource type="Script" path="res://scripts/state_machine/states/walker.gd" id="5_h6v2u"]
-[ext_resource type="Script" path="res://scripts/state_machine/states/aim.gd" id="6_rtwvu"]
-[ext_resource type="Script" path="res://scripts/state_machine/states/prepare_gun.gd" id="7_hfrgh"]
+[ext_resource type="Script" uid="uid://tyyfcon04ulo" path="res://player/player.gd" id="1_ref5g"]
+[ext_resource type="Script" uid="uid://by48bltgaria0" path="res://player/smooth_camera.gd" id="2_cywkd"]
+[ext_resource type="Script" uid="uid://c04850wnttw5f" path="res://scripts/state_machine/state_machine.gd" id="2_g0cef"]
+[ext_resource type="Script" uid="uid://bqdigyvn4wjfj" path="res://scripts/state_machine/states/idle.gd" id="3_4b8lt"]
+[ext_resource type="Script" uid="uid://djjy4wdxvjh2i" path="res://scripts/state_machine/states/walk.gd" id="4_gw7tn"]
+[ext_resource type="Script" uid="uid://bhsvde7g7yqqy" path="res://scripts/state_machine/states/walker.gd" id="5_h6v2u"]
+[ext_resource type="Script" uid="uid://bd0fm75omndn" path="res://scripts/state_machine/states/aim.gd" id="6_rtwvu"]
+[ext_resource type="Script" uid="uid://c2ranoyxm4plj" path="res://scripts/state_machine/states/prepare_gun.gd" id="7_hfrgh"]
 [ext_resource type="PackedScene" uid="uid://bjq2dkpgpnav7" path="res://player/game_over_menu.tscn" id="7_keanm"]
-[ext_resource type="Script" path="res://scripts/state_machine/states/Unbalanced.gd" id="8_7b01x"]
+[ext_resource type="Script" uid="uid://bl3x2d4qeceup" path="res://scripts/state_machine/states/Unbalanced.gd" id="8_7b01x"]
 [ext_resource type="FontFile" uid="uid://dc0vrsfwu33ll" path="res://assets/fonts/roboto/Roboto-Regular.ttf" id="8_dofuu"]
-[ext_resource type="Script" path="res://scripts/state_machine/states/Downed.gd" id="9_q33c7"]
-[ext_resource type="Script" path="res://scripts/state_machine/states/long_interaction.gd" id="10_b71wi"]
-[ext_resource type="Script" path="res://player/ammo_counter.gd" id="11_xb6v7"]
-[ext_resource type="Script" path="res://scripts/state_machine/states/crowbar_swing.gd" id="12_6so70"]
+[ext_resource type="Script" uid="uid://bgpt7vw8pt3hn" path="res://scripts/state_machine/states/Downed.gd" id="9_q33c7"]
+[ext_resource type="Script" uid="uid://c3qdkhlpvvjey" path="res://scripts/state_machine/states/long_interaction.gd" id="10_b71wi"]
+[ext_resource type="Script" uid="uid://dnx0g2oooyu4u" path="res://player/ammo_counter.gd" id="11_xb6v7"]
+[ext_resource type="Script" uid="uid://bg1kp7kyvifs5" path="res://scripts/state_machine/states/crowbar_swing.gd" id="12_6so70"]
 [ext_resource type="Shape3D" uid="uid://df6y055xrghl7" path="res://player/player_normal_collision_shape.tres" id="12_6t6rn"]
-[ext_resource type="Script" path="res://scripts/state_machine/states/take_pill.gd" id="13_dsee1"]
-[ext_resource type="Script" path="res://player/player_ui.gd" id="14_0ypvp"]
-[ext_resource type="Script" path="res://scripts/state_machine/states/load_gun.gd" id="14_3bkdw"]
-[ext_resource type="Script" path="res://scripts/state_machine/states/change_batteries.gd" id="15_6uppe"]
-[ext_resource type="Script" path="res://player/inventory.gd" id="15_8pfmq"]
-[ext_resource type="Script" path="res://player/balance.gd" id="16_ipk1w"]
+[ext_resource type="Script" uid="uid://h52665x8f4sj" path="res://scripts/state_machine/states/take_pill.gd" id="13_dsee1"]
+[ext_resource type="Script" uid="uid://bo65iov8uq732" path="res://player/player_ui.gd" id="14_0ypvp"]
+[ext_resource type="Script" uid="uid://br23srcnixosq" path="res://scripts/state_machine/states/load_gun.gd" id="14_3bkdw"]
+[ext_resource type="Script" uid="uid://bobe1jyyjktq1" path="res://scripts/state_machine/states/change_batteries.gd" id="15_6uppe"]
+[ext_resource type="Script" uid="uid://2s5hqoxg8fpf" path="res://player/inventory.gd" id="15_8pfmq"]
+[ext_resource type="Script" uid="uid://bt55l7c6adbw8" path="res://player/balance.gd" id="16_ipk1w"]
 [ext_resource type="PackedScene" uid="uid://cdlefkst24dm8" path="res://player/player_ui.tscn" id="17_e0317"]
 [ext_resource type="Resource" uid="uid://c27ts5odnmaxq" path="res://scripts/resources/reload_hint.tres" id="18_6q2xb"]
-[ext_resource type="Script" path="res://player/balance_feedback.gd" id="18_y0x57"]
-[ext_resource type="Script" path="res://player/player_health.gd" id="20_8ocdq"]
+[ext_resource type="Script" uid="uid://dnbaglw6a5tyk" path="res://player/balance_feedback.gd" id="18_y0x57"]
+[ext_resource type="Script" uid="uid://bv8p15w5supmr" path="res://player/player_health.gd" id="20_8ocdq"]
 [ext_resource type="PackedScene" uid="uid://4j0uw0ki1luc" path="res://player/walker.tscn" id="20_qts6k"]
 [ext_resource type="PackedScene" uid="uid://cpyss678yatou" path="res://assets/props/gun/gun_model.tscn" id="21_lgr1q"]
-[ext_resource type="Script" path="res://player/player_animation_controller.gd" id="22_j0g4a"]
+[ext_resource type="Script" uid="uid://m7v38n3753to" path="res://player/player_animation_controller.gd" id="22_j0g4a"]
 [ext_resource type="PackedScene" uid="uid://ctrkoynx6fbcj" path="res://assets/props/crowbar/crowbar.tscn" id="22_r00kl"]
-[ext_resource type="Script" path="res://player/crowbar_attack_hitbox.gd" id="24_nhdqm"]
+[ext_resource type="Script" uid="uid://cnyjt38eqf6xv" path="res://player/crowbar_attack_hitbox.gd" id="24_nhdqm"]
 [ext_resource type="FontFile" uid="uid://djkxaekxrwieb" path="res://assets/fonts/roboto/Roboto-Italic.ttf" id="26_ekr4f"]
-[ext_resource type="Script" path="res://player/crosshair.gd" id="27_ktygo"]
+[ext_resource type="Script" uid="uid://bc8rydmgg24i6" path="res://player/crosshair.gd" id="27_ktygo"]
 [ext_resource type="Texture2D" uid="uid://brv17rwye8h7b" path="res://assets/UI/screen_overlay_01.png" id="28_43xm4"]
 [ext_resource type="PackedScene" uid="uid://cv00qs5ggy5x" path="res://assets/props/flaslight/flaslight.tscn" id="28_lrh3t"]
-[ext_resource type="Script" path="res://player/balanced_ui.gd" id="28_qoh17"]
+[ext_resource type="Script" uid="uid://m3f4f7c3tlbq" path="res://player/balanced_ui.gd" id="28_qoh17"]
 [ext_resource type="Texture2D" uid="uid://7g1tf1lcm1l7" path="res://assets/UI/tile_0233.png" id="28_rfyh2"]
 [ext_resource type="LabelSettings" uid="uid://c8klxxn36vp7j" path="res://game_ui/quick_time_event.tres" id="29_rdawv"]
 [ext_resource type="PackedScene" uid="uid://ccacel4hrjcs8" path="res://assets/props/pills/pills.tscn" id="29_vkalu"]
 [ext_resource type="Texture2D" uid="uid://cngiemxinj0jx" path="res://assets/UI/screen_overlay_balance_01.png" id="30_c2sls"]
-[ext_resource type="Script" path="res://player/player_game_menu.gd" id="31_0c3op"]
+[ext_resource type="Script" uid="uid://c6x55ixx1hfoy" path="res://player/player_game_menu.gd" id="31_0c3op"]
 [ext_resource type="Texture2D" uid="uid://bm0w456skdflw" path="res://assets/UI/screen_overlay_02.png" id="31_i030a"]
 [ext_resource type="LabelSettings" uid="uid://uvcnfvkxej6y" path="res://game_ui/flavour_text_lable_settings.tres" id="31_u8436"]
 [ext_resource type="Texture2D" uid="uid://cybbasys4aa0v" path="res://assets/UI/screen_overlay_danger_01.png" id="32_sb6m1"]
-[ext_resource type="Shader" path="res://shaders/vhs.gdshader" id="34_l5ybq"]
-[ext_resource type="Script" path="res://game_manager/vhs_effect.gd" id="35_5ytlk"]
-[ext_resource type="Script" path="res://player/player_audio_manager.gd" id="36_f26nf"]
+[ext_resource type="Shader" uid="uid://cmahc8ggbq5m2" path="res://shaders/vhs.gdshader" id="34_l5ybq"]
+[ext_resource type="Script" uid="uid://db47p6qwv6gwm" path="res://game_manager/vhs_effect.gd" id="35_5ytlk"]
+[ext_resource type="Script" uid="uid://lcu7ek2apk14" path="res://player/player_audio_manager.gd" id="36_f26nf"]
 [ext_resource type="Theme" uid="uid://cnn86axpbtyme" path="res://game_ui/main_theme.tres" id="39_6wgt5"]
 [ext_resource type="Texture2D" uid="uid://cv4idnyo4nqik" path="res://assets/textures/metal_background.jpg" id="40_ahubd"]
 [ext_resource type="AudioStream" uid="uid://cn6b3yjuqakb1" path="res://assets/audio/player/foot_step.wav" id="44_6afom"]
@@ -102,8 +102,8 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_0afux"]
 _data = {
-"RESET": SubResource("Animation_xr14j"),
-"balance": SubResource("Animation_61kqb")
+&"RESET": SubResource("Animation_xr14j"),
+&"balance": SubResource("Animation_61kqb")
 }
 
 [sub_resource type="Animation" id="Animation_nxnfr"]
@@ -140,8 +140,8 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_dktf4"]
 _data = {
-"RESET": SubResource("Animation_nxnfr"),
-"danger": SubResource("Animation_a0n8q")
+&"RESET": SubResource("Animation_nxnfr"),
+&"danger": SubResource("Animation_a0n8q")
 }
 
 [sub_resource type="LabelSettings" id="LabelSettings_3m322"]
@@ -539,18 +539,18 @@ tracks/1/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_1d5hg"]
 _data = {
-"RESET": SubResource("Animation_1ivek"),
-"change_batteries": SubResource("Animation_6pxw8"),
-"floor": SubResource("Animation_f0x85"),
-"load_gun": SubResource("Animation_lwqgl"),
-"losing_balance": SubResource("Animation_hxgs6"),
-"no_animation": SubResource("Animation_yw3n8"),
-"no_movement_pivot": SubResource("Animation_jsxkr"),
-"pills": SubResource("Animation_ke5us"),
-"prepare_crowbar": SubResource("Animation_838k8"),
-"prepare_gun": SubResource("Animation_dutym"),
-"swing_crowbar": SubResource("Animation_2vcw6"),
-"unbalanced": SubResource("Animation_hbgry")
+&"RESET": SubResource("Animation_1ivek"),
+&"change_batteries": SubResource("Animation_6pxw8"),
+&"floor": SubResource("Animation_f0x85"),
+&"load_gun": SubResource("Animation_lwqgl"),
+&"losing_balance": SubResource("Animation_hxgs6"),
+&"no_animation": SubResource("Animation_yw3n8"),
+&"no_movement_pivot": SubResource("Animation_jsxkr"),
+&"pills": SubResource("Animation_ke5us"),
+&"prepare_crowbar": SubResource("Animation_838k8"),
+&"prepare_gun": SubResource("Animation_dutym"),
+&"swing_crowbar": SubResource("Animation_2vcw6"),
+&"unbalanced": SubResource("Animation_hbgry")
 }
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_rnanc"]

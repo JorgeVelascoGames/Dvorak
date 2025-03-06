@@ -1,9 +1,9 @@
 [gd_scene load_steps=12 format=3 uid="uid://b7cb30x5rpa17"]
 
-[ext_resource type="Script" path="res://randomization/room.gd" id="1_yys0h"]
+[ext_resource type="Script" uid="uid://ceppwvleqrbbt" path="res://randomization/room.gd" id="1_yys0h"]
 [ext_resource type="PackedScene" uid="uid://dycdd0wd0kswp" path="res://Levels/environment_elements/cross.tscn" id="3_g3pda"]
 [ext_resource type="Material" uid="uid://dst813utgj4hq" path="res://materials/walls_mat.tres" id="4_b1iuo"]
-[ext_resource type="Script" path="res://randomization/randimize_intance.gd" id="5_mefh5"]
+[ext_resource type="Script" uid="uid://qkkn3nluuvts" path="res://randomization/randimize_intance.gd" id="5_mefh5"]
 [ext_resource type="PackedScene" uid="uid://b8gbxyaua8ftu" path="res://assets/props/bed/bed.tscn" id="6_0ab60"]
 [ext_resource type="PackedScene" uid="uid://brysxkhoj2p7v" path="res://Levels/environment_elements/filling_cabinet_obstacle.tscn" id="7_sken8"]
 [ext_resource type="PackedScene" uid="uid://b14r0ayr0hufl" path="res://Levels/environment_elements/emergency_light.tscn" id="8_77ot4"]

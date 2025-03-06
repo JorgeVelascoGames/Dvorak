@@ -5,7 +5,7 @@
 [ext_resource type="Material" uid="uid://ciyx0k2mf8b5f" path="res://Levels/materials/grey.tres" id="3_m4mti"]
 [ext_resource type="Texture2D" uid="uid://by4jbjsne1tjb" path="res://assets/textures/wall_substance.png" id="4_lrjaa"]
 [ext_resource type="PackedScene" uid="uid://78mr2us2ett5" path="res://assets/environment/elements/door_closed.tscn" id="6_n3bub"]
-[ext_resource type="Script" path="res://randomization/randomizer_position.gd" id="7_vdr6k"]
+[ext_resource type="Script" uid="uid://haifxcuo71f7" path="res://randomization/randomizer_position.gd" id="7_vdr6k"]
 [ext_resource type="PackedScene" uid="uid://dntxkqhhia68" path="res://vfx/blood_decal/blood_decal_big.tscn" id="11_g760f"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_cmsli"]

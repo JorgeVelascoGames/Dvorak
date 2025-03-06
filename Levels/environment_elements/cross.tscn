@@ -1,8 +1,8 @@
 [gd_scene load_steps=8 format=3 uid="uid://dycdd0wd0kswp"]
 
-[ext_resource type="Script" path="res://Levels/environment_elements/cross.gd" id="1_u1ftr"]
-[ext_resource type="Script" path="res://components/interactable.gd" id="2_1dwm3"]
-[ext_resource type="Script" path="res://scripts/hint.gd" id="3_oo8gl"]
+[ext_resource type="Script" uid="uid://bbkyod8lh0peo" path="res://Levels/environment_elements/cross.gd" id="1_u1ftr"]
+[ext_resource type="Script" uid="uid://dvdm8skpal77r" path="res://components/interactable.gd" id="2_1dwm3"]
+[ext_resource type="Script" uid="uid://blg88j5imdrl5" path="res://scripts/hint.gd" id="3_oo8gl"]
 [ext_resource type="PackedScene" uid="uid://dgqx33tlwe0q2" path="res://assets/props/cross/cross.tscn" id="4_xgb0q"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_2sy5j"]
