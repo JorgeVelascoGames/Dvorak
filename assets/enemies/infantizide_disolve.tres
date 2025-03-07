@@ -1,6 +1,6 @@
 [gd_resource type="ShaderMaterial" load_steps=4 format=3 uid="uid://djajn3ayifi4u"]
 
-[ext_resource type="Shader" path="res://assets/enemies/infanticide_model.gdshader" id="1_3udsh"]
+[ext_resource type="Shader" uid="uid://ucsckpkoq2es" path="res://assets/enemies/infanticide_model.gdshader" id="1_3udsh"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_hgqyo"]
 
