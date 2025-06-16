@@ -1,4 +1,4 @@
-[gd_scene load_steps=45 format=3 uid="uid://b37la44wjrp4u"]
+[gd_scene load_steps=46 format=3 uid="uid://b37la44wjrp4u"]
 
 [ext_resource type="PackedScene" uid="uid://dqk45r48r427t" path="res://Levels/level_one/level_one_scenario.tscn" id="1_jujem"]
 [ext_resource type="Environment" uid="uid://c42wra3u6yo6u" path="res://Levels/world_environment.tres" id="1_rc4ww"]
@@ -40,6 +40,7 @@
 [ext_resource type="AudioStream" uid="uid://c0qqnbr716c6g" path="res://assets/audio/ambient/newborn_cry.wav" id="38_oa0xf"]
 [ext_resource type="Script" uid="uid://no2xwkx55msm" path="res://game_manager/enemy_manager.gd" id="40_4guxj"]
 [ext_resource type="AudioStream" uid="uid://pr0usaqumern" path="res://assets/audio/ambient/girl_scream.wav" id="40_5kdeu"]
+[ext_resource type="PackedScene" uid="uid://dalflm7oaesga" path="res://Enemy/infanticide/infanticide.tscn" id="40_uue6o"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_hkrcb"]
 cell_size = 0.05
@@ -1725,6 +1726,8 @@ shape = SubResource("BoxShape3D_q85wg")
 transform = Transform3D(0.00945899, 0, -0.999957, 0, 1, 0, 0.999957, 0, 0.00945899, 33.6843, 0.955824, -12.5149)
 
 [node name="Enemies" type="Node3D" parent="Entities"]
+
+[node name="Infanticide" parent="Entities/Enemies" instance=ExtResource("40_uue6o")]
 
 [node name="EnemyManager" type="Node" parent="." groups=["enemy_manager"]]
 script = ExtResource("40_4guxj")

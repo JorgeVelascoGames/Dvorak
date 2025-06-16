@@ -123,11 +123,11 @@ spot_range = 16.8082
 spot_attenuation = 2.0
 spot_angle = 64.5795
 script = ExtResource("3_rrijc")
-extra_time_on_pickup = 90.0
+extra_time_on_pickup = 180.0
 recharge_hint = SubResource("Resource_n7n3o")
 
 [node name="FlashlightBattery" type="Timer" parent="FlashlightFixPosition/Flashlight"]
-wait_time = 60.0
+wait_time = 180.0
 
 [node name="TweaklingTimer" type="Timer" parent="FlashlightFixPosition/Flashlight"]
 

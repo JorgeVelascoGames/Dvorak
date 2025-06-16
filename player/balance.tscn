@@ -6,7 +6,11 @@
 
 [node name="Balance" type="Node"]
 script = ExtResource("1_rwhb4")
-max_balance = 5500.0
+testing_without_balance = true
+max_balance = 7000.0
+forward_movement_cost = 65
+sprint_penalty = 150.0
+side_movement_cost = 100.0
 
 [node name="BalanceRecoveryTimer" type="Timer" parent="."]
 wait_time = 0.5

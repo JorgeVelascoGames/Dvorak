@@ -693,7 +693,7 @@ axis_lock_angular_y = true
 axis_lock_angular_z = true
 floor_max_angle = 0.959931
 script = ExtResource("1_ref5g")
-speed = 0.2
+speed = 0.31
 
 [node name="SubViewportContainer" type="SubViewportContainer" parent="."]
 anchors_preset = 15
@@ -1052,7 +1052,7 @@ stretch_mode = 5
 
 [node name="BalanceOverlayAnimationPlayer" type="AnimationPlayer" parent="PlayerUI/BalanceOverlay"]
 libraries = {
-"": SubResource("AnimationLibrary_0afux")
+&"": SubResource("AnimationLibrary_0afux")
 }
 
 [node name="DamagedOverlay" type="TextureRect" parent="PlayerUI"]
@@ -1107,7 +1107,7 @@ stretch_mode = 5
 
 [node name="DangerOverlayAnimator" type="AnimationPlayer" parent="PlayerUI/DangerOverlay"]
 libraries = {
-"": SubResource("AnimationLibrary_dktf4")
+&"": SubResource("AnimationLibrary_dktf4")
 }
 autoplay = "danger"
 
@@ -1296,7 +1296,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.705582, -0.711028)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_1d5hg")
+&"": SubResource("AnimationLibrary_1d5hg")
 }
 autoplay = "RESET"
 
