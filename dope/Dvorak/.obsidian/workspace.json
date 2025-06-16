@@ -13,15 +13,36 @@
             "state": {
               "type": "markdown",
               "state": {
+<<<<<<< HEAD
                 "file": "Bug y notas.md",
+=======
+                "file": "Atributions.md",
+>>>>>>> origin/dev
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
+<<<<<<< HEAD
               "title": "Bug y notas"
+=======
+              "title": "Atributions"
+            }
+          },
+          {
+            "id": "7390b5bea50a9387",
+            "type": "leaf",
+            "state": {
+              "type": "release-notes",
+              "state": {
+                "currentVersion": "1.8.7"
+              },
+              "icon": "lucide-book-up",
+              "title": "Release Notes 1.8.7"
+>>>>>>> origin/dev
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -163,7 +184,7 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "cef1813cea61e526",
+  "active": "7390b5bea50a9387",
   "lastOpenFiles": [
     "To do.md",
     "Pulido.md",

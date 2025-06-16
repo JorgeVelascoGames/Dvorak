@@ -79,3 +79,5 @@ creepy newborn cry by zacnie -- https://freesound.org/s/646299/ -- License: Attr
 Great Factory Alarm by EinTon -- https://freesound.org/s/443271/ -- License: Attribution 3.0
 
 VHS VCR Static Noise and Glitches by SkyernAklea -- https://freesound.org/s/508187/ -- License: Attribution 4.0
+
+"Psx hands monster (ps2 style)" (https://skfb.ly/p6ysY) by petya-petyavich is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/).
